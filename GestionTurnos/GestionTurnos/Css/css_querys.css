@@ -1,0 +1,18 @@
+﻿/*Media Querys para resolucion inferior a 1920px de ancho. */
+@media only screen and (max-width: 1920px) {
+    .jumbotron.jose {
+        margin: 25px 560px 20px 560px;
+        width: 800px;
+    }
+}
+/*Media Querys para resolucion inferior a 1660px de ancho. */
+@media only screen and (max-width: 1660px) {
+    .jumbotron.jose {
+        margin: 25px 560px 20px 560px;
+        width: 800px;
+    }
+}
+/*Media Querys para resolucion inferior a 1024px de ancho. */
+/*Media Querys para resolucion inferior a 800px de ancho. */
+/*Media Querys para resolucion inferior a 640px de ancho. */
+

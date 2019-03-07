@@ -1,0 +1,94 @@
+﻿*/ CSS para nuestra App*/
+body {
+    background-color: forestgreen;
+    color: gold;
+}
+.jumbotron.jose {
+    background-color: #B1C4D9;
+    color: #fff;
+    margin: 25px 880px 20px 880px;
+    width: 800px;
+    height: 600px;
+}
+.primer_alineado{
+    display: flex;
+    height: 80px;
+    margin: -63px -31px 
+}
+.logo{
+    height:auto;
+    width: 350px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.eslogan {
+    margin-top: 15px;
+    margin-left: 430px;
+}
+.agrupados{
+    display: flex;
+    margin: 35px -25px 10px -25px;
+    height: 500px;
+}
+.panel_mostrar {
+    background-color: #4285F4;
+    height: 496px;
+    width: 400px;
+}
+.ciudad,.direccion{
+    text-align: center;
+    margin-left: -20px;
+}
+.turno{
+    width: 200px;
+    margin-left: 90px;
+}
+.frase1, .texto_primer_panel, .info_web {
+    text-align: center;
+    margin-top: 20px;
+}
+.texto_primer_panel{
+    font-size: 15px;
+    margin-top: 5px;
+}
+.estado_servicio{
+    background-color: forestgreen;
+    height: 30px;
+    padding: 2px 0;
+}
+.p_estado_servicio{
+    text-align: center;
+}
+.info_web{
+    margin-top: 10px;
+}
+.panel_mostrar2 {
+    background-color: #CF3B9A;
+    height: 200px;
+    width: 200px;
+}
+.panel_mostrar3 {
+    background-color: #FFF081;
+    height: 200px;
+    width: 200px;
+}
+.panel_mostrar4 {
+    background-color: #333333;
+    height: 310px;
+    width: 394px;
+    margin-top: 186px;
+    margin-left: 393px;
+    position: absolute;
+}
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed red;
+}
+
+.box div {
+        width: 100px;
+        height: 100px;
+        border: 2px solid blue;
+    }
