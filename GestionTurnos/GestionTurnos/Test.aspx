@@ -39,12 +39,10 @@
                 </div>
                 <p class="info_web">Peinarte.net</p>
             </div>
-            <div class="panel_mostrar2">
-                <a href="#">
-                    <i class="far fa-clock"></i>
-                <p>SOLICITA TURNO</p>
-                </a>
-            </div>
+            <a class="panel_mostrar2"  title="Solicita tu Turno." href="#">
+                <i class="far fa-clock"></i>
+                <p class="boton_solicitar">SOLICITA TURNO</p>
+            </a>
             <div class="panel_mostrar3">
                 continuamos2
             </div>

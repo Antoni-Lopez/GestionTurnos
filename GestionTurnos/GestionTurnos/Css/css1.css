@@ -50,6 +50,7 @@ body {
 .texto_primer_panel{
     font-size: 15px;
     margin-top: 5px;
+    padding:0 15px;
 }
 .estado_servicio{
     background-color: forestgreen;
@@ -66,6 +67,18 @@ body {
     background-color: #CF3B9A;
     height: 200px;
     width: 200px;
+}
+.far.fa-clock {
+    margin-left: 80px;
+    margin-top: 30px;
+    color: white;
+    font-size: 39px;
+}
+.boton_solicitar{
+    text-align: center;
+    color: white;
+    font-size: 29px;
+    margin-left: 3px;
 }
 .panel_mostrar3 {
     background-color: #FFF081;
