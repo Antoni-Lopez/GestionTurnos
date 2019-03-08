@@ -41,6 +41,16 @@ body {
 .turno{
     width: 200px;
     margin-left: 90px;
+    z-index: 1;
+}
+.contador_turnos{
+    z-index: 2;
+    position: absolute;
+    margin: -130px 170px;
+    color: black !important;
+}
+#contador{ 
+    font-size: 2.5em;
 }
 .frase1, .texto_primer_panel, .info_web {
     text-align: center;
@@ -102,6 +112,7 @@ body {
     font-size: 39px;
 }
 .panel_mostrar4 {
+    z-index: 3;
     display: none;
     background-color: #333333;
     height: 310px;
@@ -109,6 +120,25 @@ body {
     margin-top: 186px;
     margin-left: 393px;
     position: absolute;
+}
+.panel_oculto {
+    z-index: 1;
+    background-color: #333333;
+    height: 310px;
+    width: 394px;
+    margin-top: 186px;
+    margin-left: 393px;
+    position: absolute;
+}
+.oculto {
+    background-color: #333333;
+    height: 310px;
+    width: 394px;
+    margin-top: 186px;
+    margin-left: 393px;
+    position: absolute;
+    z-index: 2;
+    opacity: 0.5;
 }
 .panel_mostrar5 {
     display: none;
@@ -119,10 +149,15 @@ body {
     margin-left: 393px;
     position: absolute;
 }
-.panel_ocultar{
-
-}
 #textoPantalla {
+    text-align: center;
+    font-style: sans-serif;
+    height: 65px;
+    width: 260px;
+    font-size: 2.5em;
+    background-color: #000000;
+}
+.textoPantalla_oculto {
     text-align: center;
     font-style: sans-serif;
     height: 65px;
@@ -141,6 +176,7 @@ body {
     width: 135px;
 }
 .button1, .button2, .button3 {
+    z-index: 3;
     position: absolute;
     margin: -15px 0;
     width: 130px;
@@ -212,4 +248,8 @@ body {
     color: #000000;
     border: 1px solid #000000;
     font-size: 25px;
+}
+p.button0, p.button1, p.button2, p.button3, p.button4, p.button5, p.button6, p.button7, p.button8, p.button9, p.button_deleted, .button_igual {
+    text-align: center;
+    padding: 10px 0;
 }

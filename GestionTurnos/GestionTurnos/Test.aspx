@@ -33,7 +33,32 @@
             }  
    
             //-->  
+        </script> 
+        <script languaje="Javascript">   
+            <!--  
+            var contador = 0;
+            var limite = 99;
+            var total = 0;
+
+            function incrementar()
+            {
+                contador++;
+                if (contador <= limite) {
+                    escribir = document.getElementById("contador");
+                    escribir.innerHTML = contador;
+                }
+                else {
+                    limite = contador + limite;
+                    contador = 0;
+                    escribir = document.getElementById("contador");
+                    escribir.innerHTML = contador;
+                }
+            } 
+   
+            //-->  
         </script>  
+
+
         <!-- Titulo del Website! -->
         <title>Pagina de Testeo de Gestión de Turnos</title>
 
@@ -49,6 +74,7 @@
                 <h3 class="ciudad">Málaga</h3>
                 <p class="direccion">Cristo de la Epidemia, 52</p>
                 <img class="turno" src="img/turno.png" />
+                <p class="contador_turnos" id="contador"></p>
                 <h3 class="frase1">Get your time!</h3>
                 <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
                 <div class="estado_servicio">
@@ -56,7 +82,7 @@
                 </div>
                 <p class="info_web">Peinarte.net</p>
             </div>
-            <a class="panel_mostrar2"  title="Solicita tu Turno." href="#">
+            <a class="panel_mostrar2"  title="Solicita tu Turno." href="javascript:incrementar();">
                 <i class="far fa-clock"></i>
                 <p class="boton_solicitar">SOLICITA TURNO</p>
             </a>
@@ -66,6 +92,23 @@
                 <i class="fas fa-mobile"></i>
                 <p class="boton_solicitar2">SOLICITA TURNO + SMS</p>
             </a>
+            <div class="oculto">
+            </div>
+            <div class="panel_oculto">
+                    <p class="textoPantalla_oculto">0</p>
+                    <p class="button_igual">OK</p>
+                    <p class="button1">1</p>
+                    <p class="button2">2</p>
+                    <p class="button3">3</p>
+                    <p class="button4">4</p>
+                    <p class="button5">5</p>
+                    <p class="button6">6</p>
+                    <p class="button7">7</p>
+                    <p class="button8">8</p>
+                    <p class="button9">9</p>
+                    <p class="button0">0</p>
+                    <p class="button_deleted">Borrar</p>
+            </div>
             <div class="panel_mostrar4" id="teclado_num">
                 <form action="#" name="calculadora" id="calculadora" runat="server">
                     <p id="textoPantalla">0</p>
