@@ -102,12 +102,25 @@ body {
     font-size: 39px;
 }
 .panel_mostrar4 {
+    display: none;
     background-color: #333333;
     height: 310px;
     width: 394px;
     margin-top: 186px;
     margin-left: 393px;
     position: absolute;
+}
+.panel_mostrar5 {
+    display: none;
+    background-color: #333333;
+    height: 310px;
+    width: 394px;
+    margin-top: 186px;
+    margin-left: 393px;
+    position: absolute;
+}
+.panel_ocultar{
+
 }
 #textoPantalla {
     text-align: center;
@@ -184,7 +197,7 @@ body {
     position: absolute;
     margin: 165px 0;
     width: 130px;
-    height: 60px;
+    height: 62px;
     background-color: #FEFEFE;
     color: #000000;
     border: 1px solid #000000;
@@ -193,7 +206,7 @@ body {
 .button_deleted {
     position: absolute;
     margin: 165px 0 0 130px;
-    height: 60px;
+    height: 62px;
     width: 263px;
     background-color: #FEFEFE;
     color: #000000;

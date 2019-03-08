@@ -18,8 +18,25 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
+        <script type="text/javascript" src="Script/teclado_numerico.js"></script>
+
+        <script languaje="Javascript">   
+            <!--  
+            document.write('<style type="text/css">div.cp_oculta{display: none;}</style>');  
+            function MostrarOcultar(capa,enlace)  
+            {  
+                if (document.getElementById)  
+                {  
+                    var aux = document.getElementById(capa).style;  
+                    aux.display = aux.display? "":"block";  
+                }  
+            }  
+   
+            //-->  
+        </script>  
         <!-- Titulo del Website! -->
-        <title>Pagina de Testeo</title>
+        <title>Pagina de Testeo de Gestión de Turnos</title>
+
     </head>
 <body>
     <div class="jumbotron jose">
@@ -43,13 +60,13 @@
                 <i class="far fa-clock"></i>
                 <p class="boton_solicitar">SOLICITA TURNO</p>
             </a>
-            <a class="panel_mostrar3" href="#">
+            <a class="panel_mostrar3" href="javascript:MostrarOcultar('teclado_num');">
                 <i class="far fa-clock segunda"></i>
                 <i class="fas fa-arrow-right"></i>
                 <i class="fas fa-mobile"></i>
                 <p class="boton_solicitar2">SOLICITA TURNO + SMS</p>
             </a>
-            <div class="panel_mostrar4">
+            <div class="panel_mostrar4" id="teclado_num">
                 <form action="#" name="calculadora" id="calculadora" runat="server">
                     <p id="textoPantalla">0</p>
                     <input type="submit" class="button_igual" value="=" onclick="igual()"/>
@@ -63,7 +80,7 @@
                     <input type="button" class="button8" value="8" onclick="numero('8')"/>
                     <input type="button" class="button9" value="9" onclick="numero('9')"/>
                     <input type="button" class="button0" value="0" onclick="numero('0')"/>
-                    <input type="button" class="button_deleted" value="Borrar" onclick="numero('borrar')"/>
+                    <input type="button" class="button_deleted" value="Borrar" onclick="borradoTotal()"/>
                 </form>
             </div>
         </div>
