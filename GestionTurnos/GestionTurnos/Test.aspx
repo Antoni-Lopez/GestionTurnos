@@ -43,21 +43,33 @@
                 <i class="far fa-clock"></i>
                 <p class="boton_solicitar">SOLICITA TURNO</p>
             </a>
-            <div class="panel_mostrar3">
-                continuamos2
-            </div>
+            <a class="panel_mostrar3" href="#">
+                <i class="far fa-clock segunda"></i>
+                <i class="fas fa-arrow-right"></i>
+                <i class="fas fa-mobile"></i>
+                <p class="boton_solicitar2">SOLICITA TURNO + SMS</p>
+            </a>
             <div class="panel_mostrar4">
-                continuamos3
+                <form action="#" name="calculadora" id="calculadora" runat="server">
+                    <p id="textoPantalla">0</p>
+                    <input type="submit" class="button_igual" value="=" onclick="igual()"/>
+                    <input type="button" class="button1" value="1" onclick="numero('1')"/>
+                    <input type="button" class="button2" value="2" onclick="numero('2')"/>
+                    <input type="button" class="button3" value="3" onclick="numero('3')"/>
+                    <input type="button" class="button4" value="4" onclick="numero('4')"/>
+                    <input type="button" class="button5" value="5" onclick="numero('5')"/>
+                    <input type="button" class="button6" value="6" onclick="numero('6')"/>
+                    <input type="button" class="button7" value="7" onclick="numero('7')"/>
+                    <input type="button" class="button8" value="8" onclick="numero('8')"/>
+                    <input type="button" class="button9" value="9" onclick="numero('9')"/>
+                    <input type="button" class="button0" value="0" onclick="numero('0')"/>
+                    <input type="button" class="button_deleted" value="Borrar" onclick="numero('borrar')"/>
+                </form>
             </div>
         </div>
         
     </div>
-    <form id="form1" runat="server">
-        Holaaaaaa José!
-        Muy buenas toni. Funciona o no?
-        Pues este comentario solo deberia estar en el ordenador de jose.
-        hola
-    </form>
+    
 
       
 </body>

@@ -1,7 +1,6 @@
 ﻿*/ CSS para nuestra App*/
 body {
-    background-color: forestgreen;
-    color: gold;
+
 }
 .jumbotron.jose {
     background-color: #B1C4D9;
@@ -68,13 +67,19 @@ body {
     height: 200px;
     width: 200px;
 }
+.panel_mostrar2:link, .panel_mostrar3:link {
+        text-decoration: none;
+}
+.panel_mostrar2:hover, .panel_mostrar3:hover {
+        font-size: 27px !important;
+}
 .far.fa-clock {
     margin-left: 80px;
     margin-top: 30px;
     color: white;
     font-size: 39px;
 }
-.boton_solicitar{
+.boton_solicitar, .boton_solicitar2 {
     text-align: center;
     color: white;
     font-size: 29px;
@@ -85,6 +90,17 @@ body {
     height: 200px;
     width: 200px;
 }
+.segunda {
+    margin-left: 45px !important;
+}
+.fas.fa-arrow-right {
+    color: white;
+    font-size: 39px;
+}
+.fas.fa-mobile {
+    color: black;
+    font-size: 39px;
+}
 .panel_mostrar4 {
     background-color: #333333;
     height: 310px;
@@ -93,15 +109,94 @@ body {
     margin-left: 393px;
     position: absolute;
 }
-.box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed red;
+#textoPantalla {
+    text-align: center;
+    font-style: sans-serif;
+    height: 65px;
+    width: 260px;
+    font-size: 2.5em;
+    background-color: #000000;
+}
+.button_igual {
+    background-color: #00A76D;
+    color: #fff;
+    font-size: 2.5em;
+    position: absolute;
+    margin-top: -82px !important;
+    margin-left: 260px;
+    height: 65px;
+    width: 135px;
+}
+.button1, .button2, .button3 {
+    position: absolute;
+    margin: -15px 0;
+    width: 130px;
+    height: 60px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.button2 {
+        margin-left: 130px;
+    }
+.button3{
+    margin-left: 260px;
+    width: 133px !important;
 }
 
-.box div {
-        width: 100px;
-        height: 100px;
-        border: 2px solid blue;
-    }
+.button4, .button5, .button6 {
+    position: absolute;
+    margin: 45px 0;
+    width: 130px;
+    height: 60px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.button5 {
+    margin-left: 130px;
+}
+
+.button6 {
+    margin-left: 260px;
+    width: 133px !important;
+}
+.button7, .button8, .button9 {
+    position: absolute;
+    margin: 105px 0;
+    width: 130px;
+    height: 60px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.button8 {
+    margin-left: 130px;
+}
+.button9 {
+    margin-left: 260px;
+    width: 133px !important;
+}
+.button0 {
+    position: absolute;
+    margin: 165px 0;
+    width: 130px;
+    height: 60px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.button_deleted {
+    position: absolute;
+    margin: 165px 0 0 130px;
+    height: 60px;
+    width: 263px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}

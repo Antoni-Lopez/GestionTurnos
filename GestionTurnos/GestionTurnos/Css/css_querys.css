@@ -2,17 +2,33 @@
 @media only screen and (max-width: 1920px) {
     .jumbotron.jose {
         margin: 25px 560px 20px 560px;
-        width: 800px;
     }
 }
 /*Media Querys para resolucion inferior a 1660px de ancho. */
 @media only screen and (max-width: 1660px) {
     .jumbotron.jose {
-        margin: 25px 560px 20px 560px;
-        width: 800px;
+        margin: 25px 430px 20px 430px;
+    }
+}
+/*Media Querys para resolucion inferior a 1280px de ancho. */
+@media only screen and (max-width: 1280px) {
+    .jumbotron.jose {
+        margin: 25px 240px 20px 240px;
     }
 }
 /*Media Querys para resolucion inferior a 1024px de ancho. */
-/*Media Querys para resolucion inferior a 800px de ancho. */
-/*Media Querys para resolucion inferior a 640px de ancho. */
+@media only screen and (max-width: 1024px) {
+    .jumbotron.jose {
+        margin: 25px 112px 20px 112px;
+    }
 
+}
+/*Media Querys para resolucion inferior a 800px de ancho. */
+@media only screen and (max-width: 900px) {
+    body {
+        background-color: yellow;
+    }
+    .jumbotron.jose {
+        margin: 25px -10px 20px -10px;
+    }
+}
