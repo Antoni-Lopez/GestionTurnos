@@ -8,7 +8,9 @@
 
     <!-- CSS y distintas librerias -->
     <link href="css/intranet.css" rel="stylesheet" type="text/css" />
-    <title>Acceso a Intranet de Gestion de Turnos de Peluqueria.net</title>
+    <link href="css/css_querys.css" rel="stylesheet" type="text/css" />
+
+    <title>Acceso a Intranet de Gestion de Turnos.</title>
 </head>
 <body>
     <h2 class="Titulo">Intranet de Gestión de Turnos</h2>
@@ -24,7 +26,7 @@
                     <input type="email" class="correo" name="email" placeholder="Introduzca su email: ejemplo@towerplane.com" required />
                     <input type="password" class="contrasenia" name="email" required />
                 </div>
-                <input type="checkbox" class="recordar" id="id-espada" name="recordar_email" value="1"><p class="chekbox">Recordar Email.</p>
+                <input type="checkbox" class="recordar" id="id-espada" name="recordar_email" value="1"><p class="chekbox">Recordar Email</p>
                 <input type="submit" value="Enviar" class="enviar">
 
             </div>

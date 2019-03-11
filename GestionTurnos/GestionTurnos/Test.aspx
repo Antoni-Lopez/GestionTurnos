@@ -61,9 +61,11 @@
                 }
                 else {
                     total =  contador + 1;
-                    contador = 0;
+                    contador = 1;
+
+                    var contador_fixed = '0' + contador;
                     escribir = document.getElementById("contador");
-                    escribir.innerHTML = contador;
+                    escribir.innerHTML = contador_fixed;
                 }
             } 
             //-->  

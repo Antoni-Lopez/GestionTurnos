@@ -5,6 +5,29 @@
         margin: 25px 560px 20px 560px;
     }
     /* Index_Intranet.aspx */
+    .Titulo {
+        margin: 100px 0 25px 750px;
+    }
+    .mail {
+        margin: 17px 0 5px 70px;
+    }
+    .correo {
+        height: 20px;
+        margin: 20px 0 15px 70px;
+    }
+    .contrasenia {
+        height: 20px;
+        margin: 70px 0 5px -478px;
+    }
+    .pass {
+        margin: 20px 0 5px 80px;
+    }
+    
+    .enviar {
+        margin: 10px 0 10px 330px;
+        height: 35px;
+        width: 200px;        
+    }
 }
 /*Media Querys para resolucion inferior a 1660px de ancho. */
 @media only screen and (max-width: 1660px) {
@@ -12,29 +35,198 @@
     .jumbotron.jose {
         margin: 25px 430px 20px 430px;
     }
-}
-/*Media Querys para resolucion inferior a 1280px de ancho. */
-@media only screen and (max-width: 1280px) {
-    /* Text.aspx */
-    .jumbotron.jose {
-        margin: 25px 240px 20px 240px;
+
+    /* Index_Intranet.aspx */
+    .Titulo {
+        margin: 100px 0 25px 580px;
+    }
+    .mail {
+        margin: 17px 0 5px 50px;
+    }
+    .correo {
+        height: 20px;
+        margin: 20px 0 15px 50px;
+        font-size: 15px;
+    }
+    .contrasenia {
+        height: 20px;
+        margin: 70px 0 5px -345px;
+    }
+    .pass {
+        margin: 20px 0 5px 60px;
+    }
+    .recordar{
+        margin: -20px 0 10px 100px;
+    }
+    .chekbox{
+        margin-left: 120px;
+    }
+    .enviar {
+        margin: 10px 0 10px 190px;
+        height: 35px;
+        width: 200px;
     }
 }
-/*Media Querys para resolucion inferior a 1024px de ancho. */
+/*Media Querys para resolucion inferior a 1360px de ancho. */
+@media only screen and (max-width: 1360px) {
+    /* Text.aspx */
+
+
+    /* Index_Intranet.aspx */
+    .Titulo {
+        margin: 100px 0 25px 440px;
+    }
+    #form_acceso {
+        margin: 150px 200px 150px 200px;
+        height: 450px;
+    }
+    .mail {
+        margin: 17px 0 5px 50px;
+    }
+    .correo {
+        height: 20px;
+        margin: 15px 0 15px 30px;
+        font-size: 15px;
+    }
+    .contrasenia {
+        height: 20px;
+        margin: 70px 0 5px -400px;
+    }
+    .pass {
+        margin: 20px 0 5px 60px;
+    }
+    .enviar {
+        margin: 50px 0 10px 250px;
+        height: 35px;
+        width: 200px;
+    }
+}
+ /*Media Querys para resolucion inferior a 1280px de ancho. */
+ @media only screen and (max-width: 1280px) {
+    /* Text.aspx */
+    .jumbotron.jose {
+         margin: 25px 240px 20px 240px;
+    }
+    /* Index_Intranet.aspx */
+    .Titulo {
+        margin: 100px 0 25px 400px;
+    }
+    #form_acceso {
+        margin: 150px 150px 150px 150px;
+        height: 450px;
+    }
+    .contrasenia {
+        height: 20px;
+        margin: 70px 0 5px -410px;
+    }
+ }
+ /*Media Querys para resolucion inferior a 1024px de ancho. */
 @media only screen and (max-width: 1024px) {
     /* Text.aspx */
     .jumbotron.jose {
         margin: 25px 112px 20px 112px;
     }
 
+    /* Index_Intranet.aspx */
+    .Titulo {
+        margin: 100px 0 25px 280px;
+    }
+
+    #form_acceso {
+        margin: 100px 100px 150px 100px;
+        height: 500px;
+    }
+
+    .mail {
+        margin: 17px 0 5px 15px;
+    }
+
+    .correo {
+        height: 20px;
+        margin: 15px 0 15px 30px;
+        font-size: 14.5px;
+    }
+
+    .contrasenia {
+        height: 20px;
+        margin: 70px 0 5px -330px;
+    }
+
+    .pass {
+        margin: 20px 0 5px 26px;
+    }
+
+    .enviar {
+        margin: 50px 0 10px 180px;
+        height: 35px;
+        width: 200px;
+    }
 }
 /*Media Querys para resolucion inferior a 800px de ancho. */
-@media only screen and (max-width: 900px) {
-    /* Text.aspx */
-    body {
-        background-color: yellow;
+@media only screen and (min-width: 800px) {
+
+    /* Index_Intranet.aspx */
+    #form_acceso {
+        margin: 100px 50px 150px 50px;
+        height: 400px;
     }
-    .jumbotron.jose {
-        margin: 25px -10px 20px -10px;
+
+    .mail {
+        margin: 17px 0 5px 15px;
+    }
+
+    .correo {
+        height: 20px;
+        margin: 15px 0 15px 30px;
+        font-size: 14.5px;
+    }
+
+    .contrasenia {
+        height: 20px;
+        margin: 70px 0 5px -355px;
+    }
+
+    .pass {
+        margin: 20px 0 5px 26px;
+    }
+
+    .enviar {
+        margin: 30px 0 10px 200px;
+        height: 35px;
+        width: 200px;
+    }
+}
+/*Media Querys para resolucion inferior a 600px de ancho. */
+@media only screen and (min-width: 600px) {
+
+    /* Index_Intranet.aspx */
+    #form_acceso {
+        margin: 100px 50px 150px 50px;
+        height: 400px;
+    }
+
+    .mail {
+        margin: 17px 0 5px 15px;
+    }
+
+    .correo {
+        height: 20px;
+        margin: 15px 0 15px 30px;
+        font-size: 14.5px;
+    }
+
+    .contrasenia {
+        height: 20px;
+        margin: 70px 0 5px -355px;
+    }
+
+    .pass {
+        margin: 20px 0 5px 26px;
+    }
+
+    .enviar {
+        margin: 30px 0 10px 200px;
+        height: 35px;
+        width: 200px;
     }
 }

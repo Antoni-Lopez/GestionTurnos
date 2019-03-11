@@ -4,7 +4,7 @@
 }
 
 .Titulo {
-    margin: 100px 0 25px 700px;
+    margin: 100px 0 25px 1000px;
     font-size: 35px;
     color: #CF3B9A;
 }
@@ -44,8 +44,7 @@
     padding: 10px;
 }
 .pass{
-    margin: 20px 0 5px 130px;
-    padding: 10px;
+    margin: 40px 0 10px 135px;
 }
 .correo {
     height: 35px;
@@ -53,24 +52,32 @@
     margin: 10px 0 5px 70px;
     padding: 10px;
     font-size: 20px;
+    border-radius: 6px;
 }
 .contrasenia {
     height: 35px;
     width: 55%;
-    margin: 80px 0 5px -475px;
+    margin: 80px 0 5px -837px;
     padding: 10px;
+    border-radius: 6px;
 }
 .recordar{
-    margin: -10px 0 10px 300px;
+    margin: -10px 0 10px 200px;
 }
 .chekbox {
-    margin: -27px 0 10px 325px;
+    margin: -27px 0 10px 225px;
     font-size: 20px;
 }
 .enviar {
     background-color: #B72123;
     color: white;
-    margin: 10px 0 10px 360px;
+    margin: 10px 0 10px 650px;
     height: 35px;
     width: 125px;
+    border-radius: 6px;
+    font-size: 20px;
+}
+.enviar:hover {
+    color: #B72123;
+    background-color: #191919;
 }
