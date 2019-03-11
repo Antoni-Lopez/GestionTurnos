@@ -1,0 +1,76 @@
+﻿body {
+    background-color: #191919;
+    color: white;
+}
+
+.Titulo {
+    margin: 100px 0 25px 700px;
+    font-size: 35px;
+    color: #CF3B9A;
+}
+.cuadro_central {
+    background-color: white;
+    margin: 10px 25px 0 25px;
+    height: 700px;
+    border: 1.5px solid #CF3B9A;
+    border-radius: 6px;
+}
+#form_acceso {
+    border: 2px solid #E1EF78;
+    margin: 250px 400px 150px 400px;
+    height: 400px;
+    color: black;
+}
+.titulo_formu {
+    background-color: #E1EF78;
+    font-size: 30px;
+    text-align: left;
+    padding: 15px;
+}
+.formu_acceso {
+    margin: 50px 100px 20px 100px;
+
+    height: 250px;
+}
+.estructura{
+    display: flex;
+    width: 99.5%;
+    margin: 0;
+    font-size: 20px;
+    height: 170px;
+}
+.mail{
+    margin: 17px 0 5px 130px;
+    padding: 10px;
+}
+.pass{
+    margin: 20px 0 5px 130px;
+    padding: 10px;
+}
+.correo {
+    height: 35px;
+    width: 55%;
+    margin: 10px 0 5px 70px;
+    padding: 10px;
+    font-size: 20px;
+}
+.contrasenia {
+    height: 35px;
+    width: 55%;
+    margin: 80px 0 5px -475px;
+    padding: 10px;
+}
+.recordar{
+    margin: -10px 0 10px 300px;
+}
+.chekbox {
+    margin: -27px 0 10px 325px;
+    font-size: 20px;
+}
+.enviar {
+    background-color: #B72123;
+    color: white;
+    margin: 10px 0 10px 360px;
+    height: 35px;
+    width: 125px;
+}

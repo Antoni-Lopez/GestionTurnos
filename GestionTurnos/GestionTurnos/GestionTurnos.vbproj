@@ -88,12 +88,23 @@
   <ItemGroup>
     <Content Include="Css\css1.css" />
     <Content Include="Css\css_querys.css" />
+    <Content Include="Css\intranet.css" />
+    <Content Include="Index_Intranet.aspx" />
+    <Content Include="prueba.html" />
     <Content Include="Script\contador.js" />
     <Content Include="Script\teclado_numerico.js" />
     <Content Include="Test.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Index_Intranet.aspx.designer.vb">
+      <DependentUpon>Index_Intranet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index_Intranet.aspx.vb">
+      <DependentUpon>Index_Intranet.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -119,6 +130,12 @@
     <Compile Include="Test.aspx.vb">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
