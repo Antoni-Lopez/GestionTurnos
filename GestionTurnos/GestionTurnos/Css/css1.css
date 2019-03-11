@@ -63,11 +63,13 @@ body {
 }
 .estado_servicio{
     background-color: forestgreen;
-    height: 30px;
+    height: 40px;
     padding: 2px 0;
 }
 .p_estado_servicio{
     text-align: center;
+    padding-top: 3px;
+    font-size: 20px;
 }
 .info_web{
     margin-top: 10px;

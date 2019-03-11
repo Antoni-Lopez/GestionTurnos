@@ -43,18 +43,29 @@
             function incrementar()
             {
                 contador++;
+                var a = contador.toString();
+                var b = a.length;
+
                 if (contador <= limite) {
-                    escribir = document.getElementById("contador");
-                    escribir.innerHTML = contador;
+
+                    if (b == '1') {
+                        var contador_fixed = '0' + contador;
+                        escribir = document.getElementById("contador");
+                        escribir.innerHTML = contador_fixed;
+                    }
+                    else {
+                        var contador_fixed = contador;
+                        escribir = document.getElementById("contador");
+                        escribir.innerHTML = contador;
+                    }
                 }
                 else {
-                    limite = contador + limite;
+                    total =  contador + 1;
                     contador = 0;
                     escribir = document.getElementById("contador");
                     escribir.innerHTML = contador;
                 }
             } 
-   
             //-->  
         </script>  
 
@@ -112,7 +123,7 @@
             <div class="panel_mostrar4" id="teclado_num">
                 <form action="#" name="calculadora" id="calculadora" runat="server">
                     <p id="textoPantalla">0</p>
-                    <input type="submit" class="button_igual" value="=" onclick="igual()"/>
+                    <input type="submit" class="button_igual" value="OK" onclick="igual()"/>
                     <input type="button" class="button1" value="1" onclick="numero('1')"/>
                     <input type="button" class="button2" value="2" onclick="numero('2')"/>
                     <input type="button" class="button3" value="3" onclick="numero('3')"/>
