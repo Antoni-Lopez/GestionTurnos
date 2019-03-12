@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
+    <Compile Include="Clases\ClaseGeneral.vb" />
     <Compile Include="Index_Intranet.aspx.designer.vb">
       <DependentUpon>Index_Intranet.aspx</DependentUpon>
     </Compile>
