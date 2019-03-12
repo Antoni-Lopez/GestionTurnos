@@ -5,15 +5,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
         <!-- CSS y distintas librerias -->
-        <link href="Css/css1.css" rel="stylesheet" type="text/css" /> <!-- Css mio -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- Css Boostrap CDN -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> <!-- Css FontAwesome -->
-        <link href="Css/css_querys.css" rel="stylesheet" type="text/css" /> <!-- Css para las Media Querys -->    
         
+
+    <asp:literal id="bootstrap_min_css" runat="server"></asp:literal>
+    <asp:literal id="jquery_1_9_1_min_js" runat="server"></asp:literal>
+    <asp:literal id="bootstrap_min_js" runat="server"></asp:literal>
+    <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
+    <script type="text/javascript">
+        function LanzaAviso(Text) {
+            bootbox.alert({ title: "Gestión de turnos", message: Text });
+        }
+        
+    </script>
+    <title>Pagina de Testeo de Gestión de Turnos</title>
+    
+
+        <link href="Css/css_querys.css" rel="stylesheet" type="text/css" /> <!-- Css para las Media Querys -->    
+        <link href="Css/css1.css" rel="stylesheet" type="text/css" /> <!-- Css mio -->
         <script type="text/javascript" src="Script/teclado_numerico.js"></script>
-        <script languaje="Javascript">   
+        <script type="text/javascript">   
             <!--  
             document.write('<style type="text/css">div.cp_oculta{display: none;}</style>');  
             function MostrarOcultar(capa,enlace)  
@@ -27,7 +39,9 @@
    
             //-->  
         </script> 
-        <script languaje="Javascript">   
+        <script type="text/javascript">   
+            
+            
             <!--  
             var contador = 0;
             var limite = 99;
@@ -64,7 +78,7 @@
             //-->  
         </script>  
         <!-- Titulo del Website! -->
-        <title>Pagina de Testeo de Gestión de Turnos</title>
+        
     </head>
 <body>
     <div class="jumbotron jose">
