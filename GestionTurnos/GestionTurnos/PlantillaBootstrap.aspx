@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
     <script type="text/javascript">
-        function LlançaAvis(Text) {
+        function LanzaAviso(Text) {
             bootbox.alert({ title: "Gestión de turnos", message: Text });
         }
     </script>
@@ -52,7 +52,7 @@
   vertical-align: middle;
 }
 .no-click {pointer-events: none;}
-.modal-header {background-color: #003466; color: #FFFFFF; border-top-left-radius: 5px; border-top-right-radius: 5px}
+.modal-header {background-color: #346600; color: #FFFFFF; border-top-left-radius: 5px; border-top-right-radius: 5px}
 .modal-body {font-family: helvetica, arial; font-size: 15px}
 .panel {font-family: helvetica, arial; box-shadow: none; border: solid 1px #014185; color: #003466;}
 .panel-body {background-color: #F0F0F0; padding: 5px;}
@@ -65,6 +65,7 @@
 @media (max-width: 767px)
 {
     .col-xs-6_1 { width: 100% }
+    .col-xs-3_1 { width: 50% }
 }
 </style>
 </head>
@@ -77,13 +78,21 @@
                 <div class="panel-body">
                     <div class="row"><img class="img-responsive center-block" src="img/PEINARTE-LOG0.png" /></div>
                     <div class="row">
-                        <div class="col-xs-6" style="background-color: #DDDDDD">Parte 1</div>
-                        <div class="col-xs-6" style="background-color: #999999">Parte 2</div>
+                        <div class="col-xs-6 col-xs-6_1" style="background-color: #DDDDDD">Parte 1</div>
+                        <div class="col-xs-3 col-xs-3_1" style="background-color: #999999">Parte 2</div>
+                        <div class="col-xs-3 col-xs-3_1" style="background-color: #666666" onclick="Lanza()">Parte 3</div>
                     </div>
                 </div>
             </div>
             <br /><br />&nbsp;
         </form>
     </div>
+    <script type="text/javascript">
+        function Lanza() {
+            LanzaAviso("Click en parte 3");
+        }
+
+    </script>
     </body>
+
 </html>
