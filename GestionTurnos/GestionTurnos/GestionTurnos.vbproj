@@ -95,6 +95,7 @@
     <Content Include="Css\css_querys.css" />
     <Content Include="Css\intranet.css" />
     <Content Include="Index_Intranet.aspx" />
+    <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Script\contador.js" />
     <Content Include="Script\teclado_numerico.js" />
     <Content Include="Test.aspx" />
@@ -129,6 +130,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PlantillaBootstrap.aspx.designer.vb">
+      <DependentUpon>PlantillaBootstrap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlantillaBootstrap.aspx.vb">
+      <DependentUpon>PlantillaBootstrap.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Test.aspx.designer.vb">
       <DependentUpon>Test.aspx</DependentUpon>
