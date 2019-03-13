@@ -2,7 +2,7 @@
 @media only screen and (max-width: 1920px) {
     /* Text.aspx */
     .jumbotron.jose {
-        margin: 25px 560px 20px 560px;
+        margin: 125px 560px 20px 560px !important;
     }
     /* Index_Intranet.aspx */
     .Titulo {

@@ -5,14 +5,14 @@ body {
 .jumbotron.jose {
     background-color: #B1C4D9;
     color: #fff;
-    margin: 25px 880px 20px 880px;
+    margin: 125px 0 120px 880px;
     width: 800px;
     height: 600px;
 }
 .primer_alineado{
     display: flex;
     height: 80px;
-    margin: -63px -31px 
+    margin: -63px -31px;
 }
 .logo{
     height:auto;
@@ -23,10 +23,12 @@ body {
 .eslogan {
     margin-top: 15px;
     margin-left: 430px;
+    border: 2px solid blue;
+    text-align: right;
 }
 .agrupados{
     display: flex;
-    margin: 35px -25px 10px -25px;
+    margin: 40px 5px 10px 5px;
     height: 500px;
 }
 .panel_mostrar {
@@ -64,12 +66,11 @@ body {
 .estado_servicio{
     background-color: forestgreen;
     height: 40px;
-    padding: 2px 0;
 }
 .p_estado_servicio{
     text-align: center;
-    padding-top: 3px;
     font-size: 20px;
+    padding-top: 10px
 }
 .info_web{
     margin-top: 10px;
@@ -84,12 +85,7 @@ body {
 }
 .panel_mostrar2:hover, .panel_mostrar3:hover {
         font-size: 27px !important;
-}
-.far.fa-clock {
-    margin-left: 80px;
-    margin-top: 30px;
-    color: white;
-    font-size: 39px;
+        text-decoration: none;
 }
 .boton_solicitar, .boton_solicitar2 {
     text-align: center;
@@ -117,52 +113,45 @@ body {
     z-index: 3;
     display: none;
     background-color: #333333;
-    height: 310px;
-    width: 394px;
-    margin-top: 186px;
-    margin-left: 393px;
+    height: 296px;
+    width: 395px;
+    margin-top: 200px;
+    margin-left: 395px;
     position: absolute;
 }
 .panel_oculto {
     z-index: 1;
     background-color: #333333;
-    height: 310px;
-    width: 394px;
-    margin-top: 186px;
-    margin-left: 393px;
+    height: 296px;
+    width: 395px;
+    margin-top: 200px;
+    margin-left: 395px;
     position: absolute;
 }
-.oculto {
+.oculto2 {
     background-color: #333333;
-    height: 310px;
-    width: 394px;
-    margin-top: 186px;
-    margin-left: 393px;
+    height: 296px;
+    width: 395px;
+    margin-top: 200px;
+    margin-left: 394.5px;
     position: absolute;
     z-index: 2;
     opacity: 0.5;
 }
-.panel_mostrar5 {
-    display: none;
-    background-color: #333333;
-    height: 310px;
-    width: 394px;
-    margin-top: 186px;
-    margin-left: 393px;
-    position: absolute;
-}
 #textoPantalla {
     text-align: center;
     font-style: sans-serif;
-    height: 65px;
+    height: 60px;
     width: 260px;
     font-size: 2.5em;
     background-color: #000000;
+    margin-top: 0;
 }
 .textoPantalla_oculto {
     text-align: center;
     font-style: sans-serif;
-    height: 65px;
+    margin-top: 1px !important;
+    height: 60px;
     width: 260px;
     font-size: 2.5em;
     background-color: #000000;
@@ -172,21 +161,32 @@ body {
     color: #fff;
     font-size: 2.5em;
     position: absolute;
-    margin-top: -82px !important;
+    margin-top: -101px !important;
     margin-left: 260px;
-    height: 65px;
+    height: 40px;
+    width: 135px;
+}
+.button_igual2 {
+    background-color: #00A76D;
+    color: #fff;
+    font-size: 2.5em;
+    position: absolute;
+    margin-top: -101px !important;
+    margin-left: 260px;
+    height: 60px;
     width: 135px;
 }
 .button1, .button2, .button3 {
     z-index: 3;
     position: absolute;
-    margin: -15px 0;
+    margin: -45px 0;
     width: 130px;
-    height: 60px;
+    height: 40px;
     background-color: #FEFEFE;
     color: #000000;
     border: 1px solid #000000;
     font-size: 25px;
+    padding-top: 10px;
 }
 .button2 {
         margin-left: 130px;
@@ -195,12 +195,11 @@ body {
     margin-left: 260px;
     width: 133px !important;
 }
-
 .button4, .button5, .button6 {
     position: absolute;
-    margin: 45px 0;
+    margin-top: 16px;
     width: 130px;
-    height: 60px;
+    height: 40px;
     background-color: #FEFEFE;
     color: #000000;
     border: 1px solid #000000;
@@ -209,16 +208,15 @@ body {
 .button5 {
     margin-left: 130px;
 }
-
 .button6 {
     margin-left: 260px;
     width: 133px !important;
 }
 .button7, .button8, .button9 {
     position: absolute;
-    margin: 105px 0;
+    margin: 75px 0;
     width: 130px;
-    height: 60px;
+    height: 40px;
     background-color: #FEFEFE;
     color: #000000;
     border: 1px solid #000000;
@@ -233,9 +231,9 @@ body {
 }
 .button0 {
     position: absolute;
-    margin: 165px 0;
+    margin: 136px 0;
     width: 130px;
-    height: 62px;
+    height: 37px;
     background-color: #FEFEFE;
     color: #000000;
     border: 1px solid #000000;
@@ -243,8 +241,80 @@ body {
 }
 .button_deleted {
     position: absolute;
-    margin: 165px 0 0 130px;
-    height: 62px;
+    margin: 136px 0 0 130px;
+    height: 37px;
+    width: 263px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.botton1, .botton2, .botton3 {
+    z-index: 3;
+    position: absolute;
+    margin: -40px 0;
+    width: 130px;
+    height: 60px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.botton2 {
+        margin-left: 130px;
+}
+.botton3{
+    margin-left: 260px;
+    width: 133px !important;
+}
+.botton4, .botton5, .botton6 {
+    position: absolute;
+    width: 130px;
+    height: 60px;
+    margin-top: 22px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.botton5 {
+    margin-left: 130px;
+}
+.botton6 {
+    margin-left: 260px;
+    width: 133px !important;
+}
+.botton7, .botton8, .botton9 {
+    position: absolute;
+    margin: 80px 0;
+    width: 130px;
+    height: 60px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.botton8 {
+    margin-left: 130px;
+}
+.botton9 {
+    margin-left: 260px;
+    width: 133px !important;
+}
+.botton0 {
+    position: absolute;
+    margin: 138px 0;
+    width: 130px;
+    height: 56px;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+}
+.botton_deleted {
+    position: absolute;
+    margin: 138px 0 0 130px;
+    height: 56px;
     width: 263px;
     background-color: #FEFEFE;
     color: #000000;
@@ -254,4 +324,182 @@ body {
 p.button0, p.button1, p.button2, p.button3, p.button4, p.button5, p.button6, p.button7, p.button8, p.button9, p.button_deleted, .button_igual {
     text-align: center;
     padding: 10px 0;
+}
+/* Línea separatoria entre mi proyecto y el nuevo.*/
+.separacion {
+    border-bottom: solid 1px grey;
+    width: 100%;
+    height: 50px;
+}
+
+
+
+
+
+
+
+/* Bootstrap */
+.verde{
+    border: 2px solid green;
+}
+.rojo{
+    border: 2px solid red;
+}
+.amarillo{
+    border: 2px solid yellow;
+}
+.azul{
+    border: 2px solid blue;
+}
+.rosa{
+    border: 2px solid pink;
+}
+.interfaz {
+    background-color: #B1C4D9;
+    color: #fff;
+    width: 40%;
+    height: 600px;
+    margin: 320px 30% 100px 30%;
+}
+.banner{
+    padding: 10px;
+    margin-top: 10px;
+    height: 50px;
+}
+.logo_banner {
+    height: auto;
+    width: 200px;
+    margin-top: -30px;
+}
+.eslogan_banner {
+    text-align: right;
+}
+.turnos {
+    height: 520px;
+    background-color: #4285F4;
+}
+.contador_turnos {
+    z-index: 2;
+    position: absolute;
+    margin: -120px 150px;
+    color: black !important;
+}
+.normal {
+    background-color: #CF3B9A;
+    color: #fff;
+}
+.sms {
+    background-color: #FFF081;
+}
+.normal,.sms{
+    height: 200px;
+}
+.normal:link, .sms:link {
+    text-decoration: none;
+}
+.normal:hover, .sms:hover {
+    text-decoration: none;
+    font-size: 27px !important;
+}
+.turnos, .normal,.sms{
+    margin-top: 10px;
+}
+.numero_turno {
+    width: 200px;
+    margin-left: 20%;
+    z-index: 1;
+}
+.buton_solicitar {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+.far.fa-clock{
+    margin-left: 37%;
+    margin-top: 50px;
+    color: white;
+    font-size: 39px;
+}
+.segunda_sms {
+    margin-left: 0;
+    margin-top: 50px;
+    color: white;
+    font-size: 39px;
+}
+.oculto, .panel_oculto{
+    height: 320px;
+    z-index: 2;
+    opacity: 0.5;
+    background-color: #333333;
+    position: absolute;
+    margin-top: 270px;
+    margin-left: 365px;
+    width: 365px;
+}
+.teclado_texto {
+    height: 60px;
+    width: 200px;
+    font-size: 2.5em;
+    background-color: #000000;
+    padding: 10px 85px;
+}
+.teclado_ok {
+    background-color: #00A76D;
+    color: #fff;
+    font-size: 2.5em;
+    height: 60px;
+    width: 164.5px;
+    padding: 10px 60px;
+}
+.teclado_1, .teclado_2, .teclado_3 {
+    width: 121.6px;
+    height: 70px;
+    padding: 15px 55px;
+    margin-top: -10px !important;
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 27px;
+}
+.teclado_0, .teclado_deleted {
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 25px;
+    margin-top: -10px !important;
+    height: 49.5px;
+}
+.teclado_0 {
+    padding: 5px 85px;
+}
+.teclado_deleted {
+    padding: 5px 39px;
+}
+.panel_oculto {
+    z-index: 3;
+    display: none;
+}
+.teclado_texto_oculto {
+    height: 60px;
+    width: 200px;
+    font-size: 2.5em;
+    background-color: #000000;
+    padding: 10px 85px;
+}
+.teclado_ok_oculto {
+    background-color: #00A76D;
+    color: #fff;
+    font-size: 2.5em;
+    height: 60px;
+    width: 164px;
+    padding: 10px 60px;
+}
+.teclado_1_oculto, .teclado_2_oculto, .teclado_3_oculto {
+    z-index: 3;
+}
+.teclado_1_oculto {
+    background-color: #FEFEFE;
+    color: #000000;
+    border: 1px solid #000000;
+    margin-left: -90px;
 }
