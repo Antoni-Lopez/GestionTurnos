@@ -50,11 +50,11 @@ Partial Public Class Test
     Protected WithEvents bootbox_min_js As Global.System.Web.UI.WebControls.Literal
     
     '''<summary>
-    '''Control calculadora.
+    '''Control Formulario1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents calculadora As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents Formulario1 As Global.System.Web.UI.HtmlControls.HtmlForm
 End Class

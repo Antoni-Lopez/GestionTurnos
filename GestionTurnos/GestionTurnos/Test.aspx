@@ -80,169 +80,157 @@
         </script>          
     </head>
 <body>
-    <div class="jumbotron jose">
-        <p class="primer_alineado">
-            <img class="logo" src="img/PEINARTE-LOG0.png" />
-            <h4 class="eslogan">Que no te tomen el Pelo! <i class="fas fa-cut" style="color: #CF3B9A;"></i></h4>
-        </p>
-        <div class="agrupados">
-            <div class="panel_mostrar">
-                <h3 class="ciudad">Málaga</h3>
-                <p class="direccion">Cristo de la Epidemia, 52</p>
-                <img class="turno" src="img/turno.png" />
-                <p class="contador_turnos" id="contador1"></p>
-                <h3 class="frase1">Get your time!</h3>
-                <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
-                <div class="estado_servicio">
-                    <p class="p_estado_servicio">SERVICIO FUNCIONANDO</p> 
+    <!-- Nueva interfaz con Bootstrap siguiend ejemplo de Toni -->
+    <div class="separacion"></div>
+    <div class="container-fluid contenedor_principal">
+        <form id="Formulario1" method="post" runat="server" class="form-horizontal1">
+            <div class="interfaz1">
+                <div class="interfaz-header"></div>
+                <div class="interfaz-cuerpo">
+                    <div class="row banner">
+                        <a href="www.peinarte.net"><img class="logo_banner" src="img/PEINARTE-LOG0.png" /></a>
+                        <h4 class="eslogan_banner">Que no te tomen el Pelo! <i class="fas fa-cut" style="color: #CF3B9A;"></i></h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 contador-turnos "> 
+                            <h3 class="ciudad">Málaga</h3>
+                            <p class="direccion">Cristo de la Epidemia, 52</p>
+                            <img class="numero_turno" src="img/turno.png" />
+                            <p class="contador_turnos" id="contador"></p>
+                            <h3 class="frase1">Reserva tu Turno!</h3>
+                            <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
+                            <div class="row estado_servicio">
+                                <p class="p_estado_servicio">SERVICIO FUNCIONANDO</p> 
+                            </div>
+                            <p class="info_web">Peinarte.net</p>
+                        </div>
+                        <div class="col-xs-3 cuadro-normal" onclick="incrementar()"> 
+                            <i class="far fa-clock"></i>
+                            <p class="buton_solicitar">SOLICITA TURNO</p>
+                        </div>
+                        <div class="col-xs-3 cuadro-sms" onclick="MostrarOcultar('mostrar')"> 
+                            <i class="far fa-clock segunda_sms"></i>
+                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-mobile"></i>
+                            <p class="buton_solicitar2">SOLICITA TURNO + SMS</p>
+                        </div>
+                        <div class="row col-xs-6 oculto">
+                            <div class="row col-xs-6 oculto2">
+                                <div class="col-md-6 cuadro_texto">
+                                    <p class="">0</p>
+                                </div>
+                                <div class="col-md-6 cuadro_ok">
+                                    <p class="texto_ok">OK</p>
+                                </div>             
+                            </div>
+                            <div class="row col-xs-6 oculto3">
+                                <div class="row">
+                                    <div class="col-md-4 cuadro_1">
+                                        <p class="texto_1">1</p>
+                                    </div>
+                                    <div class="col-md-4 cuadro_2">
+                                        <p class="texto_2">2</p>
+                                    </div>
+                                    <div class="col-md-4 cuadro_3">
+                                        <p class="texto_3">3</p>
+                                    </div>             
+                                </div>
+                            </div>
+                            <div class="row col-xs-6 oculto4">
+                                <div class="col-md-4 cuadro_1">
+                                    <p class="texto_1">4</p>
+                                </div>
+                                <div class="col-md-4 cuadro_2">
+                                    <p class="texto_2">5</p>
+                                </div>
+                                <div class="col-md-4 cuadro_3">
+                                    <p class="texto_3">6</p>
+                                </div>             
+                            </div>
+                            <div class="row col-xs-6 oculto5">
+                                <div class="col-md-4 cuadro_1">
+                                    <p class="texto_1">7</p>
+                                </div>
+                                <div class="col-md-4 cuadro_2">
+                                    <p class="texto_2">8</p>
+                                </div>
+                                <div class="col-md-4 cuadro_3">
+                                    <p class="texto_3">9</p>
+                                </div>
+                            </div>
+                            <div class="row col-xs-6 oculto6">
+                                <div class="col-xs-3 cuadro_0">
+                                    <p class="texto_1">0</p>
+                                </div>
+                                <div class="col-xs-3 cuadro_borrar">
+                                    <p class="texto_2">BORRAR</p>
+                                </div> 
+                            </div>
+
+                        </div>
+                        <div id="mostrar" class="row col-xs-6 mostrar_panel">
+                            <div class="row col-xs-6 oculto2_1">
+                                <div class="col-md-6 cuadro_texto">
+                                    <p id="textoPantalla">0</p>
+                                </div>
+                                <div class="col-md-6 cuadro_ok">
+                                    <p class="texto_ok">OK</p>
+                                </div>             
+                            </div>
+                            <div class="row col-xs-6 oculto3">
+                                <div class="row">
+                                    <div class="col-md-4 cuadro_1_oculto" onclick="numero('1')">
+                                        <p class="texto_1" >1</p>
+                                    </div>
+                                    <div class="col-md-4 cuadro_2_oculto" onclick="numero('2')">
+                                        <p class="texto_2" >2</p>
+                                    </div>
+                                    <div class="col-md-4 cuadro_3_oculto" onclick="numero('3')">
+                                        <p class="texto_3" >3</p>
+                                    </div>             
+                                </div>
+                            </div>
+                            <div class="row col-xs-6 oculto4">
+                                <div class="col-md-4 cuadro_1_oculto" onclick="numero('4')">
+                                    <p class="texto_1">4</p>
+                                </div>
+                                <div class="col-md-4 cuadro_2_oculto" onclick="numero('5')">
+                                    <p class="texto_2" >5</p>
+                                </div>
+                                <div class="col-md-4 cuadro_3_oculto" onclick="numero('6')">
+                                    <p class="texto_3" >6</p>
+                                </div>             
+                            </div>
+                            <div class="row col-xs-6 oculto5">
+                                <div class="col-md-4 cuadro_1_oculto" onclick="numero('7')">
+                                    <p class="texto_1" >7</p>
+                                </div>
+                                <div class="col-md-4 cuadro_2_oculto" onclick="numero('8')">
+                                    <p class="texto_2" >8</p>
+                                </div>
+                                <div class="col-md-4 cuadro_3_oculto" onclick="numero('9')">
+                                    <p class="texto_3" >9</p>
+                                </div>
+                            </div>
+                            <div class="row col-xs-6 oculto6">
+                                <div class="col-xs-3 cuadro_0_oculto" onclick="numero('0')">
+                                    <p class="texto_1" >0</p>
+                                </div>
+                                <div class="col-xs-3 cuadro_borrar_oculto" onclick="borradoParcial()">
+                                    <p class="texto_2" >BORRAR</p>
+                                </div> 
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <p class="info_web">Peinarte.net</p>
             </div>
-            <a class="panel_mostrar2"  title="Solicita tu Turno." href="javascript:incrementar();">
-                <i class="far fa-clock"></i>
-                <p class="boton_solicitar">SOLICITA TURNO</p>
-            </a>
-            <a class="panel_mostrar3" href="javascript:MostrarOcultar('teclado_num');">
-                <i class="far fa-clock segunda"></i>
-                <i class="fas fa-arrow-right"></i>
-                <i class="fas fa-mobile"></i>
-                <p class="boton_solicitar2">SOLICITA TURNO + SMS</p>
-            </a>
-            <div class="oculto2">
-            </div>
-            <div class="panel_oculto">
-                    <p class="textoPantalla_oculto">0</p>
-                    <p class="button_igual">OK</p>
-                    <p class="button1">1</p>
-                    <p class="button2">2</p>
-                    <p class="button3">3</p>
-                    <p class="button4">4</p>
-                    <p class="button5">5</p>
-                    <p class="button6">6</p>
-                    <p class="button7">7</p>
-                    <p class="button8">8</p>
-                    <p class="button9">9</p>
-                    <p class="button0">0</p>
-                    <p class="button_deleted">Borrar</p>
-            </div>
-            <div class="panel_mostrar4" id="teclado_num">
-                <form name="calculadora" id="calculadora" runat="server">
-                    <p id="textoPantalla">0</p>
-                    <input type="submit" class="button_igual2" value="OK" onclick="javascript:incrementar();"/>
-                    <input type="button" class="botton1" value="1" onclick="numero('1')"/>
-                    <input type="button" class="botton2" value="2" onclick="numero('2')"/>
-                    <input type="button" class="botton3" value="3" onclick="numero('3')"/>
-                    <input type="button" class="botton4" value="4" onclick="numero('4')"/>
-                    <input type="button" class="botton5" value="5" onclick="numero('5')"/>
-                    <input type="button" class="botton6" value="6" onclick="numero('6')"/>
-                    <input type="button" class="botton7" value="7" onclick="numero('7')"/>
-                    <input type="button" class="botton8" value="8" onclick="numero('8')"/>
-                    <input type="button" class="botton9" value="9" onclick="numero('9')"/>
-                    <input type="button" class="botton0" value="0" onclick="numero('0')"/>
-                    <input type="button" class="botton_deleted" value="Borrar" onclick="borradoTotal()"/>
-                </form>
-            </div>
-        </div>
-        
+        </form>
     </div>
-    
+-->
 
     <div class="separacion"></div>
 
-    <!-- Nueva interfaz con Bootstrap -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 interfaz">
-                <div class="col-sm-5 col-md-6 banner">
-                    <a href="www.peinarte.net"><img class="logo_banner" src="img/PEINARTE-LOG0.png" /></a>
-                </div>
-                <div class="col-sm-5 col-md-6 banner">
-                    <h4 class="eslogan_banner">Que no te tomen el Pelo! <i class="fas fa-cut" style="color: #CF3B9A;"></i></h4>
-                </div>
-                <div class="col-sm-6 turnos">
-                    <h3 class="ciudad">Málaga</h3>
-                    <p class="direccion">Cristo de la Epidemia, 52</p>
-                    <img class="numero_turno" src="img/turno.png" />
-                    <p class="contador_turnos" id="contador"></p>
-                    <h3 class="frase1">Get your time!</h3>
-                    <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
-                    <div class="row estado_servicio">
-                        <p class="p_estado_servicio">SERVICIO FUNCIONANDO</p> 
-                    </div>
-                    <p class="info_web">Peinarte.net</p>
-                </div>
-                <a class="col-sm-3 normal" href="javascript:incrementar();">
-                    <i class="far fa-clock"></i>
-                    <p class="buton_solicitar">SOLICITA TURNO</p>
-                </a>
-                <a class="col-sm-3 sms" href="javascript:MostrarOcultar('teclado_num_oculto');">
-                    <i class="far fa-clock segunda_sms"></i>
-                    <i class="fas fa-arrow-right"></i>
-                    <i class="fas fa-mobile"></i>
-                    <p class="buton_solicitar">SOLICITA TURNO + SMS</p>
-                </a>
-                <p class="col-sm-3 teclado_texto">
-                    0
-                </p>
-                <p class="col-sm-3 teclado_ok">
-                    OK
-                </p>
-                <p class="col-sm-3 teclado_1">
-                    1
-                </p>
-                <p class="col-sm-3 teclado_2">
-                    2
-                </p> 
-                <p class="col-sm-3 teclado_3">
-                    3
-                </p>
-                <p class="col-sm-3 teclado_1">
-                    4
-                </p>
-                <p class="col-sm-3 teclado_2">
-                    5
-                </p> 
-                <p class="col-sm-3 teclado_3">
-                    6
-                </p>
-                <p class="col-sm-3 teclado_1">
-                    7
-                </p>
-                <p class="col-sm-3 teclado_2">
-                    8
-                </p> 
-                <p class="col-sm-3 teclado_3">
-                    9
-                </p>
-                <p class="col-sm-3 teclado_0">
-                    0
-                </p>
-                <p class="col-sm-3 teclado_deleted">
-                    BORRAR
-                </p>
-                <div class="col-sm-6 oculto"> 
-                       
-                </div>
-                <label id="teclado_num_oculto" class="panel_oculto"> 
-                       <p class="col-sm-3 teclado_texto_oculto">
-                        0
-                       </p>
-                       <a class="col-sm-3 teclado_ok_oculto">
-                           OK
-                       </a>
-                       <a class="col-sm-3 teclado_1_oculto">
-                           1
-                       </a>
-                       <a class="col-sm-3 teclado_2_oculto">
-                           2
-                       </a> 
-                       <a class="col-sm-3 teclado_3_oculto">
-                           3
-                       </a>
-                </label>
-             </div>
-        </div>
-    </div>
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
