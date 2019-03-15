@@ -29,14 +29,26 @@
         </script>
         <script type="text/javascript">   
             <!--  
-            document.write('<style type="text/css">div.cp_oculta{display: none;}</style>');  
+            /*document.write('<style type="text/css">div.mostrar{display: none;}</style>'); */ 
             function MostrarOcultar(capa,enlace)  
-            {  
+            {
+                /*document.getElementById('mostrar').style.display = 'block'; */
+                if (document.getElementsByClassName('panel_mostrar_numeros').style == "block") {
+
+                    document.getElementsByClassName('panel_mostrar_numeros').style.display = "none";                    
+                }
+                else {
+                    document.getElementById('mostrar').style.display = "block";
+                    document.getElementById('cuadro1').style.display = "none";
+                    document.getElementById('cuadro2').style.width = "50%";
+                }
+                /*
                 if (document.getElementById)  
                 {  
                     var aux = document.getElementById(capa).style;  
                     aux.display = aux.display? "":"block";  
                 }  
+                */
             }  
    
             //-->  
@@ -104,16 +116,61 @@
                             </div>
                             <p class="info_web">Peinarte.net</p>
                         </div>
-                        <div class="col-xs-3 cuadro-normal" onclick="incrementar()"> 
+                        <div id="cuadro1" class="col-xs-3 cuadro-normal" onclick="incrementar()"> 
                             <i class="far fa-clock"></i>
                             <p class="buton_solicitar">SOLICITA TURNO</p>
                         </div>
-                        <div class="col-xs-3 cuadro-sms" onclick="MostrarOcultar('mostrar')"> 
+                        <div id="cuadro2" class="col-xs-3 cuadro-sms" onclick="MostrarOcultar('')"> 
                             <i class="far fa-clock segunda_sms"></i>
                             <i class="fas fa-arrow-right"></i>
                             <i class="fas fa-mobile"></i>
                             <p class="buton_solicitar2">SOLICITA TURNO + SMS</p>
                         </div>
+                        <div class="row">
+                            <div class="col-xs-3 cuadro_texto">
+                            
+                            </div>
+                            <div class="col-xs-3 cuadro_ok">
+                                OK
+                            </div>
+                            <div class="row">
+                                <table class="table-responsive tabla_numeros">
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <td class="primera_linea_tabla" onclick="numero('1')">1</td>
+                                      <td class="segunda_linea_tabla" onclick="numero('2')">2</td>
+                                      <td class="tercera_linea_tabla" onclick="numero('3')">3</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <td class="primera_linea_tabla" onclick="numero('4')">4</td>
+                                      <td class="segunda_linea_tabla" onclick="numero('5')">5</td>
+                                      <td class="tercera_linea_tabla" onclick="numero('6')">6</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row"></th>
+                                      <td class="primera_linea_tabla" onclick="numero('7')">7</td>
+                                      <td class="segunda_linea_tabla" onclick="numero('8')">8</td>
+                                      <td class="tercera_linea_tabla" onclick="numero('9')">9</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-xs-3 cuadro_0 verde" onclick="numero('0')">
+                                        0
+                                    </div>
+                                    <div class="col-xs-3 cuadro_borrar amarillo" onclick="borradoTotal()">
+                                        BORRAR
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div  id="mostrar" class="panel_mostrar_numeros">
+                            <p id="textoPantalla"></p>
+                        </div>
+
+                        <!--
                         <div class="row col-xs-6 oculto">
                             <div class="row col-xs-6 oculto2">
                                 <div class="col-md-6 cuadro_texto">
@@ -221,7 +278,7 @@
                                 </div> 
                             </div>
                         </div>
-
+                        -->
                     </div>
                 </div>
             </div>

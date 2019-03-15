@@ -1,33 +1,15 @@
-﻿*/ CSS para nuestra App*/
-body {
+﻿/* CSS para nuestra App*/
 
-}
-/* Línea separatoria entre mi proyecto y el nuevo.*/
-.separacion {
-    border-bottom: solid 1px grey;
-    width: 100%;
-    height: 50px;
-    margin: 225px 0 50px 0;
-}
-/* Bootstrap */
-.verde{
-    border: 2px solid green;
-}
-.rojo{
-    border: 2px solid red;
-}
-.amarillo{
-    border: 2px solid yellow;
-}
-.azul{
-    border: 2px solid blue;
-}
-.rosa{
-    border: 2px solid pink;
-}
+/* Línea separatoria entre mi proyecto y el nuevo. Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
+.separacion {border-bottom: solid 1px grey;width: 100%;height: 50px;margin: 225px 0 50px 0;}
+.verde{border: 2px solid green;}
+.rojo{border: 2px solid red;}
+.amarillo{border: 2px solid yellow;}
+.azul{border: 2px solid blue;}
+.rosa{border: 2px solid pink;}
 
 
-/*Nuevo y mejorado diseño*/
+/*Nuevo y mejorado diseño Interfaz Peluqueria.net (Test.aspx)*/
 .contenedor_principal {max-width: 800px;margin: auto;padding: 10px;height: 600px;background-color: #F0F0F0;font-family: helvetica, arial;box-shadow: none;border: solid 1px #014185;border-radius: 10px;color: #003466;}
 .interfaz-header {font-family: helvetica, arial;font-size: 15px;font-weight: bold;background-color: #014185;color: #FFFFFF;text-align: center;}
 .interfaz-cuerpo {padding: 5px;}
@@ -39,6 +21,7 @@ body {
 .ciudad, .direccion {text-align: center; margin: 5px 0 0 -15px;}
 .numero_turno {width: 200px;margin-left: 20%;z-index: 1;}
 .contador_turnos {z-index: 2;position: absolute;margin: -120px 150px;color: black !important;}
+#contador {font-size: 2.5em;}
 .frase1, .texto_primer_panel{text-align: center;margin-top: 20px;}
 .estado_servicio {background-color: forestgreen;height: 40px;margin:0 0 0 -15px;width:108.5%;}
 .p_estado_servicio {text-align: center;font-size: 20px;padding:10px !important;}
@@ -53,43 +36,17 @@ body {
 .fas.fa-arrow-right {color: forestgreen;font-size: 39px;}
 .fas.fa-mobile {color: black;font-size: 39px;}
 .buton_solicitar2 {color: Black;}
-.oculto {background-color: #333333;height: 300px;opacity:0.5;}
-.oculto2 {width: 100%;height: 60px;}
-.oculto2_1 {width: 100%;height: 60px;}
-.oculto3 {width: 100%;height: 60px;margin-top: 70px;}
-.oculto4 {width: 100%;height: 60px;}
-.oculto5 {width: 100%;height: 60px;}
-.oculto6 {width: 100%;height: 60px;}
-.cuadro_texto {width: 205px;font-size: 2em;background-color: #000000;margin: 0; color: #fff !important;}
-.cuadro_ok {margin: -70px 0 0 204px;width: 180px;background-color: #00A76D;color: #fff;font-size: 2em;}
-.cuadro_1, .cuadro_2, .cuadro_3 {background-color: #FEFEFE;color: #000000;border: 1px solid #000000;font-size: 27px;height:65px;}
-.cuadro_1_oculto, .cuadro_2_oculto, .cuadro_3_oculto {background-color: #FEFEFE;color: #000000;border: 1px solid #000000;font-size: 27px;height: 65px;margin-top: -60px;}
-.cuadro_0, .cuadro_borrar {background-color: #FEFEFE;color: #000000;border: 1px solid #000000;}
-.cuadro_0_oculto, .cuadro_borrar_oculto {background-color: #FEFEFE;color: #000000;border: 1px solid #000000;margin-top: -55px;height: 45px;}
-.cuadro_0{height: 50px;width: 256px;}
-.cuadro_0_oculto{height: 45px;width: 257px;}
-.cuadro_texto{height: 70px;}
-.cuadro_borrar{height: 50px; width:128px;}
-.cuadro_borrar_oculto {height: 45px;width: 128px;margin-left: 256px !important;}
-.cuadro_texto, .cuadro_ok, .cuadro_1, .cuadro_2, .cuadro_3,.cuadro_0_oculto,.cuadro_1_oculto,.cuadro_2_oculto,.cuadro_3_oculto{text-align: center;padding: 15px;font-size: 1.5em}
-.cuadro_0_oculto, .cuadro_borrar_oculto {text-align: center; padding: 7px;font-size: 1.5em;}
-.cuadro_borrar, .cuadro_0 {text-align: center;padding: 8px;font-size: 1.5em;}
-.cuadro_borrar_oculto{margin-left: 100px;}
-.mostrar_panel{display:none;position:absolute;height:300px;width: 384px;margin-left: 385px;margin-top: 200px;background-color: #fff;}
-#textoPantalla {text-align: center;font-style: sans-serif;background-color: #000000;}
-#contador {font-size: 2.5em;}
-.segunda {
-    margin-left: 45px !important;
-}
-.oculto2 {
-    background-color: #333333;
-    height: 296px;
-    width: 380px;
-    position: absolute;
-    
-}
-.texto_primer_panel {
-    font-size: 15px;
-    margin-top: 5px;
-    padding: 0 15px;
-}
+.cuadro_texto, .cuadro_ok, .tabla_numeros,.cuadro_0,.cuadro_borrar {opacity: 0.5}
+.cuadro_texto, .cuadro_ok {height: 60px;text-align: center;padding: 15px;font-size: 1.8em}
+.cuadro_texto {background-color: #000000;margin: auto;color: #fff !important;}
+.cuadro_ok {background-color: #00A76D;color: #fff;}
+.tabla_numeros{height: 180px; width: 50%;}
+.primera_linea_tabla,.segunda_linea_tabla,.tercera_linea_tabla {width:33.3%;background-color:#FEFEFE;color: #000000;border: 1px solid #000000;font-size: 1.7em;height: 60px; text-align: center;}
+.primera_linea_tabla{margin-left: -1px;}
+.cuadro_0, .cuadro_borrar {height: 59px;background-color: #FEFEFE;color: #000000;border: 1px solid #000000;font-size: 1.7em;text-align: center;padding: 15px;}
+.panel_mostrar_numeros {position: absolute;width: 10.1%;height: 60px;margin: -15.8% 0 0 20.2%;display: none;text-align: center;padding: 15px;font-size: 1.7em;color: #fff;background-color: #3B4045;}
+
+
+
+
+

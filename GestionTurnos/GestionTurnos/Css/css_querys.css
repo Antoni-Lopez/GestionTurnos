@@ -11,43 +11,22 @@
     .cuadro-normal, .cuadro-sms {width: 50%;}
     .far.fa-clock {margin-left: 40% !important; margin-top: 60px !important;}
     .buton_solicitar, .buton_solicitar2{ font-size: 1.5em !important;}
-    .oculto {width: 100%;height: 300px;}
-    .oculto2{}
-    .cuadro_texto{width: 105% !important;}
-    .cuadro_ok {margin-left: 90% !important; width: 80% !important;}
-    .cuadro_1,.cuadro_2,.cuadro_3{width: 33.4% !important;}
-    .cuadro_2{margin-left: 33.2% !important;margin-top: -65px !important;}
-    .cuadro_3{margin-left: 66.5% !important;margin-top: -65px !important;}
-    .cuadro_0{width: 55% !important;}
-    .cuadro_borrar {width: 44.8% !important;}
+    .cuadro_texto,.cuadro_ok,.tabla_numeros{width:100% !important;}
+    .cuadro_0, .cuadro_borrar{width: 50% !important;}
+    .panel_mostrar_numeros {width: 80.9% !important;height: 60px;margin: -45% 0 0 0.2% !important;}
+    .info_web {margin-top: -3px !important;}
+
     /* Index_Intranet.aspx */
-    #form_acceso {
-        margin: 100px 50px 150px 50px;
-        height: 400px;
-    }
 
-    .mail {
-        margin: 17px 0 5px 15px;
-    }
-
-    .correo {
-        height: 20px;
-        margin: 15px 0 15px 30px;
-        font-size: 14.5px;
-    }
-
-    .contrasenia {
-        height: 20px;
-        margin: 70px 0 5px -355px;
-    }
-
-    .pass {
-        margin: 20px 0 5px 26px;
-    }
-
-    .enviar {
-        margin: 30px 0 10px 200px;
-        height: 35px;
-        width: 200px;
-    }
+}
+/*Media Querys para resolucion inferior a 600px de ancho. */
+@media (max-width: 600px) {
+    .numero_turno {margin-left: 28% !important;}
+    .estado_servicio {margin: 0 0 0 -14px;width: 106.5% !important;}
+    
+}
+/*Media Querys para resolucion inferior a 400px de ancho. */
+@media (max-width: 400px) {
+    .numero_turno {margin-left: 14% !important;}
+    .estado_servicio {margin: -12px 0 0 -14px !important;width: 110.5% !important;}
 }
