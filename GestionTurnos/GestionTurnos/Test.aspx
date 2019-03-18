@@ -28,30 +28,77 @@
         
         </script>
         <script type="text/javascript">   
-            <!--  
-            /*document.write('<style type="text/css">div.mostrar{display: none;}</style>'); */ 
+            //Acciones tras cargar la página
+            window.onload = function () {
+                mostrarEnPantalla = document.getElementById("textoMostrar1");
+                document.onkeydown = teclado;
+            }
+
+            /*La pantalla de inicio muestra un 0 y solo permitirá la entrada de los 
+            dígitos del teclado de la calculadora a los que hemos llamado 'numero'*/
+            x = "0";
+
+            /*Se inician las variales en la pantalla: 1 es un número escrito por primera 
+            vez, mientras que 0 son las cifras que completan nuestro número*/
+            x1 = 1;
+
+            //Función numero para registrar la escritura en pantalla
+            function numero(xx) {
+                // Si x es igual a 0 el número que se muestra en pantalla es igual a 1.
+                if (x == "0" || x1 == 1) {
+                    var almacenar = xx;
+                    //Comprobamos que el 1º numero introducido sea 6 o 7, sino ERROR.
+                    if (xx == 6 || xx == 7) {
+                        mostrarEnPantalla.value = xx;
+                        //Con esta variable se guarda el número y se continua con este
+                        x = xx;
+                    }
+                    else {
+                        LanzaAviso("<h3>ERROR!</h3><p style='font-family: sans-serif;'>El número de Telefono debe de comenzar por 6 o 7. Tu has introducido el número: <span style='text-decoration:underline'>" +xx+"</span></p>");
+                        mostrarEnPantalla.value = "ERROR.";
+                    }
+
+                }
+                /*Esta operación se hace mediante una cadena de texto para que el 
+                  número tan solo se añada y no se sume al anterior*/
+                else {
+
+                    longitud = 1 + x.length;
+                    if (longitud <= 9) {
+                        document.getElementById("textoMostrar1").value += xx;
+                        x += xx;
+                    }
+                    else {
+                        LanzaAviso("<h3>ERROR!</h3><p>Excedemos el tamaño de un numero movil en España (Máx 9 digitos). Comprueba si el número que has introducido(<span style='text-decoration: underline;'> "+x+" </span>) es correcto. Gracias!</p> ");
+                        return;
+
+                    }
+                }
+                x1 = 0
+            }
+
+
+            //Borramos todas las numeros a 0
+            function borradoPantalla() {
+                mostrarEnPantalla.value = 0;
+                x = "0";
+            }
+
             function MostrarOcultar(capa,enlace)  
             {
-                /*document.getElementById('mostrar').style.display = 'block'; */
-                if (document.getElementsByClassName('panel_mostrar_numeros').style == "block") {
+                if (document.getElementById('tabla_oculta').style.display == "block") {
 
-                    document.getElementsByClassName('panel_mostrar_numeros').style.display = "none";                    
+                    document.getElementById('tabla_oculta').style.display = 'none';
+                    document.getElementById('cuadro1').style.display = 'none';
+                    document.getElementById('cuadro2').style.width = '50%';
+
                 }
                 else {
-                    document.getElementById('mostrar').style.display = "block";
-                    document.getElementById('cuadro1').style.display = "none";
-                    document.getElementById('cuadro2').style.width = "50%";
+                    document.getElementById('tabla_oculta').style.display = "Block";
+                    document.getElementById('cuadro1').style.display = 'Block';
+                    document.getElementById('cuadro2').style.width = '25%';
                 }
-                /*
-                if (document.getElementById)  
-                {  
-                    var aux = document.getElementById(capa).style;  
-                    aux.display = aux.display? "":"block";  
-                }  
-                */
             }  
-   
-            //-->  
         </script> 
         <script type="text/javascript"> 
             
@@ -111,9 +158,6 @@
                             <p class="contador_turnos" id="contador"></p>
                             <h3 class="frase1">Reserva tu Turno!</h3>
                             <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
-                            <div class="row estado_servicio">
-                                <p class="p_estado_servicio">SERVICIO FUNCIONANDO</p> 
-                            </div>
                             <p class="info_web">Peinarte.net</p>
                         </div>
                         <div id="cuadro1" class="col-xs-3 cuadro-normal" onclick="incrementar()"> 
@@ -126,159 +170,42 @@
                             <i class="fas fa-mobile"></i>
                             <p class="buton_solicitar2">SOLICITA TURNO + SMS</p>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-3 cuadro_texto">
-                            
-                            </div>
-                            <div class="col-xs-3 cuadro_ok">
-                                OK
-                            </div>
-                            <div class="row">
-                                <table class="table-responsive tabla_numeros">
-                                  <tbody>
+                        <div id="tabla_normal" class="row div_tabla">
+                            <table class="table-responsive tabla_numeros">
+                                <tbody>
                                     <tr>
-                                      <th scope="row"></th>
-                                      <td class="primera_linea_tabla" onclick="numero('1')">1</td>
-                                      <td class="segunda_linea_tabla" onclick="numero('2')">2</td>
-                                      <td class="tercera_linea_tabla" onclick="numero('3')">3</td>
+                                        <th scope="row"></th>
+                                        <th COLSPAN=2 class="col-xs-3 cuadro_texto"><input type="text" id="textoMostrar1" class="cuadro_texto2"/></th>
+                                        <th class="col-xs-3 cuadro_ok"> OK </th>
                                     </tr>
                                     <tr>
-                                      <th scope="row"></th>
-                                      <td class="primera_linea_tabla" onclick="numero('4')">4</td>
-                                      <td class="segunda_linea_tabla" onclick="numero('5')">5</td>
-                                      <td class="tercera_linea_tabla" onclick="numero('6')">6</td>
+                                        <th scope="row"></th>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("1")' />1</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero("2")' />2</td>
+                                         <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("3")' />3</td>
                                     </tr>
                                     <tr>
-                                      <th scope="row"></th>
-                                      <td class="primera_linea_tabla" onclick="numero('7')">7</td>
-                                      <td class="segunda_linea_tabla" onclick="numero('8')">8</td>
-                                      <td class="tercera_linea_tabla" onclick="numero('9')">9</td>
+                                        <th scope="row"></th>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("4")' />4</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero("5")' />5</td>
+                                         <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("6")' />6</td>
                                     </tr>
-                                  </tbody>
-                                </table>
-                                <div class="row">
-                                    <div class="col-xs-3 cuadro_0 verde" onclick="numero('0')">
-                                        0
-                                    </div>
-                                    <div class="col-xs-3 cuadro_borrar amarillo" onclick="borradoTotal()">
-                                        BORRAR
-                                    </div>
-                                </div>
-                            </div>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("7")' />7</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero("8")' />8</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("9")' />9</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("0")' />0</td>
+                                        <td colspan="2" class="segunda_linea_tabla"><button type="button" class="botones" onclick='borradoPantalla()' />Borrar</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div  id="mostrar" class="panel_mostrar_numeros">
-                            <p id="textoPantalla"></p>
+                        <div id="tabla_oculta" class="row div_tabla_oculta">
                         </div>
-
-                        <!--
-                        <div class="row col-xs-6 oculto">
-                            <div class="row col-xs-6 oculto2">
-                                <div class="col-md-6 cuadro_texto">
-                                    <p class="">0</p>
-                                </div>
-                                <div class="col-md-6 cuadro_ok">
-                                    <p class="texto_ok">OK</p>
-                                </div>             
-                            </div>
-                            <div class="row col-xs-6 oculto3">
-                                <div class="row">
-                                    <div class="col-md-4 cuadro_1">
-                                        <p class="texto_1">1</p>
-                                    </div>
-                                    <div class="col-md-4 cuadro_2">
-                                        <p class="texto_2">2</p>
-                                    </div>
-                                    <div class="col-md-4 cuadro_3">
-                                        <p class="texto_3">3</p>
-                                    </div>             
-                                </div>
-                            </div>
-                            <div class="row col-xs-6 oculto4">
-                                <div class="col-md-4 cuadro_1">
-                                    <p class="texto_1">4</p>
-                                </div>
-                                <div class="col-md-4 cuadro_2">
-                                    <p class="texto_2">5</p>
-                                </div>
-                                <div class="col-md-4 cuadro_3">
-                                    <p class="texto_3">6</p>
-                                </div>             
-                            </div>
-                            <div class="row col-xs-6 oculto5">
-                                <div class="col-md-4 cuadro_1">
-                                    <p class="texto_1">7</p>
-                                </div>
-                                <div class="col-md-4 cuadro_2">
-                                    <p class="texto_2">8</p>
-                                </div>
-                                <div class="col-md-4 cuadro_3">
-                                    <p class="texto_3">9</p>
-                                </div>
-                            </div>
-                            <div class="row col-xs-6 oculto6">
-                                <div class="col-xs-3 cuadro_0">
-                                    <p class="texto_1">0</p>
-                                </div>
-                                <div class="col-xs-3 cuadro_borrar">
-                                    <p class="texto_2">BORRAR</p>
-                                </div> 
-                            </div>
-
-                        </div>
-                        <div id="mostrar" class="row col-xs-6 mostrar_panel">
-                            <div class="row col-xs-6 oculto2_1">
-                                <div class="col-md-6 cuadro_texto">
-                                    <p id="textoPantalla">0</p>
-                                </div>
-                                <div class="col-md-6 cuadro_ok">
-                                    <p class="texto_ok">OK</p>
-                                </div>             
-                            </div>
-                            <div class="row col-xs-6 oculto3">
-                                <div class="row">
-                                    <div class="col-md-4 cuadro_1_oculto" onclick="numero('1')">
-                                        <p class="texto_1" >1</p>
-                                    </div>
-                                    <div class="col-md-4 cuadro_2_oculto" onclick="numero('2')">
-                                        <p class="texto_2" >2</p>
-                                    </div>
-                                    <div class="col-md-4 cuadro_3_oculto" onclick="numero('3')">
-                                        <p class="texto_3" >3</p>
-                                    </div>             
-                                </div>
-                            </div>
-                            <div class="row col-xs-6 oculto4">
-                                <div class="col-md-4 cuadro_1_oculto" onclick="numero('4')">
-                                    <p class="texto_1">4</p>
-                                </div>
-                                <div class="col-md-4 cuadro_2_oculto" onclick="numero('5')">
-                                    <p class="texto_2" >5</p>
-                                </div>
-                                <div class="col-md-4 cuadro_3_oculto" onclick="numero('6')">
-                                    <p class="texto_3" >6</p>
-                                </div>             
-                            </div>
-                            <div class="row col-xs-6 oculto5">
-                                <div class="col-md-4 cuadro_1_oculto" onclick="numero('7')">
-                                    <p class="texto_1" >7</p>
-                                </div>
-                                <div class="col-md-4 cuadro_2_oculto" onclick="numero('8')">
-                                    <p class="texto_2" >8</p>
-                                </div>
-                                <div class="col-md-4 cuadro_3_oculto" onclick="numero('9')">
-                                    <p class="texto_3" >9</p>
-                                </div>
-                            </div>
-                            <div class="row col-xs-6 oculto6">
-                                <div class="col-xs-3 cuadro_0_oculto" onclick="numero('0')">
-                                    <p class="texto_1" >0</p>
-                                </div>
-                                <div class="col-xs-3 cuadro_borrar_oculto" onclick="borradoParcial()">
-                                    <p class="texto_2" >BORRAR</p>
-                                </div> 
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
             </div>

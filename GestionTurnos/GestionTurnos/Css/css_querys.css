@@ -1,32 +1,95 @@
-﻿
-/*Media Querys para resolucion inferior a 800px de ancho. */
-@media (max-width: 800px) {
-    /* Test.aspx*/
-    .contenedor_principal {width: 85%;height: 1189px !important;}
-    .contador-turnos {width: 100%;}
-    .numero_turno{margin: 40px 0 20px 205px !important;}
-    #contador {margin: -139px 0 0 286px !important;}
-    .estado_servicio {width: 104.5% !important;}
-    .info_web{margin: 0 0 25px 0 !important;}
-    .cuadro-normal, .cuadro-sms {width: 50%;}
-    .far.fa-clock {margin-left: 40% !important; margin-top: 60px !important;}
-    .buton_solicitar, .buton_solicitar2{ font-size: 1.5em !important;}
-    .cuadro_texto,.cuadro_ok,.tabla_numeros{width:100% !important;}
-    .cuadro_0, .cuadro_borrar{width: 50% !important;}
-    .panel_mostrar_numeros {width: 80.9% !important;height: 60px;margin: -45% 0 0 0.2% !important;}
-    .info_web {margin-top: -3px !important;}
+﻿/*Media Querys para resolucion inferior a 2560px de ancho. */
+@media (max-width: 2560px) {
+    #tabla_oculta {margin: -11.8% 0 0 15%;width: 15%;}
+}
+/*Media Querys para resolucion inferior a 1660px de ancho. */
+@media (max-width: 1660px) {
+    #tabla_oculta {margin: -18.1% 0 0 23.2%;width: 23%;}
+}/*Media Querys para resolucion inferior a 1338px de ancho. */
+@media (max-width: 1338px) {
+    #tabla_oculta {margin: -22.5% 0 0 28.7%;width: 28.8%;}
+}
+    /*Media Querys para resolucion inferior a 800px de ancho. */
+    @media (max-width: 800px) {
+        /* Test.aspx*/
+        .contenedor_principal {
+            width: 85%;
+            height: 1189px !important;
+        }
 
-    /* Index_Intranet.aspx */
+        .contador-turnos {
+            width: 100%;
+        }
 
-}
-/*Media Querys para resolucion inferior a 600px de ancho. */
-@media (max-width: 600px) {
-    .numero_turno {margin-left: 28% !important;}
-    .estado_servicio {margin: 0 0 0 -14px;width: 106.5% !important;}
-    
-}
-/*Media Querys para resolucion inferior a 400px de ancho. */
-@media (max-width: 400px) {
-    .numero_turno {margin-left: 14% !important;}
-    .estado_servicio {margin: -12px 0 0 -14px !important;width: 110.5% !important;}
-}
+        .numero_turno {
+            margin: 40px 0 20px 205px !important;
+        }
+
+        #contador {
+            margin: -139px 0 0 286px !important;
+        }
+
+        .estado_servicio {
+            width: 104.5% !important;
+        }
+
+        .info_web {
+            margin: 0 0 25px 0 !important;
+        }
+
+        .cuadro-normal, .cuadro-sms {
+            width: 50%;
+        }
+
+        .far.fa-clock {
+            margin-left: 40% !important;
+            margin-top: 60px !important;
+        }
+
+        .buton_solicitar, .buton_solicitar2 {
+            font-size: 1.5em !important;
+        }
+
+        .cuadro_texto, .cuadro_ok, .tabla_numeros {
+            width: 100% !important;
+        }
+
+        .cuadro_0, .cuadro_borrar {
+            width: 50% !important;
+        }
+
+        .panel_mostrar_numeros {
+            width: 80.9% !important;
+            height: 60px;
+            margin: -45% 0 0 0.2% !important;
+        }
+
+        .info_web {
+            margin-top: -3px !important;
+        }
+
+        /* Index_Intranet.aspx */
+
+    }
+    /*Media Querys para resolucion inferior a 600px de ancho. */
+    @media (max-width: 600px) {
+        .numero_turno {
+            margin-left: 28% !important;
+        }
+
+        .estado_servicio {
+            margin: 0 0 0 -14px;
+            width: 106.5% !important;
+        }
+    }
+    /*Media Querys para resolucion inferior a 400px de ancho. */
+    @media (max-width: 400px) {
+        .numero_turno {
+            margin-left: 14% !important;
+        }
+
+        .estado_servicio {
+            margin: -12px 0 0 -14px !important;
+            width: 110.5% !important;
+        }
+    }

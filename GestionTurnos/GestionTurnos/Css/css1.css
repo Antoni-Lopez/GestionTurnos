@@ -22,12 +22,10 @@
 .numero_turno {width: 200px;margin-left: 20%;z-index: 1;}
 .contador_turnos {z-index: 2;position: absolute;margin: -120px 150px;color: black !important;}
 #contador {font-size: 2.5em;}
-.frase1, .texto_primer_panel{text-align: center;margin-top: 20px;}
-.estado_servicio {background-color: forestgreen;height: 40px;margin:0 0 0 -15px;width:108.5%;}
-.p_estado_servicio {text-align: center;font-size: 20px;padding:10px !important;}
-.info_web {font-size: 25px;text-align: center;margin-top: 10px;}
+.frase1, .texto_primer_panel{text-align: center;margin-top: 40px;}
+.info_web {font-size: 25px;text-align: center;margin-top: 40px;}
 .cuadro-normal, .cuadro-sms {height: 200px;}
-.cuadro-normal {background-color: #CF3B9A;color: #fff;}
+.cuadro-normal {background-color: #CF3B9A;color: #fff; display:block;}
 .far.fa-clock {margin-left: 37%;margin-top: 50px;color: white;font-size: 39px;}
 .buton_solicitar {color: white;}
 .buton_solicitar, .buton_solicitar2 {text-align: center;font-size: 20px;}
@@ -36,12 +34,29 @@
 .fas.fa-arrow-right {color: forestgreen;font-size: 39px;}
 .fas.fa-mobile {color: black;font-size: 39px;}
 .buton_solicitar2 {color: Black;}
-.cuadro_texto, .cuadro_ok, .tabla_numeros,.cuadro_0,.cuadro_borrar {opacity: 0.5}
-.cuadro_texto, .cuadro_ok {height: 60px;text-align: center;padding: 15px;font-size: 1.8em}
+.cuadro_texto, .cuadro_ok {height: 60px;text-align: center;padding: 10px;font-size: 1em}
+.cuadro_texto, .cuadro_ok{height: 60px; text-align:center;}
 .cuadro_texto {background-color: #000000;margin: auto;color: #fff !important;}
+.cuadro_texto2 {
+    background-color: #fff;
+    margin: auto;
+    color: #00A76D !important;
+    width: 100%;
+    height: 60px;
+    font-size: 2.5em;
+}
+#textoMostrar {
+    border-radius: 6px;
+    font-family: helvetica, arial;
+    box-shadow: none;
+    border: solid 1px #000000;
+}
 .cuadro_ok {background-color: #00A76D;color: #fff;}
-.tabla_numeros{height: 180px; width: 50%;}
-.primera_linea_tabla,.segunda_linea_tabla,.tercera_linea_tabla {width:33.3%;background-color:#FEFEFE;color: #000000;border: 1px solid #000000;font-size: 1.7em;height: 60px; text-align: center;}
+.tabla_numeros {
+    height: 300px;
+    width: 100%;
+}
+.primera_linea_tabla,.segunda_linea_tabla,.tercera_linea_tabla {width:33.3%;background-color:#FEFEFE;color: #000000;border: 1px solid #000000;font-size: 1.7em;height: 55px; text-align: center;}
 .primera_linea_tabla{margin-left: -1px;}
 .cuadro_0, .cuadro_borrar {height: 59px;background-color: #FEFEFE;color: #000000;border: 1px solid #000000;font-size: 1.7em;text-align: center;padding: 15px;}
 .panel_mostrar_numeros {position: absolute;width: 10.1%;height: 60px;margin: -15.8% 0 0 20.2%;display: none;text-align: center;padding: 15px;font-size: 1.7em;color: #fff;background-color: #3B4045;}
@@ -49,4 +64,22 @@
 
 
 
-
+.div_tabla {
+    margin: 25% 0 0 49.9%;
+    
+}
+.div_tabla_oculta {
+    position: absolute;
+    margin: -15.8% 0 0 20.39%;
+    width: 20%;
+    height: 300px;
+    display: block;
+    z-index: 2;
+    opacity: 0.8;
+    background-color: black;
+    display: block;
+}
+.botones{
+    width: 100%;
+    height: 100%;
+}
