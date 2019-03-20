@@ -1,95 +1,105 @@
-﻿/*Media Querys para resolucion inferior a 2560px de ancho. */
-@media (max-width: 2560px) {
-    #tabla_oculta {margin: -11.8% 0 0 15%;width: 15%;}
+﻿
+/*Media Querys para resolucion inferior a 800px de ancho. */
+@media (max-width: 800px) {
+    /* Test.aspx*/
+    .contenedor_principal {width: 85%;height: 1189px !important;}
+    .contador-turnos {width: 100%;}
+    .numero_turno {margin: 40px 0 20px 205px !important;}
+    #contador {margin: -139px 0 0 286px !important;}
+    .estado_servicio {width: 104.5% !important;}
+    .info_web {margin: 0 0 25px 0 !important;}
+    .cuadro-normal, .cuadro-sms {width: 50%}
+    .far.fa-clock {margin-left: 40% !important;margin-top: 60px !important;}
+    .buton_solicitar, .buton_solicitar2 {font-size: 1.5em !important;}
+    .cuadro_texto, .cuadro_ok, .tabla_numeros {width: 100% !important;}
+    .cuadro_0, .cuadro_borrar {width: 50% !important;}
+    .panel_mostrar_numeros {width: 80.9% !important;height: 60px;margin: -45% 0 0 0.2% !important;}
+    .info_web {margin-top: -3px !important;}
+    .div_tabla_oculta {margin: 165.5% 0 0 -99.5% !important;width: 199%;height: 398px;}
+    .tabla_numeros {margin: -122.5% 0 0 -99.5% !important;width: 199% !important;height: 398px !important;}
+    /* Intranet.aspx */
+    .contenedor_princi_intranet {width: 700px !important;border: 6px solid blue;}
+    .cabecera {color: yellowgreen !important;}
 }
-/*Media Querys para resolucion inferior a 1660px de ancho. */
-@media (max-width: 1660px) {
-    #tabla_oculta {margin: -18.1% 0 0 23.2%;width: 23%;}
-}/*Media Querys para resolucion inferior a 1338px de ancho. */
-@media (max-width: 1338px) {
-    #tabla_oculta {margin: -22.5% 0 0 28.7%;width: 28.8%;}
-}
-    /*Media Querys para resolucion inferior a 800px de ancho. */
-    @media (max-width: 800px) {
+/*Media Querys para resolucion inferior a 768px de ancho. */
+@media (max-width: 768px) {
         /* Test.aspx*/
-        .contenedor_principal {
-            width: 85%;
-            height: 1189px !important;
+        .div_tabla_oculta {
+            margin: 174.5% 0 0 -99.5% !important;
+            width: 199%;
+            height: 396px;
         }
 
-        .contador-turnos {
-            width: 100%;
+        .tabla_numeros {
+            margin: -127.5% 0 0 -99.5% !important;
+            height: 397px !important;
         }
-
-        .numero_turno {
-            margin: 40px 0 20px 205px !important;
-        }
-
-        #contador {
-            margin: -139px 0 0 286px !important;
-        }
-
-        .estado_servicio {
-            width: 104.5% !important;
-        }
-
-        .info_web {
-            margin: 0 0 25px 0 !important;
-        }
-
-        .cuadro-normal, .cuadro-sms {
-            width: 50%;
-        }
-
-        .far.fa-clock {
-            margin-left: 40% !important;
-            margin-top: 60px !important;
-        }
-
-        .buton_solicitar, .buton_solicitar2 {
-            font-size: 1.5em !important;
-        }
-
-        .cuadro_texto, .cuadro_ok, .tabla_numeros {
-            width: 100% !important;
-        }
-
-        .cuadro_0, .cuadro_borrar {
-            width: 50% !important;
-        }
-
-        .panel_mostrar_numeros {
-            width: 80.9% !important;
-            height: 60px;
-            margin: -45% 0 0 0.2% !important;
-        }
-
-        .info_web {
-            margin-top: -3px !important;
-        }
-
         /* Index_Intranet.aspx */
-
+        .cabecera {
+            color: deeppink !important;
+        }
+}
+/*Media Querys para resolucion inferior a 600px de ancho. */
+@media (max-width: 600px) {
+    #contador {margin: -143px 0 0 43% !important;}
+    .numero_turno {margin-left: 28% !important;}
+    .frase1, .texto_primer_panel {margin-top: 29px !important;}
+    .div_tabla_oculta {position: relative;margin: 242.5% 0 0 -99.5% !important;}
+    .tabla_numeros {margin: -165.5% 0 0 -99.5% !important;}
+    
+    /*Intranet.aspx*/
+    .cabecera {color: yellowgreen !important;}
+}
+/*Media Querys para resolucion inferior a 411px de ancho. */
+@media (max-width: 411px) {
+    #contador {margin: -138px 0 0 40% !important;}
+    .numero_turno {margin-left: 16% !important;}
+    .eslogan_banner {margin: -42px -12px 28px 0 !important;font-size: 12px !important;}
+    .buton_solicitar, .buton_solicitar2 {margin-top: -4px;}
+    .far.fa-clock {margin-left: 33% !important;margin-top: 44px !important;}
+    .fas.fa-mobile {color: black;font-size: 39px;margin-top: -20px;}
+    .frase1, .texto_primer_panel {margin-top: 18px !important;}
+    .div_tabla_oculta {margin: 390.5% 0 0 -99.5% !important; height: 385px;}
+    .tabla_numeros {margin: -249.5% 0 0 -99.5% !important;height: 386px !important;
     }
-    /*Media Querys para resolucion inferior a 600px de ancho. */
-    @media (max-width: 600px) {
+}
+/*Media Querys para resolucion inferior a 375px de ancho. */
+@media (max-width: 375px) {
+    .logo_banner {width: 153px !important;}
+    .numero_turno {margin-left: 12% !important;}
+    .frase1, .texto_primer_panel {margin-top: 18px !important;}
+    .div_tabla_oculta {margin: 436.5% 0 0 -99.5% !important;}
+    .tabla_numeros {margin: -276.5% 0 0 -99.5% !important;}
+}
+/*Media Querys para resolucion inferior a 360px de ancho. */
+@media (max-width: 360px) {
+    .numero_turno {margin-left: 8% !important;}
+    .logo_banner {width: 145px !important;}
+    .eslogan_banner {margin: -32px -10px 20px 0 !important;font-size: 12px !important;}
+    .buton_solicitar, .buton_solicitar2 {font-size: 1.4em !important;}
+        .frase1, .texto_primer_panel {margin-top: 18px !important;}
+        .div_tabla_oculta {margin: 459.5% 0 0 -99.5% !important;}
+        .tabla_numeros {margin: -290.5% 0 0 -99.5% !important;}
+}
+/*Media Querys para resolucion inferior a 320px de ancho. */
+@media (max-width: 320px) {
         .numero_turno {
-            margin-left: 28% !important;
+            margin-left: 3% !important;
         }
 
-        .estado_servicio {
-            margin: 0 0 0 -14px;
-            width: 106.5% !important;
-        }
-    }
-    /*Media Querys para resolucion inferior a 400px de ancho. */
-    @media (max-width: 400px) {
-        .numero_turno {
-            margin-left: 14% !important;
+        .frase1, .texto_primer_panel {
+            margin-top: 10px !important;
         }
 
-        .estado_servicio {
-            margin: -12px 0 0 -14px !important;
-            width: 110.5% !important;
+        buton_solicitar, .buton_solicitar2 {
+            margin-top: -5px !important;
         }
-    }
+
+        .div_tabla_oculta {
+            margin: 531.5% 0 0 -99.5% !important;
+        }
+
+        .tabla_numeros {
+            margin: -328.5% 0 0 -99.5% !important;
+        }
+}

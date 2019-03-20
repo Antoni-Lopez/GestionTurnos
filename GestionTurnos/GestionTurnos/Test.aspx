@@ -15,8 +15,7 @@
 
         <link href="Css/css_querys.css" rel="stylesheet" type="text/css" /> <!-- Css para las Media Querys -->    
         <link href="Css/css1.css" rel="stylesheet" type="text/css" /> <!-- Css mio -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> <!-- Css FontAwesome -->
-        <script type="text/javascript" src="Script/teclado_numerico.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" /> <!-- Css FontAwesome -->
         
         <!-- Titulo del Website! -->
         <title>Pagina de Testeo de Gestión de Turnos</title>    
@@ -86,50 +85,82 @@
 
             function MostrarOcultar(capa,enlace)  
             {
-                if (document.getElementById('tabla_oculta').style.display == "block") {
+                //Nos creamos la variable prueba para saber la resolucón de la Screen.
+                var prueba = screen.width;
 
-                    document.getElementById('tabla_oculta').style.display = 'none';
-                    document.getElementById('cuadro1').style.display = 'none';
-                    document.getElementById('cuadro2').style.width = '50%';
+                //Comprobamos si la res. es <de 800px para tomar medidas oportunas.
+                if (prueba <= 800) {
 
+                    //Comprobamos si el panel de sms, está visible.
+                    if (document.getElementById('tabla_oculta').style.display == "block") {
+
+                        //Como sí lo está, ocultamos el contenedor de solicitar turno sin sms,
+                        //ocultamos el contenedor oculto desactivandolo y le damos al contenedor de sms un tamaño del 100%
+                        document.getElementById('tabla_oculta').style.display = 'none';
+                        document.getElementById('cuadro1').style.display = 'none';                    
+                        document.getElementById('cuadro2').style.width = '100%';
+                    }
+                    //Como no está visible el cuadro de solicitar turno, lo activamos, y volvemos el contenedor de sms a
+                    //su estado normal.
+                    else {
+                        document.getElementById('tabla_oculta').style.display = "Block";
+                        document.getElementById('cuadro1').style.display = 'Block';
+                        document.getElementById('cuadro2').style.width = '50%';
+                    }
                 }
+                //La res. es superior a 800px y por tanto le damos otras dimensiones.
                 else {
-                    document.getElementById('tabla_oculta').style.display = "Block";
-                    document.getElementById('cuadro1').style.display = 'Block';
-                    document.getElementById('cuadro2').style.width = '25%';
+                    //Comprobamos si el panel de sms, está visible.
+                    if (document.getElementById('tabla_oculta').style.display == "block") {
+                        document.getElementById('tabla_oculta').style.display = 'none';
+                        document.getElementById('cuadro1').style.display = 'none';
+                        document.getElementById('cuadro2').style.width = '50%';
+                    }
+                    //Como no está visible el cuadro de solicitar turno, lo activamos, y volvemos el contenedor de sms a
+                    //su estado normal.
+                    else {
+                        document.getElementById('tabla_oculta').style.display = "Block";
+                        document.getElementById('cuadro1').style.display = 'Block';
+                        document.getElementById('cuadro2').style.width = '25%';
+                    }
                 }
             }  
         </script> 
         <script type="text/javascript"> 
             
-            <!--  
+            <!-- 
+            //Variables necesarias para el contador.
             var contador = 0;
             var limite = 99;
             var total = 0;
 
             function incrementar()
             {
+                //incrementamos el contador.
                 contador++;
+
                 var a = contador.toString();
                 var b = a.length;
 
                 if (contador <= limite) {
-
+                    //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
                     if (b == '1') {
                         var contador_fixed = '0' + contador;
                         escribir = document.getElementById("contador");
                         escribir.innerHTML = contador_fixed;
                     }
+                    //sino se muestran normales, 10....100
                     else {
                         var contador_fixed = contador;
                         escribir = document.getElementById("contador");
                         escribir.innerHTML = contador;
                     }
                 }
+                //Sí superamos el valor 100 del contador.
                 else {
-                    total =  contador + 1;
+                    total = contador + 1;
+                    LanzaAviso("el contador es:" + contador + " y el total es: " + total);
                     contador = 1;
-
                     var contador_fixed = '0' + contador;
                     escribir = document.getElementById("contador");
                     escribir.innerHTML = contador_fixed;
@@ -171,11 +202,13 @@
                             <p class="buton_solicitar2">SOLICITA TURNO + SMS</p>
                         </div>
                         <div id="tabla_normal" class="row div_tabla">
+                            <div id="tabla_oculta" class="row div_tabla_oculta">
+                            </div>
                             <table class="table-responsive tabla_numeros">
                                 <tbody>
                                     <tr>
                                         <th scope="row"></th>
-                                        <th COLSPAN=2 class="col-xs-3 cuadro_texto"><input type="text" id="textoMostrar1" class="cuadro_texto2"/></th>
+                                        <th colspan="2" class="col-xs-3 cuadro_texto"><input type="text" id="textoMostrar1" class="cuadro_texto2"/></th>
                                         <th class="col-xs-3 cuadro_ok"> OK </th>
                                     </tr>
                                     <tr>
@@ -204,14 +237,14 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div id="tabla_oculta" class="row div_tabla_oculta">
-                        </div>
+                        <!--
+                        
+                        -->
                     </div>
                 </div>
             </div>
         </form>
     </div>
--->
 
     <div class="separacion"></div>
 

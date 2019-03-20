@@ -7,10 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <!-- CSS y distintas librerias -->
+
     <asp:literal id="bootstrap_min_css" runat="server"></asp:literal>
     <asp:literal id="jquery_1_9_1_min_js" runat="server"></asp:literal>
     <asp:literal id="bootstrap_min_js" runat="server"></asp:literal>
     <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
+
 
     <link href="Css/css_querys.css" rel="stylesheet" type="text/css" /> <!-- Css para las Media Querys -->    
     <link href="Css/intranet.css" rel="stylesheet" type="text/css" /> <!-- Css mio -->
