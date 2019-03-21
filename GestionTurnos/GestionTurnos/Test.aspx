@@ -31,6 +31,7 @@
             window.onload = function () {
                 mostrarEnPantalla = document.getElementById("textoMostrar1");
                 document.onkeydown = teclado;
+                desactivar_onclicks(); 
             }
 
             /*La pantalla de inicio muestra un 0 y solo permitirá la entrada de los 
@@ -53,13 +54,13 @@
                         x = xx;
                     }
                     else {
-                        LanzaAviso("<h3>ERROR!</h3><p style='font-family: sans-serif;'>El número de Telefono debe de comenzar por 6 o 7. Tu has introducido el número: <span style='text-decoration:underline'>" +xx+"</span></p>");
                         mostrarEnPantalla.value = "ERROR.";
                     }
 
                 }
                 /*Esta operación se hace mediante una cadena de texto para que el 
                   número tan solo se añada y no se sume al anterior*/
+
                 else {
 
                     longitud = 1 + x.length;
@@ -68,74 +69,85 @@
                         x += xx;
                     }
                     else {
-                        LanzaAviso("<h3>ERROR!</h3><p>Excedemos el tamaño de un numero movil en España (Máx 9 digitos). Comprueba si el número que has introducido(<span style='text-decoration: underline;'> "+x+" </span>) es correcto. Gracias!</p> ");
                         return;
-
                     }
                 }
                 x1 = 0
-            }
-
-
+            }                   
             //Borramos todas las numeros a 0
             function borradoPantalla() {
                 mostrarEnPantalla.value = 0;
                 x = "0";
             }
-
-            function MostrarOcultar(capa,enlace)  
-            {
+            function MostrarOcultar(capa, enlace) {
                 //Nos creamos la variable prueba para saber la resolucón de la Screen.
                 var prueba = screen.width;
-
                 //Comprobamos si la res. es <de 800px para tomar medidas oportunas.
                 if (prueba <= 800) {
 
                     //Comprobamos si el panel de sms, está visible.
-                    if (document.getElementById('tabla_oculta').style.display == "block") {
+                    if (document.getElementById('tabla_normal').style.opacity == "0.2") {
 
                         //Como sí lo está, ocultamos el contenedor de solicitar turno sin sms,
                         //ocultamos el contenedor oculto desactivandolo y le damos al contenedor de sms un tamaño del 100%
-                        document.getElementById('tabla_oculta').style.display = 'none';
-                        document.getElementById('cuadro1').style.display = 'none';                    
+                        document.getElementById('cuadro1').style.display = 'none';
                         document.getElementById('cuadro2').style.width = '100%';
+                        document.getElementById('tabla_normal').style.opacity = '1';
+                        activar_onclicks();
                     }
                     //Como no está visible el cuadro de solicitar turno, lo activamos, y volvemos el contenedor de sms a
                     //su estado normal.
                     else {
-                        document.getElementById('tabla_oculta').style.display = "Block";
+                        document.getElementById('tabla_normal').style.opacity = '0.2';
                         document.getElementById('cuadro1').style.display = 'Block';
                         document.getElementById('cuadro2').style.width = '50%';
+                        mostrarEnPantalla.value = '';
+                        desactivar_onclicks();  
                     }
                 }
-                //La res. es superior a 800px y por tanto le damos otras dimensiones.
                 else {
                     //Comprobamos si el panel de sms, está visible.
-                    if (document.getElementById('tabla_oculta').style.display == "block") {
-                        document.getElementById('tabla_oculta').style.display = 'none';
+                    if (document.getElementById('tabla_normal').style.opacity == "0.2") {
                         document.getElementById('cuadro1').style.display = 'none';
                         document.getElementById('cuadro2').style.width = '50%';
+                        document.getElementById('tabla_normal').style.opacity = '1';
+                        activar_onclicks();
                     }
                     //Como no está visible el cuadro de solicitar turno, lo activamos, y volvemos el contenedor de sms a
                     //su estado normal.
                     else {
-                        document.getElementById('tabla_oculta').style.display = "Block";
+                        document.getElementById('tabla_normal').style.opacity = '0.2';
                         document.getElementById('cuadro1').style.display = 'Block';
                         document.getElementById('cuadro2').style.width = '25%';
+                        mostrarEnPantalla.value = 0;
+                        desactivar_onclicks();                        
                     }
                 }
-            }  
-        </script> 
-        <script type="text/javascript"> 
-            
-            <!-- 
+            }
+
+            //Funcion para desactivar los onclicks de la tabla numerica.
+            function desactivar_onclicks() {
+              document.getElementById('tabla_normal').style.pointerEvents = "none";
+            }
+            //Funcion para activar los onclicks de la tabla numerica.
+            function activar_onclicks() {
+              document.getElementById('tabla_normal').style.pointerEvents = "auto";
+            }
+
+            ///Sección para la función incrementar.
+
             //Variables necesarias para el contador.
+
             var contador = 0;
             var limite = 99;
             var total = 0;
 
             function incrementar()
             {
+
+                //Esto lo dejamos de momento para aspecto visual,
+                //Aunque aquí deberemos de contactar con el servidor para retomar el numero de turno que tenemos en la bd.
+
                 //incrementamos el contador.
                 contador++;
 
@@ -166,7 +178,7 @@
                     escribir.innerHTML = contador_fixed;
                 }
             } 
-            //-->  
+
         </script>          
     </head>
 <body>
@@ -201,9 +213,7 @@
                             <i class="fas fa-mobile"></i>
                             <p class="buton_solicitar2">SOLICITA TURNO + SMS</p>
                         </div>
-                        <div id="tabla_normal" class="row div_tabla">
-                            <div id="tabla_oculta" class="row div_tabla_oculta">
-                            </div>
+                        <div id="tabla_normal" class="row nueva_tabla">
                             <table class="table-responsive tabla_numeros">
                                 <tbody>
                                     <tr>

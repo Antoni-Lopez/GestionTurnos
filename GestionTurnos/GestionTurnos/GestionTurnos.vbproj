@@ -97,6 +97,7 @@
     <Content Include="Css\intranet.css" />
     <Content Include="Index_Intranet.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />
+    <Content Include="Secciones_gestion.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -135,6 +136,13 @@
     </Compile>
     <Compile Include="PlantillaBootstrap.aspx.vb">
       <DependentUpon>PlantillaBootstrap.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Secciones_gestion.aspx.designer.vb">
+      <DependentUpon>Secciones_gestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secciones_gestion.aspx.vb">
+      <DependentUpon>Secciones_gestion.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Test.aspx.designer.vb">

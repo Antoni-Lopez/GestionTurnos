@@ -15,40 +15,42 @@
     .cuadro_0, .cuadro_borrar {width: 50% !important;}
     .panel_mostrar_numeros {width: 80.9% !important;height: 60px;margin: -45% 0 0 0.2% !important;}
     .info_web {margin-top: -3px !important;}
-    .div_tabla_oculta {margin: 165.5% 0 0 -99.5% !important;width: 199%;height: 398px;}
     .tabla_numeros {margin: -122.5% 0 0 -99.5% !important;width: 199% !important;height: 398px !important;}
-    /* Intranet.aspx */
-    .contenedor_princi_intranet {width: 700px !important;border: 6px solid blue;}
-    .cabecera {color: yellowgreen !important;}
+    #tabla_normal {margin: 169% 0 0 50% !important;}
 }
 /*Media Querys para resolucion inferior a 768px de ancho. */
 @media (max-width: 768px) {
         /* Test.aspx*/
-        .div_tabla_oculta {
-            margin: 174.5% 0 0 -99.5% !important;
-            width: 199%;
-            height: 396px;
-        }
-
-        .tabla_numeros {
-            margin: -127.5% 0 0 -99.5% !important;
-            height: 397px !important;
-        }
-        /* Index_Intranet.aspx */
-        .cabecera {
-            color: deeppink !important;
-        }
+    .tabla_numeros {margin: -112.5% 0 0 -99.8% !important;width: 200% !important;}
+    #tabla_normal {margin: 169% 0 0 50% !important;}
+    
+    /* Index_Intranet.aspx */
+    .cabecera {
+        color: deeppink !important;
+    }
 }
 /*Media Querys para resolucion inferior a 600px de ancho. */
 @media (max-width: 600px) {
+    /*Test.aspx*/
     #contador {margin: -143px 0 0 43% !important;}
     .numero_turno {margin-left: 28% !important;}
     .frase1, .texto_primer_panel {margin-top: 29px !important;}
-    .div_tabla_oculta {position: relative;margin: 242.5% 0 0 -99.5% !important;}
     .tabla_numeros {margin: -165.5% 0 0 -99.5% !important;}
+    #tabla_normal {margin: 229% 0 0 50% !important;}
     
     /*Intranet.aspx*/
-    .cabecera {color: yellowgreen !important;}
+}
+/*Media Querys para resolucion inferior a 414px de ancho. */
+@media (max-width: 414px) {
+    #contador {margin: -138px 0 0 40% !important;}
+    .numero_turno {margin-left: 16% !important;}
+    .eslogan_banner {margin: -42px -12px 28px 0 !important;font-size: 12px !important;}
+    .buton_solicitar, .buton_solicitar2 {margin-top: -4px;}
+    .far.fa-clock {margin-left: 33% !important;margin-top: 44px !important;}
+    .fas.fa-mobile {color: black;font-size: 39px;margin-top: -20px;}
+    .frase1, .texto_primer_panel {margin-top: 18px !important;}
+    .tabla_numeros {margin: -249.5% 0 0 -99.5% !important;height: 386px !important;}
+    #tabla_normal {margin: 345% 0 0 50% !important;}
 }
 /*Media Querys para resolucion inferior a 411px de ancho. */
 @media (max-width: 411px) {
@@ -59,17 +61,16 @@
     .far.fa-clock {margin-left: 33% !important;margin-top: 44px !important;}
     .fas.fa-mobile {color: black;font-size: 39px;margin-top: -20px;}
     .frase1, .texto_primer_panel {margin-top: 18px !important;}
-    .div_tabla_oculta {margin: 390.5% 0 0 -99.5% !important; height: 385px;}
-    .tabla_numeros {margin: -249.5% 0 0 -99.5% !important;height: 386px !important;
-    }
+    .tabla_numeros {margin: -249.5% 0 0 -99.5% !important;height: 386px !important;}
+    #tabla_normal {margin: 345% 0 0 50% !important;}
 }
 /*Media Querys para resolucion inferior a 375px de ancho. */
 @media (max-width: 375px) {
     .logo_banner {width: 153px !important;}
     .numero_turno {margin-left: 12% !important;}
-    .frase1, .texto_primer_panel {margin-top: 18px !important;}
-    .div_tabla_oculta {margin: 436.5% 0 0 -99.5% !important;}
-    .tabla_numeros {margin: -276.5% 0 0 -99.5% !important;}
+    .frase1, .texto_primer_panel {margin-top: 18px !important;}    
+    .tabla_numeros {margin: -249.5% 0 0 -99.5% !important;height: 386px !important;}
+    #tabla_normal {margin: 368% 0 0 50% !important;}
 }
 /*Media Querys para resolucion inferior a 360px de ancho. */
 @media (max-width: 360px) {
@@ -77,29 +78,17 @@
     .logo_banner {width: 145px !important;}
     .eslogan_banner {margin: -32px -10px 20px 0 !important;font-size: 12px !important;}
     .buton_solicitar, .buton_solicitar2 {font-size: 1.4em !important;}
-        .frase1, .texto_primer_panel {margin-top: 18px !important;}
-        .div_tabla_oculta {margin: 459.5% 0 0 -99.5% !important;}
-        .tabla_numeros {margin: -290.5% 0 0 -99.5% !important;}
+    .frase1, .texto_primer_panel {margin-top: 18px !important;}
+    .tabla_numeros {margin: -225.5% 0 0 -99.5% !important;}
+    #tabla_normal{margin: 400% 0 0 50%;}
 }
 /*Media Querys para resolucion inferior a 320px de ancho. */
 @media (max-width: 320px) {
-        .numero_turno {
-            margin-left: 3% !important;
-        }
-
-        .frase1, .texto_primer_panel {
-            margin-top: 10px !important;
-        }
-
-        buton_solicitar, .buton_solicitar2 {
-            margin-top: -5px !important;
-        }
-
-        .div_tabla_oculta {
-            margin: 531.5% 0 0 -99.5% !important;
-        }
-
-        .tabla_numeros {
-            margin: -328.5% 0 0 -99.5% !important;
-        }
+        .numero_turno {margin-left: 3% !important;}
+        .frase1, .texto_primer_panel {margin-top: 10px !important;}
+        .buton_solicitar, .buton_solicitar2 {margin-top: -5px !important;}
+        .tabla_numeros {margin: -328.5% 0 0 -99.5% !important;}
+    #tabla_normal {
+        margin: 455% 0 0 50% !important;
+    }
 }

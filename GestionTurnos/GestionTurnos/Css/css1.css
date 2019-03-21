@@ -51,11 +51,21 @@
     border: solid 1px #000000;
 }
 .cuadro_ok {background-color: #00A76D;color: #fff;}
-.tabla_numeros {height: 300px;width: 100%;z-index: 1;margin-top: -79%;}
+.tabla_numeros {height: 300px;width: 100%;}
 .primera_linea_tabla,.segunda_linea_tabla,.tercera_linea_tabla {width:33.3%;background-color:#FEFEFE;color: #000000;border: 1px solid #000000;font-size: 1.7em;height: 55px; text-align: center;}
 .primera_linea_tabla{margin-left: -1px;}
 .cuadro_0, .cuadro_borrar {height: 59px;background-color: #FEFEFE;color: #000000;border: 1px solid #000000;font-size: 1.7em;text-align: center;padding: 15px;}
 .panel_mostrar_numeros {position: absolute;width: 10.1%;height: 60px;margin: -15.8% 0 0 20.2%;display: none;text-align: center;padding: 15px;font-size: 1.7em;color: #fff;background-color: #3B4045;}
-.div_tabla {margin: 25% 0 0 49.9%;}
-.div_tabla_oculta {z-index: 2;background-color: black;opacity: 0.5;margin: 1.5% 0 0 -0.1%;display: block;}
 .botones{width: 100%;height: 100%;}
+#tabla_normal {margin: 200px 0 0 50%;background-color: black;opacity: 0.2;}
+
+
+
+
+.contenedor_princi{
+    max-width: 900px;
+    margin:auto;
+}
+.recuadro{
+    width: 20%;
+}
