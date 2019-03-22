@@ -1,0 +1,17 @@
+﻿body {
+}
+.verde {border: 2px solid green;}
+.rojo {border: 2px solid red;}
+.amarillo {border: 2px solid yellow;}
+.azul {border: 2px solid blue;}
+.rosa {border: 2px solid pink;}
+
+/* Estilo para la web de servicios.*/
+.container_principal{
+    max-width: 1000px;
+    height: 500px;
+    margin-top: 15%;
+}
+.centrarlo{
+    margin-top: 25%;
+}

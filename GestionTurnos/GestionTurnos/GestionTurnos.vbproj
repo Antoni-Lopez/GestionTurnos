@@ -98,6 +98,7 @@
     <Content Include="Intranet.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Servicios.aspx" />
+    <Content Include="Css\servicios.css" />
     <Content Include="Test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
