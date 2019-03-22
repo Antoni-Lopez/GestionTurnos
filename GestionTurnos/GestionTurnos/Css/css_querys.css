@@ -23,11 +23,6 @@
         /* Test.aspx*/
     .tabla_numeros {margin: -112.5% 0 0 -99.8% !important;width: 200% !important;}
     #tabla_normal {margin: 169% 0 0 50% !important;}
-    
-    /* Index_Intranet.aspx */
-    .cabecera {
-        color: deeppink !important;
-    }
 }
 /*Media Querys para resolucion inferior a 600px de ancho. */
 @media (max-width: 600px) {
@@ -84,11 +79,16 @@
 }
 /*Media Querys para resolucion inferior a 320px de ancho. */
 @media (max-width: 320px) {
-        .numero_turno {margin-left: 3% !important;}
-        .frase1, .texto_primer_panel {margin-top: 10px !important;}
-        .buton_solicitar, .buton_solicitar2 {margin-top: -5px !important;}
-        .tabla_numeros {margin: -328.5% 0 0 -99.5% !important;}
-    #tabla_normal {
-        margin: 455% 0 0 50% !important;
+
+    /* Test.aspx */
+    .numero_turno {margin-left: 3% !important;}
+    .frase1, .texto_primer_panel {margin-top: 10px !important;}
+    .buton_solicitar, .buton_solicitar2 {margin-top: -5px !important;}
+    .tabla_numeros {margin: -328.5% 0 0 -99.5% !important;}
+    #tabla_normal {margin: 455% 0 0 50% !important;}
+
+    /* Intranet.aspx */
+    .titulo{
+        border: 2px solid red;
     }
 }
