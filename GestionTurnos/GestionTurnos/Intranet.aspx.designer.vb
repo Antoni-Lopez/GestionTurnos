@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Test
+Partial Public Class Intranet
     
     '''<summary>
     '''Control bootstrap_min_css.

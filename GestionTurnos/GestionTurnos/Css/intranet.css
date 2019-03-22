@@ -1,30 +1,52 @@
 ﻿/* CSS para index_intranet.aspx */
-body {background-color: #5F616A;color: white;}
-.contenedor_princi_intranet {max-width: 1000px;margin: auto;padding: 10px;box-shadow: none;border: solid 1px #191919;background-color: #fff;color: #003466;height:500px;}
+body {
+    background-color: #5F616A;color: black;
+}
+.contenedor_princi_intranet {max-width: 800px;margin: auto;padding: 10px;box-shadow: none;border: solid 1px #191919;background-color: #fff;color: #003466;height:auto;}
 .titulo {margin: auto;font-size: 35px;color: #fff;text-align:center; padding: 50px}
 .cabecera {margin: -1% 0 5% -1%;width: 102%;height: 15%;background-color: #B72123;color: #fff;padding: 20px;font-size: 2em;text-decoration: underline;border-bottom: 2px solid black;}
-.espacio_texto{margin: auto; text-align: left;}
-.p_espacio_texto {padding-top: 10px;margin-left: 50%;font-size: 2em;color: #B72123}
-.p_espacio_texto2 {font-size: 1.5em;margin: -7.5% 0 5% 59%;}
-.inputs{padding-top: 10px; height: 45px;margin-top: 1.5%; width: 75%; border-radius: 8px;}
-.inputs_chek {margin: 7% 0 15px 54% !important;}
-.inputs:focus {border: 1.5px solid black;border-radius: 5px;background-color: #B72123;color: #fff;font-siez: 1.5em;}
-input[type=email], input[type=password] {font-size: 1.7em;padding: 10px;}
+#logo_img {
+    width: 47%;
+    height: auto;
+}
+.banner{
+    margin-top: -2%;
+}
+#introducir_texto{
+    padding-top: 2.5%;
+    font-size: 0.8em;
+}
+.texto_inputs {
+    padding: 10px 60px;
+}
+#password_input, #Email_input {
+    margin-left: 10%;
+    width: 86% !important;
+}
+.intranet_tabla {
+    height: 60%;
+    margin: 0;
+    padding-top: 30px;
+    border: 2px solid #5F616A;
+    border-radius: 6px;
+    box-shadow: unset;
+}
+.mi_checkbox{margin-left: 12.5% !important;}
+.div_checkbox {
+    padding: 10px;
+}
+
+.inputs {
+    padding-top: 10px;
+    height: 45px;
+    margin-top: 1.5%;
+    width: 75%;
+    border-radius: 8px;
+}
 .contenedor_boton {margin: 5% 0 20px 38%;width: 25%;}
 .boton_validar {width: 100%;background-color: #B72123;color: #fff; height: 50px;border-radius: 8px;border: 2px solid black;font-size: 1.7em;}
 .boton_validar:hover {background-color: #fff;color: #B72123;}
-.cuadro_central {background-color: white;margin: 10px 25px 0 25px;height: 700px;border: 1.5px solid #CF3B9A;border-radius: 6px;}
-.titulo_formu {background-color: #E1EF78;font-size: 30px;text-align: left;padding: 15px;}
-.formu_acceso {margin: 50px 100px 20px 100px;height: 250px;}
-.estructura{display: flex;width: 99.5%;margin: 0;font-size: 20px;height: 170px;}
-.mail{margin: 17px 0 5px 130px;padding: 10px;}
-.pass{margin: 40px 0 10px 135px;}
-.correo {height: 35px;width: 55%;margin: 10px 0 5px 70px;padding: 10px;font-size: 20px;border-radius: 6px;}
-.contrasenia {height: 35px;width: 55%;margin: 80px 0 5px -837px;padding: 10px;border-radius: 6px;}
-.recordar{margin: -10px 0 10px 200px;}
-.chekbox {margin: -27px 0 10px 225px;font-size: 20px;}
-.enviar {background-color: #B72123;color: white;margin: 10px 0 10px 650px;height: 35px;width: 125px;border-radius: 6px;font-size: 20px;}
-.enviar:hover {color: #B72123;background-color: #191919;}
+
 
 /* Linea de separación y distintos bordes para visualizar lo que vamos creando. */
 .separacion {border-bottom: solid 1px grey;width: 100%;height: 50px;margin: 225px 0 50px 0;}
@@ -34,3 +56,9 @@ input[type=email], input[type=password] {font-size: 1.7em;padding: 10px;}
 .azul {border: 2px solid blue;}
 .rosa {border: 2px solid pink;}
 
+/*Media Querys para resolucion inferior a 320px de ancho. */
+@media (max-width:991px) {
+    .banner{width: 100%;}
+    #logo_img {margin-left: 25%;}
+    #introducir_texto {font-size: 1em !important;margin-left: 19%;margin-top: 0;width: 70% !important;}
+}

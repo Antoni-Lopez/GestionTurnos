@@ -225,7 +225,7 @@
                                         <th scope="row"></th>
                                         <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("1")' />1</td>
                                         <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero("2")' />2</td>
-                                         <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("3")' />3</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("3")' />3</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>

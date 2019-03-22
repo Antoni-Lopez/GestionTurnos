@@ -95,7 +95,7 @@
     <Content Include="Css\css1.css" />
     <Content Include="Css\css_querys.css" />
     <Content Include="Css\intranet.css" />
-    <Content Include="Index_Intranet.aspx" />
+    <Content Include="Intranet.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Servicios.aspx" />
     <Content Include="Test.aspx" />
@@ -105,11 +105,11 @@
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
     <Compile Include="Clases\ClaseGeneral.vb" />
-    <Compile Include="Index_Intranet.aspx.designer.vb">
-      <DependentUpon>Index_Intranet.aspx</DependentUpon>
+    <Compile Include="Intranet.aspx.designer.vb">
+      <DependentUpon>Intranet.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Index_Intranet.aspx.vb">
-      <DependentUpon>Index_Intranet.aspx</DependentUpon>
+    <Compile Include="Intranet.aspx.vb">
+      <DependentUpon>Intranet.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
