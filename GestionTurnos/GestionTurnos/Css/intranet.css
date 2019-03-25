@@ -1,53 +1,20 @@
 ﻿/* CSS para index_intranet.aspx */
-body {
-    background-color: #5F616A;color: black;
-}
+body {background-color: #5F616A;color: black;}
 .contenedor_princi_intranet {max-width: 800px;margin: auto;padding: 10px;box-shadow: none;border: solid 1px #191919;background-color: #fff;color: #003466;height:auto;}
 .titulo {margin: auto;font-size: 35px;color: #fff;text-align:center; padding: 50px}
 .cabecera {margin: -1% 0 5% -1%;width: 102%;height: 15%;background-color: #B72123;color: #fff;padding: 20px;font-size: 2em;text-decoration: underline;border-bottom: 2px solid black;}
-#logo_img {
-    width: 47%;
-    height: auto;
-}
-.banner{
-    margin-top: -2%;
-}
-#introducir_texto{
-    padding-top: 2.5%;
-    font-size: 0.8em;
-}
-.texto_inputs {
-    padding: 10px 60px;
-}
-#password_input, #Email_input {
-    margin-left: 10%;
-    width: 86% !important;
-}
-.intranet_tabla {
-    height: 60%;
-    margin: 0;
-    padding-top: 30px;
-    border: 2px solid #5F616A;
-    border-radius: 6px;
-    box-shadow: unset;
-}
+#logo_img {width: 47%;height: auto;}
+.banner{margin-top: -2%;}
+#introducir_texto{padding-top: 2.5%;font-size: 0.8em;}
+.texto_inputs {padding: 10px 60px;}
+.intranet_tabla {height: 60%;margin: 0;padding-top: 30px;border: 2px solid #5F616A;border-radius: 6px;box-shadow: unset;}
 .mi_checkbox{margin-left: 12.5% !important;}
-.div_checkbox {
-    padding: 10px;
-}
-
-.inputs {
-    padding-top: 10px;
-    height: 45px;
-    margin-top: 1.5%;
-    width: 75%;
-    border-radius: 8px;
-}
+.div_checkbox {padding: 10px;}
+#TextPass, #txtUsuario {margin-left: 10%;width: 86% !important;}
 .contenedor_boton {margin: 5% 0 20px 38%;width: 25%;}
 .boton_validar {width: 100%;background-color: #B72123;color: #fff; height: 50px;border-radius: 8px;border: 2px solid black;font-size: 1.7em;}
 .boton_validar:hover {background-color: #fff;color: #B72123;}
-
-
+#TextPass{padding-left: 1% !important;}
 /* Linea de separación y distintos bordes para visualizar lo que vamos creando. */
 .separacion {border-bottom: solid 1px grey;width: 100%;height: 50px;margin: 225px 0 50px 0;}
 .verde {border: 2px solid green;}

@@ -35,7 +35,8 @@
             }
 
             /*La pantalla de inicio muestra un 0 y solo permitirá la entrada de los 
-            dígitos del teclado de la calculadora a los que hemos llamado 'numero'*/
+            dígitos del teclado de la calculadora a los que hemos llamado 'numero' ,
+            solo cuando el div de sms esté activado.*/
             x = "0";
 
             /*Se inician las variales en la pantalla: 1 es un número escrito por primera 
@@ -47,12 +48,13 @@
                 // Si x es igual a 0 el número que se muestra en pantalla es igual a 1.
                 if (x == "0" || x1 == 1) {
                     var almacenar = xx;
-                    //Comprobamos que el 1º numero introducido sea 6 o 7, sino ERROR.
+                    //Comprobamos que el 1º numero introducido sea 6 o 7,
                     if (xx == 6 || xx == 7) {
                         mostrarEnPantalla.value = xx;
                         //Con esta variable se guarda el número y se continua con este
                         x = xx;
                     }
+                    // sino ERROR.
                     else {
                         mostrarEnPantalla.value = "ERROR.";
                     }
@@ -74,22 +76,23 @@
                 }
                 x1 = 0
             }                   
-            //Borramos todas las numeros a 0
+            //Borrado de todos los numeros escritos en el input.
             function borradoPantalla() {
                 mostrarEnPantalla.value = 0;
                 x = "0";
             }
             function MostrarOcultar(capa, enlace) {
                 //Nos creamos la variable prueba para saber la resolucón de la Screen.
-                var prueba = screen.width;
-                //Comprobamos si la res. es <de 800px para tomar medidas oportunas.
-                if (prueba <= 800) {
+                var resolucion = screen.width;
+                //Comprobamos si la res. es <de 800px para tomar las medidas oportunas(responsive).
+                if (resolucion <= 800) {
 
                     //Comprobamos si el panel de sms, está visible.
                     if (document.getElementById('tabla_normal').style.opacity == "0.2") {
 
                         //Como sí lo está, ocultamos el contenedor de solicitar turno sin sms,
-                        //ocultamos el contenedor oculto desactivandolo y le damos al contenedor de sms un tamaño del 100%
+                        //ocultamos el contenedor de turno sin sms desactivandolo
+                        //y le damos al contenedor de sms un tamaño del 100 %
                         document.getElementById('cuadro1').style.display = 'none';
                         document.getElementById('cuadro2').style.width = '100%';
                         document.getElementById('tabla_normal').style.opacity = '1';

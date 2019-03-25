@@ -9,9 +9,22 @@
 /* Estilo para la web de servicios.*/
 .container_principal{
     max-width: 1000px;
-    height: 500px;
+    height: auto;
     margin-top: 15%;
 }
 .centrarlo{
-    margin-top: 25%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+.cuadro1{
+    margin: 3% 24%;
+    height: 250px;
+}
+#imagen_banner {
+    width: 47%;
+    height: auto;
+}
+#text_banner {
+    padding: 2.5%;
+    font-size: 0.8em;
 }
