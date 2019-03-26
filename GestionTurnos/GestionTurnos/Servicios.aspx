@@ -68,40 +68,18 @@
             window.open(url);
         }
     </script>
+    <style type="text/css">
+        
+    </style>
 </head>
-<body onload="cuandoCargue()">
+<body>
     <form id="form1" runat="server">
-        <div class="container-fluid container_principal verde">
-            <div id="banner_header" class="row azul">
-                <img class="clo-md-6" id="imagen_banner" />
-                <div  class="col-md-6" id="text_banner"></div>
+        <div class="container-fluid container_principal">
+            <div id="banner_header" class="row">
+                <asp:Literal ID="logo_img" runat="server"></asp:Literal>
+                <div  class="col-md-6" id="text_banner" runat="server"></div>
             </div>
-            <div class="row centrarlo rojo">
-                <div class="col-md-6  amarillo">
-                    <div class="cuadro1 rosa">
-                        Holas
-                    </div>
-                </div>
-                <div class="col-md-6 cuadro2 azul">
-                    <div class="cuadro1 rosa">
-                        Hola
-                    </div>
-                </div>
-                <div class="col-md-6  amarillo">
-                    <div class="cuadro1 rosa">
-                        Holas
-                    </div>
-                </div>
-                <div class="col-md-6  amarillo">
-                    <div class="cuadro1 rosa">
-                        Holas
-                    </div>
-                </div>
-                <div class="col-md-6  amarillo">
-                    <div class="cuadro1 rosa">
-                        Holas
-                    </div>
-                </div>
+            <div class="row centrarlo" id="OrdenFilas" runat="server">
             </div>
         </div>
     </form>

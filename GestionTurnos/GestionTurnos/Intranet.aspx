@@ -21,11 +21,20 @@
     <script runat="server">
     </script>
     <script type="text/javascript">
+        function ComprobarEmail(Email){
+                return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(Email))
+        }
         function LanzaAviso(Text) {
             bootbox.alert({ title: "Gestión de turnos", message: Text });
         }
         function enviar(url) {
             window.open(url);
+        }
+        function Comprueba() {
+            if (!ComprobarEmail(document.getElementById('txtUsuario').value)){
+                LanzaAviso("Por favor, comprueba el email.");
+                return false
+            }
         }
     </script>
 </head>
@@ -35,11 +44,13 @@
     <form id="form_acceso" runat="server">
         <div class="container-fluid contenedor_princi_intranet">
             <div class="row cabecera">
-                <div class="col-md-6 banner" id="poner_img">
+                <div class="col-md-6 banner" id="poner_img" >
                     <asp:Literal ID="logo_img" runat="server"></asp:Literal>
                 </div>
-                <asp:Literal ID="introducir_texto" runat="server"></asp:Literal>
-            </div>
+                <div id='introducirtexto' class='col-md-6 banner' runat="server">
+
+                </div>
+                </div>
             <div class="intranet_tabla"> 
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label texto_inputs">Email</label>
@@ -63,7 +74,6 @@
                 </div>
                 <div class="row contenedor_boton">
                     <asp:Button ID="Button1" runat="server" class="boton_validar" Text="ACEPTAR" />
-                    <!-- <button type="submit"  class="boton_validar" onclick="enviar('http://localhost:55703/servicios.aspx')">ACEPTAR</button> -->
                 </div>
             </div>
         </div>

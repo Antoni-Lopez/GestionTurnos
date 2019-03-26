@@ -12,7 +12,7 @@ Option Explicit On
 
 
 Partial Public Class Intranet
-    
+
     '''<summary>
     '''Control bootstrap_min_css.
     '''</summary>
@@ -21,7 +21,7 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents bootstrap_min_css As Global.System.Web.UI.WebControls.Literal
-    
+
     '''<summary>
     '''Control jquery_1_9_1_min_js.
     '''</summary>
@@ -30,7 +30,7 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents jquery_1_9_1_min_js As Global.System.Web.UI.WebControls.Literal
-    
+
     '''<summary>
     '''Control bootstrap_min_js.
     '''</summary>
@@ -39,7 +39,7 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents bootstrap_min_js As Global.System.Web.UI.WebControls.Literal
-    
+
     '''<summary>
     '''Control bootbox_min_js.
     '''</summary>
@@ -48,7 +48,7 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents bootbox_min_js As Global.System.Web.UI.WebControls.Literal
-    
+
     '''<summary>
     '''Control form_acceso.
     '''</summary>
@@ -57,7 +57,7 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents form_acceso As Global.System.Web.UI.HtmlControls.HtmlForm
-    
+
     '''<summary>
     '''Control logo_img.
     '''</summary>
@@ -66,16 +66,16 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents logo_img As Global.System.Web.UI.WebControls.Literal
-    
+
     '''<summary>
-    '''Control introducir_texto.
+    '''Control introducirtexto.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents introducir_texto As Global.System.Web.UI.WebControls.Literal
-    
+    Protected WithEvents introducirtexto As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
     '''<summary>
     '''Control txtUsuario.
     '''</summary>
@@ -84,7 +84,7 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtUsuario As Global.System.Web.UI.WebControls.TextBox
-    
+
     '''<summary>
     '''Control TextPass.
     '''</summary>
@@ -93,7 +93,7 @@ Partial Public Class Intranet
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TextPass As Global.System.Web.UI.WebControls.TextBox
-    
+
     '''<summary>
     '''Control Button1.
     '''</summary>

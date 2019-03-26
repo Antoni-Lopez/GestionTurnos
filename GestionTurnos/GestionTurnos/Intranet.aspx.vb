@@ -4,26 +4,47 @@ Public Class Intranet
 
     Inherits System.Web.UI.Page
 
-    Private this As Object
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim clsGeneral As New ClaseGeneral
-        clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
-        If Not Page.IsPostBack Then
+        If Not IsPostBack Then
+            Dim clsGeneral As New ClaseGeneral
 
+            clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
+            Button1.Attributes.Add("onclick", "return Comprueba()")
+            'Aquí deberemos recibir desde la Bd valores como, img del logo, direccion
+            'Y por supuesto, verificar el usuario y la pass que nos diga el usuario.
+            Dim ruta_img As String = "img/PEINARTE-LOG0.png"
+            Dim direccion_tablet As String = "Cristo de la Epidemia, 52, Málaga"
+
+            logo_img.Text = "<img src=" & ruta_img & " id='logo_img'/>"
+            introducirtexto.InnerHtml = direccion_tablet
+        Else
+            Dim IDCliente As Integer, IDRol As Integer, IDCentro As Integer
+            If CompruebaEmail(Trim(txtUsuario.Text), Trim(TextPass.Text), IDCliente, IDRol, IDCentro) Then
+                Select Case IDRol
+                    Case 1 'Webmaster
+
+                    Case 2 'Dueño de centros
+
+                    Case 3 'Gestor de turnos
+
+                    Case 4 'Mostrar servicios
+                        Response.Redirect("Servicios.aspx?IDCliente=" & IDCliente & "&IDCentro=" & IDCentro, False)
+                End Select
+            Else
+                Response.Redirect("Intranet.aspx")
+            End If
         End If
-        'Aquí deberemos recibir desde la Bd valores como, img del logo, direccion
-        'Y por supuesto, verificar el usuario y la pass que nos diga el usuario.
-        Dim ruta_img As String = "img/PEINARTE-LOG0.png"
-        Dim direccion_tablet As String = "Cristo de la Epidemia, 52, Málaga"
-        Dim usuario As String = "Sanchez"
-        Dim password As String = "1234"
-        'Dim user As String = Request["txtUsuario"]
-        'Dim clave As String = Request["TextPass"]
-
-        Dim direccion As String = "<div id='introducir_texto' class='col-md-6 banner'>" & direccion_tablet & "</div>"
-
-        Me.logo_img.Text = "<img src=" & ruta_img & " id='logo_img'/>"
-        Me.introducir_texto.Text = direccion
     End Sub
+
+    Private Function CompruebaEmail(ByVal Email As String, ByVal Password As String, ByRef IDCliente As Integer, ByRef IDRol As Integer, Optional ByRef IDCentro As Integer = 0) As Boolean
+        If Email = "hola@hola.com" And Password = "1234" Then
+            IDCliente = 1
+            IDRol = 4
+            If IDRol = 4 Then
+                IDCentro = 2
+            End If
+            Return True
+        End If
+    End Function
+
 End Class
