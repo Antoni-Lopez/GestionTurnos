@@ -11,7 +11,7 @@ body {
 .rosa {border: 2px solid pink;}
 
 
-.container_principal {max-width: 1000px;height: auto;margin: auto;margin-top: 10%;border: 2px solid black;border-radius: 6px;}
+.container_principal {max-width: 1000px;height: auto;margin: auto;margin-top: 5%;margin-bottom: 5%;border: 2px solid black;border-radius: 6px;}
 #logo_img {width: 47%;height: auto; margin-left: -99% !important;}
 #text_banner {padding: 2.5%;font-size: 1.8em;margin-left: 50%;color: white;margin-top: 13%;}
 #banner_header {background-color: #B72123; border-bottom: 3px solid black; border-radius: 6px;}
@@ -32,54 +32,19 @@ body {
 }
 
 /* Estilo para cuando tenemos 3 servicios.*/
-.texto_tres_cuadros {
-    text-align: center;
-    padding: 10px;
-    color: dodgerblue;
-    font-size: 1.4em;
-    text-decoration: underline;
-    text-decoration-color: dodgerblue;
-    margin-top: 1.5%;
-}
-.img_pelu_tres, .img_massage_tres, .img_fisioterapia_tres {
-    width: 100%;
-    height: 150px;
-    margin-top: -20%;
-    border-radius: 8px;
-    border: 2px solid black;
-}
-.especial {
-    margin-top: -5%;
-}
-
-.texto_cuadro, .texto_cuadro2, .texto_cuadro3, .texto_cuadro2_3, .texto_cuadro2_4, .texto_cuadro4, .texto_cuadro3_1 {
-    z-index: 2;
-    margin-top: -5%;
-    text-align: center;
-    color: dodgerblue;
-    font-size: 1.8em;
-}
+.texto_tres_cuadros {text-align: center;padding: 10px;color: dodgerblue;font-size: 1.4em;text-decoration: underline;text-decoration-color: dodgerblue;margin-top: 1.5%;}
+.img_pelu_tres, .img_massage_tres, .img_fisioterapia_tres {width: 100%;height: 150px;margin-top: -20%;border-radius: 8px;border: 2px solid black;}
+.img_fisioterapia_tres {margin-left: 10%;width: 80% !important;}
+ .especial {margin-top: -5%;}
+.texto_cuadro, .texto_cuadro2, .texto_cuadro3, .texto_cuadro2_3, .texto_cuadro2_4, .texto_cuadro4, .texto_cuadro3_1, .texto_cuadro4_4 {z-index: 2;margin-top: -5%;text-align: center;color: dodgerblue;font-size: 1.1em;font-weight: bold;}
 .texto_cuadro2{margin-left: 50%;}
 .texto_cuadro2_3{margin-left: 33%;}
 .texto_cuadro3{margin-left: 66%;}
 .texto_cuadro3_1{margin-left: 24%;}
-.texto_cuadro4 {
-    margin-left: 75%;
-    margin-top: -8%;
-}
-
-.col-xs-4_1, .col-xs-4_2, .col-xs-4_3, .col-xs-4_4 {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    height: 150px;
-}
-
-
-}
+.texto_cuadro4 {margin-left: 75%;margin-top: -8%;}
+.texto_cuadro4_4 {margin-left: 50%;margin-top: -25%}
+.col-xs-4_1, .col-xs-4_2, .col-xs-4_3, .col-xs-4_4 {margin-top: 5%;margin-bottom: 5%;height: 150px;}
 .boton, .boton1, .boton2 {width: 110%;height: 150px;margin-left: -5%;text-align: center;color: #fff;font-size: 1.7em;background-color: #B72123;border-radius: 8px;border: 2px solid black;}
-.img_pelu:hover, .img_massage:hover, .img_estetica:hover, .img_pedicura:hover, .img_pelu_tres:hover, .img_massage_tres:hover, .img_fisioterapia_tres:hover {
-    border-color: #fff;
-    opacity: 0.5;
-}
+.img_pelu:hover, .img_massage:hover, .img_estetica:hover, .img_pedicura:hover, .img_pelu_tres:hover, .img_massage_tres:hover, .img_fisioterapia_tres:hover {border-color: #fff;opacity: 0.5;}
 
 

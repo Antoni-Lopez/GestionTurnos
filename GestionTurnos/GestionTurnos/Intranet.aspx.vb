@@ -10,8 +10,6 @@ Public Class Intranet
 
             clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
             Button1.Attributes.Add("onclick", "return Comprueba()")
-            'Aquí deberemos recibir desde la Bd valores como, img del logo, direccion
-            'Y por supuesto, verificar el usuario y la pass que nos diga el usuario.
             Dim ruta_img As String = "img/PEINARTE-LOG0.png"
             Dim direccion_tablet As String = "Cristo de la Epidemia, 52, Málaga"
 

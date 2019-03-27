@@ -27,13 +27,46 @@
         
         </script>
         <script type="text/javascript">   
+
             //Acciones tras cargar la página
+            //Primero nos creamos una función que se encargara 
+            //De lanzar todas las funciones que queramos que se ejecuten al cargar la página.
+             //Acciones tras cargar la página
             window.onload = function () {
+                comprobacion(); 
+            } 
+
+            function comprobacion() {
+                var URLsearch = window.location.search;
+                 if (URLsearch == '?IDCliente=1&IDCentro=2&timer=1') {
+                    LanzaAviso("No tenemos timer ya que solo disponemos de 1 servicio.");
+                    desactivar_onclicks();
+                }
+                else {
+                    temporizador(5000);
+                    desactivar_onclicks();
+                }
                 mostrarEnPantalla = document.getElementById("textoMostrar1");
                 document.onkeydown = teclado;
-                desactivar_onclicks(); 
+                               
             }
 
+             //Timeout que se aplicara cuando el centro tenga + de 1 servicio.
+            function temporizador(limite) {
+                temporizador1 = setTimeout(function () {                  
+                    alert("Temporizador finalizado");
+                    redirigir();
+                }, 10000, "Javascript");
+            }
+            function clear() {
+                clearTimeout(temporizador1);
+            }
+            function redirigir() {
+                IDCliente = 1;
+                IDCentro = 2;
+                redirigir = "Servicios.aspx?IDCliente=" + IDCliente + "&IDCentro=" + IDCentro;
+                window.location = redirigir;
+            }
             /*La pantalla de inicio muestra un 0 y solo permitirá la entrada de los 
             dígitos del teclado de la calculadora a los que hemos llamado 'numero' ,
             solo cuando el div de sms esté activado.*/
@@ -93,10 +126,10 @@
                         //Como sí lo está, ocultamos el contenedor de solicitar turno sin sms,
                         //ocultamos el contenedor de turno sin sms desactivandolo
                         //y le damos al contenedor de sms un tamaño del 100 %
+                        activar_onclicks();
                         document.getElementById('cuadro1').style.display = 'none';
                         document.getElementById('cuadro2').style.width = '100%';
-                        document.getElementById('tabla_normal').style.opacity = '1';
-                        activar_onclicks();
+                        document.getElementById('tabla_normal').style.opacity = '1';                        
                     }
                     //Como no está visible el cuadro de solicitar turno, lo activamos, y volvemos el contenedor de sms a
                     //su estado normal.
@@ -128,6 +161,8 @@
                 }
             }
 
+           
+
             //Funcion para desactivar los onclicks de la tabla numerica.
             function desactivar_onclicks() {
               document.getElementById('tabla_normal').style.pointerEvents = "none";
@@ -137,26 +172,21 @@
               document.getElementById('tabla_normal').style.pointerEvents = "auto";
             }
 
-            ///Sección para la función incrementar.
-
             //Variables necesarias para el contador.
 
-            var contador = 0;
             var limite = 99;
             var total = 0;
-
-            function incrementar()
-            {
-
+            function incrementar() {
+                var contador = document.getElementById("contador").innerHTML;
+                //incrementamos el contador.
+                contador++;
+                clear();
+                temporizador(10000);
                 //Esto lo dejamos de momento para aspecto visual,
                 //Aunque aquí deberemos de contactar con el servidor para retomar el numero de turno que tenemos en la bd.
 
-                //incrementamos el contador.
-                contador++;
-
                 var a = contador.toString();
                 var b = a.length;
-
                 if (contador <= limite) {
                     //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
                     if (b == '1') {
@@ -166,7 +196,6 @@
                     }
                     //sino se muestran normales, 10....100
                     else {
-                        var contador_fixed = contador;
                         escribir = document.getElementById("contador");
                         escribir.innerHTML = contador;
                     }
@@ -179,14 +208,16 @@
                     var contador_fixed = '0' + contador;
                     escribir = document.getElementById("contador");
                     escribir.innerHTML = contador_fixed;
+
                 }
-            } 
+            }
 
         </script>          
     </head>
 <body>
     <!-- Nueva interfaz con Bootstrap siguiend ejemplo de Toni -->
-    <div class="separacion"></div>
+    <div id="probando_timer2"></div>
+    <div class="separacion" id="probando_timer" onclick="activar_onclicks()"></div>
     <div class="container-fluid contenedor_principal">
         <form id="Formulario1" method="post" runat="server" class="form-horizontal1">
             <div class="interfaz1">
@@ -198,13 +229,13 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6 contador-turnos "> 
-                            <h3 class="ciudad">Málaga</h3>
+                            <h3 class="ciudad" onclick="prueba()">Málaga</h3>
                             <p class="direccion">Cristo de la Epidemia, 52</p>
                             <img class="numero_turno" src="img/turno.png" />
-                            <p class="contador_turnos" id="contador"></p>
+                            <p class="contador_turnos" id="contador">40</p>
                             <h3 class="frase1">Reserva tu Turno!</h3>
                             <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
-                            <p class="info_web">Peinarte.net</p>
+                            <p class="info_web" onclick="comprobacion()">Peinarte.net</p>
                         </div>
                         <div id="cuadro1" class="col-xs-3 cuadro-normal" onclick="incrementar()"> 
                             <i class="far fa-clock"></i>
@@ -250,17 +281,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--
-                        
-                        -->
                     </div>
                 </div>
             </div>
         </form>
     </div>
-
-    <div class="separacion"></div>
-
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -36,6 +36,15 @@
                 return false
             }
         }
+        /*
+        var time;
+        function temporizador() {
+            time = 1;
+            setInterval(function () {
+
+            }
+        }
+        */
     </script>
 </head>
 <body >
