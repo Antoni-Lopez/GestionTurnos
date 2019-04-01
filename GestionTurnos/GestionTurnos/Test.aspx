@@ -31,51 +31,82 @@
             //Acciones tras cargar la página
             //Primero nos creamos una función que se encargara 
             //De lanzar todas las funciones que queramos que se ejecuten al cargar la página.
-             //Acciones tras cargar la página
-            window.onload = function () {
-                comprobacion(); 
+            //Acciones tras cargar la página
+            function addLoadEvent(func) { 
+                var oldonload = window.onload; 
+                if (typeof window.onload != 'function') { 
+                    window.onload = func; 
+                } 
+                else { 
+                    window.onload = function() { 
+                        oldonload(); 
+                        func(); 
+                    } 
+                } 
             } 
+            addLoadEvent(cuandocarga); 
 
-            function comprobacion() {
-                var URLsearch = window.location.search;
-                 if (URLsearch == '?IDCliente=1&IDCentro=2&timer=1') {
-                    LanzaAviso("No tenemos timer ya que solo disponemos de 1 servicio.");
+            //Funcion para activar el teclado númerico y cuando pulsemos aparezca el numero en dicho teclado.
+            function activar_teclado() {
+                mostrarEnPantalla = document.getElementById("textoMostrar1");
+                document.onkeydown = teclado;                
+            }
+            //Función para comprobación del temporizador. 
+            function cuandocarga() {
+                var tempo = getUrlVars()["timer"];
+                if (tempo == 1) {
                     desactivar_onclicks();
+                    LanzaAviso("No tenemos timer ya que solo disponemos de 1 servicio.");                    
                 }
                 else {
                     temporizador(5000);
                     desactivar_onclicks();
                 }
-                mostrarEnPantalla = document.getElementById("textoMostrar1");
-                document.onkeydown = teclado;
-                               
             }
-
+                       
+            //Funcion para obtener datos de la queryStream y poder devolver a la pagina servicios.
+            function getUrlVars()
+            {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for(var i = 0; i < hashes.length; i++)
+                {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+            
              //Timeout que se aplicara cuando el centro tenga + de 1 servicio.
             function temporizador(limite) {
-                temporizador1 = setTimeout(function () {                  
-                    alert("Temporizador finalizado");
+                temporizador1 = setTimeout(function () {
                     redirigir();
-                }, 10000, "Javascript");
-            }
-            function clear() {
-                clearTimeout(temporizador1);
+                }, limite, "Javascript");
             }
             function redirigir() {
-                IDCliente = 1;
-                IDCentro = 2;
-                redirigir = "Servicios.aspx?IDCliente=" + IDCliente + "&IDCentro=" + IDCentro;
-                window.location = redirigir;
+                //Obtenemos los valores que nos vienen dados por la QueryStream.
+                var IDCliente = getUrlVars()["IDCliente"];
+                IDCentro = getUrlVars()["IDCentro"];
+                IDServicio  = getUrlVars()["IDServicio"];
+                redireccionar = getUrlVars()["NServicios"];
+                //Mientras el número de servicios sea distinto a 1, redirigimos a la pagina Servicios.aspx
+                if (redireccionar != 1) {
+                    window.location = "Servicios.aspx?IDCliente=" + IDCliente + "&IDCentro=" + IDCentro + "&NServicios=" + redireccionar + "&IDServicio=" + IDServicio;
+                }
+                else {
+                    LanzaAviso("Solo disponemos de 1 servicio!");
+                }
+                
             }
+
             /*La pantalla de inicio muestra un 0 y solo permitirá la entrada de los 
             dígitos del teclado de la calculadora a los que hemos llamado 'numero' ,
             solo cuando el div de sms esté activado.*/
             x = "0";
-
             /*Se inician las variales en la pantalla: 1 es un número escrito por primera 
             vez, mientras que 0 son las cifras que completan nuestro número*/
             x1 = 1;
-
             //Función numero para registrar la escritura en pantalla
             function numero(xx) {
                 // Si x es igual a 0 el número que se muestra en pantalla es igual a 1.
@@ -114,7 +145,7 @@
                 mostrarEnPantalla.value = 0;
                 x = "0";
             }
-            function MostrarOcultar(capa, enlace) {
+            function MostrarOcultar(capa, enlace) {  
                 //Nos creamos la variable prueba para saber la resolucón de la Screen.
                 var resolucion = screen.width;
                 //Comprobamos si la res. es <de 800px para tomar las medidas oportunas(responsive).
@@ -142,12 +173,17 @@
                     }
                 }
                 else {
-                    //Comprobamos si el panel de sms, está visible.
+                    //Comprobamos si el panel normal está opaco, sí lo está entramos en la condicion.
                     if (document.getElementById('tabla_normal').style.opacity == "0.2") {
+                        
+                        activar_onclicks();                          
                         document.getElementById('cuadro1').style.display = 'none';
                         document.getElementById('cuadro2').style.width = '50%';
                         document.getElementById('tabla_normal').style.opacity = '1';
-                        activar_onclicks();
+                        tempo(5000);
+                        
+                                             
+                        
                     }
                     //Como no está visible el cuadro de solicitar turno, lo activamos, y volvemos el contenedor de sms a
                     //su estado normal.
@@ -155,14 +191,49 @@
                         document.getElementById('tabla_normal').style.opacity = '0.2';
                         document.getElementById('cuadro1').style.display = 'Block';
                         document.getElementById('cuadro2').style.width = '25%';
-                        mostrarEnPantalla.value = 0;
+                        mostrarEnPantalla.value = '';
                         desactivar_onclicks();                        
                     }
+                    activar_teclado();
+                }
+            }
+            //funcion temporizador2 para comprobación de datos.
+            function tempo(limitin) {
+                var div_valor = document.getElementById('cuadro2').style.width;
+                var cuadro = "50%";
+                if (div_valor == cuadro) {
+                    tempor = setTimeout(function () {    
+                        devolver_estado();
+                    }, limitin, "Javascript");
                 }
             }
 
-           
+            //Función para limpiar el time del temporizador.
+            function clear(x) {
+                clearTimeout(x);
+            }
 
+            //Funcion para devolver a su estado cuadro de turno y cuadro de sms
+            function devolver_estado() {
+                //Nos creamos la variable prueba para saber la resolucón de la Screen.
+                var resolucion2 = screen.width;
+                var mostrarEnPantalla = document.getElementById("textoMostrar1");
+
+                if (resolucion2 <= 800) {
+                    document.getElementById('tabla_normal').style.opacity = '0.2';
+                    document.getElementById('cuadro1').style.display = 'Block';
+                    document.getElementById('cuadro2').style.width = '50%';
+                    mostrarEnPantalla.value = '';
+                    desactivar_onclicks(); 
+                }
+                else {
+                    document.getElementById('tabla_normal').style.opacity = '0.2';
+                    document.getElementById('cuadro1').style.display = 'Block';
+                    document.getElementById('cuadro2').style.width = '25%';
+                    mostrarEnPantalla.value = '';
+                    
+                }
+            }
             //Funcion para desactivar los onclicks de la tabla numerica.
             function desactivar_onclicks() {
               document.getElementById('tabla_normal').style.pointerEvents = "none";
@@ -173,66 +244,104 @@
             }
 
             //Variables necesarias para el contador.
-
             var limite = 99;
             var total = 0;
             function incrementar() {
+
                 var contador = document.getElementById("contador").innerHTML;
+                var chequeo_url = extraccion();
+
                 //incrementamos el contador.
                 contador++;
-                clear();
-                temporizador(10000);
-                //Esto lo dejamos de momento para aspecto visual,
-                //Aunque aquí deberemos de contactar con el servidor para retomar el numero de turno que tenemos en la bd.
-
+                
+                //variables para comprobacion de si el numero es 1 ó 01
                 var a = contador.toString();
                 var b = a.length;
-                if (contador <= limite) {
-                    //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
-                    if (b == '1') {
-                        var contador_fixed = '0' + contador;
-                        escribir = document.getElementById("contador");
-                        escribir.innerHTML = contador_fixed;
-                    }
-                    //sino se muestran normales, 10....100
-                    else {
-                        escribir = document.getElementById("contador");
-                        escribir.innerHTML = contador;
-                    }
-                }
-                //Sí superamos el valor 100 del contador.
-                else {
-                    total = contador + 1;
-                    LanzaAviso("el contador es:" + contador + " y el total es: " + total);
-                    contador = 1;
-                    var contador_fixed = '0' + contador;
-                    escribir = document.getElementById("contador");
-                    escribir.innerHTML = contador_fixed;
 
+                //Comprobamos a traves de la funcion extraccion, si la url nos dice si son 1 o + servicios.
+                //si es true, estamos en el caso de 1 solo servicio.
+                if (chequeo_url == true) {
+                    if (contador <= limite) {
+                        //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
+                        if (b == '1') {
+                                var contador_fixed = '0' + contador;
+                                escribir = document.getElementById("contador");
+                                escribir.innerHTML = contador_fixed;
+                        }
+                        //sino se muestran normales, 10....100
+                        else {
+                                escribir = document.getElementById("contador");
+                                escribir.innerHTML = contador;
+                            }
+                        }
+                        //Sí superamos el valor 100 del contador.
+                        else {
+                            total = contador + 1;
+                            LanzaAviso("el contador es:" + contador + " y el total es: " + total);
+                            contador = 1;
+                            var contador_fixed = '0' + contador;
+                            escribir = document.getElementById("contador");
+                            escribir.innerHTML = contador_fixed;
+                        }                        
+                } 
+                //Como es false, nos encontramos en el caso de que disponemos de más de 1 servicio.
+                else {
+                    //En está situación, deberiamos de limpiar el temporizador,
+                    //Lanzarlo de nuevo.
+
+                    //clear();
+                    //temporizador(5000);
+
+                    if (contador <= limite) {
+                        //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
+                        if (b == '1') {
+                                var contador_fixed = '0' + contador;
+                                escribir = document.getElementById("contador");
+                                escribir.innerHTML = contador_fixed;
+                        }
+                        //sino se muestran normales, 10....100
+                        else {
+                                escribir = document.getElementById("contador");
+                                escribir.innerHTML = contador;
+                            }
+                    }
+                    //Sí superamos el valor 100 del contador.
+                    else {
+                            total = contador + 1;
+                            LanzaAviso("el contador es:" + contador + " y el total es: " + total);
+                            contador = 1;
+                            var contador_fixed = '0' + contador;
+                            escribir = document.getElementById("contador");
+                            escribir.innerHTML = contador_fixed;
+                        }                        
                 }
             }
 
+            function numero_timer(x,tempori,limpiar) {
+                clear(limpiar);
+                tempo(tempori);
+                numero(x);
+            }
         </script>          
     </head>
 <body>
     <!-- Nueva interfaz con Bootstrap siguiend ejemplo de Toni -->
-    <div id="probando_timer2"></div>
-    <div class="separacion" id="probando_timer" onclick="activar_onclicks()"></div>
     <div class="container-fluid contenedor_principal">
         <form id="Formulario1" method="post" runat="server" class="form-horizontal1">
             <div class="interfaz1">
                 <div class="interfaz-header"></div>
                 <div class="interfaz-cuerpo">
                     <div class="row banner">
-                        <a href="www.peinarte.net"><img class="logo_banner" src="img/PEINARTE-LOG0.png" /></a>
-                        <h4 class="eslogan_banner">Que no te tomen el Pelo! <i class="fas fa-cut" style="color: #CF3B9A;"></i></h4>
+                        <a href="www.peinarte.net"><asp:Literal ID="banner_img" runat="server"></asp:Literal></a>
+                        <p class="tipo_servicio" id="poner_nombre_turnos" runat="server"></p>
+                        <h4 class="eslogan_banner" id="text_banner" runat="server">Que no te tomen el Pelo! <i class="fas fa-cut" style="color: #CF3B9A;"></i></h4>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 contador-turnos "> 
-                            <h3 class="ciudad" onclick="prueba()">Málaga</h3>
+                            <h3 class="ciudad" onclick="elemento()">Málaga</h3>
                             <p class="direccion">Cristo de la Epidemia, 52</p>
                             <img class="numero_turno" src="img/turno.png" />
-                            <p class="contador_turnos" id="contador">40</p>
+                            <p class="contador_turnos" id="contador">18</p>
                             <h3 class="frase1">Reserva tu Turno!</h3>
                             <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
                             <p class="info_web" onclick="comprobacion()">Peinarte.net</p>
@@ -257,25 +366,25 @@
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("1")' />1</td>
-                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero("2")' />2</td>
-                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("3")' />3</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("1",5000,tempor)' />1</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("2",5000,tempor)' />2</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("3",5000,tempor)' />3</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("4")' />4</td>
-                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero("5")' />5</td>
-                                         <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("6")' />6</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("4",5000,tempor)' />4</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("5",5000,tempor)' />5</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("6",5000,tempor)' />6</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("7")' />7</td>
-                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero("8")' />8</td>
-                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero("9")' />9</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("7",5000,tempor)' />7</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("8",5000,tempor)' />8</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("9",5000,tempor)' />9</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero("0")' />0</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("0",5000,tempor)' />0</td>
                                         <td colspan="2" class="segunda_linea_tabla"><button type="button" class="botones" onclick='borradoPantalla()' />Borrar</td>
                                     </tr>
                                 </tbody>

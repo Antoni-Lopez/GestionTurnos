@@ -36,15 +36,7 @@
                 return false
             }
         }
-        /*
-        var time;
-        function temporizador() {
-            time = 1;
-            setInterval(function () {
 
-            }
-        }
-        */
     </script>
 </head>
 <body >
@@ -64,15 +56,13 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label texto_inputs">Email</label>
                     <div class="col-sm-10">
-                        <asp:TextBox ID="txtUsuario" runat="server" class="form-control form-control-lg" value="email@towerplane.com"></asp:TextBox> 
-                        <!--   <input type="text" class="form-control form-control-lg" id="Email_input" value="email@towerplane.com"> -->
+                        <asp:TextBox ID="txtUsuario" runat="server" class="form-control form-control-lg" value="hola@hola.com"></asp:TextBox> 
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label texto_inputs">Contraseña</label>
                     <div class="col-sm-10">
-                        <asp:TextBox ID="TextPass" class="form-control form-control-lg texto_inputs" TextMode="Password" runat="server"></asp:TextBox> 
-                        <!--  <input type="password" id="password_input" class="form-control form-control-lg texto_inputs" /> -->
+                        <asp:TextBox ID="TextPass" class="form-control form-control-lg texto_inputs" TextMode="Password" runat="server" Text="1234"></asp:TextBox> 
                     </div>
                 </div>
                 <div class="raw div_checkbox">
