@@ -97,6 +97,7 @@
     <Content Include="Bootstrap\JS\bootbox.min.js" />
     <Content Include="Bootstrap\JS\bootstrap.min.js" />
     <Content Include="Bootstrap\JS\jquery-1.9.1.min.js" />
+    <Content Include="Chorra.aspx" />
     <Content Include="Css\css1.css" />
     <Content Include="Css\css_querys.css" />
     <Content Include="Css\intranet.css" />
@@ -109,6 +110,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chorra.aspx.designer.vb">
+      <DependentUpon>Chorra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chorra.aspx.vb">
+      <DependentUpon>Chorra.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
     <Compile Include="Clases\ClaseGeneral.vb" />
@@ -153,6 +161,7 @@
       <DependentUpon>Printer.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="PrintHelper.vb" />
     <Compile Include="Servicios.aspx.designer.vb">
       <DependentUpon>Servicios.aspx</DependentUpon>
     </Compile>

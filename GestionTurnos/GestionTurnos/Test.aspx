@@ -31,7 +31,6 @@
             //Acciones tras cargar la página
             //Primero nos creamos una función que se encargara 
             //De lanzar todas las funciones que queramos que se ejecuten al cargar la página.
-            //Acciones tras cargar la página
             function addLoadEvent(func) { 
                 var oldonload = window.onload; 
                 if (typeof window.onload != 'function') { 
@@ -63,7 +62,17 @@
                     desactivar_onclicks();
                 }
             }
-                       
+            function enviamos(url) {
+                //Obtenemos los valores que nos vienen dados por la QueryStream.
+                var IDCliente = getUrlVars()["IDCliente"];
+                IDCentro = getUrlVars()["IDCentro"];
+                IDServicio  = getUrlVars()["IDServicio"];
+                NServicios = getUrlVars()["NServicios"];
+                abrir_web = "Printer.aspx?IDCliente=" + IDCliente + "&IDCentro=" + IDCentro + "&NServicios=" + NServicios + "&IDServicio=" + IDServicio;
+                //alert(abrir_web);
+                window.open("Printer.aspx?IDCliente=" + IDCliente + "&IDCentro=" + IDCentro + "&NServicios=" + NServicios + "&IDServicio=" + IDServicio);
+            }
+
             //Funcion para obtener datos de la queryStream y poder devolver a la pagina servicios.
             function getUrlVars()
             {
@@ -98,6 +107,16 @@
                     LanzaAviso("Solo disponemos de 1 servicio!");
                 }
                 
+            }
+
+            //Funcion para enviar a la pagina IMprimir.
+            function impresion() {
+                //Obtenemos los valores que nos vienen dados por la QueryStream.
+                var IDCliente = getUrlVars()["IDCliente"];
+                IDCentro = getUrlVars()["IDCentro"];
+                IDServicio  = getUrlVars()["IDServicio"];
+                NServicios = getUrlVars()["NServicios"];
+                window.location = "Printer.aspx?IDCliente=" + IDCliente + "&IDCentro=" + IDCentro + "&IDServicio=" + IDServicio + "&NServicios=" + NServicios;
             }
 
             /*La pantalla de inicio muestra un 0 y solo permitirá la entrada de los 
@@ -142,6 +161,8 @@
             }                   
             //Borrado de todos los numeros escritos en el input.
             function borradoPantalla() {
+                clear(tempor);
+                tempo(10000);
                 mostrarEnPantalla.value = 0;
                 x = "0";
             }
@@ -180,7 +201,7 @@
                         document.getElementById('cuadro1').style.display = 'none';
                         document.getElementById('cuadro2').style.width = '50%';
                         document.getElementById('tabla_normal').style.opacity = '1';
-                        tempo(5000);
+                        tempo(10000);
                         
                                              
                         
@@ -207,10 +228,76 @@
                     }, limitin, "Javascript");
                 }
             }
-
             //Función para limpiar el time del temporizador.
             function clear(x) {
                 clearTimeout(x);
+            }
+
+            //Funcion para incrementar el contador.
+            function incrementar() {
+                //Variables necesarias para el contador.
+                var limite = 99;
+                var total = 0;
+                var contador = document.getElementById("contador").innerHTML;
+                var NumeroServicios = getUrlVars()["NServicios"];
+
+                //incrementamos el contador.
+                contador++;
+
+                //variables para comprobacion de si el numero es 1 ó 01
+                var a = contador.toString();
+                var b = a.length;
+
+                 //Comprobamos a traves de la funcion getUrlVars(), el número de servicios de que dispone este local.
+                //si estamos en el caso de que solo dispone de 1 solo servicio.
+                if (NumeroServicios == 1) {
+                    if (contador <= limite) {
+                        //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
+                        if (b == '1') {
+                            var contador_fixed = '0' + contador;
+                            escribir = document.getElementById("contador");
+                            escribir.innerHTML = contador_fixed;
+                        }
+                        //sino se muestran normales, 10....100
+                        else {
+                            escribir = document.getElementById("contador");
+                            escribir.innerHTML = contador;
+                        }
+                    }
+                    //Sí superamos el valor 100 del contador.
+                    else {
+                            total = contador + 1;
+                            LanzaAviso("el contador es:" + contador + " y el total es: " + total);
+                            contador = 1;
+                            var contador_fixed = '0' + contador;
+                            escribir = document.getElementById("contador");
+                            escribir.innerHTML = contador_fixed;
+                    }
+                }
+                else {
+                    if (contador <= limite) {
+                        //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
+                        if (b == '1') {
+                                var contador_fixed = '0' + contador;
+                                escribir = document.getElementById("contador");
+                                escribir.innerHTML = contador_fixed;
+                        }
+                        //sino se muestran normales, 10....100
+                        else {
+                                escribir = document.getElementById("contador");
+                                escribir.innerHTML = contador;
+                        }
+                    }
+                    //Sí superamos el valor 100 del contador.
+                    else {
+                            total = contador + 1;
+                            LanzaAviso("el contador es:" + contador + " y el total es: " + total);
+                            contador = 1;
+                            var contador_fixed = '0' + contador;
+                            escribir = document.getElementById("contador");
+                            escribir.innerHTML = contador_fixed;
+                    }
+                }
             }
 
             //Funcion para devolver a su estado cuadro de turno y cuadro de sms
@@ -242,81 +329,6 @@
             function activar_onclicks() {
               document.getElementById('tabla_normal').style.pointerEvents = "auto";
             }
-
-            //Variables necesarias para el contador.
-            var limite = 99;
-            var total = 0;
-            function incrementar() {
-
-                var contador = document.getElementById("contador").innerHTML;
-                var chequeo_url = extraccion();
-
-                //incrementamos el contador.
-                contador++;
-                
-                //variables para comprobacion de si el numero es 1 ó 01
-                var a = contador.toString();
-                var b = a.length;
-
-                //Comprobamos a traves de la funcion extraccion, si la url nos dice si son 1 o + servicios.
-                //si es true, estamos en el caso de 1 solo servicio.
-                if (chequeo_url == true) {
-                    if (contador <= limite) {
-                        //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
-                        if (b == '1') {
-                                var contador_fixed = '0' + contador;
-                                escribir = document.getElementById("contador");
-                                escribir.innerHTML = contador_fixed;
-                        }
-                        //sino se muestran normales, 10....100
-                        else {
-                                escribir = document.getElementById("contador");
-                                escribir.innerHTML = contador;
-                            }
-                        }
-                        //Sí superamos el valor 100 del contador.
-                        else {
-                            total = contador + 1;
-                            LanzaAviso("el contador es:" + contador + " y el total es: " + total);
-                            contador = 1;
-                            var contador_fixed = '0' + contador;
-                            escribir = document.getElementById("contador");
-                            escribir.innerHTML = contador_fixed;
-                        }                        
-                } 
-                //Como es false, nos encontramos en el caso de que disponemos de más de 1 servicio.
-                else {
-                    //En está situación, deberiamos de limpiar el temporizador,
-                    //Lanzarlo de nuevo.
-
-                    //clear();
-                    //temporizador(5000);
-
-                    if (contador <= limite) {
-                        //este bucle es para los numeros de 1 a 9, para que se muestren como 01...09
-                        if (b == '1') {
-                                var contador_fixed = '0' + contador;
-                                escribir = document.getElementById("contador");
-                                escribir.innerHTML = contador_fixed;
-                        }
-                        //sino se muestran normales, 10....100
-                        else {
-                                escribir = document.getElementById("contador");
-                                escribir.innerHTML = contador;
-                            }
-                    }
-                    //Sí superamos el valor 100 del contador.
-                    else {
-                            total = contador + 1;
-                            LanzaAviso("el contador es:" + contador + " y el total es: " + total);
-                            contador = 1;
-                            var contador_fixed = '0' + contador;
-                            escribir = document.getElementById("contador");
-                            escribir.innerHTML = contador_fixed;
-                        }                        
-                }
-            }
-
             function numero_timer(x,tempori,limpiar) {
                 clear(limpiar);
                 tempo(tempori);
@@ -338,13 +350,13 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6 contador-turnos "> 
-                            <h3 class="ciudad" onclick="elemento()">Málaga</h3>
-                            <p class="direccion">Cristo de la Epidemia, 52</p>
+                            <h3 class="ciudad">Málaga</h3>
+                            <p class="direccion" onclick="enviamos()">Cristo de la Epidemia, 52</p>
                             <img class="numero_turno" src="img/turno.png" />
-                            <p class="contador_turnos" id="contador">18</p>
+                            <p class="contador_turnos" id="contador">90</p>
                             <h3 class="frase1">Reserva tu Turno!</h3>
                             <p class="texto_primer_panel">Solicita turno directamente o introduce tu número de móvil y te avisaremos mediante un SMS gratuito cuando te falten pocos turnos para la cita...</p>
-                            <p class="info_web" onclick="comprobacion()">Peinarte.net</p>
+                            <p class="info_web">Peinarte.net</p>
                         </div>
                         <div id="cuadro1" class="col-xs-3 cuadro-normal" onclick="incrementar()"> 
                             <i class="far fa-clock"></i>
@@ -366,25 +378,25 @@
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("1",5000,tempor)' />1</td>
-                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("2",5000,tempor)' />2</td>
-                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("3",5000,tempor)' />3</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("1",10000,tempor)' />1</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("2",10000,tempor)' />2</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("3",10000,tempor)' />3</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("4",5000,tempor)' />4</td>
-                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("5",5000,tempor)' />5</td>
-                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("6",5000,tempor)' />6</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("4",10000,tempor)' />4</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("5",10000,tempor)' />5</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("6",10000,tempor)' />6</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("7",5000,tempor)' />7</td>
-                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("8",5000,tempor)' />8</td>
-                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("9",5000,tempor)' />9</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("7",10000,tempor)' />7</td>
+                                        <td class="segunda_linea_tabla"><button type="button" class="botones" onclick='numero_timer("8",10000,tempor)' />8</td>
+                                        <td class="tercera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("9",10000,tempor)' />9</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>
-                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("0",5000,tempor)' />0</td>
+                                        <td class="primera_linea_tabla"><button type="button" class="botones" onclick='numero_timer("0",10000,tempor)' />0</td>
                                         <td colspan="2" class="segunda_linea_tabla"><button type="button" class="botones" onclick='borradoPantalla()' />Borrar</td>
                                     </tr>
                                 </tbody>

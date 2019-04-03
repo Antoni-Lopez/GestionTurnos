@@ -10,15 +10,17 @@ Public Class Printer
         Dim clsGeneral As New ClaseGeneral
         clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
 
+        Dim Name_turno As Integer, IDCliente As Integer, IDCentro As Integer, Nombre_servicio As String
+        IDCliente = Request.QueryString("IDCliente")
+        IDCentro = Request.QueryString("IDCentro")
+        Name_turno = Request.QueryString("IDServicio")
+
         Dim ruta_imagen As String = "img/PEINARTE-LOG0(650x300).png"
         Dim ruta_qr As String = "img/20190329171031.jpg"
         Dim ciudad As String = "Alicante"
         Dim direccion As String = "Carlota Pasaron anunciacion, 25 2ºA"
         Dim hora As String = "16:00"
         Dim fecha As String = "29/03/19"
-
-        Dim Name_turno As String = "Peluquería"
-
 
         logo_banner.Text = "<img src=" & ruta_imagen & " id='logo_banner' class='img_logo' />"
         adres.InnerHtml = direccion
@@ -27,7 +29,29 @@ Public Class Printer
 
         fecha_hora_ticket.InnerHtml = "" & fecha & " - " & hora
         qr_img.Text = "<img src=" & ruta_qr & " id='qr_img' class='img_qr' />"
-        servicio_mostrar.InnerHtml = "Servicio de " & Name_turno
+
+        Select Case Name_turno
+            Case 1
+                Nombre_servicio = "Servicio de peluquería"
+                servicio_mostrar.InnerHtml = Nombre_servicio
+            Case 2
+                Nombre_servicio = "Servicio de masajes"
+                servicio_mostrar.InnerHtml = Nombre_servicio
+            Case 3
+                Nombre_servicio = "Servicio de fisioterapia"
+                servicio_mostrar.InnerHtml = Nombre_servicio
+            Case 4
+                Nombre_servicio = "Servicio de Manícura/Pedícura"
+                servicio_mostrar.InnerHtml = Nombre_servicio
+        End Select
+
+
+
+
+
+
+
+
 
 
 

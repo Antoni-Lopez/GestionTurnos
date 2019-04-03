@@ -33,6 +33,17 @@
         function Comprueba() {
             if (!ComprobarEmail(document.getElementById('txtUsuario').value)){
                 LanzaAviso("Por favor, comprueba el email.");
+                if (defaultCheck1.Checked)
+                {
+                    Properties.Settings.Default.userName = textBoxUserName.Text;
+                    Properties.Settings.Default.passUser = textBoxUserPass.Text;
+                    Properties.Settings.Default.Save();
+                }
+                if (Properties.Settings.Default.userName != string.Empty)
+                {
+                   textBoxUserName.Text = Properties.Settings.Default.userName;
+                   textBoxUserPass.Text = Properties.Settings.Default.passUser;
+                }
                 return false
             }
         }

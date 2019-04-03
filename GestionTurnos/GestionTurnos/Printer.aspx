@@ -13,6 +13,40 @@
     <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
 
     <title></title>
+    <script type="text/javascript">
+
+        function addLoadEvent(func) { 
+                var oldonload = window.onload; 
+                if (typeof window.onload != 'function') { 
+                    window.onload = func; 
+                } 
+                else { 
+                    window.onload = function() { 
+                        oldonload(); 
+                        func(); 
+                    } 
+                } 
+            } 
+            addLoadEvent(PrintWindow); 
+        function PrintWindow() {
+
+            var isIE11 = !!navigator.userAgent.match(/Trident.*rv[ :]*11\./);
+            if (navigator.appName == "Microsoft Internet Explorer" || isIE11== true) {
+
+                var PrintCommand = '<OBJECT ID="PrintCommandObject" WIDTH=0 HEIGHT=0 ';
+                PrintCommand += 'CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+                document.body.insertAdjacentHTML('beforeEnd', PrintCommand);
+                PrintCommandObject.ExecWB(6, 2); PrintCommandObject.outerHTML = "";
+                window.close();
+
+            }
+
+            else {
+                  window.print();
+            }
+
+          }
+</script>
     <style type="text/css">
         /*
         .cont_principal{margin: -10px 1% 0 -20px;max-width: 600px;height: auto;}
@@ -114,8 +148,8 @@
             <div class="row vista_turno" id="mostrar_turno1" runat="server">88</div>
             <p class="row texto_descarga ">Descarga nuestra App</p>
             <asp:Literal ID="qr_img1" runat="server"></asp:Literal>
+                    </div>
             -->
-        </div>
     </form>
 </body>
 </html>
