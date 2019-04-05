@@ -334,6 +334,12 @@
                 tempo(tempori);
                 numero(x);
             }
+            function ok() {
+                var ntelefono = document.getElementById("textoMostrar1").value;
+                alert("number phone=" + ntelefono);
+                incrementar();
+                MostrarOcultar('');
+            }
         </script>          
     </head>
 <body>
@@ -350,7 +356,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6 contador-turnos "> 
-                            <h3 class="ciudad">Málaga</h3>
+                            <h3 class="ciudad" onclick="prueba()">Málaga</h3>
                             <p class="direccion" onclick="enviamos()">Cristo de la Epidemia, 52</p>
                             <img class="numero_turno" src="img/turno.png" />
                             <p class="contador_turnos" id="contador">90</p>
@@ -374,7 +380,7 @@
                                     <tr>
                                         <th scope="row"></th>
                                         <th colspan="2" class="col-xs-3 cuadro_texto"><input type="text" id="textoMostrar1" class="cuadro_texto2"/></th>
-                                        <th class="col-xs-3 cuadro_ok"> OK </th>
+                                        <th class="col-xs-3 cuadro_ok" onclick="ok()"> OK </th>
                                     </tr>
                                     <tr>
                                         <th scope="row"></th>

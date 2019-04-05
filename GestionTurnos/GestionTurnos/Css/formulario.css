@@ -1,0 +1,84 @@
+﻿body {background-color: #F7F7F9;}
+
+/* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
+.verde {border: 2px solid green;}
+.rojo {border: 2px solid red;}
+.amarillo {border: 2px solid yellow;}
+.azul {border: 2px solid blue;}
+.rosa {border: 2px solid pink;}
+
+/* Estilo de nuestro formulario */
+.main_cuadro{margin: auto;margin-top: 5%;max-width: 800px;border: 1px solid black;padding: 10px;height: auto;background-color: #fff;box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);margin-bottom: 15%;}
+.eleccion{margin:-1.3% 0 0 -1.3%; width: 102.8%; height: 75px;}
+.datos_delegado, .datos_medico {padding: 15px;text-align: center;font-family: Arial;font-size: 1.2em;background-color: #563D7C;color: #fff;}
+#cuadro_delegado {margin: 0 0 0 -.3%;width: 100%;height: auto;padding: 15px; border:3px dotted black;border-radius: 4px;}
+.label_textos {margin: 2% 4% 2% 2.5%;}
+.mis_inputs, .mail {width: 34%;height: 32px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.mail {margin-left: 2%;}
+.phone {margin-left: 0.7%;}
+.region {margin-left: -.5%;}
+.reggion {width: 75%;margin-left: -4%;}
+.siglas_gere, .siglas_dele {margin-left: -7%;}
+.input_siglas_gerente, .input_siglas_delegado {margin-left: -5%;width: 59%;}
+.input_siglas_delegado {width: 56% !important;}
+.padd {padding: 15px;}
+
+#cuadro_delegado1 {margin: 2.5% 0 0 -.3%;height: auto;padding: 15px;border: 3px dotted black;border-radius: 4px;}
+.paddi {padding: 26.4px;}
+.preguntas {width: 100%;text-align: center;font-size: 1.8em;}
+#cuadro_asiste {display: none;}
+
+#cuadro_delegado2 {margin: 2.5% 0 0 -.3%;width: 100%;height: auto;padding: 15px;border: 3px dotted black;border-radius: 4px;}
+
+.enviar {
+    background-color: #563D7C;
+    margin-left: 40%;
+    margin-bottom: 4%;
+    margin-top: 4%;
+    width: 20%;
+    font-size: 20px;
+    color: #fff;
+    opacity: 0;
+}
+
+.enviar:hover {
+        background-color: #fff;
+        color: #563D7C;
+        box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);
+        font-weight: bold;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+#Checkbox_asiste_si {}
+#Checkbox4{}
+
+
+#cuadro_medico {
+    margin: -2.7% 0 0 -1.3%;
+    width: 102.6%;
+    height: 50px;
+    opacity: 0;
+    display: none;
+}
+
+
+
+/* Media Querys para diseño Responsive.*/
+@media (max-width: 991px) {
+    #cuadro_delegado {margin: 5% 0 0 -.3%;}
+    .texto_nombre, .texto_apellidos,.texto_email{margin-left: 5%;}
+    .mis_inputs,.mail{width: 60%;}
+    .input_apellidos {margin-left: -1.1%;}
+    .label_textos {margin-left: 10%;}
+    .mail {margin-left: 2.4%;}
+}

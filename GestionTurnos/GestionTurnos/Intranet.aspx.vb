@@ -54,12 +54,13 @@ Public Class Intranet
         If Email = "hola@hola.com" And Password = "1234" Then
             IDCliente = 1
             IDRol = 4
-            NumServicios = 1
+            NumServicios = 3
             If IDRol = 4 Then
                 IDCentro = 2
             End If
             Return True
         End If
     End Function
+
 
 End Class

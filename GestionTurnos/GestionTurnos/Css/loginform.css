@@ -1,0 +1,31 @@
+﻿body {background-color: #F7F7F9;}
+/* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
+.verde {border: 2px solid green;}
+.rojo {border: 2px solid red;}
+.amarillo {border: 2px solid yellow;}
+.azul {border: 2px solid blue;}
+.rosa {border: 2px solid pink;}
+
+/* Estilo de nuestro formulario */
+.main_cuadro {margin: auto;margin-top: 15%;max-width: 800px;border: 1px solid black;padding: 10px;height: auto;background-color: #FFF;box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);}
+.header_maincuadro {margin: auto;width: 102.3%;background-color: #563D7C;margin-top: -1.2%;margin-left: -1.2%;height: 80px;border-bottom: 3px solid black;}
+.text_header {padding: 10px;color: #fff;width: 80%;margin-left: 2%;margin-top: 4%;}
+.label_email {margin-top: 3%;margin-left: 8%;}
+.label_pass {margin-top: 1.5%;margin-left: 8%;}
+.input_mail, .input_pass {margin-left: 8%;width: 80%;margin-top: 5px;}
+.input_checkbox {margin-left: 8% !important;}
+
+.enviar {background-color: #563D7C;margin-left: 40%;margin-bottom: 4%;width: 20%;font-size: 20px;}
+.enviar:hover {background-color: #fff;color: #563D7C;box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight:bold;}
+
+
+
+
+
+
+/* Media Querys para diseño Responsive.*/
+@media (max-width: 820px) {
+    .main_cuadro{max-width: 400px;}
+    .text_header {font-size: 20px !important;margin-top: 10%;}
+    .enviar{width: 25%; margin-left: 37.5%;margin-top: 8%;margin-bottom: 6%;}
+}
