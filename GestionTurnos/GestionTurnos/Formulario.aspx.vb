@@ -50,27 +50,36 @@
             troncho = "Aquí recibimos: userID=" & userID & " ,Rol=" & Rol & " ,Agrupacion=" & Agrupacion & " , Nombre=" & Nombre & " , Apellidos=" & Apellidos & " ,Numero=" & Numero & " ,Email=" & Email & " ,Region=" & Region & " , Siglas=" & Siglas & " ,Password=" & Password & " , Origen=" & Origen
             meua_prueba.InnerHtml = troncho
             texto_nombre.Text = Nombre
-            texto_apellidos.Text = Apellidos
+            'texto_apellidos.Text = Apellidos
             texto_email.Text = Email
             texto_phone.Text = Numero
             texto_region.Text = Region
 
-            Dim Sigla1 = Siglas
-            Dim Sigla2 = "¦"
-            Dim Buscar As Boolean
-            Buscar = Sigla1.Contains(Sigla2)
+            'Devolver una cadena de un array
+            Dim Sigla1 As String, Sigla2 As String
+            Dim c As Long, p As Long
+            Dim VArray() As String, VArray2() As String
 
-            If Buscar Then
-                Dim index As Integer
-                index = Sigla1.IndexOf(Sigla2)
-                If (index >= 0) Then
+            'Asignamos valores.
+            Sigla1 = Siglas
+            Sigla2 = Apellidos
 
-                End If
+            'Creamos el array, y cada "substring" se lo asignaremos
+            'a un elemento del array.
+            VArray = Split(Sigla1, "¦")
+            VArray2 = Split(Sigla2, "¦")
 
-                texto_gerente.Text = Siglas
-                texto_delegado.Text = index
 
-                Return True
-            End If
+            For c = LBound(VArray) To UBound(VArray)
+                texto_gerente.Text = VArray(0)
+                texto_delegado.Text = VArray(1)
+            Next
+
+            For p = LBound(VArray2) To UBound(VArray2)
+                apellido1.Text = VArray2(0)
+                apellido2.Text = VArray2(1)
+            Next
+            Return True
+        End If
     End Function
 End Class

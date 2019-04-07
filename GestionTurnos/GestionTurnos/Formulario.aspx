@@ -36,6 +36,18 @@
 
         function chorra() {
             alert("funcionamos o no???");
+            var compruebacheckbox1 = document.getElementById("chekbox_delegado");
+            var compruebacheckbox2 = document.getElementById("chekbox_medico");
+
+            if (compruebacheckbox1.checked == true && compruebacheckbox2.checked == false) {
+                
+                compruebacheckbox2.cheked = null;
+                document.getElementById('boton_enviar').style.opacity = '1';
+                $('#boton_enviar').show(3000);     
+                alert("entra en el if :)");
+                
+
+            }
         }
         function comprueba_checkbox2() {
             var check3 = document.getElementById("Checkbox_asiste_si");
@@ -75,7 +87,7 @@
             var check1 = document.getElementById("chekbox_delegado");
             var check2 = document.getElementById("chekbox_medico");
             check1.onclick = function () {
-                if (check1.checked != false) {
+                if (check1.checked == true) {
                     check2.checked = null;
                     document.getElementById('cuadro_medico').style.opacity = '0';
                     $('#cuadro_medico').hide("slow");
@@ -89,16 +101,35 @@
                     $('#boton_enviar').show(3000);                    
                 }
                 else {
+                    check1.checked = null;
+                    check2.checked = true;
+                    document.getElementById('cuadro_delegado').style.opacity = '0';
+                    $('#cuadro_delegado').hide("slow");
+                    document.getElementById('cuadro_delegado1').style.opacity = '0';
+                    $('#cuadro_delegado1').hide("slow");
+                    document.getElementById('cuadro_delegado2').style.opacity = '0';
+                    $('#cuadro_delegado2').hide("slow");
+                    document.getElementById('boton_enviar').style.opacity = '0';
+                    $('#boton_enviar').hide("slow");
+                    document.getElementById('cuadro_medico').style.opacity = '1';
+                    $('#cuadro_medico').show(3000);
+                    /*
+                    check2.checked = true;
                     document.getElementById('cuadro_delegado').style.opacity = '0';
                     $('#cuadro_delegado').hide("slow");
                     document.getElementById('cuadro_delegado1').style.opacity = '0';
                     $('#cuadro_delegado').hide("slow");
                     document.getElementById('cuadro_delegado2').style.opacity = '0';
                     $('#cuadro_delegado').hide("slow");
+                    document.getElementById('boton_enviar').style.opacity = '0';
+                    $('#boton_enviar').hide("slow"); 
+                    document.getElementById('cuadro_medico').style.opacity = '1';
+                    $('#cuadro_medico').show(3000);
+                    */
                 }
             }
             check2.onclick = function () {
-                if (check2.checked != false) {
+                if (check2.checked == true) {
                     check1.checked = null;
                     document.getElementById('cuadro_delegado').style.opacity = '0';
                     $('#cuadro_delegado').hide("slow");
@@ -112,25 +143,25 @@
                     $('#cuadro_medico').show(3000);
                 }
                 else {
-                     document.getElementById('cuadro_medico').style.opacity = '0';
+                    check2.checked = null;
+                    check1.checked = true;
+                    document.getElementById('cuadro_medico').style.opacity = '0';
                     $('#cuadro_medico').hide("slow");
+                    document.getElementById('cuadro_delegado').style.opacity = '1';
+                    $('#cuadro_delegado').show(3000);
+                    document.getElementById('cuadro_delegado1').style.opacity = '1';
+                    $('#cuadro_delegado1').show(3000);
+                    document.getElementById('cuadro_delegado2').style.opacity = '1';
+                    $('#cuadro_delegado2').show(3000);
+                    document.getElementById('boton_enviar').style.opacity = '1';
+                    $('#boton_enviar').show(3000);
+                    /*
+                    document.getElementById('cuadro_medico').style.opacity = '0';
+                    $('#cuadro_medico').hide("slow");
+                    */
                 }
             }
         }
-
-        /*
-         //Comprobamos si el panel de sms, está visible.
-                    if (document.getElementById('tabla_normal').style.opacity == "0.2") {
-
-                        //Como sí lo está, ocultamos el contenedor de solicitar turno sin sms,
-                        //ocultamos el contenedor de turno sin sms desactivandolo
-                        //y le damos al contenedor de sms un tamaño del 100 %
-                        activar_onclicks();
-                        document.getElementById('cuadro1').style.display = 'none';
-                        document.getElementById('cuadro2').style.width = '100%';
-                        document.getElementById('tabla_normal').style.opacity = '1';                        
-                    }
-        */
    
     </script>
 </head>
@@ -140,40 +171,57 @@
         <form id="form1" runat="server">
             <div class="row eleccion">
                 <div class="col-md-6 datos_delegado">
-                    <input type="checkbox" class="form-check-input" id="chekbox_delegado"  onclick="comprueba_checkbox()" runat="server" />Mís Datos.
+                    <input type="checkbox" class="form-check-input" id="chekbox_delegado"  onclick="comprueba_checkbox()" runat="server" checked="checked"/>Mís Datos.
                 </div>
                 <div class="col-md-6 datos_medico">
                     <input type="checkbox" class="form-check-input" id="chekbox_medico" onclick="comprueba_checkbox()" runat="server" />Medicos.
                 </div>
             </div>
             <div id="cuadro_delegado" class="row eleccion_delegado">
-                <div class="row">
-                    <label for="nombre" class="label_textos">Nombre: </label>
-                    <asp:TextBox id="texto_nombre" ReadOnly="true" runat="server" CssClass="mis_inputs"></asp:TextBox>
-                    <label for="apellidos" class="label_textos">Apellidos: </label>
-                    <asp:TextBox ID="texto_apellidos" runat="server" CssClass="mis_inputs input_apellidos"></asp:TextBox>
-                </div>
-                <div class="row">
-                    <label for="Email" class="label_textos">Email: </label>
-                    <asp:TextBox ID="texto_email" CssClass="mail" ReadOnly="true" runat="server"></asp:TextBox>
-                    <label for="phone" class="label_textos">Telefono: </label>
-                    <asp:TextBox ID="texto_phone" CssClass="mis_inputs phone" runat="server"></asp:TextBox>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 padd">
-                        <label for="region" class="label_textos region">Región: </label>
-                        <asp:TextBox ID="texto_region" CssClass="mis_inputs reggion" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4 padd">
-                        <label for="siglas_gerente" class="label_textos siglas_gere">Siglas Gerente: </label>
-                        <asp:TextBox ID="texto_gerente" CssClass="mis_inputs input_siglas_gerente" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4 padd">
-                        <label for="siglas_delegado" class="label_textos siglas_dele">Siglas Delegado: </label>
-                        <asp:TextBox ID="texto_delegado" CssClass="mis_inputs input_siglas_delegado" runat="server"></asp:TextBox>
-                    </div>                                  
-                </div>                    
-            </div>
+                <div class="row eleccion_delegado1 padd">
+                    <fieldset>
+                        <legend>Datos Personales</legend>      
+                            <div class="col-md-4 prueba padd">
+                                <p class="col-md-6 texto_delegado">Nombre: </p>                                 
+                                <asp:TextBox id="texto_nombre" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4 prueba padd">
+                               <p class="col-md-6 texto_delegado">Apellido: </p>
+                                <asp:TextBox ID="apellido1" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4 prueba padd">
+                                <p class="col-md-6 texto_delegado">2º Apellido: </p>
+                                <asp:TextBox ID="apellido2" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                            </div>                     
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos Personales 2</legend>      
+                            <div class="col-md-4 prueba padd">
+                                <p class="col-md-6 texto_delegado">Email: </p>                                 
+                                <asp:TextBox ID="texto_email" runat="server" CssClass="col-md-6 input_email input_data_delegado "></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4 prueba padd">
+                               <p class="col-md-6 texto_delegado">NºTelefono: </p>
+                                <asp:TextBox ID="texto_phone" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4 prueba padd">
+                                <p class="col-md-6 texto_delegado">Región: </p>
+                                <asp:TextBox ID="texto_region" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                            </div>                     
+                    </fieldset>
+                    <fieldset>
+                        <legend>Siglas</legend>
+                        <div class="col-md-6 padd azul">
+                            <p class="col-md-6 padd rojo">Gerente:</p>
+                            <asp:TextBox ID="texto_gerente" CssClass="mis_inputs input_siglas_gerente" runat="server"></asp:TextBox>
+                        </div>
+                        <div class="col-md-6 padd rojo">
+                            <p class="col-md-6 padd rojo">Gerente:</p>
+                            <asp:TextBox ID="texto_delegado" CssClass="mis_inputs input_siglas_delegado" runat="server"></asp:TextBox>
+                        </div>
+                    </fieldset>
+                </div>                        
+            </div>                    
             <div id="cuadro_delegado1" class="row eleccion_delegado1">
                 <div class="row">
                     <div class="col-md-4 padd">
@@ -211,7 +259,44 @@
                 <asp:Button ID="boton_enviar" CssClass="enviar" Text="Enviar" runat="server" />
             </div>
             <div id="cuadro_medico" class="row eleccion_medico rosa">
-                Aquí irían los datos de los medicos.
+                <div class="row eleccion_medico1 padd">
+                    <fieldset>
+                        <legend>Datos 1</legend>      
+                            <div class="col-md-4 prueba">
+                                <p class="col-md-6 texto_medico">Nombre: </p>                                 
+                                <asp:TextBox ID="Nombre_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4 prueba">
+                               <p class="col-md-6 texto_medico">Apellido: </p>
+                                <asp:TextBox ID="Ape1_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4">
+                                <p class="col-md-6 texto_medico">2º Apellido: </p>
+                                <asp:TextBox ID="Ape2_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
+                            </div>                     
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datos 2</legend>      
+                            <div class="col-md-4">
+                                <p class="col-md-6 texto_medico">Email: </p>                                 
+                                <asp:TextBox ID="email_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4">
+                                <p class="col-md-6 texto_medico">Numero Telefono: </p> 
+                                <asp:TextBox ID="phone_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
+                            </div> 
+                        <div class="col-md-4">
+                                <p class="col-md-6 texto_medico">Region: </p>
+                                <asp:TextBox ID="region_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
+                            </div>                     
+                    </fieldset>
+                </div>
+                <div class="row eleccion_medico1 padd">
+                    Aquí irían los datos de la asistencia.
+                </div>
+                <div class="row eleccion_medico1 padd">
+                    Aquí irían las Observaciones.
+                </div>
             </div>
         </form>
     </div>    
