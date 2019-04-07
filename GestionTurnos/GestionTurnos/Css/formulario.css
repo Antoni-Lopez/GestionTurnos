@@ -13,19 +13,16 @@
 .datos_delegado, .datos_medico {padding: 15px;text-align: center;font-family: Arial;font-size: 1.2em;background-color: #563D7C;color: #fff;}
 #cuadro_delegado {margin: 0 0 0 -.3%;width: 100%;height: auto;padding: 15px; border:3px dotted black;border-radius: 4px;}
 .texto_delegado {margin: 1% -7%;padding: 3px;}
-.input_data_delegado {margin: 1% -8%;width: 78%;padding: 3px;}
+.texto_delegado1 {margin: 0 -4%;font-size: 1.7em;}
+.input_data_delegado {margin: 1% -8%;width: 78%;height: 32px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .input_email {margin: 0 -17%;width: 87%;}
-
-.label_textos {
-    margin: 2% 4% 2% 2.5%;
-}
 .mis_inputs, .mail {width: 34%;height: 32px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .mail {margin-left: 2%;}
 .phone {margin-left: 0.7%;}
 .region {margin-left: -.5%;}
 .reggion {width: 75%;margin-left: -4%;}
 .siglas_gere, .siglas_dele {margin-left: -7%;}
-.input_siglas_gerente, .input_siglas_delegado {margin-left: -5%;width: 59%;}
+.input_siglas_gerente, .input_siglas_delegado {margin-left: -5%;margin-top:5%;width: 59%;height: 32px;    padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .input_siglas_delegado {width: 56% !important;}
 .padd {padding: 15px;}
 
@@ -62,9 +59,11 @@
     .region{margin-left: 6.5%;}
     .reggion {margin-left: 2%;width: 62.5%;}
     .siglas_gere {margin-left: 6.4%;}
-    .input_siglas_gerente{width: 58%;}
+    .input_siglas_gerente {width: 83%;margin-left: 10%;}
     .siglas_dele {margin-left: 6.5%;}
-    .input_siglas_delegado {width: 58% !important;margin-left: -1.5%;}
+    .input_siglas_delegado {width: 83% !important;margin-left: 10%;}
     #cuadro_medico{margin-top: 5%;}
     .input_data_medico{width: 90%}
-}
+    .texto_delegado {margin: 1% 0;}
+    .input_data_delegado {margin: 1% 3%;width: 90%;}
+    }

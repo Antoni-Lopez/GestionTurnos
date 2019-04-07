@@ -211,13 +211,13 @@
                     </fieldset>
                     <fieldset>
                         <legend>Siglas</legend>
-                        <div class="col-md-6 padd azul">
-                            <p class="col-md-6 padd rojo">Gerente:</p>
-                            <asp:TextBox ID="texto_gerente" CssClass="mis_inputs input_siglas_gerente" runat="server"></asp:TextBox>
+                        <div class="col-md-6 padd">
+                            <p class="col-md-6 texto_delegado1 padd">Delegado:</p>
+                            <asp:TextBox ID="texto_gerente" CssClass="col-md-6 padd input_siglas_gerente" runat="server"></asp:TextBox>
                         </div>
-                        <div class="col-md-6 padd rojo">
-                            <p class="col-md-6 padd rojo">Gerente:</p>
-                            <asp:TextBox ID="texto_delegado" CssClass="mis_inputs input_siglas_delegado" runat="server"></asp:TextBox>
+                        <div class="col-md-6 padd">
+                            <p class="col-md-6 texto_delegado1 padd">Gerente:</p>
+                            <asp:TextBox ID="texto_delegado" CssClass="col-md-6 padd input_siglas_delegado" runat="server"></asp:TextBox>
                         </div>
                     </fieldset>
                 </div>                        
