@@ -59,24 +59,6 @@ Partial Public Class Formulario
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
     
     '''<summary>
-    '''Control chekbox_delegado.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents chekbox_delegado As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-    
-    '''<summary>
-    '''Control chekbox_medico.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents chekbox_medico As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-    
-    '''<summary>
     '''Control texto_nombre.
     '''</summary>
     '''<remarks>
@@ -111,6 +93,15 @@ Partial Public Class Formulario
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents texto_email As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control texto_password.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents texto_password As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control texto_phone.
@@ -149,40 +140,22 @@ Partial Public Class Formulario
     Protected WithEvents texto_delegado As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control Checkbox_asiste_si.
+    '''Control chekbox_alojamiento_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Checkbox_asiste_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents chekbox_alojamiento_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control Checkbox_asiste_no.
+    '''Control chekbox_alojamiento_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Checkbox_asiste_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-    
-    '''<summary>
-    '''Control CheckboxSI.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents CheckboxSI As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-    
-    '''<summary>
-    '''Control CheckboxNO.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents CheckboxNO As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents chekbox_alojamiento_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control transporte.
@@ -194,22 +167,13 @@ Partial Public Class Formulario
     Protected WithEvents transporte As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control CheckboxSI1.
+    '''Control TextBox10.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents CheckboxSI1 As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-    
-    '''<summary>
-    '''Control CheckboxNO2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents CheckboxNO2 As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents TextBox10 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control TextBox1.
@@ -219,15 +183,6 @@ Partial Public Class Formulario
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control meua_prueba.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents meua_prueba As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''Control boton_enviar.

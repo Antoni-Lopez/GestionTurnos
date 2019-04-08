@@ -32,23 +32,42 @@
                 } 
             } 
         } 
-        addLoadEvent(chorra); 
+        addLoadEvent(); 
 
-        function chorra() {
-            alert("funcionamos o no???");
-            var compruebacheckbox1 = document.getElementById("chekbox_delegado");
-            var compruebacheckbox2 = document.getElementById("chekbox_medico");
+        function LanzaAviso(Text) {
+                bootbox.alert({ title: "Gestión de turnos", message: Text });
+        }
 
-            if (compruebacheckbox1.checked == true && compruebacheckbox2.checked == false) {
-                
-                compruebacheckbox2.cheked = null;
+        function comprueba_radio() {
+            var radio1 = document.getElementById("datos_input_radio");
+            var radio2 = document.getElementById("datos_input_medico");
+
+            if (radio2.checked == true) {
+                document.getElementById('cuadro_delegado').style.opacity = '0';
+                $('#cuadro_delegado').hide("slow");
+                document.getElementById('cuadro_delegado1').style.opacity = '0';
+                $('#cuadro_delegado1').hide("slow");
+                document.getElementById('cuadro_delegado2').style.opacity = '0';
+                $('#cuadro_delegado2').hide("slow");
+                document.getElementById('boton_enviar').style.opacity = '0';
+                $('#boton_enviar').hide("slow");
+                document.getElementById('cuadro_medico').style.opacity = '1';
+                $('#cuadro_medico').show(3000);
+            }
+            else {
+                document.getElementById('cuadro_medico').style.opacity = '0';
+                $('#cuadro_medico').hide("slow");
+                document.getElementById('cuadro_delegado').style.opacity = '1';
+                $('#cuadro_delegado').show(3000);
+                document.getElementById('cuadro_delegado1').style.opacity = '1';
+                $('#cuadro_delegado1').show(3000);
+                document.getElementById('cuadro_delegado2').style.opacity = '1';
+                $('#cuadro_delegado2').show(3000);
                 document.getElementById('boton_enviar').style.opacity = '1';
-                $('#boton_enviar').show(3000);     
-                alert("entra en el if :)");
-                
-
+                $('#boton_enviar').show(3000);
             }
         }
+        /*
         function comprueba_checkbox2() {
             var check3 = document.getElementById("Checkbox_asiste_si");
             var check4 = document.getElementById("Checkbox_asiste_no");
@@ -81,85 +100,49 @@
                 }
             }
             
-        }
-
-        function comprueba_checkbox() {
-            var check1 = document.getElementById("chekbox_delegado");
-            var check2 = document.getElementById("chekbox_medico");
-            check1.onclick = function () {
-                if (check1.checked == true) {
-                    check2.checked = null;
-                    document.getElementById('cuadro_medico').style.opacity = '0';
-                    $('#cuadro_medico').hide("slow");
-                    document.getElementById('cuadro_delegado').style.opacity = '1';        
-                    $('#cuadro_delegado').show(3000);
-                    document.getElementById('cuadro_delegado1').style.opacity = '1';        
-                    $('#cuadro_delegado1').show(3000);
-                    document.getElementById('cuadro_delegado2').style.opacity = '1';        
-                    $('#cuadro_delegado2').show(3000);
-                    document.getElementById('boton_enviar').style.opacity = '1';        
-                    $('#boton_enviar').show(3000);                    
+        }  
+        function comprueba_checkbox3() {
+            var check5 = document.getElementById("Transporte_CheckboxSI");
+            var check6 = document.getElementById("Transporte_CheckboxNO");
+            check5.onclick = function () {
+                //Marcamos click de: sí necesitamos transporte.
+                if (check5.checked == true) {
+                    check6.checked = null;                    
+                    document.getElementById('asiste_transporte').style.opacity = '1';
+                    $('#asiste_transporte').show(3000);
                 }
                 else {
-                    check1.checked = null;
-                    check2.checked = true;
-                    document.getElementById('cuadro_delegado').style.opacity = '0';
-                    $('#cuadro_delegado').hide("slow");
-                    document.getElementById('cuadro_delegado1').style.opacity = '0';
-                    $('#cuadro_delegado1').hide("slow");
-                    document.getElementById('cuadro_delegado2').style.opacity = '0';
-                    $('#cuadro_delegado2').hide("slow");
-                    document.getElementById('boton_enviar').style.opacity = '0';
-                    $('#boton_enviar').hide("slow");
-                    document.getElementById('cuadro_medico').style.opacity = '1';
-                    $('#cuadro_medico').show(3000);
-                    /*
-                    check2.checked = true;
-                    document.getElementById('cuadro_delegado').style.opacity = '0';
-                    $('#cuadro_delegado').hide("slow");
-                    document.getElementById('cuadro_delegado1').style.opacity = '0';
-                    $('#cuadro_delegado').hide("slow");
-                    document.getElementById('cuadro_delegado2').style.opacity = '0';
-                    $('#cuadro_delegado').hide("slow");
-                    document.getElementById('boton_enviar').style.opacity = '0';
-                    $('#boton_enviar').hide("slow"); 
-                    document.getElementById('cuadro_medico').style.opacity = '1';
-                    $('#cuadro_medico').show(3000);
-                    */
+                    check5.checked = null;
+                    check6.checked = true;
+                    document.getElementById('asiste_transporte').style.opacity = '0';
+                    $('#asiste_transporte').hide("slow");
                 }
             }
-            check2.onclick = function () {
-                if (check2.checked == true) {
-                    check1.checked = null;
-                    document.getElementById('cuadro_delegado').style.opacity = '0';
-                    $('#cuadro_delegado').hide("slow");
-                    document.getElementById('cuadro_delegado1').style.opacity = '0';
-                    $('#cuadro_delegado1').hide("slow");
-                    document.getElementById('cuadro_delegado2').style.opacity = '0';
-                    $('#cuadro_delegado2').hide("slow");
-                    document.getElementById('boton_enviar').style.opacity = '0';
-                    $('#boton_enviar').hide("slow");
-                    document.getElementById('cuadro_medico').style.opacity = '1';
-                    $('#cuadro_medico').show(3000);
+            check6.onclick = function () {
+                //Marcamos click de: no necesitamos transporte.
+                if (check6.checked == true) {
+                    check5.checked = null;
+                    document.getElementById('asiste_transporte').style.opacity = '0';
+                    $('#asiste_transporte').hide("slow");
                 }
                 else {
-                    check2.checked = null;
-                    check1.checked = true;
-                    document.getElementById('cuadro_medico').style.opacity = '0';
-                    $('#cuadro_medico').hide("slow");
-                    document.getElementById('cuadro_delegado').style.opacity = '1';
-                    $('#cuadro_delegado').show(3000);
-                    document.getElementById('cuadro_delegado1').style.opacity = '1';
-                    $('#cuadro_delegado1').show(3000);
-                    document.getElementById('cuadro_delegado2').style.opacity = '1';
-                    $('#cuadro_delegado2').show(3000);
-                    document.getElementById('boton_enviar').style.opacity = '1';
-                    $('#boton_enviar').show(3000);
-                    /*
-                    document.getElementById('cuadro_medico').style.opacity = '0';
-                    $('#cuadro_medico').hide("slow");
-                    */
+                    check6.checked = null;
+                    check5.checked = true;
+                    document.getElementById('asiste_transporte').style.opacity = '0';
+                    $('#asiste_transporte').hide("slow");
                 }
+            }            
+        }
+        */
+        function radio_asiste() {
+            var si = document.getElementById("radio_asiste_si");
+            if (si.checked == true) {
+                document.getElementById('cuadro_asiste').style.opacity = '1';
+                $('#cuadro_asiste').show(3000);
+            }
+            else {
+                document.getElementById('cuadro_asiste').style.opacity = '0';
+                $('#cuadro_asiste').hide("slow");
             }
         }
    
@@ -171,43 +154,44 @@
         <form id="form1" runat="server">
             <div class="row eleccion">
                 <div class="col-md-6 datos_delegado">
-                    <input type="checkbox" class="form-check-input" id="chekbox_delegado"  onclick="comprueba_checkbox()" runat="server" checked="checked"/>Mís Datos.
+                    <input type="radio" class="custom-control-input input_radio_eleccion" id="datos_input_radio" name="radiodatos" value="misdatos" onclick="comprueba_radio()" checked />Mis Datos. 
                 </div>
                 <div class="col-md-6 datos_medico">
-                    <input type="checkbox" class="form-check-input" id="chekbox_medico" onclick="comprueba_checkbox()" runat="server" />Medicos.
-                </div>
+                    <input type="radio" class="custom-control-input input_radio_eleccion" id="datos_input_medico" name="radiodatos" value="medicosdatos" onclick="comprueba_radio()"  />Datos Médicos.
+                </div>        
             </div>
             <div id="cuadro_delegado" class="row eleccion_delegado">
                 <div class="row eleccion_delegado1 padd">
                     <fieldset>
                         <legend>Datos Personales</legend>      
-                            <div class="col-md-4 prueba padd">
-                                <p class="col-md-6 texto_delegado">Nombre: </p>                                 
-                                <asp:TextBox id="texto_nombre" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4 prueba padd">
-                               <p class="col-md-6 texto_delegado">Apellido: </p>
-                                <asp:TextBox ID="apellido1" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4 prueba padd">
-                                <p class="col-md-6 texto_delegado">2º Apellido: </p>
-                                <asp:TextBox ID="apellido2" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
-                            </div>                     
-                    </fieldset>
-                    <fieldset>
-                        <legend>Datos Personales 2</legend>      
-                            <div class="col-md-4 prueba padd">
-                                <p class="col-md-6 texto_delegado">Email: </p>                                 
-                                <asp:TextBox ID="texto_email" runat="server" CssClass="col-md-6 input_email input_data_delegado "></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4 prueba padd">
-                               <p class="col-md-6 texto_delegado">NºTelefono: </p>
-                                <asp:TextBox ID="texto_phone" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4 prueba padd">
-                                <p class="col-md-6 texto_delegado">Región: </p>
-                                <asp:TextBox ID="texto_region" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
-                            </div>                     
+                        <div class="col-md-4 datos_personales padd">
+                            <p class="col-md-6 texto_delegado">Nombre: </p>                                 
+                            <asp:TextBox id="texto_nombre" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                        </div> 
+                        <div class="col-md-4 datos_personales1 padd">
+                            <p class="col-md-6 texto_delegado">Apellido: </p>
+                            <asp:TextBox ID="apellido1" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                        </div> 
+                        <div class="col-md-4 datos_personales2 padd">
+                            <p class="col-md-6 texto_delegado">2º Apellido: </p>
+                            <asp:TextBox ID="apellido2" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                        </div>                        
+                        <div class="col-md-6 datos_personales3 padd">
+                            <p class="col-md-6 texto_delegado2">Email: </p>                                 
+                            <asp:TextBox ID="texto_email" runat="server" CssClass="col-md-6 input_email input_data_delegado "></asp:TextBox>
+                        </div> 
+                        <div class="col-md-6 datos_personales4 padd">
+                            <p class="col-md-6 texto_delegado2">Password: </p>                                 
+                            <asp:TextBox ID="texto_password" runat="server" CssClass="col-md-6 input_pass input_data_delegado "></asp:TextBox>
+                        </div> 
+                        <div class="col-md-6 datos_personales3 padd">
+                            <p class="col-md-6 texto_delegado2">NºTelefono: </p>                                 
+                            <asp:TextBox ID="texto_phone" runat="server" CssClass="col-md-6 input_phone input_data_delegado "></asp:TextBox>
+                        </div> 
+                        <div class="col-md-6 datos_personales4 padd">
+                            <p class="col-md-6 texto_delegado2">Región: </p>                                 
+                            <asp:TextBox ID="texto_region" runat="server" CssClass="col-md-6 input_pass input_data_delegado "></asp:TextBox>
+                        </div>                     
                     </fieldset>
                     <fieldset>
                         <legend>Siglas</legend>
@@ -223,42 +207,67 @@
                 </div>                        
             </div>                    
             <div id="cuadro_delegado1" class="row eleccion_delegado1">
-                <div class="row">
-                    <div class="col-md-4 padd">
-                        <p class="preguntas">¿Asiste? </p>
-                    </div>
-                    <div class="col-md-4 paddi">
-                        <input type="checkbox" class="form-check-input" id="Checkbox_asiste_si"  onclick="comprueba_checkbox2()" runat="server" />Sí.
-                    </div>
-                    <div class="col-md-4 paddi">
-                        <input type="checkbox" class="form-check-input" id="Checkbox_asiste_no"  onclick="comprueba_checkbox2()" runat="server" checked="checked" />No.
-                    </div>
+                <div class="row padd">
+                    <fieldset>
+                        <legend class="asiste_legend">¿Asiste?</legend>
+                        <div class="custom-control custom-radio custom-control-inline padd mis_radios">
+                            <input type="radio" class="custom-control-input input_asiste" id="radio_asiste_si" name="example" onclick="radio_asiste()" value="customEx" />
+                        <label class="custom-control-label label_asiste" for="asisteRadioSi">Si.</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline padd mis_radios1">
+                            <input type="radio" class="custom-control-input input_asiste" id="radio_asiste_no" name="example" onclick="radio_asiste()" value="customEx" checked />
+                            <label class="custom-control-label label_asiste1" for="asisteRadioNo">No.</label>
+                        </div> 
+                    </fieldset>
                 </div>
                 <div id="cuadro_asiste" class="row padd">
-                    <label for="transporte" class="transporte_si padd verde">¿Necesita transporte?</label>
-                    <input type="checkbox" class="form-check-input" id="CheckboxSI"  onclick="" runat="server" />Si.
-                    <input type="checkbox" class="form-check-input" id="CheckboxNO"  onclick="" runat="server" checked="checked" />No.
-                    <div class="row padd rojo" id="asiste_transporte">
-                        Indique ciudad de Origen: <asp:TextBox ID="transporte" runat="server"></asp:TextBox>
+                    <div class="col-md-6 padd preguntas_asiste">
+                        <div class="col-md-4 texto_transporte padd">¿Necesitas Transporte?</div>
+                        <div class="col-md-4 padd">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input input_transporte" id="transporte_si" name="transporte" onclick="" value="trans_si" />
+                                <label class="custom-control-label" for="customRadio">Sí.</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input input_transporte" id="customRadio2" name="transporte" value="transporte_no" checked />
+                                <label class="custom-control-label" for="customRadio2">No.</label>
+                            </div>
+                        </div>
+                        
                     </div>
-                    <label for="alojamiento" class="alojamiento_si padd verde">¿Necesita alojamiento?</label>
-                    <input type="checkbox" class="form-check-input" id="CheckboxSI1"  onclick="" runat="server" />Si.
-                    <input type="checkbox" class="form-check-input" id="CheckboxNO2"  onclick="" runat="server" checked="checked" />No.
-                </div>
-                
-
-            </div>
+                    <div class="col-md-6 padd preguntas_asiste">
+                        <div class="col-md-4 texto_transporte padd">¿Necesitas Alojamiento?</div>
+                        <div class="col-md-4 padd">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="checkbox" class="form-check-input" id="chekbox_alojamiento_si" onclick="comprueba_checkbox2()" runat="server" />
+                                <label class="custom-control-label" for="customRadio3">Sí.</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="checkbox" class="form-check-input" id="chekbox_alojamiento_no" onclick="comprueba_checkbox2()"  runat="server" checked />
+                                <label class="custom-control-label" for="customRadio4">No.</label>
+                            </div>
+                        </div>
+                    </div>                        
+                    <div class="row padd city" id="asiste_transporte">
+                            Indique ciudad de Origen: <asp:TextBox ID="transporte" runat="server"></asp:TextBox>
+                        </div>
+                        
+                    </div>
+                </div>                        
             <div id="cuadro_delegado2" class="row eleccion_delegado1">
+                <div class="row padd">
+                    <label for="nombre" class="label_textos">Alergias: </label>
+                    <asp:TextBox id="TextBox10" ReadOnly="false" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
                 <div class="row padd">
                     <label for="nombre" class="label_textos">Observaciones: </label>
                     <asp:TextBox id="TextBox1" ReadOnly="false" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <p id="meua_prueba" runat="server" onclick="comprobacion_checkboxs()"></p>
             </div>
             <div class="row">
                 <asp:Button ID="boton_enviar" CssClass="enviar" Text="Enviar" runat="server" />
-            </div>
-            <div id="cuadro_medico" class="row eleccion_medico rosa">
+            </div>     
+            <div id="cuadro_medico" class="row eleccion_medico">
                 <div class="row eleccion_medico1 padd">
                     <fieldset>
                         <legend>Datos 1</legend>      
@@ -298,7 +307,8 @@
                     Aquí irían las Observaciones.
                 </div>
             </div>
-        </form>
+            </form>
+            </div>
     </div>    
 </body>
 </html>
