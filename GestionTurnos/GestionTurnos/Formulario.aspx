@@ -163,35 +163,68 @@
             <div id="cuadro_delegado" class="row eleccion_delegado">
                 <div class="row eleccion_delegado1 padd">
                     <fieldset>
-                        <legend>Datos Personales</legend>      
-                        <div class="col-md-4 datos_personales padd">
-                            <p class="col-md-6 texto_delegado">Nombre: </p>                                 
+                        <legend>Datos Personales</legend> 
+                        <p class="col-md-4 pad textos_personales">Nombre</p>
+                        <p class="col-md-4 pad textos_personales">Apellido</p>
+                        <p class="col-md-4 pad textos_personales">2º Apellido</p>
+                        <div class="col-md-4 parraf">
                             <asp:TextBox id="texto_nombre" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4 parraf">
+                            <asp:TextBox ID="apellido1" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4 parraf">
+                            <asp:TextBox ID="apellido2" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                        </div>
+                        <p class="col-md-4 pad textos_personales">Email</p>
+                        <p class="col-md-4 pad textos_personales">Telefono</p>
+                        <p class="col-md-4 pad textos_personales">Region</p>
+                        <div class="col-md-4 parraf">
+                            <asp:TextBox ID="texto_email" runat="server" CssClass="col-md-6 input_data_delegado "></asp:TextBox>
+                        </div>
+                        <div class="col-md-4 parraf">
+                            <asp:TextBox ID="texto_phone" runat="server" CssClass="col-md-6 input_data_delegado "></asp:TextBox>
+                        </div>
+                        <div class="col-md-4 parraf">
+                            <asp:TextBox ID="texto_region" runat="server" CssClass="col-md-6 input_data_delegado "></asp:TextBox>
+                        </div>
+                        <!--
+                        <div class="col-md-4 datos_personales padd">
+
+
+                            
+                            <p class="col-md-6 texto_delegado">Nombre: </p>                                 
+                            <asp:TextBox id="texto_nombre1" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                         </div> 
+
                         <div class="col-md-4 datos_personales1 padd">
                             <p class="col-md-6 texto_delegado">Apellido: </p>
-                            <asp:TextBox ID="apellido1" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                            <asp:TextBox ID="apellido11" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                         </div> 
+
                         <div class="col-md-4 datos_personales2 padd">
                             <p class="col-md-6 texto_delegado">2º Apellido: </p>
-                            <asp:TextBox ID="apellido2" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
-                        </div>                        
+                            <asp:TextBox ID="apellido21" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                        </div>                      
+                        
                         <div class="col-md-6 datos_personales3 padd">
                             <p class="col-md-6 texto_delegado2">Email: </p>                                 
-                            <asp:TextBox ID="texto_email" runat="server" CssClass="col-md-6 input_email input_data_delegado "></asp:TextBox>
+                            
                         </div> 
+
                         <div class="col-md-6 datos_personales4 padd">
                             <p class="col-md-6 texto_delegado2">Password: </p>                                 
-                            <asp:TextBox ID="texto_password" runat="server" CssClass="col-md-6 input_pass input_data_delegado "></asp:TextBox>
+                            <asp:TextBox ID="texto_pass" runat="server" CssClass="col-md-6 input_pass input_data_delegado "></asp:TextBox>
                         </div> 
                         <div class="col-md-6 datos_personales3 padd">
                             <p class="col-md-6 texto_delegado2">NºTelefono: </p>                                 
-                            <asp:TextBox ID="texto_phone" runat="server" CssClass="col-md-6 input_phone input_data_delegado "></asp:TextBox>
+                            
                         </div> 
                         <div class="col-md-6 datos_personales4 padd">
                             <p class="col-md-6 texto_delegado2">Región: </p>                                 
-                            <asp:TextBox ID="texto_region" runat="server" CssClass="col-md-6 input_pass input_data_delegado "></asp:TextBox>
-                        </div>                     
+                            
+                        </div>  
+                        -->
                     </fieldset>
                     <fieldset>
                         <legend>Siglas</legend>

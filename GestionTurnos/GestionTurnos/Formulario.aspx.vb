@@ -37,6 +37,7 @@
             'Error.
             Return False
         Else
+            'Bucles para recorrer la BD 
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
                     userID = DS.Tables(0).Rows(i).Item("userID")
@@ -52,12 +53,16 @@
                     Origen = DS.Tables(0).Rows(i).Item("Origen")
                 Next
             End If
+
+            'Rellenamos los inputs con los datos que extraemos de la BD.
             texto_nombre.Text = Nombre
             texto_email.Text = Email
             texto_phone.Text = Numero
             texto_region.Text = Region
-            texto_password.Text = Password
-            'Devolver una cadena de un array
+            texto_pass.Text = Password
+
+            'Declaramos 2 arrays para separar datos,
+            'ya que alguna consulta nos puede devolver 2 campos en 1 mismo.
             Dim Sigla1 As String, Sigla2 As String
             Dim c As Long, p As Long
             Dim VArray() As String, VArray2() As String
@@ -68,9 +73,9 @@
 
             'Creamos el array, y cada "substring" se lo asignaremos
             'a un elemento del array.
+            'Usamos el caracter "¦" como separador
             VArray = Split(Sigla1, "¦")
             VArray2 = Split(Sigla2, "¦")
-
 
             For c = LBound(VArray) To UBound(VArray)
                 texto_gerente.Text = VArray(0)
@@ -86,27 +91,28 @@
     End Function
 
     Private Function ActualizarBD(ByRef userID_insert)
+        'Declaramos las variables que vamos a insertar en la BD
         Dim Rol_insert As Integer, Agrupacion_insert As Integer, Nombre_insert As String, Apellidos_insert As String, Numero_insert As Integer, Email_insert As String
         Dim Region_insert As String, Siglas_insert As String, Password_insert As String, Origen_insert As String
-        'Extraemos los datos del formulario.
-
-        'Realizamos la consulta, en este caso, la update de la BD.
 
         'VectorSQL(0) = "SELECT Auto AS userID ,idContacte AS Rol,idOrigen AS Agrupacion, Nom As Nombre,Cognoms As Apellidos, Mobil AS Numero, Email, Carrec AS Region,NIT AS Siglas, Password, Procedencia As Origen FROM eecontactes WHERE Auto='" & IdUsuario & "'"
+
+        'Extraemos los datos del formulario.
         Nombre_insert = texto_nombre.Text
         Numero_insert = texto_phone.Text
         Email_insert = texto_email.Text
-        Password_insert = texto_password.Text
+        Password_insert = texto_pass.Text
         Region_insert = texto_region.Text
 
+        'Realizamos la consulta, en este caso, la update de la BD.
         VectorSQL(0) = "UPDATE eecontactes SET Auto = '" & clsBD.Cometes(Left(userID_insert, 100)) & "', Nom = '" & clsBD.Cometes(Left(Nombre_insert, 100)) & "', Mobil = '" & Numero_insert & "',Email = '" & clsBD.Cometes(Left(Email_insert, 100)) & "',Password = '" & clsBD.Cometes(Left(Password_insert, 100)) & "',Carrec = '" & clsBD.Cometes(Left(Region_insert, 100)) & "' WHERE Auto = '" & userID_insert & "' AND Nom = '" & Nombre_insert & "'"
 
         If Not clsBD.BaseDades(2, VectorSQL) Then
             'Problema
-            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al actualizar los datos en la BD.')", True)
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al actualizar los datos!')", True)
         Else
             'Correcto
-            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Actuazliación perfecta en la BD (-; ')", True)
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Actualización perfecta en la BD (-; ')", True)
         End If
     End Function
 End Class

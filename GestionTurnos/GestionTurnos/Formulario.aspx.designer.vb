@@ -95,15 +95,6 @@ Partial Public Class Formulario
     Protected WithEvents texto_email As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control texto_password.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents texto_password As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control texto_phone.
     '''</summary>
     '''<remarks>
@@ -120,6 +111,42 @@ Partial Public Class Formulario
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents texto_region As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control texto_nombre1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents texto_nombre1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control apellido11.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents apellido11 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control apellido21.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents apellido21 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control texto_pass.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents texto_pass As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control texto_gerente.
