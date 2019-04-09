@@ -90,3 +90,54 @@
     </form>
 </body>
 </html>
+
+
+
+<!--
+                <div class="row padd">
+                    <fieldset>
+                        <legend class="asiste_legend">¿Asiste?</legend>
+                        <div class="custom-control custom-radio custom-control-inline padd mis_radios">
+                            
+                        <label class="custom-control-label label_asiste" for="asisteRadioSi">Si.</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline padd mis_radios1">
+                            
+                            <label class="custom-control-label label_asiste1" for="asisteRadioNo">No.</label>
+                        </div> 
+                    </fieldset>
+                </div>
+                <div id="cuadro_asiste" class="row padd">
+                    <div class="col-md-6 padd preguntas_asiste">
+                        <div class="col-md-4 texto_transporte padd">¿Necesitas Transporte?</div>
+                        <div class="col-md-4 padd">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input input_transporte" id="transporte_si" name="transporte" onclick="" value="trans_si" />
+                                <label class="custom-control-label" for="customRadio">Sí.</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input input_transporte" id="customRadio2" name="transporte" value="transporte_no" checked />
+                                <label class="custom-control-label" for="customRadio2">No.</label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6 padd preguntas_asiste">
+                        <div class="col-md-4 texto_transporte padd">¿Necesitas Alojamiento?</div>
+                        <div class="col-md-4 padd">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="checkbox" class="form-check-input" id="chekbox_alojamiento_si" onclick="comprueba_checkbox2()" runat="server" />
+                                <label class="custom-control-label" for="customRadio3">Sí.</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="checkbox" class="form-check-input" id="chekbox_alojamiento_no" onclick="comprueba_checkbox2()"  runat="server" checked />
+                                <label class="custom-control-label" for="customRadio4">No.</label>
+                            </div>
+                        </div>
+                    </div>                        
+                    <div class="row padd city" id="asiste_transporte">
+                            Indique ciudad de Origen:
+                        </div>
+                        
+                    </div>
+-->
