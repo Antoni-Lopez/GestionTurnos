@@ -150,10 +150,10 @@
         <form id="form1" runat="server">
             <div class="row eleccion">
                 <div class="col-md-6 datos_delegado">
-                    <input type="radio" class="custom-control-input input_radio_eleccion" id="datos_input_radio" name="radiodatos" value="misdatos" onclick="comprueba_radio()" runat="server" />Mis Datos. 
+                    <input type="radio" class="custom-control-input input_radio_eleccion" id="datos_input_radio" name="radiodatos" value="misdatos" onclick="comprueba_radio()" runat="server" />Delegado 
                 </div>
                 <div class="col-md-6 datos_medico">
-                    <input type="radio" class="custom-control-input input_radio_eleccion" id="datos_input_medico" name="radiodatos" value="medicosdatos" onclick="comprueba_radio()" runat="server" />Datos Médicos.
+                    <input type="radio" class="custom-control-input input_radio_eleccion" id="datos_input_medico" name="radiodatos" value="medicosdatos" onclick="comprueba_radio()" runat="server" />Médicos
                 </div>        
             </div>
             <div id="cuadro_delegado" class="row eleccion_delegado">

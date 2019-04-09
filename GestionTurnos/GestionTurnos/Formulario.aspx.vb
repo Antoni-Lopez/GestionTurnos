@@ -73,6 +73,7 @@
             If (Rol = 0) Then
                 datos_input_radio.Checked = True
             Else
+                datos_input_radio.Disabled = True
                 datos_input_medico.Checked = True
             End If
 
