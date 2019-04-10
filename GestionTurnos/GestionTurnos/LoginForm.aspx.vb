@@ -18,7 +18,7 @@
             If ChekeaEmail(Trim(Email1.Text), Trim(Password.Text), IDUser) Then
                 Response.Redirect("Formulario.aspx?IDUser=" & IDUser)
             Else
-                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Aqui soltamos mensa de error.')", True)
+                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Lo sentimos pero algo ha fallado, revise los campos email y contraseña para comprobar que son los correctos. Gracias!')", True)
             End If
         End If
     End Sub

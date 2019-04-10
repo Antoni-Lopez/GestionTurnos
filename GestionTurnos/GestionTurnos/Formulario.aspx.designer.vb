@@ -131,22 +131,13 @@ Partial Public Class Formulario
     Protected WithEvents texto_region As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control TextBox10.
+    '''Control texto_delegado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox10 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control TextBox20.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TextBox20 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents texto_delegado As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control texto_gerente.
@@ -156,15 +147,6 @@ Partial Public Class Formulario
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents texto_gerente As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control texto_delegado.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents texto_delegado As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control radio_asiste_si.
@@ -221,13 +203,13 @@ Partial Public Class Formulario
     Protected WithEvents alojamiento_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control transporte.
+    '''Control ciudad_origen.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents transporte As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ciudad_origen As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control alergias.
@@ -257,31 +239,94 @@ Partial Public Class Formulario
     Protected WithEvents boton_enviar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control Nombre_medico.
+    '''Control miselect.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Nombre_medico As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents miselect As Global.System.Web.UI.HtmlControls.HtmlSelect
     
     '''<summary>
-    '''Control Ape1_medico.
+    '''Control nombre_medico.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Ape1_medico As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents nombre_medico As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control Ape2_medico.
+    '''Control ape1medico.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Ape2_medico As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ape1medico As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control ape2medico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ape2medico As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control medicmail.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents medicmail As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control medicphone.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents medicphone As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control medic_region.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents medic_region As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Nombre_medico1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Nombre_medico1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Ape1_medico1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Ape1_medico1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control Ape2_medico1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Ape2_medico1 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Control email_medico.
