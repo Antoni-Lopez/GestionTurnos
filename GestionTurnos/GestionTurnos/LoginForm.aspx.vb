@@ -12,7 +12,7 @@
             validar.Attributes.Add("onclick", "return Comprueba()")
             Email1.Attributes.Add("Placeholder", "Introduzca su Email")
             Password.Attributes.Add("Placeholder", "Contraseña")
-
+            Response.Redirect("Formulario.aspx?IDUser=1")
         Else
             Dim IDUser As Integer
             If ChekeaEmail(Trim(Email1.Text), Trim(Password.Text), IDUser) Then

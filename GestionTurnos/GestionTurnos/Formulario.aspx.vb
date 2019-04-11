@@ -10,16 +10,33 @@
             Dim clsGeneral As New ClaseGeneral
             clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
 
-            Dim IdUsuario As Integer, grupo As Integer
+            Dim IdUsuario As Integer, Agrupacion As Integer
+
             IdUsuario = Request.QueryString("IDUser")
 
             boton_enviar.Attributes.Add("onclick", "return Valida()")
 
-            Extraer_BD_Delegado(IdUsuario)
-            Extraer_BD_Medicos(IdUsuario, grupo)
+            Agrupacion = Extraer_BD_Delegado(IdUsuario)
+            Extraer_BD_Medicos(IdUsuario, Agrupacion)
         Else
-            Dim userID_insert As Integer
+            'Declaramos las variables.
+            Dim userID_insert As Integer, prueba As Object, o As System.EventArgs
+
+            'Le damos valor a las variables.
             userID_insert = Request.QueryString("IDUser")
+
+            'miselect.Attributes.Add("onchange", myselect_selectedindexchanged(prueba, o))
+            'myselect_selected(prueba, o)
+
+            Dim numero As Object
+            'numero = miselect.SelectedIndex.Value
+
+
+
+
+
+
+            'Llamamos a la función para que nos inserte los datos.
             ActualizarBD_Delegado(userID_insert)
 
 
@@ -28,56 +45,53 @@
 
         End If
     End Sub
-    Private Function Extraer_BD_Medicos(ByRef iduser, ByVal agru)
+
+    Private Function myselect_selected(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim numero As Integer
+        'numero = miselect.SelectedItem.Value
+
+        Select Case numero
+            Case -2
+            Case -1
+            Case 1
+            Case 2
+        End Select
+
+
+    End Function
+
+
+
+
+
+
+    Private Function Extraer_BD_Medicos(ByRef iduser, ByVal agrupa)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
         Dim VectorSQL(0) As String
-        Dim Agrupacion As Integer, rol As String, rolete As String, i As Integer, Ultimo As Integer = 0
+        Dim Agrupacion As Integer, ID_Usuario As Integer, rol As String, rolete As String, i As Integer, Ultimo As Integer = 0
+        Dim Apelli As String, Ape1 As String, Ape2 As String, VArray() As String
 
-
-        VectorSQL(0) = "SELECT Auto,idOrigen FROM eecontactes WHERE Auto='" & iduser & "'"
-        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
-            'Problema
-        Else
-            If DS.Tables(0).Rows.Count > 0 Then
-                For i = 0 To DS.Tables(0).Rows.Count - 1
-                    Agrupacion = DS.Tables(0).Rows(i).Item("idOrigen")
-                    rol = DS.Tables(0).Rows(i).Item("idContacte")
-                Next
-            Else
-                'No nos devuelve valores
-            End If
-        End If
-
-        'VectorSQL(0) = "SELECT idContacte, Nom, Cognoms FROM EEContactes WHERE idFira = 1 AND idTipusContacte = 0 ORDER BY Cognoms, Nom"
         rolete = 1
+        'VectorSQL(0) = "SELECT idOrigen FROM eecontactes WHERE Auto='" & iduser & "'"
+        'If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+        'Problema
+        'Else
+        'If DS.Tables(0).Rows.Count > 0 Then
+        'For i = 0 To DS.Tables(0).Rows.Count - 1
+        'Agrupacion = DS.Tables(0).Rows(i).Item("idOrigen")
+        'Next
+        'Else
+        'No nos devuelve valores
+        'End If
+        'End If
 
-
-        VectorSQL(0) = "SELECT Auto,idContacte,idOrigen ,idTipusContacte, idAlta , Nom ,Cognoms, Mobil , Email, Carrec,NIT , Password, Procedencia, SectorInteres ,NickTwitter , NickFacebook , WebPersonal  FROM eecontactes WHERE idOrigen='" & Agrupacion & "'And idContacte='" & rolete & "'ORDER BY Cognoms"
-
+        VectorSQL(0) = "SELECT idContacte, idOrigen, Nom, Cognoms FROM EEContactes WHERE idOrigen = '" & agrupa & "' And idContacte = '" & rolete & "'ORDER BY Cognoms"
         If clsBD.BaseDades(1, VectorSQL, DS) Then
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-
-                    Dim Sigla1 As String, Ape1 As String, Ape2 As String
-                    Dim p As Long
-                    Dim VArray() As String
-
-                    'Asignamos valores.
-                    Sigla1 = DS.Tables(0).Rows(i).Item("Cognoms")
-                    'Creamos el array, y cada "substring" se lo asignaremos
-                    'a un elemento del array.
-                    'Usamos el caracter "¦" como separador
-                    VArray = Split(Sigla1, "¦")
-                    For p = LBound(VArray) To UBound(VArray)
-                        Ape1 = VArray(0)
-                        Ape2 = VArray(1)
-                    Next
-
-                    miselect.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Ape1") & ", " & DS.Tables(0).Rows(i).Item("Nom"), DS.Tables(0).Rows(i).Item("idOrigen"))) Then
+                    miselect.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), i + 1))
                 Next
-            Else
-                'Error
             End If
         End If
         Return True
@@ -122,7 +136,7 @@
                 Next
             End If
             'Comprobamos que valor recibimos de la BD para el 1º radio button
-            'Mostramos o bien mis datos, o bien datos de doctores.
+            'Mostramos o bien Delegado, o bien Medicos.
             If (Rol = 0) Then
                 datos_input_radio.Checked = True
             Else
@@ -184,7 +198,7 @@
                 apellido1.Text = VArray2(0)
                 apellido2.Text = VArray2(1)
             Next
-            Return True
+            Return Agrupacion
         End If
     End Function
 

@@ -44,26 +44,20 @@
 
 /* Medico - selector*/
 .eleccion_medico_delegado {margin: 2% 4%;border: 3px dotted black;border-radius: 4px;}
-.mi_selector {
-    margin-left: 25%;
-    border: 2px solid #FFDC00;
-    width: 50%;
-    color: #fff;
-    background-color: #85144b;
-    height: 35px;
-}
+.mi_selector {margin-left: 25%;border: 2px solid #FFDC00;width: 50%;color: #fff;background-color: #85144b;height: 35px;}
 
 
 
 /*Medico - Datos*/
-#cuadro_medico {
-    margin: -2.7% 0 0 -1.3%;
-    width: 102.6%;
-    height: auto;
-    opacity: 0;
-    display: none;
-}
+#cuadro_medico {margin: -2.7% 0 0 -1.3%;width: 102.6%;height: auto;opacity: 0;display: none;}
+.texto_medico1 {font-family: helvetica, arial;margin-left: -6%;}
+.texto_consentimiento {font-family: helvetica, arial;font-size: 18px;font-weight: bold;margin-left: 15%;}
+.nece_transpor{margin-top: 18%;}
+.transpo{margin-top: -1%;}
+.input_data_medico_cityorigen {margin-left: 5%;width: 98%;height: 32px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .eleccion_medico1 {margin: 2% 4%;border: 3px dotted black;border-radius: 4px;}
+.indica_city{margin-top: 12.5% !important;}
+.input_obser_aler1{width: 100%;}
 
 /* Style with padding*/
 .padd {padding: 15px;}
@@ -117,7 +111,7 @@
     }
 @media (max-width: 786px){
     .da1, .da2, .da3, .da4, .da5, .da6,.da7,.da8{width: 100% !important;margin:0 0 0 0 !important;}
-    .da4{}
+    /*.da4{}*/
     .eleccion_delegado, #cuadro_delegado1, #cuadro_delegado2 {
         max-width: 450px;
     }

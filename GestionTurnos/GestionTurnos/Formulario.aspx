@@ -150,6 +150,22 @@
             $('#myselect').hide("slow");
             
         }
+        function prueba() {
+            var clickeado = $("#myselect :selected").val();
+            alert("Aqui tenemos clickeado el: " + clickeado);
+        }
+        function comprobacion(numero){
+            switch (numero) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
+        }
     </script>
 </head>
 <body>
@@ -273,9 +289,9 @@
             </div>     
             <div id="cuadro_medico" class="row eleccion_medico">
                 <div id="myselect" class="row eleccion_medico_delegado padd">
-                    <select id="miselect" class="mi_selector" runat="server" name="d1">
-                        <option value="-2" id="anadir_registro_medico" class="">Nueva Alta Médico</option>
-                        <option value="-1">---------------------------------------------</option>
+                    <select id="miselect" class="mi_selector" onchange="prueba()" OnSelectedIndexChanged="myselect_selected" AutoPostBack="True" runat="server" name="d1">
+                        <option value="-2" id="anadir_registro_medico" selected>Nueva Alta Médico</option>
+                        <option value="-1">-------------------------------------------------------------------------</option>
                         
                     </select>
                 </div>
@@ -284,81 +300,93 @@
                     <fieldset>
                         <legend>Datos Personales</legend> 
                         <div class="col-md-4 da1">
-                            <label for="nombre" class="pad textos_personales">Nombre</label>
+                            <label for="nombre" class="pad texto_medico1">Nombre</label>
                             <div class="row parraf">
                                 <asp:TextBox id="nombre_medico" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 da2">
-                            <label for="ape1" class="pad textos_personales">Apellido</label>
+                            <label for="ape1" class="pad texto_medico1">Apellido</label>
                             <div class="row parraf">
                                 <asp:TextBox ID="ape1medico" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 da3">
-                            <label for="ape1" class="pad textos_personales">2º Apellido</label>
+                            <label for="ape1" class="pad texto_medico1">2º Apellido</label>
                             <div class="row parraf">
                                 <asp:TextBox ID="ape2medico" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 padd da4">
-                            <label for="ape1" class="pad textos_personales">Email</label>
+                            <label for="ape1" class="pad texto_medico1">Email</label>
                             <div class="row parraf">
                                 <asp:TextBox ID="medicmail" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 padd da5">
-                            <label for="ape1" class="pad textos_personales">Telefono</label>
+                            <label for="ape1" class="pad texto_medico1">Telefono</label>
                             <div class="row parraf">
                                 <asp:TextBox ID="medicphone" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 padd da6">
-                            <label for="ape1" class="pad textos_personales">Region</label>
+                            <label for="ape1" class="pad texto_medico1">Número de SELAS</label>
                             <div class="row parraf">
                                 <asp:TextBox ID="medic_region" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                     </fieldset>
                 </div> 
-                    <!--
-                    <fieldset>
-                        <legend>Datos 1</legend>      
-                            <div class="col-md-4 prueba">
-                                <p class="col-md-6 texto_medico">Nombre: </p>                                 
-                                <asp:TextBox ID="Nombre_medico1" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4 prueba">
-                               <p class="col-md-6 texto_medico">Apellido: </p>
-                                <asp:TextBox ID="Ape1_medico1" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4">
-                                <p class="col-md-6 texto_medico">2º Apellido: </p>
-                                <asp:TextBox ID="Ape2_medico1" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
-                            </div>                     
-                    </fieldset>
-                    <fieldset>
-                        <legend>Datos 2</legend>      
-                            <div class="col-md-4">
-                                <p class="col-md-6 texto_medico">Email: </p>                                 
-                                <asp:TextBox ID="email_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4">
-                                <p class="col-md-6 texto_medico">Numero Telefono: </p> 
-                                <asp:TextBox ID="phone_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
-                            </div> 
-                        <div class="col-md-4">
-                                <p class="col-md-6 texto_medico">Region: </p>
-                                <asp:TextBox ID="region_medico" runat="server" CssClass="col-md-6 input_data_medico"></asp:TextBox>
-                            </div>                     
-                    </fieldset>
-                    -->
                 </div>
                 <div class="row eleccion_medico1 padd">
-                    Aquí irían los datos de la asistencia.
+                    <div class="col-md-6 padd">
+                        <p class="texto_consentimiento pad">Consentimiento Firmado</p>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="Radio1" name="alojamiento" value="alojamiento_si" runat="server" />
+                            <label for="transporte" class="">Si.</label>
+                        </div>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="Radio2" name="alojamiento" value="alojamiento_no" runat="server" />
+                            <label for="transporte" class="">No.</label>
+                        </div>
+                        <div class="row">
+                            <p class="texto_consentimiento indica_city pad">Indique la ciudad de Origen</p>
+                            <asp:TextBox ID="TextBox1" CssClass="input_data_medico_cityorigen" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-md-6 padd">
+                        <p class="texto_consentimiento transpo pad">¿Necesita transporte?</p>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="Radio3" name="alojamiento" value="alojamiento_si" runat="server" />
+                            <label for="transporte" class="">Si.</label>
+                        </div>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="Radio4" name="alojamiento" value="alojamiento_no" runat="server" checked />
+                            <label for="transporte" class="">No.</label>
+                        </div>
+                        <p class="texto_consentimiento nece_transpor pad">¿Necesita alojamiento?</p>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="Radio5" name="alojamiento" value="alojamiento_si" runat="server" />
+                            <label for="transporte" class="">Si.</label>
+                        </div>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="Radio6" name="alojamiento" value="alojamiento_no" runat="server" checked />
+                            <label for="transporte" class="">No.</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="row eleccion_medico1 padd">
-                    Aquí irían las Observaciones.
+                    <div class="row padd">
+                        <label for="nombre" class="label_textos">Alergias: </label>
+                        <asp:TextBox id="TextBox2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
+                    </div>
+                    <div class="row padd">
+                        <label for="nombre" class="label_textos">Observaciones: </label>
+                        <asp:TextBox id="TextBox3" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="row eleccion_medico1 padd">
+                    <button onclick="prueba()">Pruebaaaa</button>
                 </div>
             </div>
         </form>
