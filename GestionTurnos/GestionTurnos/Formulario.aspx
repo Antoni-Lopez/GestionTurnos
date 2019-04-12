@@ -32,12 +32,21 @@
                 } 
             } 
         } 
-        addLoadEvent(comprueba); 
+        addLoadEvent(comprueba);
+        var jose; 
 
+        function EnviemFormulari() {
+           var theform;
+           if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) theform = document.form1;
+           else theform = document.forms["form1"];
+           theform.submit();
+       }
+               
         function comprueba() {
             var inicio = document.getElementById("datos_input_radio");
             var asiste = document.getElementById("radio_asiste_si");
             var transporte = document.getElementById("transporte_si");
+            jose = document.getElementById("jose_prueba");
 
             if (inicio.checked == true) {
                 document.getElementById('cuadro_medico').style.opacity = '0';
@@ -82,6 +91,12 @@
                 $('#cuadro_asiste').hide("slow");
                 document.getElementById('cuadro_transporte').style.opacity = '0';
                 $('#cuadro_transporte').hide("slow");
+            }
+            if (jose != null) {
+
+            }
+            else {
+
             }
         }
         function LanzaAviso(Text) {
@@ -148,21 +163,49 @@
         function ocultar_select() {
             document.getElementById('myselect').style.opacity = '0';
             $('#myselect').hide("slow");
+            document.getElementById('header_radiobuttons').style.opacity = '0';
+            $('#header_radiobuttons').hide("slow");
+            
             
         }
-        function prueba() {
-            var clickeado = $("#myselect :selected").val();
-            alert("Aqui tenemos clickeado el: " + clickeado);
+        function chorra() {
+            var pruebaza = document.getElementById("jose_prueba");
+            if (pruebaza.value = " ") {
+                alert("aqui tenemos un value de: " + pruebaza);
+                
+                pruebaza.value = 1;
+            }
+            else {
+                pruebaza = pruebaza + 1;
+                pruebaza.value = pruebaza;
+                alert("no tenemos un value de: " + pruebaza);
+            }
         }
-        function comprobacion(numero){
-            switch (numero) {
+        
+        function ValidaEmail() {
+            var email = document.getElementById("texto_email");
+            (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(Email))
+            elegir_accion(1);
+        }
+        function elegir_accion(x) {
+            switch (x) {
                 case 1:
+                    var boton_envio_delegado = document.getElementById("jose_prueba");
+                    boton_envio_delegado.value = '1';
                     break;
                 case 2:
+                    alert("Aqui estamos!");
                     break;
                 case 3:
-                    break;
+                    var clickeado = $("#myselect :selected").val();
+                    jose = document.getElementById("jose_prueba2");
+                    jose.value = clickeado;
+                    jose_prueba
+                    document.getElementById("jose_prueba").value = 2;
+                    EnviemFormulari();
                 case 4:
+                    break;
+                case 5:
                     break;
             }
         }
@@ -171,7 +214,7 @@
 <body>
     <div class="container-fluid main_cuadro ">
         <form id="form1" runat="server">
-            <div class="row eleccion">
+            <div id="header_radiobuttons" class="row eleccion">
                 <div class="col-md-6 datos_delegado">
                     <input type="radio" class="custom-control-input input_radio_eleccion" id="datos_input_radio" name="radiodatos" value="misdatos" onclick="comprueba_radiobuttons(1)" runat="server" />Delegado 
                 </div>
@@ -289,7 +332,7 @@
             </div>     
             <div id="cuadro_medico" class="row eleccion_medico">
                 <div id="myselect" class="row eleccion_medico_delegado padd">
-                    <select id="miselect" class="mi_selector" onchange="prueba()" OnSelectedIndexChanged="myselect_selected" AutoPostBack="True" runat="server" name="d1">
+                    <select id="miselect" class="mi_selector" onchange="elegir_accion(3)" OnSelectedIndexChanged="myselect_selected" AutoPostBack="True" runat="server" name="d1">
                         <option value="-2" id="anadir_registro_medico" selected>Nueva Alta Médico</option>
                         <option value="-1">-------------------------------------------------------------------------</option>
                         
@@ -324,15 +367,15 @@
                             </div>
                         </div>
                         <div class="col-md-4 padd da5">
-                            <label for="ape1" class="pad texto_medico1">Telefono</label>
+                            <label for="ape1" class="pad texto_medico1">Especialidad</label>
                             <div class="row parraf">
-                                <asp:TextBox ID="medicphone" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                                <asp:TextBox ID="medicespecialidad" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 padd da6">
                             <label for="ape1" class="pad texto_medico1">Número de SELAS</label>
                             <div class="row parraf">
-                                <asp:TextBox ID="medic_region" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                                <asp:TextBox ID="medic_selas" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                     </fieldset>
@@ -342,11 +385,11 @@
                     <div class="col-md-6 padd">
                         <p class="texto_consentimiento pad">Consentimiento Firmado</p>
                         <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="Radio1" name="alojamiento" value="alojamiento_si" runat="server" />
+                            <input type="radio" class="custom-control-input input_asiste" id="consenti_si" name="Consentimiento" value="Consentimiento_si" runat="server" />
                             <label for="transporte" class="">Si.</label>
                         </div>
                         <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="Radio2" name="alojamiento" value="alojamiento_no" runat="server" />
+                            <input type="radio" class="custom-control-input input_asiste" id="consenti_no" name="Consentimiento" value="Consentimiento_no" runat="server" />
                             <label for="transporte" class="">No.</label>
                         </div>
                         <div class="row">
@@ -355,22 +398,22 @@
                         </div>
                     </div>
                     <div class="col-md-6 padd">
-                        <p class="texto_consentimiento transpo pad">¿Necesita transporte?</p>
+                        <p class="texto_consentimiento transpo pad" onclick="chorra()">¿Necesita transporte?</p>
                         <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="Radio3" name="alojamiento" value="alojamiento_si" runat="server" />
+                            <input type="radio" class="custom-control-input input_asiste" id="transpor_si" name="transporte" value="transporte_si" runat="server" />
                             <label for="transporte" class="">Si.</label>
                         </div>
                         <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="Radio4" name="alojamiento" value="alojamiento_no" runat="server" checked />
+                            <input type="radio" class="custom-control-input input_asiste" id="transpor_no" name="transporte" value="transporte_no" runat="server" checked />
                             <label for="transporte" class="">No.</label>
                         </div>
                         <p class="texto_consentimiento nece_transpor pad">¿Necesita alojamiento?</p>
                         <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="Radio5" name="alojamiento" value="alojamiento_si" runat="server" />
+                            <input type="radio" class="custom-control-input input_asiste" id="aloja_si" name="alojamiento" value="alojamiento_si" runat="server" />
                             <label for="transporte" class="">Si.</label>
                         </div>
                         <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="Radio6" name="alojamiento" value="alojamiento_no" runat="server" checked />
+                            <input type="radio" class="custom-control-input input_asiste" id="aloja_no" name="alojamiento" value="alojamiento_no" runat="server" checked />
                             <label for="transporte" class="">No.</label>
                         </div>
                     </div>
@@ -378,15 +421,17 @@
                 <div class="row eleccion_medico1 padd">
                     <div class="row padd">
                         <label for="nombre" class="label_textos">Alergias: </label>
-                        <asp:TextBox id="TextBox2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
+                        <asp:TextBox id="alergia_medic" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
                     </div>
                     <div class="row padd">
                         <label for="nombre" class="label_textos">Observaciones: </label>
-                        <asp:TextBox id="TextBox3" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
+                        <asp:TextBox id="Observa_medic" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row eleccion_medico1 padd">
                     <button onclick="prueba()">Pruebaaaa</button>
+                    <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
+                    <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
                 </div>
             </div>
         </form>

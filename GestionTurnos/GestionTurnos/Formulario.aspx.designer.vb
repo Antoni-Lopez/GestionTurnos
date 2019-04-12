@@ -284,40 +284,40 @@ Partial Public Class Formulario
     Protected WithEvents medicmail As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control medicphone.
+    '''Control medicespecialidad.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents medicphone As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents medicespecialidad As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control medic_region.
+    '''Control medic_selas.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents medic_region As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents medic_selas As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control Radio1.
+    '''Control consenti_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Radio1 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents consenti_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control Radio2.
+    '''Control consenti_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Radio2 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents consenti_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
     '''Control TextBox1.
@@ -329,56 +329,74 @@ Partial Public Class Formulario
     Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control Radio3.
+    '''Control transpor_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Radio3 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents transpor_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control Radio4.
+    '''Control transpor_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Radio4 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents transpor_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control Radio5.
+    '''Control aloja_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Radio5 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents aloja_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control Radio6.
+    '''Control aloja_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Radio6 As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents aloja_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control TextBox2.
+    '''Control alergia_medic.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents alergia_medic As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control TextBox3.
+    '''Control Observa_medic.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox3 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Observa_medic As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control jose_prueba.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents jose_prueba As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control jose_prueba2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents jose_prueba2 As Global.System.Web.UI.WebControls.TextBox
 End Class
