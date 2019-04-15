@@ -1,7 +1,14 @@
-﻿body {background-color: #F7F7F9;}
+﻿body {background-color: #F7F7F9;
+      margin:0;
+      padding:0;
+}
+
+.inputs_hidden{display: none;}
 
 /* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
-.verde {border: 2px solid green;}
+.verde {
+    border: 2px solid green;
+}
 .rojo {border: 2px solid red;}
 .amarillo {border: 2px solid yellow;}
 .azul {border: 2px solid blue;}
@@ -59,8 +66,120 @@
 .indica_city{margin-top: 12.5% !important;}
 .input_obser_aler1{width: 100%;}
 
+
+.switch {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    margin: -30px 0 0 -75px;
+    background: #00bc9c;
+    transition: all 0.2s ease;
+    border-radius: 25px;
+}
+.switch1{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    margin: -30px 0 0 -75px;
+    background: #00bc9c;
+    transition: all 0.2s ease;
+    border-radius: 25px;
+}
+.switch2 {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    margin: -30px 0 0 -75px;
+    background: #00bc9c;
+    transition: all 0.2s ease;
+    border-radius: 25px;
+}
+.switch span, .switch1 span,.switch2 span {
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    top: 50%;
+    left: 50%;
+    margin: -2px 0px 0px -4px;
+    background: #fff;
+    display: block;
+    transform: rotate(-45deg);
+    transition: all 0.2s ease;
+}
+
+.switch span:after,.switch1 span:after,.switch2 span:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 4px;
+    height: 12px;
+    margin-top: -8px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.input_prueba {
+    display: none;
+}
+
+.switch label, .switch1 label, .switch2 label {
+    cursor: pointer;
+    color: rgba(0,0,0,0.2);
+    width: 60px;
+    line-height: 50px;
+    transition: all 0.2s ease;
+}
+.switch1 label {
+    margin-left: -54%;
+}
+label[for=yes], label[for=ConsentimientoS], label[for=transporte_medic_si] {
+    position: absolute;
+    left: 0px;
+    height: 20px;
+}
+
+label[for=no], label[for=ConsentimientoN], label[for=transporte_medic_no] {
+    position: absolute;
+    right: 0px;
+}
+
+#no:checked ~ .switch, #ConsentimientoN:checked ~ .switch1, #transporte_medic_no:checked ~ .switch2 {
+    background: #eb4f37;
+}
+
+#no:checked ~ .switch span,#ConsentimientoN:checked ~ .switch1 span,#transporte_medic_no:checked ~ .switch2 span {
+    background: #fff;
+    margin-left: -8px;
+}
+
+#no:checked ~ .switch span:after,#ConsentimientoN:checked ~ .switch1 span:after ,#transporte_medic_no:checked ~ .switch2 span:after {
+    background: #fff;
+    height: 20px;
+    margin-top: -8px;
+    margin-left: 8px;
+}
+
+#yes:checked ~ .switch label[for=yes], #ConsentimientoSi:checked ~ .switch1 label[for=ConsentimientoSi], #transporte_medic_si:checked ~ .switch2 label[for=transporte_medic_si] {
+    color: #fff;
+}
+
+#no:checked ~ .switch label[for=no], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN] {
+    color: #fff;
+}
+
 /* Style with padding*/
-.padd {padding: 15px;}
+.padd {
+    padding: 15px;
+}
 .pad {padding: 5px;}
 .paddi {padding: 26.4px;}
 

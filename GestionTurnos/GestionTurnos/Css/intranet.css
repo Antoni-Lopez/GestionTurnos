@@ -29,3 +29,15 @@ body {background-color: #5F616A;color: black;}
     #logo_img {margin-left: 25%;}
     #introducir_texto {font-size: 1em !important;margin-left: 19%;margin-top: 0;width: 70% !important;}
 }
+
+/*
+<div class="col-md-6 pad" >
+<input type="radio" class="custom-control-input input_asiste" id="consenti_si" name="Consentimiento" value="Consentimiento_si" runat="server" / >
+<label for="transporte" class="" > Si.</label >
+</div >
+<div class="col-md-6 pad" >
+<input type="radio" class="custom-control-input input_asiste" id="consenti_no" name="Consentimiento" value="Consentimiento_no" runat="server" / >
+<label for="transporte" class="" > No.</label >
+</div >
+    
+ */

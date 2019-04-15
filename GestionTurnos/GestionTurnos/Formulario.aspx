@@ -40,13 +40,16 @@
            if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) theform = document.form1;
            else theform = document.forms["form1"];
            theform.submit();
-       }
-               
+        }
+        
+        function prueba_jose(){
+            alert("holaaaaaa");
+        }
+       
         function comprueba() {
             var inicio = document.getElementById("datos_input_radio");
             var asiste = document.getElementById("radio_asiste_si");
             var transporte = document.getElementById("transporte_si");
-            jose = document.getElementById("jose_prueba");
 
             if (inicio.checked == true) {
                 document.getElementById('cuadro_medico').style.opacity = '0';
@@ -91,12 +94,6 @@
                 $('#cuadro_asiste').hide("slow");
                 document.getElementById('cuadro_transporte').style.opacity = '0';
                 $('#cuadro_transporte').hide("slow");
-            }
-            if (jose != null) {
-
-            }
-            else {
-
             }
         }
         function LanzaAviso(Text) {
@@ -171,8 +168,7 @@
         function chorra() {
             var pruebaza = document.getElementById("jose_prueba");
             if (pruebaza.value = " ") {
-                alert("aqui tenemos un value de: " + pruebaza);
-                
+                alert("aqui tenemos un value de: " + pruebaza);                
                 pruebaza.value = 1;
             }
             else {
@@ -182,11 +178,6 @@
             }
         }
         
-        function ValidaEmail() {
-            var email = document.getElementById("texto_email");
-            (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(Email))
-            elegir_accion(1);
-        }
         function elegir_accion(x) {
             switch (x) {
                 case 1:
@@ -194,15 +185,15 @@
                     boton_envio_delegado.value = '1';
                     break;
                 case 2:
-                    alert("Aqui estamos!");
-                    break;
-                case 3:
                     var clickeado = $("#myselect :selected").val();
                     jose = document.getElementById("jose_prueba2");
                     jose.value = clickeado;
-                    jose_prueba
                     document.getElementById("jose_prueba").value = 2;
                     EnviemFormulari();
+                    break;
+                case 3:
+                    document.getElementById("jose_prueba").value = 3;
+                    break;
                 case 4:
                     break;
                 case 5:
@@ -330,11 +321,15 @@
             <div class="row">
                 <asp:Button ID="boton_enviar" CssClass="enviar" Text="Enviar" runat="server" />
             </div>     
+            <div class="row">
+                <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
+                <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
+            </div>
             <div id="cuadro_medico" class="row eleccion_medico">
                 <div id="myselect" class="row eleccion_medico_delegado padd">
-                    <select id="miselect" class="mi_selector" onchange="elegir_accion(3)" OnSelectedIndexChanged="myselect_selected" AutoPostBack="True" runat="server" name="d1">
-                        <option value="-2" id="anadir_registro_medico" selected>Nueva Alta Médico</option>
-                        <option value="-1">-------------------------------------------------------------------------</option>
+                    <select id="miselect" class="mi_selector" onchange="elegir_accion(2)" runat="server" name="d1">
+                        <option value="-2" id="anadir_registro_medico">Nueva Alta Médico</option>
+                        <option selected>-------------------------------------------------------------------------</option>
                         
                     </select>
                 </div>
@@ -384,37 +379,40 @@
                 <div class="row eleccion_medico1 padd">
                     <div class="col-md-6 padd">
                         <p class="texto_consentimiento pad">Consentimiento Firmado</p>
-                        <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="consenti_si" name="Consentimiento" value="Consentimiento_si" runat="server" />
-                            <label for="transporte" class="">Si.</label>
-                        </div>
-                        <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="consenti_no" name="Consentimiento" value="Consentimiento_no" runat="server" />
-                            <label for="transporte" class="">No.</label>
-                        </div>
+                        <div class="toggle-radio1">
+                            <input type="radio" class="input_prueba" name="rdo2" id="ConsentimientoSi" value="Consentimiento_si" runat="server"/>
+                            <input type="radio" class="input_prueba" name="rdo2" id="ConsentimientoN" value="Consentimiento_no" runat="server" />
+                            <div class="switch1">
+                                <label for="ConsentimientoSi">Sí</label>
+                                <label for="ConsentimientoN">No</label>
+                                <span></span>
+                            </div>
+                        </div>                        
                         <div class="row">
                             <p class="texto_consentimiento indica_city pad">Indique la ciudad de Origen</p>
                             <asp:TextBox ID="TextBox1" CssClass="input_data_medico_cityorigen" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-md-6 padd">
-                        <p class="texto_consentimiento transpo pad" onclick="chorra()">¿Necesita transporte?</p>
-                        <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="transpor_si" name="transporte" value="transporte_si" runat="server" />
-                            <label for="transporte" class="">Si.</label>
-                        </div>
-                        <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="transpor_no" name="transporte" value="transporte_no" runat="server" checked />
-                            <label for="transporte" class="">No.</label>
+                        <p class="texto_consentimiento transpo pad">¿Necesita transporte?</p>
+                        <div class="toggle-radio2">
+                            <input type="radio" class="input_prueba" name="rdo3" id="transporte_medic_si" value="transporte_si" runat="server"/>
+                            <input type="radio" class="input_prueba" name="rdo3" id="transporte_medic_no" value="transporte_no" runat="server" />
+                            <div class="switch2">
+                                <label for="transporte_medic_si">Sí</label>
+                                <label for="transporte_medic_no">No</label>
+                                <span></span>
+                            </div>
                         </div>
                         <p class="texto_consentimiento nece_transpor pad">¿Necesita alojamiento?</p>
-                        <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="aloja_si" name="alojamiento" value="alojamiento_si" runat="server" />
-                            <label for="transporte" class="">Si.</label>
-                        </div>
-                        <div class="col-md-6 pad">
-                            <input type="radio" class="custom-control-input input_asiste" id="aloja_no" name="alojamiento" value="alojamiento_no" runat="server" checked />
-                            <label for="transporte" class="">No.</label>
+                        <div class="toggle-radio">
+                            <input type="radio" class="input_prueba" name="rdo" id="yes" value="alojamiento_si" runat="server"/>
+                            <input type="radio" class="input_prueba" name="rdo" id="no" value="alojamiento_no" runat="server" />
+                            <div class="switch">
+                                <label for="yes">Sí</label>
+                                <label for="no">No</label>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -429,9 +427,7 @@
                     </div>
                 </div>
                 <div class="row eleccion_medico1 padd">
-                    <button onclick="prueba()">Pruebaaaa</button>
-                    <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
-                    <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1"></asp:TextBox>
+                    <asp:Button ID="Button_Medico" CssClass="enviar" Text="Enviar" runat="server" />
                 </div>
             </div>
         </form>

@@ -4,6 +4,7 @@
     Dim clsBD As New ClaseAccesoBD
     Dim DS As DataSet
     Dim VectorSQL(0) As String
+    Dim IDUser As Integer
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
@@ -14,10 +15,10 @@
             Password.Attributes.Add("Placeholder", "Contraseña")
             'Response.Redirect("Formulario.aspx?IDUser=1")
         Else
-            Dim IDUser As Integer, query As String, MiVector(3) As String
-            If ChekeaEmail(Trim(Email1.Text), Trim(Password.Text)) Then
 
-                Response.Redirect("Formulario.aspx")
+            If ChekeaEmail(Trim(Email1.Text), Trim(Password.Text)) Then
+                Server.Transfer("Formulario.aspx?IdUser=" & IDUser)
+                'Response.Redirect("Formulario.aspx?IdUser=" & IDUser)
             Else
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Lo sentimos pero algo ha fallado, revise los campos email y contraseña para comprobar que son los correctos. Gracias!')", True)
             End If
@@ -28,13 +29,11 @@
 
         'Realizamos la consulta para la BD
         'VectorSQL(0) = "SELECT Auto,Email, Password, idContacte, idOrigen FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(Email, 100)) & "' AND Password='" & clsBD.Cometes(Password) & "'"
-        VectorSQL(0) = "SELECT Auto AS userID ,idContacte AS Rol,idOrigen AS Agrupacion,idTipusContacte As Transporte, idAlta As Asiste, Nom As Nombre,Cognoms As Apellidos, Mobil AS Numero, Email, Carrec AS Region,NIT AS Siglas, Password, Procedencia As Origen, SectorInteres As Selas,NickTwitter As Alojamiento, NickFacebook As Alergias, WebPersonal As Observaciones, Blog As Especialidad, Data As consentimiento FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(Email, 100)) & "' AND Password='" & clsBD.Cometes(Password) & "'"
 
+        VectorSQL(0) = "SELECT Auto AS userID ,idContacte AS Rol,idOrigen AS Agrupacion,idTipusContacte As Transporte, idAlta As Asiste, Nom As Nombre,Cognoms As Apellidos, Mobil AS Numero, Email, Carrec AS Region,NIT AS Siglas, Password, Procedencia As Origen, SectorInteres As Selas,NickTwitter As Alojamiento, NickFacebook As Alergias, WebPersonal As Observaciones, Blog As Especialidad, Data As consentimiento FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(Email, 100)) & "' AND Password='" & clsBD.Cometes(Password) & "'"
         DS = New DataSet
 
-
-
-        Dim userID As Integer, Rol As Integer, Agrupacion As Integer, Nombre As String, Apellidos As String, Numero As Integer, Email As String
+        Dim Rol As Integer, Agrupacion As Integer, Nombre As String, Apellidos As String, Numero As Integer
         Dim Region As String, Siglas As String, Asistes As String, Origen As String, Transpor As Integer, Aloja As String, Aler As String, Obser As String, Especialidad As Integer, Selas As String, Consentimiento As Integer
 
         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
@@ -42,60 +41,37 @@
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    'usuario = DS.Tables(0).Rows(i).Item("Auto")
-                    'rol = DS.Tables(0).Rows(i).Item("idContacte")
-                    'agrupacion = DS.Tables(0).Rows(i).Item("idOrigen")
-                    userID = DS.Tables(0).Rows(i).Item("userID")
-                    rol = DS.Tables(0).Rows(i).Item("Rol")
-                    agrupacion = DS.Tables(0).Rows(i).Item("Agrupacion")
-                    Nombre = DS.Tables(0).Rows(i).Item("Nombre")
-                    Apellidos = DS.Tables(0).Rows(i).Item("Apellidos")
-                    Numero = DS.Tables(0).Rows(i).Item("Numero")
-                    Email = DS.Tables(0).Rows(i).Item("Email")
-                    Region = DS.Tables(0).Rows(i).Item("Region")
-                    Siglas = DS.Tables(0).Rows(i).Item("Siglas")
-                    Origen = DS.Tables(0).Rows(i).Item("Origen")
-                    Transpor = DS.Tables(0).Rows(i).Item("Transporte")
-                    Asistes = DS.Tables(0).Rows(i).Item("Asiste")
-                    Aloja = DS.Tables(0).Rows(i).Item("Alojamiento")
-                    Aler = DS.Tables(0).Rows(i).Item("Alergias")
-                    Obser = DS.Tables(0).Rows(i).Item("Observaciones")
-                    Especialidad = DS.Tables(0).Rows(i).Item("Especialidad")
-                    Selas = DS.Tables(0).Rows(i).Item("Selas")
-                    Consentimiento = DS.Tables(0).Rows(i).Item("consentimiento")
+
+                    IDUser = DS.Tables(0).Rows(i).Item("userID")
+                    Rol = DS.Tables(0).Rows(i).Item("Rol")
+
                 Next
             End If
         End If
 
-        Dim Context As HttpContext
-        Context = HttpContext.Current
-        Context.Items.Add("userID", userID)
-        Context.Items.Add("rol", rol)
-        Context.Items.Add("agrupacion", agrupacion)
-        Context.Items.Add("Apellidos", Apellidos)
-        Context.Items.Add("Nombre", Nombre)
-        Context.Items.Add("Numero", Numero)
-        Context.Items.Add("Email", Email)
-        Context.Items.Add("Region", Region)
-        Context.Items.Add("Siglas", Siglas)
-        Context.Items.Add("Origen", Origen)
-        Context.Items.Add("Transpor", Transpor)
-        Context.Items.Add("Asistes", Asistes)
-        Context.Items.Add("Aloja", Aloja)
-        Context.Items.Add("Aler", Aler)
-        Context.Items.Add("Obser", Obser)
-        Context.Items.Add("Especialidad", Especialidad)
-        Context.Items.Add("consentimiento", Consentimiento)
-        Context.Items.Add("Selas", Selas)
-        Server.Transfer("Formulario.aspx")
+        'Dim Context As HttpContext
+        'Context = HttpContext.Current
+        'Context.Items.Add("userID", userID)
+        'Context.Items.Add("rol", Rol)
+        'Context.Items.Add("agrupacion", Agrupacion)
+        'Context.Items.Add("Apellidos", Apellidos)
+        'Context.Items.Add("Nombre", Nombre)
+        'Context.Items.Add("Numero", Numero)
+        'Context.Items.Add("Email", Email)
+        'Context.Items.Add("Region", Region)
+        'Context.Items.Add("Siglas", Siglas)
+        'Context.Items.Add("Origen", Origen)
+        'Context.Items.Add("Transpor", Transpor)
+        'Context.Items.Add("Asistes", Asistes)
+        'Context.Items.Add("Aloja", Aloja)
+        'Context.Items.Add("Aler", Aler)
+        'Context.Items.Add("Obser", Obser)
+        'Context.Items.Add("Especialidad", Especialidad)
+        'Context.Items.Add("consentimiento", Consentimiento)
+        'Context.Items.Add("Selas", Selas)
+        'Server.Transfer("Formulario.aspx")
 
-        'MiVector(0) = usuario
-        'MiVector(1) = rol
-        'MiVector(2) = agrupacion
-        'query = "[" & usuario & "," & rol & "," & agrupacion & "]"
-        Return True
-
-
+        Return IDUser
     End Function
 
     Public Function EjemplosBD()

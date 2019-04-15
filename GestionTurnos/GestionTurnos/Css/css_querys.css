@@ -88,3 +88,31 @@
     .tabla_numeros {margin: -328.5% 0 0 -99.5% !important;}
     #tabla_normal {margin: 455% 0 0 50% !important;}
 }
+
+
+
+/*
+    <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input prueba_radio input_asiste" id="aloja_si" name="alojamiento" value="alojamiento_si" runat="server" />
+                            <label for="transporte" class="">Si.</label>
+                        </div>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input prueba_radio input_asiste" id="aloja_no" name="alojamiento" value="alojamiento_no" runat="server" checked />
+                            <label for="transporte" class="">No.</label>
+                        </div>
+
+
+    <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="transpor_si" name="transporte"  />
+                            <label for="transporte" class="">Si.</label>
+                        </div>
+                        <div class="col-md-6 pad">
+                            <input type="radio" class="custom-control-input input_asiste" id="transpor_no" name="transporte"  checked />
+                            <label for="transporte" class="">No.</label>
+                        </div>
+
+
+
+
+
+*/
