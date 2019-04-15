@@ -35,6 +35,44 @@
         addLoadEvent(comprueba);
         var jose; 
 
+        function probando() {
+            var nombre;
+            var valor;
+
+            nombre = document.getElementById("nombre_medico").value;
+            ape1 = document.getElementById("ape1medico").value;
+            ape2 = document.getElementById("ape2medico").value;
+            medic = document.getElementById("medicmail").value;
+            selas = document.getElementById("medic_selas").value;
+            alergia = document.getElementById("alergia_medic").value;
+            observa = document.getElementById("Observa_medic").value;
+            espe = document.getElementById("medicespecialidad").value;
+            consentimiento = document.getElementById("ConsentimientoN");
+            transporte = document.getElementById("transporte_medic_no");
+            alojamiento = document.getElementById("no");
+            valor = "";
+            alert("test1");
+            document.getElementById("nombre_medico").value = valor;
+            alert("test2");
+            document.getElementById("ape1medico").value = valor;
+            alert("test3");
+            document.getElementById("ape2medico").value = valor;
+            alert("test4");
+            document.getElementById("medicmail").value = valor;
+            alert("test5");
+            document.getElementById("medic_selas").value = valor;
+            alert("test6");
+            document.getElementById("alergia_medic").value = valor;
+            alert("test7");
+            document.getElementById("Observa_medic").value = valor;
+            alert("test8");
+            document.getElementById("ConsentimientoN").checked = True;
+            alert("test9");
+            document.getElementById("transporte_medic_no").checked = True;
+            alert("test10");
+            document.getElementById("no").checked = True;
+            alert("test11");
+        }
         function EnviemFormulari() {
            var theform;
            if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) theform = document.form1;
@@ -53,27 +91,26 @@
 
             if (inicio.checked == true) {
                 document.getElementById('cuadro_medico').style.opacity = '0';
-                $('#cuadro_medico').hide("slow");
+
                 document.getElementById('cuadro_delegado').style.opacity = '1';
-                $('#cuadro_delegado').show(3000);
+                
                 document.getElementById('cuadro_delegado1').style.opacity = '1';
-                $('#cuadro_delegado1').show(3000);
+                
                 document.getElementById('cuadro_delegado2').style.opacity = '1';
-                $('#cuadro_delegado2').show(3000);
+                
                 document.getElementById('boton_enviar').style.opacity = '1';
-                $('#boton_enviar').show(3000);
+                
             }
             else {
                 document.getElementById('cuadro_delegado').style.opacity = '0';
-                $('#cuadro_delegado').hide("slow");
+
                 document.getElementById('cuadro_delegado1').style.opacity = '0';
-                $('#cuadro_delegado1').hide("slow");
+
                 document.getElementById('cuadro_delegado2').style.opacity = '0';
-                $('#cuadro_delegado2').hide("slow");
+
                 document.getElementById('boton_enviar').style.opacity = '0';
-                $('#boton_enviar').hide("slow");
+
                 document.getElementById('cuadro_medico').style.opacity = '1';
-                $('#cuadro_medico').show(3000);
             }
 
             if (asiste.checked == true) {
@@ -404,7 +441,7 @@
                                 <span></span>
                             </div>
                         </div>
-                        <p class="texto_consentimiento nece_transpor pad">¿Necesita alojamiento?</p>
+                        <p class="texto_consentimiento nece_transpor pad" onclick="probando()">¿Necesita alojamiento?</p>
                         <div class="toggle-radio">
                             <input type="radio" class="input_prueba" name="rdo" id="yes" value="alojamiento_si" runat="server"/>
                             <input type="radio" class="input_prueba" name="rdo" id="no" value="alojamiento_no" runat="server" />
