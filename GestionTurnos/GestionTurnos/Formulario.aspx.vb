@@ -5,11 +5,11 @@
     Dim DS As DataSet
     Dim VectorSQL(0) As String, Jose As String
 
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             Dim clsGeneral As New ClaseGeneral
             clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
-
             Dim IdUsuario As Integer, Rol As Integer, Agrupacion As Integer
             IdUsuario = Request.QueryString("IdUser")
 
@@ -18,13 +18,7 @@
             If Rol = 0 Then
                 datos_input_radio.Checked = True
                 Extraer_BD_Delegado(IdUsuario, Rol)
-
-                'A partir de aqui, lo creamos para mostrar datos en el combotext.
-                'Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
-
-
             Else
-                'Agrupacion = Extraer_BD_Delegado(IdUsuario)
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "ocultar_select()", True)
                 Extraer_BD_Medicos(IdUsuario)
             End If
@@ -37,14 +31,23 @@
 
             'boton_enviar.Attributes.Add("onclick", "return prueba_jose()")
             IdUsuario = Request.QueryString("IdUser")
-            miselect.Attributes.Add("onchange", "elegir_accion(2)")
-            Button_Medico.Attributes.Add("onclick", "elegir_accion(3)")
+            miselect.Attributes.Add("onchange", "elegir_accion(2);")
+            Button_Medico.Attributes.Add("onclick", "boton_enviar_medico();")
+            Button_eliminar.Attributes.Add("onclick", "elegir_accion(5);")
             input_hidden = jose_prueba.Text
             input_hidden2 = jose_prueba2.Text
 
-            If input_hidden2 = -2 Then
-                Borrar_inputs(IdUsuario)
-            End If
+            Select Case input_hidden2
+                Case -2
+                    If input_hidden = 2 Then
+                        'Vamos a proceder a registrar un nuevo medico.
+                        'Por ello primero limpiamos todos los inputs.
+                        'Al seleccionar nueva alta, automaticamente, limpiamos todos los inputs.
+                        ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "vaciar_inputs_medicos();", True)
+                    End If
+                Case -1
+                    input_hidden = 2
+            End Select
 
             Select Case input_hidden
                 Case 1
@@ -56,20 +59,21 @@
                     Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
                     Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 3
-                    ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Entramossssssss!')", True)
-                    Dim nombre_new_medic As String, Apellidoss As String
-                    nombre_new_medic = nombre_medico.Text
-                    Apellidoss = ape1medico.Text + "¦" + ape2medico.Text
-
+                    'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
                     Rol = Extraer_Rol(IdUsuario)
                     Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
-                    insertar_BD_Medico(nombre_new_medic, Apellidoss, Agrupacion)
-
-
-
+                    insertar_new_Medico(Agrupacion)
                 Case 4
+                    'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere modificar un  registro ya existente en la BD de medico
+                    Rol = Extraer_Rol(IdUsuario)
+                    Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
+                    UPDATE_BD_Medicos(Agrupacion, Rol)
                 Case 5
+                    'Boton eliminar registro de medico en la BD.
+                    Delete_1Medico_BD()
             End Select
+
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "EnviemFormulari()", True)
 
             'Dim Context As HttpContext, mail As String
             'Context = HttpContext.Current
@@ -146,57 +150,6 @@
             End If
         End If
         Return Agrupacion
-    End Function
-
-    Private Function insertar_BD_Medico(ByRef nombre, ByVal Apel, ByVal Agrupa)
-        Dim clsBD As New ClaseAccesoBD
-        Dim DS As New DataSet
-        Dim VectorSQL(0) As String, idFeria As Integer = 195
-        Dim i As Integer, Ultimo As Integer = 0
-        Dim Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As Integer, NSelas As String
-        Dim Consentimiento As Integer, Transporte As Integer, Alojamiento As Integer, Alergia As String, Observaciones As String
-        Dim Rol As Integer, Agrupacion As Integer, Asiste As Integer, numero As String, Region As String, Origen As String
-
-
-        Rol = 1
-
-        If (transporte_medic_si.Checked = True) Then
-            Transporte = 1
-        Else
-            Transporte = 0
-        End If
-
-        If (ConsentimientoSi.Checked = True) Then
-            Transporte = 1
-        Else
-            Transporte = 0
-        End If
-
-        If (alojamiento_si.Checked = True) Then
-            Alojamiento = 1
-        Else
-            Alojamiento = 0
-        End If
-
-        If (ConsentimientoSi.Checked = True) Then
-            Consentimiento = 1
-        Else
-            Consentimiento = 0
-        End If
-
-        Mail = medicmail.Text
-        NSelas = medic_selas.Text
-        Alergia = alergia_medic.Text
-        Observaciones = Observa_medic.Text
-        Especialidad = medicespecialidad.Text
-
-        VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idTipusContacte,Nom,Cognoms,Email,SectorInteres,NickTwitter,NickFacebook,WebPersonal,Blog,Data) VALUES('" & clsBD.Cometes(Left(idFeria, 100)) & "','" & clsBD.Cometes(Left(Rol, 100)) & "','" & clsBD.Cometes(Left(Transporte, 100)) & "','" & clsBD.Cometes(Left(nombre, 100)) & "','" & clsBD.Cometes(Left(Apel, 100)) & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & clsBD.Cometes(Left(Alojamiento, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(Consentimiento, 100)) & "')"
-        If Not clsBD.BaseDades(2, VectorSQL, , Ultimo) Then
-            'Problema
-        Else
-            'La variable Ultimo tendrá el último ID autonumérico
-        End If
-
     End Function
 
     Private Function Extraer_BD_Medicos(ByRef iduser)
@@ -443,11 +396,11 @@
         Dim DS As New DataSet
         Dim VectorSQL(0) As String
 
-        VectorSQL(0) = "SELECT idContacte, Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupa & "'ORDER BY Cognoms, Nom"
+        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupa & "'ORDER BY Cognoms, Nom"
         If clsBD.BaseDades(1, VectorSQL, DS) Then
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    miselect.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), i + 1))
+                    miselect.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom") & ", " & DS.Tables(0).Rows(i).Item("Auto"), i + 1))
                 Next
             End If
         End If
@@ -514,9 +467,7 @@
                     Consentimiento = DS.Tables(0).Rows(n).Item("Data")
                 Next
 
-
-
-
+                jose_prueba3.Text = UserID
 
                 'No nos devuelve valores
                 nombre_medico.Text = Name
@@ -569,20 +520,136 @@
         Return True
     End Function
 
-    Private Function Borrar_inputs(ByRef IdUsuario)
-        nombre_medico.Text = ""
-        medicmail.Text = ""
-        medicespecialidad.Text = ""
-        medic_selas.Text = ""
-        alergia_medic.Text = ""
-        Observa_medic.Text = ""
-        ape1medico.Text = ""
-        ape2medico.Text = ""
-        no.Checked = True
-        transporte_medic_no.Checked = True
-        ConsentimientoN.Checked = True
+    Private Function insertar_new_Medico(ByRef Agrupacion)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As New DataSet
+        Dim VectorSQL(0) As String, idFeria As Integer
+        Dim i As Integer, Ultimo As Integer = 0
 
-        Return True
+        Dim Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As String, NSelas As String
+        Dim Consentimiento As String, Transporte As Integer, Alojamiento As String, Alergia As String, Observaciones As String, Password As String
+        Dim Rol As Integer, Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As String
+
+        'Rellenamos las variables con los datos introducidos en los inputs.
+        Name = nombre_medico.Text
+        Apellido = ape1medico.Text + "¦" + ape2medico.Text
+        Mail = medicmail.Text
+        NSelas = medic_selas.Text
+        Alergia = alergia_medic.Text
+        Observaciones = Observa_medic.Text
+        Especialidad = medicespecialidad.Text
+        Origen = city_origin.Text
+        numero = 0
+        Password = ""
+        Region = ""
+        Nit = 0
+        Asiste = 0
+        NITactivat = ""
+
+        'Ponemos el Rol a 1 como default, porque estámos insertando medicos, ya que tenemos que tener claro, que este registro lo hace el delegado.
+        Rol = 1
+        'Tambien ponemos el id de la feria a "martillo"
+        idFeria = 195
+
+        If (transporte_medic_si.Checked = True) Then
+            Transporte = 1
+        Else
+            Transporte = 0
+        End If
+        If (alojamiento_si.Checked = True) Then
+            Alojamiento = 1
+        Else
+            Alojamiento = 0
+        End If
+
+        If (ConsentimientoSi.Checked = True) Then
+            Consentimiento = 1
+        Else
+            Consentimiento = 0
+        End If
+        VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) VALUES('" & idFeria & "','" & Rol & "','" & Agrupacion & "','" & Transporte & "','" & Asiste & "','" & clsBD.Cometes(Left(Name, 100)) & "','" & clsBD.Cometes(Left(Apellido, 100)) & "','" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "','" & NITactivat & "','" & Password & "','" & Especialidad & "','" & NSelas & "','" & Consentimiento & "','" & Alojamiento & "','" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "');"
+
+        '195,1,1,0,0, Victor,Mateo¦Cases,,natimateo@gmail.com,,,,,,1325,1,0,Torrevieja,Dana,Nada que destacar)"
+
+        If Not clsBD.BaseDades(2, VectorSQL, , Ultimo) Then
+            'If Not clsBD.BaseDades(2, VectorSQL) Then
+            'Problema
+        Else
+            'La variable Ultimo tendrá el último ID autonumérico
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Registro de nuevo medico concluido sin problemas!');", True)
+            Return Ultimo
+        End If
+
     End Function
 
+    Private Function UPDATE_BD_Medicos(ByRef agrupacion, ByVal Rol)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As New DataSet
+        Dim VectorSQL(0) As String, IDUser As Integer
+
+        Dim Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As String, NSelas As String
+        Dim Consentimiento As String, Transporte As Integer, Alojamiento As String, Alergia As String, Observaciones As String, Password As String
+        Dim Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As String
+
+
+
+        IDUser = jose_prueba3.Text
+        'Rellenamos las variables con los datos introducidos en los inputs.
+        Name = nombre_medico.Text
+        Apellido = ape1medico.Text + "¦" + ape2medico.Text
+        Mail = medicmail.Text
+        NSelas = medic_selas.Text
+        Alergia = alergia_medic.Text
+        Observaciones = Observa_medic.Text
+        Especialidad = medicespecialidad.Text
+        Origen = city_origin.Text
+
+        'Ponemos el Rol a 1 como default, porque estámos actualizando medicos, ya que tenemos que tener claro, que esta modificacion lo hace el delegado.
+        Rol = 1
+
+        If (transporte_medic_si.Checked = True) Then
+            Transporte = 1
+        Else
+            Transporte = 0
+        End If
+        If (alojamiento_si.Checked = True) Then
+            Alojamiento = 1
+        Else
+            Alojamiento = 0
+        End If
+
+        If (ConsentimientoSi.Checked = True) Then
+            Consentimiento = 1
+        Else
+            Consentimiento = 0
+        End If
+
+        'VectorSQL(0) = "UPDATE eecontactes SET Nom = '" & clsBD.Cometes(Left(Nombre_insert, 100)) & "', Cognoms = '" & clsBD.Cometes(Left(Apellidos_insert, 100)) & "', Email= '" & clsBD.Cometes(Left(Email_insert, 100)) & "', Mobil= '" & clsBD.Cometes(Left(Numero_insert, 100)) & "', Carrec = '" & clsBD.Cometes(Left(Region_insert, 100)) & "', NIT= '" & clsBD.Cometes(Left(Siglas_insert, 100)) & "', idAlta= '" & clsBD.Cometes(Left(Asiste_insert, 100)) & "', idTipusContacte= '" & clsBD.Cometes(Left(Transporte_insert, 100)) & "',Procedencia='" & clsBD.Cometes(Left(Origen_insert, 100)) & "', NickTwitter='" & clsBD.Cometes(Left(Alojamiento_insert, 100)) & "',NickFacebook= '" & clsBD.Cometes(Left(Alergias_insert, 100)) & "',WebPersonal='" & clsBD.Cometes(Left(Obser_insert, 100)) & "' WHERE Auto = '" & userID_insert & "' AND Nom = '" & Nombre_insert & "'"
+
+        VectorSQL(0) = "UPDATE eecontactes SET idContacte = '" & Rol & "', idOrigen='" & agrupacion & "', idTipusContacte='" & Transporte & "', Nom='" & clsBD.Cometes(Left(Name, 100)) & "', Cognoms='" & clsBD.Cometes(Left(Apellido, 100)) & "', Email='" & clsBD.Cometes(Left(Mail, 100)) & "', Procedencia='" & Origen & "', SectorInteres='" & NSelas & "', NickTwitter='" & Alojamiento & "', NickFacebook='" & clsBD.Cometes(Left(Alergia, 100)) & "', WebPersonal='" & clsBD.Cometes(Left(Observaciones, 100)) & "',Blog='" & Especialidad & "',Data='" & Consentimiento & "' WHERE Auto = '" & IDUser & "'"
+        If Not clsBD.BaseDades(2, VectorSQL) Then
+            'Problema
+        Else
+            'Correcto
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Actualización perfecta en la BD (-; ')", True)
+        End If
+    End Function
+
+    Private Function Delete_1Medico_BD()
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As New DataSet
+        Dim VectorSQL(0) As String, IDUser As Integer
+
+        IDUser = jose_prueba3.Text
+
+
+        VectorSQL(0) = "DELETE FROM eecontactes WHERE Auto = '" & IDUser & "'"
+        If Not clsBD.BaseDades(2, VectorSQL) Then
+            'Problema
+        Else
+            'Correcto
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Eliminación de 1 medico de la BD sin problemas!');", True)
+        End If
+        Return True
+    End Function
 End Class

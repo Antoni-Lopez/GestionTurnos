@@ -33,12 +33,10 @@
             } 
         } 
         addLoadEvent(comprueba);
-        var jose; 
 
-        function probando() {
+        function vaciar_inputs_medicos() {
             var nombre;
             var valor;
-
             nombre = document.getElementById("nombre_medico").value;
             ape1 = document.getElementById("ape1medico").value;
             ape2 = document.getElementById("ape2medico").value;
@@ -51,39 +49,35 @@
             transporte = document.getElementById("transporte_medic_no");
             alojamiento = document.getElementById("no");
             valor = "";
-            alert("test1");
             document.getElementById("nombre_medico").value = valor;
-            alert("test2");
             document.getElementById("ape1medico").value = valor;
-            alert("test3");
             document.getElementById("ape2medico").value = valor;
-            alert("test4");
             document.getElementById("medicmail").value = valor;
-            alert("test5");
             document.getElementById("medic_selas").value = valor;
-            alert("test6");
+            document.getElementById("medicespecialidad").value = valor;
             document.getElementById("alergia_medic").value = valor;
-            alert("test7");
             document.getElementById("Observa_medic").value = valor;
-            alert("test8");
             document.getElementById("ConsentimientoN").checked = True;
-            alert("test9");
             document.getElementById("transporte_medic_no").checked = True;
-            alert("test10");
             document.getElementById("no").checked = True;
-            alert("test11");
+        }
+        function desactivar_inputs_medicos() {
+            document.getElementById("nombre_medico").style.pointerEvents = "none";
+            document.getElementById("ape1medico").style.pointerEvents = "none";
+            document.getElementById("ape2medico").style.pointerEvents = "none";
+            document.getElementById("medicmail").style.pointerEvents = "none";
+            document.getElementById("medic_selas").style.pointerEvents = "none";
+            document.getElementById("alergia_medic").style.pointerEvents = "none";
+            document.getElementById("medicespecialidad").style.pointerEvents = "none";
+            document.getElementById("Observa_medic").style.pointerEvents = "none";
         }
         function EnviemFormulari() {
            var theform;
            if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) theform = document.form1;
            else theform = document.forms["form1"];
            theform.submit();
-        }
-        
-        function prueba_jose(){
-            alert("holaaaaaa");
-        }
-       
+        }        
+      
         function comprueba() {
             var inicio = document.getElementById("datos_input_radio");
             var asiste = document.getElementById("radio_asiste_si");
@@ -91,26 +85,27 @@
 
             if (inicio.checked == true) {
                 document.getElementById('cuadro_medico').style.opacity = '0';
-
+                $('#cuadro_medico').hide("slow");
                 document.getElementById('cuadro_delegado').style.opacity = '1';
-                
+                $('#cuadro_delegado').show(3000); 
                 document.getElementById('cuadro_delegado1').style.opacity = '1';
-                
+                $('#cuadro_delegado1').show(3000);
                 document.getElementById('cuadro_delegado2').style.opacity = '1';
-                
+                $('#cuadro_delegado2').show(3000);
                 document.getElementById('boton_enviar').style.opacity = '1';
-                
+                $('#boton_enviar').show(3000);
             }
             else {
                 document.getElementById('cuadro_delegado').style.opacity = '0';
-
+                $('#cuadro_delegado').hide("slow"); 
                 document.getElementById('cuadro_delegado1').style.opacity = '0';
-
+                $('#cuadro_delegado1').hide("slow"); 
                 document.getElementById('cuadro_delegado2').style.opacity = '0';
-
+                $('#cuadro_delegado2').hide("slow"); 
                 document.getElementById('boton_enviar').style.opacity = '0';
-
+                $('#boton_enviar').hide("slow"); 
                 document.getElementById('cuadro_medico').style.opacity = '1';
+                $('#cuadro_medico').show(3000);
             }
 
             if (asiste.checked == true) {
@@ -136,6 +131,7 @@
         function LanzaAviso(Text) {
                 bootbox.alert({ title: "Gestión de turnos", message: Text });
         }
+
         function comprueba_radiobuttons(x) {
             var radio1 = document.getElementById("datos_input_radio");
             var radio2 = document.getElementById("radio_asiste_si");
@@ -194,14 +190,15 @@
             
             }
         }
+
         function ocultar_select() {
             document.getElementById('myselect').style.opacity = '0';
             $('#myselect').hide("slow");
             document.getElementById('header_radiobuttons').style.opacity = '0';
             $('#header_radiobuttons').hide("slow");
-            
-            
+            desactivar_inputs_medicos();            
         }
+
         function chorra() {
             var pruebaza = document.getElementById("jose_prueba");
             if (pruebaza.value = " ") {
@@ -223,6 +220,7 @@
                     break;
                 case 2:
                     var clickeado = $("#myselect :selected").val();
+                    alert(clickeado);
                     jose = document.getElementById("jose_prueba2");
                     jose.value = clickeado;
                     document.getElementById("jose_prueba").value = 2;
@@ -232,11 +230,24 @@
                     document.getElementById("jose_prueba").value = 3;
                     break;
                 case 4:
+                    document.getElementById("jose_prueba").value = 4;
                     break;
                 case 5:
+                    document.getElementById("jose_prueba").value = 5;
                     break;
             }
         }
+        function boton_enviar_medico() {
+            var cuadro1 = document.getElementById("jose_prueba").value;
+            var cuadro2 = document.getElementById("jose_prueba2").value;
+            if (cuadro2 == -2) {
+                elegir_accion(3);
+            }
+            else {
+                elegir_accion(4);
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -361,6 +372,7 @@
             <div class="row">
                 <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
                 <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
+                <asp:TextBox ID="jose_prueba3" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
             </div>
             <div id="cuadro_medico" class="row eleccion_medico">
                 <div id="myselect" class="row eleccion_medico_delegado padd">
@@ -377,19 +389,19 @@
                         <div class="col-md-4 da1">
                             <label for="nombre" class="pad texto_medico1">Nombre</label>
                             <div class="row parraf">
-                                <asp:TextBox id="nombre_medico" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                                <asp:TextBox id="nombre_medico" ReadOnly="false" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 da2">
                             <label for="ape1" class="pad texto_medico1">Apellido</label>
                             <div class="row parraf">
-                                <asp:TextBox ID="ape1medico" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                                <asp:TextBox ID="ape1medico" ReadOnly="false" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 da3">
                             <label for="ape1" class="pad texto_medico1">2º Apellido</label>
                             <div class="row parraf">
-                                <asp:TextBox ID="ape2medico" ReadOnly="true" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
+                                <asp:TextBox ID="ape2medico" ReadOnly="false" runat="server" CssClass="col-md-6 input_data_delegado"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-md-4 padd da4">
@@ -415,7 +427,7 @@
                 </div>
                 <div class="row eleccion_medico1 padd">
                     <div class="col-md-6 padd">
-                        <p class="texto_consentimiento pad">Consentimiento Firmado</p>
+                        <p class="texto_consentimiento pad" onclick="boton_enviar_medico()">Consentimiento Firmado</p>
                         <div class="toggle-radio1">
                             <input type="radio" class="input_prueba" name="rdo2" id="ConsentimientoSi" value="Consentimiento_si" runat="server"/>
                             <input type="radio" class="input_prueba" name="rdo2" id="ConsentimientoN" value="Consentimiento_no" runat="server" />
@@ -427,7 +439,7 @@
                         </div>                        
                         <div class="row">
                             <p class="texto_consentimiento indica_city pad">Indique la ciudad de Origen</p>
-                            <asp:TextBox ID="TextBox1" CssClass="input_data_medico_cityorigen" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="city_origin" CssClass="input_data_medico_cityorigen" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="col-md-6 padd">
@@ -465,6 +477,9 @@
                 </div>
                 <div class="row eleccion_medico1 padd">
                     <asp:Button ID="Button_Medico" CssClass="enviar" Text="Enviar" runat="server" />
+                </div>
+                <div class="row eleccion_medico1 padd azul">
+                    <asp:Button ID="Button_eliminar" CssClass="enviar1" Text="Eliminar" runat="server" />  
                 </div>
             </div>
         </form>
