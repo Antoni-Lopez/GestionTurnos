@@ -49,31 +49,30 @@
                     input_hidden = 2
             End Select
 
+            Rol = Extraer_Rol(IdUsuario)
+            Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
+
             Select Case input_hidden
                 Case 1
-                    'Llamamos a la función para que nos inserte los datos.
+                    'Llamamos a la función para que nos actualize los datos.
                     ActualizarBD_Delegado(IdUsuario)
                 Case 2
                     'Nos han elegido alguna opcion del ComboText.
-                    Rol = Extraer_Rol(IdUsuario)
-                    Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
                     Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 3
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
-                    Rol = Extraer_Rol(IdUsuario)
-                    Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
                     insertar_new_Medico(Agrupacion)
                 Case 4
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere modificar un  registro ya existente en la BD de medico
-                    Rol = Extraer_Rol(IdUsuario)
-                    Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
                     UPDATE_BD_Medicos(Agrupacion, Rol)
                 Case 5
                     'Boton eliminar registro de medico en la BD.
                     Delete_1Medico_BD()
+                    Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
+                    'ClientScript.RegisterStartupScript(Page.GetType(), "id", "EnviemFormulari()", True)
             End Select
 
-            ClientScript.RegisterStartupScript(Page.GetType(), "id", "EnviemFormulari()", True)
+            'ClientScript.RegisterStartupScript(Page.GetType(), "id", "EnviemFormulari()", True)
 
             'Dim Context As HttpContext, mail As String
             'Context = HttpContext.Current

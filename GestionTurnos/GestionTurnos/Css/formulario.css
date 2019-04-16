@@ -3,7 +3,7 @@
       padding:0;
 }
 
-.inputs_hidden{display: none;}
+.inputs_hidden{display: normal;}
 
 /* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
 .verde {

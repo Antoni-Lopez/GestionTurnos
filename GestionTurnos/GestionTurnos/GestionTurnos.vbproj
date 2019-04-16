@@ -111,6 +111,7 @@
     <Content Include="Formulario.aspx" />
     <Content Include="Intranet.aspx" />
     <Content Include="LoginForm.aspx" />
+    <Content Include="loginform2.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Printer.aspx" />
     <Content Include="Servicios.aspx" />
@@ -143,6 +144,13 @@
     </Compile>
     <Compile Include="LoginForm.aspx.vb">
       <DependentUpon>LoginForm.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="loginform2.aspx.designer.vb">
+      <DependentUpon>loginform2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loginform2.aspx.vb">
+      <DependentUpon>loginform2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />

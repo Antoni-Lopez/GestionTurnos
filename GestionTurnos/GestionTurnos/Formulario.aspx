@@ -220,7 +220,6 @@
                     break;
                 case 2:
                     var clickeado = $("#myselect :selected").val();
-                    alert(clickeado);
                     jose = document.getElementById("jose_prueba2");
                     jose.value = clickeado;
                     document.getElementById("jose_prueba").value = 2;
