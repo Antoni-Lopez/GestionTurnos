@@ -228,4 +228,40 @@ Partial Public Class Formulario2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Button_Medico As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control Button_Medico_Delete.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button_Medico_Delete As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control jose_prueba.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents jose_prueba As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control jose_prueba2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents jose_prueba2 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control jose_prueba3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents jose_prueba3 As Global.System.Web.UI.WebControls.TextBox
 End Class

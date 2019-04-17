@@ -13,7 +13,9 @@
     <asp:literal id="bootstrap_min_js" runat="server"></asp:literal>
     <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
     <style>
+        /* Formateamos el body para que se apliquen nuestros stilos perfect (-;*/
         body{margin: 0;padding: 0;box-sizing:border-box;}
+
 
         /* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
         .verde {border: 2px solid green;}
@@ -30,17 +32,21 @@
         .altura{height: 100px;}
         #ciudad_origen{opacity:0;}
 
+
         /* Cuadro para el banner */
         .banner{max-width: 810px;margin:auto;margin-top: 2.5%;border: 1px solid black;padding: 10px;height: 391px;background-color: #fff;box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);}
         .my_img{width: 103%;margin-left:-1.3%;margin-top:-1.3%;height: 391px;}
 
+
         /* Instrucciones para el login */
         .cabecera{margin-top: 3.5% !important;border-radius: 6px;background-color: #E07C1A;color: #fff;font-size: 22px;padding-left: 20px;}
-        .panel,#cuadro_medico1{margin-top: .2% !important;background-color: #D4D4D4;font-size: 16px;}
+        .panel,#cuadro_medico1{margin-top: .2% !important;background-color: #D4D4D4;font-size: 16px;}        
         #cuadro_medico1{height: auto !important;}
-        .cabecera,.panel{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
-        .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
         #cuadro_medico4{margin-bottom: 5% !important;}
+        .cabecera,.panel,.panel1{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
+        .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
+        
+        
         /* Radio Buttons Delegado/Medico */
         .funkyradio div {clear: both;/*margin: 0 50px;*/overflow: hidden;}
         .funkyinline {display: inline-block;padding-right:10px;}
@@ -66,9 +72,11 @@
         .funkyradio-warning input[type="radio"]:checked ~ label:before, .funkyradio-warning input[type="checkbox"]:checked ~ label:before {color: #fff;background-color: #f0ad4e;}
         .funkyradio-info input[type="radio"]:checked ~ label:before, .funkyradio-info input[type="checkbox"]:checked ~ label:before {color: #fff;background-color: #5bc0de;}
 
+
         /* Selector de Medicos */
         .mi_selector{margin:auto;}
         select#soflow, select#soflow-color {-webkit-appearance: button;-webkit-border-radius: 2px;-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);-webkit-padding-end: 20px;-webkit-padding-start: 2px;-webkit-user-select: none;background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);background-position: 97% center;background-repeat: no-repeat;border: 1px solid #AAA;color: #555;font-size: inherit;margin: 20px;overflow: hidden;padding: 5px 10px;text-overflow: ellipsis;white-space: nowrap;width: 52%;margin-left: 22.5%;}
+
 
         /* Estilos Radio Buttons personalizados de Medico. */
         .switch {position: absolute;top: 135%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
@@ -87,22 +95,46 @@
         #yes:checked ~ .switch label[for=yes], #ConsentimientoSi:checked ~ .switch1 label[for=ConsentimientoSi], #transporte_medic_si:checked ~ .switch2 label[for=transporte_medic_si] {color: #fff;}
         #no:checked ~ .switch label[for=no], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN] {color: #fff;}
 
+        
+
         /* Alergia y obser medicos*/
         .medic_aler,.medic_obser{ height: 40px;}
-                      
-        /* Boton envio medicos */
+              
+        
+        /* Boton SEND medicos */
         .enviar {background-color: #E07C1A;margin-left: 40%;width: 20%;font-size: 20px;color: #fff;opacity: 1;border-radius: 6px;}
         .enviar:hover {background-color: #04B5DE;color: #fff;box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight: bold;}
-        /* Cuadro delegado */
-        #cuadro_delegado{margin-top: -45% !important;}
 
+
+        /* Boton Delete medicos*/
+        #Button_Medico_Delete {background-color:#E21212;margin-left: -77%;margin-bottom: 4%;margin-top: 4%;width: 20%;font-size: 20px;color: #fff;opacity: 1;border-radius: 6px;}
+        #Button_Medico_Delete:hover {background-color: #fff;color: #E21212;box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight: bold;}
+
+
+        /* Cuadro delegado */
+        #cuadro_delegado{margin-top: -49%;background-color: #D4D4D4;font-size: 16px;}
+
+
+        /*input ocultos para paso de valores*/
+        .inputs_hidden{display:none;}
         /* Media Querys para diseño Responsive.*/
+        @media (max-width: 991px) {
+            #cuadro_medico2{height: 400px;}
+            .switch1 {position: absolute;top: -340%;}
+            #transporte_label{margin-top:7%;}
+            .switch2 {top: -7%;}
+            .duo{width: 50% !important;}
+            .segundo{margin-left: 50%;margin-top: -13.1%;width: 49%;}
+            .mailto{margin-left: 50%;margin-top: -16.5%;width: 49%;}
+            #ciudad_origen {margin-top: 14%;}
+            }
         @media (max-width: 810px) {
             .cabecera,.panel{max-width: 360px;width: 100%;}
         }
     </style>
-     <script type="text/javascript">
-           function addLoadEvent(func) { 
+    <script type="text/javascript">
+        //funcion que nos realiza la acción que queramos en la carga de la web.
+        function addLoadEvent(func) { 
             var oldonload = window.onload; 
             if (typeof window.onload != 'function') { 
                 window.onload = func; 
@@ -114,92 +146,149 @@
                 } 
             } 
         } 
-         addLoadEvent(ocultar_datos_delegado);
+        addLoadEvent(ocultar_datos_delegado);
 
-         function desactivar() {
+
+        //funcion que llamamos desde ASP.net para desactivar/activar ciertas cosas, 
+        //cuando el sistema detecta que somos un medico.
+        function desactivar() {
              desactivar_cuadro_delegado();
              activar_cuadro_medico();
              onlyread_inputs_medicos();
-         }
-
-         function desactivar_cuadro_delegado() {
-             document.getElementById("eleccion_radios").style.opacity = '0';
-             document.getElementById("cuadro_delegado").style.opacity = '0';
-             document.getElementById("cuadro_medico").style.display = 'none';                 
-             document.getElementById("cuadro_medico4").style.display = 'none';                 
-         }
-
-         function activar_cuadro_medico() {
-             document.getElementById("cuadro_medico1").style.opacity = '1';
-             document.getElementById("cuadro_medico1").style.marginTop = '-5%';             
-             document.getElementById("cuadro_medico2").style.opacity = '1';             
-             document.getElementById("cuadro_medico3").style.opacity = '1';
-         }
-
-         function onlyread_inputs_medicos() {
-            document.getElementById("name_medic").style.pointerEvents = "none";
-            document.getElementById("ape1_medic").style.pointerEvents = "none";
-            document.getElementById("ape2_medic").style.pointerEvents = "none";
-            document.getElementById("medic_mail").style.pointerEvents = "none";
-            document.getElementById("medic_especialidad").style.pointerEvents = "none";
-            document.getElementById("medic_selas").style.pointerEvents = "none";
         }
 
-         function ocultar_datos_delegado() {
-             var radio1 = document.getElementById("radio1");
-             var radio2 = document.getElementById("radio2");
-             if (radio1.checked == true) {
-                 document.getElementById("cuadro_medico").style.opacity = '1';
-                 document.getElementById("cuadro_medico1").style.opacity = '1';
-                 document.getElementById("cuadro_medico2").style.opacity = '1';
-                 document.getElementById("cuadro_medico3").style.opacity = '1';
-                 document.getElementById("cuadro_medico4").style.opacity = '1';
-                 document.getElementById("cuadro_delegado").style.opacity = '0';
-             }
-             else {
-                 document.getElementById("cuadro_medico").style.opacity = '0';
-                 document.getElementById("cuadro_medico1").style.opacity = '0';
-                 document.getElementById("cuadro_medico2").style.opacity = '0';
-                 document.getElementById("cuadro_medico3").style.opacity = '0';
-                 document.getElementById("cuadro_medico4").style.opacity = '0';
-                 document.getElementById("cuadro_delegado").style.opacity = '1';
-             }
-             if (radio2.checked == true) {
-                 document.getElementById("cuadro_medico").style.opacity = '0';
-                 document.getElementById("cuadro_medico1").style.opacity = '0';
-                 document.getElementById("cuadro_medico2").style.opacity = '0';
-                 document.getElementById("cuadro_medico3").style.opacity = '0';
-                 document.getElementById("cuadro_medico4").style.opacity = '0';
-                 document.getElementById("cuadro_delegado").style.opacity = '1';
-             }
-             else {
-                 document.getElementById("cuadro_medico").style.opacity = '1';
-                 document.getElementById("cuadro_medico1").style.opacity = '1';
-                 document.getElementById("cuadro_medico2").style.opacity = '1';
-                 document.getElementById("cuadro_medico3").style.opacity = '1';
-                 document.getElementById("cuadro_medico4").style.opacity = '1';
-                 document.getElementById("cuadro_delegado").style.opacity = '0';
-             }
-         }
-         function ComprobarEmail(Email) {
-            //Comprobamos que el Email introducido por el usuario tenga el formato correcto. Ej: prueba@prueba.com
-            return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(Email))
-         }
+        //desactivamos los divs que no queremos que vea el medico.
+        function desactivar_cuadro_delegado() {
+            document.getElementById("eleccion_radios").style.opacity = '0';
+            document.getElementById("cuadro_delegado").style.opacity = '0';
+            document.getElementById("cuadro_medico").style.display = 'none';                 
+            document.getElementById("cuadro_medico4").style.display = 'none';                 
+        }
+
+
+        //activamos el cuadro del medico.
+        function activar_cuadro_medico() {
+            document.getElementById("cuadro_medico1").style.opacity = '1';
+            document.getElementById("cuadro_medico1").style.marginTop = '-5%';             
+            document.getElementById("cuadro_medico2").style.opacity = '1';             
+            document.getElementById("cuadro_medico3").style.opacity = '1';
+        }
+
+
+        //dejamos los inputs de nombre/ape/email/especialidad/nselas desactivados.
+        //es decir, solo podemos verlos, no editarlos.
+        function onlyread_inputs_medicos() {
+           document.getElementById("name_medic").style.pointerEvents = "none";
+           document.getElementById("ape1_medic").style.pointerEvents = "none";
+           document.getElementById("ape2_medic").style.pointerEvents = "none";
+           document.getElementById("medic_mail").style.pointerEvents = "none";
+           document.getElementById("medic_especialidad").style.pointerEvents = "none";
+           document.getElementById("medic_selas").style.pointerEvents = "none";
+        }
+
+
+        //funcion que nos realiza una recarga de la pagina cuando la llamemos.
+        function EnviemFormulari() {
+            var theform;
+            if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) theform = document.form2;
+            else theform = document.forms["form2"];
+            theform.submit();
+        }
+
+
+        //funcion que nos activa/desactiva los cuadros de delagado/medico
+        //segun este el input seleccionado.
+        function ocultar_datos_delegado() {
+            var radio1 = document.getElementById("radio1");
+            var radio2 = document.getElementById("radio2");
+            if (radio1.checked == true) {
+                document.getElementById("cuadro_medico").style.opacity = '1';
+                document.getElementById("cuadro_medico1").style.opacity = '1';
+                document.getElementById("cuadro_medico2").style.opacity = '1';
+                document.getElementById("cuadro_medico3").style.opacity = '1';
+                document.getElementById("cuadro_medico4").style.opacity = '1';
+                document.getElementById("cuadro_delegado").style.opacity = '0';
+            }
+            else {
+                document.getElementById("cuadro_medico").style.opacity = '0';
+                document.getElementById("cuadro_medico1").style.opacity = '0';
+                document.getElementById("cuadro_medico2").style.opacity = '0';
+                document.getElementById("cuadro_medico3").style.opacity = '0';
+                document.getElementById("cuadro_medico4").style.opacity = '0';
+                document.getElementById("cuadro_delegado").style.opacity = '1';
+            }
+            if (radio2.checked == true) {
+                document.getElementById("cuadro_medico").style.opacity = '0';
+                document.getElementById("cuadro_medico1").style.opacity = '0';
+                document.getElementById("cuadro_medico2").style.opacity = '0';
+                document.getElementById("cuadro_medico3").style.opacity = '0';
+                document.getElementById("cuadro_medico4").style.opacity = '0';
+                document.getElementById("cuadro_delegado").style.opacity = '1';
+            }
+            else {
+                document.getElementById("cuadro_medico").style.opacity = '1';
+                document.getElementById("cuadro_medico1").style.opacity = '1';
+                document.getElementById("cuadro_medico2").style.opacity = '1';
+                document.getElementById("cuadro_medico3").style.opacity = '1';
+                document.getElementById("cuadro_medico4").style.opacity = '1';
+                document.getElementById("cuadro_delegado").style.opacity = '0';
+            }
+        }
+
+
+        //funcion que nos comprueba el mail.
+        function ComprobarEmail(Email) {
+           //Comprobamos que el Email introducido por el usuario tenga el formato correcto. Ej: prueba@prueba.com
+           return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(Email))
+        }
+
+
+        //nos lanza el modal con el texto que queramos.
         function LanzaAviso(Text) {
-            bootbox.alert({ title: "Gestión de turnos", message: Text });
+           bootbox.alert({ title: "Gestión de turnos", message: Text });
         }
-        function enviar(url) {
-            window.open(url);
-         }
-         function mostrar_ocultar_origen() {
-             var radio_aloja = document.getElementById("no");
-             if (radio_aloja.checked == true) {
-                 document.getElementById("ciudad_origen").style.opacity = '0';
-             }
-             else {
-                 document.getElementById("ciudad_origen").style.opacity = '1';
-             }
-         }
+
+
+        //activamos/desActivamos el div de ciudad de origen.
+        function mostrar_ocultar_origen() {
+            var radio_aloja = document.getElementById("no");
+            if (radio_aloja.checked == true) {
+                document.getElementById("ciudad_origen").style.opacity = '0';
+            }
+            else {
+                document.getElementById("ciudad_origen").style.opacity = '1';
+            }
+        }
+
+
+        //funcion que con 3 inputs ocultos, nos servirá para identificar que accion realiza el usuario.
+        function elegir_accion(x) {
+            switch (x) {
+                case 1:
+                    var boton_envio_delegado = document.getElementById("jose_prueba");
+                    boton_envio_delegado.value = '1';
+                    break;
+                case 2:
+                    var clickeado = document.getElementById("soflow").value
+                    alert(clickeado);
+                    jose = document.getElementById("jose_prueba2");
+                    jose.value = clickeado;
+                    document.getElementById("jose_prueba").value = 2;
+                    alert("salimos");
+                    EnviemFormulari();
+                    
+                    break;
+                case 3:
+                    document.getElementById("jose_prueba").value = 3;
+                    break;
+                case 4:
+                    document.getElementById("jose_prueba").value = 4;
+                    break;
+                case 5:
+                    document.getElementById("jose_prueba").value = 5;
+                    break;
+            }
+        }
     </script>
 </head>
 <body>
@@ -221,7 +310,7 @@
         </div>
         <div id="cuadro_medico" class="panel">
             <div id="myselect" class="row mi_selector">
-                <select id="soflow" class="mi_selector" onchange="" runat="server" name="selector_medicos">
+                <select id="soflow" class="mi_selector" onchange="elegir_accion(2)" runat="server" name="selector_medicos">
                     <option value="-2" id="anadir_registro_medico1">Nueva Alta Médico</option>
                     <option selected>------------------------------------------------</option>
                 </select>
@@ -229,29 +318,29 @@
         </div>
         <div id="cuadro_medico1" class="row panel">
             <div class="row padd margen">
-                <div class="col-md-4 padd">
+                <div class="col-md-4 duo padd">
                     <label for="exampleInputEmail1">Nombre</label>                    
                     <asp:TextBox ID="name_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 padd">
+                <div class="col-md-4 segundo padd">
                     <label for="exampleInputEmail1">Apellido</label>                    
                     <asp:TextBox ID="ape1_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 padd">
+                <div class="col-md-4 duo padd">
                     <label for="exampleInputEmail1">2º Apellido</label>                    
                     <asp:TextBox ID="ape2_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <div class="row padd margen">
-                <div class="col-md-4 padd">
+                <div class="col-md-4 mailto padd">
                     <label for="exampleInputEmail1">Email</label>                    
                     <asp:TextBox ID="medic_mail" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 padd">
+                <div class="col-md-4 duo padd">
                     <label for="exampleInputEmail1">Especialidad</label>                    
                     <asp:TextBox ID="medic_especialidad" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 padd">
+                <div class="col-md-4 segundo padd">
                     <label for="exampleInputEmail1">Nº Selas</label>                    
                     <asp:TextBox ID="medic_selas" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
@@ -259,11 +348,11 @@
         </div>
         <div id="cuadro_medico2" class="row panel">
             <div class="row padd margen centro altura">
-                <div class="col-md-6 padd">
-                    <label for="exampleInputEmail1">Consentimiento firmado</label>
+                <div class="col-md-6 mi_responsive padd">
+                    <label for="exampleInputEmail1" class="consen">Consentimiento firmado</label>
                 </div>
                 <div class="col-md-6 padd">
-                    <label for="exampleInputEmail1">Necesita Transporte?</label>
+                    <label id="transporte_label" for="transporte_label">Necesita Transporte?</label>
                 </div>
                 <div class="col-md-6 padd">
                     <div class="toggle-radio1">
@@ -319,9 +408,17 @@
         </div>
         <div id="cuadro_medico4" class="row panel">
             <asp:Button ID="Button_Medico" CssClass="enviar" Text="Enviar" runat="server" />
+            <div class="row centro">
+                <asp:Button ID="Button_Medico_Delete" CssClass="enviar" Text="Eliminar" runat="server" />
+            </div>
         </div>
-        <div id="cuadro_delegado" class="panel azul">
+        <div id="cuadro_delegado" class="panel1 azul">
             Soy un delegado.
+        </div>
+        <div class="row">
+                <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
+                <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
+                <asp:TextBox ID="jose_prueba3" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
         </div>
     </form>
 </body>
