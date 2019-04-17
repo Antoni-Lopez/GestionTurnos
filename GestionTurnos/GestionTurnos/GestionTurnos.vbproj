@@ -109,6 +109,7 @@
     <Content Include="Css\intranet.css" />
     <Content Include="Css\loginform.css" />
     <Content Include="Formulario.aspx" />
+    <Content Include="Formulario2.aspx" />
     <Content Include="Intranet.aspx" />
     <Content Include="LoginForm.aspx" />
     <Content Include="loginform2.aspx" />
@@ -130,6 +131,13 @@
     </Compile>
     <Compile Include="Formulario.aspx.vb">
       <DependentUpon>Formulario.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Formulario2.aspx.designer.vb">
+      <DependentUpon>Formulario2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario2.aspx.vb">
+      <DependentUpon>Formulario2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Intranet.aspx.designer.vb">

@@ -519,15 +519,15 @@
         Return True
     End Function
 
-    Private Function insertar_new_Medico(ByRef Agrupacion)
+    Private Function insertar_new_Medico(ByRef Agrupacion As Integer)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
         Dim VectorSQL(0) As String, idFeria As Integer
         Dim i As Integer, Ultimo As Integer = 0
 
         Dim Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As String, NSelas As String
-        Dim Consentimiento As String, Transporte As Integer, Alojamiento As String, Alergia As String, Observaciones As String, Password As String
-        Dim Rol As Integer, Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As String
+        Dim Consentimiento As Integer, Transporte As Integer, Alojamiento As Integer, Alergia As String, Observaciones As String, Password As String
+        Dim Rol As Integer, Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As Integer
 
         'Rellenamos las variables con los datos introducidos en los inputs.
         Name = nombre_medico.Text
@@ -543,7 +543,7 @@
         Region = ""
         Nit = 0
         Asiste = 0
-        NITactivat = ""
+        NITactivat = 1
 
         'Ponemos el Rol a 1 como default, porque estámos insertando medicos, ya que tenemos que tener claro, que este registro lo hace el delegado.
         Rol = 1
@@ -566,7 +566,10 @@
         Else
             Consentimiento = 0
         End If
-        VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) VALUES('" & idFeria & "','" & Rol & "','" & Agrupacion & "','" & Transporte & "','" & Asiste & "','" & clsBD.Cometes(Left(Name, 100)) & "','" & clsBD.Cometes(Left(Apellido, 100)) & "','" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "','" & NITactivat & "','" & Password & "','" & Especialidad & "','" & NSelas & "','" & Consentimiento & "','" & Alojamiento & "','" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "');"
+        VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) " &
+                        "VALUES(" & idFeria & "," & Rol & "," & Agrupacion & "," & Transporte & "," & Asiste & ",'" & clsBD.Cometes(Left(Name, 100)) & "','" & clsBD.Cometes(Left(Apellido, 100)) & "'," &
+                        "'" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "'," & NITactivat & ",'" & clsBD.Cometes(Left(Password, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
+                        "" & Alojamiento & ",'" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "')"
 
         '195,1,1,0,0, Victor,Mateo¦Cases,,natimateo@gmail.com,,,,,,1325,1,0,Torrevieja,Dana,Nada que destacar)"
 
