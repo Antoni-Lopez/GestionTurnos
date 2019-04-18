@@ -18,7 +18,7 @@
             If Rol = 0 Then
                 radio1.Checked = True
                 Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
-                'Extraer_BD_Delegado(IdUsuario, Rol)
+                Extraer_BD_Delegado(IdUsuario, Rol)
             Else
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "desactivar();", True)
                 Extraer_BD_Medicos(IdUsuario)
@@ -34,10 +34,17 @@
             'Declaramos el combotext para que nos mande a una accion con javascript.
             soflow.Attributes.Add("onchange", "elegir_accion(2);")
 
+            'Declaramos las acciones al pulsar los botones.
             Button_Medico.Attributes.Add("onclick", "boton_enviar_medico();")
             Button_Medico_Delete.Attributes.Add("onclick", "elegir_accion(5);")
-            input_hidden = jose_prueba.Text
-            input_hidden2 = jose_prueba2.Text
+            Button_delegado.Attributes.Add("onclick", "elegir_accion(5);")
+
+
+
+
+            'Captamos los valores de los inputs hidden.
+            input_hidden = paso_datos.Text
+            input_hidden2 = paso_datos2.Text
 
             Select Case input_hidden2
                 Case -2
@@ -59,7 +66,7 @@
                     'Llamamos a la función para que nos actualize los datos.
                     'ActualizarBD_Delegado(IdUsuario)
                 Case 2
-                    'Nos han elegido alguna opcion del ComboText.
+                    'Actualizamos el ComboText.
                     Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 3
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
@@ -70,9 +77,17 @@
                 Case 5
                     'Boton eliminar registro de medico en la BD.
                     Delete_1Medico_BD()
+
+                    soflow.DataTextField = ("") 'Borra el texto del combo
+
+                    Refresh_Datos_Combo(IdUsuario, Rol, Agrupacion)
                     'ClientScript.RegisterStartupScript(Page.GetType(), "id", "EnviemFormulari()", True)
             End Select
         End If
+    End Sub
+
+    Protected Sub Button_delegado_Click(sender As Object, e As EventArgs) Handles Button_delegado.Click
+        paso_datos.Text = 1
     End Sub
 
     'Funcion que creamos para la extarcción del Rol(Delegado/Medico)
@@ -203,7 +218,96 @@
         Return True
     End Function
 
+    Private Function Extraer_BD_Delegado(ByRef IdUsuario, ByVal Rol)
+        'Realizamos la consulta en la BD
+        VectorSQL(0) = "SELECT Auto AS userID ,idContacte AS Rol,idOrigen AS Agrupacion,idTipusContacte As Transporte, idAlta As Asiste, Nom As Nombre,Cognoms As Apellidos, Mobil AS Numero, Email, Carrec AS Region,NIT AS Siglas, Password, Procedencia As Origen, SectorInteres As Selas,NickTwitter As Alojamiento, NickFacebook As Alergias, WebPersonal As Observaciones FROM eecontactes WHERE Auto='" & IdUsuario & "'AND idContacte='" & Rol & "'"
+        DS = New DataSet
 
+        Dim userID As Integer, Agrupacion As Integer, Nombre As String, Apellidos As String, Numero As Integer, Email As String
+        Dim Region As String, Siglas As String, Asistes As String, Origen As String, Transpor As Integer, Aloja As String, Aler As String, Obser As String
+
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+            'Error. 
+            Return False
+        Else
+            'Bucles para recorrer la BD 
+            If DS.Tables(0).Rows.Count > 0 Then
+                For i = 0 To DS.Tables(0).Rows.Count - 1
+                    userID = DS.Tables(0).Rows(i).Item("userID")
+                    Rol = DS.Tables(0).Rows(i).Item("Rol")
+                    Agrupacion = DS.Tables(0).Rows(i).Item("Agrupacion")
+                    Nombre = DS.Tables(0).Rows(i).Item("Nombre")
+                    Apellidos = DS.Tables(0).Rows(i).Item("Apellidos")
+                    Numero = DS.Tables(0).Rows(i).Item("Numero")
+                    Email = DS.Tables(0).Rows(i).Item("Email")
+                    Region = DS.Tables(0).Rows(i).Item("Region")
+                    Siglas = DS.Tables(0).Rows(i).Item("Siglas")
+                    'Password = DS.Tables(0).Rows(i).Item("Password")
+                    Origen = DS.Tables(0).Rows(i).Item("Origen")
+                    Transpor = DS.Tables(0).Rows(i).Item("Transporte")
+                    Asistes = DS.Tables(0).Rows(i).Item("Asiste")
+                    Aloja = DS.Tables(0).Rows(i).Item("Alojamiento")
+                    Aler = DS.Tables(0).Rows(i).Item("Alergias")
+                    Obser = DS.Tables(0).Rows(i).Item("Observaciones")
+                Next
+            End If
+
+            'Comprobamos que valor recibimos de la Bd para el 1º radio button,
+            'el que nos dice si asistimos o no.
+            If (Asistes = 0) Then
+                Asistencia_no.Checked = True
+            Else
+                Asistencia_si.Checked = True
+
+            End If
+
+            'Comprobamos que valor recibimos de la BD para el 2º radio button
+            'El de transporte.
+            If (Transpor = 0) Then
+                transporte_medic_no1.Checked = True
+            Else
+                transporte_medic_si1.Checked = True
+            End If
+
+            'Rellenamos los inputs con los datos que extraemos de la BD.
+            name_delegado.Text = Nombre
+            email_delegado.Text = Email
+            numero_delegado.Text = Numero
+            region_delegado.Text = Region
+            city_origen_delegado.Text = Origen
+            alergia_delegado.Text = Aler
+            observa_delegado.Text = Obser
+
+
+
+            'Declaramos 2 arrays para separar datos,
+            'ya que alguna consulta nos puede devolver 2 campos en 1 mismo.
+            Dim Sigla1 As String, Sigla2 As String
+            Dim c As Long, p As Long
+            Dim VArray() As String, VArray2() As String
+
+            'Asignamos valores.
+            Sigla1 = Siglas
+            Sigla2 = Apellidos
+
+            'Creamos el array, y cada "substring" se lo asignaremos
+            'a un elemento del array.
+            'Usamos el caracter "¦" como separador
+            VArray = Split(Sigla1, "¦")
+            VArray2 = Split(Sigla2, "¦")
+
+            For c = LBound(VArray) To UBound(VArray)
+                siglas_gerente_delegado.Text = VArray(0)
+                siglas_delegado.Text = VArray(1)
+            Next
+
+            For p = LBound(VArray2) To UBound(VArray2)
+                ape1_delegado.Text = VArray2(0)
+                ape2_delegado.Text = VArray2(1)
+            Next
+        End If
+        Return True
+    End Function
 
 
     'Funcion que creamos para la extraccion de datos en el combotext.
@@ -212,7 +316,27 @@
         Dim DS As New DataSet
         Dim VectorSQL(0) As String
 
+
         VectorSQL(0) = "SELECT Auto , Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupa & "'ORDER BY Cognoms, Nom"
+        If clsBD.BaseDades(1, VectorSQL, DS) Then
+            If DS.Tables(0).Rows.Count > 0 Then
+                For i = 0 To DS.Tables(0).Rows.Count - 1
+                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom") & ", " & DS.Tables(0).Rows(i).Item("Auto"), i + 1))
+                Next
+            End If
+        End If
+        Return True
+    End Function
+
+    'Funcion que creamos para la extraccion de datos en el combotext.
+    Private Function Refresh_Datos_Combo(ByRef idusuario, ByVal Rol, ByVal Agrupa)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As New DataSet
+        Dim VectorSQL(0) As String, id_eliminado As Integer
+
+        id_eliminado = paso_datos3.Text
+
+        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupa & "'And Auto<>'" & id_eliminado & "'ORDER BY Cognoms, Nom"
         If clsBD.BaseDades(1, VectorSQL, DS) Then
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
@@ -232,7 +356,7 @@
         Dim Consentimiento As Integer, Transporte As Integer, Alojamiento As Integer, Alergia As String, Observaciones As String
         Dim Asiste As Integer, numero As String, Region As String, Origen As String, input_hidden2 As String, n As Integer
 
-        input_hidden2 = jose_prueba2.Text
+        input_hidden2 = paso_datos2.Text
 
         VectorSQL(0) = "SELECT Auto, idContacte, idOrigen, idTipusContacte,idAlta,Nom, Cognoms,Mobil,Email,Carrec,NIT,Procedencia,SectorInteres,NickTwitter,NickFacebook,WebPersonal,Blog,data FROM EEContactes WHERE idOrigen ='" & agrupa & "' AND idContacte <>'" & Rol & "'ORDER BY Cognoms, Nom"
 
@@ -283,7 +407,7 @@
                     Consentimiento = DS.Tables(0).Rows(n).Item("Data")
                 Next
 
-                jose_prueba3.Text = UserID
+                paso_datos3.Text = UserID
 
                 'No nos devuelve valores
                 name_medic.Text = Name
@@ -412,7 +536,7 @@
 
 
 
-        IDUser = jose_prueba3.Text
+        IDUser = paso_datos3.Text
         'Rellenamos las variables con los datos introducidos en los inputs.
         Name = name_medic.Text
         Apellido = ape1_medic.Text + "¦" + ape2_medic.Text
@@ -459,7 +583,7 @@
         Dim DS As New DataSet
         Dim VectorSQL(0) As String, IDUser As Integer
 
-        IDUser = jose_prueba3.Text
+        IDUser = paso_datos3.Text
 
 
         VectorSQL(0) = "DELETE FROM eecontactes WHERE Auto = '" & IDUser & "'"

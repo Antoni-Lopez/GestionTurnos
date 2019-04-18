@@ -38,13 +38,7 @@
         .my_img{width: 103%;margin-left:-1.3%;margin-top:-1.3%;height: 391px;}
 
 
-        /* Instrucciones para el login */
-        .cabecera{margin-top: 3.5% !important;border-radius: 6px;background-color: #E07C1A;color: #fff;font-size: 22px;padding-left: 20px;}
-        .panel,#cuadro_medico1{margin-top: .2% !important;background-color: #D4D4D4;font-size: 16px;}        
-        #cuadro_medico1{height: auto !important;}
-        #cuadro_medico4{margin-bottom: 5% !important;}
-        .cabecera,.panel,.panel1{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
-        .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
+        
         
         
         /* Radio Buttons Delegado/Medico */
@@ -72,6 +66,13 @@
         .funkyradio-warning input[type="radio"]:checked ~ label:before, .funkyradio-warning input[type="checkbox"]:checked ~ label:before {color: #fff;background-color: #f0ad4e;}
         .funkyradio-info input[type="radio"]:checked ~ label:before, .funkyradio-info input[type="checkbox"]:checked ~ label:before {color: #fff;background-color: #5bc0de;}
 
+        /* Sentencias para el medico. */
+        .cabecera{margin-top: 3.5% !important;border-radius: 6px;background-color: #E07C1A;color: #fff;font-size: 22px;padding-left: 20px;}
+        .panel,#cuadro_medico1{margin-top: .2% !important;background-color: #D4D4D4;font-size: 16px;}        
+        #cuadro_medico1{height: auto !important;}
+        #cuadro_medico4{margin-bottom: 5% !important;}
+        .cabecera,.panel,.panel1{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
+        .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
 
         /* Selector de Medicos */
         .mi_selector{margin:auto;}
@@ -82,20 +83,20 @@
         .switch {position: absolute;top: 135%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
         .switch1{position: absolute;top: 66%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
         .switch2 {position: absolute;top: 66%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
-        .switch span, .switch1 span,.switch2 span {position: absolute;width: 20px;height: 4px;top: 50%;left: 50%;margin: -2px 0px 0px -4px;background: #fff;display: block;transform: rotate(-45deg);transition: all 0.2s ease;}
-        .switch span:after,.switch1 span:after,.switch2 span:after {content: "";display: block;position: absolute;width: 4px;height: 12px;margin-top: -8px;background: #fff;transition: all 0.2s ease;}
+        .switch4 {position: absolute;top: 66%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
+        .switch span, .switch1 span,.switch2 span,.switch4 span {position: absolute;width: 20px;height: 4px;top: 50%;left: 50%;margin: -2px 0px 0px -4px;background: #fff;display: block;transform: rotate(-45deg);transition: all 0.2s ease;}
+        .switch span:after,.switch1 span:after,.switch2 span:after,.switch4 span:after {content: "";display: block;position: absolute;width: 4px;height: 12px;margin-top: -8px;background: #fff;transition: all 0.2s ease;}
         .input_prueba {display: none;}
-        .switch label, .switch1 label, .switch2 label {cursor: pointer;color: rgba(0,0,0,0.2);width: 60px;line-height: 50px;transition: all 0.2s ease;}
+        .switch label, .switch1 label, .switch2 label, .switch4 label {cursor: pointer;color: rgba(0,0,0,0.2);width: 60px;line-height: 50px;transition: all 0.2s ease;}
         .switch1 label {margin-left: -54%;}
-        label[for=yes], label[for=ConsentimientoS], label[for=transporte_medic_si] {position: absolute;left: 0px;height: 20px;}
-        label[for=no], label[for=ConsentimientoN], label[for=transporte_medic_no] {position: absolute;right: 0px;}
-        #no:checked ~ .switch, #ConsentimientoN:checked ~ .switch1, #transporte_medic_no:checked ~ .switch2 {background: #eb4f37;}
-        #no:checked ~ .switch span,#ConsentimientoN:checked ~ .switch1 span,#transporte_medic_no:checked ~ .switch2 span {background: #fff;margin-left: -8px;}
-        #no:checked ~ .switch span:after,#ConsentimientoN:checked ~ .switch1 span:after ,#transporte_medic_no:checked ~ .switch2 span:after {background: #fff;height: 20px;margin-top: -8px;margin-left: 8px;}
-        #yes:checked ~ .switch label[for=yes], #ConsentimientoSi:checked ~ .switch1 label[for=ConsentimientoSi], #transporte_medic_si:checked ~ .switch2 label[for=transporte_medic_si] {color: #fff;}
-        #no:checked ~ .switch label[for=no], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN] {color: #fff;}
+        label[for=yes],label[for=yes1], label[for=ConsentimientoS], label[for=transporte_medic_si],label[for=transporte_medic_si1],label[for=Asistencia_si] {position: absolute;left: 0px;height: 20px;}
+        label[for=no],label[for=no1], label[for=ConsentimientoN], label[for=transporte_medic_no],label[for=transporte_medic_no1],label[for=Asistencia_no] {position: absolute;right: 0px;}
+        #no:checked ~ .switch,#no1:checked ~ .switch, #ConsentimientoN:checked ~ .switch1, #transporte_medic_no:checked ~ .switch2,#transporte_medic_no1:checked ~ .switch2,#Asistencia_no:checked ~ .switch4 {background: #eb4f37;}
+        #no:checked ~ .switch span,#no1:checked ~ .switch span,#ConsentimientoN:checked ~ .switch1 span,#transporte_medic_no:checked ~ .switch2 span,#transporte_medic_no1:checked ~ .switch2 span, #Asistencia_no:checked ~ .switch4 span {background: #fff;margin-left: -8px;}
+        #no:checked ~ .switch span:after,#no1:checked ~ .switch span:after,#ConsentimientoN:checked ~ .switch1 span:after ,#transporte_medic_no:checked ~ .switch2 span:after,#transporte_medic_no1:checked ~ .switch2 span:after,#Asistencia_no:checked ~ .switch4 span:after {background: #fff;height: 20px;margin-top: -8px;margin-left: 8px;}
+        #yes:checked ~ .switch label[for=yes],#yes1:checked ~ .switch label[for=yes1], #ConsentimientoSi:checked ~ .switch1 label[for=ConsentimientoSi], #transporte_medic_si:checked ~ .switch2 label[for=transporte_medic_si],#transporte_medic_si1:checked ~ .switch2 label[for=transporte_medic_si1], #Asistencia_si:checked ~ .switch4 label[for=Asistencia_si] {color: #fff;}
+        #no:checked ~ .switch label[for=no],#no1:checked ~ .switch label[for=no1], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no1:checked ~ .switch2 label[for=transporte_medic_no1], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN], #Asistencia_no:checked ~ .switch4 label[for=Asistencia_no] {color: #fff;}
 
-        
 
         /* Alergia y obser medicos*/
         .medic_aler,.medic_obser{ height: 40px;}
@@ -112,11 +113,12 @@
 
 
         /* Cuadro delegado */
-        #cuadro_delegado{margin-top: -49%;background-color: #D4D4D4;font-size: 16px;}
-
-
+        #cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4 {background-color: #D4D4D4;font-size: 16px;border-radius: 6px;padding-left: 20px;max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
+        #cuadro_delegado{margin-top: 1%;}
+        #cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{margin-top: 0.2%;}
+        #cuadro_delegado4{margin-bottom: 10%;}
         /*input ocultos para paso de valores*/
-        .inputs_hidden{display:none;}
+        .inputs_hidden{display:block;position: absolute; top: 250%;}
         /* Media Querys para diseño Responsive.*/
         @media (max-width: 991px) {
             #cuadro_medico2{height: 400px;}
@@ -159,19 +161,20 @@
 
         //desactivamos los divs que no queremos que vea el medico.
         function desactivar_cuadro_delegado() {
-            document.getElementById("eleccion_radios").style.opacity = '0';
-            document.getElementById("cuadro_delegado").style.opacity = '0';
+            document.getElementById("eleccion_radios").style.display = 'none';
+            document.getElementById("cuadro_delegado").style.display = 'none';
             document.getElementById("cuadro_medico").style.display = 'none';                 
+            document.getElementById("cuadro_medico").style.opacity = '0';                 
+            document.getElementById("cuadro_medico4").style.opacity = '0';                 
             document.getElementById("cuadro_medico4").style.display = 'none';                 
         }
 
 
         //activamos el cuadro del medico.
         function activar_cuadro_medico() {
-            document.getElementById("cuadro_medico1").style.opacity = '1';
-            document.getElementById("cuadro_medico1").style.marginTop = '-5%';             
-            document.getElementById("cuadro_medico2").style.opacity = '1';             
-            document.getElementById("cuadro_medico3").style.opacity = '1';
+            document.getElementById("cuadro_medico1").style.display = 'Block';          
+            document.getElementById("cuadro_medico2").style.display = 'Block';               
+            document.getElementById("cuadro_medico3").style.display = 'Block';  
         }
 
 
@@ -202,36 +205,48 @@
             var radio1 = document.getElementById("radio1");
             var radio2 = document.getElementById("radio2");
             if (radio1.checked == true) {
-                document.getElementById("cuadro_medico").style.opacity = '1';
-                document.getElementById("cuadro_medico1").style.opacity = '1';
-                document.getElementById("cuadro_medico2").style.opacity = '1';
-                document.getElementById("cuadro_medico3").style.opacity = '1';
-                document.getElementById("cuadro_medico4").style.opacity = '1';
-                document.getElementById("cuadro_delegado").style.opacity = '0';
+                document.getElementById("cuadro_medico").style.display = 'block';
+                document.getElementById("cuadro_medico1").style.display = 'block';
+                document.getElementById("cuadro_medico2").style.display = 'block';
+                document.getElementById("cuadro_medico3").style.display = 'block';
+                document.getElementById("cuadro_medico4").style.display = 'block';
+                document.getElementById("cuadro_delegado").style.display = 'none';
+                document.getElementById("cuadro_delegado2").style.display = 'none';
+                document.getElementById("cuadro_delegado3").style.display = 'none';
+                document.getElementById("cuadro_delegado4").style.display = 'none';
             }
             else {
-                document.getElementById("cuadro_medico").style.opacity = '0';
-                document.getElementById("cuadro_medico1").style.opacity = '0';
-                document.getElementById("cuadro_medico2").style.opacity = '0';
-                document.getElementById("cuadro_medico3").style.opacity = '0';
-                document.getElementById("cuadro_medico4").style.opacity = '0';
-                document.getElementById("cuadro_delegado").style.opacity = '1';
+                document.getElementById("cuadro_medico").style.display = 'none';
+                document.getElementById("cuadro_medico1").style.display = 'none';
+                document.getElementById("cuadro_medico2").style.display = 'none';
+                document.getElementById("cuadro_medico3").style.display = 'none';
+                document.getElementById("cuadro_medico4").style.display = 'none';
+                document.getElementById("cuadro_delegado").style.display = 'block';
+                document.getElementById("cuadro_delegado2").style.display = 'block';
+                document.getElementById("cuadro_delegado3").style.display = 'block';
+                document.getElementById("cuadro_delegado4").style.display = 'block';
             }
             if (radio2.checked == true) {
-                document.getElementById("cuadro_medico").style.opacity = '0';
-                document.getElementById("cuadro_medico1").style.opacity = '0';
-                document.getElementById("cuadro_medico2").style.opacity = '0';
-                document.getElementById("cuadro_medico3").style.opacity = '0';
-                document.getElementById("cuadro_medico4").style.opacity = '0';
-                document.getElementById("cuadro_delegado").style.opacity = '1';
+                document.getElementById("cuadro_medico").style.display = 'none';
+                document.getElementById("cuadro_medico1").style.display = 'none';
+                document.getElementById("cuadro_medico2").style.display = 'none';
+                document.getElementById("cuadro_medico3").style.display = 'none';
+                document.getElementById("cuadro_medico4").style.display = 'none';
+                document.getElementById("cuadro_delegado").style.display = 'Block';
+                document.getElementById("cuadro_delegado2").style.display = 'Block';
+                document.getElementById("cuadro_delegado3").style.display = 'Block';
+                document.getElementById("cuadro_delegado4").style.display = 'Block';
             }
             else {
-                document.getElementById("cuadro_medico").style.opacity = '1';
-                document.getElementById("cuadro_medico1").style.opacity = '1';
-                document.getElementById("cuadro_medico2").style.opacity = '1';
-                document.getElementById("cuadro_medico3").style.opacity = '1';
-                document.getElementById("cuadro_medico4").style.opacity = '1';
-                document.getElementById("cuadro_delegado").style.opacity = '0';
+                document.getElementById("cuadro_medico").style.display = 'Block';
+                document.getElementById("cuadro_medico1").style.display = 'Block';
+                document.getElementById("cuadro_medico2").style.display = 'Block';
+                document.getElementById("cuadro_medico3").style.display = 'Block';
+                document.getElementById("cuadro_medico4").style.display = 'Block';
+                document.getElementById("cuadro_delegado").style.display = 'none';
+                document.getElementById("cuadro_delegado2").style.display = 'none';
+                document.getElementById("cuadro_delegado3").style.display = 'none';
+                document.getElementById("cuadro_delegado4").style.display = 'none';
             }
         }
 
@@ -252,11 +267,20 @@
         //activamos/desActivamos el div de ciudad de origen.
         function mostrar_ocultar_origen() {
             var radio_aloja = document.getElementById("no");
+            var radio_asistencia = document.getElementById("Asistencia_no");
+            
             if (radio_aloja.checked == true) {
                 document.getElementById("ciudad_origen").style.opacity = '0';
             }
             else {
                 document.getElementById("ciudad_origen").style.opacity = '1';
+            }
+
+            if (radio_asistencia.checked == true) {
+                document.getElementById("city_origen_delegado").style.opacity = '0';
+            }
+            else {
+                document.getElementById("city_origen_delegado").style.opacity = '1';
             }
         }
 
@@ -265,29 +289,51 @@
         function elegir_accion(x) {
             switch (x) {
                 case 1:
-                    var boton_envio_delegado = document.getElementById("jose_prueba");
+                    var boton_envio_delegado = document.getElementById("paso_datos");
                     boton_envio_delegado.value = '1';
                     break;
                 case 2:
                     var clickeado = document.getElementById("soflow").value
-                    alert(clickeado);
-                    jose = document.getElementById("jose_prueba2");
+                    jose = document.getElementById("paso_datos2");
                     jose.value = clickeado;
-                    document.getElementById("jose_prueba").value = 2;
-                    alert("salimos");
-                    EnviemFormulari();
-                    
+                    document.getElementById("paso_datos").value = 2;
+                    EnviemFormulari();                    
                     break;
                 case 3:
-                    document.getElementById("jose_prueba").value = 3;
+                    document.getElementById("paso_datos").value = 3;
                     break;
                 case 4:
-                    document.getElementById("jose_prueba").value = 4;
+                    document.getElementById("paso_datos").value = 4;
                     break;
                 case 5:
-                    document.getElementById("jose_prueba").value = 5;
+                    document.getElementById("paso_datos").value = 5;
                     break;
             }
+        }
+
+        function boton_enviar_medico() {
+            var cuadro1 = document.getElementById("paso_datos").value;
+            var cuadro2 = document.getElementById("paso_datos2").value;
+            if (cuadro2 == -2) {
+                elegir_accion(3);
+            }
+            else {
+                elegir_accion(4);
+            }
+        }
+        function vaciar_inputs_medicos() {
+            valor = "";
+            document.getElementById("name_medic").value = valor;
+            document.getElementById("ape1_medic").value = valor;
+            document.getElementById("ape2_medic").value = valor;
+            document.getElementById("medic_mail").value = valor;
+            document.getElementById("medic_selas").value = valor;
+            document.getElementById("medic_especialidad").value = valor;
+            document.getElementById("alergia_medic").value = valor;
+            document.getElementById("Observa_medic").value = valor;
+            document.getElementById("ConsentimientoN").checked = true;
+            document.getElementById("transporte_medic_no").checked = true;
+            document.getElementById("no").checked = true;
         }
     </script>
 </head>
@@ -312,7 +358,7 @@
             <div id="myselect" class="row mi_selector">
                 <select id="soflow" class="mi_selector" onchange="elegir_accion(2)" runat="server" name="selector_medicos">
                     <option value="-2" id="anadir_registro_medico1">Nueva Alta Médico</option>
-                    <option selected>------------------------------------------------</option>
+                    <option selected>Listado De Medicos</option>
                 </select>
             </div>
         </div>
@@ -412,13 +458,118 @@
                 <asp:Button ID="Button_Medico_Delete" CssClass="enviar" Text="Eliminar" runat="server" />
             </div>
         </div>
-        <div id="cuadro_delegado" class="panel1 azul">
-            Soy un delegado.
+        <div id="cuadro_delegado">
+            <div class="row margen padd">
+                    <div class="col-md-4 duo input_nombre padd">
+                        <label for="exampleInputEmail1">Nombre</label>                    
+                        <asp:TextBox ID="name_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4 segundo input_ape1 padd">
+                        <label for="exampleInputEmail1">Apellido</label>                    
+                        <asp:TextBox ID="ape1_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4 duo input_ape2 padd">
+                        <label for="exampleInputEmail1">2º Apellido</label>                    
+                        <asp:TextBox ID="ape2_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="row margen padd">
+                    <div class="col-md-4 duo input_email padd">
+                        <label for="exampleInputEmail1">Email</label>                    
+                        <asp:TextBox ID="email_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4 segundo input_number padd">
+                        <label for="exampleInputEmail1">Numero</label>                    
+                        <asp:TextBox ID="numero_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4 duo input_region padd">
+                        <label for="exampleInputEmail1">Región</label>                    
+                        <asp:TextBox ID="region_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                </div>
+            <div class="row margen padd">
+                <div class="col-md-6 alergia_delegado">
+                    <label for="nombre" class="label_textos">Siglas Delegado: </label>
+                    <asp:TextBox id="siglas_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
+                </div>
+                <div class="col-md-6 alergia_delegado">
+                    <label for="nombre" class="label_textos">Siglas Gerente: </label>
+                    <asp:TextBox id="siglas_gerente_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
+                </div>
+            </div>
+        </div>
+        <div id="cuadro_delegado2">
+            <div class="row padd margen centro altura">
+                <div class="col-md-6 mi_responsive padd">
+                    <label for="exampleInputEmail1" class="consen">Asistirá al evento?</label>
+                </div>
+                <div class="col-md-6 padd">
+                    <label id="transporte_label1" for="transporte_label">Necesita Transporte?</label>
+                </div>
+                <div class="col-md-6 padd">
+                    <div class="toggle-radio1">
+                            <input type="radio" class="input_prueba" name="radio2" id="Asistencia_si" value="Asistencia_si" runat="server" onclick="mostrar_ocultar_origen()" />
+                            <input type="radio" class="input_prueba" name="radio2" id="Asistencia_no" value="Asistencia_no" runat="server" onclick="mostrar_ocultar_origen()" />
+                            <div class="switch4">
+                                <label for="Asistencia_si">Sí</label>
+                                <label for="Asistencia_no">No</label>
+                                <span></span>
+                            </div>
+                     </div>
+                </div>                
+                <div class="col-md-6 padd">
+                    <div class="toggle-radio2">
+                            <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_si1" value="transporte_medic_si1" runat="server"/>
+                            <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_no1" value="transporte_medic_no1" runat="server" />
+                            <div class="switch2">
+                                <label for="transporte_medic_si1">Sí</label>
+                                <label for="transporte_medic_no1">No</label>
+                                <span></span>
+                            </div>
+                     </div>
+                </div>
+            </div>
+            <div class="row margen centro">
+                <div id="ciudad_origen_delegado" class="col-md-6 padd">
+                    <label for="exampleInputEmail1">Indique ciudad de Origen</label>                    
+                    <asp:TextBox ID="city_origen_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-md-6 padd">
+                    <label for="exampleInputEmail1">Necesita Alojamiento?</label>
+                    <div class="toggle-radio">
+                            <input type="radio" class="input_prueba" name="radio4" id="yes1" value="yes1" runat="server" />
+                            <input type="radio" class="input_prueba" name="radio4" id="no1" value="no1" runat="server" />
+                            <div class="switch">
+                                <label for="yes1">Sí</label>
+                                <label for="no1">No</label>
+                                <span></span>
+                            </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="cuadro_delegado3">
+            <div class="row margen padd">
+                <label for="nombre" class="label_textos">Alergias: </label>
+                <asp:TextBox id="alergia_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
+            </div>
+            <div class="row margen padd">
+                <label for="nombre" class="label_textos">Observaciones: </label>
+                <asp:TextBox id="observa_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_obser"></asp:TextBox>
+            </div>
+        </div>
+        <div id="cuadro_delegado4">
+            <asp:Button ID="Button_delegado" CssClass="enviar" Text="Enviar" runat="server" />
         </div>
         <div class="row">
-                <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
-                <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
-                <asp:TextBox ID="jose_prueba3" ReadOnly="false" runat="server" CssClass="form-control input_obser_aler1 inputs_hidden"></asp:TextBox>
+                <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control  inputs_hidden"></asp:TextBox>
+                <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control  inputs_hidden"></asp:TextBox>
+                <asp:TextBox ID="jose_prueba3" ReadOnly="false" runat="server" CssClass="form-control  inputs_hidden"></asp:TextBox>
+        </div>
+        <div class="row margen azul">
+            <asp:TextBox ID="paso_datos" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
+            <asp:TextBox ID="paso_datos2" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
+            <asp:TextBox ID="paso_datos3" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
         </div>
     </form>
 </body>
