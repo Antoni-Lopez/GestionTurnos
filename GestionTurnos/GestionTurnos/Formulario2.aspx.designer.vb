@@ -401,33 +401,6 @@ Partial Public Class Formulario2
     Protected WithEvents Button_delegado As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control jose_prueba.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents jose_prueba As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control jose_prueba2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents jose_prueba2 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control jose_prueba3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents jose_prueba3 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Control paso_datos.
     '''</summary>
     '''<remarks>

@@ -129,10 +129,27 @@
             .segundo{margin-left: 50%;margin-top: -13.1%;width: 49%;}
             .mailto{margin-left: 50%;margin-top: -16.5%;width: 49%;}
             #ciudad_origen {margin-top: 14%;}
+            .maildelegat{margin-left: 50%;margin-top: -16.5%;}
+            .num_delegat {margin-top: 0;} 
+            .region_delegat{margin-top: -13%;}
+            .inputs_responsives1{width: 50% !important;}
+            .inputs_responsives2{width: 50% !important;margin-left: 50%;margin-top: -11.5%;}
+            .asiste_respon{margin-top: -4%;}
             }
         @media (max-width: 810px) {
-            .cabecera,.panel{max-width: 360px;width: 100%;}
+            .cabecera,.panel,#cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{max-width: 360px;width: 100%;}
+            .inputs_medico,.inputs_responsives{width: 100% !important;margin-left:0 !important; margin-top: 0 !important;}
+            .consen_respon{margin-top: 2%;margin-bottom: 4%;}
+            .transpor_respon{margin-top: 5%;}
+            .toggle-radio2{margin-top: -2%;}
+            .origen_respon{margin-top: 13.5% !important;}
+            #soflow,#Button_Medico_Delete,.enviar{font-size: 14px !important;}
+            .toggle-radio1{margin-top: -20% !important;}
+            .inputs_responsives1,.inputs_responsives2{width: 100% !important;}
+            .inputs_responsives2{margin: 0 0 0 0 !important;}
         }
+
+        #paso_datos,#paso_datos2,#paso_datos3,#jose_prueba3,.inputs_hidden{display: block;}
     </style>
     <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -187,6 +204,13 @@
            document.getElementById("medic_mail").style.pointerEvents = "none";
            document.getElementById("medic_especialidad").style.pointerEvents = "none";
            document.getElementById("medic_selas").style.pointerEvents = "none";
+        }
+
+        function onlyread_inputs_delegado() {
+            document.getElementById("email_delegado").style.pointerEvents = "none";
+            document.getElementById("ape2_delegado").style.pointerEvents = "none";
+            document.getElementById("ape1_delegado").style.pointerEvents = "none";
+            document.getElementById("name_delegado").style.pointerEvents = "none";            
         }
 
 
@@ -296,17 +320,17 @@
                     var clickeado = document.getElementById("soflow").value
                     jose = document.getElementById("paso_datos2");
                     jose.value = clickeado;
-                    document.getElementById("paso_datos").value = 2;
+                    document.getElementById("paso_datos").value = '2';
                     EnviemFormulari();                    
                     break;
-                case 3:
-                    document.getElementById("paso_datos").value = 3;
+                case 3:                    
+                    document.getElementById("paso_datos").value = '3';
                     break;
                 case 4:
-                    document.getElementById("paso_datos").value = 4;
+                    document.getElementById("paso_datos").value = '4';
                     break;
                 case 5:
-                    document.getElementById("paso_datos").value = 5;
+                    document.getElementById("paso_datos").value = '5';
                     break;
             }
         }
@@ -364,29 +388,29 @@
         </div>
         <div id="cuadro_medico1" class="row panel">
             <div class="row padd margen">
-                <div class="col-md-4 duo padd">
+                <div class="col-md-4 duo padd inputs_medico">
                     <label for="exampleInputEmail1">Nombre</label>                    
                     <asp:TextBox ID="name_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 segundo padd">
+                <div class="col-md-4 segundo padd inputs_medico">
                     <label for="exampleInputEmail1">Apellido</label>                    
                     <asp:TextBox ID="ape1_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 duo padd">
+                <div class="col-md-4 duo padd inputs_medico">
                     <label for="exampleInputEmail1">2º Apellido</label>                    
                     <asp:TextBox ID="ape2_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <div class="row padd margen">
-                <div class="col-md-4 mailto padd">
+                <div class="col-md-4 mailto padd inputs_medico">
                     <label for="exampleInputEmail1">Email</label>                    
                     <asp:TextBox ID="medic_mail" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 duo padd">
+                <div class="col-md-4 duo padd inputs_medico">
                     <label for="exampleInputEmail1">Especialidad</label>                    
                     <asp:TextBox ID="medic_especialidad" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-4 segundo padd">
+                <div class="col-md-4 segundo padd inputs_medico">
                     <label for="exampleInputEmail1">Nº Selas</label>                    
                     <asp:TextBox ID="medic_selas" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
@@ -397,10 +421,10 @@
                 <div class="col-md-6 mi_responsive padd">
                     <label for="exampleInputEmail1" class="consen">Consentimiento firmado</label>
                 </div>
-                <div class="col-md-6 padd">
+                <div class="col-md-6 padd transpor_respon">
                     <label id="transporte_label" for="transporte_label">Necesita Transporte?</label>
                 </div>
-                <div class="col-md-6 padd">
+                <div class="col-md-6 padd consen_respon">
                     <div class="toggle-radio1">
                             <input type="radio" class="input_prueba" name="radio2" id="ConsentimientoSi" value="Consentimiento_si" runat="server"/>
                             <input type="radio" class="input_prueba" name="radio2" id="ConsentimientoN" value="Consentimiento_no" runat="server" />
@@ -423,7 +447,7 @@
                      </div>
                 </div>
             </div>
-            <div class="row margen centro">
+            <div class="row margen centro origen_respon">
                 <div id="ciudad_origen" class="col-md-6 padd">
                     <label for="exampleInputEmail1">Indique ciudad de Origen</label>                    
                     <asp:TextBox ID="origen_medic" runat="server" CssClass="form-control"></asp:TextBox>
@@ -460,46 +484,46 @@
         </div>
         <div id="cuadro_delegado">
             <div class="row margen padd">
-                    <div class="col-md-4 duo input_nombre padd">
+                    <div class="col-md-4 duo input_nombre padd inputs_responsives">
                         <label for="exampleInputEmail1">Nombre</label>                    
                         <asp:TextBox ID="name_delegado" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4 segundo input_ape1 padd">
+                    </div>                
+                    <div class="col-md-4 segundo input_ape1 padd inputs_responsives">
                         <label for="exampleInputEmail1">Apellido</label>                    
                         <asp:TextBox ID="ape1_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-                    <div class="col-md-4 duo input_ape2 padd">
+                    <div class="col-md-4 duo input_ape2 padd inputs_responsives">
                         <label for="exampleInputEmail1">2º Apellido</label>                    
                         <asp:TextBox ID="ape2_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row margen padd">
-                    <div class="col-md-4 duo input_email padd">
+                    <div class="col-md-4  duo input_email padd maildelegat inputs_responsives">
                         <label for="exampleInputEmail1">Email</label>                    
                         <asp:TextBox ID="email_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-                    <div class="col-md-4 segundo input_number padd">
+                    <div class="col-md-4 segundo input_number padd num_delegat inputs_responsives">
                         <label for="exampleInputEmail1">Numero</label>                    
                         <asp:TextBox ID="numero_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-                    <div class="col-md-4 duo input_region padd">
+                    <div class="col-md-4 duo input_region padd region_delegat inputs_responsives">
                         <label for="exampleInputEmail1">Región</label>                    
                         <asp:TextBox ID="region_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
             <div class="row margen padd">
-                <div class="col-md-6 alergia_delegado">
+                <div class="col-md-6 alergia_delegado inputs_responsives1">
                     <label for="nombre" class="label_textos">Siglas Delegado: </label>
                     <asp:TextBox id="siglas_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
                 </div>
-                <div class="col-md-6 alergia_delegado">
+                <div class="col-md-6 alergia_delegado inputs_responsives2">
                     <label for="nombre" class="label_textos">Siglas Gerente: </label>
                     <asp:TextBox id="siglas_gerente_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
                 </div>
             </div>
         </div>
         <div id="cuadro_delegado2">
-            <div class="row padd margen centro altura">
+            <div class="row padd margen centro altura asiste_respon">
                 <div class="col-md-6 mi_responsive padd">
                     <label for="exampleInputEmail1" class="consen">Asistirá al evento?</label>
                 </div>
@@ -561,12 +585,7 @@
         <div id="cuadro_delegado4">
             <asp:Button ID="Button_delegado" CssClass="enviar" Text="Enviar" runat="server" />
         </div>
-        <div class="row">
-                <asp:TextBox ID="jose_prueba" ReadOnly="false" runat="server" CssClass="form-control  inputs_hidden"></asp:TextBox>
-                <asp:TextBox ID="jose_prueba2" ReadOnly="false" runat="server" CssClass="form-control  inputs_hidden"></asp:TextBox>
-                <asp:TextBox ID="jose_prueba3" ReadOnly="false" runat="server" CssClass="form-control  inputs_hidden"></asp:TextBox>
-        </div>
-        <div class="row margen azul">
+        <div class="row margen">
             <asp:TextBox ID="paso_datos" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
             <asp:TextBox ID="paso_datos2" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
             <asp:TextBox ID="paso_datos3" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>

@@ -15,6 +15,8 @@
             Rol = Extraer_Rol(IdUsuario)
             Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
 
+
+
             If Rol = 0 Then
                 radio1.Checked = True
                 Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
@@ -23,6 +25,8 @@
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "desactivar();", True)
                 Extraer_BD_Medicos(IdUsuario)
             End If
+            'Desactivamos los campos de delegado que no se podrán modificar en la BD.
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "onlyread_inputs_delegado();", True)
         Else
             'Declaramos las variables.
             Dim Rol As Integer, Agrupacion As Integer, Nombre As String, Apellidos As String, Numero As Integer, Email As String, IdUsuario As Integer
@@ -37,10 +41,10 @@
             'Declaramos las acciones al pulsar los botones.
             Button_Medico.Attributes.Add("onclick", "boton_enviar_medico();")
             Button_Medico_Delete.Attributes.Add("onclick", "elegir_accion(5);")
-            Button_delegado.Attributes.Add("onclick", "elegir_accion(5);")
+            Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
 
-
-
+            'Desactivamos los campos de delegado que no se podrán modificar en la BD.
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "onlyread_inputs_delegado();", True)
 
             'Captamos los valores de los inputs hidden.
             input_hidden = paso_datos.Text
@@ -64,24 +68,33 @@
             Select Case input_hidden
                 Case 1
                     'Llamamos a la función para que nos actualize los datos.
-                    'ActualizarBD_Delegado(IdUsuario)
+                    ActualizarBD_Delegado(IdUsuario)
                 Case 2
-                    'Actualizamos el ComboText.
+                    'Mostramos la eleccion del ComboText.
                     Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 3
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
                     insertar_new_Medico(Agrupacion)
+                    soflow.Items.Clear()  'Borra el texto del combo
+                    soflow.Items.Add(New ListItem("Lista De Medicos", "-1"))  'Añadimos primera opcion.
+                    soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
+                    Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
+                    'ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "vaciar_inputs_medicos();", True)
                 Case 4
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere modificar un  registro ya existente en la BD de medico
                     UPDATE_BD_Medicos(Agrupacion, Rol)
+                    soflow.Items.Clear()  'Borra el texto del combo
+                    soflow.Items.Add(New ListItem("Lista De Medicos", "-1"))  'Añadimos primera opcion.
+                    soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
+                    Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 5
                     'Boton eliminar registro de medico en la BD.
                     Delete_1Medico_BD()
-
-                    soflow.DataTextField = ("") 'Borra el texto del combo
-
-                    Refresh_Datos_Combo(IdUsuario, Rol, Agrupacion)
-                    'ClientScript.RegisterStartupScript(Page.GetType(), "id", "EnviemFormulari()", True)
+                    soflow.Items.Clear()  'Borra el texto del combo
+                    soflow.Items.Add(New ListItem("Lista De Medicos", "-1"))  'Añadimos primera opcion.
+                    soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
+                    Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
+                    ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "vaciar_inputs_medicos();", True)
             End Select
         End If
     End Sub
@@ -98,7 +111,7 @@
 
         VectorSQL(0) = "SELECT idContacte FROM EEContactes WHERE Auto ='" & clsBD.Cometes(Left(idusuario, 100)) & "'"
 
-        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+                        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
             'Problema
         Else
             If DS.Tables(0).Rows.Count > 0 Then
@@ -321,7 +334,7 @@
         If clsBD.BaseDades(1, VectorSQL, DS) Then
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom") & ", " & DS.Tables(0).Rows(i).Item("Auto"), i + 1))
+                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), i + 1))
                 Next
             End If
         End If
@@ -474,57 +487,82 @@
         Name = name_medic.Text
         Apellido = ape1_medic.Text + "¦" + ape2_medic.Text
         Mail = medic_mail.Text
-        NSelas = medic_selas.Text
-        Alergia = alergia_medic.Text
-        Observaciones = Observa_medic.Text
-        Especialidad = medic_especialidad.Text
-        Origen = origen_medic.Text
-        numero = 0
-        Password = ""
-        Region = ""
-        Nit = 0
-        Asiste = 0
-        NITactivat = 1
-
-        'Ponemos el Rol a 1 como default, porque estámos insertando medicos, ya que tenemos que tener claro, que este registro lo hace el delegado.
-        Rol = 1
-        'Tambien ponemos el id de la feria a "martillo"
-        idFeria = 195
-
-        If (transporte_medic_si.Checked = True) Then
-            Transporte = 1
+        If Buscar_duplicate_mail(Mail) Then
+            'hemos encontrado 1 mail =, no hacemos nada + salvo limpiar campos de rellenar.
         Else
-            Transporte = 0
-        End If
-        If (yes.Checked = True) Then
-            Alojamiento = 1
-        Else
-            Alojamiento = 0
-        End If
+            NSelas = medic_selas.Text
+            Alergia = alergia_medic.Text
+            Observaciones = Observa_medic.Text
+            Especialidad = medic_especialidad.Text
+            Origen = origen_medic.Text
+            numero = 0
+            Password = ""
+            Region = ""
+            Nit = 0
+            Asiste = 0
+            NITactivat = 1
 
-        If (ConsentimientoSi.Checked = True) Then
-            Consentimiento = 1
-        Else
-            Consentimiento = 0
-        End If
-        VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) " &
+            'Ponemos el Rol a 1 como default, porque estámos insertando medicos, ya que tenemos que tener claro, que este registro lo hace el delegado.
+            Rol = 1
+            'Tambien ponemos el id de la feria a "martillo"
+            idFeria = 195
+
+            If (transporte_medic_si.Checked = True) Then
+                Transporte = 1
+            Else
+                Transporte = 0
+            End If
+            If (yes.Checked = True) Then
+                Alojamiento = 1
+            Else
+                Alojamiento = 0
+            End If
+
+            If (ConsentimientoSi.Checked = True) Then
+                Consentimiento = 1
+            Else
+                Consentimiento = 0
+            End If
+            VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) " &
                         "VALUES(" & idFeria & "," & Rol & "," & Agrupacion & "," & Transporte & "," & Asiste & ",'" & clsBD.Cometes(Left(Name, 100)) & "','" & clsBD.Cometes(Left(Apellido, 100)) & "'," &
                         "'" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "'," & NITactivat & ",'" & clsBD.Cometes(Left(Password, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
                         "" & Alojamiento & ",'" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "')"
 
-        '195,1,1,0,0, Victor,Mateo¦Cases,,natimateo@gmail.com,,,,,,1325,1,0,Torrevieja,Dana,Nada que destacar)"
-
-        If Not clsBD.BaseDades(2, VectorSQL, , Ultimo) Then
-            'If Not clsBD.BaseDades(2, VectorSQL) Then
-            'Problema
-        Else
-            'La variable Ultimo tendrá el último ID autonumérico
-            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Registro de nuevo medico concluido sin problemas!');", True)
-            Return Ultimo
+            If Not clsBD.BaseDades(2, VectorSQL, , Ultimo) Then
+                'If Not clsBD.BaseDades(2, VectorSQL) Then
+                'Problema
+            Else
+                'La variable Ultimo tendrá el último ID autonumérico
+                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Registro de nuevo medico concluido sin problemas!');", True)
+                Return Ultimo
+            End If
         End If
-
     End Function
 
+    Private Function Buscar_duplicate_mail(ByRef email)
+        VectorSQL(0) = "SELECT Auto , Email FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "'"
+        DS = New DataSet
+
+        Dim mail As String
+
+        'mail = email
+
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+            'Problema
+            Return True
+        Else
+            For i = 0 To DS.Tables(0).Rows.Count - 1
+                mail = DS.Tables(0).Rows(i).Item("Email")
+            Next
+
+            If mail = email Then
+                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Lo sentimos hemos encontrado ya un email igual en la base de datos! </b>Por favor ponga otra distinto.')", True)
+                Return True
+            Else
+                Return False
+            End If
+        End If
+    End Function
     Private Function UPDATE_BD_Medicos(ByRef agrupacion, ByVal Rol)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
@@ -594,5 +632,66 @@
             ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Eliminación de 1 medico de la BD sin problemas!');", True)
         End If
         Return True
+    End Function
+    Private Function ActualizarBD_Delegado(ByRef userID_insert)
+        'Declaramos las variables que vamos a insertar en la BD
+        Dim Nombre_insert As String, Apellidos_insert As String, Numero_insert As Integer, Email_insert As String
+        Dim Region_insert As String, Siglas_insert As String, Asiste_insert As Integer, Transporte_insert As Integer
+        Dim Alojamiento_insert As Integer, Origen_insert As String, Alergias_insert As String, Obser_insert As String
+
+        Dim phone_check As String, phone_check1 As String
+
+        'Extraemos los datos del formulario.
+        Nombre_insert = name_delegado.Text
+        Apellidos_insert = ape1_delegado.Text + "¦" + ape2_delegado.Text
+        Email_insert = email_delegado.Text
+        phone_check = numero_delegado.Text
+        phone_check1 = Len(phone_check)
+
+        'Comprobamos que el número de telefono tenga 9 digitos.
+        If (phone_check1 = 9) Then
+            Numero_insert = phone_check
+        Else
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Número de Telefono incorrecto, por favor, comprueba que su numero tiene 9 digitos!')", True)
+        End If
+        Region_insert = region_delegado.Text
+        Siglas_insert = siglas_gerente_delegado.Text + "¦" + siglas_delegado.Text
+
+        'Extraemos los datos de los radio button.
+        'si el radio de asiste,transporte o alergia esta marcado, guardamos la variable en la Bd como 1, sino como 0.
+        If (Asistencia_si.Checked = True) Then
+            Asiste_insert = 1
+        Else
+            Asiste_insert = 0
+        End If
+
+        'Misma comprobación con el transporte.
+        If (transporte_medic_si1.Checked = True) Then
+            Transporte_insert = 1
+            Origen_insert = city_origen_delegado.Text
+        Else
+            Transporte_insert = 0
+        End If
+
+        'Misma comprobación con el alojamiento.
+        If (yes1.Checked = True) Then
+            Alojamiento_insert = 1
+        Else
+            Alojamiento_insert = 0
+        End If
+
+        Alergias_insert = alergia_delegado.Text
+        Obser_insert = observa_delegado.Text
+
+        'Realizamos la consulta, en este caso, la update de la BD.
+        VectorSQL(0) = "UPDATE eecontactes SET Nom = '" & clsBD.Cometes(Left(Nombre_insert, 100)) & "', Cognoms = '" & clsBD.Cometes(Left(Apellidos_insert, 100)) & "', Email= '" & clsBD.Cometes(Left(Email_insert, 100)) & "', Mobil= '" & clsBD.Cometes(Left(Numero_insert, 100)) & "', Carrec = '" & clsBD.Cometes(Left(Region_insert, 100)) & "', NIT= '" & clsBD.Cometes(Left(Siglas_insert, 100)) & "', idAlta= '" & clsBD.Cometes(Left(Asiste_insert, 100)) & "', idTipusContacte= '" & clsBD.Cometes(Left(Transporte_insert, 100)) & "',Procedencia='" & clsBD.Cometes(Left(Origen_insert, 100)) & "', NickTwitter='" & clsBD.Cometes(Left(Alojamiento_insert, 100)) & "',NickFacebook= '" & clsBD.Cometes(Left(Alergias_insert, 100)) & "',WebPersonal='" & clsBD.Cometes(Left(Obser_insert, 100)) & "' WHERE Auto = '" & userID_insert & "' AND Nom = '" & Nombre_insert & "'"
+
+        If Not clsBD.BaseDades(2, VectorSQL) Then
+            'Problema
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al actualizar los datos!')", True)
+        Else
+            'Correcto
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Actualización perfecta en la BD (-; ')", True)
+        End If
     End Function
 End Class
