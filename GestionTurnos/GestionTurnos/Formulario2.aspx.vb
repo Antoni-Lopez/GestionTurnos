@@ -50,17 +50,18 @@
             input_hidden = paso_datos.Text
             input_hidden2 = paso_datos2.Text
 
-            Select Case input_hidden2
-                Case -2
-                    If input_hidden = 2 Then
-                        'Vamos a proceder a registrar un nuevo medico.
-                        'Por ello primero limpiamos todos los inputs.
-                        'Al seleccionar nueva alta, automaticamente, limpiamos todos los inputs.
-                        ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "vaciar_inputs_medicos();", True)
-                    End If
-                Case -1
-                    input_hidden = 2
-            End Select
+            If (input_hidden2 = -2) Then
+                If (input_hidden = 2) Then
+                    'Vamos a proceder a registrar un nuevo medico.
+                    'Por ello primero limpiamos todos los inputs.
+                    'Al seleccionar nueva alta, automaticamente, limpiamos todos los inputs.
+                    ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "nueva_alta();", True)
+                Else
+                    ClientScript.RegisterStartupScript(Page.GetType(), "onlyreaddoctors", "onlyread_inputs_medicos2();", True)
+                End If
+            Else
+                ClientScript.RegisterStartupScript(Page.GetType(), "onlyreaddoctors", "onlyread_inputs_medicos2();", True)
+            End If
 
             Rol = Extraer_Rol(IdUsuario)
             Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
@@ -74,6 +75,7 @@
                     Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 3
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
+                    'ClientScript.RegisterStartupScript(Page.GetType(), "activar", "activate_inputs_medicos();", True)
                     insertar_new_Medico(Agrupacion)
                     soflow.Items.Clear()  'Borra el texto del combo
                     soflow.Items.Add(New ListItem("Lista De Medicos", "-1"))  'Añadimos primera opcion.
@@ -93,8 +95,9 @@
                     soflow.Items.Clear()  'Borra el texto del combo
                     soflow.Items.Add(New ListItem("Lista De Medicos", "-1"))  'Añadimos primera opcion.
                     soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
-                    Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                     ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "vaciar_inputs_medicos();", True)
+                    Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
+
             End Select
         End If
     End Sub
@@ -184,7 +187,7 @@
 
             name_medic.Text = Name
             medic_mail.Text = Mail
-            medic_especialidad.Text = Especialidad
+            'medic_especialidad.Text = Especialidad
             medic_selas.Text = NSelas
             alergia_medic.Text = Alergia
             Observa_medic.Text = Observaciones
@@ -425,7 +428,24 @@
                 'No nos devuelve valores
                 name_medic.Text = Name
                 medic_mail.Text = Mail
-                medic_especialidad.Text = Especialidad
+                'paso_datos4.Text = Especialidad
+
+                Select Case Especialidad
+                    Case 0
+                        medic_especialidad1.SelectedValue = 0
+                    Case 1
+                        medic_especialidad1.SelectedValue = 1
+                    Case 2
+                        medic_especialidad1.SelectedValue = 2
+                    Case 3
+                        medic_especialidad1.SelectedValue = 3
+                    Case 4
+                        medic_especialidad1.SelectedValue = 4
+                    Case 5
+                        medic_especialidad1.SelectedValue = 5
+                End Select
+
+                'medic_especialidad.Text = Especialidad
                 medic_selas.Text = NSelas
                 alergia_medic.Text = Alergia
                 Observa_medic.Text = Observaciones
@@ -487,13 +507,15 @@
         Name = name_medic.Text
         Apellido = ape1_medic.Text + "¦" + ape2_medic.Text
         Mail = medic_mail.Text
-        If Buscar_duplicate_mail(Mail) Then
+        If buscar_email(Mail) Then
             'hemos encontrado 1 mail =, no hacemos nada + salvo limpiar campos de rellenar.
+            'ClientScript.RegisterStartupScript(Page.GetType(), "lanzarAviso", "LanzaAviso('Lo sentimos hemos encontrado ya un email igual en la base de datos! Por favor ponga otra distinto.');", True)
+            ClientScript.RegisterStartupScript(Page.GetType(), "lanzarAvisos", "Email_Medic_BD();", True)
         Else
             NSelas = medic_selas.Text
             Alergia = alergia_medic.Text
             Observaciones = Observa_medic.Text
-            Especialidad = medic_especialidad.Text
+            Especialidad = paso_datos4.Text
             Origen = origen_medic.Text
             numero = 0
             Password = ""
@@ -533,36 +555,12 @@
                 'Problema
             Else
                 'La variable Ultimo tendrá el último ID autonumérico
-                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Registro de nuevo medico concluido sin problemas!');", True)
+                ClientScript.RegisterStartupScript(Page.GetType(), "avisoRegistroOK", "LanzaAviso('Registro de nuevo medico concluido sin problemas!');", True)
                 Return Ultimo
             End If
         End If
     End Function
 
-    Private Function Buscar_duplicate_mail(ByRef email)
-        VectorSQL(0) = "SELECT Auto , Email FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "'"
-        DS = New DataSet
-
-        Dim mail As String
-
-        'mail = email
-
-        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
-            'Problema
-            Return True
-        Else
-            For i = 0 To DS.Tables(0).Rows.Count - 1
-                mail = DS.Tables(0).Rows(i).Item("Email")
-            Next
-
-            If mail = email Then
-                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Lo sentimos hemos encontrado ya un email igual en la base de datos! </b>Por favor ponga otra distinto.')", True)
-                Return True
-            Else
-                Return False
-            End If
-        End If
-    End Function
     Private Function UPDATE_BD_Medicos(ByRef agrupacion, ByVal Rol)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
@@ -570,7 +568,7 @@
 
         Dim Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As String, NSelas As String
         Dim Consentimiento As String, Transporte As Integer, Alojamiento As String, Alergia As String, Observaciones As String, Password As String
-        Dim Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As String
+        Dim Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As String, comprueba_mail As String
 
 
 
@@ -579,10 +577,11 @@
         Name = name_medic.Text
         Apellido = ape1_medic.Text + "¦" + ape2_medic.Text
         Mail = medic_mail.Text
+
         NSelas = medic_selas.Text
         Alergia = alergia_medic.Text
         Observaciones = Observa_medic.Text
-        Especialidad = medic_especialidad.Text
+        Especialidad = paso_datos4.Text
         Origen = origen_medic.Text
 
         'Ponemos el Rol a 1 como default, porque estámos actualizando medicos, ya que tenemos que tener claro, que esta modificacion lo hace el delegado.
@@ -633,6 +632,7 @@
         End If
         Return True
     End Function
+
     Private Function ActualizarBD_Delegado(ByRef userID_insert)
         'Declaramos las variables que vamos a insertar en la BD
         Dim Nombre_insert As String, Apellidos_insert As String, Numero_insert As Integer, Email_insert As String
@@ -692,6 +692,28 @@
         Else
             'Correcto
             ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Actualización perfecta en la BD (-; ')", True)
+        End If
+    End Function
+
+    Private Function buscar_email(ByRef mail)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As New DataSet
+        Dim VectorSQL(0) As String
+        Dim Dato1 As String
+
+        VectorSQL(0) = "SELECT Email FROM EEContactes WHERE Email ='" & clsBD.Cometes(Left(mail, 100)) & "'"
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+            'Problema
+        Else
+            If DS.Tables(0).Rows.Count > 0 Then
+                For i = 0 To DS.Tables(0).Rows.Count - 1
+                    Dato1 = DS.Tables(0).Rows(i).Item("Email")
+                Next
+                Return True
+            Else
+                'No nos devuelve valores
+                Return False
+            End If
         End If
     End Function
 End Class

@@ -122,13 +122,13 @@ Partial Public Class Formulario2
     Protected WithEvents medic_mail As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control medic_especialidad.
+    '''Control medic_especialidad1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents medic_especialidad As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents medic_especialidad1 As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''Control medic_selas.
@@ -237,6 +237,15 @@ Partial Public Class Formulario2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Button_Medico_Delete As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control Button_envio_medico.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button_envio_medico As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control name_delegado.
@@ -426,4 +435,13 @@ Partial Public Class Formulario2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents paso_datos3 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control paso_datos4.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents paso_datos4 As Global.System.Web.UI.WebControls.TextBox
 End Class

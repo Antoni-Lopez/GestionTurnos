@@ -12,6 +12,8 @@
     <asp:literal id="jquery_1_9_1_min_js" runat="server"></asp:literal>
     <asp:literal id="bootstrap_min_js" runat="server"></asp:literal>
     <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
+
+
     <style>
         /* Formateamos el body para que se apliquen nuestros stilos perfect (-;*/
         body{margin: 0;padding: 0;box-sizing:border-box;}
@@ -73,6 +75,7 @@
         #cuadro_medico4{margin-bottom: 5% !important;}
         .cabecera,.panel,.panel1{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
         .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
+        /*#cuadro_medico5{margin-top: -19.5% !important;}*/
 
         /* Selector de Medicos */
         .mi_selector{margin:auto;}
@@ -135,6 +138,13 @@
             .inputs_responsives1{width: 50% !important;}
             .inputs_responsives2{width: 50% !important;margin-left: 50%;margin-top: -11.5%;}
             .asiste_respon{margin-top: -4%;}
+            .mi_responsive{margin-top: 5%;}
+            .input_aloja_respon{margin-top: -12%;}
+            .input_transpor_respon{margin-top: 12%;}
+            .citi_origen_respon{margin-top: 17%;margin-bottom: 2%;}
+            .inputs_alojamiento_respon{margin-top: -2%;margin-bottom: 5%;}
+            .origen_medic_respon{margin-top: 5%;}
+            .alojamiento_responsive{margin-top: -1%;}
             }
         @media (max-width: 810px) {
             .cabecera,.panel,#cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{max-width: 360px;width: 100%;}
@@ -147,6 +157,7 @@
             .toggle-radio1{margin-top: -20% !important;}
             .inputs_responsives1,.inputs_responsives2{width: 100% !important;}
             .inputs_responsives2{margin: 0 0 0 0 !important;}
+            
         }
 
         #paso_datos,#paso_datos2,#paso_datos3,#jose_prueba3,.inputs_hidden{display: block;}
@@ -192,6 +203,7 @@
             document.getElementById("cuadro_medico1").style.display = 'Block';          
             document.getElementById("cuadro_medico2").style.display = 'Block';               
             document.getElementById("cuadro_medico3").style.display = 'Block';  
+            document.getElementById("cuadro_medico5").style.display = 'Block';  
         }
 
 
@@ -206,6 +218,34 @@
            document.getElementById("medic_selas").style.pointerEvents = "none";
         }
 
+
+         //Solo lectura de los inputs del medico (Name/Ape1/Ape2/Email)
+        function onlyread_inputs_medicos2() {
+           document.getElementById("name_medic").style.pointerEvents = "none";
+           document.getElementById("ape1_medic").style.pointerEvents = "none";
+           document.getElementById("ape2_medic").style.pointerEvents = "none";
+           document.getElementById("medic_mail").style.pointerEvents = "none";
+        }
+
+
+         //Lectura/Escritura de los inputs del delegado (Name/Ape1/Ape2/Email)
+        function activate_inputs_medicos() {
+           document.getElementById("name_medic").style.pointerEvents = "auto";
+           document.getElementById("ape1_medic").style.pointerEvents = "auto";
+           document.getElementById("ape2_medic").style.pointerEvents = "auto";
+           document.getElementById("medic_mail").style.pointerEvents = "auto";
+        }
+
+
+        //Funcion que creamos a la hora de añadir un nuevo medico. 1º limpiamos todos los inputs
+        //2º activamos los campos de Nombre/Ape1/Ape2/Email para poder registrar a un nuevo medico.
+        function nueva_alta() {
+            vaciar_inputs_medicos();
+            activate_inputs_medicos();            
+        }
+
+
+        //Solo lectura de los inputs del delegado (Name/Ape1/Ape2/Email)
         function onlyread_inputs_delegado() {
             document.getElementById("email_delegado").style.pointerEvents = "none";
             document.getElementById("ape2_delegado").style.pointerEvents = "none";
@@ -223,7 +263,7 @@
         }
 
 
-        //funcion que nos activa/desactiva los cuadros de delagado/medico
+        //funcion que nos activa/desactiva los cuadros de delegado/medico
         //segun este el input seleccionado.
         function ocultar_datos_delegado() {
             var radio1 = document.getElementById("radio1");
@@ -234,7 +274,7 @@
                 document.getElementById("cuadro_medico2").style.display = 'block';
                 document.getElementById("cuadro_medico3").style.display = 'block';
                 document.getElementById("cuadro_medico4").style.display = 'block';
-                document.getElementById("cuadro_delegado").style.display = 'none';
+                document.getElementById("cuadro_delegado").style.display = 'none';          
                 document.getElementById("cuadro_delegado2").style.display = 'none';
                 document.getElementById("cuadro_delegado3").style.display = 'none';
                 document.getElementById("cuadro_delegado4").style.display = 'none';
@@ -244,7 +284,8 @@
                 document.getElementById("cuadro_medico1").style.display = 'none';
                 document.getElementById("cuadro_medico2").style.display = 'none';
                 document.getElementById("cuadro_medico3").style.display = 'none';
-                document.getElementById("cuadro_medico4").style.display = 'none';
+                document.getElementById("cuadro_medico4").style.display = 'none'; 810
+
                 document.getElementById("cuadro_delegado").style.display = 'block';
                 document.getElementById("cuadro_delegado2").style.display = 'block';
                 document.getElementById("cuadro_delegado3").style.display = 'block';
@@ -335,6 +376,8 @@
             }
         }
 
+
+        //funcion para darle datos a los inputs ocultos y asi poder decidir que accion quiere realizar el usuario.
         function boton_enviar_medico() {
             var cuadro1 = document.getElementById("paso_datos").value;
             var cuadro2 = document.getElementById("paso_datos2").value;
@@ -345,6 +388,9 @@
                 elegir_accion(4);
             }
         }
+
+
+        //Vaciamos todos los inputs medicos para poder añadir 1 nuevo.
         function vaciar_inputs_medicos() {
             valor = "";
             document.getElementById("name_medic").value = valor;
@@ -358,6 +404,25 @@
             document.getElementById("ConsentimientoN").checked = true;
             document.getElementById("transporte_medic_no").checked = true;
             document.getElementById("no").checked = true;
+        }
+
+
+        //funcion que creamos para cuando tenemos 1 registro en la BD
+        //del campo Email, y a la misma vez que soltamos el error al usuario,
+        //Limpiamos todos los inputs, ya que el registro no ha funcionado correctamente.
+        function Email_Medic_BD() {
+            LanzaAviso('Lo sentimos hemos encontrado ya un Email similar en la base de datos! Por favor ponga otra distinto.');
+            vaciar_inputs_medicos();
+        }
+
+
+        //nos quedamos con el valor seleccionado en el ComboBox
+        //y lo pasamos a un input que nos creamos.
+        function especialidad() {
+            var input_hidden, clickeado2;
+            clickeado2 = document.getElementById("medic_especialidad1").value;
+            input_hidden = document.getElementById("paso_datos4");
+            input_hidden.value = clickeado2;
         }
     </script>
 </head>
@@ -407,8 +472,15 @@
                     <asp:TextBox ID="medic_mail" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-4 duo padd inputs_medico">
-                    <label for="exampleInputEmail1">Especialidad</label>                    
-                    <asp:TextBox ID="medic_especialidad" runat="server" CssClass="form-control"></asp:TextBox>
+                    <label for="exampleInputEmail1">Especialidad</label>
+                    <asp:DropDownList runat="server" ID="medic_especialidad1" onchange="especialidad()" CssClass="form-control">
+                        <asp:ListItem Text="Eliga una opción." Value="0" Selected="True" />
+                        <asp:ListItem Text="1" Value="1" />
+                        <asp:ListItem Text="2" Value="2" />
+                        <asp:ListItem Text="3" Value="3" />
+                        <asp:ListItem Text="4" Value="4" />
+                        <asp:ListItem Text="5" Value="5" />
+                    </asp:DropDownList>                  
                 </div>
                 <div class="col-md-4 segundo padd inputs_medico">
                     <label for="exampleInputEmail1">Nº Selas</label>                    
@@ -447,12 +519,12 @@
                      </div>
                 </div>
             </div>
-            <div class="row margen centro origen_respon">
+            <div class="row margen centro origen_respon origen_medic_respon">
                 <div id="ciudad_origen" class="col-md-6 padd">
                     <label for="exampleInputEmail1">Indique ciudad de Origen</label>                    
                     <asp:TextBox ID="origen_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-6 padd">
+                <div class="col-md-6 padd alojamiento_responsive">
                     <label for="exampleInputEmail1">Necesita Alojamiento?</label>
                     <div class="toggle-radio">
                             <input type="radio" class="input_prueba" name="radio4" id="yes" value="yes" runat="server" onclick="mostrar_ocultar_origen()" />
@@ -481,6 +553,9 @@
             <div class="row centro">
                 <asp:Button ID="Button_Medico_Delete" CssClass="enviar" Text="Eliminar" runat="server" />
             </div>
+        </div>
+        <div id="cuadro_medico5" class="row panel">
+            <asp:Button ID="Button_envio_medico" CssClass="enviar" Text="Enviar" runat="server" />
         </div>
         <div id="cuadro_delegado">
             <div class="row margen padd">
@@ -527,10 +602,10 @@
                 <div class="col-md-6 mi_responsive padd">
                     <label for="exampleInputEmail1" class="consen">Asistirá al evento?</label>
                 </div>
-                <div class="col-md-6 padd">
+                <div class="col-md-6 padd mi_responsive">
                     <label id="transporte_label1" for="transporte_label">Necesita Transporte?</label>
                 </div>
-                <div class="col-md-6 padd">
+                <div class="col-md-6 padd input_aloja_respon">
                     <div class="toggle-radio1">
                             <input type="radio" class="input_prueba" name="radio2" id="Asistencia_si" value="Asistencia_si" runat="server" onclick="mostrar_ocultar_origen()" />
                             <input type="radio" class="input_prueba" name="radio2" id="Asistencia_no" value="Asistencia_no" runat="server" onclick="mostrar_ocultar_origen()" />
@@ -541,7 +616,7 @@
                             </div>
                      </div>
                 </div>                
-                <div class="col-md-6 padd">
+                <div class="col-md-6 padd input_transpor_respon">
                     <div class="toggle-radio2">
                             <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_si1" value="transporte_medic_si1" runat="server"/>
                             <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_no1" value="transporte_medic_no1" runat="server" />
@@ -553,12 +628,12 @@
                      </div>
                 </div>
             </div>
-            <div class="row margen centro">
+            <div class="row margen centro citi_origen_respon">
                 <div id="ciudad_origen_delegado" class="col-md-6 padd">
                     <label for="exampleInputEmail1">Indique ciudad de Origen</label>                    
                     <asp:TextBox ID="city_origen_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-md-6 padd">
+                <div class="col-md-6 padd inputs_alojamiento_respon">
                     <label for="exampleInputEmail1">Necesita Alojamiento?</label>
                     <div class="toggle-radio">
                             <input type="radio" class="input_prueba" name="radio4" id="yes1" value="yes1" runat="server" />
@@ -589,6 +664,7 @@
             <asp:TextBox ID="paso_datos" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
             <asp:TextBox ID="paso_datos2" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
             <asp:TextBox ID="paso_datos3" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
+            <asp:TextBox ID="paso_datos4" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
         </div>
     </form>
 </body>
