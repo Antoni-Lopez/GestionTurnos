@@ -14,6 +14,42 @@ Option Explicit On
 Partial Public Class prueba
     
     '''<summary>
+    '''Control bootstrap_min_css.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bootstrap_min_css As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''Control jquery_1_9_1_min_js.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents jquery_1_9_1_min_js As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''Control bootstrap_min_js.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bootstrap_min_js As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
+    '''Control bootbox_min_js.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bootbox_min_js As Global.System.Web.UI.WebControls.Literal
+    
+    '''<summary>
     '''Control form1.
     '''</summary>
     '''<remarks>
@@ -39,22 +75,4 @@ Partial Public Class prueba
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Asistencia_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
-    
-    '''<summary>
-    '''Control yes.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents yes As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
-    
-    '''<summary>
-    '''Control no.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
 End Class

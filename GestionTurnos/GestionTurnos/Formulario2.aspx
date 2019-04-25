@@ -26,6 +26,7 @@
         .azul {border: 2px solid blue;}
         .rosa {border: 2px solid pink;}
 
+
         /* Varios */
         .margen{margin:auto;}
         .pad{padding:5px;}
@@ -38,16 +39,13 @@
         /* Cuadro para el banner */
         .banner{max-width: 810px;margin:auto;margin-top: 2.5%;border: 1px solid black;padding: 10px;height: 391px;background-color: #fff;box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);}
         .my_img{width: 103%;margin-left:-1.3%;margin-top:-1.3%;height: 391px;}
-
-
         
-        
-        
+                
         /* Radio Buttons Delegado/Medico */
-        .funkyradio div {clear: both;/*margin: 0 50px;*/overflow: hidden;}
-        .funkyinline {display: inline-block;padding-right:10px;}
+        .funkyradio {clear: both;/*margin: 0 50px;*/overflow: hidden;margin-left: 17%;}
+        .funkyinline {display: inline-block;padding-right:10px;width: 40%;}
         .funkyinline label {padding-right:10px;}
-        .funkyradio label {min-width: 300px;width: 100%;border-radius: 5px;border: 2px solid #D1D3D4;font-weight: normal;margin-left: 3%;}
+        .funkyradio label {width: 100%;border-radius: 5px;border: 2px solid #D1D3D4;font-weight: normal;margin-left: 0;}
         .funkyradio label:hover {color:#FFFFFF;background-color: #0e4c57;}
         .funkyradio input[type="radio"]:empty, .funkyradio input[type="checkbox"]:empty {display: none;}
         .funkyradio input[type="radio"]:empty ~ label, .funkyradio input[type="checkbox"]:empty ~ label {position: relative;line-height: 2.5em;text-indent: 3.25em;margin-top: 0.2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
@@ -77,31 +75,31 @@
         .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
         #cuadro_medico5{display:none;margin-bottom: 10%;}
         .desaparecer_botones_edicion_delegado{display: none !important;opacity: 0;}
+        label[for=consen_no],label[for=transpor_no],label[for=alojamiento_medico_no]{margin-left: -20%;}
+
+        .textos_radios_medico{font-size: 16px; font-weight: bold;margin-left: 5%;}
 
         /* Selector de Medicos */
         .mi_selector{margin:auto;}
         select#soflow, select#soflow-color {-webkit-appearance: button;-webkit-border-radius: 2px;-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);-webkit-padding-end: 20px;-webkit-padding-start: 2px;-webkit-user-select: none;background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);background-position: 97% center;background-repeat: no-repeat;border: 1px solid #AAA;color: #555;font-size: inherit;margin: 20px;overflow: hidden;padding: 5px 10px;text-overflow: ellipsis;white-space: nowrap;width: 52%;margin-left: 22.5%;}
 
 
-        /* Estilos Radio Buttons personalizados de Medico. */
-        .switch {position: absolute;top: 135%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
-        .switch1{position: absolute;top: 66%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
-        .switch2 {position: absolute;top: 66%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
-        .switch4 {position: absolute;top: 66%;left: 50%;width: 150px;height: 50px;text-align: center;margin: -30px 0 0 -75px;background: #00bc9c;transition: all 0.2s ease;border-radius: 25px;}
-        .switch span, .switch1 span,.switch2 span,.switch4 span {position: absolute;width: 20px;height: 4px;top: 50%;left: 50%;margin: -2px 0px 0px -4px;background: #fff;display: block;transform: rotate(-45deg);transition: all 0.2s ease;}
-        .switch span:after,.switch1 span:after,.switch2 span:after,.switch4 span:after {content: "";display: block;position: absolute;width: 4px;height: 12px;margin-top: -8px;background: #fff;transition: all 0.2s ease;}
-        .input_prueba {display: none;}
-        .switch label, .switch1 label, .switch2 label, .switch4 label {cursor: pointer;color: rgba(0,0,0,0.2);width: 60px;line-height: 50px;transition: all 0.2s ease;}
-        .switch1 label {margin-left: -54%;}
-        label[for=yes],label[for=yes1], label[for=ConsentimientoS], label[for=transporte_medic_si],label[for=transporte_medic_si1],label[for=Asistencia_si] {position: absolute;left: 0px;height: 20px;}
-        label[for=no],label[for=no1], label[for=ConsentimientoN], label[for=transporte_medic_no],label[for=transporte_medic_no1],label[for=Asistencia_no] {position: absolute;right: 0px;}
-        #no:checked ~ .switch,#no1:checked ~ .switch, #ConsentimientoN:checked ~ .switch1, #transporte_medic_no:checked ~ .switch2,#transporte_medic_no1:checked ~ .switch2,#Asistencia_no:checked ~ .switch4 {background: #eb4f37;}
-        #no:checked ~ .switch span,#no1:checked ~ .switch span,#ConsentimientoN:checked ~ .switch1 span,#transporte_medic_no:checked ~ .switch2 span,#transporte_medic_no1:checked ~ .switch2 span, #Asistencia_no:checked ~ .switch4 span {background: #fff;margin-left: -8px;}
-        #no:checked ~ .switch span:after,#no1:checked ~ .switch span:after,#ConsentimientoN:checked ~ .switch1 span:after ,#transporte_medic_no:checked ~ .switch2 span:after,#transporte_medic_no1:checked ~ .switch2 span:after,#Asistencia_no:checked ~ .switch4 span:after {background: #fff;height: 20px;margin-top: -8px;margin-left: 8px;}
-        #yes:checked ~ .switch label[for=yes],#yes1:checked ~ .switch label[for=yes1], #ConsentimientoSi:checked ~ .switch1 label[for=ConsentimientoSi], #transporte_medic_si:checked ~ .switch2 label[for=transporte_medic_si],#transporte_medic_si1:checked ~ .switch2 label[for=transporte_medic_si1], #Asistencia_si:checked ~ .switch4 label[for=Asistencia_si] {color: #fff;}
-        #no:checked ~ .switch label[for=no],#no1:checked ~ .switch label[for=no1], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no:checked ~ .switch2 label[for=transporte_medic_no],#transporte_medic_no1:checked ~ .switch2 label[for=transporte_medic_no1], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN], #Asistencia_no:checked ~ .switch4 label[for=Asistencia_no] {color: #fff;}
+        /* Estilos Radio Buttons personalizados. */
+        .radios_molones {clear: both;overflow: hidden;}
+        .radios_molones label {min-width: 50%; width: 85%;border-radius: 5px;border: 1px solid Black;font-weight: normal;background: #fff; color: #0990BC;}
+        .radios_molones input[type="radio"]:empty {display: none;}
+        .radios_molones input[type="radio"]:empty ~ label{position: relative;line-height: 2.5em;text-indent: 3.25em;margin-top: 2em;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+        .radios_molones input[type="radio"]:empty ~ label:before {position: absolute;display: block;top: 0;bottom: 0;left: 0;content: '';width: 2.5em;background: #bfbfbf;border-radius: 3px 0 0 3px;}
+        .radios_molones input[type="radio"]:hover:not(:checked) ~ label {color: Black;}
+        .radios_molones input[type="radio"]:hover:not(:checked) ~ label:before {content: '\2714';text-indent: .9em;color: white;}
+        .radios_molones input[type="radio"]:checked ~ label{color: #fff;background-color: #115F6D}
+        .radios_molones input[type="radio"]:checked ~ label:before {content: '\2714';text-indent: .9em;color: #333;background-color: #ccc;}
+        .radios_molones input[type="radio"]:focus ~ label:before {box-shadow: 0 0 0 3px #999;}
+        .radios_molones-success input[type="radio"]:checked ~ label:before {color: #fff;background-color: #5cb85c;}
+        .radios_molones-danger input[type="radio"]:checked ~ label:before {color: #fff;background-color: #d9534f;}
+      
+        .subir_miketa{margin-top: -12%;}
 
-        transporte_medic_no
         /* Alergia y obser medicos*/
         .medic_aler,.medic_obser{ height: 40px;}
               
@@ -119,13 +117,18 @@
         /* Cuadro delegado */
         #cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4 {background-color: #D4D4D4;font-size: 16px;border-radius: 6px;padding-left: 20px;max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
         #cuadro_delegado{margin-top: 1%;}
+        #cuadro_delegado2{height: 250px;}
         #cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{margin-top: 0.2%;}
         #cuadro_delegado4{margin-bottom: 10%;}
+        #city_origen_medic{margin-top: 3%;}
+        label[for=asistira_delegado_no],label[for=transporte_delegado_no],label[for=alojamiento_delegado_no]{margin-left: -20%;}
+        .textos_radios_delegado{font-size: 16px; font-weight: bold;margin-left: 10%;}
+
         /*input ocultos para paso de valores*/
         .inputs_hidden{display:block;position: absolute; top: 250%;}
         /* Media Querys para diseño Responsive.*/
         @media (max-width: 991px) {
-            #cuadro_medico2{height: 400px;}
+            #cuadro_medico2{height: auto;}
             .switch1 {position: absolute;top: -340%;}
             #transporte_label{margin-top:7%;}
             .switch2 {top: -7%;}
@@ -149,6 +152,15 @@
             #cuadro_medico5{margin-bottom: 20%;}
             .input_aloja_respon {margin-top: -12% !important;}
             label[for=transporte_label]{margin-top: 5% !important;}
+            .textos_radios_medico{}
+            .radios_molones label{min-width: 50%; width: 50%;}
+            .consen_respon_medic,.aloja_respon_medic{width: 49%;}
+            .transpor_respon_medic,.city_origen_medic{width: 49%;margin-left: 50%;margin-top: -13.5%;}
+            label[for=consen_si]{margin-top:13%;}
+            .consen_no_respon,.transpor_no_respon,.asiste_no_respon{margin-top: -28.5%;margin-left: 53%;}
+            .radios_molones-success{width: 71%;}
+            .radios_molones-danger{width: 71%;}
+            .city_origen_medic{margin-bottom: 5%;padding-top:1.5%;}
             }
         @media (max-width: 810px) {
             .cabecera,.panel,#cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{max-width: 360px;width: 100%;}
@@ -172,9 +184,14 @@
             .input_transpor_respon {margin-top: 17%;}
             .citi_origen_respon{margin-top: 25% !important ;}
             inputs_alojamiento_respon{margin-top: -2% !important;margin-bottom: 2.5% !important;}
+
+            .consen_respon_medic,.aloja_respon_medic,.transpor_respon_medic,.city_origen_medic{width: 100%;margin-top: 1%;margin-left: 0;padding:5px;} 
+            .radios_molones-danger{margin-top: -28.5%;}
+            .textos_radios_medico{margin-left:20%;}
+            .radios_molones{margin-left: 15%;margin-top: 1%;}
             }
 
-        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: block;}
+        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: none;}
     </style>
     <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -351,22 +368,22 @@
 
         //activamos/desActivamos el div de ciudad de origen.
         function mostrar_ocultar_origen() {
-            var radio_aloja = document.getElementById("no");
-            var radio_asistencia = document.getElementById("Asistencia_no");
-            
-            if (radio_aloja.checked == true) {
-                document.getElementById("ciudad_origen").style.opacity = '0';
+            var radio_aloja = document.getElementById("asistira_delegado_si");
+            var radio_asistencia = document.getElementById("alojamiento_medico_si");
+            if (radio_asistencia.checked == true) {
+                document.getElementById("city_origen_medico").style.opacity = '1';
             }
             else {
-                document.getElementById("ciudad_origen").style.opacity = '1';
+                document.getElementById("city_origen_medico").style.opacity = '0';
+            }
+            if (radio_aloja.checked == true) {
+                document.getElementById("city_origen_medic").style.opacity = '1';
+            }
+            else {
+                document.getElementById("city_origen_medic").style.opacity = '0';
             }
 
-            if (radio_asistencia.checked == true) {
-                document.getElementById("city_origen_delegado").style.opacity = '0';
-            }
-            else {
-                document.getElementById("city_origen_delegado").style.opacity = '1';
-            }
+            
         }
 
 
@@ -453,45 +470,6 @@
             input_hidden = document.getElementById("paso_datos4");
             input_hidden.value = clickeado2;
         }
-        function on_off_inputs_asistencia(y) {
-            var si = document.getElementById("yes");
-            var no = document.getElementById("no");      
-            
-            switch (y) {
-                case 1:
-                    no.checked = true;
-                    break;
-                case 2:
-                    si.checked = true;
-                    break;
-            }
-        }
-        function on_off_inputs_consen(y) {
-            var consen_si = document.getElementById("ConsentimientoSi");
-            var consen_no = document.getElementById("ConsentimientoN");      
-            
-            switch (y) {
-                case 1:
-                    consen_no.checked = true;
-                    break;
-                case 2:
-                    consen_si.checked = true;
-                    break;
-            }
-        }
-        function on_off_inputs_transporte(y) {
-            var transpor_no = document.getElementById("transporte_medic_no");
-            var transpor_si = document.getElementById("transporte_medic_si");           
-            
-            switch (y) {
-                case 1:
-                    transpor_no.checked = true;
-                    break;
-                case 2:
-                    transpor_si.checked = true;
-                    break;
-            }
-        }
     </script>
 </head>
 <body>
@@ -543,11 +521,11 @@
                     <label for="exampleInputEmail1">Especialidad</label>
                     <asp:DropDownList runat="server" ID="medic_especialidad1" onchange="especialidad()" CssClass="form-control">
                         <asp:ListItem Text="Eliga una opción." Value="0" Selected="True" />
-                        <asp:ListItem Text="1" Value="1" />
-                        <asp:ListItem Text="2" Value="2" />
-                        <asp:ListItem Text="3" Value="3" />
-                        <asp:ListItem Text="4" Value="4" />
-                        <asp:ListItem Text="5" Value="5" />
+                        <asp:ListItem Text="Ginecología" Value="1" />
+                        <asp:ListItem Text="Cardiología" Value="2" />
+                        <asp:ListItem Text="Dermatología" Value="3" />
+                        <asp:ListItem Text="Geriatría" Value="4" />
+                        <asp:ListItem Text="Medicina Interna" Value="5" />
                     </asp:DropDownList>                  
                 </div>
                 <div class="col-md-4 segundo padd inputs_medico">
@@ -556,55 +534,51 @@
                 </div>
             </div>            
         </div>
-        <div id="cuadro_medico2" class="row panel">
-            <div class="row padd margen centro altura">
-                <div class="col-md-6 mi_responsive padd">
-                    <label for="exampleInputEmail1" class="consen">Consentimiento firmado</label>
-                </div>
-                <div class="col-md-6 padd transpor_respon">
-                    <label id="transporte_label" for="transporte_label">Necesita Transporte?</label>
-                </div>
-                <div class="col-md-6 padd consen_respon">
-                    <div class="toggle-radio1">
-                            <input type="radio" class="input_prueba" name="radio2" id="ConsentimientoSi" value="Consentimiento_si" runat="server"/>
-                            <input type="radio" class="input_prueba" name="radio2" id="ConsentimientoN" value="Consentimiento_no" runat="server" />
-                            <div class="switch1">
-                                <label for="ConsentimientoSi">Sí</label>
-                                <label for="ConsentimientoN">No</label>
-                                <span></span>
-                            </div>
-                     </div>
-                </div>                
-                <div class="col-md-6 transporRespon padd">
-                    <div class="toggle-radio2">
-                            <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_si" value="transporte_medic_si" runat="server"/>
-                            <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_no" value="transporte_medic_no" runat="server" />
-                            <div class="switch2">
-                                <label for="transporte_medic_si">Sí</label>
-                                <label for="transporte_medic_no">No</label>
-                                <span></span>
-                            </div>
-                     </div>
+        <div id="cuadro_medico2" class="container-fluid panel">
+            <div class="col-md-6 consen_respon_medic">
+                <h4 class="textos_radios_medico">¿Consentimiento Firmado?</h4>
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6 radios_molones-success">
+                        <input type="radio" name="Consentimiento" id="consen_si" runat="server" />
+                        <label for="consen_si">SI</label>
+                    </div>
+                    <div class="col-md-6 consen_no_respon radios_molones-danger">
+                        <input type="radio" name="Consentimiento" id="consen_no" runat="server"/>
+                        <label for="consen_no">NO</label>
+                    </div>
                 </div>
             </div>
-            <div class="row margen centro origen_respon origen_medic_respon">
-                <div id="ciudad_origen" class="col-md-6 padd">
-                    <label for="exampleInputEmail1">Indique ciudad de Origen</label>                    
-                    <asp:TextBox ID="origen_medic" runat="server" CssClass="form-control"></asp:TextBox>
-                </div>
-                <div class="col-md-6 padd alojamiento_responsive">
-                    <label for="exampleInputEmail1">Necesita Alojamiento?</label>
-                    <div class="toggle-radio">
-                            <input type="radio" class="input_prueba" name="radio4" id="yes" value="yes" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <input type="radio" class="input_prueba" name="radio4" id="no" value="no" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <div class="switch">
-                                <label for="yes">Sí</label>
-                                <label for="no">No</label>
-                                <span></span>
-                            </div>
-                     </div>
+             <div class="col-md-6 transpor_respon_medic"> 
+                <h4 class="textos_radios_medico">¿Necesita Transporte?</h4>
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6 radios_molones-success">
+                        <input type="radio" name="transporte" id="transpor_si" runat="server" />
+                        <label for="transpor_si">SI</label>
+                    </div>
+                    <div class="col-md-6 transpor_no_respon radios_molones-danger">
+                        <input type="radio" name="transporte" id="transpor_no" runat="server" />
+                        <label for="transpor_no">NO</label>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-6 aloja_respon_medic">
+                <h4 class="textos_radios_medico">¿Necesita Alojamiento?</h4>
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6 radios_molones-success">
+                        <input type="radio" name="alojamiento_medico" id="alojamiento_medico_si" onclick="mostrar_ocultar_origen()" runat="server"  />
+                        <label for="alojamiento_medico_si">SI</label>
+                    </div>
+                    <div class="col-md-6 asiste_no_respon radios_molones-danger">
+                        <input type="radio" name="alojamiento_medico" id="alojamiento_medico_no" onclick="mostrar_ocultar_origen()" runat="server"  />
+                        <label for="alojamiento_medico_no">NO</label>
+                    </div>
+                </div>
+            </div>
+            <div id="city_origen_medico" class="col-md-6 city_origen_medic">
+                <h4 class="textos_radios_medico">Indique la ciudad de Origen: </h4>
+                <asp:TextBox ID="origen_medic" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>             
+            
         </div>
         <div id="cuadro_medico3" class="row panel">
             <div class="row margen padd">
@@ -666,52 +640,47 @@
             </div>
         </div>
         <div id="cuadro_delegado2">
-            <div class="row padd margen centro altura asiste_respon">
-                <div class="col-md-6 radio_responsive padd">
-                    <label for="exampleInputEmail1" class="consen">Asistirá al evento?</label>
-                </div>
-                <div class="col-md-6 padd transporte_responsive">
-                    <label id="transporte_label1" for="transporte_label">Necesita Transporte?</label>
-                </div>
-                <div class="col-md-6 padd input_aloja_respon">
-                    <div class="toggle-radio1">
-                            <input type="radio" class="input_prueba" name="radio2" id="Asistencia_si" value="Asistencia_si" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <input type="radio" class="input_prueba" name="radio2" id="Asistencia_no" value="Asistencia_no" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <div class="switch4">
-                                <label for="Asistencia_si">Sí</label>
-                                <label for="Asistencia_no">No</label>
-                                <span></span>
-                            </div>
-                     </div>
-                </div>                
-                <div class="col-md-6 padd input_transpor_respon">
-                    <div class="toggle-radio2">
-                            <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_si1" value="transporte_medic_si1" runat="server"/>
-                            <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_no1" value="transporte_medic_no1" runat="server" />
-                            <div class="switch2">
-                                <label for="transporte_medic_si1">Sí</label>
-                                <label for="transporte_medic_no1">No</label>
-                                <span></span>
-                            </div>
-                     </div>
+            <div class="col-md-6">
+                <h4 class="textos_radios_delegado">¿Asistirá al evento?</h4>
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6 radios_molones-success">
+                        <input type="radio" name="asistira_delegado" id="asistira_delegado_si" onclick="mostrar_ocultar_origen()" runat="server" />
+                        <label for="asistira_delegado_si">Si</label>
+                    </div>
+                    <div class="col-md-6 radios_molones-danger">
+                        <input type="radio" name="asistira_delegado" id="asistira_delegado_no" onclick="mostrar_ocultar_origen()" runat="server"/>
+                        <label for="asistira_delegado_no">No</label>
+                    </div>
                 </div>
             </div>
-            <div class="row margen centro citi_origen_respon">
-                <div id="ciudad_origen_delegado" class="col-md-6 padd">
-                    <label for="exampleInputEmail1">Indique ciudad de Origen</label>                    
-                    <asp:TextBox ID="city_origen_delegado" runat="server" CssClass="form-control"></asp:TextBox>
+            <div class="col-md-6">
+                <h4 class="textos_radios_delegado">¿Necesita Transporte?</h4>
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6 radios_molones-success">
+                        <input type="radio" name="transporte_delegado" id="transporte_delegado_si" runat="server" />
+                        <label for="transporte_delegado_si">Si</label>
+                    </div>
+                    <div class="col-md-6 radios_molones-danger">
+                        <input type="radio" name="transporte_delegado" id="transporte_delegado_no" runat="server" />
+                        <label for="transporte_delegado_no">No</label>
+                    </div>
                 </div>
-                <div class="col-md-6 padd inputs_alojamiento_respon">
-                    <label for="exampleInputEmail1">Necesita Alojamiento?</label>
-                    <div class="toggle-radio">
-                            <input type="radio" class="input_prueba" name="radio4" id="yes1" value="yes1" runat="server" />
-                            <input type="radio" class="input_prueba" name="radio4" id="no1" value="no1" runat="server" />
-                            <div class="switch">
-                                <label for="yes1">Sí</label>
-                                <label for="no1">No</label>
-                                <span></span>
-                            </div>
-                     </div>
+            </div>
+            <div id="city_origen_medic" class="col-md-6">
+                <h4>Indique la ciudad de Origen: </h4>
+                <asp:TextBox ID="city_origen_delegado" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+            <div class="col-md-6">
+                <h4 class="textos_radios_delegado">¿Necesita Alojamiento?</h4>
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6 radios_molones-success">
+                        <input type="radio" name="alojamiento_delegat" id="alojamiento_delegado_si"  runat="server"  />
+                        <label for="alojamiento_delegado_si">Si</label>
+                    </div>
+                    <div class="col-md-6 radios_molones-danger">
+                        <input type="radio" name="alojamiento_delegat" id="alojamiento_delegado_no"  runat="server"  />
+                        <label for="alojamiento_delegado_no">No</label>
+                    </div>
                 </div>
             </div>
         </div>

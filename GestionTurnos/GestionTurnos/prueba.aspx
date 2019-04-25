@@ -6,6 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <asp:literal id="bootstrap_min_css" runat="server"></asp:literal>
+    <asp:literal id="jquery_1_9_1_min_js" runat="server"></asp:literal>
+    <asp:literal id="bootstrap_min_js" runat="server"></asp:literal>
+    <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
+
     <style>
         /* Formateamos el body para que se apliquen nuestros stilos perfect (-;*/
         body{margin: 0;padding: 0;box-sizing:border-box;}
@@ -43,6 +48,87 @@
         #yes:checked ~ .switch label[for=yes],#yes1:checked ~ .switch label[for=yes1], #ConsentimientoSi:checked ~ .switch1 label[for=ConsentimientoSi], #transporte_medic_si:checked ~ .switch2 label[for=transporte_medic_si],#transporte_medic_si1:checked ~ .switch2 label[for=transporte_medic_si1], #Asistencia_si:checked ~ .switch4 label[for=Asistencia_si] {color: #fff;}
         #no:checked ~ .switch label[for=no],#no1:checked ~ .switch label[for=no1], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no1:checked ~ .switch2 label[for=transporte_medic_no1], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN], #Asistencia_no:checked ~ .switch4 label[for=Asistencia_no] {color: #fff;}
 
+
+
+
+
+.funkyradio {
+  clear: both;
+  overflow: hidden;
+}
+
+.funkyradio label {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4;
+  font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty {
+  display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label{
+  position: relative;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  margin-top: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+
+  border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label{
+  color: #777;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before {
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.chorra{max-width: 660px;width: 100%;padding: 10px;margin: auto !important;border: 2px solid black;}
     </style>
      <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -58,7 +144,7 @@
                 } 
             } 
         } 
-        addLoadEvent(especialidad);
+        addLoadEvent();
 
 
         //nos quedamos con el valor seleccionado en el ComboBox
@@ -88,30 +174,85 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <!--
         <div class="col-md-6 padd input_aloja_respon">
-                    <div class="toggle-radio1">
-                            <input type="radio" class="input_prueba" name="radio2" id="Asistencia_si" value="Asistencia_si" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <input type="radio" class="input_prueba" name="radio2" id="Asistencia_no" value="Asistencia_no" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <div class="switch4">
-                                <label for="Asistencia_si">Sí</label>
-                                <label for="Asistencia_no">No</label>
-                                <span></span>
-                            </div>
-                     </div>
+            <div class="toggle-radio1">
+                <input type="radio" class="input_prueba" name="radio2" id="Asistencia_si" value="Asistencia_si" runat="server" onclick="mostrar_ocultar_origen()" />
+                <input type="radio" class="input_prueba" name="radio2" id="Asistencia_no" value="Asistencia_no" runat="server" onclick="mostrar_ocultar_origen()" />
+                <div class="switch4">
+                    <label for="Asistencia_si">Sí</label>
+                    <label for="Asistencia_no">No</label>
+                    <span></span>
                 </div>
-        <label for="exampleInputEmail1">Necesita Alojamiento?</label>
-                    <div class="toggle-radio">
-                            <input type="radio" class="input_prueba" name="radio4" id="yes" value="yes" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <input type="radio" class="input_prueba" name="radio4" id="no" value="no" runat="server" onclick="mostrar_ocultar_origen()" />
-                            <div class="switch">
-                                <label for="yes">Sí</label>
-                                <label for="no">No</label>
-                                <span></span>
-                            </div>
-                     </div>
-        <div>
-            <input type="radio" class="input_prueba" name="radio5" id="Radio1" value="no"  />Si
-            <input type="radio" class="input_prueba" name="radio5" id="Radio21" value="no" />No
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Radio Buttons</h4>
+            <div class="funkyradio">
+                <div class="col-md-6 funkyradio-success">
+                    <input type="radio" name="radio" id="radio3" />
+                    <label for="radio3">Si</label>
+                </div>
+                <div class="col-md-6 funkyradio-danger">
+                    <input type="radio" name="radio" id="radio4" />
+                    <label for="radio4">No</label>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="container-fluid chorra">
+            <div class="col-md-6 rojo">
+                <h4>Consentimiento Firmado</h4>
+                <div class="funkyradio">
+                    <div class="col-md-6 funkyradio-success">
+                        <input type="radio" name="miprueba" id="miprueba" />
+                        <label for="miprueba">Si</label>
+                    </div>
+                    <div class="col-md-6 funkyradio-danger">
+                        <input type="radio" name="miprueba" id="miprueba2" />
+                        <label for="miprueba2">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 amarillo">
+                <h4>Consentimiento Firmado</h4>
+                <div class="funkyradio">
+                    <div class="col-md-6 funkyradio-success">
+                        <input type="radio" name="transporte" id="miprueba3" />
+                        <label for="miprueba3">Si</label>
+                    </div>
+                    <div class="col-md-6 funkyradio-danger">
+                        <input type="radio" name="transporte" id="miprueba4" />
+                        <label for="miprueba4">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 rojo">
+                <h4>Consentimiento Firmado</h4>
+                <div class="funkyradio">
+                    <div class="col-md-6 funkyradio-success">
+                        <input type="radio" name="alergia" id="miprueba5" />
+                        <label for="miprueba5">Si</label>
+                    </div>
+                    <div class="col-md-6 funkyradio-danger">
+                        <input type="radio" name="alergia" id="miprueba6" />
+                        <label for="miprueba6">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 amarillo">
+                <h4>Consentimiento Firmado</h4>
+                <div class="funkyradio">
+                    <div class="col-md-6 funkyradio-success">
+                        <input type="radio" name="otromas" id="miprueba7" />
+                        <label for="miprueba7">Si</label>
+                    </div>
+                    <div class="col-md-6 funkyradio-danger">
+                        <input type="radio" name="otromas" id="miprueba8" />
+                        <label for="miprueba8">No</label>
+                    </div>
+                </div>
+            </div>            
         </div>
     </form>
 </body>

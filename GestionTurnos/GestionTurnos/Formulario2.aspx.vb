@@ -101,10 +101,10 @@
                 Case 5
                     'Boton eliminar registro de medico en la BD.
                     Delete_1Medico_BD()
+                    ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs_medicos", "vaciar_inputs_medicos();", True)
                     soflow.Items.Clear()  'Borra el texto del combo
                     soflow.Items.Add(New ListItem("Lista De Medicos", "-1"))  'Añadimos primera opcion.
                     soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
-                    ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "vaciar_inputs_medicos();", True)
                     Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
 
                 Case 6
@@ -182,7 +182,6 @@
 
         VectorSQL(0) = "Select Auto As userID ,idContacte As Rol,idOrigen As Agrupacion,idTipusContacte As Transporte, idAlta As Asiste, Nom As Nombre,Cognoms As Apellidos, Mobil As Numero, Email, Carrec As Region,Blog, Procedencia As Origen, SectorInteres As Selas,NickTwitter As Alojamiento, NickFacebook As Alergias, WebPersonal As Observaciones, Data FROM eecontactes WHERE Auto='" & clsBD.Cometes(Left(iduser, 100)) & "'"
 
-        'VectorSQL(0) = "SELECT Auto, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Procedencia, SectorInteres, NickTwitter, NickFacebook, WebPersonal, Blog, Data FROM eecontactes WHERE Auto='" & clsBD.Cometes(Left(iduser, 100)) & "'"
         If clsBD.BaseDades(1, VectorSQL, DS) Then
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
@@ -230,22 +229,23 @@
 
 
             If Consentimiento = 1 Then
-                ConsentimientoSi.Checked = True
+                consen_si.Checked = True
             Else
-                ConsentimientoN.Checked = True
+                consen_no.Checked = True
             End If
 
             If Transporte = 1 Then
-                transporte_medic_si.Checked = True
+                transpor_si.Checked = True
             Else
-                transporte_medic_no.Checked = True
+                transpor_no.Checked = True
             End If
 
             If Alojamiento = 1 Then
-                yes.Checked = True
+                alojamiento_medico_si.Checked = True
             Else
-                no.Checked = True
+                alojamiento_medico_no.Checked = True
             End If
+
             'Declaramos 1 array para separar los datos de los apellidos.
             'ya que la consulta nos devuelve 2 campos(1apellido y 2apellido) en el mismo registro de la BD.
             Dim Sigla1 As String
@@ -316,9 +316,9 @@
             'el que nos dice si asistimos o no.
             Select Case Asistes
                 Case 0
-                    Asistencia_no.Checked = True
+                    asistira_delegado_no.Checked = True
                 Case 1
-                    Asistencia_si.Checked = True
+                    asistira_delegado_si.Checked = True
                     city_origen_delegado.Text = Origen
             End Select
 
@@ -326,17 +326,17 @@
             'El de transporte.
             Select Case Transpor
                 Case 0
-                    transporte_medic_no1.Checked = True
+                    transporte_delegado_no.Checked = True
                 Case 1
-                    transporte_medic_si1.Checked = True
+                    transporte_delegado_si.Checked = True
             End Select
 
             'Radio Button para alojamiento
             Select Case Aloja
                 Case 0
-                    no1.Checked = True
+                    alojamiento_delegado_no.Checked = True
                 Case 1
-                    yes1.Checked = True
+                    alojamiento_delegado_si.Checked = True
             End Select
 
 
@@ -407,6 +407,7 @@
 
         'Sentencia SQL
         VectorSQL(0) = "SELECT Auto, idContacte, idOrigen, idTipusContacte,idAlta,Nom, Cognoms,Mobil,Email,Carrec,NIT,Procedencia,SectorInteres,NickTwitter,NickFacebook,WebPersonal,Blog,data FROM EEContactes WHERE idOrigen ='" & agrupa & "' AND idContacte <>'" & Rol & "'ORDER BY Cognoms, Nom"
+
         For contador = 0 To input_hidden2
             n = input_hidden2 - 1
         Next
@@ -485,33 +486,31 @@
                     ape2_medic.Text = VArray(1)
                 Next
             End If
+
             'Les asignamos la posicion a los radio button, si ó no.
-            If Alojamiento = 0 Then
-                'no.Checked = True
-                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_asistencia(1);", True)
-            Else
-                'yes.Checked = True
-                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_asistencia(2);", True)
-                origen_medic.Text = Origen
-            End If
+            Select Case Alojamiento
+                Case 0
+                    alojamiento_medico_no.Checked = True
+                Case 1
+                    alojamiento_medico_si.Checked = True
+                    origen_medic.Text = Origen
+            End Select
 
-            If Consentimiento = 0 Then
-                ConsentimientoN.Checked = True
-                'ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_consen(1);", True)
-            Else
-                ConsentimientoSi.Checked = True
-                'ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_consen(2);", True)
-            End If
+            Select Case Consentimiento
+                Case 0
+                    consen_no.Checked = True
+                Case 1
+                    consen_si.Checked = True
+            End Select
 
-            If Transporte = 0 Then
-                'transporte_medic_no.Checked = True
-                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_transporte(1);", True)
-            Else
-                'transporte_medic_si.Checked = True
-                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_transporte(2);", True)
-            End If
+            Select Case Transporte
+                Case 0
+                    transpor_no.Checked = True
+                Case 1
+                    transpor_si.Checked = True
+            End Select
+
         End If
-
         Return True
     End Function
 
@@ -539,7 +538,7 @@
             Alergia = alergia_medic.Text
             Observaciones = Observa_medic.Text
             Especialidad = paso_datos4.Text
-            Origen = origen_medic.Text
+            'Origen = origen_medic.Text
             numero = 0
             Password = ""
             Region = ""
@@ -552,18 +551,18 @@
             'Tambien ponemos el id de la feria a "martillo"
             idFeria = 195
 
-            If (transporte_medic_si.Checked = True) Then
-                Transporte = 1
-            Else
-                Transporte = 0
-            End If
-            If (yes.Checked = True) Then
-                Alojamiento = 1
-            Else
-                Alojamiento = 0
-            End If
+            'If (transpor_si.Checked = True) Then
+            'Transporte = 1
+            'Else
+            Transporte = 0
+            'End If
+            'If (Alojamiento_si.Checked = True) Then
+            'Alojamiento = 1
+            'Else
+            'Alojamiento = 0
+            'End If
 
-            If (ConsentimientoSi.Checked = True) Then
+            If (consen_si.Checked = True) Then
                 Consentimiento = 1
             Else
                 Consentimiento = 0
@@ -612,32 +611,31 @@
         'Ponemos el Rol a 1 como default, porque estámos actualizando medicos, ya que tenemos que tener claro, que esta modificacion lo hace el delegado.
         Rol = 1
 
-        If transporte_medic_si.Checked = True Then
+        If transpor_si.Checked = True Then
             Transporte = 1
         Else
             Transporte = 0
         End If
 
-        If yes.Checked = True Then
+        If alojamiento_medico_si.Checked = True Then
             Alojamiento = 1
         Else
             Alojamiento = 0
         End If
 
-        If ConsentimientoSi.Checked = True Then
+        If consen_si.Checked = True Then
             Consentimiento = 1
         Else
             Consentimiento = 0
         End If
 
-        'VectorSQL(0) = "UPDATE eecontactes SET Nom = '" & clsBD.Cometes(Left(Nombre_insert, 100)) & "', Cognoms = '" & clsBD.Cometes(Left(Apellidos_insert, 100)) & "', Email= '" & clsBD.Cometes(Left(Email_insert, 100)) & "', Mobil= '" & clsBD.Cometes(Left(Numero_insert, 100)) & "', Carrec = '" & clsBD.Cometes(Left(Region_insert, 100)) & "', NIT= '" & clsBD.Cometes(Left(Siglas_insert, 100)) & "', idAlta= '" & clsBD.Cometes(Left(Asiste_insert, 100)) & "', idTipusContacte= '" & clsBD.Cometes(Left(Transporte_insert, 100)) & "',Procedencia='" & clsBD.Cometes(Left(Origen_insert, 100)) & "', NickTwitter='" & clsBD.Cometes(Left(Alojamiento_insert, 100)) & "',NickFacebook= '" & clsBD.Cometes(Left(Alergias_insert, 100)) & "',WebPersonal='" & clsBD.Cometes(Left(Obser_insert, 100)) & "' WHERE Auto = '" & userID_insert & "' AND Nom = '" & Nombre_insert & "'"
-
         VectorSQL(0) = "UPDATE eecontactes SET idContacte = '" & Rol & "', idOrigen='" & agrupacion & "', idTipusContacte='" & Transporte & "', Nom='" & clsBD.Cometes(Left(Name, 100)) & "', Cognoms='" & clsBD.Cometes(Left(Apellido, 100)) & "', Email='" & clsBD.Cometes(Left(Mail, 100)) & "', Procedencia='" & Origen & "', SectorInteres='" & NSelas & "', NickTwitter='" & Alojamiento & "', NickFacebook='" & clsBD.Cometes(Left(Alergia, 100)) & "', WebPersonal='" & clsBD.Cometes(Left(Observaciones, 100)) & "',Blog='" & Especialidad & "',Data='" & Consentimiento & "' WHERE Auto = '" & IDUser & "'"
         If Not clsBD.BaseDades(2, VectorSQL) Then
             'Problema
+            ClientScript.RegisterStartupScript(Page.GetType(), "Update_Fail", "LanzaAviso('UPS! Algo ha salido mal y no hemos podido actualizar los datos.')", True)
         Else
             'Correcto
-            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Actualización perfecta en la BD (-; ')", True)
+            ClientScript.RegisterStartupScript(Page.GetType(), "Update_Ok", "LanzaAviso('Actualización concluida en la BD (-; ')", True)
         End If
     End Function
 
@@ -658,35 +656,36 @@
         Especialidad = medic_especialidad1.Items(medic_especialidad1.SelectedIndex).Value
         NSelas = medic_selas.Text
 
-        If (transporte_medic_si.Checked = True) Then
+        If (transpor_si.Checked = True) Then
             Transporte = 1
         Else
             Transporte = 0
         End If
 
-        If (yes.Checked = True) Then
+        If (alojamiento_medico_si.Checked = True) Then
             Alojamiento = 1
+            city_origen = origen_medic.Text
         Else
             Alojamiento = 0
         End If
 
-        If (ConsentimientoSi.Checked = True) Then
+        If (consen_si.Checked = True) Then
             Consentimiento = 1
         Else
             Consentimiento = 0
         End If
 
-        city_origen = origen_medic.Text
+
         Alergia = alergia_medic.Text
         Observaciones = Observa_medic.Text
 
         VectorSQL(0) = "UPDATE eecontactes SET idContacte = '" & Rol & "', idOrigen='" & Agrupacion & "', idTipusContacte='" & Transporte & "', Nom='" & clsBD.Cometes(Left(Nombre, 100)) & "', Cognoms='" & clsBD.Cometes(Left(Apellidos, 100)) & "', Email='" & clsBD.Cometes(Left(Email, 100)) & "', Procedencia='" & city_origen & "', SectorInteres='" & NSelas & "', NickTwitter='" & Alojamiento & "', NickFacebook='" & clsBD.Cometes(Left(Alergia, 100)) & "', WebPersonal='" & clsBD.Cometes(Left(Observaciones, 100)) & "',Blog='" & Especialidad & "',Data='" & Consentimiento & "' WHERE Auto = '" & IDUser & "'"
         If Not clsBD.BaseDades(2, VectorSQL) Then
             'Problema
-            ClientScript.RegisterStartupScript(Page.GetType(), "aviso_algo_mal", "LanzaAviso('Algo ha salido mal y no hemos podido actualizar el registro en la Base de Datos. ');", True)
+            ClientScript.RegisterStartupScript(Page.GetType(), "Update_HimSelf_Fail", "LanzaAviso('Algo ha salido mal y no hemos podido actualizar el registro en la Base de Datos. ');", True)
         Else
             'Correcto
-            ClientScript.RegisterStartupScript(Page.GetType(), "aviso_todo_OK", "LanzaAviso('Actualización perfecta en la BD (-; ');", True)
+            ClientScript.RegisterStartupScript(Page.GetType(), "Update_HimSelf_Ok", "LanzaAviso('Actualización concluida en la BD (-; ')", True)
         End If
     End Function
 
@@ -704,7 +703,7 @@
             'Problema
         Else
             'Correcto
-            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Eliminación de 1 medico de la BD sin problemas!');", True)
+            ClientScript.RegisterStartupScript(Page.GetType(), "Message_AllOk", "LanzaAviso('Eliminación de 1 medico de la BD sin problemas!');", True)
         End If
         Return True
     End Function
@@ -736,15 +735,14 @@
 
         'Extraemos los datos de los radio button.
         'si el radio de asiste,transporte o alergia esta marcado, guardamos la variable en la Bd como 1, sino como 0.
-        If (Asistencia_si.Checked = True) Then
+        If asistira_delegado_si.Checked = True Then
             Asiste_insert = 1
-            Origen_insert = city_origen_delegado.Text
         Else
             Asiste_insert = 0
         End If
 
         'Misma comprobación con el transporte.
-        If (transporte_medic_si1.Checked = True) Then
+        If (transporte_delegado_si.Checked = True) Then
             Transporte_insert = 1
 
         Else
@@ -752,8 +750,9 @@
         End If
 
         'Misma comprobación con el alojamiento.
-        If (yes1.Checked = True) Then
+        If (alojamiento_delegado_si.Checked = True) Then
             Alojamiento_insert = 1
+            Origen_insert = city_origen_delegado.Text
         Else
             Alojamiento_insert = 0
         End If
