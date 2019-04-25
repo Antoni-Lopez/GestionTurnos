@@ -115,6 +115,7 @@
     <Content Include="loginform2.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Printer.aspx" />
+    <Content Include="prueba.aspx" />
     <Content Include="Servicios.aspx" />
     <Content Include="Css\servicios.css" />
     <Content Include="Test.aspx" />
@@ -196,6 +197,13 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="PrintHelper.vb" />
+    <Compile Include="prueba.aspx.designer.vb">
+      <DependentUpon>prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="prueba.aspx.vb">
+      <DependentUpon>prueba.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Servicios.aspx.designer.vb">
       <DependentUpon>Servicios.aspx</DependentUpon>
     </Compile>

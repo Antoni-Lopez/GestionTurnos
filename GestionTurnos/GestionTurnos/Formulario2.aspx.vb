@@ -21,9 +21,11 @@
                 radio1.Checked = True
                 Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                 Extraer_BD_Delegado(IdUsuario, Rol)
+                Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
             Else
-                ClientScript.RegisterStartupScript(Page.GetType(), "id", "desactivar();", True)
+                ClientScript.RegisterStartupScript(Page.GetType(), "desactivar_delegado", "desactivar();", True)
                 Extraer_BD_Medicos(IdUsuario)
+                Button_envio_medico.Attributes.Add("onclick", "elegir_accion(6);")
             End If
             'Desactivamos los campos de delegado que no se podrán modificar en la BD.
             ClientScript.RegisterStartupScript(Page.GetType(), "id", "onlyread_inputs_delegado();", True)
@@ -42,6 +44,7 @@
             Button_Medico.Attributes.Add("onclick", "boton_enviar_medico();")
             Button_Medico_Delete.Attributes.Add("onclick", "elegir_accion(5);")
             Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
+            Button_envio_medico.Attributes.Add("onclick", "elegir_accion(6);")
 
             'Desactivamos los campos de delegado que no se podrán modificar en la BD.
             ClientScript.RegisterStartupScript(Page.GetType(), "id", "onlyread_inputs_delegado();", True)
@@ -65,6 +68,12 @@
 
             Rol = Extraer_Rol(IdUsuario)
             Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
+
+
+            If Rol <> 0 Then
+                ClientScript.RegisterStartupScript(Page.GetType(), "desactivar_delegado", "desactivar();", True)
+                Button_envio_medico.Attributes.Add("onclick", "elegir_accion(6);")
+            End If
 
             Select Case input_hidden
                 Case 1
@@ -98,12 +107,21 @@
                     ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs", "vaciar_inputs_medicos();", True)
                     Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
 
+                Case 6
+                    'Llamamos a las funciones correspondientes
+                    Update_Medico_ElMismo(IdUsuario, Rol, Agrupacion)
             End Select
         End If
     End Sub
 
     Protected Sub Button_delegado_Click(sender As Object, e As EventArgs) Handles Button_delegado.Click
         paso_datos.Text = 1
+        paso_datos2.Text = 1
+    End Sub
+
+    Protected Sub Button_envio_medico_Click(sender As Object, e As EventArgs) Handles Button_envio_medico.Click
+        paso_datos.Text = 6
+        paso_datos2.Text = 1
     End Sub
 
     'Funcion que creamos para la extarcción del Rol(Delegado/Medico)
@@ -150,6 +168,8 @@
         Return Agrupacion
     End Function
 
+    'Funcion que nos muestra los datos del medico. Tanto en Panel de Delegado/Medico
+    'como en el panel de medico solo.
     Private Function Extraer_BD_Medicos(ByRef iduser)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
@@ -187,12 +207,27 @@
 
             name_medic.Text = Name
             medic_mail.Text = Mail
-            'medic_especialidad.Text = Especialidad
+
+            Select Case Especialidad
+                Case 0
+                    medic_especialidad1.SelectedValue = 0
+                Case 1
+                    medic_especialidad1.SelectedValue = 1
+                Case 2
+                    medic_especialidad1.SelectedValue = 2
+                Case 3
+                    medic_especialidad1.SelectedValue = 3
+                Case 4
+                    medic_especialidad1.SelectedValue = 4
+                Case 5
+                    medic_especialidad1.SelectedValue = 5
+            End Select
+
             medic_selas.Text = NSelas
+            origen_medic.Text = Origen
             alergia_medic.Text = Alergia
             Observa_medic.Text = Observaciones
 
-            'medicmail.Style.Add("nopoint")
 
             If Consentimiento = 1 Then
                 ConsentimientoSi.Checked = True
@@ -234,6 +269,7 @@
         Return True
     End Function
 
+    'Funcion que nos muestra los datos del delegado, obviamente, solo en el caso de los Delegados.
     Private Function Extraer_BD_Delegado(ByRef IdUsuario, ByVal Rol)
         'Realizamos la consulta en la BD
         VectorSQL(0) = "SELECT Auto AS userID ,idContacte AS Rol,idOrigen AS Agrupacion,idTipusContacte As Transporte, idAlta As Asiste, Nom As Nombre,Cognoms As Apellidos, Mobil AS Numero, Email, Carrec AS Region,NIT AS Siglas, Password, Procedencia As Origen, SectorInteres As Selas,NickTwitter As Alojamiento, NickFacebook As Alergias, WebPersonal As Observaciones FROM eecontactes WHERE Auto='" & IdUsuario & "'AND idContacte='" & Rol & "'"
@@ -268,31 +304,40 @@
                 Next
             End If
 
-            'Comprobamos que valor recibimos de la Bd para el 1º radio button,
-            'el que nos dice si asistimos o no.
-            If (Asistes = 0) Then
-                Asistencia_no.Checked = True
-            Else
-                Asistencia_si.Checked = True
-
-            End If
-
-            'Comprobamos que valor recibimos de la BD para el 2º radio button
-            'El de transporte.
-            If (Transpor = 0) Then
-                transporte_medic_no1.Checked = True
-            Else
-                transporte_medic_si1.Checked = True
-            End If
-
             'Rellenamos los inputs con los datos que extraemos de la BD.
             name_delegado.Text = Nombre
             email_delegado.Text = Email
             numero_delegado.Text = Numero
             region_delegado.Text = Region
-            city_origen_delegado.Text = Origen
             alergia_delegado.Text = Aler
             observa_delegado.Text = Obser
+
+            'Comprobamos que valor recibimos de la Bd para el 1º radio button,
+            'el que nos dice si asistimos o no.
+            Select Case Asistes
+                Case 0
+                    Asistencia_no.Checked = True
+                Case 1
+                    Asistencia_si.Checked = True
+                    city_origen_delegado.Text = Origen
+            End Select
+
+            'Comprobamos que valor recibimos de la BD para el 2º radio button
+            'El de transporte.
+            Select Case Transpor
+                Case 0
+                    transporte_medic_no1.Checked = True
+                Case 1
+                    transporte_medic_si1.Checked = True
+            End Select
+
+            'Radio Button para alojamiento
+            Select Case Aloja
+                Case 0
+                    no1.Checked = True
+                Case 1
+                    yes1.Checked = True
+            End Select
 
 
 
@@ -325,7 +370,6 @@
         Return True
     End Function
 
-
     'Funcion que creamos para la extraccion de datos en el combotext.
     Private Function Extaer_Datos_Combo(ByRef idusuario, ByVal Rol, ByVal Agrupa)
         Dim clsBD As New ClaseAccesoBD
@@ -344,60 +388,30 @@
         Return True
     End Function
 
-    'Funcion que creamos para la extraccion de datos en el combotext.
-    Private Function Refresh_Datos_Combo(ByRef idusuario, ByVal Rol, ByVal Agrupa)
-        Dim clsBD As New ClaseAccesoBD
-        Dim DS As New DataSet
-        Dim VectorSQL(0) As String, id_eliminado As Integer
-
-        id_eliminado = paso_datos3.Text
-
-        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupa & "'And Auto<>'" & id_eliminado & "'ORDER BY Cognoms, Nom"
-        If clsBD.BaseDades(1, VectorSQL, DS) Then
-            If DS.Tables(0).Rows.Count > 0 Then
-                For i = 0 To DS.Tables(0).Rows.Count - 1
-                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom") & ", " & DS.Tables(0).Rows(i).Item("Auto"), i + 1))
-                Next
-            End If
-        End If
-        Return True
-    End Function
-
+    'Funcion que nos creamos para cuando el usuario pincha el Select/ComboBox rellenar 
+    'los inputs con los datos de la eleccion del ComboBox.
     Private Function Extraer_Medicos_Combo(ByRef iduser, ByVal Rol, ByVal agrupa)
+        'Declaramos los datos para acceder a la BD.
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
         Dim VectorSQL(0) As String
 
+        'Nos declaramos las distintas variables que necesitaremos para la función.
         Dim UserID As String, Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As Integer, NSelas As Integer
         Dim Consentimiento As Integer, Transporte As Integer, Alojamiento As Integer, Alergia As String, Observaciones As String
         Dim Asiste As Integer, numero As String, Region As String, Origen As String, input_hidden2 As String, n As Integer
+        Dim contador As Integer, number_pass As Integer
 
+        'Pasamos texto al input hidden, para luego ir tomando decisiones mediante el.
         input_hidden2 = paso_datos2.Text
 
+        'Sentencia SQL
         VectorSQL(0) = "SELECT Auto, idContacte, idOrigen, idTipusContacte,idAlta,Nom, Cognoms,Mobil,Email,Carrec,NIT,Procedencia,SectorInteres,NickTwitter,NickFacebook,WebPersonal,Blog,data FROM EEContactes WHERE idOrigen ='" & agrupa & "' AND idContacte <>'" & Rol & "'ORDER BY Cognoms, Nom"
+        For contador = 0 To input_hidden2
+            n = input_hidden2 - 1
+        Next
 
-        Select Case input_hidden2
-            Case 1
-                n = 0
-            Case 2
-                n = 1
-            Case 3
-                n = 2
-            Case 4
-                n = 3
-            Case 5
-                n = 4
-            Case 6
-                n = 5
-            Case 7
-                n = 6
-            Case 8
-                n = 7
-            Case 9
-                n = 8
-            Case 10
-                n = 9
-        End Select
+
 
         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
             'Problema
@@ -423,13 +437,17 @@
                     Consentimiento = DS.Tables(0).Rows(n).Item("Data")
                 Next
 
+                'Pasamos texto al input hidden, para luego ir tomando decisiones mediante el.
                 paso_datos3.Text = UserID
 
-                'No nos devuelve valores
+                'Empezamos a rellenar los datos de la BD en los inputs.
                 name_medic.Text = Name
                 medic_mail.Text = Mail
-                'paso_datos4.Text = Especialidad
+                medic_selas.Text = NSelas
+                alergia_medic.Text = Alergia
+                Observa_medic.Text = Observaciones
 
+                'Dependiendo el numero almacenado en la BD, nos mostrara 1 select ú otro.
                 Select Case Especialidad
                     Case 0
                         medic_especialidad1.SelectedValue = 0
@@ -445,30 +463,9 @@
                         medic_especialidad1.SelectedValue = 5
                 End Select
 
-                'medic_especialidad.Text = Especialidad
-                medic_selas.Text = NSelas
-                alergia_medic.Text = Alergia
-                Observa_medic.Text = Observaciones
 
-                'medicmail.Style.Add("nopoint")
 
-                If Consentimiento = 1 Then
-                    ConsentimientoSi.Checked = True
-                Else
-                    ConsentimientoN.Checked = True
-                End If
 
-                If Transporte = 1 Then
-                    transporte_medic_si.Checked = True
-                Else
-                    transporte_medic_no.Checked = True
-                End If
-
-                If Alojamiento = 1 Then
-                    yes.Checked = True
-                Else
-                    no.Checked = True
-                End If
                 'Declaramos 1 array para separar los datos de los apellidos.
                 'ya que la consulta nos devuelve 2 campos(1apellido y 2apellido) en el mismo registro de la BD.
                 Dim Sigla1 As String
@@ -488,11 +485,37 @@
                     ape2_medic.Text = VArray(1)
                 Next
             End If
+            'Les asignamos la posicion a los radio button, si ó no.
+            If Alojamiento = 0 Then
+                'no.Checked = True
+                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_asistencia(1);", True)
+            Else
+                'yes.Checked = True
+                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_asistencia(2);", True)
+                origen_medic.Text = Origen
+            End If
+
+            If Consentimiento = 0 Then
+                ConsentimientoN.Checked = True
+                'ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_consen(1);", True)
+            Else
+                ConsentimientoSi.Checked = True
+                'ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_consen(2);", True)
+            End If
+
+            If Transporte = 0 Then
+                'transporte_medic_no.Checked = True
+                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_transporte(1);", True)
+            Else
+                'transporte_medic_si.Checked = True
+                ClientScript.RegisterStartupScript(Page.GetType(), "radios", "on_off_inputs_transporte(2);", True)
+            End If
         End If
 
         Return True
     End Function
 
+    'Inserta nuevos medicos en la BD
     Private Function insertar_new_Medico(ByRef Agrupacion As Integer)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
@@ -561,6 +584,7 @@
         End If
     End Function
 
+    'Actualizar datos de medicos en la BD.
     Private Function UPDATE_BD_Medicos(ByRef agrupacion, ByVal Rol)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
@@ -581,24 +605,26 @@
         NSelas = medic_selas.Text
         Alergia = alergia_medic.Text
         Observaciones = Observa_medic.Text
-        Especialidad = paso_datos4.Text
+        Especialidad = medic_especialidad1.Items(medic_especialidad1.SelectedIndex).Value
+
         Origen = origen_medic.Text
 
         'Ponemos el Rol a 1 como default, porque estámos actualizando medicos, ya que tenemos que tener claro, que esta modificacion lo hace el delegado.
         Rol = 1
 
-        If (transporte_medic_si.Checked = True) Then
+        If transporte_medic_si.Checked = True Then
             Transporte = 1
         Else
             Transporte = 0
         End If
-        If (yes.Checked = True) Then
+
+        If yes.Checked = True Then
             Alojamiento = 1
         Else
             Alojamiento = 0
         End If
 
-        If (ConsentimientoSi.Checked = True) Then
+        If ConsentimientoSi.Checked = True Then
             Consentimiento = 1
         Else
             Consentimiento = 0
@@ -615,6 +641,56 @@
         End If
     End Function
 
+    'Actulizar datos de medico desde el panel de solo medico. (el solo vámos)
+    Private Function Update_Medico_ElMismo(ByRef IDUser, ByRef Rol, ByRef Agrupacion)
+        'Nos declaramos las variables que nos hagan falta para el envio y actualizacion de los datos en la BD.
+        Dim Nombre As String, Apellidos As String, Email As String, Especialidad As Integer, NSelas As String
+        Dim Consentimiento As Integer, Transporte As Integer, Alojamiento As Integer, city_origen As String, Alergia As String, Observaciones As String
+
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As New DataSet
+        Dim VectorSQL(0) As String
+
+        'Comenzamos a llenar valores de los inputs.
+        Nombre = name_medic.Text
+        Apellidos = ape1_medic.Text + "¦" + ape2_medic.Text
+        Email = medic_mail.Text
+        Especialidad = medic_especialidad1.Items(medic_especialidad1.SelectedIndex).Value
+        NSelas = medic_selas.Text
+
+        If (transporte_medic_si.Checked = True) Then
+            Transporte = 1
+        Else
+            Transporte = 0
+        End If
+
+        If (yes.Checked = True) Then
+            Alojamiento = 1
+        Else
+            Alojamiento = 0
+        End If
+
+        If (ConsentimientoSi.Checked = True) Then
+            Consentimiento = 1
+        Else
+            Consentimiento = 0
+        End If
+
+        city_origen = origen_medic.Text
+        Alergia = alergia_medic.Text
+        Observaciones = Observa_medic.Text
+
+        VectorSQL(0) = "UPDATE eecontactes SET idContacte = '" & Rol & "', idOrigen='" & Agrupacion & "', idTipusContacte='" & Transporte & "', Nom='" & clsBD.Cometes(Left(Nombre, 100)) & "', Cognoms='" & clsBD.Cometes(Left(Apellidos, 100)) & "', Email='" & clsBD.Cometes(Left(Email, 100)) & "', Procedencia='" & city_origen & "', SectorInteres='" & NSelas & "', NickTwitter='" & Alojamiento & "', NickFacebook='" & clsBD.Cometes(Left(Alergia, 100)) & "', WebPersonal='" & clsBD.Cometes(Left(Observaciones, 100)) & "',Blog='" & Especialidad & "',Data='" & Consentimiento & "' WHERE Auto = '" & IDUser & "'"
+        If Not clsBD.BaseDades(2, VectorSQL) Then
+            'Problema
+            ClientScript.RegisterStartupScript(Page.GetType(), "aviso_algo_mal", "LanzaAviso('Algo ha salido mal y no hemos podido actualizar el registro en la Base de Datos. ');", True)
+        Else
+            'Correcto
+            ClientScript.RegisterStartupScript(Page.GetType(), "aviso_todo_OK", "LanzaAviso('Actualización perfecta en la BD (-; ');", True)
+        End If
+    End Function
+
+    'Eliminar 1 registro de 1 medico.
     Private Function Delete_1Medico_BD()
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
@@ -633,6 +709,7 @@
         Return True
     End Function
 
+    'Actulizar datos de delegado.
     Private Function ActualizarBD_Delegado(ByRef userID_insert)
         'Declaramos las variables que vamos a insertar en la BD
         Dim Nombre_insert As String, Apellidos_insert As String, Numero_insert As Integer, Email_insert As String
@@ -661,6 +738,7 @@
         'si el radio de asiste,transporte o alergia esta marcado, guardamos la variable en la Bd como 1, sino como 0.
         If (Asistencia_si.Checked = True) Then
             Asiste_insert = 1
+            Origen_insert = city_origen_delegado.Text
         Else
             Asiste_insert = 0
         End If
@@ -668,7 +746,7 @@
         'Misma comprobación con el transporte.
         If (transporte_medic_si1.Checked = True) Then
             Transporte_insert = 1
-            Origen_insert = city_origen_delegado.Text
+
         Else
             Transporte_insert = 0
         End If
@@ -695,6 +773,7 @@
         End If
     End Function
 
+    'busqueda de email en bd para comprobar si ya existe o no.
     Private Function buscar_email(ByRef mail)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet

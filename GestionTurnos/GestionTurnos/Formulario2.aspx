@@ -75,7 +75,8 @@
         #cuadro_medico4{margin-bottom: 5% !important;}
         .cabecera,.panel,.panel1{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
         .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
-        /*#cuadro_medico5{margin-top: -19.5% !important;}*/
+        #cuadro_medico5{display:none;margin-bottom: 10%;}
+        .desaparecer_botones_edicion_delegado{display: none !important;opacity: 0;}
 
         /* Selector de Medicos */
         .mi_selector{margin:auto;}
@@ -98,9 +99,9 @@
         #no:checked ~ .switch span,#no1:checked ~ .switch span,#ConsentimientoN:checked ~ .switch1 span,#transporte_medic_no:checked ~ .switch2 span,#transporte_medic_no1:checked ~ .switch2 span, #Asistencia_no:checked ~ .switch4 span {background: #fff;margin-left: -8px;}
         #no:checked ~ .switch span:after,#no1:checked ~ .switch span:after,#ConsentimientoN:checked ~ .switch1 span:after ,#transporte_medic_no:checked ~ .switch2 span:after,#transporte_medic_no1:checked ~ .switch2 span:after,#Asistencia_no:checked ~ .switch4 span:after {background: #fff;height: 20px;margin-top: -8px;margin-left: 8px;}
         #yes:checked ~ .switch label[for=yes],#yes1:checked ~ .switch label[for=yes1], #ConsentimientoSi:checked ~ .switch1 label[for=ConsentimientoSi], #transporte_medic_si:checked ~ .switch2 label[for=transporte_medic_si],#transporte_medic_si1:checked ~ .switch2 label[for=transporte_medic_si1], #Asistencia_si:checked ~ .switch4 label[for=Asistencia_si] {color: #fff;}
-        #no:checked ~ .switch label[for=no],#no1:checked ~ .switch label[for=no1], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no1:checked ~ .switch2 label[for=transporte_medic_no1], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN], #Asistencia_no:checked ~ .switch4 label[for=Asistencia_no] {color: #fff;}
+        #no:checked ~ .switch label[for=no],#no1:checked ~ .switch label[for=no1], #ConsentimientoN:checked ~ .switch1 label[for=ConsentimientoN], #transporte_medic_no:checked ~ .switch2 label[for=transporte_medic_no],#transporte_medic_no1:checked ~ .switch2 label[for=transporte_medic_no1], #transporte_medic_no:checked ~ .switch2 label[for=ConsentimientoN], #Asistencia_no:checked ~ .switch4 label[for=Asistencia_no] {color: #fff;}
 
-
+        transporte_medic_no
         /* Alergia y obser medicos*/
         .medic_aler,.medic_obser{ height: 40px;}
               
@@ -142,9 +143,12 @@
             .input_aloja_respon{margin-top: -12%;}
             .input_transpor_respon{margin-top: 12%;}
             .citi_origen_respon{margin-top: 17%;margin-bottom: 2%;}
-            .inputs_alojamiento_respon{margin-top: -2%;margin-bottom: 5%;}
+            .inputs_alojamiento_respon{margin-top: 0;margin-bottom: 10%;}
             .origen_medic_respon{margin-top: 5%;}
             .alojamiento_responsive{margin-top: -1%;}
+            #cuadro_medico5{margin-bottom: 20%;}
+            .input_aloja_respon {margin-top: -12% !important;}
+            label[for=transporte_label]{margin-top: 5% !important;}
             }
         @media (max-width: 810px) {
             .cabecera,.panel,#cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{max-width: 360px;width: 100%;}
@@ -157,10 +161,20 @@
             .toggle-radio1{margin-top: -20% !important;}
             .inputs_responsives1,.inputs_responsives2{width: 100% !important;}
             .inputs_responsives2{margin: 0 0 0 0 !important;}
-            
-        }
+            .mi_responsive{margin-top: -2%;}
+            .switch2{margin-top: -1.5% !important;}
+            .transporRespon{margin-top: -9.5% !important;}
+            #cuadro_medico5{margin-bottom: 20%;}
+            .banner{max-width: 610px;margin:auto;}
+            .input_aloja_respon {margin-top: -25% !important;}
+            label[for=transporte_label]{margin-top: 5% !important;}
+            .transporte_responsive{margin-top: 9% !important;}
+            .input_transpor_respon {margin-top: 17%;}
+            .citi_origen_respon{margin-top: 25% !important ;}
+            inputs_alojamiento_respon{margin-top: -2% !important;margin-bottom: 2.5% !important;}
+            }
 
-        #paso_datos,#paso_datos2,#paso_datos3,#jose_prueba3,.inputs_hidden{display: block;}
+        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: block;}
     </style>
     <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -182,19 +196,22 @@
         //funcion que llamamos desde ASP.net para desactivar/activar ciertas cosas, 
         //cuando el sistema detecta que somos un medico.
         function desactivar() {
-             desactivar_cuadro_delegado();
-             activar_cuadro_medico();
-             onlyread_inputs_medicos();
+            desactivar_cuadro_delegado();
+            activar_cuadro_medico();
+            onlyread_inputs_medicos(); 
         }
+
 
         //desactivamos los divs que no queremos que vea el medico.
         function desactivar_cuadro_delegado() {
             document.getElementById("eleccion_radios").style.display = 'none';
+            document.getElementById("cuadro_medico").style.display = 'none';
+            document.getElementById('cuadro_medico').style.opacity = '0';
             document.getElementById("cuadro_delegado").style.display = 'none';
-            document.getElementById("cuadro_medico").style.display = 'none';                 
-            document.getElementById("cuadro_medico").style.opacity = '0';                 
-            document.getElementById("cuadro_medico4").style.opacity = '0';                 
-            document.getElementById("cuadro_medico4").style.display = 'none';                 
+            //document.getElementById("cuadro_medico4").addClass.desaparecer_botones_edicion_delegado;
+            $('#cuadro_medico4').addClass('desaparecer_botones_edicion_delegado');
+            //document.getElementById('cuadro_medico4').style.setProperty('display', 'none', 'important');
+
         }
 
 
@@ -202,9 +219,10 @@
         function activar_cuadro_medico() {
             document.getElementById("cuadro_medico1").style.display = 'Block';          
             document.getElementById("cuadro_medico2").style.display = 'Block';               
-            document.getElementById("cuadro_medico3").style.display = 'Block';  
-            document.getElementById("cuadro_medico5").style.display = 'Block';  
+            document.getElementById("cuadro_medico3").style.display = 'Block';
+            document.getElementById("cuadro_medico5").style.display = 'Block';
         }
+
 
 
         //dejamos los inputs de nombre/ape/email/especialidad/nselas desactivados.
@@ -233,7 +251,8 @@
            document.getElementById("name_medic").style.pointerEvents = "auto";
            document.getElementById("ape1_medic").style.pointerEvents = "auto";
            document.getElementById("ape2_medic").style.pointerEvents = "auto";
-           document.getElementById("medic_mail").style.pointerEvents = "auto";
+            document.getElementById("medic_mail").style.pointerEvents = "auto";
+            
         }
 
 
@@ -284,7 +303,7 @@
                 document.getElementById("cuadro_medico1").style.display = 'none';
                 document.getElementById("cuadro_medico2").style.display = 'none';
                 document.getElementById("cuadro_medico3").style.display = 'none';
-                document.getElementById("cuadro_medico4").style.display = 'none'; 810
+                document.getElementById("cuadro_medico4").style.display = 'none';
 
                 document.getElementById("cuadro_delegado").style.display = 'block';
                 document.getElementById("cuadro_delegado2").style.display = 'block';
@@ -313,6 +332,7 @@
                 document.getElementById("cuadro_delegado3").style.display = 'none';
                 document.getElementById("cuadro_delegado4").style.display = 'none';
             }
+            mostrar_ocultar_origen();
         }
 
 
@@ -356,6 +376,7 @@
                 case 1:
                     var boton_envio_delegado = document.getElementById("paso_datos");
                     boton_envio_delegado.value = '1';
+                    document.getElementById("paso_datos2").value = '1';
                     break;
                 case 2:
                     var clickeado = document.getElementById("soflow").value
@@ -372,6 +393,10 @@
                     break;
                 case 5:
                     document.getElementById("paso_datos").value = '5';
+                    break;
+                case 6:
+                    document.getElementById("paso_datos").value = '6';
+                    document.getElementById("paso_datos2").value = '1';
                     break;
             }
         }
@@ -401,9 +426,13 @@
             document.getElementById("medic_especialidad").value = valor;
             document.getElementById("alergia_medic").value = valor;
             document.getElementById("Observa_medic").value = valor;
-            document.getElementById("ConsentimientoN").checked = true;
-            document.getElementById("transporte_medic_no").checked = true;
-            document.getElementById("no").checked = true;
+            document.getElementById("ConsentimientoSi").disabled = true;
+            document.getElementById("ConsentimientoN").disabled = true;
+            document.getElementById("transporte_medic_si").disabled = true;
+            document.getElementById("transporte_medic_no").disabled = true;
+            document.getElementById("yes").disabled = true;
+            document.getElementById("no").disabled = true;
+
         }
 
 
@@ -424,12 +453,51 @@
             input_hidden = document.getElementById("paso_datos4");
             input_hidden.value = clickeado2;
         }
+        function on_off_inputs_asistencia(y) {
+            var si = document.getElementById("yes");
+            var no = document.getElementById("no");      
+            
+            switch (y) {
+                case 1:
+                    no.checked = true;
+                    break;
+                case 2:
+                    si.checked = true;
+                    break;
+            }
+        }
+        function on_off_inputs_consen(y) {
+            var consen_si = document.getElementById("ConsentimientoSi");
+            var consen_no = document.getElementById("ConsentimientoN");      
+            
+            switch (y) {
+                case 1:
+                    consen_no.checked = true;
+                    break;
+                case 2:
+                    consen_si.checked = true;
+                    break;
+            }
+        }
+        function on_off_inputs_transporte(y) {
+            var transpor_no = document.getElementById("transporte_medic_no");
+            var transpor_si = document.getElementById("transporte_medic_si");           
+            
+            switch (y) {
+                case 1:
+                    transpor_no.checked = true;
+                    break;
+                case 2:
+                    transpor_si.checked = true;
+                    break;
+            }
+        }
     </script>
 </head>
 <body>
     <form id="form2" runat="server">
         <div class="row banner">
-            <img src="img/banner_novonordisk.jpg" class="my_img" />
+            <img src="img/banner_novonordisk.jpg" class="my_img"/>
         </div>
         <div id="eleccion_radios" class="row cabecera">
             <div class="funkyradio">
@@ -507,7 +575,7 @@
                             </div>
                      </div>
                 </div>                
-                <div class="col-md-6 padd">
+                <div class="col-md-6 transporRespon padd">
                     <div class="toggle-radio2">
                             <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_si" value="transporte_medic_si" runat="server"/>
                             <input type="radio" class="input_prueba" name="radio3" id="transporte_medic_no" value="transporte_medic_no" runat="server" />
@@ -599,10 +667,10 @@
         </div>
         <div id="cuadro_delegado2">
             <div class="row padd margen centro altura asiste_respon">
-                <div class="col-md-6 mi_responsive padd">
+                <div class="col-md-6 radio_responsive padd">
                     <label for="exampleInputEmail1" class="consen">Asistirá al evento?</label>
                 </div>
-                <div class="col-md-6 padd mi_responsive">
+                <div class="col-md-6 padd transporte_responsive">
                     <label id="transporte_label1" for="transporte_label">Necesita Transporte?</label>
                 </div>
                 <div class="col-md-6 padd input_aloja_respon">
