@@ -158,6 +158,24 @@ Partial Public Class Formulario2
     Protected WithEvents consen_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
+    '''Control alojamiento_medico_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents alojamiento_medico_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
+    '''Control alojamiento_medico_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents alojamiento_medico_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
     '''Control transpor_si.
     '''</summary>
     '''<remarks>
@@ -176,22 +194,13 @@ Partial Public Class Formulario2
     Protected WithEvents transpor_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control alojamiento_medico_si.
+    '''Control city_origen_medico.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents alojamiento_medico_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
-    
-    '''<summary>
-    '''Control alojamiento_medico_no.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents alojamiento_medico_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    Protected WithEvents city_origen_medico As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''Control origen_medic.
@@ -338,6 +347,24 @@ Partial Public Class Formulario2
     Protected WithEvents asistira_delegado_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
+    '''Control alojamiento_delegado_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents alojamiento_delegado_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
+    '''Control alojamiento_delegado_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents alojamiento_delegado_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
     '''Control transporte_delegado_si.
     '''</summary>
     '''<remarks>
@@ -363,24 +390,6 @@ Partial Public Class Formulario2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents city_origen_delegado As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control alojamiento_delegado_si.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents alojamiento_delegado_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
-    
-    '''<summary>
-    '''Control alojamiento_delegado_no.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents alojamiento_delegado_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
     '''Control alergia_delegado.

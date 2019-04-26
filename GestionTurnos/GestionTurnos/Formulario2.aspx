@@ -71,12 +71,13 @@
         .panel,#cuadro_medico1{margin-top: .2% !important;background-color: #D4D4D4;font-size: 16px;}        
         #cuadro_medico1{height: auto !important;}
         #cuadro_medico4{margin-bottom: 5% !important;}
-        .cabecera,.panel,.panel1{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
+        .cabecera,.panel,.panel1{max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid #8f8f8f;}
         .text-muted{color: #C80C1B;font-weight: bold;font-size: 78%;}
         #cuadro_medico5{display:none;margin-bottom: 10%;}
         .desaparecer_botones_edicion_delegado{display: none !important;opacity: 0;}
         label[for=consen_no],label[for=transpor_no],label[for=alojamiento_medico_no]{margin-left: -20%;}
 
+        label[for=required_camp]{margin-left: 3%;font-size: 18px; font-weight: bold;}
         .textos_radios_medico{font-size: 16px; font-weight: bold;margin-left: 5%;}
 
         /* Selector de Medicos */
@@ -115,12 +116,12 @@
 
 
         /* Cuadro delegado */
-        #cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4 {background-color: #D4D4D4;font-size: 16px;border-radius: 6px;padding-left: 20px;max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid black;}
+        #cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4 {background-color: #D4D4D4;font-size: 16px;border-radius: 6px;padding-left: 20px;max-width: 660px;width: 100%;padding: 10px;margin: auto;border: 2px solid #8f8f8f;}
         #cuadro_delegado{margin-top: 1%;}
         #cuadro_delegado2{height: 250px;}
         #cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{margin-top: 0.2%;}
         #cuadro_delegado4{margin-bottom: 10%;}
-        #city_origen_medic{margin-top: 3%;}
+        #city_origen_medic{margin-top: 0;margin-bottom: 3%;}
         label[for=asistira_delegado_no],label[for=transporte_delegado_no],label[for=alojamiento_delegado_no]{margin-left: -20%;}
         .textos_radios_delegado{font-size: 16px; font-weight: bold;margin-left: 10%;}
 
@@ -161,6 +162,12 @@
             .radios_molones-success{width: 71%;}
             .radios_molones-danger{width: 71%;}
             .city_origen_medic{margin-bottom: 5%;padding-top:1.5%;}
+            .asiste_delegado_responsive{width: 50%;}
+            #city_origen_medic,.alojamiento_delegat_responsive{width: 50%;margin-left: 50%;margin-top: -13.5%;}
+            .no_asiste_delegat{MARGIN-LEFT: 53%;margin-top: -28.5%;}
+            .transporte_delegado_responsive{width: 50%;}
+            .no_transpor_responsive{margin-left: 50%;margin-top: -28%;}
+            .
             }
         @media (max-width: 810px) {
             .cabecera,.panel,#cuadro_delegado,#cuadro_delegado2,#cuadro_delegado3,#cuadro_delegado4{max-width: 360px;width: 100%;}
@@ -184,11 +191,15 @@
             .input_transpor_respon {margin-top: 17%;}
             .citi_origen_respon{margin-top: 25% !important ;}
             inputs_alojamiento_respon{margin-top: -2% !important;margin-bottom: 2.5% !important;}
-
-            .consen_respon_medic,.aloja_respon_medic,.transpor_respon_medic,.city_origen_medic{width: 100%;margin-top: 1%;margin-left: 0;padding:5px;} 
+            .consen_respon_medic,.aloja_respon_medic,.transpor_respon_medic,.city_origen_medic,#city_origen_medic,.transporte_delegado_responsive,.alojamiento_delegat_responsive{width: 100%;margin-top: 1%;margin-left: 0;padding:5px;} 
             .radios_molones-danger{margin-top: -28.5%;}
             .textos_radios_medico{margin-left:20%;}
             .radios_molones{margin-left: 15%;margin-top: 1%;}
+            #cuadro_delegado2{height: auto;}
+            .textos_radios_delegado{margin-left: 22.5% !important;}
+            #city_origen_medic{padding: 10px;}
+
+            .funkyradio {margin-left: 1%; width: 120%;font-size: 16px;}
             }
 
         #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: none;}
@@ -350,6 +361,7 @@
                 document.getElementById("cuadro_delegado4").style.display = 'none';
             }
             mostrar_ocultar_origen();
+            mostrar_ocultar_alojamientoYTransporte();
         }
 
 
@@ -368,25 +380,54 @@
 
         //activamos/desActivamos el div de ciudad de origen.
         function mostrar_ocultar_origen() {
-            var radio_aloja = document.getElementById("asistira_delegado_si");
-            var radio_asistencia = document.getElementById("alojamiento_medico_si");
-            if (radio_asistencia.checked == true) {
+            var radio_transpor_medic = document.getElementById("transpor_si");
+            var radio_transpor_delegat = document.getElementById("transporte_delegado_si");
+
+                        
+            if (radio_transpor_medic.checked == true) {
                 document.getElementById("city_origen_medico").style.opacity = '1';
             }
             else {
                 document.getElementById("city_origen_medico").style.opacity = '0';
             }
-            if (radio_aloja.checked == true) {
+
+            if (radio_transpor_delegat.checked == true) {
                 document.getElementById("city_origen_medic").style.opacity = '1';
             }
             else {
                 document.getElementById("city_origen_medic").style.opacity = '0';
             }
-
             
         }
 
+        function mostrar_ocultar_alojamientoYTransporte() {
+            var consentimiento_medico = document.getElementById("consen_si");
+            var consentimiento_delegado = document.getElementById("asistira_delegado_si");
+            var ciudad_origen_medico = document.getElementById("city_origen_medico");
+            var ciudad_origen_delegado = document.getElementById("city_origen_medic");
 
+            if (consentimiento_medico.checked == true) {
+                alojamiento_medico_onoff.style.opacity = '1';
+                transporte_medico_onoff.style.opacity = '1';
+                
+            }
+            else {
+                alojamiento_medico_onoff.style.opacity = '0';
+                transporte_medico_onoff.style.opacity = '0';
+                ciudad_origen_medico.style.opacity = '0';
+            }
+
+            if (consentimiento_delegado.checked == true) {
+                alojamiento_delegado_onoff.style.opacity = '1';
+                transporte_delegado_onoff.style.opacity = '1';
+            }
+            else {
+                alojamiento_delegado_onoff.style.opacity = '0';
+                transporte_delegado_onoff.style.opacity = '0';
+                ciudad_origen_delegado.style.opacity = '0';
+            }
+
+        }
         //funcion que con 3 inputs ocultos, nos servirá para identificar que accion realiza el usuario.
         function elegir_accion(x) {
             switch (x) {
@@ -440,18 +481,10 @@
             document.getElementById("ape2_medic").value = valor;
             document.getElementById("medic_mail").value = valor;
             document.getElementById("medic_selas").value = valor;
-            document.getElementById("medic_especialidad").value = valor;
-            document.getElementById("alergia_medic").value = valor;
-            document.getElementById("Observa_medic").value = valor;
-            document.getElementById("ConsentimientoSi").disabled = true;
-            document.getElementById("ConsentimientoN").disabled = true;
-            document.getElementById("transporte_medic_si").disabled = true;
-            document.getElementById("transporte_medic_no").disabled = true;
-            document.getElementById("yes").disabled = true;
-            document.getElementById("no").disabled = true;
-
+            document.getElementById("medic_especialidad").value = valor;       
+            document.getElementById("alergia_medic").value = valor;  
+            document.getElementById("Observa_medic").value = valor;  
         }
-
 
         //funcion que creamos para cuando tenemos 1 registro en la BD
         //del campo Email, y a la misma vez que soltamos el error al usuario,
@@ -493,32 +526,32 @@
             <div id="myselect" class="row mi_selector">
                 <select id="soflow" class="mi_selector" onchange="elegir_accion(2)" runat="server" name="selector_medicos">
                     <option value="-2" id="anadir_registro_medico1">Nueva Alta Médico</option>
-                    <option selected>Listado De Medicos</option>
+                    <option selected value="1">------------------------------------------------</option>
                 </select>
             </div>
         </div>
         <div id="cuadro_medico1" class="row panel">
             <div class="row padd margen">
                 <div class="col-md-4 duo padd inputs_medico">
-                    <label for="exampleInputEmail1">Nombre</label>                    
+                    <label for="exampleInputEmail1">Nombre</label><label for="required_camp">*</label>                    
                     <asp:TextBox ID="name_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-4 segundo padd inputs_medico">
-                    <label for="exampleInputEmail1">Apellido</label>                    
+                    <label for="exampleInputEmail1">Apellido</label><label for="required_camp">*</label>                     
                     <asp:TextBox ID="ape1_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-4 duo padd inputs_medico">
-                    <label for="exampleInputEmail1">2º Apellido</label>                    
+                    <label for="exampleInputEmail1">2º Apellido</label><label for="required_camp">*</label>                     
                     <asp:TextBox ID="ape2_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <div class="row padd margen">
                 <div class="col-md-4 mailto padd inputs_medico">
-                    <label for="exampleInputEmail1">Email</label>                    
+                    <label for="exampleInputEmail1">Email</label><label for="required_camp">*</label>                     
                     <asp:TextBox ID="medic_mail" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-4 duo padd inputs_medico">
-                    <label for="exampleInputEmail1">Especialidad</label>
+                    <label for="exampleInputEmail1">Especialidad</label><label for="required_camp">*</label> 
                     <asp:DropDownList runat="server" ID="medic_especialidad1" onchange="especialidad()" CssClass="form-control">
                         <asp:ListItem Text="Eliga una opción." Value="0" Selected="True" />
                         <asp:ListItem Text="Ginecología" Value="1" />
@@ -529,7 +562,7 @@
                     </asp:DropDownList>                  
                 </div>
                 <div class="col-md-4 segundo padd inputs_medico">
-                    <label for="exampleInputEmail1">Nº Selas</label>                    
+                    <label for="exampleInputEmail1">Nº Selas</label><label for="required_camp">*</label>                     
                     <asp:TextBox ID="medic_selas" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>            
@@ -539,42 +572,42 @@
                 <h4 class="textos_radios_medico">¿Consentimiento Firmado?</h4>
                 <div class="radios_molones subir_miketa">
                     <div class="col-md-6 radios_molones-success">
-                        <input type="radio" name="Consentimiento" id="consen_si" runat="server" />
+                        <input type="radio" name="Consentimiento" id="consen_si" onclick="mostrar_ocultar_alojamientoYTransporte()" runat="server" />
                         <label for="consen_si">SI</label>
                     </div>
                     <div class="col-md-6 consen_no_respon radios_molones-danger">
-                        <input type="radio" name="Consentimiento" id="consen_no" runat="server"/>
+                        <input type="radio" name="Consentimiento" id="consen_no" onclick="mostrar_ocultar_alojamientoYTransporte()" runat="server"/>
                         <label for="consen_no">NO</label>
                     </div>
                 </div>
             </div>
-             <div class="col-md-6 transpor_respon_medic"> 
-                <h4 class="textos_radios_medico">¿Necesita Transporte?</h4>
+            <div id="alojamiento_medico_onoff" class="col-md-6 aloja_respon_medic">
+                <h4 class="textos_radios_medico" >¿Necesita Alojamiento?</h4> 
                 <div class="radios_molones subir_miketa">
                     <div class="col-md-6 radios_molones-success">
-                        <input type="radio" name="transporte" id="transpor_si" runat="server" />
-                        <label for="transpor_si">SI</label>
-                    </div>
-                    <div class="col-md-6 transpor_no_respon radios_molones-danger">
-                        <input type="radio" name="transporte" id="transpor_no" runat="server" />
-                        <label for="transpor_no">NO</label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 aloja_respon_medic">
-                <h4 class="textos_radios_medico">¿Necesita Alojamiento?</h4>
-                <div class="radios_molones subir_miketa">
-                    <div class="col-md-6 radios_molones-success">
-                        <input type="radio" name="alojamiento_medico" id="alojamiento_medico_si" onclick="mostrar_ocultar_origen()" runat="server"  />
+                        <input type="radio" name="alojamiento_medico" id="alojamiento_medico_si"  runat="server"  />
                         <label for="alojamiento_medico_si">SI</label>
                     </div>
                     <div class="col-md-6 asiste_no_respon radios_molones-danger">
-                        <input type="radio" name="alojamiento_medico" id="alojamiento_medico_no" onclick="mostrar_ocultar_origen()" runat="server"  />
+                        <input type="radio" name="alojamiento_medico" id="alojamiento_medico_no"  runat="server"  />
                         <label for="alojamiento_medico_no">NO</label>
                     </div>
                 </div>
             </div>
-            <div id="city_origen_medico" class="col-md-6 city_origen_medic">
+             <div id="transporte_medico_onoff" class="col-md-6 transpor_respon_medic"> 
+                <h4 class="textos_radios_medico">¿Necesita Transporte?</h4> 
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6 radios_molones-success">
+                        <input type="radio" name="transporte" id="transpor_si" onclick="mostrar_ocultar_origen()" runat="server" />
+                        <label for="transpor_si">SI</label>
+                    </div>
+                    <div class="col-md-6 transpor_no_respon radios_molones-danger">
+                        <input type="radio" name="transporte" id="transpor_no" onclick="mostrar_ocultar_origen()" runat="server" />
+                        <label for="transpor_no">NO</label>
+                    </div>
+                </div>
+            </div>            
+            <div id="city_origen_medico" class="col-md-6 city_origen_medic" runat="server">
                 <h4 class="textos_radios_medico">Indique la ciudad de Origen: </h4>
                 <asp:TextBox ID="origen_medic" CssClass="form-control" runat="server"></asp:TextBox>
             </div>             
@@ -599,7 +632,7 @@
         <div id="cuadro_medico5" class="row panel">
             <asp:Button ID="Button_envio_medico" CssClass="enviar" Text="Enviar" runat="server" />
         </div>
-        <div id="cuadro_delegado">
+        <div id="cuadro_delegado" onclick="mostrar_ocultar_alojamientoYTransporte()">
             <div class="row margen padd">
                     <div class="col-md-4 duo input_nombre padd inputs_responsives">
                         <label for="exampleInputEmail1">Nombre</label>                    
@@ -640,49 +673,51 @@
             </div>
         </div>
         <div id="cuadro_delegado2">
-            <div class="col-md-6">
+            <div class="col-md-6 consen_respon_medic">
                 <h4 class="textos_radios_delegado">¿Asistirá al evento?</h4>
                 <div class="radios_molones subir_miketa">
-                    <div class="col-md-6 radios_molones-success">
-                        <input type="radio" name="asistira_delegado" id="asistira_delegado_si" onclick="mostrar_ocultar_origen()" runat="server" />
+                    <div class="col-md-6  radios_molones-success">
+                        <input type="radio" name="asistira_delegado" id="asistira_delegado_si"  onclick="mostrar_ocultar_alojamientoYTransporte()" runat="server" />
                         <label for="asistira_delegado_si">Si</label>
                     </div>
-                    <div class="col-md-6 radios_molones-danger">
-                        <input type="radio" name="asistira_delegado" id="asistira_delegado_no" onclick="mostrar_ocultar_origen()" runat="server"/>
+                    <div class="col-md-6  no_asiste_delegat radios_molones-danger">
+                        <input type="radio" name="asistira_delegado" id="asistira_delegado_no" onclick="mostrar_ocultar_alojamientoYTransporte()" runat="server"/>
                         <label for="asistira_delegado_no">No</label>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h4 class="textos_radios_delegado">¿Necesita Transporte?</h4>
-                <div class="radios_molones subir_miketa">
-                    <div class="col-md-6 radios_molones-success">
-                        <input type="radio" name="transporte_delegado" id="transporte_delegado_si" runat="server" />
-                        <label for="transporte_delegado_si">Si</label>
-                    </div>
-                    <div class="col-md-6 radios_molones-danger">
-                        <input type="radio" name="transporte_delegado" id="transporte_delegado_no" runat="server" />
-                        <label for="transporte_delegado_no">No</label>
-                    </div>
-                </div>
-            </div>
-            <div id="city_origen_medic" class="col-md-6">
-                <h4>Indique la ciudad de Origen: </h4>
-                <asp:TextBox ID="city_origen_delegado" CssClass="form-control" runat="server"></asp:TextBox>
-            </div>
-            <div class="col-md-6">
+            <div id="alojamiento_delegado_onoff" class="col-md-6 alojamiento_delegat_responsive">
                 <h4 class="textos_radios_delegado">¿Necesita Alojamiento?</h4>
                 <div class="radios_molones subir_miketa">
-                    <div class="col-md-6 radios_molones-success">
+                    <div class="col-md-6  radios_molones-success">
                         <input type="radio" name="alojamiento_delegat" id="alojamiento_delegado_si"  runat="server"  />
                         <label for="alojamiento_delegado_si">Si</label>
                     </div>
-                    <div class="col-md-6 radios_molones-danger">
+                    <div class="col-md-6  no_transpor_responsive radios_molones-danger">
                         <input type="radio" name="alojamiento_delegat" id="alojamiento_delegado_no"  runat="server"  />
                         <label for="alojamiento_delegado_no">No</label>
                     </div>
                 </div>
             </div>
+            <div id="transporte_delegado_onoff" class="col-md-6 transporte_delegado_responsive">
+                <h4 class="textos_radios_delegado">¿Necesita Transporte?</h4>
+                <div class="radios_molones subir_miketa">
+                    <div class="col-md-6  radios_molones-success">
+                        <input type="radio" name="transporte_delegado" id="transporte_delegado_si" onclick="mostrar_ocultar_origen()" runat="server" />
+                        <label for="transporte_delegado_si">Si</label>
+                    </div>
+                    <div class="col-md-6  no_transpor_responsive radios_molones-danger">
+                        <input type="radio" name="transporte_delegado" id="transporte_delegado_no" onclick="mostrar_ocultar_origen()" runat="server" />
+                        <label for="transporte_delegado_no">No</label>
+                    </div>
+                </div>
+            </div> 
+            <div id="city_origen_medic" class="col-md-6">
+                <h4>Indique la ciudad de Origen: </h4>
+                <asp:TextBox ID="city_origen_delegado" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+                       
+            
         </div>
         <div id="cuadro_delegado3">
             <div class="row margen padd">
