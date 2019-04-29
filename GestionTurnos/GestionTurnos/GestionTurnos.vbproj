@@ -111,6 +111,7 @@
     <Content Include="Formulario.aspx" />
     <Content Include="Formulario2.aspx" />
     <Content Include="Intranet.aspx" />
+    <Content Include="loading.html" />
     <Content Include="LoginForm.aspx" />
     <Content Include="loginform2.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />

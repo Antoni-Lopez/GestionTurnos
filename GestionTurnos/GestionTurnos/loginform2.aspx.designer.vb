@@ -77,11 +77,11 @@ Partial Public Class loginform2
     Protected WithEvents myCheckbox2 As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control validar.
+    '''Control Boton_Validate.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents validar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Boton_Validate As Global.System.Web.UI.WebControls.Button
 End Class

@@ -4,14 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(duration=.5)" />
     <title></title>
-    <!-- CSS y distintas librerias -->
 
+    <!-- CSS y distintas librerias -->
     <asp:literal id="bootstrap_min_css" runat="server"></asp:literal>
     <asp:literal id="jquery_1_9_1_min_js" runat="server"></asp:literal>
     <asp:literal id="bootstrap_min_js" runat="server"></asp:literal>
     <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
+    
+    <!-- include jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <!-- include BlockUI -->
+    <script src="Script/jquery.blockUI.js"></script>
+
     <style>
         /* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
         .verde {border: 2px solid green;}
@@ -47,18 +53,22 @@
         .chiller_cb span:after {transform: rotate(35deg);bottom: 0.35rem;left: 0.2rem;}
         label[for=myCheckbox2]{margin-left: 1.5%;}
 
+
         /* Boton envio */
         .enviar{
             margin-left: 42%;
             margin-top: 4%;
         }
 
+
+
         /* Media Querys para diseño Responsive.*/
         @media (max-width: 810px) {
             .cabecera,.panel{max-width: 360px;width: 100%;}
         }
+        
     </style>
-     <script type="text/javascript">
+    <script type="text/javascript">
          
          function ComprobarEmail(Email) {
             //Comprobamos que el Email introducido por el usuario tenga el formato correcto. Ej: prueba@prueba.com
@@ -80,10 +90,28 @@
                 return True;
             }
         }
+        // invoke blockUI as needed -->
+        $(document).on('click', '#Boton_Validate', function () {
+            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Comprobando los datos..</h4>' },10000);
+        });
+
+        function TransitionToPAge(href) {
+            window.transitionToPage = function(href) {
+                document.querySelector('body').style.opacity = 0
+                setTimeout(function() { 
+                    window.location.href = href
+                }, 500)
+            }
+
+            document.addEventListener('DOMContentLoaded', function(event) {
+                document.querySelector('body').style.opacity = 1
+            })
+        }
+        
     </script>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" method="POST">
         <div class="row banner">
             <img src="img/banner_novonordisk.jpg" class="my_img" />
         </div>
@@ -99,7 +127,7 @@
                     <label for="myCheckbox2">Recordar Email</label>
                     <span></span>
                 </div>
-                <asp:Button ID="validar" runat="server" class="btn btn-primary mb-2 enviar" Text="Validar" />                
+                <asp:Button ID="Boton_Validate" runat="server" class="btn btn-primary mb-2 enviar"  Text="Validar" />                             
         </div>
     </form>
 </body>

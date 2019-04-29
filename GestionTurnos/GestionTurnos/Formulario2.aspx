@@ -13,6 +13,11 @@
     <asp:literal id="bootstrap_min_js" runat="server"></asp:literal>
     <asp:literal id="bootbox_min_js" runat="server"></asp:literal>
 
+    <!-- include jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <!-- include BlockUI -->
+    <script src="Script/jquery.blockUI.js"></script>
+
 
     <style>
         /* Formateamos el body para que se apliquen nuestros stilos perfect (-;*/
@@ -202,7 +207,7 @@
             .funkyradio {margin-left: 1%; width: 120%;font-size: 16px;}
             }
 
-        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: none;}
+        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: block;}
     </style>
     <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -409,22 +414,63 @@
             if (consentimiento_medico.checked == true) {
                 alojamiento_medico_onoff.style.opacity = '1';
                 transporte_medico_onoff.style.opacity = '1';
-                
+                document.getElementById("campo_requerido").style.color = 'red';
+                document.getElementById("campo_requerido2").style.color = 'red';
+                document.getElementById("campo_requerido3").style.color = 'red';
+                document.getElementById("campo_requerido4").style.color = 'red';
+                document.getElementById("campo_requerido5").style.color = 'red';
+                document.getElementById("campo_requerido6").style.color = 'red';
+                document.getElementById("info_aste").style.color = 'red';
+                document.getElementById("campo_requerido").style.opacity = '1';
+                document.getElementById("campo_requerido2").style.opacity = '1';
+                document.getElementById("campo_requerido3").style.opacity = '1';
+                document.getElementById("campo_requerido4").style.opacity = '1';
+                document.getElementById("campo_requerido5").style.opacity = '1';
+                document.getElementById("campo_requerido6").style.opacity = '1';
+                document.getElementById("info_aste").style.opacity = '1';
             }
             else {
                 alojamiento_medico_onoff.style.opacity = '0';
                 transporte_medico_onoff.style.opacity = '0';
                 ciudad_origen_medico.style.opacity = '0';
+                document.getElementById("campo_requerido").style.opacity = '0';
+                document.getElementById("campo_requerido2").style.opacity = '0';
+                document.getElementById("campo_requerido3").style.opacity = '0';
+                document.getElementById("campo_requerido4").style.opacity = '0';
+                document.getElementById("campo_requerido5").style.opacity = '0';
+                document.getElementById("campo_requerido6").style.opacity = '0';
+                document.getElementById("info_aste").style.opacity = '0';
             }
 
             if (consentimiento_delegado.checked == true) {
                 alojamiento_delegado_onoff.style.opacity = '1';
-                transporte_delegado_onoff.style.opacity = '1';
+                transporte_delegado_onoff.style.opacity = '1';                
+                document.getElementById("campo_requerido_dele").style.color = 'red';
+                document.getElementById("campo_requerido_dele").style.opacity = '1';
+                document.getElementById("campo_requerido_dele2").style.color = 'red';
+                document.getElementById("campo_requerido_dele2").style.opacity = '1';
+                document.getElementById("campo_requerido_dele3").style.color = 'red';
+                document.getElementById("campo_requerido_dele3").style.opacity = '1';
+                document.getElementById("campo_requerido_dele4").style.color = 'red';
+                document.getElementById("campo_requerido_dele4").style.opacity = '1';
+                document.getElementById("campo_requerido_dele5").style.color = 'red';
+                document.getElementById("campo_requerido_dele5").style.opacity = '1';
+                document.getElementById("campo_requerido_dele6").style.color = 'red';                
+                document.getElementById("campo_requerido_dele6").style.opacity = '1';
+                document.getElementById("info_asiste_dele").style.color = 'red';
+                document.getElementById("info_asiste_dele").style.opacity = '1';
             }
             else {
                 alojamiento_delegado_onoff.style.opacity = '0';
                 transporte_delegado_onoff.style.opacity = '0';
                 ciudad_origen_delegado.style.opacity = '0';
+                document.getElementById("campo_requerido_dele").style.opacity = '0';
+                document.getElementById("campo_requerido_dele2").style.opacity = '0';
+                document.getElementById("campo_requerido_dele3").style.opacity = '0';
+                document.getElementById("campo_requerido_dele4").style.opacity = '0';
+                document.getElementById("campo_requerido_dele5").style.opacity = '0';
+                document.getElementById("campo_requerido_dele6").style.opacity = '0';
+                document.getElementById("info_asiste_dele").style.opacity = '0';
             }
 
         }
@@ -503,6 +549,23 @@
             input_hidden = document.getElementById("paso_datos4");
             input_hidden.value = clickeado2;
         }
+
+        // invoke blockUI as needed -->
+        $(document).on('click', '#Button_delegado', function() {            
+            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Actualizando sus datos!</h4>' }); 
+        });
+        $(document).on('change', '#soflow', function () {
+           $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Recibiendo los datos.</h4>' }); 
+        });
+        $(document).on('click', '#Button_Medico', function () {
+           $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Actualizando los datos.</h4>' }); 
+        });
+        $(document).on('click', '#Button_Medico_Delete', function () {
+           $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Elimiando el registro de la Base de Datos.</h4>' }); 
+        });
+        $(document).on('click', '#Button_envio_medico', function () {
+           $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Actualizando tus datos.</h4>' }); 
+        });
     </script>
 </head>
 <body>
@@ -526,32 +589,32 @@
             <div id="myselect" class="row mi_selector">
                 <select id="soflow" class="mi_selector" onchange="elegir_accion(2)" runat="server" name="selector_medicos">
                     <option value="-2" id="anadir_registro_medico1">Nueva Alta Médico</option>
-                    <option selected value="1">------------------------------------------------</option>
+                    <option selected value="0">------------------------------------------------</option>
                 </select>
             </div>
         </div>
         <div id="cuadro_medico1" class="row panel">
             <div class="row padd margen">
                 <div class="col-md-4 duo padd inputs_medico">
-                    <label for="exampleInputEmail1">Nombre</label><label for="required_camp">*</label>                    
+                    <label for="exampleInputEmail1">Nombre</label><label for="required_camp" id="campo_requerido">*</label>                    
                     <asp:TextBox ID="name_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-4 segundo padd inputs_medico">
-                    <label for="exampleInputEmail1">Apellido</label><label for="required_camp">*</label>                     
+                    <label for="exampleInputEmail1">Apellido</label><label for="required_camp" id="campo_requerido2">*</label>                     
                     <asp:TextBox ID="ape1_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-4 duo padd inputs_medico">
-                    <label for="exampleInputEmail1">2º Apellido</label><label for="required_camp">*</label>                     
+                    <label for="exampleInputEmail1">2º Apellido</label><label for="required_camp" id="campo_requerido3">*</label>                     
                     <asp:TextBox ID="ape2_medic" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <div class="row padd margen">
                 <div class="col-md-4 mailto padd inputs_medico">
-                    <label for="exampleInputEmail1">Email</label><label for="required_camp">*</label>                     
+                    <label for="exampleInputEmail1">Email</label><label for="required_camp" id="campo_requerido4">*</label>                     
                     <asp:TextBox ID="medic_mail" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-md-4 duo padd inputs_medico">
-                    <label for="exampleInputEmail1">Especialidad</label><label for="required_camp">*</label> 
+                    <label for="exampleInputEmail1">Especialidad</label><label for="required_camp" id="campo_requerido5">*</label> 
                     <asp:DropDownList runat="server" ID="medic_especialidad1" onchange="especialidad()" CssClass="form-control">
                         <asp:ListItem Text="Eliga una opción." Value="0" Selected="True" />
                         <asp:ListItem Text="Ginecología" Value="1" />
@@ -562,7 +625,7 @@
                     </asp:DropDownList>                  
                 </div>
                 <div class="col-md-4 segundo padd inputs_medico">
-                    <label for="exampleInputEmail1">Nº Selas</label><label for="required_camp">*</label>                     
+                    <label for="exampleInputEmail1">Nº Selas</label><label for="required_camp" id="campo_requerido6">*</label>                     
                     <asp:TextBox ID="medic_selas" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>            
@@ -628,6 +691,7 @@
             <div class="row centro">
                 <asp:Button ID="Button_Medico_Delete" CssClass="enviar" Text="Eliminar" runat="server" />
             </div>
+            <label for="info_asterisco" id="info_aste">* Campos Obligatorios</label>
         </div>
         <div id="cuadro_medico5" class="row panel">
             <asp:Button ID="Button_envio_medico" CssClass="enviar" Text="Enviar" runat="server" />
@@ -635,29 +699,29 @@
         <div id="cuadro_delegado" onclick="mostrar_ocultar_alojamientoYTransporte()">
             <div class="row margen padd">
                     <div class="col-md-4 duo input_nombre padd inputs_responsives">
-                        <label for="exampleInputEmail1">Nombre</label>                    
+                        <label for="exampleInputEmail1">Nombre</label><label for="required_camp" id="campo_requerido_dele">*</label>                    
                         <asp:TextBox ID="name_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>                
                     <div class="col-md-4 segundo input_ape1 padd inputs_responsives">
-                        <label for="exampleInputEmail1">Apellido</label>                    
+                        <label for="exampleInputEmail1">Apellido</label><label for="required_camp" id="campo_requerido_dele2">*</label>                     
                         <asp:TextBox ID="ape1_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-4 duo input_ape2 padd inputs_responsives">
-                        <label for="exampleInputEmail1">2º Apellido</label>                    
+                        <label for="exampleInputEmail1">2º Apellido</label><label for="required_camp" id="campo_requerido_dele3">*</label>                     
                         <asp:TextBox ID="ape2_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row margen padd">
                     <div class="col-md-4  duo input_email padd maildelegat inputs_responsives">
-                        <label for="exampleInputEmail1">Email</label>                    
+                        <label for="exampleInputEmail1">Email</label><label for="required_camp" id="campo_requerido_dele4">*</label>                     
                         <asp:TextBox ID="email_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-4 segundo input_number padd num_delegat inputs_responsives">
-                        <label for="exampleInputEmail1">Numero</label>                    
+                        <label for="exampleInputEmail1">Numero</label><label for="required_camp" id="campo_requerido_dele5">*</label>                     
                         <asp:TextBox ID="numero_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-4 duo input_region padd region_delegat inputs_responsives">
-                        <label for="exampleInputEmail1">Región</label>                    
+                        <label for="exampleInputEmail1">Región</label><label for="required_camp" id="campo_requerido_dele6">*</label>                     
                         <asp:TextBox ID="region_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
@@ -731,6 +795,9 @@
         </div>
         <div id="cuadro_delegado4">
             <asp:Button ID="Button_delegado" CssClass="enviar" Text="Enviar" runat="server" />
+            <div class="row">
+                <label for="info_asterisco" id="info_asiste_dele" style="margin-left:5%;">* Campos Obligatorios</label>
+            </div>            
         </div>
         <div class="row margen">
             <asp:TextBox ID="paso_datos" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>

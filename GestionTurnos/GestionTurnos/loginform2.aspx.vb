@@ -9,10 +9,11 @@
             Dim clsGeneral As New ClaseGeneral
             clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
 
-            validar.Attributes.Add("onclick", "return Comprueba()")
+            Boton_Validate.Attributes.Add("onclick", "return Comprueba()")
             Email.Attributes.Add("Placeholder", "Introduzca su Email")
         Else
             If CompruebaMail(Trim(Email.Text)) Then
+
                 Server.Transfer("Formulario2.aspx?IdUser=" & IDUser)
                 'Response.Redirect("Formulario.aspx?IdUser=" & IDUser)
             Else
@@ -21,7 +22,6 @@
         End If
 
     End Sub
-
     Private Function CompruebaMail(ByRef Email As String)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet

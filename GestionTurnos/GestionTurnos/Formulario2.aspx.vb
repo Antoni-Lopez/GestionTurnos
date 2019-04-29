@@ -381,18 +381,21 @@
     Private Function Extaer_Datos_Combo(ByRef idusuario, ByVal Rol, ByVal Agrupa)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
-        Dim VectorSQL(0) As String
+        Dim VectorSQL(0) As String, UserID As String
+
 
 
         VectorSQL(0) = "SELECT Auto , Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupa & "'ORDER BY Cognoms, Nom"
         If clsBD.BaseDades(1, VectorSQL, DS) Then
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), i + 1))
+                    UserId = DS.Tables(0).Rows(i).Item("Auto")
+                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), UserId))
                 Next
             End If
         End If
         Return True
+
     End Function
 
     'Funcion que nos creamos para cuando el usuario pincha el Select/ComboBox rellenar 
@@ -407,17 +410,14 @@
         Dim UserID As String, Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As Integer, NSelas As Integer
         Dim Consentimiento As Integer, Transporte As Integer, Alojamiento As Integer, Alergia As String, Observaciones As String
         Dim Asiste As Integer, numero As String, Region As String, Origen As String, input_hidden2 As String, n As Integer
-        Dim contador As Integer, number_pass As Integer
+        Dim contador As Integer, number_pass As Integer, Rolete As Integer, agrupasion As Integer
 
         'Pasamos texto al input hidden, para luego ir tomando decisiones mediante el.
-        input_hidden2 = paso_datos2.Text
+        UserID = paso_datos2.Text
+
 
         'Sentencia SQL
-        VectorSQL(0) = "SELECT Auto, idContacte, idOrigen, idTipusContacte,idAlta,Nom, Cognoms,Mobil,Email,Carrec,NIT,Procedencia,SectorInteres,NickTwitter,NickFacebook,WebPersonal,Blog,data FROM EEContactes WHERE idOrigen ='" & agrupa & "' AND idContacte <>'" & Rol & "'ORDER BY Cognoms, Nom"
-
-        For contador = 0 To input_hidden2
-            n = input_hidden2 - 1
-        Next
+        VectorSQL(0) = "SELECT Auto, idContacte, idOrigen, idTipusContacte,idAlta,Nom, Cognoms,Mobil,Email,Carrec,NIT,Procedencia,SectorInteres,NickTwitter,NickFacebook,WebPersonal,Blog,data FROM EEContactes WHERE Auto ='" & UserID & "'ORDER BY Cognoms, Nom"
 
 
 
@@ -426,109 +426,104 @@
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    UserID = DS.Tables(0).Rows(n).Item("Auto")
-                    Rol = DS.Tables(0).Rows(n).Item("idContacte")
-                    agrupa = DS.Tables(0).Rows(n).Item("idOrigen")
-                    Name = DS.Tables(0).Rows(n).Item("Nom")
-                    Apellido = DS.Tables(0).Rows(n).Item("Cognoms")
-                    numero = DS.Tables(0).Rows(n).Item("Mobil")
-                    Mail = DS.Tables(0).Rows(n).Item("Email")
-                    Region = DS.Tables(0).Rows(n).Item("Carrec")
-                    Origen = DS.Tables(0).Rows(n).Item("Procedencia")
-                    Transporte = DS.Tables(0).Rows(n).Item("idTipusContacte")
-                    Asiste = DS.Tables(0).Rows(n).Item("idAlta")
-                    Alojamiento = DS.Tables(0).Rows(n).Item("NickTwitter")
-                    Alergia = DS.Tables(0).Rows(n).Item("NickFacebook")
-                    Observaciones = DS.Tables(0).Rows(n).Item("WebPersonal")
-                    NSelas = DS.Tables(0).Rows(n).Item("SectorInteres")
-                    Especialidad = DS.Tables(0).Rows(n).Item("Blog")
-                    Consentimiento = DS.Tables(0).Rows(n).Item("Data")
+                    Rolete = DS.Tables(0).Rows(i).Item("idContacte")
+                    agrupasion = DS.Tables(0).Rows(i).Item("idOrigen")
+                    Name = DS.Tables(0).Rows(i).Item("Nom")
+                    Apellido = DS.Tables(0).Rows(i).Item("Cognoms")
+                    numero = DS.Tables(0).Rows(i).Item("Mobil")
+                    Mail = DS.Tables(0).Rows(i).Item("Email")
+                    Region = DS.Tables(0).Rows(i).Item("Carrec")
+                    Origen = DS.Tables(0).Rows(i).Item("Procedencia")
+                    Transporte = DS.Tables(0).Rows(i).Item("idTipusContacte")
+                    Asiste = DS.Tables(0).Rows(i).Item("idAlta")
+                    Alojamiento = DS.Tables(0).Rows(i).Item("NickTwitter")
+                    Alergia = DS.Tables(0).Rows(i).Item("NickFacebook")
+                    Observaciones = DS.Tables(0).Rows(i).Item("WebPersonal")
+                    NSelas = DS.Tables(0).Rows(i).Item("SectorInteres")
+                    Especialidad = DS.Tables(0).Rows(i).Item("Blog")
+                    Consentimiento = DS.Tables(0).Rows(i).Item("Data")
                 Next
 
-                'Pasamos texto al input hidden, para luego ir tomando decisiones mediante el.
-                paso_datos3.Text = UserID
+                If Rolete = Rol Or agrupa <> agrupasion Then
+                    'Error
+                Else
+                    'Empezamos a rellenar los datos de la BD en los inputs.
+                    name_medic.Text = Name
+                    medic_mail.Text = Mail
+                    medic_selas.Text = NSelas
+                    alergia_medic.Text = Alergia
+                    Observa_medic.Text = Observaciones
 
-                'Empezamos a rellenar los datos de la BD en los inputs.
-                name_medic.Text = Name
-                medic_mail.Text = Mail
-                medic_selas.Text = NSelas
-                alergia_medic.Text = Alergia
-                Observa_medic.Text = Observaciones
+                    'Dependiendo el numero almacenado en la BD, nos mostrara 1 select ú otro.
+                    Select Case Especialidad
+                        Case 0
+                            medic_especialidad1.SelectedValue = 0
+                        Case 1
+                            medic_especialidad1.SelectedValue = 1
+                        Case 2
+                            medic_especialidad1.SelectedValue = 2
+                        Case 3
+                            medic_especialidad1.SelectedValue = 3
+                        Case 4
+                            medic_especialidad1.SelectedValue = 4
+                        Case 5
+                            medic_especialidad1.SelectedValue = 5
+                    End Select
 
-                'Dependiendo el numero almacenado en la BD, nos mostrara 1 select ú otro.
-                Select Case Especialidad
-                    Case 0
-                        medic_especialidad1.SelectedValue = 0
-                    Case 1
-                        medic_especialidad1.SelectedValue = 1
-                    Case 2
-                        medic_especialidad1.SelectedValue = 2
-                    Case 3
-                        medic_especialidad1.SelectedValue = 3
-                    Case 4
-                        medic_especialidad1.SelectedValue = 4
-                    Case 5
-                        medic_especialidad1.SelectedValue = 5
-                End Select
+                    'Declaramos 1 array para separar los datos de los apellidos.
+                    'ya que la consulta nos devuelve 2 campos(1apellido y 2apellido) en el mismo registro de la BD.
+                    Dim Sigla1 As String
+                    Dim c As Long
+                    Dim VArray() As String
+
+                    'Asignamos valores.
+                    Sigla1 = Apellido
+
+                    'Creamos el array, y cada "substring" se lo asignaremos
+                    'a un elemento del array.
+                    'Usamos el caracter "¦" como separador
+                    VArray = Split(Sigla1, "¦")
+
+                    For c = LBound(VArray) To UBound(VArray)
+                        ape1_medic.Text = VArray(0)
+                        ape2_medic.Text = VArray(1)
+                    Next
+                    'Primero vaciamos todos los inputs para que no quede ninguno marcado/completado
+                    'Y así, lo rellenamos con los datos de la BD.
+                    'ClientScript.RegisterStartupScript(Page.GetType(), "reseteo_inputs_medicos", "resetear_radios_medics();", True)
+                    alojamiento_medico_no.Checked = False
+                    alojamiento_medico_si.Checked = False
+                    consen_no.Checked = False
+                    consen_si.Checked = False
+                    transpor_no.Checked = False
+                    transpor_si.Checked = False
 
 
+                    'Les asignamos la posicion a los radio button, si ó no.
+                    Select Case Alojamiento
+                        Case 0
+                            alojamiento_medico_no.Checked = True
+                        Case 1
+                            alojamiento_medico_si.Checked = True
+                            origen_medic.Text = Origen
+                    End Select
 
+                    Select Case Consentimiento
+                        Case 0
+                            consen_no.Checked = True
+                        Case 1
+                            consen_si.Checked = True
+                    End Select
 
-                'Declaramos 1 array para separar los datos de los apellidos.
-                'ya que la consulta nos devuelve 2 campos(1apellido y 2apellido) en el mismo registro de la BD.
-                Dim Sigla1 As String
-                Dim c As Long
-                Dim VArray() As String
-
-                'Asignamos valores.
-                Sigla1 = Apellido
-
-                'Creamos el array, y cada "substring" se lo asignaremos
-                'a un elemento del array.
-                'Usamos el caracter "¦" como separador
-                VArray = Split(Sigla1, "¦")
-
-                For c = LBound(VArray) To UBound(VArray)
-                    ape1_medic.Text = VArray(0)
-                    ape2_medic.Text = VArray(1)
-                Next
+                    Select Case Transporte
+                        Case 0
+                            transpor_no.Checked = True
+                        Case 1
+                            transpor_si.Checked = True
+                    End Select
+                End If
             End If
-
-            'Primero vaciamos todos los inputs para que no quede ninguno marcado/completado
-            'Y así, lo rellenamos con los datos de la BD.
-            'ClientScript.RegisterStartupScript(Page.GetType(), "reseteo_inputs_medicos", "resetear_radios_medics();", True)
-            alojamiento_medico_no.Checked = False
-            alojamiento_medico_si.Checked = False
-            consen_no.Checked = False
-            consen_si.Checked = False
-            transpor_no.Checked = False
-            transpor_si.Checked = False
-
-
-            'Les asignamos la posicion a los radio button, si ó no.
-            Select Case Alojamiento
-                Case 0
-                    alojamiento_medico_no.Checked = True
-                Case 1
-                    alojamiento_medico_si.Checked = True
-                    origen_medic.Text = Origen
-            End Select
-
-            Select Case Consentimiento
-                Case 0
-                    consen_no.Checked = True
-                Case 1
-                    consen_si.Checked = True
-            End Select
-
-            Select Case Transporte
-                Case 0
-                    transpor_no.Checked = True
-                Case 1
-                    transpor_si.Checked = True
-            End Select
-
-        End If
+            End If
         Return True
     End Function
 
