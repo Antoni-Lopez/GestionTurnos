@@ -129,6 +129,11 @@
         #city_origen_medic{margin-top: 0;margin-bottom: 3%;}
         label[for=asistira_delegado_no],label[for=transporte_delegado_no],label[for=alojamiento_delegado_no]{margin-left: -20%;}
         .textos_radios_delegado{font-size: 16px; font-weight: bold;margin-left: 10%;}
+        .transporte_delegado_responsive,#city_origen_medic{margin-top: 5%;}
+        .enviar_mail{background-color:#5CB85C;color: #fff;float: right;margin-right: 12.5%;font-size: 20px;opacity: 1;border-radius: 6px;}
+        .enviar_mail:hover{box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight: bold;}
+
+
 
         /*input ocultos para paso de valores*/
         .inputs_hidden{display:block;position: absolute; top: 250%;}
@@ -207,7 +212,7 @@
             .funkyradio {margin-left: 1%; width: 120%;font-size: 16px;}
             }
 
-        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: block;}
+        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: none;}
     </style>
     <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -420,57 +425,43 @@
                 document.getElementById("campo_requerido4").style.color = 'red';
                 document.getElementById("campo_requerido5").style.color = 'red';
                 document.getElementById("campo_requerido6").style.color = 'red';
+                document.getElementById("campo_requerido7").style.color = 'red';
                 document.getElementById("info_aste").style.color = 'red';
-                document.getElementById("campo_requerido").style.opacity = '1';
-                document.getElementById("campo_requerido2").style.opacity = '1';
-                document.getElementById("campo_requerido3").style.opacity = '1';
-                document.getElementById("campo_requerido4").style.opacity = '1';
-                document.getElementById("campo_requerido5").style.opacity = '1';
-                document.getElementById("campo_requerido6").style.opacity = '1';
-                document.getElementById("info_aste").style.opacity = '1';
             }
             else {
                 alojamiento_medico_onoff.style.opacity = '0';
                 transporte_medico_onoff.style.opacity = '0';
                 ciudad_origen_medico.style.opacity = '0';
-                document.getElementById("campo_requerido").style.opacity = '0';
-                document.getElementById("campo_requerido2").style.opacity = '0';
-                document.getElementById("campo_requerido3").style.opacity = '0';
-                document.getElementById("campo_requerido4").style.opacity = '0';
-                document.getElementById("campo_requerido5").style.opacity = '0';
-                document.getElementById("campo_requerido6").style.opacity = '0';
-                document.getElementById("info_aste").style.opacity = '0';
+                document.getElementById("campo_requerido").style.color = 'Black';
+                document.getElementById("campo_requerido2").style.color = 'Black';
+                document.getElementById("campo_requerido3").style.color = 'Black';
+                document.getElementById("campo_requerido4").style.color = 'Black';
+                document.getElementById("campo_requerido5").style.color = 'Black';
+                document.getElementById("campo_requerido6").style.color = 'Black';
+                document.getElementById("campo_requerido7").style.color = 'Black';
+                document.getElementById("info_aste").style.color = 'red';
             }
 
             if (consentimiento_delegado.checked == true) {
                 alojamiento_delegado_onoff.style.opacity = '1';
                 transporte_delegado_onoff.style.opacity = '1';                
                 document.getElementById("campo_requerido_dele").style.color = 'red';
-                document.getElementById("campo_requerido_dele").style.opacity = '1';
                 document.getElementById("campo_requerido_dele2").style.color = 'red';
-                document.getElementById("campo_requerido_dele2").style.opacity = '1';
                 document.getElementById("campo_requerido_dele3").style.color = 'red';
-                document.getElementById("campo_requerido_dele3").style.opacity = '1';
                 document.getElementById("campo_requerido_dele4").style.color = 'red';
-                document.getElementById("campo_requerido_dele4").style.opacity = '1';
-                document.getElementById("campo_requerido_dele5").style.color = 'red';
-                document.getElementById("campo_requerido_dele5").style.opacity = '1';
-                document.getElementById("campo_requerido_dele6").style.color = 'red';                
-                document.getElementById("campo_requerido_dele6").style.opacity = '1';
+                document.getElementById("campo_requerido_dele5").style.color = 'red';              
                 document.getElementById("info_asiste_dele").style.color = 'red';
-                document.getElementById("info_asiste_dele").style.opacity = '1';
             }
             else {
                 alojamiento_delegado_onoff.style.opacity = '0';
                 transporte_delegado_onoff.style.opacity = '0';
                 ciudad_origen_delegado.style.opacity = '0';
-                document.getElementById("campo_requerido_dele").style.opacity = '0';
-                document.getElementById("campo_requerido_dele2").style.opacity = '0';
-                document.getElementById("campo_requerido_dele3").style.opacity = '0';
-                document.getElementById("campo_requerido_dele4").style.opacity = '0';
-                document.getElementById("campo_requerido_dele5").style.opacity = '0';
-                document.getElementById("campo_requerido_dele6").style.opacity = '0';
-                document.getElementById("info_asiste_dele").style.opacity = '0';
+                document.getElementById("campo_requerido_dele").style.color = 'Black';
+                document.getElementById("campo_requerido_dele2").style.color = 'Black';
+                document.getElementById("campo_requerido_dele3").style.color = 'Black';
+                document.getElementById("campo_requerido_dele4").style.color = 'Black';
+                document.getElementById("campo_requerido_dele5").style.color = 'Black';
+                document.getElementById("info_asiste_dele").color = 'red';
             }
 
         }
@@ -500,6 +491,10 @@
                     break;
                 case 6:
                     document.getElementById("paso_datos").value = '6';
+                    document.getElementById("paso_datos2").value = '1';
+                    break;
+                case 7:
+                    document.getElementById("paso_datos").value = '7';
                     document.getElementById("paso_datos2").value = '1';
                     break;
             }
@@ -632,7 +627,7 @@
         </div>
         <div id="cuadro_medico2" class="container-fluid panel">
             <div class="col-md-6 consen_respon_medic">
-                <h4 class="textos_radios_medico">¿Consentimiento Firmado?</h4>
+                <h4 class="textos_radios_medico">¿Consentimiento Firmado? <span style="color: red;">*</span></h4>
                 <div class="radios_molones subir_miketa">
                     <div class="col-md-6 radios_molones-success">
                         <input type="radio" name="Consentimiento" id="consen_si" onclick="mostrar_ocultar_alojamientoYTransporte()" runat="server" />
@@ -678,7 +673,7 @@
         </div>
         <div id="cuadro_medico3" class="row panel">
             <div class="row margen padd">
-                <label for="nombre" class="label_textos">Alergias: </label>
+                <label for="nombre" class="label_textos">Alergias: </label><label for="required_camp" id="campo_requerido7">*</label>
                 <asp:TextBox id="alergia_medic" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
             </div>
             <div class="row margen padd">
@@ -699,46 +694,46 @@
         <div id="cuadro_delegado" onclick="mostrar_ocultar_alojamientoYTransporte()">
             <div class="row margen padd">
                     <div class="col-md-4 duo input_nombre padd inputs_responsives">
-                        <label for="exampleInputEmail1">Nombre</label><label for="required_camp" id="campo_requerido_dele">*</label>                    
+                        <label for="exampleInputEmail1">Nombre</label>                   
                         <asp:TextBox ID="name_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>                
                     <div class="col-md-4 segundo input_ape1 padd inputs_responsives">
-                        <label for="exampleInputEmail1">Apellido</label><label for="required_camp" id="campo_requerido_dele2">*</label>                     
+                        <label for="exampleInputEmail1">Apellido</label>                   
                         <asp:TextBox ID="ape1_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-4 duo input_ape2 padd inputs_responsives">
-                        <label for="exampleInputEmail1">2º Apellido</label><label for="required_camp" id="campo_requerido_dele3">*</label>                     
+                        <label for="exampleInputEmail1">2º Apellido</label>                     
                         <asp:TextBox ID="ape2_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row margen padd">
                     <div class="col-md-4  duo input_email padd maildelegat inputs_responsives">
-                        <label for="exampleInputEmail1">Email</label><label for="required_camp" id="campo_requerido_dele4">*</label>                     
+                        <label for="exampleInputEmail1">Email</label>                     
                         <asp:TextBox ID="email_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-4 segundo input_number padd num_delegat inputs_responsives">
-                        <label for="exampleInputEmail1">Numero</label><label for="required_camp" id="campo_requerido_dele5">*</label>                     
+                        <label for="exampleInputEmail1">Numero</label><label for="required_camp" id="campo_requerido_dele">*</label>                     
                         <asp:TextBox ID="numero_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-md-4 duo input_region padd region_delegat inputs_responsives">
-                        <label for="exampleInputEmail1">Región</label><label for="required_camp" id="campo_requerido_dele6">*</label>                     
+                        <label for="exampleInputEmail1">Región</label><label for="required_camp" id="campo_requerido_dele2">*</label>                     
                         <asp:TextBox ID="region_delegado" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
             <div class="row margen padd">
                 <div class="col-md-6 alergia_delegado inputs_responsives1">
-                    <label for="nombre" class="label_textos">Siglas Delegado: </label>
+                    <label for="nombre" class="label_textos">Siglas Delegado: </label><label for="required_camp" id="campo_requerido_dele3">*</label>
                     <asp:TextBox id="siglas_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
                 </div>
                 <div class="col-md-6 alergia_delegado inputs_responsives2">
-                    <label for="nombre" class="label_textos">Siglas Gerente: </label>
+                    <label for="nombre" class="label_textos">Siglas Gerente: </label><label for="required_camp" id="campo_requerido_dele4">*</label>
                     <asp:TextBox id="siglas_gerente_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
                 </div>
             </div>
         </div>
         <div id="cuadro_delegado2">
             <div class="col-md-6 consen_respon_medic">
-                <h4 class="textos_radios_delegado">¿Asistirá al evento?</h4>
+                <h4 class="textos_radios_delegado">¿Asistirá al evento? <span style="color:red;">*</span></h4>
                 <div class="radios_molones subir_miketa">
                     <div class="col-md-6  radios_molones-success">
                         <input type="radio" name="asistira_delegado" id="asistira_delegado_si"  onclick="mostrar_ocultar_alojamientoYTransporte()" runat="server" />
@@ -783,9 +778,9 @@
                        
             
         </div>
-        <div id="cuadro_delegado3">
+        <div id="cuadro_delegado3" onclick="Registre()">
             <div class="row margen padd">
-                <label for="nombre" class="label_textos">Alergias: </label>
+                <label for="nombre" class="label_textos">Alergias: </label><label for="required_camp" id="campo_requerido_dele5">*</label>
                 <asp:TextBox id="alergia_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
             </div>
             <div class="row margen padd">
@@ -797,7 +792,10 @@
             <asp:Button ID="Button_delegado" CssClass="enviar" Text="Enviar" runat="server" />
             <div class="row">
                 <label for="info_asterisco" id="info_asiste_dele" style="margin-left:5%;">* Campos Obligatorios</label>
-            </div>            
+            </div>   
+            <div class="row" style="margin:auto; padding: 10px;">
+                <asp:Button ID="Button_EnvioMail" CssClass="enviar_mail" Text="Enviar Email" runat="server" />
+            </div>
         </div>
         <div class="row margen">
             <asp:TextBox ID="paso_datos" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
@@ -806,5 +804,41 @@
             <asp:TextBox ID="paso_datos4" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
         </div>
     </form>
+    <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script>  
+    <script type="text/javascript">
+        function Registre() {
+            var Dades;
+            var miprueba2 = document.getElementById('name_delegado').value.trim();
+	        Dades = (document.getElementById('asistira_delegado_si').checked ? '1':'0') + "¦" + "Hola " + document.getElementById('name_delegado').value.trim();
+            setTimeout("InformacioAJAX(1,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+            alert("seguimos funcionandoaaaaa!!!"+miprueba2);
+        }
+
+        function Registre_Tornada(Dades) {
+            alert("si entramos!!!");
+            document.getElementById('btnSubmit').className = "btn btn-info btnBoto1";
+            document.getElementById('SPANSubmit').style.display = 'none';
+            if (Dades.substr(0, 2) == 'OK') {
+                LanzaAviso("Parece que todo a salido OK, Un placer ");
+            }
+            else if (Dades.substr(0, 2) == 'KO') {
+                LanzaAviso("UPSS algo ha salido mal y sale todo KO, lo sentimos ");
+            }
+        }
+
+        function michorra() {
+            $(function () {
+                var name = "Listado de Medicos";
+                var $select = $('#mySelect');
+                $.each(opt, function(key, value){
+                    var group = $('<optgroup label="' + name + '" />');
+                    $.each(value, function(){
+                        $('<option />').html(this.name).appendTo(group);
+                    });
+                    group.appendTo($select);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

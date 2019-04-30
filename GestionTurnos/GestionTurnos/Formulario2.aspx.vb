@@ -20,6 +20,7 @@
                 Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                 Extraer_BD_Delegado(IdUsuario, Rol)
                 Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
+                Button_EnvioMail.Attributes.Add("onclick", "elegir_accion(7);")
             Else
                 ClientScript.RegisterStartupScript(Page.GetType(), "desactivar_delegado", "desactivar();", True)
                 Extraer_BD_Medicos(IdUsuario)
@@ -90,6 +91,7 @@
                     ActualizarBD_Delegado(IdUsuario)
                 Case 2
                     'Mostramos la eleccion del ComboText.
+                    'ClientScript.RegisterStartupScript(Page.GetType(), "anadir_optgroup_select", "michorra();", True)
                     Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 3
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
@@ -97,7 +99,7 @@
                     soflow.Items.Clear()  'Borra el texto del combo
                     soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
                     soflow.Items.Add(New ListItem("------------------------------------------------", "-1"))  'Añadimos primera opcion.
-                    soflow.Attributes.Add("classification", "Listado De Medicos")
+
                     Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 4
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere modificar un  registro ya existente en la BD de medico
@@ -113,6 +115,7 @@
                     soflow.Items.Clear()  'Borra el texto del combo
                     soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
                     soflow.Items.Add(New ListItem("Listado De Medicos", "-1"))  'Añadimos primera opcion.
+                    ClientScript.RegisterStartupScript(Page.GetType(), "anadir_optgroup_select", "michorra();", True)
                     Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 6
                     'Llamamos a las funciones correspondientes
@@ -129,6 +132,44 @@
     Protected Sub Button_envio_medico_Click(sender As Object, e As EventArgs) Handles Button_envio_medico.Click
         paso_datos.Text = 6
         paso_datos2.Text = 1
+    End Sub
+
+    Protected Sub Button_EnvioMail_Click(sender As Object, e As EventArgs) Handles Button_EnvioMail.Click
+        Dim send_mail As New ClaseEmail
+        Dim destinatario As String, Cabecera As String, Cuerpo As String, From As String
+        Dim ServidorSMTP As String, UsuariSMTP As String, PasswordSMTP As String
+        Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String, nombre As String, Ape1 As String
+
+        nombre = name_delegado.Text
+        Ape1 = ape1_delegado.Text
+        destinatario = email_delegado.Text
+        Cabecera = "Probando envio de Mails"
+        Cuerpo = "<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><head runat='server'><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+                <title></title><asp:literal id='bootstrap_min_css' runat='server'></asp:literal><asp:literal id='jquery_1_9_1_min_js' runat='server'></asp:literal>
+                <asp:literal id='bootstrap_min_js' runat='server'></asp:literal><asp:literal id='bootbox_min_js' runat='server'></asp:literal><style>
+                body{margin: 0;padding: 0;box-sizing:border-box;}.padd{padding:10px;}.principal{max-width:650px;width:100%;border: 2px solid black;height: auto;margin-top: 2%;background-color: #efefef;}
+                .img_logo img{width: 100%;}.contenido{margin-top:2.5%!important;margin:auto;max-width:500px;width:100%;margin-bottom: 2.5% !important;}
+                </style></head><body><div class='container-fluid principal verde'><div class='row img_logo'><img src='cid:img/banner_novonordisk.jpg'/></div>
+                <div class='row contenido padd'><h3>Bienvenido " & nombre & " " & Ape1 & " </h3><p> Esto es un pre formato de como se debería de quedar el email que vamos a enviar.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br />
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br />
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br />
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div></div></body>
+                </html>"
+        From = "jsmateo@towerplane.com"
+        ServidorSMTP = "smtp.towerplane.com"
+        UsuariSMTP = "jsmateo@towerplane.com"
+        PasswordSMTP = "RDmuXvotrN"
+        Puerto = "25"
+        FitxerAdjunt = ""
+
+
+        envio = send_mail.EnviarEmail_System_Web_Mail_BO(destinatario, From, Cabecera, Cuerpo, , ServidorSMTP,, UsuariSMTP, PasswordSMTP,,,,,)
+        If envio Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "envio_OK", "LanzaAviso('Email enviado sin problemas aparentes!');", True)
+        Else
+            ClientScript.RegisterStartupScript(Page.GetType(), "envio_KO", "LanzaAviso('UPS algo ha fallado y no se ha podido enviar el email!');", True)
+        End If
     End Sub
 
     'Funcion que creamos para la extarcción del Rol(Delegado/Medico)
@@ -382,15 +423,16 @@
         Dim clsBD As New ClaseAccesoBD
         Dim DS As New DataSet
         Dim VectorSQL(0) As String, UserID As String
-
+        Dim item() As String
 
 
         VectorSQL(0) = "SELECT Auto , Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupa & "'ORDER BY Cognoms, Nom"
         If clsBD.BaseDades(1, VectorSQL, DS) Then
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    UserId = DS.Tables(0).Rows(i).Item("Auto")
-                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), UserId))
+                    UserID = DS.Tables(0).Rows(i).Item("Auto")
+
+                    soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), UserID))
                 Next
             End If
         End If
@@ -605,19 +647,46 @@
         Dim Name As String, Apellido As String, Ape1 As String, Ape2 As String, Mail As String, Especialidad As String, NSelas As String
         Dim Consentimiento As String, Transporte As Integer, Alojamiento As String, Alergia As String, Observaciones As String, Password As String
         Dim Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As String, comprueba_mail As String
+        Dim NumeroSelas As String, long_nselas As Integer, eleccion_especialidad As Integer, alergi As String, long_alergia_medico As Integer
 
 
 
-        IDUser = paso_datos3.Text
+        'IDUser = paso_datos3.Text
         'Rellenamos las variables con los datos introducidos en los inputs.
         Name = name_medic.Text
         Apellido = ape1_medic.Text + "¦" + ape2_medic.Text
         Mail = medic_mail.Text
 
-        NSelas = medic_selas.Text
-        Alergia = alergia_medic.Text
+        NumeroSelas = medic_selas.Text
+        long_nselas = Len(NumeroSelas)
+
+        If long_nselas <= 0 Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "KO_NumeroSelas", "LanzaAviso('Lo sentimos pero el Número de Selas no puede estar vacio ya que es 1 campo obligatorio.')", True)
+            Return False
+        Else
+            NSelas = medic_selas.Text
+        End If
+
+        alergi = alergia_medic.Text
+        long_alergia_medico = Len(alergi)
+
+        If long_alergia_medico <= 0 Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "KO_Alergia_Medico", "LanzaAviso('Lo sentimos pero el campo de alergia no puede estar vacio ya que es 1 campo obligatorio.')", True)
+            Return False
+        Else
+            Alergia = alergia_medic.Text
+        End If
+
         Observaciones = Observa_medic.Text
-        Especialidad = medic_especialidad1.Items(medic_especialidad1.SelectedIndex).Value
+
+        eleccion_especialidad = medic_especialidad1.Items(medic_especialidad1.SelectedIndex).Value
+
+        If eleccion_especialidad = 0 Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "KO_Especialidad_Medico", "LanzaAviso('Lo sentimos pero debes elegir una opcion en el campo de especialidad, la opción elegida no es factible.')", True)
+            Return False
+        Else
+            Especialidad = medic_especialidad1.Items(medic_especialidad1.SelectedIndex).Value
+        End If
 
         Origen = origen_medic.Text
 
@@ -639,7 +708,8 @@
         If consen_si.Checked = True Then
             Consentimiento = 1
         Else
-            Consentimiento = 0
+            ClientScript.RegisterStartupScript(Page.GetType(), "KO_Asistencia_Medico", "LanzaAviso('Lo sentimos pero la opcion de asistencia es obligatoria y no esta marcada, marquela y pruebe de nuevo.')", True)
+            Return False
         End If
 
         VectorSQL(0) = "UPDATE eecontactes SET idContacte = '" & Rol & "', idOrigen='" & agrupacion & "', idTipusContacte='" & Transporte & "', Nom='" & clsBD.Cometes(Left(Name, 100)) & "', Cognoms='" & clsBD.Cometes(Left(Apellido, 100)) & "', Email='" & clsBD.Cometes(Left(Mail, 100)) & "', Procedencia='" & Origen & "', SectorInteres='" & NSelas & "', NickTwitter='" & Alojamiento & "', NickFacebook='" & clsBD.Cometes(Left(Alergia, 100)) & "', WebPersonal='" & clsBD.Cometes(Left(Observaciones, 100)) & "',Blog='" & Especialidad & "',Data='" & Consentimiento & "' WHERE Auto = '" & IDUser & "'"
@@ -708,7 +778,7 @@
         Dim DS As New DataSet
         Dim VectorSQL(0) As String, IDUser As Integer
 
-        IDUser = paso_datos3.Text
+        'IDUser = paso_datos3.Text
 
 
         VectorSQL(0) = "DELETE FROM eecontactes WHERE Auto = '" & IDUser & "'"
@@ -729,7 +799,8 @@
         Dim Region_insert As String, Siglas_insert As String, Asiste_insert As Integer, Transporte_insert As Integer
         Dim Alojamiento_insert As Integer, Origen_insert As String, Alergias_insert As String, Obser_insert As String
 
-        Dim phone_check As String, phone_check1 As String, primer_numero As Integer
+        Dim phone_check As String, phone_check1 As String, primer_numero As Integer, Long_region As Integer, Regio As String, long_sigla_delegado As Integer
+        Dim sigladelegat As String, siglagerente As String, long_sigla_gerente As Integer, long_alergia As Integer, alergi As String
 
         'Extraemos los datos del formulario.
         Nombre_insert = name_delegado.Text
@@ -747,34 +818,66 @@
             ClientScript.RegisterStartupScript(Page.GetType(), "Error_Phone", "LanzaAviso('Número de Telefono incorrecto, por favor, comprueba que su numero comience por (6) o por (7)!')", True)
             Return False
         End If
-        Region_insert = region_delegado.Text
-        Siglas_insert = siglas_gerente_delegado.Text + "¦" + siglas_delegado.Text
+
+        Regio = region_delegado.Text
+        Long_region = Len(Regio)
+
+        If Long_region <= 0 Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "Error_Region", "LanzaAviso('El campo región es obligatorio y no puede estar vacio. Por favor introduzca el dato correctamente!')", True)
+            Return False
+        Else
+            Region_insert = Regio
+        End If
+
+        sigladelegat = siglas_delegado.Text
+        long_sigla_delegado = Len(sigladelegat)
+
+        siglagerente = siglas_gerente_delegado.Text
+        long_sigla_gerente = Len(siglagerente)
+
+        If long_sigla_delegado <= 0 Or long_sigla_gerente <= 0 Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "Error_Siglas", "LanzaAviso('Los campos siglas delegado/gerente son obligatorios y no pueden estar vacio. Por favor introduzca los datos correctamente!')", True)
+            Return False
+        Else
+            Siglas_insert = siglas_delegado.Text + "¦" + siglas_gerente_delegado.Text
+        End If
+
 
         'Extraemos los datos de los radio button.
         'si el radio de asiste,transporte o alergia esta marcado, guardamos la variable en la Bd como 1, sino como 0.
         If asistira_delegado_si.Checked = True Then
             Asiste_insert = 1
         Else
-            Asiste_insert = 0
+            ClientScript.RegisterStartupScript(Page.GetType(), "Error_Asistencia", "LanzaAviso('Usted no ha marcado/seleccionado la casilla de asistencia si, es un campo obligatorio, por favor, compruebela y marquela para continuar.')", True)
+            Return False
         End If
 
         'Misma comprobación con el transporte.
         If (transporte_delegado_si.Checked = True) Then
             Transporte_insert = 1
-
         Else
             Transporte_insert = 0
         End If
 
         'Misma comprobación con el alojamiento.
-        If (alojamiento_delegado_si.Checked = True) Then
+        If alojamiento_delegado_si.Checked = True Then
             Alojamiento_insert = 1
             Origen_insert = city_origen_delegado.Text
         Else
             Alojamiento_insert = 0
         End If
 
-        Alergias_insert = alergia_delegado.Text
+        alergi = alergia_delegado.Text
+        long_alergia = Len(alergi)
+
+        If long_alergia <= 0 Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "Error_Alergia", "LanzaAviso('Error el campo alergia no puede estar vacio. Gracias!')", True)
+            Return False
+        Else
+            Alergias_insert = alergi
+        End If
+
+
         Obser_insert = observa_delegado.Text
 
         'Realizamos la consulta, en este caso, la update de la BD.

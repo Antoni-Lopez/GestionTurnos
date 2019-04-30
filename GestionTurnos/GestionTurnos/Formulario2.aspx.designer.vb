@@ -419,6 +419,15 @@ Partial Public Class Formulario2
     Protected WithEvents Button_delegado As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control Button_EnvioMail.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button_EnvioMail As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''Control paso_datos.
     '''</summary>
     '''<remarks>

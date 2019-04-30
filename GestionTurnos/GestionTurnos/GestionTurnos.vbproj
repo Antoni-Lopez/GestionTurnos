@@ -73,7 +73,6 @@
   <ItemGroup>
     <Folder Include="fonts\" />
     <Folder Include="img\" />
-    <Folder Include="Script\" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -117,6 +116,8 @@
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Printer.aspx" />
     <Content Include="prueba.aspx" />
+    <Content Include="RecepcionAJAX.aspx" />
+    <Content Include="Script\ComunicacioAJAX.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Css\servicios.css" />
     <Content Include="Test.aspx" />
@@ -205,6 +206,13 @@
       <DependentUpon>prueba.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="RecepcionAJAX.aspx.designer.vb">
+      <DependentUpon>RecepcionAJAX.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecepcionAJAX.aspx.vb">
+      <DependentUpon>RecepcionAJAX.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Servicios.aspx.designer.vb">
       <DependentUpon>Servicios.aspx</DependentUpon>
     </Compile>
@@ -246,6 +254,26 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CDO">
+      <Guid>{CD000000-8B95-11D1-82DB-00C04FB1625D}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
