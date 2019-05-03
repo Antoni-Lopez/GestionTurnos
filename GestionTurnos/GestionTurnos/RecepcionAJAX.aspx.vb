@@ -7,33 +7,33 @@
         Dim VectorSQL() As String
         ReDim VectorSQL(0)
         Try
-            'If Request.Form("c") <> "" And Request.Form("d") <> "" And Request.Form("sid") <> "" Then
-            'Dim IDFira As Integer
-            'Select Case Request.Form("c")
-            'Case 1
-            'Dim clsGestio As New EPGestio160
-            'Dim Codi As String, IDCentre As Integer, LimitProfessors As Integer, LimitAlumnes As Integer, TotalProfessors As Integer
-            'Dim NomCentre As String, DiaVisita As String, TotalAlumnes As Integer, CPCentre As String = "", VDades() As String
-            'Dim EsProfessor As Boolean
-            'IDFira = 160
-            'VDades = CStr(Request.Form("d")).Split("¦")
-            'EsProfessor = Right(Codi, 1) = "P"
-            'Codi = Left(Codi, 9)
-            'If Not clsGestio.TornaDadesCodi(IDFira, Codi, IDCentre, LimitProfessors, LimitAlumnes, NomCentre, DiaVisita, CPCentre) Then
-            'Descripcio = "KO4"
-            'ElseIf Not clsGestio.TornaRegistratsCentre(IDFira, IDCentre, TotalProfessors, TotalAlumnes) Then
-            'Descripcio = "KO1"
-            'Else
-            'If EsProfessor And TotalProfessors >= LimitProfessors Then
-            'Descripcio = "KO2"
-            'ElseIf Not EsProfessor And TotalAlumnes >= LimitAlumnes Then
-            'Descripcio = "KO3"
-            'Else
-            'Descripcio = "OK" & IIf(EsProfessor, "2", "1") & NomCentre & "¦" & DiaVisita & " de diciembre" & "¦" & CPCentre
-            'End If
-            'End If
-            '   End Select
-            'End If
+            If Request.Form("c") <> "" And Request.Form("d") <> "" And Request.Form("sid") <> "" Then
+                'If Request.Form("c") <> "" And Request.Form("d") <> "" And Request.Form("sid") <> "" Then
+                Dim IDFira As Integer
+                Select Case Request.Form("c")
+                    Case 1
+                        'Dim clsGestio As New EPGestio160
+                        Dim Codi As String, IDCentre As Integer, LimitProfessors As Integer, LimitAlumnes As Integer, TotalProfessors As Integer
+                        Dim NomCentre As String, DiaVisita As String, TotalAlumnes As Integer, CPCentre As String = "", VDades() As String
+                        Dim EsProfessor As Boolean
+                        IDFira = 160
+                        VDades = CStr(Request.Form("d")).Split("¦")
+                        EsProfessor = Right(Codi, 1) = "P"
+                        Codi = Left(Codi, 9)
+                        'If Not clsGestio.TornaDadesCodi(IDFira, Codi, IDCentre, LimitProfessors, LimitAlumnes, NomCentre, DiaVisita, CPCentre) Then
+                        'Descripcio = "KO4"
+                        'ElseIf Not clsGestio.TornaRegistratsCentre(IDFira, IDCentre, TotalProfessors, TotalAlumnes) Then
+                        Descripcio = "KO1"
+                        'Else
+                        If EsProfessor And TotalProfessors >= LimitProfessors Then
+                            Descripcio = "KO2"
+                        ElseIf Not EsProfessor And TotalAlumnes >= LimitAlumnes Then
+                            Descripcio = "KO3"
+                        Else
+                            Descripcio = "OK" & IIf(EsProfessor, "2", "1") & NomCentre & "¦" & DiaVisita & " de diciembre" & "¦" & CPCentre
+                        End If
+                End Select
+            End If
         Catch ex As Exception
             Descripcio = "KO0_Problema verificando la información. Error: " & ex.Message
             GuardaAccio = True

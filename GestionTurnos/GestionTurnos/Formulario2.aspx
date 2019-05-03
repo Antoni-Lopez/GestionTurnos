@@ -212,7 +212,7 @@
             .funkyradio {margin-left: 1%; width: 120%;font-size: 16px;}
             }
 
-        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: none;}
+        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: block;}
     </style>
     <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -809,35 +809,23 @@
         function Registre() {
             var Dades;
             var miprueba2 = document.getElementById('name_delegado').value.trim();
-	        Dades = (document.getElementById('asistira_delegado_si').checked ? '1':'0') + "¦" + "Hola " + document.getElementById('name_delegado').value.trim();
+            alert("Hola "+miprueba2);
+	        Dades = (document.getElementById('asistira_delegado_si').checked ? '1':'0') + "¦" + "Hola " + miprueba2;
             setTimeout("InformacioAJAX(1,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
-            alert("seguimos funcionandoaaaaa!!!"+miprueba2);
         }
 
         function Registre_Tornada(Dades) {
-            alert("si entramos!!!");
-            document.getElementById('btnSubmit').className = "btn btn-info btnBoto1";
-            document.getElementById('SPANSubmit').style.display = 'none';
+            alert("entramos 2º funcion");
+            //document.getElementById('btnSubmit').className = "btn btn-info btnBoto1";
+            //document.getElementById('SPANSubmit').style.display = 'none';
             if (Dades.substr(0, 2) == 'OK') {
-                LanzaAviso("Parece que todo a salido OK, Un placer ");
+                alert("entramos en el if");
+                //LanzaAviso("Parece que todo a salido OK, Un placer ");
             }
             else if (Dades.substr(0, 2) == 'KO') {
-                LanzaAviso("UPSS algo ha salido mal y sale todo KO, lo sentimos ");
+                alert("no entramos en el if");
+                //LanzaAviso("UPSS algo ha salido mal y sale todo KO, lo sentimos ");
             }
-        }
-
-        function michorra() {
-            $(function () {
-                var name = "Listado de Medicos";
-                var $select = $('#mySelect');
-                $.each(opt, function(key, value){
-                    var group = $('<optgroup label="' + name + '" />');
-                    $.each(value, function(){
-                        $('<option />').html(this.name).appendTo(group);
-                    });
-                    group.appendTo($select);
-                });
-            });
         }
     </script>
 </body>
