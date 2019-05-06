@@ -109,7 +109,9 @@
     <Content Include="Css\loginform.css" />
     <Content Include="Formulario.aspx" />
     <Content Include="Formulario2.aspx" />
+    <Content Include="Inicio-Ajax.html" />
     <Content Include="Intranet.aspx" />
+    <Content Include="jumbotrom.html" />
     <Content Include="loading.html" />
     <Content Include="LoginForm.aspx" />
     <Content Include="loginform2.aspx" />
@@ -118,6 +120,7 @@
     <Content Include="prueba.aspx" />
     <Content Include="RecepcionAJAX.aspx" />
     <Content Include="Script\ComunicacioAJAX.js" />
+    <Content Include="Script\main.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Css\servicios.css" />
     <Content Include="Test.aspx" />
@@ -248,6 +251,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <Content Include="Script\main.coffe" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

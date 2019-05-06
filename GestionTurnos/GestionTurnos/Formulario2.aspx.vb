@@ -12,6 +12,10 @@
             Dim IdUsuario As Integer, Rol As Integer, Agrupacion As Integer
             IdUsuario = Request.QueryString("IdUser")
 
+            'paso_datos4.Text = IdUsuario
+
+
+
             Rol = Extraer_Rol(IdUsuario)
             Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
 
@@ -21,9 +25,17 @@
                 Extraer_BD_Delegado(IdUsuario, Rol)
                 Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
                 Button_EnvioMail.Attributes.Add("onclick", "elegir_accion(7);")
+                name_delegado.Attributes.Add("onclick", "desbloquear();")
+                ape1_delegado.Attributes.Add("onclick", "desbloquear();")
+                ape2_delegado.Attributes.Add("onclick", "desbloquear();")
+                email_delegado.Attributes.Add("onclick", "desbloquear();")
             Else
                 ClientScript.RegisterStartupScript(Page.GetType(), "desactivar_delegado", "desactivar();", True)
                 Extraer_BD_Medicos(IdUsuario)
+                name_medic.Attributes.Add("onclick", "desbloquear2();")
+                ape1_medic.Attributes.Add("onclick", "desbloquear2();")
+                ape2_medic.Attributes.Add("onclick", "desbloquear2();")
+                medic_mail.Attributes.Add("onclick", "desbloquear2();")
                 Button_envio_medico.Attributes.Add("onclick", "elegir_accion(6);")
             End If
             'Desactivamos los campos de delegado que no se podrán modificar en la BD.
@@ -93,6 +105,10 @@
                     'Mostramos la eleccion del ComboText.
                     'ClientScript.RegisterStartupScript(Page.GetType(), "anadir_optgroup_select", "michorra();", True)
                     Extraer_Medicos_Combo(IdUsuario, Rol, Agrupacion)
+                    name_medic.Attributes.Add("onclick", "desbloquear2();")
+                    ape1_medic.Attributes.Add("onclick", "desbloquear2();")
+                    ape2_medic.Attributes.Add("onclick", "desbloquear2();")
+                    medic_mail.Attributes.Add("onclick", "desbloquear2();")
                 Case 3
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
                     insertar_new_Medico(Agrupacion)
@@ -381,6 +397,7 @@
                     Obser = DS.Tables(0).Rows(i).Item("Observaciones")
                 Next
             End If
+
 
             'Rellenamos los inputs con los datos que extraemos de la BD.
             name_delegado.Text = Nombre

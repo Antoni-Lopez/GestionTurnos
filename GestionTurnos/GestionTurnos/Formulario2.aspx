@@ -40,7 +40,11 @@
         .altura{height: 100px;}
         #ciudad_origen{opacity:0;}
 
-
+        /* Ventana Modal */
+        .modal-header{
+            background-color: #E07C1A;color: #fff;
+        }
+        .modal-content{margin-top: 50%;}
         /* Cuadro para el banner */
         .banner{max-width: 810px;margin:auto;margin-top: 2.5%;border: 1px solid black;padding: 10px;height: 391px;background-color: #fff;box-shadow: 0px 0px 25px 1px rgba(0,0,0,0.75);}
         .my_img{width: 103%;margin-left:-1.3%;margin-top:-1.3%;height: 391px;}
@@ -133,7 +137,10 @@
         .enviar_mail{background-color:#5CB85C;color: #fff;float: right;margin-right: 12.5%;font-size: 20px;opacity: 1;border-radius: 6px;}
         .enviar_mail:hover{box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight: bold;}
 
-
+        /* Style Inputs ReadOnly */
+        #name_delegado:read-only,#ape1_delegado:read-only,#ape2_delegado:read-only,#email_delegado:read-only,#name_medic:read-only,#ape1_medic:read-only,#ape2_medic:read-only,#medic_mail:read-only {
+            background-color: #FFF;cursor: not-allowed;
+        }
 
         /*input ocultos para paso de valores*/
         .inputs_hidden{display:block;position: absolute; top: 250%;}
@@ -266,31 +273,49 @@
         //dejamos los inputs de nombre/ape/email/especialidad/nselas desactivados.
         //es decir, solo podemos verlos, no editarlos.
         function onlyread_inputs_medicos() {
+            /*
            document.getElementById("name_medic").style.pointerEvents = "none";
            document.getElementById("ape1_medic").style.pointerEvents = "none";
            document.getElementById("ape2_medic").style.pointerEvents = "none";
            document.getElementById("medic_mail").style.pointerEvents = "none";
            document.getElementById("medic_especialidad").style.pointerEvents = "none";
            document.getElementById("medic_selas").style.pointerEvents = "none";
+           */
+           document.getElementById("name_medic").setAttribute("readonly", true);           
+           document.getElementById("ape1_medic").setAttribute("readonly", true);
+           document.getElementById("email_delegado").setAttribute("readonly", true);
+           document.getElementById("ape2_medic").setAttribute("readonly", true);
+           document.getElementById("medic_mail").setAttribute("readonly", true);
+           document.getElementById("medic_especialidad").setAttribute("readonly", true);
+           document.getElementById("medic_selas").setAttribute("readonly", true);
         }
 
 
          //Solo lectura de los inputs del medico (Name/Ape1/Ape2/Email)
         function onlyread_inputs_medicos2() {
-           document.getElementById("name_medic").style.pointerEvents = "none";
-           document.getElementById("ape1_medic").style.pointerEvents = "none";
-           document.getElementById("ape2_medic").style.pointerEvents = "none";
-           document.getElementById("medic_mail").style.pointerEvents = "none";
+            /*
+            document.getElementById("name_medic").style.pointerEvents = "none";
+            document.getElementById("ape1_medic").style.pointerEvents = "none";
+            document.getElementById("ape2_medic").style.pointerEvents = "none";
+            document.getElementById("medic_mail").style.pointerEvents = "none";
+            */
+            document.getElementById("name_medic").setAttribute("readonly", true);
+            document.getElementById("ape1_medic").setAttribute("readonly", true);
+            document.getElementById("ape2_medic").setAttribute("readonly", true);
+            document.getElementById("medic_mail").setAttribute("readonly", true);
         }
 
 
          //Lectura/Escritura de los inputs del delegado (Name/Ape1/Ape2/Email)
         function activate_inputs_medicos() {
-           document.getElementById("name_medic").style.pointerEvents = "auto";
+           /*document.getElementById("name_medic").style.pointerEvents = "auto";
            document.getElementById("ape1_medic").style.pointerEvents = "auto";
            document.getElementById("ape2_medic").style.pointerEvents = "auto";
-            document.getElementById("medic_mail").style.pointerEvents = "auto";
-            
+            document.getElementById("medic_mail").style.pointerEvents = "auto"; */
+           document.getElementById("name_medic").setAttribute("readonly", false);
+           document.getElementById("ape1_medic").setAttribute("readonly", false);
+           document.getElementById("ape2_medic").setAttribute("readonly", false);
+           document.getElementById("medic_mail").setAttribute("readonly", false);
         }
 
 
@@ -304,10 +329,14 @@
 
         //Solo lectura de los inputs del delegado (Name/Ape1/Ape2/Email)
         function onlyread_inputs_delegado() {
-            document.getElementById("email_delegado").style.pointerEvents = "none";
+            document.getElementById("email_delegado").setAttribute("readonly", true);
+            document.getElementById("ape1_delegado").setAttribute("readonly", true);
+            document.getElementById("ape2_delegado").setAttribute("readonly", true);
+            document.getElementById("name_delegado").setAttribute("readonly", true);
+            /*document.getElementById("email_delegado").style.pointerEvents = "none";
             document.getElementById("ape2_delegado").style.pointerEvents = "none";
             document.getElementById("ape1_delegado").style.pointerEvents = "none";
-            document.getElementById("name_delegado").style.pointerEvents = "none";            
+            document.getElementById("name_delegado").style.pointerEvents = "none";   */         
         }
 
 
@@ -384,7 +413,7 @@
 
         //nos lanza el modal con el texto que queramos.
         function LanzaAviso(Text) {
-           bootbox.alert({ title: "Gestión de turnos", message: Text });
+           bootbox.alert({ title: "Gestor de turnos", message: Text });
         }
 
 
@@ -543,6 +572,32 @@
             clickeado2 = document.getElementById("medic_especialidad1").value;
             input_hidden = document.getElementById("paso_datos4");
             input_hidden.value = clickeado2;
+        }
+
+
+        //añadir LanzaAviso cuando los inputs esten bloqueados.
+        function desbloquear() {
+            //Cuadro de Delegado.
+            var name_delegat = document.getElementById("name_delegado").readOnly;
+            var apellidos_delegat = document.getElementById("ape1_delegado").readOnly;
+            var apellidos_delegat2 = document.getElementById("ape2_delegado").readOnly;
+            var mail_delegat = document.getElementById("email_delegado").readOnly;
+
+            if (name_delegat == true || apellidos_delegat == true || apellidos_delegat2 == true || mail_delegat == true) {
+                LanzaAviso("No es posible modificar el nombre, apellidos o email del Delegado ya dado de alta.");
+            }
+        }
+
+        function desbloquear2() {
+            //Cuadro de Medico.
+            var name_medic = document.getElementById("name_medic").readOnly;
+            var ape1_medic = document.getElementById("ape1_medic").readOnly;
+            var ape2_medic = document.getElementById("ape2_medic").readOnly;
+            var email_medic = document.getElementById("medic_mail").readOnly;
+
+            if (name_medic == true || ape1_medic == true || ape2_medic == true || email_medic == true) {
+                LanzaAviso("No es posible modificar el nombre, apellidos o email del Medico ya existente en la Base de Datos.");
+            }
         }
 
         // invoke blockUI as needed -->
@@ -778,7 +833,7 @@
                        
             
         </div>
-        <div id="cuadro_delegado3" onclick="Registre()">
+        <div id="cuadro_delegado3" onclick="mYprueba()">
             <div class="row margen padd">
                 <label for="nombre" class="label_textos">Alergias: </label><label for="required_camp" id="campo_requerido_dele5">*</label>
                 <asp:TextBox id="alergia_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
@@ -806,16 +861,13 @@
     </form>
     <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script>  
     <script type="text/javascript">
-        function Registre() {
+        function Registre(x) {
             var Dades;
-            var miprueba2 = document.getElementById('name_delegado').value.trim();
-            alert("Hola "+miprueba2);
-	        Dades = (document.getElementById('asistira_delegado_si').checked ? '1':'0') + "¦" + "Hola " + miprueba2;
-            setTimeout("InformacioAJAX(1,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+	        Dades = (document.getElementById('asistira_delegado_si').checked ? '1':'0');
+            setTimeout("InformacioAJAX("+x+",\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
         }
 
         function Registre_Tornada(Dades) {
-            alert("entramos 2º funcion");
             //document.getElementById('btnSubmit').className = "btn btn-info btnBoto1";
             //document.getElementById('SPANSubmit').style.display = 'none';
             if (Dades.substr(0, 2) == 'OK') {
@@ -826,6 +878,14 @@
                 alert("no entramos en el if");
                 //LanzaAviso("UPSS algo ha salido mal y sale todo KO, lo sentimos ");
             }
+        }
+        function mYprueba() {
+            nome_medico = document.getElementById("name_medic").value;            
+            apes_medico = document.getElementById("ape1_medic").value +"¦"+ document.getElementById("ape2_medic").value;
+            email_medico = document.getElementById("medic_mail").value;
+            alert(nome_medico);
+            alert(apes_medico);
+            alert(email_medico);
         }
     </script>
 </body>
