@@ -601,9 +601,10 @@
         }
 
         // invoke blockUI as needed -->
-        $(document).on('click', '#Button_delegado', function() {            
-            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Actualizando sus datos!</h4>' }); 
-        });
+        /*$(document).on('click', '#Button_delegado', function () {   
+            //Registre(1);
+            //$.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Actualizando sus datos!</h4>' }); 
+        }); */
         $(document).on('change', '#soflow', function () {
            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Recibiendo los datos.</h4>' }); 
         });
@@ -833,7 +834,7 @@
                        
             
         </div>
-        <div id="cuadro_delegado3" onclick="mYprueba()">
+        <div id="cuadro_delegado3" onclick="Registre(1)">
             <div class="row margen padd">
                 <label for="nombre" class="label_textos">Alergias: </label><label for="required_camp" id="campo_requerido_dele5">*</label>
                 <asp:TextBox id="alergia_delegado" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
@@ -861,13 +862,80 @@
     </form>
     <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script>  
     <script type="text/javascript">
-        function Registre(x) {
+        function Registre(x) {           
             var Dades;
-	        Dades = (document.getElementById('asistira_delegado_si').checked ? '1':'0');
-            setTimeout("InformacioAJAX("+x+",\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+            switch (x) {
+                case 1:
+                    var numero, Long_numero, Primer_numero;
+                    numero = document.getElementById("numero_delegado").value.trim();
+                    Long_numero = numero.length;
+                    document.getElementById("paso_datos2").value = 1;
+                    document.getElementById("paso_datos").value = 1;
+
+                    if (Long_numero <= 0) {
+                        LanzaAviso("El número es un campo obligatorio y por tanto no puede estar vacio. Introduzca un número por favor.");
+                        return false;
+                    }
+
+                    var siglas_delegat, Long_siglas_delegat, siglas_gerente_delegat, Long_siglas_gerente_delegat;
+
+                    siglas_delegat = document.getElementById("siglas_delegado").value.trim();
+                    Long_siglas_delegat = siglas_delegat.length;
+
+                    siglas_gerente_delegat = document.getElementById("siglas_gerente_delegado").value.trim();
+                    Long_siglas_gerente_delegat = siglas_gerente_delegat.length;
+
+                    if (Long_siglas_delegat <= 0 || Long_siglas_gerente_delegat <= 0 ) {
+                        LanzaAviso("La Siglas tanto de Delegado como de Gerente son un campo obligatorio y por tanto no pueden estar vacios. Introduzca algún valor por favor.");
+                        return false;
+                    }
+
+                    var Regio, regio_long, asistira, alergia,alergia_long
+
+                    Regio = document.getElementById("region_delegado").value.trim();
+                    regio_long = Regio.length;
+                    alergia = document.getElementById("alergia_delegado").value.trim();
+                    alergia_long = alergia.length;
+
+                    if (regio_long <= 0 || alergia_long <= 0) {
+                        LanzaAviso("Los campos de Región y Alergias son obligatorios por favor introduzca algún valor.");
+                        return false;
+                    }
+
+                    Dades += document.getElementById("paso_datos3").value + "¦" + document.getElementById("name_delegado").value.trim() + "¦"
+                        + document.getElementById('ape1_delegado').value.trim() + "¦" + document.getElementById('ape2_delegado').value.trim() +
+                        "¦" + document.getElementById("email_delegado").value.trim() + "¦" + document.getElementById("numero_delegado").value.trim() +
+                        "¦" + document.getElementById("siglas_delegado").value.trim() + "¦" + document.getElementById("siglas_gerente_delegado").value +
+                        "¦" + (document.getElementById('asistira_delegado_si').checked ? '1' : '0') + "¦" +
+                        (document.getElementById('alojamiento_delegado_si').checked ? '1' : '0') + "¦" + 
+                        (document.getElementById('transporte_delegado_si').checked ? '1' : '0') + "¦" + document.getElementById("city_origen_delegado").value.trim() +
+                        "¦" + document.getElementById("alergia_delegado").value.trim() + "¦" + document.getElementById("observa_delegado").value.trim() +
+                        "¦" + document.getElementById("region_delegado").value.trim() ;
+                        setTimeout("InformacioAJAX(1,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+
+                    break;
+                case 2:
+
+                    Dades += document.getElementById("paso_datos3").value + "¦" + document.getElementById("name_delegado").value.trim() + "¦"
+                        + document.getElementById('ape1_delegado').value.trim() + "¦" + document.getElementById('ape2_delegado').value.trim() +
+                        "¦" + document.getElementById("email_delegado").value.trim() + "¦" + document.getElementById("numero_delegado").value.trim() +
+                        "¦" + document.getElementById("siglas_delegado").value.trim() + "¦" + document.getElementById("siglas_gerente_delegado").value +
+                        "¦" + (document.getElementById('asistira_delegado_si').checked ? '1' : '0') + "¦" +
+                        (document.getElementById('alojamiento_delegado_si').checked ? '1' : '0') + "¦" + 
+                        (document.getElementById('transporte_delegado_si').checked ? '1' : '0') + "¦" + document.getElementById("city_origen_delegado").value.trim() +
+                        "¦" + document.getElementById("alergia_delegado").value.trim() + "¦" + document.getElementById("observa_delegado").value.trim() ;
+                    
+                    setTimeout("InformacioAJAX(2,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+
+
+                    
+
+                    break;
+            }
         }
 
         function Registre_Tornada(Dades) {
+
             //document.getElementById('btnSubmit').className = "btn btn-info btnBoto1";
             //document.getElementById('SPANSubmit').style.display = 'none';
             if (Dades.substr(0, 2) == 'OK') {
@@ -886,6 +954,9 @@
             alert(nome_medico);
             alert(apes_medico);
             alert(email_medico);
+        }
+        function miprueba(x) {
+            alert("Aqui recibimos: " + x);
         }
     </script>
 </body>

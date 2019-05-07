@@ -10,10 +10,10 @@
             clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
 
             Dim IdUsuario As Integer, Rol As Integer, Agrupacion As Integer
+
             IdUsuario = Request.QueryString("IdUser")
 
-            'paso_datos4.Text = IdUsuario
-
+            paso_datos3.Text = IdUsuario
 
 
             Rol = Extraer_Rol(IdUsuario)
@@ -23,7 +23,8 @@
                 radio1.Checked = True
                 Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                 Extraer_BD_Delegado(IdUsuario, Rol)
-                Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
+                'Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
+                Button_delegado.Attributes.Add("onclick", "Registre(1);")
                 Button_EnvioMail.Attributes.Add("onclick", "elegir_accion(7);")
                 name_delegado.Attributes.Add("onclick", "desbloquear();")
                 ape1_delegado.Attributes.Add("onclick", "desbloquear();")
@@ -54,7 +55,8 @@
             'Declaramos las acciones al pulsar los botones.
             Button_Medico.Attributes.Add("onclick", "boton_enviar_medico();")
             Button_Medico_Delete.Attributes.Add("onclick", "elegir_accion(5);")
-            Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
+            'Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
+
             Button_envio_medico.Attributes.Add("onclick", "elegir_accion(6);")
 
             'Desactivamos los campos de delegado que no se podrán modificar en la BD.
@@ -100,7 +102,9 @@
             Select Case input_hidden
                 Case 1
                     'Llamamos a la función para que nos actualize los datos.
-                    ActualizarBD_Delegado(IdUsuario)
+                    'ActualizarBD_Delegado(IdUsuario)
+                    'ClientScript.RegisterStartupScript(Page.GetType(), "lanzarAjax", "Registre(1);", True)
+
                 Case 2
                     'Mostramos la eleccion del ComboText.
                     'ClientScript.RegisterStartupScript(Page.GetType(), "anadir_optgroup_select", "michorra();", True)
@@ -140,9 +144,11 @@
         End If
     End Sub
 
+
     Protected Sub Button_delegado_Click(sender As Object, e As EventArgs) Handles Button_delegado.Click
-        paso_datos.Text = 1
-        paso_datos2.Text = 1
+        'ClientScript.RegisterStartupScript(Page.GetType(), "Llamar_Ajax", "Registre(1);", True)
+        
+
     End Sub
 
     Protected Sub Button_envio_medico_Click(sender As Object, e As EventArgs) Handles Button_envio_medico.Click
