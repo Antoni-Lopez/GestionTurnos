@@ -21,7 +21,9 @@
 
     <style>
         /* Formateamos el body para que se apliquen nuestros stilos perfect (-;*/
-        body{margin: 0;padding: 0;box-sizing:border-box;}
+        body{margin: 0;padding: 0;box-sizing:border-box;
+            height: 3384px;
+        }
 
 
         /* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
@@ -115,12 +117,12 @@
               
         
         /* Boton SEND medicos */
-        .enviar {background-color: #E07C1A;margin-left: 40%;width: 20%;font-size: 20px;color: #fff;opacity: 1;border-radius: 6px;}
+        .enviar {border: 1px solid black;background-color: #E07C1A;margin-left: 40%;width: 20%;font-size: 20px;color: #fff;opacity: 1;border-radius: 6px;text-align: center;cursor: pointer;padding: 5px;}
         .enviar:hover {background-color: #04B5DE;color: #fff;box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight: bold;}
 
 
         /* Boton Delete medicos*/
-        #Button_Medico_Delete {background-color:#E21212;margin-left: -77%;margin-bottom: 4%;margin-top: 4%;width: 20%;font-size: 20px;color: #fff;opacity: 1;border-radius: 6px;}
+        #Button_Medico_Delete {background-color:#E21212;margin-left: 5%;margin-bottom: 4%;margin-top: 4%;width: 20%;font-size: 20px;color: #fff;opacity: 1;border-radius: 6px;}
         #Button_Medico_Delete:hover {background-color: #fff;color: #E21212;box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight: bold;}
 
 
@@ -293,12 +295,6 @@
 
          //Solo lectura de los inputs del medico (Name/Ape1/Ape2/Email)
         function onlyread_inputs_medicos2() {
-            /*
-            document.getElementById("name_medic").style.pointerEvents = "none";
-            document.getElementById("ape1_medic").style.pointerEvents = "none";
-            document.getElementById("ape2_medic").style.pointerEvents = "none";
-            document.getElementById("medic_mail").style.pointerEvents = "none";
-            */
             document.getElementById("name_medic").setAttribute("readonly", true);
             document.getElementById("ape1_medic").setAttribute("readonly", true);
             document.getElementById("ape2_medic").setAttribute("readonly", true);
@@ -308,10 +304,6 @@
 
          //Lectura/Escritura de los inputs del delegado (Name/Ape1/Ape2/Email)
         function activate_inputs_medicos() {
-           /*document.getElementById("name_medic").style.pointerEvents = "auto";
-           document.getElementById("ape1_medic").style.pointerEvents = "auto";
-           document.getElementById("ape2_medic").style.pointerEvents = "auto";
-            document.getElementById("medic_mail").style.pointerEvents = "auto"; */
            document.getElementById("name_medic").setAttribute("readonly", false);
            document.getElementById("ape1_medic").setAttribute("readonly", false);
            document.getElementById("ape2_medic").setAttribute("readonly", false);
@@ -332,11 +324,7 @@
             document.getElementById("email_delegado").setAttribute("readonly", true);
             document.getElementById("ape1_delegado").setAttribute("readonly", true);
             document.getElementById("ape2_delegado").setAttribute("readonly", true);
-            document.getElementById("name_delegado").setAttribute("readonly", true);
-            /*document.getElementById("email_delegado").style.pointerEvents = "none";
-            document.getElementById("ape2_delegado").style.pointerEvents = "none";
-            document.getElementById("ape1_delegado").style.pointerEvents = "none";
-            document.getElementById("name_delegado").style.pointerEvents = "none";   */         
+            document.getElementById("name_delegado").setAttribute("readonly", true);   
         }
 
 
@@ -551,9 +539,14 @@
             document.getElementById("ape2_medic").value = valor;
             document.getElementById("medic_mail").value = valor;
             document.getElementById("medic_selas").value = valor;
-            document.getElementById("medic_especialidad").value = valor;       
-            document.getElementById("alergia_medic").value = valor;  
-            document.getElementById("Observa_medic").value = valor;  
+            document.getElementById("medic_especialidad1").value = 0;  
+            document.getElementById("consen_no").checked = true;
+            document.getElementById("alergia_medic").value = valor;               
+            document.getElementById("Observa_medic").value = valor;
+            alojamiento_medico_onoff.style.opacity = '0';
+            transporte_medico_onoff.style.opacity = '0';
+            ciudad_origen_medico.style.opacity = '0';
+              
         }
 
         //funcion que creamos para cuando tenemos 1 registro en la BD
@@ -608,15 +601,17 @@
         $(document).on('change', '#soflow', function () {
            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Recibiendo los datos.</h4>' }); 
         });
+        /*
         $(document).on('click', '#Button_Medico', function () {
            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Actualizando los datos.</h4>' }); 
-        });
+        });        
         $(document).on('click', '#Button_Medico_Delete', function () {
            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Elimiando el registro de la Base de Datos.</h4>' }); 
-        });
+        });/*
         $(document).on('click', '#Button_envio_medico', function () {
            $.blockUI({ message: '<h4><img src="img/ajax-loader.gif" /> Actualizando tus datos.</h4>' }); 
-        });
+        }); */
+
     </script>
 </head>
 <body>
@@ -727,7 +722,7 @@
             </div>             
             
         </div>
-        <div id="cuadro_medico3" class="row panel">
+        <div id="cuadro_medico3" class="row panel" onclick="putamierda()">
             <div class="row margen padd">
                 <label for="nombre" class="label_textos">Alergias: </label><label for="required_camp" id="campo_requerido7">*</label>
                 <asp:TextBox id="alergia_medic" ReadOnly="false" runat="server" CssClass="form-control medic_aler"></asp:TextBox>
@@ -738,14 +733,17 @@
             </div>
         </div>
         <div id="cuadro_medico4" class="row panel">
-            <asp:Button ID="Button_Medico" CssClass="enviar" Text="Enviar" runat="server" />
+            <!--<asp:Button ID="Button_Medico" CssClass="enviar" Text="Enviar" runat="server" /> -->
+            <div id="Button_Medico" class="enviar" onclick="Registre(2)">Enviar</div>
             <div class="row centro">
-                <asp:Button ID="Button_Medico_Delete" CssClass="enviar" Text="Eliminar" runat="server" />
+                <!--<asp:Button ID="Button_Medico_Delete" CssClass="enviar" Text="Eliminar" runat="server" /> -->
+                <div id="Button_Medico_Delete" class="enviar" onclick="Registre(3)">Eliminar</div>
             </div>
             <label for="info_asterisco" id="info_aste">* Campos Obligatorios</label>
         </div>
         <div id="cuadro_medico5" class="row panel">
-            <asp:Button ID="Button_envio_medico" CssClass="enviar" Text="Enviar" runat="server" />
+            <!--<asp:Button ID="Button_envio_medico" CssClass="enviar" Text="Enviar" runat="server" /> -->
+            <div id="Button_envio_medico" class="enviar" onclick="Registre(2)">Enviar</div>
         </div>
         <div id="cuadro_delegado" onclick="mostrar_ocultar_alojamientoYTransporte()">
             <div class="row margen padd">
@@ -845,7 +843,8 @@
             </div>
         </div>
         <div id="cuadro_delegado4">
-            <asp:Button ID="Button_delegado" CssClass="enviar" Text="Enviar" runat="server" />
+            <!--<asp:Button ID="Button_delegado" CssClass="enviar" Text="Enviar" runat="server" autopostback="false"/> -->
+            <div id="Button_delegado" class="enviar" onclick="Registre(1)">Enviar</div> 
             <div class="row">
                 <label for="info_asterisco" id="info_asiste_dele" style="margin-left:5%;">* Campos Obligatorios</label>
             </div>   
@@ -858,32 +857,46 @@
             <asp:TextBox ID="paso_datos2" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
             <asp:TextBox ID="paso_datos3" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
             <asp:TextBox ID="paso_datos4" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
+            <asp:TextBox ID="paso_datos5" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
+            <asp:TextBox ID="paso_datos6" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
         </div>
     </form>
     <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script>  
-    <script type="text/javascript">
+    <script>
+        
         function Registre(x) {           
             var Dades;
             switch (x) {
-                case 1:
-                    var numero, Long_numero, Primer_numero;
+                case 1: //Actualizar Delegado
+                    var numero,numero_insert, Long_numero, Primer_numero;
                     numero = document.getElementById("numero_delegado").value.trim();
                     Long_numero = numero.length;
-                    document.getElementById("paso_datos2").value = 1;
+                    Primer_numero = numero.substr(0, 1);
+
                     document.getElementById("paso_datos").value = 1;
 
                     if (Long_numero <= 0) {
                         LanzaAviso("El número es un campo obligatorio y por tanto no puede estar vacio. Introduzca un número por favor.");
                         return false;
                     }
+                    else {
+                        if (Primer_numero == '6' || Primer_numero == '7') {
+                            numero_insert = numero;
+                        }
+                        else {
+                            LanzaAviso("El número debe de comenzar por 6 o 7, Cualquier otro número es invalido. Introduzca de nuevo el número de Telefono. Gracias!");
+                            return false;
+                        }
+                    }
 
                     var siglas_delegat, Long_siglas_delegat, siglas_gerente_delegat, Long_siglas_gerente_delegat;
 
                     siglas_delegat = document.getElementById("siglas_delegado").value.trim();
                     Long_siglas_delegat = siglas_delegat.length;
-
                     siglas_gerente_delegat = document.getElementById("siglas_gerente_delegado").value.trim();
                     Long_siglas_gerente_delegat = siglas_gerente_delegat.length;
+
+
 
                     if (Long_siglas_delegat <= 0 || Long_siglas_gerente_delegat <= 0 ) {
                         LanzaAviso("La Siglas tanto de Delegado como de Gerente son un campo obligatorio y por tanto no pueden estar vacios. Introduzca algún valor por favor.");
@@ -898,65 +911,105 @@
                     alergia_long = alergia.length;
 
                     if (regio_long <= 0 || alergia_long <= 0) {
-                        LanzaAviso("Los campos de Región y Alergias son obligatorios por favor introduzca algún valor.");
+                        LanzaAviso("Los campos de Región y Alergias son obligatorios y no pueden estar vacios, por favor introduzca algún valor.");
                         return false;
                     }
 
-                    Dades += document.getElementById("paso_datos3").value + "¦" + document.getElementById("name_delegado").value.trim() + "¦"
+                    Dades = document.getElementById("paso_datos2").value + "¦" + document.getElementById("name_delegado").value.trim() + "¦"
                         + document.getElementById('ape1_delegado').value.trim() + "¦" + document.getElementById('ape2_delegado').value.trim() +
-                        "¦" + document.getElementById("email_delegado").value.trim() + "¦" + document.getElementById("numero_delegado").value.trim() +
+                        "¦" + document.getElementById("email_delegado").value.trim() + "¦" +
                         "¦" + document.getElementById("siglas_delegado").value.trim() + "¦" + document.getElementById("siglas_gerente_delegado").value +
                         "¦" + (document.getElementById('asistira_delegado_si').checked ? '1' : '0') + "¦" +
                         (document.getElementById('alojamiento_delegado_si').checked ? '1' : '0') + "¦" + 
                         (document.getElementById('transporte_delegado_si').checked ? '1' : '0') + "¦" + document.getElementById("city_origen_delegado").value.trim() +
                         "¦" + document.getElementById("alergia_delegado").value.trim() + "¦" + document.getElementById("observa_delegado").value.trim() +
-                        "¦" + document.getElementById("region_delegado").value.trim() ;
-                        setTimeout("InformacioAJAX(1,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
-
+                        "¦" + document.getElementById("region_delegado").value.trim();
+                        setTimeout("InformacioAJAX(1,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000); 
                     break;
-                case 2:
 
-                    Dades += document.getElementById("paso_datos3").value + "¦" + document.getElementById("name_delegado").value.trim() + "¦"
-                        + document.getElementById('ape1_delegado').value.trim() + "¦" + document.getElementById('ape2_delegado').value.trim() +
-                        "¦" + document.getElementById("email_delegado").value.trim() + "¦" + document.getElementById("numero_delegado").value.trim() +
-                        "¦" + document.getElementById("siglas_delegado").value.trim() + "¦" + document.getElementById("siglas_gerente_delegado").value +
-                        "¦" + (document.getElementById('asistira_delegado_si').checked ? '1' : '0') + "¦" +
-                        (document.getElementById('alojamiento_delegado_si').checked ? '1' : '0') + "¦" + 
-                        (document.getElementById('transporte_delegado_si').checked ? '1' : '0') + "¦" + document.getElementById("city_origen_delegado").value.trim() +
-                        "¦" + document.getElementById("alergia_delegado").value.trim() + "¦" + document.getElementById("observa_delegado").value.trim() ;
+
+                case 2: //Actualizar Medico
+                    alert("ieeeeeee");
+
+                    var select_especialidad = document.getElementById("medic_especialidad1").value;
+                    var consentimiento;
                     
-                    setTimeout("InformacioAJAX(2,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+                    //Comprobamos que el campo especialidad no este vacio o elegida una opcion no valida.
+                    if (select_especialidad == 0 || select_especialidad == '') {
+                        LanzaAviso("Por favor seleccione una especialidad de las 5 que tiene. Gracias!");
+                        return false;
+                    }
+                    //Comprobamos que el campo consentimiento, este marcado.
+                    if (document.getElementById("consen_si").checked == true) {
+                        consentimiento = 1;
+                    }
+                    else {
+                        LanzaAviso("El campo consentimiento es obligatorio, por favor marquelo como si y repita el proceso.");
+                        return false;
+                    }
+                    //Comprobamos que el campo numero de selas no este vacio.
+                    var n_selas = document.getElementById("medic_selas").value
+                    long_n_selas = n_selas.length;
+                    if (long_n_selas == 0) {
+                        LanzaAviso("El campo del número de Selas del Medico es obligatorio, Por favor introduzca algún número.");
+                        return false;
+                    }
 
+                    //Comprobamos que el campo alergias no este vacio.
+                    var alergia = document.getElementById("alergia_medic").value
+                    long_alergia = alergia.length;
+                    if (long_alergia == 0) {
+                        LanzaAviso("El campo alergia es obligatorio, Por favor introduzca algún dato.");
+                        return false;
+                    }
 
-                    
+                    Dades = document.getElementById("paso_datos2").value + "¦" + document.getElementById("name_medic").value.trim() + "¦"
+                        + document.getElementById('ape1_medic').value.trim() + "¦" + document.getElementById('ape2_medic').value.trim() +
+                        "¦" + document.getElementById("medic_mail").value.trim() + "¦" + select_especialidad + "¦" +
+                        document.getElementById("medic_selas").value.trim() + "¦" + consentimiento + "¦" +
+                        (document.getElementById('alojamiento_medico_si').checked ? '1' : '0') + "¦" + (document.getElementById('transpor_si').checked ? '1' : '0') +
+                        "¦" + document.getElementById('origen_medic').value.trim() + "¦" + document.getElementById('alergia_medic').value.trim() + "¦" +
+                        document.getElementById('Observa_medic').value.trim();
 
+                    setTimeout("InformacioAJAX(2,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000); 
+                    break;
+
+                case 3: //Eliminar un registro de medico.
+                    alert("funciono?");
+                    //Dades = document.getElementById("paso_datos2").value;
+                    //setTimeout("InformacioAJAX(3,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
                     break;
             }
         }
 
         function Registre_Tornada(Dades) {
-
-            //document.getElementById('btnSubmit').className = "btn btn-info btnBoto1";
-            //document.getElementById('SPANSubmit').style.display = 'none';
-            if (Dades.substr(0, 2) == 'OK') {
-                alert("entramos en el if");
-                //LanzaAviso("Parece que todo a salido OK, Un placer ");
+            if (Dades.substr(0, 2) == "OK") {
+                if (Dades.substr(2, 1) == "1") {
+                    LanzaAviso("Hemos modificado el registro que lleva el Email: " + document.getElementById("email_delegado").value) + " en la Base de Datos con exito. Gracias ;-)";
+                }
+                else if (Dades.substr(2, 1) == "2") {
+                    LanzaAviso("Hemos actualizado con exito los datos para el registro con Email: (" + document.getElementById("medic_mail").value + ") ;-)");
+                }
+                else if (Dades.substr(2, 1) == "3") {
+                    LanzaAviso("Hemos eliminado con exito el registro número(" + document.getElementById("paso_datos2").value + ") de nuestra Base de Datos.");
+                    //document.getElementById("soflow").value = 0;                 
+                    //vaciar_inputs_medicos();                    
+                }
             }
-            else if (Dades.substr(0, 2) == 'KO') {
-                alert("no entramos en el if");
-                //LanzaAviso("UPSS algo ha salido mal y sale todo KO, lo sentimos ");
+            else {
+                if (Dades.substr(2, 1) == "0") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+                else if (Dades.substr(2, 1) == "1") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+                else if (Dades.substr(2, 1) == "2") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+                else if (Dades.substr(2, 1) == "3") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
             }
-        }
-        function mYprueba() {
-            nome_medico = document.getElementById("name_medic").value;            
-            apes_medico = document.getElementById("ape1_medic").value +"¦"+ document.getElementById("ape2_medic").value;
-            email_medico = document.getElementById("medic_mail").value;
-            alert(nome_medico);
-            alert(apes_medico);
-            alert(email_medico);
-        }
-        function miprueba(x) {
-            alert("Aqui recibimos: " + x);
         }
     </script>
 </body>

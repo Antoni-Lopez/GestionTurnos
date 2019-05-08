@@ -462,4 +462,22 @@ Partial Public Class Formulario2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents paso_datos4 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control paso_datos5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents paso_datos5 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control paso_datos6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents paso_datos6 As Global.System.Web.UI.WebControls.TextBox
 End Class
