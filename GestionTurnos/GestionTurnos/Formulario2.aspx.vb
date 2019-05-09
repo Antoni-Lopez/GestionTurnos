@@ -21,6 +21,7 @@
             paso_datos2.Text = IdUsuario 'Pasamos a una caja oculta el valor del ID del Usuario que accede.
             Rol = Extraer_Rol(IdUsuario)
             Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
+            paso_datos3.Text = Agrupacion 'Pasamos a una caja oculta el valor de la agrupación.
 
             If Rol = 0 Then
                 radio1.Checked = True
@@ -114,7 +115,7 @@
                     medic_mail.Attributes.Add("onclick", "desbloquear2();")
                 Case 3
                     'El Delegado le pulsa al botón de enviar en medicos, la web lo interpreta como que quiere introducir un nuevo registro de medico en la BD
-                    insertar_new_Medico(Agrupacion)
+                    'insertar_new_Medico(Agrupacion)
                     soflow.Items.Clear()  'Borra el texto del combo
                     soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
                     soflow.Items.Add(New ListItem("------------------------------------------------", "0"))  'Añadimos primera opcion.
@@ -128,7 +129,7 @@
                     Extaer_Datos_Combo(IdUsuario, Rol, Agrupacion)
                 Case 5
                     'Boton eliminar registro de medico en la BD.
-                    Delete_1Medico_BD()
+                    'Delete_1Medico_BD()
                     ClientScript.RegisterStartupScript(Page.GetType(), "vaciar_inputs_medicos", "vaciar_inputs_medicos();", True)
                     soflow.Items.Clear()  'Borra el texto del combo
                     soflow.Items.Add(New ListItem("Nueva Alta Médico", "-2"))  'Añadimos otra opcion.
@@ -448,8 +449,8 @@
             VArray2 = Split(Sigla2, "¦")
 
             For c = LBound(VArray) To UBound(VArray)
-                siglas_gerente_delegado.Text = VArray(0)
-                siglas_delegado.Text = VArray(1)
+                siglas_gerente_delegado.Text = VArray(1)
+                siglas_delegado.Text = VArray(0)
             Next
 
             For p = LBound(VArray2) To UBound(VArray2)

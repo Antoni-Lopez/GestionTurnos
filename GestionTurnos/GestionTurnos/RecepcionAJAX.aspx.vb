@@ -57,7 +57,7 @@
                         Dim Idusuario As Integer, Name As String, Apellidos As String, email As String, especialidad As Integer
                         Dim numero_selas As String, Consentimiento As Integer, Alojamiento As Integer, Transporte As Integer
                         Dim Origen_city As String, Alergia As String, Observa As String
-                        Dim Rol As String, Rol_long As String, Agrupacion As String, Agrupa_long As String
+                        Dim Rol As String, Agrupacion As Integer, Rol_Y_Agrupacion() As String
 
 
                         VDades = CStr(Request.Form("d")).Split("¦")
@@ -74,8 +74,14 @@
                         Origen_city = VDades(10)
                         Alergia = VDades(11)
                         Observa = VDades(12)
-                        Rol = Extraer_Rol(Idusuario)
-                        Agrupacion = Extraer_Agrupacion(Idusuario)
+                        Rol_Y_Agrupacion = Extraer_Agrupacion_Y_Rol(Idusuario).Split("¦")
+
+                        Rol = Rol_Y_Agrupacion(0)
+                        Agrupacion = Rol_Y_Agrupacion(1)
+
+
+                        'Rol = Extraer_Rol(Idusuario)
+                        'Agrupacion = Extraer_Agrupacion(Idusuario)
 
                         VectorSQL(0) = "UPDATE eecontactes SET idContacte = '" & Rol & "', idOrigen='" & Agrupacion & "', idTipusContacte='" & Transporte & "', Nom='" & clsBD.Cometes(Left(Name, 100)) & "', Cognoms='" & clsBD.Cometes(Left(Apellidos, 100)) & "', Email='" & clsBD.Cometes(Left(email, 100)) & "', Procedencia='" & Origen_city & "', SectorInteres='" & numero_selas & "', NickTwitter='" & Alojamiento & "', NickFacebook='" & clsBD.Cometes(Left(Alergia, 100)) & "', WebPersonal='" & clsBD.Cometes(Left(Observa, 100)) & "',Blog='" & especialidad & "',Data='" & Consentimiento & "' WHERE Auto = '" & Idusuario & "'"
                         If Not clsBD.BaseDades(2, VectorSQL) Then
@@ -89,7 +95,7 @@
 
                         GoTo Resposta
 
-                    Case 3
+                    Case 3 'Delete Medico
                         Dim Idusuario As Integer
                         VDades = CStr(Request.Form("d")).Split("¦")
                         Idusuario = VDades(0)
@@ -100,8 +106,59 @@
                         Else
                             'Correcto
                             Descripcio = "OK3"
-                            'Extraer_Datos(Idusuario)
-                            'Extaer_Datos_Combo(Idusuario, Rol, Agrupacion)
+                        End If
+                        GoTo Resposta
+
+                    Case 4 'Insert New Medico
+
+                        Dim DS As New DataSet
+                        Dim i As Integer, Ultimo As Integer = 0
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        Dim Name As String, Apellido As String, email As String, IdFeria As Integer, Mail As String, Especialidad As String, NSelas As String
+                        Dim Consentimiento As Integer, Transporte As Integer, Alojamiento As Integer, Alergia As String, Observaciones As String, Password As String
+                        Dim Rol As Integer, Agrupacion As Integer, Asiste As Integer, numero As String, Region As String, Origen As String, Nit As Integer, NITactivat As Integer
+
+                        Name = VDades(0)
+                        Apellido = VDades(1) + "¦" + VDades(2)
+                        Mail = VDades(3)
+                        If Buscar_Email(Mail) Then
+                            Descripcio = "KO4"
+                            GoTo Resposta
+                        Else
+                            Especialidad = VDades(4)
+                            NSelas = VDades(5)
+                            Consentimiento = VDades(6)
+                            Transporte = VDades(7)
+                            Alojamiento = VDades(8)
+                            Origen = VDades(9)
+                            Alergia = VDades(10)
+                            Observaciones = VDades(11)
+
+                            Rol = 1 ' Ponemos el Rol a "Martillo" porque estamos insertando un Medico y siempre va a tener el Rol de Medico.
+                            IdFeria = 195 'También lo ponemos a martillo.
+                            Agrupacion = VDades(12)
+
+                            numero = 0
+                            Password = ""
+                            Region = ""
+                            Nit = 0
+                            Asiste = 0
+                            NITactivat = 1
+
+                            VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) " &
+                                        "VALUES(" & IdFeria & "," & Rol & "," & Agrupacion & "," & Transporte & "," & Asiste & ",'" & clsBD.Cometes(Left(Name, 100)) & "','" & clsBD.Cometes(Left(Apellido, 100)) & "'," &
+                                        "'" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "'," & NITactivat & ",'" & clsBD.Cometes(Left(Password, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
+                                        "" & Alojamiento & ",'" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "')"
+
+                            If Not clsBD.BaseDades(2, VectorSQL, , Ultimo) Then
+                                'Problema
+                                Descripcio = "KO5"
+                            Else
+                                'La variable Ultimo tendrá el último ID autonumérico
+                                Descripcio = "OK4"
+                            End If
                         End If
                         GoTo Resposta
                 End Select
@@ -122,41 +179,44 @@ Resposta:
         End If
     End Sub
 
-    Public Function Extraer_Rol(ByRef Idusuario)
-
+    Private Function Extraer_Agrupacion_Y_Rol(ByVal IdUser)
         Dim DS As New DataSet
-        Dim Rol As Integer
-        VectorSQL(0) = "SELECT idContacte FROM eecontactes WHERE Auto = '" & Idusuario & "'"
+        Dim Agrupacion As String, Rol As String, Rol_Y_Agrupacion As String, prueba As Integer, cosas_mias As String
+        VectorSQL(0) = "SELECT idContacte, idOrigen FROM EEContactes WHERE Auto ='" & clsBD.Cometes(Left(IdUser, 100)) & "'"
+
         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
             'Problema
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
                     Rol = DS.Tables(0).Rows(i).Item("idContacte")
+                    Agrupacion = DS.Tables(0).Rows(i).Item("idOrigen")
                 Next
+                Rol_Y_Agrupacion = Rol + "¦" + Agrupacion
             Else
                 'No nos devuelve valores
             End If
         End If
-        Return Rol
+        Return Rol_Y_Agrupacion
     End Function
 
-    Private Function Extraer_Agrupacion(ByVal IdUser)
+    Private Function Buscar_Email(ByVal email)
         Dim DS As New DataSet
-        Dim Agrupacion As String
-        VectorSQL(0) = "SELECT idOrigen FROM EEContactes WHERE Auto ='" & clsBD.Cometes(Left(IdUser, 100)) & "'"
+        Dim Dato1 As String
 
+        VectorSQL(0) = "SELECT Email FROM EEContactes WHERE Email ='" & clsBD.Cometes(Left(email, 100)) & "'"
         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
             'Problema
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    Agrupacion = DS.Tables(0).Rows(i).Item("idOrigen")
+                    Dato1 = DS.Tables(0).Rows(i).Item("Email")
                 Next
+                Return True
             Else
                 'No nos devuelve valores
+                Return False
             End If
         End If
-        Return Agrupacion
     End Function
 End Class

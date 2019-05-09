@@ -21,9 +21,7 @@
 
     <style>
         /* Formateamos el body para que se apliquen nuestros stilos perfect (-;*/
-        body{margin: 0;padding: 0;box-sizing:border-box;
-            height: 3384px;
-        }
+        body{margin: 0;padding: 0;box-sizing:border-box;height: auto;}
 
 
         /* Colores para ver visualmente que realiza cada nomenclatura de BootStrap.*/
@@ -221,7 +219,7 @@
             .funkyradio {margin-left: 1%; width: 120%;font-size: 16px;}
             }
 
-        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#jose_prueba3,.inputs_hidden{display: block;}
+        #paso_datos,#paso_datos2,#paso_datos3,#paso_datos4,#paso_datos5,#paso_datos6,#jose_prueba3,.inputs_hidden{display: none;}
     </style>
     <script type="text/javascript">
         //funcion que nos realiza la acción que queramos en la carga de la web.
@@ -866,6 +864,12 @@
         
         function Registre(x) {           
             var Dades;
+            var check = document.getElementById("paso_datos").value;
+            var check2 = document.getElementById("paso_datos2").value;
+
+            if (check == '2' && check2 == '-2') {
+                x = 4;
+            }
             switch (x) {
                 case 1: //Actualizar Delegado
                     var numero,numero_insert, Long_numero, Primer_numero;
@@ -917,9 +921,8 @@
 
                     Dades = document.getElementById("paso_datos2").value + "¦" + document.getElementById("name_delegado").value.trim() + "¦"
                         + document.getElementById('ape1_delegado').value.trim() + "¦" + document.getElementById('ape2_delegado').value.trim() +
-                        "¦" + document.getElementById("email_delegado").value.trim() + "¦" +
-                        "¦" + document.getElementById("siglas_delegado").value.trim() + "¦" + document.getElementById("siglas_gerente_delegado").value +
-                        "¦" + (document.getElementById('asistira_delegado_si').checked ? '1' : '0') + "¦" +
+                        "¦" + document.getElementById("email_delegado").value.trim() + "¦" + numero + "¦" + document.getElementById("siglas_delegado").value.trim() +
+                        "¦" + document.getElementById("siglas_gerente_delegado").value + "¦" + (document.getElementById('asistira_delegado_si').checked ? '1' : '0') + "¦" +
                         (document.getElementById('alojamiento_delegado_si').checked ? '1' : '0') + "¦" + 
                         (document.getElementById('transporte_delegado_si').checked ? '1' : '0') + "¦" + document.getElementById("city_origen_delegado").value.trim() +
                         "¦" + document.getElementById("alergia_delegado").value.trim() + "¦" + document.getElementById("observa_delegado").value.trim() +
@@ -929,7 +932,6 @@
 
 
                 case 2: //Actualizar Medico
-                    alert("ieeeeeee");
 
                     var select_especialidad = document.getElementById("medic_especialidad1").value;
                     var consentimiento;
@@ -974,11 +976,74 @@
                     setTimeout("InformacioAJAX(2,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000); 
                     break;
 
-                case 3: //Eliminar un registro de medico.
-                    alert("funciono?");
-                    //Dades = document.getElementById("paso_datos2").value;
-                    //setTimeout("InformacioAJAX(3,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+                case 3: //Eliminar un registro de Medico.
+                    Dades = document.getElementById("paso_datos2").value;
+                    setTimeout("InformacioAJAX(3,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
                     break;
+
+                case 4: //Insertamos en la BD un new registro de Medico.
+
+                    var select_especialidad = document.getElementById("medic_especialidad1").value;
+                    var consentimiento, name_long,mail_long,ape1_long,ape2_long;
+                    var mail = document.getElementById("medic_mail").value;
+                    var name = document.getElementById("name_medic").value;
+                    var ape1 = document.getElementById("ape1_medic").value;
+                    var ape2 = document.getElementById("ape2_medic").value;
+                    var pasar_agrupacion;
+
+                    name_long = name.length;
+                    mail_long = mail.length;
+                    ape1_long = ape1.length;
+                    ape2_long = ape2.length;
+                    //Comprobamos que el email sea valido.
+                    if (ComprobarEmail(mail)) {
+                        email = mail;
+                    }
+                    else {
+                        LanzaAviso("Lo sentimos el email introducido no esta con el formato correcto. Vuelva a introducirlo con un formato correcto. (ejemplo@ejemplo.com)");
+                        return false;
+                    }
+                    //Comprobamos que los campos de apellidos, emaily nombre no esten vacios.
+                    if (name_long <= 0 || mail_long <= 0 || ape1_long <= 0 || ape2_long <= 0) {
+                        LanzaAviso("Los campos de Nombre,Apellidos e Email son obligatorios y no pueden estar vacios, asegurese de introducir algúno de los datos que le falte. Gracias!");
+                        return false;
+                    }
+                    //Comprobamos que el campo especialidad no este vacio o elegida una opcion no valida.
+                    if (select_especialidad == 0 || select_especialidad == '') {
+                        LanzaAviso("Por favor seleccione una especialidad de las 5 que tiene. Gracias!");
+                        return false;
+                    }
+                    //Comprobamos que el campo consentimiento, este marcado.
+                    if (document.getElementById("consen_si").checked == true) {
+                        consentimiento = 1;
+                    }
+                    else {
+                        LanzaAviso("El campo consentimiento es obligatorio, por favor marquelo como si y repita el proceso.");
+                        return false;
+                    }
+                    //Comprobamos que el campo numero de selas no este vacio.
+                    var n_selas = document.getElementById("medic_selas").value
+                    long_n_selas = n_selas.length;
+                    if (long_n_selas == 0) {
+                        LanzaAviso("El campo del número de Selas del Medico es obligatorio, Por favor introduzca algún número.");
+                        return false;
+                    }
+
+                    //Comprobamos que el campo alergias no este vacio.
+                    var alergia = document.getElementById("alergia_medic").value
+                    long_alergia = alergia.length;
+                    if (long_alergia == 0) {
+                        LanzaAviso("El campo alergia es obligatorio, Por favor introduzca algún dato.");
+                        return false;
+                    }
+
+                    Dades = document.getElementById("name_medic").value.trim() + "¦" + document.getElementById("ape1_medic").value.trim() + "¦" +
+                        document.getElementById("ape2_medic").value.trim() + "¦" + document.getElementById("medic_mail").value.trim() + "¦" + select_especialidad +
+                        "¦" + document.getElementById("medic_selas").value + "¦" + (document.getElementById('consen_si').checked ? '1' : '0') + "¦" +
+                        (document.getElementById('transpor_si').checked ? '1' : '0') + "¦" + (document.getElementById('alojamiento_medico_si').checked ? '1' : '0') +
+                        "¦" + document.getElementById("origen_medic").value + "¦" + document.getElementById("alergia_medic").value + "¦" +
+                        document.getElementById("Observa_medic").value + "¦" + document.getElementById("paso_datos3").value; 
+                    setTimeout("InformacioAJAX(4,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
             }
         }
 
@@ -993,6 +1058,15 @@
                 else if (Dades.substr(2, 1) == "3") {
                     LanzaAviso("Hemos eliminado con exito el registro número(" + document.getElementById("paso_datos2").value + ") de nuestra Base de Datos.");
                     //document.getElementById("soflow").value = 0;                 
+                    document.getElementById("paso_datos").value = 5;
+                    EnviemFormulari();
+                    //vaciar_inputs_medicos();                    
+                }
+                else if (Dades.substr(2, 1) == "4") {
+                    LanzaAviso("Hemos eliminado con exito el registro número(" + document.getElementById("paso_datos2").value + ") de nuestra Base de Datos.");
+                    //document.getElementById("soflow").value = 0;                 
+                    document.getElementById("paso_datos").value = 3;
+                    EnviemFormulari();
                     //vaciar_inputs_medicos();                    
                 }
             }
@@ -1008,6 +1082,12 @@
                 }
                 else if (Dades.substr(2, 1) == "3") {
                     LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+                else if (Dades.substr(2, 1) == "4") {
+                    LanzaAviso("Lo sentimos pero dicho Email: (" + document.getElementById("medic_mail").value + ") ya se encuentra en nuestra base de datos. Por favor vuelva a introducir un Email valido y que no este en nuestra Base de Datos. Gracias!");
+                }
+                else if (Dades.substr(2, 1) == "5") {
+                    LanzaAviso("Ha ocurrido un error insertando el nuevo registro en la Base de Datos. Vuelva a repetir el proceso por favor!");
                 }
             }
         }
