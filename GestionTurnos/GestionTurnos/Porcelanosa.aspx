@@ -11,6 +11,10 @@
     <asp:Literal ID="jquery_1_9_1_min_js" runat="server"></asp:Literal>
     <asp:Literal ID="bootstrap_min_js" runat="server"></asp:Literal>
     <asp:Literal ID="bootbox_min_js" runat="server"></asp:Literal>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Nunito" rel="stylesheet">
+
+
     <title>Formulario PORCELANOSA</title>
     <style>        
         .verde{border: 2px solid green;}
@@ -25,7 +29,7 @@
         .header_radios{max-width:610px; width:100%; margin:auto;margin-top:0.6%;}
 
         /* TOGGLE STYLING */
-        .toggle {margin: .5% .5% .5% .5%;box-sizing: border-box;font-size: 0;display: flex;flex-flow: row nowrap;justify-content: flex-start;align-items: stretch;color: #4B9DEA;}
+        .toggle {margin: .5% .5% .5% .5%;box-sizing: border-box;font-size: 0;display: flex;flex-flow: row nowrap;justify-content: flex-start;align-items: stretch;color: #4B9DEA;font-family: 'Merriweather', serif;}
         .toggle input {width: 0;height: 0;position: absolute;left: -9999px;}
         .toggle input + label {width: 35%;margin: 0;padding: .75rem 2rem;box-sizing: border-box;position: relative;display: inline-block;border: solid 1px #DDD;background-color: #FFF;font-size: 1rem;line-height: 140%;font-weight: 600;text-align: center;box-shadow: 0 0 0 rgba(255, 255, 255, 0);transition: border-color .15s ease-out,  color .25s ease-out,  background-color .15s ease-out, box-shadow .15s ease-out;/* ADD THESE PROPERTIES TO SWITCH FROM AUTO WIDTH TO FULL WIDTH */flex: 0 0 50%; display: flex; justify-content: center; align-items: center;/* ----- */}
         .toggle input + label:first-of-type {border-radius: 6px 0 0 6px;border-right: none;}
@@ -35,7 +39,11 @@
         .toggle input:focus + label {//outline: dotted 1px #CCC;outline-offset: .45rem;}
 
         /* Cuadro Principal */
-        .principal{border-radius: 6px;background-color: #fff;color: #8f8f8f;font-size: 22px;border: 1px solid #8f8f8f;max-width: 610px; width: 100%; margin: auto; margin-top:1.5%;height: auto;}
+        .principal{border-radius: 6px;background-color: #fff;color: #8f8f8f;font-size: 22px;border: 1px solid #8f8f8f;max-width: 610px; width: 100%; margin: auto; margin-top:1.5%;height: auto;font-family: 'Nunito', sans-serif}
+        
+        #text_traslados,#text_Actividades{margin: 0;margin-left: 5%;padding: 6px;}
+
+        /* */
 @media (max-width: 800px) {
   .toggle input + label {
     padding: .75rem .25rem;
