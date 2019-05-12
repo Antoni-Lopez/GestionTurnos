@@ -116,6 +116,7 @@
     <Content Include="LoginForm.aspx" />
     <Content Include="loginform2.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />
+    <Content Include="Porcelanosa.aspx" />
     <Content Include="Printer.aspx" />
     <Content Include="prueba.aspx" />
     <Content Include="RecepcionAJAX.aspx" />
@@ -192,6 +193,13 @@
     </Compile>
     <Compile Include="PlantillaBootstrap.aspx.vb">
       <DependentUpon>PlantillaBootstrap.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Porcelanosa.aspx.designer.vb">
+      <DependentUpon>Porcelanosa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Porcelanosa.aspx.vb">
+      <DependentUpon>Porcelanosa.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Printer.aspx.designer.vb">
