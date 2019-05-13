@@ -17,7 +17,7 @@
 
             Dim IdUsuario As Integer, Rol As Integer, Agrupacion As Integer
 
-            IdUsuario = Request.QueryString("IdUser")
+
             paso_datos2.Text = IdUsuario 'Pasamos a una caja oculta el valor del ID del Usuario que accede.
             Rol = Extraer_Rol(IdUsuario)
             Agrupacion = Extraer_Agrupacion(IdUsuario, Rol)
