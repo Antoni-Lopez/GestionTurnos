@@ -68,6 +68,15 @@ Partial Public Class Porcelanosa
     Protected WithEvents prueba_aspx As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''Control cont_princi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cont_princi As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''Control comienzo_tabla.
     '''</summary>
     '''<remarks>
@@ -84,40 +93,4 @@ Partial Public Class Porcelanosa
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents comienzo_tabla2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-    
-    '''<summary>
-    '''Control paso_datos.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents paso_datos As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control paso_datos2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents paso_datos2 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control paso_datos3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents paso_datos3 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control paso_datos4.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents paso_datos4 As Global.System.Web.UI.WebControls.TextBox
 End Class

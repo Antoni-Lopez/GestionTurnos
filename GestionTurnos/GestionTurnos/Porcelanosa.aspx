@@ -40,13 +40,16 @@
         .tabla{width: 94.8%;padding: 6px;margin-left: 3%;}
         .tabla tbody tr td,.tabla thead tr th{text-align: center;}
         .tabla thead tr th{text-decoration: underline;color: black; font-weight:bold;}
-
+        .tabla .justificado{}
          /* Checkbox personalizado */
         #mycheckbox_traslados:after,#mycheckbox2_traslados:after,#mycheckbox3_traslados:after,#mycheckbox4_traslados:after,#Mycheckbox_Actividades:after,#Mycheckbox_Actividades2:after {line-height: 1.2em;content: '';display: block;width: 25px;height: 25px;border: 1px solid Black;margin-top: -8px;background-color: #8F8F8F;} /*background: #4B9DEA;*/
         #mycheckbox_traslados:checked:after,#mycheckbox2_traslados:checked:after,#mycheckbox3_traslados:checked:after,#mycheckbox4_traslados:checked:after,#Mycheckbox_Actividades:checked:after,#Mycheckbox_Actividades2:checked:after {content: '✔';text-align: center;color: #fff;background: #4B9DEA;}
 
         table tr th input[type="checkbox"]:after{line-height: 1.2em;content: '';display: block;width: 25px;height: 25px;border: 1px solid Black;margin-top: -8px;background-color: #8F8F8F;}
         table tr th input[type="checkbox"]:checked:after{content: '✔';text-align: center;color: #fff;background: #4B9DEA;}
+
+        #comienzo_tabla td,#comienzo_tabla2 td{text-align:justify;font-size:18px;}
+
 
         /* Boton personalizado */
         #Button_enviar{background: #4B9DEA;color:#fff;width: 20%;border-radius:6px;height:30px;margin: 2.5% 0 2.5% 40%;font-size:20px;padding:2px;text-align:center;}
@@ -66,6 +69,7 @@
 
     </style>
     <script type="text/javascript">
+        // Mostramos¦Ocultamos el div al hacer onclick
         function desplazar(x) {
             switch (x) {
                 case 1:
@@ -87,35 +91,81 @@
 
             }
         }
-        function comprobar_marcados() {
-            var check = document.getElementById("mycheckbox_traslados").checked;
-            var check2 = document.getElementById("mycheckbox2_traslados").checked;
-            var check3 = document.getElementById("mycheckbox3_traslados").checked;
-            var check4 = document.getElementById("mycheckbox4_traslados").checked;
-            var check5 = document.getElementById("Mycheckbox_Actividades").checked;
-            var check6 = document.getElementById("Mycheckbox_Actividades2").checked;
-            divCont = document.getElementById('cont_princi');
 
-            if ((check == false) && (check2 == false) && (check3 == false) && (check4 == false) && (check5 == false) && (check6 == false)) {
-                LanzaAviso("Lo sentimos pero necesita marcar al menos 1 checkbox. Gracias!");
-            }
-            else {                 
-                checks  = divCont.getElementsByTagName('input');
-                for(i=0;i<checks.length; i++){
-                    if(checks[i].checked == true){
-                        alert('este es');
-                    }
-                }
-            }
+        function michorra() {
+            var x = [];
         }
+
+        //comprobamos checkboxes marcados y lo enviamos a la funcion de AJAX
+        function comprobar_marcados() {
+
+            var checkbos_activos;
+            checkbos_activos = $('input[type=checkbox]:checked').map(function () {
+                return $(this).attr('id'); //checkbox marcados.                
+            }).get();
+
+            long_checkbos_activos = checkbos_activos.length;
+            var ultimo_valor = checkbos_activos.length - 1;
+           
+            if (long_checkbos_activos <= 0 || long_checkbos_activos == null) {
+                LanzaAviso("No has marcado ningún checkbox.Por favor marque alguno!");
+            }
+            else {
+                var chk = [], chk_final, ultima_posicion = long_checkbos_activos- 1;
+                chk_final = "";
+                for (var i = 0; i < long_checkbos_activos; i++) {
+
+                    alert(checkbos_activos[i]); //id de los checkbox activos               
+                    chk[i] = checkbos_activos[i];
+                    chk_final += chk[i] + "¦";   
+                }
+                var index = chk_final.indexOf(i);
+                if (index > -1) {
+                    array.splice(index, 1);
+                }
+               
+                alert(chk_final);                              
+            }
+            
+
+            //var check = document.getElementById("mycheckbox_traslados").checked;
+            //var check2 = document.getElementById("mycheckbox2_traslados").checked;
+            //var check3 = document.getElementById("mycheckbox3_traslados").checked;
+            //var check4 = document.getElementById("mycheckbox4_traslados").checked;
+            //var check5 = document.getElementById("Mycheckbox_Actividades").checked;
+            //var check6 = document.getElementById("Mycheckbox_Actividades2").checked;
+            //divCont = document.getElementById('cont_princi');
+
+            //if ((check == false) && (check2 == false) && (check3 == false) && (check4 == false) && (check5 == false) && (check6 == false)) {
+            //    LanzaAviso("Lo sentimos pero necesita marcar al menos 1 checkbox. Gracias!");
+            //}
+            //else {                 
+            //    checks  = divCont.getElementsByTagName('input');
+            //    for(i=0;i<checks.length; i++){
+            //        if(checks[i].checked == true){
+            //            alert('este es');
+            //        }
+            //    }
+            //}
+        }
+
+
         function LanzaAviso(Text) {
                 bootbox.alert({ title: "PORCELANOSA", message: Text });
         }
+
+
         function desactivar_todo() {
-            LanzaAviso("Lo sentimos pero no puede acceder sin el credencial de Email. Intentelo de Nuevo gracias!");
-            document.getElementById("cont_princi").style.display = 'none';
-            document.getElementById("prueba_aspx").innerHTML = '<p style="padding: 10px; color: Red; margin: 5px;">Lo sentimos pero sin identificación no podemos mostrarle ningún tipo de información. <i class="fas fa-exclamation-triangle"></i></p>';           
+
+            LanzaAviso("Lo sentimos pero no puede acceder sin el credencial de Email. Intentelo de Nuevo gracias!");            
+            document.getElementById("prueba_aspx").innerHTML = '<p style="padding: 10px; color: Red; margin: 5px;">Lo sentimos pero sin identificación no podemos mostrarle ningún tipo de información. <i class="fas fa-exclamation-triangle"></i></p>';   
+            desactivar_principal();
         }
+
+        function desactivar_principal() {
+            document.getElementById("cont_princi").style.display = 'none';
+        }
+
 
         function contar() {
             
@@ -157,37 +207,29 @@
             }
         }
 
+
+        //Recordando origenes xD
         function orihuela(x) {
-            //var x = "2¦3¦5¦6";
+
             var y = x.split("¦");
-            //alert("entramossss");
-
             var p = y.length;
-
-            for (i = 0; i <= p - 1; i++) {
-                
-                alert(y[i]);                
+            for (i = 0; i <= p - 1; i++) {                
+                //alert(y[i]);                
                 document.getElementById("chk" + y[i]).checked = true;
             }         
         }
-        function segunda_prueba() {
-            var x = 2, i = 3, p = 5, z = 6;
-            document.getElementById("chk"+x).checked = true;
-            document.getElementById("chk"+i).checked = true;
-            document.getElementById("chk"+p).checked = true;
-            document.getElementById("chk"+z).checked = true;
-        }
+
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid logo" onclick="orihuela()">
+        <div class="container-fluid logo" onclick="comprobar_marcados()">
             <img src="img/Porcelanosa_Logo.gif" />
         </div>
         <div id="prueba_aspx" class="principal usuario" runat="server">
             Hola
         </div>
-        <div id="cont_princi" class="row principal">
+        <div id="cont_princi" class="row principal" runat="server">
             <div id="cabeceras_trasla" class="row cabecera1" onclick="desplazar(1)">
                 Traslados <span style="float: right; margin-right: 5%;font-size: 25px;">↓</span>
             </div>
@@ -226,10 +268,10 @@
             <%--<asp:Button ID="Button_enviar" runat="server" Text="Enviar" />--%>
             <div id="Button_enviar" onclick="comprobar_marcados()">Enviar</div>
         </div>
-        <asp:TextBox ID="paso_datos" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
+        <%--<asp:TextBox ID="paso_datos" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
         <asp:TextBox ID="paso_datos2" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
         <asp:TextBox ID="paso_datos3" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
-        <asp:TextBox ID="paso_datos4" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
+        <asp:TextBox ID="paso_datos4" CssClass="container-fluid row verde" runat="server"></asp:TextBox>--%>
     </form>
     <script>
 

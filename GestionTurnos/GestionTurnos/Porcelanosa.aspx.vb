@@ -10,6 +10,7 @@
 
             If email = Nothing Then
                 prueba_aspx.Style.Add("background-color", "#efefef")
+                cont_princi.Style.Add("opacity", "0")
                 ClientScript.RegisterStartupScript(Page.GetType(), "no_credencial", "desactivar_todo();", True)
             Else
                 If CompruebaEmail(Trim(email)) Then
@@ -31,7 +32,9 @@
 
 
                 Else
-                    prueba_aspx.InnerHtml = "<p>No existe ese Email en nuestra Base de Datos!</p>"
+                    ClientScript.RegisterStartupScript(Page.GetType(), "not_findEmail", "desactivar_principal();", True)
+                    prueba_aspx.Style.Add("background", "#efefef")
+                    prueba_aspx.InnerHtml = "<p style='padding:5px;text-align:center;margin:5px;'>No existe ese Email en nuestra Base de Datos <i class='fas fa-exclamation-circle' style='color:red;'></i></p>"
                 End If
             End If
 
