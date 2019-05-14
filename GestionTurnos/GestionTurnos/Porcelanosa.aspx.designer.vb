@@ -68,65 +68,56 @@ Partial Public Class Porcelanosa
     Protected WithEvents prueba_aspx As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control mycheckbox_traslados.
+    '''Control comienzo_tabla.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents mycheckbox_traslados As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents comienzo_tabla As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control mycheckbox2_traslados.
+    '''Control comienzo_tabla2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents mycheckbox2_traslados As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents comienzo_tabla2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control mycheckbox3_traslados.
+    '''Control paso_datos.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents mycheckbox3_traslados As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents paso_datos As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control mycheckbox4_traslados.
+    '''Control paso_datos2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents mycheckbox4_traslados As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents paso_datos2 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control Mycheckbox_Actividades.
+    '''Control paso_datos3.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Mycheckbox_Actividades As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents paso_datos3 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control Mycheckbox_Actividades2.
+    '''Control paso_datos4.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Mycheckbox_Actividades2 As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-    
-    '''<summary>
-    '''Control Button_enviar.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Button_enviar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents paso_datos4 As Global.System.Web.UI.WebControls.TextBox
 End Class
