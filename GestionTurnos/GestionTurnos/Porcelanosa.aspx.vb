@@ -70,6 +70,8 @@
                 Next
             End If
         End If
+        paso_datos.Text = iduser
+
         Return iduser
     End Function
 
@@ -157,7 +159,8 @@
     Private Function Buscar_Tabla_Enlace(ByRef idusuario)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
-        Dim VectorSQL(0) As String, sesiones As String, VArray() As String, quesale As String
+        Dim VectorSQL(0) As String, sesiones As String, VArray() As String, quesale As String, contador As Integer, chk As String, prueba As String, prueba2 As String, prueba3 As String, cont As Integer
+        Dim extraerchk As String
         DS = New DataSet
 
         VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(idusuario, 100)) & "'"
@@ -170,23 +173,48 @@
                     sesiones = DS.Tables(0).Rows(i).Item("idsesiones")
                 Next
 
+                quesale = sesiones.Length
+
+                VArray = sesiones.Split("¦")
+                chk = ""
+                For contador = 0 To UBound(VArray)
+                    chk += VArray(contador)
+                Next
+
+                prueba = sesiones.Replace("¦", " ")
+                prueba2 = prueba.Length 'Longitud del array con formato asi: 2 3 5 6--> Long:7
+                prueba3 = chk.Length 'Longitud del array final con un formato asi: (2356)--->Long:4
+
+                For cont = 0 To (prueba3 - 1)
+                    extraerchk = chk(cont)
+                    Comprobar_Aforo(extraerchk)
+                Next
                 ClientScript.RegisterStartupScript(Page.GetType(), "chekear_chk", "orihuela('" & sesiones & "')", True)
-
-                'VArray = sesiones.Split("¦")
-                'quesale = VArray.Length
-
-                'chk1.checked = True
-
-                'Creamos el array, y cada "substring" se lo asignaremos
-                'a un elemento del array.
-                'Usamos el caracter "¦" como separador
-                'For c = LBound(VArray) To UBound(VArray)
-                '    paso_datos.Text = VArray(c)
-                '    'ape1_medic.Text = VArray(c)
-                '    'ape2_medic.Text = VArray(c)
-                'Next
             End If
         End If
         Return sesiones
+    End Function
+    Function Comprobar_Aforo(ByRef idsesion)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As DataSet
+        Dim VectorSQL(0) As String, aforo As String, ins As String
+        DS = New DataSet
+
+        VectorSQL(0) = "SELECT Aforo,inscritos FROM sesiones WHERE idsesiones='" & clsBD.Cometes(Left(idsesion, 100)) & "'"
+
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "Fail_AccesDB", "LanzaAviso('Error al buscar los datos en la BD.')", True)
+        Else
+            If DS.Tables(0).Rows.Count > 0 Then
+                For i = 0 To DS.Tables(0).Rows.Count - 1
+                    aforo = DS.Tables(0).Rows(i).Item("Aforo")
+                    ins = DS.Tables(0).Rows(i).Item("inscritos")
+                Next
+
+                If ins > aforo Then
+                    ClientScript.RegisterStartupScript(Page.GetType(), "aforo_lleno", "LanzaAviso('Lo sentimos pero el aforo ya esta lleno.')", True)
+                End If
+            End If
+        End If
     End Function
 End Class

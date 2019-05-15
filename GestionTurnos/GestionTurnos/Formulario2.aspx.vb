@@ -17,6 +17,11 @@
 
             Dim IdUsuario As Integer, Rol As Integer, Agrupacion As Integer
 
+            'Recogemos el id de usuario que esta oculto.
+            IdUsuario = Request.QueryString("IdUser")
+            'Declaramos el combotext para que nos mande a una accion con javascript.
+            soflow.Attributes.Add("onchange", "elegir_accion(2);")
+
 
             paso_datos2.Text = IdUsuario 'Pasamos a una caja oculta el valor del ID del Usuario que accede.
             Rol = Extraer_Rol(IdUsuario)
@@ -351,8 +356,13 @@
             VArray = Split(Sigla1, "¦")
 
             For c = LBound(VArray) To UBound(VArray)
-                ape1_medic.Text = VArray(0)
-                ape2_medic.Text = VArray(1)
+                If c = 0 Then
+                    ape1_medic.Text = VArray(c)
+                Else
+                    ape2_medic.Text = VArray(c)
+                End If
+
+
             Next
         End If
 
@@ -449,8 +459,8 @@
             VArray2 = Split(Sigla2, "¦")
 
             For c = LBound(VArray) To UBound(VArray)
-                siglas_gerente_delegado.Text = VArray(1)
                 siglas_delegado.Text = VArray(0)
+                siglas_gerente_delegado.Text = VArray(1)
             Next
 
             For p = LBound(VArray2) To UBound(VArray2)

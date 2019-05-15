@@ -162,7 +162,25 @@
                         End If
                         GoTo Resposta
                     Case 5 'Siguiente proyecto PORCELANOSA.
+                        Dim DS As New DataSet
+                        Dim i As Integer, j As Integer, long_dades As String, idusuario As Integer, chk As String, id_chk As String, chk2 As String
 
+                        VDades = CStr(Request.Form("d")).Split("¦")
+                        long_dades = VDades.Length
+                        For i = 0 To long_dades
+                            If i = 0 Then
+                                idusuario = VDades(0)
+                            Else
+                                chk = VDades(i)
+                                id_chk = chk.Replace("chk", " ")
+                                Comprobar_aforo(id_chk)
+                            End If
+                        Next
+                        'Ingresar_Chk(idusuario, id_chk)
+                        chk2 = VDades(1)
+                        For i = 2 To long_dades
+                            chk2 += VDades(i)
+                        Next
                 End Select
             End If
         Catch ex As Exception
@@ -220,5 +238,61 @@ Resposta:
                 Return False
             End If
         End If
+    End Function
+
+    Private Function Ingresar_Chk(ByRef idusuario, ByVal chk)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As DataSet
+        Dim VectorSQL(0) As String, aforo As String, ins As String, Descripcio As String
+        DS = New DataSet
+
+        VectorSQL(0) = "UPDATE enlace SET idsesiones='" & chk & "' WHERE idusuario = '" & idusuario & "'"
+        If Not clsBD.BaseDades(2, VectorSQL) Then
+            'Problema
+            Descripcio = "KO12"
+            Return False
+        Else
+            'Correcto
+            'Descripcio = "OK12"
+            Ingresar_Chk_enlace(idusuario, chk)
+        End If
+        Return True
+    End Function
+
+    Private Function Comprobar_aforo(ByRef idsesion)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As DataSet
+        Dim VectorSQL(0) As String, aforo As String, ins As String
+        DS = New DataSet
+
+        VectorSQL(0) = "SELECT Aforo,inscritos FROM sesiones WHERE idsesiones='" & clsBD.Cometes(Left(idsesion, 100)) & "'"
+
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "aforo_full", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+        Else
+            If DS.Tables(0).Rows.Count > 0 Then
+                For i = 0 To DS.Tables(0).Rows.Count - 1
+                    aforo = DS.Tables(0).Rows(i).Item("Aforo")
+                    ins = DS.Tables(0).Rows(i).Item("inscritos")
+                Next
+
+                If aforo = ins Then
+                    ClientScript.RegisterStartupScript(Page.GetType(), "aforo_lleno", "LanzaAviso('Lo sentimos pero el aforo ya esta lleno.')", True)
+                    Return False
+                End If
+            End If
+        End If
+        Return True
+    End Function
+    Private Function Ingresar_Chk_enlace(ByRef idusuario, ByVal sesion)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As DataSet
+        Dim VectorSQL(0) As String, aforo As String, ins As String
+        DS = New DataSet
+
+        'VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) " &
+        '                "VALUES(" & idFeria & "," & Rol & "," & Agrupacion & "," & Transporte & "," & Asiste & ",'" & clsBD.Cometes(Left(Name, 100)) & "','" & clsBD.Cometes(Left(Apellido, 100)) & "'," &
+        '                "'" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "'," & NITactivat & ",'" & clsBD.Cometes(Left(Password, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
+        '                "" & Alojamiento & ",'" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "')"
     End Function
 End Class
