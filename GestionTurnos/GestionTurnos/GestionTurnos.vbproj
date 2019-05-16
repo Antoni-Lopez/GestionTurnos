@@ -115,6 +115,7 @@
     <Content Include="loading.html" />
     <Content Include="LoginForm.aspx" />
     <Content Include="loginform2.aspx" />
+    <Content Include="PayPal.aspx" />
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Porcelanosa.aspx" />
     <Content Include="Printer.aspx" />
@@ -122,6 +123,7 @@
     <Content Include="RecepcionAJAX.aspx" />
     <Content Include="Script\ComunicacioAJAX.js" />
     <Content Include="Script\main.js" />
+    <Content Include="Script\PayPal-Server.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Css\servicios.css" />
     <Content Include="Test.aspx" />
@@ -188,6 +190,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="My\Application.vb" />
+    <Compile Include="PayPal.aspx.designer.vb">
+      <DependentUpon>PayPal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PayPal.aspx.vb">
+      <DependentUpon>PayPal.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="PlantillaBootstrap.aspx.designer.vb">
       <DependentUpon>PlantillaBootstrap.aspx</DependentUpon>
     </Compile>
