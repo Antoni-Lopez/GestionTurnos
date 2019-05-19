@@ -98,6 +98,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Agenda.aspx" />
     <Content Include="Bootstrap\Css\bootstrap.min.css" />
     <Content Include="Bootstrap\JS\bootbox.min.js" />
     <Content Include="Bootstrap\JS\bootstrap.min.js" />
@@ -124,6 +125,7 @@
     <Content Include="Script\ComunicacioAJAX.js" />
     <Content Include="Script\main.js" />
     <Content Include="Script\PayPal-Server.js" />
+    <Content Include="Script\Paypal_Response.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Css\servicios.css" />
     <Content Include="Test.aspx" />
@@ -132,6 +134,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agenda.aspx.designer.vb">
+      <DependentUpon>Agenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agenda.aspx.vb">
+      <DependentUpon>Agenda.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
     <Compile Include="Clases\ClaseGeneral.vb" />
@@ -195,7 +204,7 @@
     </Compile>
     <Compile Include="PayPal.aspx.vb">
       <DependentUpon>PayPal.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PlantillaBootstrap.aspx.designer.vb">
       <DependentUpon>PlantillaBootstrap.aspx</DependentUpon>
