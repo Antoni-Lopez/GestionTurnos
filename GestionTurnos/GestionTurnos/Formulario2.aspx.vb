@@ -34,7 +34,7 @@
                 Extraer_BD_Delegado(IdUsuario, Rol)
                 'Button_delegado.Attributes.Add("onclick", "elegir_accion(1);")
                 'Button_delegado.Attributes.Add("onclick", "Registre(1);")
-                Button_EnvioMail.Attributes.Add("onclick", "elegir_accion(7);")
+                'Button_EnvioMail.Attributes.Add("onclick", "elegir_accion(7);")
                 name_delegado.Attributes.Add("onclick", "desbloquear();")
                 ape1_delegado.Attributes.Add("onclick", "desbloquear();")
                 ape2_delegado.Attributes.Add("onclick", "desbloquear();")
@@ -151,73 +151,73 @@
 
 
 
-    Protected Sub Button_EnvioMail_Click(sender As Object, e As EventArgs) Handles Button_EnvioMail.Click
-        'Datos necesarios para el envio de mails.
-        Dim send_mail As New ClaseEmail
-        Dim destinatario As String, Cabecera As String, Cuerpo As String, From As String
-        Dim ServidorSMTP As String, UsuariSMTP As String, PasswordSMTP As String
-        Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String, nombre As String, Ape1 As String
+    'Protected Sub Button_EnvioMail_Click(sender As Object, e As EventArgs) Handles Button_EnvioMail.Click
+    '    Datos necesarios para el envio de mails.
+    '    Dim send_mail As New ClaseEmail
+    '    Dim destinatario As String, Cabecera As String, Cuerpo As String, From As String
+    '    Dim ServidorSMTP As String, UsuariSMTP As String, PasswordSMTP As String
+    '    Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String, nombre As String, Ape1 As String
 
 
-        'Datos necearios para la extracción de los medicos asociados al delegado.
-        Dim clsBD As New ClaseAccesoBD
-        Dim DS As New DataSet
-        Dim VectorSQL(0) As String, UserID As String, Rol As Integer, Agrupacion As Integer
-        'Dim Nombre_medic As String, Apellidos_medics As String, Mail_medic As String, contador As Integer
+    '    Datos necearios para la extracción de los medicos asociados al delegado.
+    '    Dim clsBD As New ClaseAccesoBD
+    '    Dim DS As New DataSet
+    '    Dim VectorSQL(0) As String, UserID As String, Rol As Integer, Agrupacion As Integer
+    '    Dim Nombre_medic As String, Apellidos_medics As String, Mail_medic As String, contador As Integer
 
-        'Nos buscamos los datos necesarios para realizar la consulta que queremos.
-        UserID = Request.QueryString("IdUser")
-        Rol = Extraer_Rol(UserID)
-        Agrupacion = Extraer_Agrupacion(UserID, Rol)
+    '    Nos buscamos los datos necesarios para realizar la consulta que queremos.
+    '    UserID = Request.QueryString("IdUser")
+    '    Rol = Extraer_Rol(UserID)
+    '    Agrupacion = Extraer_Agrupacion(UserID, Rol)
 
-        'La consulta.
-        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, Email, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupacion & "'ORDER BY Auto"
+    '    La consulta.
+    '    VectorSQL(0) = "SELECT Auto , Nom, Cognoms, Email, idOrigen FROM EEContactes WHERE idContacte<>'" & Rol & "'AND idOrigen ='" & Agrupacion & "'ORDER BY Auto"
 
-        nombre = name_delegado.Text
-        Ape1 = ape1_delegado.Text
-        destinatario = email_delegado.Text
-        Cabecera = "Probando Mails de Novonordisk"
-        Cuerpo = "<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><head runat='server'><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-                <title></title><asp:literal id='bootstrap_min_css' runat='server'></asp:literal><asp:literal id='jquery_1_9_1_min_js' runat='server'></asp:literal>
-                <asp:literal id='bootstrap_min_js' runat='server'></asp:literal><asp:literal id='bootbox_min_js' runat='server'></asp:literal><style>
-                body{margin: 0;padding: 0;box-sizing:border-box;}.padd{padding:10px;}.principal{max-width:650px;width:100%;border: 2px solid black;height: auto;margin-top: 2%;background-color: #efefef;}
-                .img_logo img{width: 100%;}.contenido{margin-top:2.5%!important;margin:auto;max-width:500px;width:100%;margin-bottom: 2.5% !important;}/* Style para la Tabla*/
-                table{text-align:center;}.header_tabla{background-color: #20032F !important;color:#fff !important;text-align:center;}tr:nth-child(odd) {background-color:#F0174C !important;color: #fff;}
-                tr:nth-child(even) {background-color: #f2f2f2   !important;}/* Media Querys para diseño Responsive.*/@media (max-width: 660px) {
-                .principal{max-width: 450px; width: 100%;}}</style></head><body><div class='container-fluid principal verde'>
-                <div class='row img_logo'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/img/banner_novonordisk.jpg'/></div>
-                <div class='row contenido padd'><h3>Bienvenido " & nombre & " " & Ape1 & " </h3><p> A continuación vamos a detallarle los datos de los medicos<br />
-                que usted tiene a su cargo:</p><table class='table table-responsive table-striped'><thead><tr class='header_tabla'><th class='header_tabla'>Nombre</th>
-                <th class='header_tabla'>Apellidos</th><th class='header_tabla'>Email</th></tr></thead><tbody>"
+    '    nombre = name_delegado.Text
+    '    Ape1 = ape1_delegado.Text
+    '    destinatario = email_delegado.Text
+    '    Cabecera = "Probando Mails de Novonordisk"
+    '    Cuerpo = "<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><head runat='server'><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    '            <title></title><asp:literal id='bootstrap_min_css' runat='server'></asp:literal><asp:literal id='jquery_1_9_1_min_js' runat='server'></asp:literal>
+    '            <asp:literal id='bootstrap_min_js' runat='server'></asp:literal><asp:literal id='bootbox_min_js' runat='server'></asp:literal><style>
+    '            body{margin: 0;padding: 0;box-sizing:border-box;}.padd{padding:10px;}.principal{max-width:650px;width:100%;border: 2px solid black;height: auto;margin-top: 2%;background-color: #efefef;}
+    '            .img_logo img{width: 100%;}.contenido{margin-top:2.5%!important;margin:auto;max-width:500px;width:100%;margin-bottom: 2.5% !important;}/* Style para la Tabla*/
+    '            table{text-align:center;}.header_tabla{background-color: #20032F !important;color:#fff !important;text-align:center;}tr:nth-child(odd) {background-color:#F0174C !important;color: #fff;}
+    '            tr:nth-child(even) {background-color: #f2f2f2   !important;}/* Media Querys para diseño Responsive.*/@media (max-width: 660px) {
+    '            .principal{max-width: 450px; width: 100%;}}</style></head><body><div class='container-fluid principal verde'>
+    '            <div class='row img_logo'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/img/banner_novonordisk.jpg'/></div>
+    '            <div class='row contenido padd'><h3>Bienvenido " & nombre & " " & Ape1 & " </h3><p> A continuación vamos a detallarle los datos de los medicos<br />
+    '            que usted tiene a su cargo:</p><table class='table table-responsive table-striped'><thead><tr class='header_tabla'><th class='header_tabla'>Nombre</th>
+    '            <th class='header_tabla'>Apellidos</th><th class='header_tabla'>Email</th></tr></thead><tbody>"
 
-        If clsBD.BaseDades(1, VectorSQL, DS) Then
-            If DS.Tables(0).Rows.Count > 0 Then
-                For i = 0 To DS.Tables(0).Rows.Count - 1
-                    'Nombre_medic = DS.Tables(0).Rows(i).Item("Nom")
-                    'Apellidos_medics = DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ")
-                    'Mail_medic = DS.Tables(0).Rows(i).Item("Email")
-                    Cuerpo += "<tr><td>" & DS.Tables(0).Rows(i).Item("Nom") & "</td><td>" & DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & "</td><td>" & DS.Tables(0).Rows(i).Item("Email") & "</td></tr>"
-                Next
-            End If
-        End If
+    '    If clsBD.BaseDades(1, VectorSQL, DS) Then
+    '        If DS.Tables(0).Rows.Count > 0 Then
+    '            For i = 0 To DS.Tables(0).Rows.Count - 1
+    '                Nombre_medic = DS.Tables(0).Rows(i).Item("Nom")
+    '                Apellidos_medics = DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ")
+    '                Mail_medic = DS.Tables(0).Rows(i).Item("Email")
+    '                Cuerpo += "<tr><td>" & DS.Tables(0).Rows(i).Item("Nom") & "</td><td>" & DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & "</td><td>" & DS.Tables(0).Rows(i).Item("Email") & "</td></tr>"
+    '            Next
+    '        End If
+    '    End If
 
-        Cuerpo += "</tbody></table></div></div></body></html>"
+    '    Cuerpo += "</tbody></table></div></div></body></html>"
 
-        From = "administrator@novonordisk.com"
-        ServidorSMTP = "smtp.towerplane.com"
-        UsuariSMTP = "jsmateo@towerplane.com"
-        PasswordSMTP = "yjiumnvpgD"
-        Puerto = "25"
-        FitxerAdjunt = ""
+    '    From = "administrator@novonordisk.com"
+    '    ServidorSMTP = "smtp.towerplane.com"
+    '    UsuariSMTP = "jsmateo@towerplane.com"
+    '    PasswordSMTP = "yjiumnvpgD"
+    '    Puerto = "25"
+    '    FitxerAdjunt = ""
 
 
-        envio = send_mail.EnviarEmail_System_Web_Mail_BO(destinatario, From, Cabecera, Cuerpo, , ServidorSMTP,, UsuariSMTP, PasswordSMTP,,,,,)
-        If envio Then
-            ClientScript.RegisterStartupScript(Page.GetType(), "envio_OK", "LanzaAviso('Email enviado sin problemas aparentes!');", True)
-        Else
-            ClientScript.RegisterStartupScript(Page.GetType(), "envio_KO", "LanzaAviso('UPS algo ha fallado y no se ha podido enviar el email!');", True)
-        End If
-    End Sub
+    '    envio = send_mail.EnviarEmail_System_Web_Mail_BO(destinatario, From, Cabecera, Cuerpo, , ServidorSMTP,, UsuariSMTP, PasswordSMTP,,,,,)
+    '    If envio Then
+    '        ClientScript.RegisterStartupScript(Page.GetType(), "envio_OK", "LanzaAviso('Email enviado sin problemas aparentes!');", True)
+    '    Else
+    '        ClientScript.RegisterStartupScript(Page.GetType(), "envio_KO", "LanzaAviso('UPS algo ha fallado y no se ha podido enviar el email!');", True)
+    '    End If
+    'End Sub
 
     'Funcion que creamos para la extarcción del Rol(Delegado/Medico)
     Private Function Extraer_Rol(ByRef idusuario)

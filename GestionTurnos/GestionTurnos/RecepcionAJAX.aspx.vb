@@ -89,23 +89,27 @@
                             Descripcio = "KO2"
                         Else
                             'Correcto
-                            Descripcio = "OK2"
+                            Descripcio = "OK2" + "¦"
+                            Descripcio += RellenarSelect(Agrupacion)
                         End If
 
 
                         GoTo Resposta
 
                     Case 3 'Delete Medico
-                        Dim Idusuario As Integer
+                        Dim Idusuario As Integer, Agrupacion As Integer
                         VDades = CStr(Request.Form("d")).Split("¦")
                         Idusuario = VDades(0)
+                        Agrupacion = VDades(1)
+
                         VectorSQL(0) = "DELETE FROM eecontactes WHERE Auto = '" & Idusuario & "'"
                         If Not clsBD.BaseDades(2, VectorSQL) Then
                             'Problema
                             Descripcio = "KO3"
                         Else
                             'Correcto
-                            Descripcio = "OK3"
+                            Descripcio = "OK3" + "¦"
+                            Descripcio += RellenarSelect(Agrupacion)
                         End If
                         GoTo Resposta
 
@@ -157,11 +161,83 @@
                                 Descripcio = "KO5"
                             Else
                                 'La variable Ultimo tendrá el último ID autonumérico
-                                Descripcio = "OK4"
+                                Descripcio = "OK4" + "¦"
+                                Descripcio += RellenarSelect(Agrupacion)
                             End If
                         End If
                         GoTo Resposta
-                    Case 5 'Siguiente proyecto PORCELANOSA.
+                    Case 5 'Actualizar el ComboBox/Select 
+                        Dim DS As New DataSet
+                        Dim UserID As String, Rol As Integer, Agrupa As Integer, Descripcio1 As String, Descripcio2 As String, Descripcio3 As String, Descripcio4 As String, Descripcio5 As String
+                        Dim pasar_data As String, prueba As String
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+                        Descripcio = "OK5" + "¦"
+                        Descripcio += RellenarSelect(VDades(0))
+
+                        GoTo Resposta
+                    Case 6 'Enviar Email a el Delegado
+                        'Datos necesarios para el envio de mails.
+                        Dim send_mail As New ClaseEmail
+                        Dim destinatario As String, Cabecera As String, Cuerpo As String, From As String
+                        Dim ServidorSMTP As String, UsuariSMTP As String, PasswordSMTP As String
+                        Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String, nombre As String, Ape1 As String, Rol As Integer, Agrupacion As Integer
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        Rol = 1 ' Lo ponemos a martillo porque queremos que nos busque los datos de los medicos solo.
+                        Agrupacion = VDades(1)
+                        nombre = VDades(2)
+                        Ape1 = VDades(3)
+                        destinatario = VDades(4)
+
+                        Dim DS As New DataSet
+
+                        'La consulta.
+                        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, Email, idOrigen FROM EEContactes WHERE idContacte='" & Rol & "'AND idOrigen ='" & Agrupacion & "'ORDER BY Auto"
+
+                        Cabecera = "Probando Mails de Novonordisk"
+                        Cuerpo = "<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><head runat='server'><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+                                <title></title><asp:literal id='bootstrap_min_css' runat='server'></asp:literal><asp:literal id='jquery_1_9_1_min_js' runat='server'></asp:literal>
+                                <asp:literal id='bootstrap_min_js' runat='server'></asp:literal><asp:literal id='bootbox_min_js' runat='server'></asp:literal><style>
+                                body{margin: 0;padding: 0;box-sizing:border-box;}.padd{padding:10px;}.principal{max-width:650px;width:100%;border: 2px solid black;height: auto;margin-top: 2%;background-color: #efefef;}
+                                .img_logo img{width: 100%;}.contenido{margin-top:2.5%!important;margin:auto;max-width:500px;width:100%;margin-bottom: 2.5% !important;}/* Style para la Tabla*/
+                                table{text-align:center;}.header_tabla{background-color: #20032F !important;color:#fff !important;text-align:center;}tr:nth-child(odd) {background-color:#F0174C !important;color: #fff;}
+                                tr:nth-child(even) {background-color: #f2f2f2   !important;}/* Media Querys para diseño Responsive.*/@media (max-width: 660px) {
+                                .principal{max-width: 450px; width: 100%;}}</style></head><body><div class='container-fluid principal verde'>
+                                <div class='row img_logo'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/img/banner_novonordisk.jpg'/></div>
+                                <div class='row contenido padd'><h3>Bienvenido " & nombre & " " & Ape1 & " </h3><p> A continuación vamos a detallarle los datos de los medicos<br />
+                                que usted tiene a su cargo:</p><table class='table table-responsive table-striped'><thead><tr class='header_tabla'><th class='header_tabla'>Nombre</th>
+                                <th class='header_tabla'>Apellidos</th><th class='header_tabla'>Email</th></tr></thead><tbody>"
+
+                        If clsBD.BaseDades(1, VectorSQL, DS) Then
+                            If DS.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To DS.Tables(0).Rows.Count - 1
+                                    'Nombre_medic = DS.Tables(0).Rows(i).Item("Nom")
+                                    'Apellidos_medics = DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ")
+                                    'Mail_medic = DS.Tables(0).Rows(i).Item("Email")
+                                    Cuerpo += "<tr><td>" & DS.Tables(0).Rows(i).Item("Nom") & "</td><td>" & DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & "</td><td>" & DS.Tables(0).Rows(i).Item("Email") & "</td></tr>"
+                                Next
+                            End If
+                        End If
+
+                        Cuerpo += "</tbody></table></div></div></body></html>"
+
+                        From = "administrator@novonordisk.com"
+                        ServidorSMTP = "smtp.towerplane.com"
+                        UsuariSMTP = "jsmateo@towerplane.com"
+                        PasswordSMTP = "yjiumnvpgD"
+                        Puerto = "25"
+                        FitxerAdjunt = ""
+
+                        envio = send_mail.EnviarEmail_System_Web_Mail_BO(destinatario, From, Cabecera, Cuerpo, , ServidorSMTP,, UsuariSMTP, PasswordSMTP,,,,,)
+                        If envio Then
+                            Descripcio = "KO6"
+                        Else
+                            Descripcio = "OK6"
+                        End If
+                        GoTo Resposta
+                    Case 7 'Siguiente proyecto PORCELANOSA.
                         Dim DS As New DataSet
                         Dim i As Integer, j As Integer, long_dades As String, idusuario As Integer, chk As String, id_chk As String, chk2 As String
 
@@ -295,4 +371,41 @@ Resposta:
         '                "'" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "'," & NITactivat & ",'" & clsBD.Cometes(Left(Password, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
         '                "" & Alojamiento & ",'" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "')"
     End Function
+
+    Private Function RellenarSelect(ByRef VDades)
+        Dim clsBD As New ClaseAccesoBD
+        Dim VectorSQL(0) As String
+        Dim DS As New DataSet
+        Dim UserID As String, Rol As Integer, Agrupa As Integer, Descripcio1 As String, Descripcio2 As String, Descripcio3 As String, Descripcio4 As String, Descripcio5 As String
+        Dim Descripcio As String, VDatos As String
+
+
+        Rol = 1 ' Lo ponemos a "martillo" porque vamos a mostrar todos los medicos asociados a un delegado, por ello, el rol que buscamos es solo de medicos ó =1
+        Agrupa = VDades
+
+        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, idOrigen FROM EEContactes WHERE idContacte='" & Rol & "'AND idOrigen ='" & Agrupa & "'ORDER BY Cognoms, Nom"
+        If clsBD.BaseDades(1, VectorSQL, DS) Then
+            If DS.Tables(0).Rows.Count > 0 Then
+                'Descripcio1 = "OK5"
+                'Descripcio5 = Descripcio1 + "¦"
+
+                For i = 0 To DS.Tables(0).Rows.Count - 1
+                    Descripcio2 = DS.Tables(0).Rows(i).Item("Auto")
+                    Descripcio3 = DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ")
+                    Descripcio4 = DS.Tables(0).Rows(i).Item("Nom")
+                    'UserID = DS.Tables(0).Rows(i).Item("Auto")
+                    'soflow.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), UserID))
+                    If i = DS.Tables(0).Rows.Count - 1 Then
+                        Descripcio5 += Descripcio2 + "¦" + Descripcio3 + "¦" + Descripcio4
+                    Else
+                        Descripcio5 += Descripcio2 + "¦" + Descripcio3 + "¦" + Descripcio4 + "¦"
+                    End If
+
+                Next
+            End If
+            Descripcio = Descripcio5
+        End If
+        Return Descripcio
+    End Function
+
 End Class

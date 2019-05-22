@@ -135,7 +135,7 @@
         label[for=asistira_delegado_no],label[for=transporte_delegado_no],label[for=alojamiento_delegado_no]{margin-left: -20%;}
         .textos_radios_delegado{font-size: 16px; font-weight: bold;margin-left: 10%;}
         .transporte_delegado_responsive,#city_origen_medic{margin-top: 5%;}
-        .enviar_mail{background-color:#5CB85C;color: #fff;float: right;margin-right: 12.5%;font-size: 20px;opacity: 1;border-radius: 6px;}
+        .enviar_mail{background-color:#5CB85C;color: #fff;float: right;margin-right: 12.5%;font-size: 20px;opacity: 1;border-radius: 6px;cursor: pointer;padding: 5px;}
         .enviar_mail:hover{box-shadow: -2px 10px 25px -15px rgba(0,0,0,0.75);font-weight: bold;}
 
         /* Style Inputs ReadOnly */
@@ -601,7 +601,35 @@
         }
 
 
-        
+        //Función que nos vaciará el select y lo volveremos a llenar con los datos necesarios.
+        function Vacio_Llenado_Combo(Dades) {
+            var array,i,long,ultimo;
+
+                    Dades = Dades.split("¦");
+                    //alert(Dades);
+
+                    array = Dades;
+                    array.shift();                    
+                    //alert(array);
+
+                    long = array.length;
+                    ultimo = long - 1;
+
+                    document.getElementById("soflow").options.length = 0;
+                    document.getElementById("soflow").innerHTML += "<option value='-2'>Nueva Alta Médico</option>";
+                    document.getElementById("soflow").innerHTML += "<option value='0'>------------------------------------------------</option>";
+
+                    var value, nombre, apes;
+
+                    for (i = 0; i < ultimo; i++) {
+                        value = array[i];                        
+                        apes = array[i + 1];
+                        nombre = array[i + 2];
+                        document.getElementById("soflow").innerHTML += "<option value='" + value + "'>" + apes + "," + nombre + "</option>"; 
+                        i = i + 2;
+                    }
+        }
+
 
 
         // invoke blockUI as needed -->
@@ -650,7 +678,7 @@
                 </select>
             </div>
         </div>
-        <div id="cuadro_medico1" class="row panel">
+        <div id="cuadro_medico1" class="row panel" onclick="">
             <div class="row padd margen">
                 <div class="col-md-4 duo padd inputs_medico">
                     <label for="exampleInputEmail1">Nombre</label><label for="required_camp" id="campo_requerido">*</label>
@@ -865,7 +893,8 @@
                 <label for="info_asterisco" id="info_asiste_dele" style="margin-left: 5%;">* Campos Obligatorios</label>
             </div>
             <div class="row" style="margin: auto; padding: 10px;">
-                <asp:Button ID="Button_EnvioMail" CssClass="enviar_mail" Text="Enviar Email" runat="server" />
+                <%--<asp:Button ID="Button_EnvioMail" CssClass="enviar_mail" Text="Enviar Email" runat="server" />--%>
+                <div id="Button_EnvioMail" class="enviar_mail" onclick="send_mail()">Enviar Email</div>
             </div>
         </div>
         <div class="row margen">
@@ -880,6 +909,13 @@
     <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script>
     <script>
 
+        function send_mail() {
+            //Enviar Mail al Delegado con los Datos de los Medicos.
+            Dades = document.getElementById("paso_datos2").value + "¦" + document.getElementById("paso_datos3").value + "¦" + document.getElementById("name_delegado").value.trim() + "¦"
+                    + document.getElementById('ape1_delegado').value.trim() + "¦" + document.getElementById("email_delegado").value.trim();
+            setTimeout("InformacioAJAX(6,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+        }
+
         function Registre(x) {
             var Dades;
             var check = document.getElementById("paso_datos").value;
@@ -887,6 +923,9 @@
 
             if (check == '2' && check2 == '-2') {
                 x = 4;
+            }
+            else if (check == null && check2 != null) {
+                LanzaAviso("Por favor para proceder a añadir un nuevo Medico, marquen en el Desplegable la opción de Nueva Alta Medico. Gracias! ")
             }
             switch (x) {
                 case 1: //Actualizar Delegado
@@ -995,7 +1034,7 @@
                     break;
 
                 case 3: //Eliminar un registro de Medico.
-                    Dades = document.getElementById("paso_datos2").value;
+                    Dades = document.getElementById("paso_datos2").value + "¦" + document.getElementById("paso_datos3").value;
                     setTimeout("InformacioAJAX(3,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
                     break;
 
@@ -1006,7 +1045,7 @@
                     var mail = document.getElementById("medic_mail").value;
                     var name = document.getElementById("name_medic").value;
                     var ape1 = document.getElementById("ape1_medic").value;
-                    var ape2 = document.getElementById("ape2_medic").value;
+                    var ape2 = document.getElementById("ape2_medic").value;                    
                     var pasar_agrupacion;
 
                     name_long = name.length;
@@ -1046,6 +1085,16 @@
                         LanzaAviso("El campo del número de Selas del Medico es obligatorio, Por favor introduzca algún número.");
                         return false;
                     }
+                    //Comprobamos que los campos de alojamiento y transporte esten marcados, sea si o no.
+                    var aloja_s = document.getElementById("alojamiento_medico_si").checked;
+                    var aloja_n = document.getElementById("alojamiento_medico_no").checked;
+                    var transpor_s = document.getElementById("transpor_si").checked;
+                    var transpor_n = document.getElementById("transpor_no").checked;
+
+                    if (aloja_s == false && aloja_n == false || transpor_s == false && transpor_n == false ) {
+                        LanzaAviso("Aunque los campos de alojamiento y trasnporte no son obligatorios, por favor marque si o no. Gracias!");
+                        return false;
+                    }
 
                     //Comprobamos que el campo alergias no este vacio.
                     var alergia = document.getElementById("alergia_medic").value
@@ -1082,30 +1131,50 @@
                     }                                 
 
                     break;
+                case 6: //Actualizar el select mediante AJAX
+
+                    Dades = document.getElementById("paso_datos3").value.trim();
+                    setTimeout("InformacioAJAX(5,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+                    break;
+                
             }
         }
 
         function Registre_Tornada(Dades) {
             if (Dades.substr(0, 2) == "OK") {
                 if (Dades.substr(2, 1) == "1") {
-                    LanzaAviso("Hemos modificado el registro que lleva el Email: " + document.getElementById("email_delegado").value) + " en la Base de Datos con exito. Gracias ;-)";
+                    LanzaAviso("Enhorabuena " + document.getElementById("name_delegado").value + ". Hemos podido modificar su registro  en nuestra Base de Datos con exito! Gracias ;-)");
                 }
                 else if (Dades.substr(2, 1) == "2") {
                     LanzaAviso("Hemos actualizado con exito los datos para el registro con Email: (" + document.getElementById("medic_mail").value + ") ;-)");
+                    Vacio_Llenado_Combo(Dades);
                 }
                 else if (Dades.substr(2, 1) == "3") {
                     LanzaAviso("Hemos eliminado con exito el registro número(" + document.getElementById("paso_datos2").value + ") de nuestra Base de Datos.");
+                    Vacio_Llenado_Combo(Dades);
+                    var check = document.getElementById("paso_datos").value;
+                    var check2 = document.getElementById("paso_datos2").value;
+                    var valor = "";
+                    check = valor;
+                    check2 = valor;
+                    vaciar_inputs_medicos(); 
                     //document.getElementById("soflow").value = 0;                 
                     document.getElementById("paso_datos").value = 5;
-                    EnviemFormulari();
-                    //vaciar_inputs_medicos();                    
+                                       
                 }
                 else if (Dades.substr(2, 1) == "4") {
-                    LanzaAviso("Hemos eliminado con exito el registro número(" + document.getElementById("paso_datos2").value + ") de nuestra Base de Datos.");
+                    LanzaAviso("Hemos insertado con exito un nuevo Medico en nuestra Base de Datos. ;-)");
                     //document.getElementById("soflow").value = 0;                 
                     document.getElementById("paso_datos").value = 3;
-                    EnviemFormulari();
+                    Vacio_Llenado_Combo(Dades);
+                    //EnviemFormulari();
                     //vaciar_inputs_medicos();                    
+                }
+                else if (Dades.substr(2, 1) == "5") {
+                    Vacio_Llenado_Combo(Dades);                    
+                }
+                else if (Dades.substr(2, 1) == "6") {
+                    LanzaAviso('Email enviado sin problemas aparentes!');                        
                 }
             }
             else {
@@ -1126,6 +1195,9 @@
                 }
                 else if (Dades.substr(2, 1) == "5") {
                     LanzaAviso("Ha ocurrido un error insertando el nuevo registro en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+                else if (Dades.substr(2, 1) == "6") {
+                    LanzaAviso("Ha ocurrido un error enviando el Email. Vuelva a repetir el proceso por favor!");
                 }
             }
         }

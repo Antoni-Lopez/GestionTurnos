@@ -1,44 +1,48 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="PayPal.aspx.vb" Inherits="GestionTurnos.PayPal" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <!-- Add meta tags for mobile and IE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-    <!-- Preparamos un div donde irá el botón -->
-    <div id="paypal-button-container"></div>
-
     <!-- Incluimos el PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AQjOeBCn3OzBHoByhXhGgqiaoO_LpmZwbiumV0JZ3H4URf5jEC9zxlaAAdfLb4DsmSaAw-B7vQlybLls&currency=EUR"></script>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=ARGQmbVLST4B3w3mX1IJiczvmNQsSTW5nQ_idLrz2CnlLWUvPwwbCylI4B4KLzEnQLu9rcJ9NJ5FJeVg&currency=EUR">
+    </script>
+    <form id="form1" runat="server">
 
+        <!-- Preparamos un div donde irá el botón -->
+        <div id="paypal-button-container"></div>
+        <input type="hidden" name="return" value="https://friendly-bird-42.localtunnel.me/PayPal.aspx" />
+        <asp:TextBox ID="jose" runat="server"></asp:TextBox>
+    </form>
     <script>
-        // Introducimos el botón dentro de #paypal-button-container
         paypal.Buttons({
-
-            // Set up the transaction
             createOrder: function (data, actions) {
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '5.00' //precio a cobrar
+                            value: '10.00'
                         }
                     }]
                 });
             },
-
-            // Finalize the transaction
             onApprove: function (data, actions) {
+                // Capture the funds from the transaction
                 return actions.order.capture().then(function (details) {
-                    // Show a success message to the buyer
-                    alert('Transación completada con exito por ' + details.payer.name.given_name + '!');
+                    // Show a success message to your buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    handleRequest();
                 });
             }
-
-
         }).render('#paypal-button-container');
+
+
+
+
+
     </script>
 </body>
 </html>

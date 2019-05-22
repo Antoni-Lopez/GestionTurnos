@@ -91,7 +91,7 @@
             #content div {
                 opacity: 0;
                 padding: 1.5em;
-                position: absolute;
+                /*position: absolute;*/
                 z-index: -100;
                 /*
 	transition: all linear 0.1s;
@@ -135,7 +135,7 @@
             margin-left: 2em;
         }
 
-        #container input#tab-1:checked ~ #content #content-1, #container input#tab-1:checked ~ #content #content-1 .miclase,
+        #container input#tab-1:checked ~ #content #content-1, #container input#tab-1:checked ~ #content #content-1 .miclase,#container input#tab-1:checked ~ #content #content-1 .miclase .time_cont,
         #container input#tab-2:checked ~ #content #content-2,
         #container input#tab-3:checked ~ #content #content-3 {
             opacity: 1;
@@ -149,37 +149,35 @@
         .miclase {
             position: fixed !important;
             width: 47.5%;
-            height: auto !important;
+            height: 400px !important;
             background-color: #ffc000;
         }
-
-            .miclase table {
-                border: 2px solid blue;
-                width: 100%;
-                background: #fff
-            }
-
-                .miclase table tbody th {
-                    vertical-align: bottom;
-                    border: 2px solid #ddd;
-                    padding: 8px;
-                    line-height: 1.42857143;
-                }
-
-                .miclase table tbody tr td {
-                    text-align: justify;
-                    width: 25%;
-                    padding: 1.5px;
-                }
-
-                .miclase table tbody tr {
-                    border-bottom: 2px solid #ddd;
-                }
-
+        .time_cont{margin-top: 3%;margin-left: 13%;}
+        .time_cont,.sala_cont{
+            opacity: 1 !important;
+            z-index: 100 !important;
+            max-width: 600px;
+            width: 100%;
+        }    
+        .sala_cont{
+            margin-top: 5px !important;
+            display: none;
+        }
         .centrar {
             text-align: center !important;
         }
     </style>
+    <script type="text/javascript">
+        function mostrar_ocultar() {
+
+            if (document.getElementById("sala").style.display == 'none') {
+                document.getElementById("sala").style.display = 'Block';
+            }
+            else {
+                document.getElementById("sala").style.display = 'none'
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -202,7 +200,13 @@
                 <div id="content-1">
                     <div class="miclase">
                         <h2 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h2>
-
+                        <div id="hora" class="time_cont verde" onclick="mostrar_ocultar()">
+                            <p style="padding:5px;border: 2px solid red;">10:00 am <span style="float:right;margin-right:5%;">↓</span></p>
+                            <div id="sala" class="sala_cont azul">
+                                <p>Sala 22M</p>
+                            </div>
+                        </div>
+                        
 <%--                        <table class="table">
                             <tbody>
                                 <th><i class="fas fa-male"></i>Ponente</th>
