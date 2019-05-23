@@ -615,9 +615,9 @@
                     long = array.length;
                     ultimo = long - 1;
 
-                    document.getElementById("soflow").options.length = 0;
+                    document.getElementById("soflow").options.length = 0;                    
+                    document.getElementById("soflow").innerHTML += "<option value='0'>---------------Listado de Medicos---------------</option > ";
                     document.getElementById("soflow").innerHTML += "<option value='-2'>Nueva Alta Médico</option>";
-                    document.getElementById("soflow").innerHTML += "<option value='0'>------------------------------------------------</option>";
 
                     var value, nombre, apes;
 

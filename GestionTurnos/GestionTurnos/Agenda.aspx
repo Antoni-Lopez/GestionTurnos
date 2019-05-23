@@ -53,7 +53,7 @@
                 display: block;
                 float: left;
                 font-size: 1em; /* Tamaño del texto de las pestañas */
-                height: 2.5em;
+                
                 line-height: 2.5em;
                 margin-right: .25em;
                 padding: 0 1.5em;
@@ -80,27 +80,22 @@
 
         #content {
             background: #0f7699; /* Fondo del contenido */
-            border-radius: 0 .25em .25em .25em;
-            min-height: 40em; /* Alto del contenido */
+            border-radius: 0 .25em .25em .25em;            
             height: auto;
             position: relative;
             width: 100%;
             z-index: 5;
+            margin-bottom:2.5%;
         }
 
             #content div {
-                opacity: 0;
-                padding: 1.5em;
-                /*position: absolute;*/
-                z-index: -100;
-                /*
-	transition: all linear 0.1s;
-	*/
+                padding: 10px;
+                z-index: -100;                
+	            transition: all linear 0.1s;	
             }
 
         #content-1 p {
             clear: both;
-            margin-bottom: 1em;
         }
 
             #content-1 p.left img {
@@ -146,35 +141,201 @@
             visibility: visible !important;
         }
 
-        .miclase {
-            position: fixed !important;
-            width: 47.5%;
-            height: 400px !important;
+        .miclase,.miclase2,.miclase3 {
+            width: 100%;
+            height: auto !important;
             background-color: #ffc000;
         }
-        .time_cont{margin-top: 3%;margin-left: 13%;}
-        .time_cont,.sala_cont{
+        .time_cont{margin-top: 3%;background-color:#fff;border: 1px solid #0F7699;border-radius: 4px;}
+        .time_cont2{margin-top: .3%;background-color:#fff;border: 1px solid #0F7699;border-radius: 4px;}
+        .time_cont,.sala_cont,.time_cont2,.sala_cont2,.ponente_cont,.descri_cont{
             opacity: 1 !important;
             z-index: 100 !important;
-            max-width: 600px;
             width: 100%;
+            padding: 15px;            
         }    
-        .sala_cont{
+        .sala_cont,.sala_cont2,.ponente_cont,.descri_cont{
             margin-top: 5px !important;
             display: none;
+            border-bottom: #0F7699 solid 1px;
         }
         .centrar {
             text-align: center !important;
         }
+        .descri_cont{height:10em;}
+            
+       #content-2,#content-3{display:none;}
     </style>
     <script type="text/javascript">
-        function mostrar_ocultar() {
+        function mostrar_ocultar(x) {
 
-            if (document.getElementById("sala").style.display == 'none') {
-                document.getElementById("sala").style.display = 'Block';
-            }
-            else {
-                document.getElementById("sala").style.display = 'none'
+            switch (x) {
+                case 1:
+                    if (document.getElementById("sala").style.display == 'none') {
+                        document.getElementById("sala").style.display = 'Block';
+                        document.getElementById("ponente").style.display = 'Block';
+                        document.getElementById("descripcion").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala").style.display = 'none';
+                        document.getElementById("ponente").style.display = 'none';
+                        document.getElementById("descripcion").style.display = 'none';
+                    }
+                    break;
+                case 2:
+                    if (document.getElementById("sala2").style.display == 'none') {
+                        document.getElementById("sala2").style.display = 'Block';
+                        document.getElementById("ponente2").style.display = 'Block';
+                        document.getElementById("descripcion2").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala2").style.display = 'none';
+                        document.getElementById("ponente2").style.display = 'none';
+                        document.getElementById("descripcion2").style.display = 'none';
+                    }
+                    break;
+                case 3:
+                    if (document.getElementById("sala3").style.display == 'none') {
+                        document.getElementById("sala3").style.display = 'Block';
+                        document.getElementById("ponente3").style.display = 'Block';
+                        document.getElementById("descripcion3").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala3").style.display = 'none';
+                        document.getElementById("ponente3").style.display = 'none';
+                        document.getElementById("descripcion3").style.display = 'none';
+                    }
+                    break;
+                case 4:
+                    if (document.getElementById("sala4").style.display == 'none') {
+                        document.getElementById("sala4").style.display = 'Block';
+                        document.getElementById("ponente4").style.display = 'Block';
+                        document.getElementById("descripcion4").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala4").style.display = 'none';
+                        document.getElementById("ponente4").style.display = 'none';
+                        document.getElementById("descripcion4").style.display = 'none';
+                    }
+                    break;
+                case 5:                    
+                    if (document.getElementById("sala_content2").style.display == 'none') {
+                        document.getElementById("sala_content2").style.display = 'Block';
+                        document.getElementById("ponente_content2").style.display = 'Block';
+                        document.getElementById("descripcion_content2").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content2").style.display = 'none';
+                        document.getElementById("ponente_content2").style.display = 'none';
+                        document.getElementById("descripcion_content2").style.display = 'none';
+                    }
+                    break;
+                case 6:
+                    if (document.getElementById("sala_content2_2").style.display == 'none') {
+                        document.getElementById("sala_content2_2").style.display = 'Block';
+                        document.getElementById("ponente_content2_2").style.display = 'Block';
+                        document.getElementById("descripcion_content2_2").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content2_2").style.display = 'none';
+                        document.getElementById("ponente_content2_2").style.display = 'none';
+                        document.getElementById("descripcion_content2_2").style.display = 'none';
+                    }
+                    break;
+                case 7:
+                    if (document.getElementById("sala_content2_3").style.display == 'none') {
+                        document.getElementById("sala_content2_3").style.display = 'Block';
+                        document.getElementById("ponente_content2_3").style.display = 'Block';
+                        document.getElementById("descripcion_content2_3").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content2_3").style.display = 'none';
+                        document.getElementById("ponente_content2_3").style.display = 'none';
+                        document.getElementById("descripcion_content2_3").style.display = 'none';
+                    }
+                    break;
+                case 8:
+                    if (document.getElementById("sala_content2_4").style.display == 'none') {
+                        document.getElementById("sala_content2_4").style.display = 'Block';
+                        document.getElementById("ponente_content2_4").style.display = 'Block';
+                        document.getElementById("descripcion_content2_4").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content2_4").style.display = 'none';
+                        document.getElementById("ponente_content2_4").style.display = 'none';
+                        document.getElementById("descripcion_content2_4").style.display = 'none';
+                    }
+                    break;
+                case 9:
+                    if (document.getElementById("sala_content2_5").style.display == 'none') {
+                        document.getElementById("sala_content2_5").style.display = 'Block';
+                        document.getElementById("ponente_content2_5").style.display = 'Block';
+                        document.getElementById("descripcion_content2_5").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content2_5").style.display = 'none';
+                        document.getElementById("ponente_content2_5").style.display = 'none';
+                        document.getElementById("descripcion_content2_5").style.display = 'none';
+                    }
+                    break;
+                case 10:                    
+                    if (document.getElementById("sala_content3").style.display == 'none') {
+                        document.getElementById("sala_content3").style.display = 'Block';
+                        document.getElementById("ponente_content3").style.display = 'Block';
+                        document.getElementById("descripcion_content3").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content3").style.display = 'none';
+                        document.getElementById("ponente_content3").style.display = 'none';
+                        document.getElementById("descripcion_content3").style.display = 'none';
+                    }
+                    break;
+                case 11:
+                    if (document.getElementById("sala_content3_2").style.display == 'none') {
+                        document.getElementById("sala_content3_2").style.display = 'Block';
+                        document.getElementById("ponente_content3_2").style.display = 'Block';
+                        document.getElementById("descripcion_content3_2").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content3_2").style.display = 'none';
+                        document.getElementById("ponente_content3_2").style.display = 'none';
+                        document.getElementById("descripcion_content3_2").style.display = 'none';
+                    }
+                    break;
+                case 12:
+                    if (document.getElementById("sala_content3_3").style.display == 'none') {
+                        document.getElementById("sala_content3_3").style.display = 'Block';
+                        document.getElementById("ponente_content3_3").style.display = 'Block';
+                        document.getElementById("descripcion_content3_3").style.display = 'Block';
+                    }
+                    else {
+                        document.getElementById("sala_content3_3").style.display = 'none';
+                        document.getElementById("ponente_content3_3").style.display = 'none';
+                        document.getElementById("descripcion_content3_3").style.display = 'none';
+                    }
+                    break;
+
+            }          
+        }
+
+        function mostrar_cuadro(x) {
+            switch (x) {
+                case 1:
+                    document.getElementById("content-1").style.display = 'Block';
+                    document.getElementById("content-2").style.display = 'none';
+                    document.getElementById("content-3").style.display = 'none';
+                    //document.getElementById("").style.display = 'none';
+                    break;
+                case 2:
+                    document.getElementById("content-2").style.display = 'Block';
+                    document.getElementById("content-1").style.display = 'none';
+                    document.getElementById("content-3").style.display = 'none';
+                    break;
+                case 3:
+                    document.getElementById("content-3").style.display = 'Block';
+                    document.getElementById("content-1").style.display = 'none';
+                    document.getElementById("content-2").style.display = 'none';
+                    break;
             }
         }
     </script>
@@ -187,72 +348,180 @@
         <div id="container">
             <!--Pestaña 1 activa por defecto-->
             <input id="tab-1" type="radio" name="tab-group" checked="checked" />
-            <label for="tab-1"><i class="far fa-calendar-alt" style="font-size: 16px; color: #fff;"></i>14 Junio</label>
+            <label for="tab-1" onclick="mostrar_cuadro(1)"><i class="far fa-calendar-alt" style="font-size: 16px; color: #fff;"></i>14 Junio</label>
             <!--Pestaña 2 inactiva por defecto-->
             <input id="tab-2" type="radio" name="tab-group" />
-            <label for="tab-2"><i class="far fa-calendar-alt" style="font-size: 16px; color: #fff;"></i>15 Junio</label>
+            <label for="tab-2" onclick="mostrar_cuadro(2)"><i class="far fa-calendar-alt" style="font-size: 16px; color: #fff;"></i>15 Junio</label>
             <!--Pestaña 3 inactiva por defecto-->
             <input id="tab-3" type="radio" name="tab-group" />
-            <label for="tab-3"><i class="far fa-calendar-alt" style="font-size: 16px; color: #fff;"></i>16 Junio</label>
+            <label for="tab-3" onclick="mostrar_cuadro(3)"><i class="far fa-calendar-alt" style="font-size: 16px; color: #fff;"></i>16 Junio</label>
             <!--Contenido a mostrar/ocultar-->
             <div id="content">
                 <!--Contenido de la Pestaña 1-->
                 <div id="content-1">
                     <div class="miclase">
-                        <h2 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h2>
-                        <div id="hora" class="time_cont verde" onclick="mostrar_ocultar()">
-                            <p style="padding:5px;border: 2px solid red;">10:00 am <span style="float:right;margin-right:5%;">↓</span></p>
-                            <div id="sala" class="sala_cont azul">
-                                <p>Sala 22M</p>
+                        <h1 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h1>
+                        <h2 style="text-align: center; padding: 10px; color: #fff">Viernes 14 Junio de 2019.</h2>
+                        <div id="hora" class="well time_cont" onclick="mostrar_ocultar(1)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 10:00 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala 22M</span></h4>
+                            </div>
+                            <div id="ponente" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Don Juan Carlos Sánchez</a></span></h4>
+                            </div>
+                            <div id="descripcion" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">El biogás agroindustrial es una tecnología con una enorme implantación en Europa y que ha generado grandes expectativas en España desde hace más de una década. No obstante, tratándose incluso de una tecnología madura y contrastada, ha generado una realidad muy inferior a las previsiones del sector, con apenas 50 plantas de biogás agroindustrial instaladas en España</span></h4>
                             </div>
                         </div>
-                        
-<%--                        <table class="table">
-                            <tbody>
-                                <th><i class="fas fa-male"></i>Ponente</th>
-                                <td>Juan Carlos Sánchez</td>
-                                <td>Antoni Lopez</td>
-                                <td>Jose Sánchez</td>
-                                <tr>
-                                    <th><i class="far fa-clock"></i>Hora</th>
-                                    <td>10:00 am</td>
-                                    <td>12:30 pm</td>
-                                    <td>16:10 pm</td>
-                                </tr>
-                                <tr>
-                                    <th><i class="fas fa-location-arrow"></i>Sala</th>
-                                    <td></td>
-                                    <td>Parker</td>
-                                    <td>Rambo</td>
-                                </tr>
-                                <tr>
-                                    <th><i class="fas fa-clipboard-list"></i>Descripción</th>
-                                    <td>17:30 pm</td>
-                                    <td>peterparker@mail.com</td>
-                                    <td>johnrambo@mail.com</td>
-                                </tr>
-                            </tbody>
-                        </table>--%>
-                    </div>
+                        <div id="hora2" class="well time_cont2" onclick="mostrar_ocultar(2)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 12:30 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala2" class="sala_cont2">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala 2B</span></h4>
+                            </div>
+                            <div id="ponente2" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;">Don Antoni Lopez</span></h4>
+                            </div>
+                            <div id="descripcion2" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">Instalaciones de energía solar en la vivienda. La energía solar es un tipo de alternativa energética que saca partido de los rayos solares para generar electricidad o calor que puede ayudar a satisfacer parte de la demanda energética de una vivienda. Dentro de esta variedad existen diferentes tipos o modelos de instalaciones que se podrán realizar en una edificación.</span></h4>
+                            </div>
+                        </div>
+                        <div id="hora3" class="well time_cont2" onclick="mostrar_ocultar(3)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 16:10 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala3" class="sala_cont2">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala de Conferencias 2</span></h4>
+                            </div>
+                            <div id="ponente3" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;">Don Jose Sánchez</span></h4>
+                            </div>
+                            <div id="descripcion3" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">Nos hablará sobre su investigación: "Amoniaco como vector energético portador de hidrógeno: Proyecto Hidroam".</span></h4>
+                            </div>
+                        </div>
+                        <div id="hora4" class="well time_cont2" onclick="mostrar_ocultar(4)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 17:30 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala4" class="sala_cont2">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Teatro B</span></h4>
+                            </div>
+                            <div id="ponente4" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;">Don Victor Tuñon</span></h4>
+                            </div>
+                            <div id="descripcion4" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">Director de Aprovisionamiento de gas de Naturgy .</span></h4>
+                            </div>
+                        </div>
+                    </div>                    
                 </div>
                 <!--Contenido de la Pestaña 2-->
                 <div id="content-2">
-                    <p class="column-left">
-                        <img src="http://ximg.es/200x150" alt="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, est, nisi enim voluptates dicta quibusdam recusandae eveniet provident non at nostrum nesciunt laudantium omnis aliquam debitis magni expedita cumque tempore.
-                    </p>
-                    <p class="column-right">
-                        <img src="http://ximg.es/200x150" alt="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, molestiae, officia repellendus quasi cumque dolor eius deserunt possimus aliquid neque nam assumenda veniam soluta enim commodi aperiam reprehenderit quia incidunt.
-                    </p>
+                    <div class="miclase2">
+                        <h1 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h1>
+                        <h2 style="text-align: center; padding: 10px; color: #fff">Sabado 15 Junio de 2019.</h2>
+                        <div id="hora_content2" class="well time_cont" onclick="mostrar_ocultar(5)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 10:00 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content2" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala 2A</span></h4>
+                            </div>
+                            <div id="ponente_content2" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Doña Marta Margarit</a></span></h4>
+                            </div>
+                            <div id="descripcion_content2" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">El sector energético ha sido tradicionalmente un sector con una fuerte presencia masculina y, por ello, el título “Mujer y Energía” llama tanto la atención. Sin embargo, esta serie de artículos demuestra que la cantidad de mujeres en este sector es notable.</span></h4>
+                            </div>
+                        </div>
+                        <div id="hora_content2_2" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(6)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 12:05 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content2_2" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Conferencias</span></h4>
+                            </div>
+                            <div id="ponente_content2_2" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Doña Marie Vandendriessche</a></span></h4>
+                            </div>
+                            <div id="descripcion_content2_2" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">Senior Researcher' ESADEgeo – Center.</span></h4>
+                            </div>
+                        </div>
+                        <div id="hora_content2_3" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(7)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 16:05 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content2_3" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Teatro A</span></h4>
+                            </div>
+                            <div id="ponente_content2_3" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Doña Paula LaGuia</a></span></h4>
+                            </div>
+                            <div id="descripcion_content2_3" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">En el horizonte 2030 serán imprescindibles las renovables con almacenamiento.</span></h4>
+                            </div>
+                        </div>
+                        <div id="hora_content2_4" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(8)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 17:25 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content2_4" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Charlas 2A</span></h4>
+                            </div>
+                            <div id="ponente_content2_4" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Don Juan Sebastian</a></span></h4>
+                            </div>
+                            <div id="descripcion_content2_4" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">He analizado los programas electorales energéticos de las seis principales formaciones políticas de ámbito estatal que concurren a las próximas elecciones generales. </span></h4>
+                            </div>
+                        </div>
+                        <div id="hora_content2_5" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(9)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 18:05 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content2_5" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala B</span></h4>
+                            </div>
+                            <div id="ponente_content2_5" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Don Felipe Lopez</a></span></h4>
+                            </div>
+                            <div id="descripcion_content2_5" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, odit?.</span></h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--Contenido de la Pestaña 3-->
                 <div id="content-3">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, aperiam, enim odit placeat minus ab vero molestiae ad fugit maiores eaque saepe debitis assumenda ut ipsam eius sit repellendus dolore.</p>
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, in magni illo dolore dicta vero.</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, minus, aspernatur voluptatem doloribus labore modi.</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, exercitationem quia id accusamus beatae sunt? Dolorum mollitia sint debitis delectus.</li>
-                    </ul>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, accusantium, provident ab quo sed blanditiis perspiciatis distinctio aut voluptatibus cum odio quaerat iure vel dolorum fugit explicabo suscipit tenetur. Sed!</p>
+                    <div class="miclase3">
+                        <h1 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h1>
+                        <h2 style="text-align: center; padding: 10px; color: #fff">Domingo 16 Junio de 2019.</h2>
+                        <div id="hora_content3" class="well time_cont" onclick="mostrar_ocultar(10)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 09:25 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content3" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Conferencias B</span></h4>
+                            </div>
+                            <div id="ponente_content3" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Don Jeronimo Tuñón</a></span></h4>
+                            </div>
+                            <div id="descripcion_content3" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">El futuro del gas Europa del norte y central vendrá dado por la dependencia de una gran parte de Europa a los suministros de gas por gaseoducto de Rusia y por el rechazo de Estados Unidos a que esto sea así.</span></h4>
+                            </div>
+                        </div>
+                        <div id="hora_content3_2" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(11)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 10:45 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content3_2" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Conferencias B</span></h4>
+                            </div>
+                            <div id="ponente_content3_2" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Doña Marta Pedrera</a></span></h4>
+                            </div>
+                            <div id="descripcion_content3_2" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">Europa, al estar muy centrada en el peso de Alemania, solo mira al este y a Rusia. Pero la oportunidad para Europa es el GNL a través de España.</span></h4>
+                            </div>
+                        </div>
+                        <div id="hora_content3_3" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(12)">
+                            <h2 style="padding:5px;margin-left:.5%;">Hora: 12:00 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <div id="sala_content3_3" class="sala_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Prensa</span></h4>
+                            </div>
+                            <div id="ponente_content3_3" class="ponente_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Ponente: <span style="float:right;margin-right:10%;"><a href="#">Doña Marie Perez</a></span></h4>
+                            </div>
+                            <div id="descripcion_content3_3" class="descri_cont">
+                                <h4 style="padding:5px;margin-left:2.5%;">Descripción: <span style="float: right;width: 50%;text-align: justify;">Viene a presentarnos su investigación, que se centra en la gobernanza global y la geopolítica de la energía y el cambio climático.</span></h4>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>

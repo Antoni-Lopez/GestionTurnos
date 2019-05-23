@@ -6,9 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script>paypal.Buttons().render('body');</script>
 </head>
 <body>
-    <form id="form1" action="https://securepayments.sandbox.paypal.com/webapps/HostedSoleSolutionApp/webflow/sparta/hostedSoleSolutionProcess" runat="server" method="post">
+<%--    <form id="form1" action="https://securepayments.sandbox.paypal.com/webapps/HostedSoleSolutionApp/webflow/sparta/hostedSoleSolutionProcess" runat="server" method="post">
         <input type="hidden" name="cmd" value="_hosted-payment" />
         <input type="hidden" name="subtotal" value="50" />
         <input type="hidden" name="business" value="ARGQmbVLST4B3w3mX1IJiczvmNQsSTW5nQ_idLrz2CnlLWUvPwwbCylI4B4KLzEnQLu9rcJ9NJ5FJeVg" />
@@ -18,6 +20,6 @@
         <input type="submit" name="METHOD" value="Pay" />
         <div>
         </div>
-    </form>
+    </form>--%>
 </body>
 </html>
