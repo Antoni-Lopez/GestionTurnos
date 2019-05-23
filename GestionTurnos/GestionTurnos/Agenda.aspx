@@ -37,7 +37,7 @@
 
         #container {
             margin: 0 auto;
-            width: 50%; /* Ancho del contenedor */
+            width: 55%; /* Ancho del contenedor */
         }
 
             #container input {
@@ -147,13 +147,16 @@
             background-color: #ffc000;
         }
         .time_cont{margin-top: 3%;background-color:#fff;border: 1px solid #0F7699;border-radius: 4px;}
-        .time_cont2{margin-top: .3%;background-color:#fff;border: 1px solid #0F7699;border-radius: 4px;}
+        .time_cont2{margin-top: .5%;background-color:#fff;border: 1px solid #0F7699;border-radius: 4px;}
         .time_cont,.sala_cont,.time_cont2,.sala_cont2,.ponente_cont,.descri_cont{
             opacity: 1 !important;
             z-index: 100 !important;
-            width: 100%;
+            width: 95%;
+            height:auto;
+            margin:0 auto;
             padding: 15px;            
         }    
+        .time_cont,.time_cont2{padding: 5px !important;margin-top: .5%;}
         .sala_cont,.sala_cont2,.ponente_cont,.descri_cont{
             margin-top: 5px !important;
             display: none;
@@ -162,9 +165,12 @@
         .centrar {
             text-align: center !important;
         }
-        .descri_cont{height:10em;}
+        .descri_cont{height:10em;border:0 !important;}
             
        #content-2,#content-3{display:none;}
+        @media (max-width: 1000px) {
+            #container {width: 90%;}
+        }
     </style>
     <script type="text/javascript">
         function mostrar_ocultar(x) {
@@ -361,9 +367,9 @@
                 <div id="content-1">
                     <div class="miclase">
                         <h1 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h1>
-                        <h2 style="text-align: center; padding: 10px; color: #fff">Viernes 14 Junio de 2019.</h2>
+                        <h2 style="text-align: center; padding: 10px; color: #fff;margin-top:-4.5%;">Viernes 14 Junio de 2019.</h2>
                         <div id="hora" class="well time_cont" onclick="mostrar_ocultar(1)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 10:00 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:1%;">Hora: 10:00 am <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala 22M</span></h4>
                             </div>
@@ -375,7 +381,7 @@
                             </div>
                         </div>
                         <div id="hora2" class="well time_cont2" onclick="mostrar_ocultar(2)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 12:30 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 12:30 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala2" class="sala_cont2">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala 2B</span></h4>
                             </div>
@@ -387,7 +393,7 @@
                             </div>
                         </div>
                         <div id="hora3" class="well time_cont2" onclick="mostrar_ocultar(3)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 16:10 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 16:10 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala3" class="sala_cont2">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala de Conferencias 2</span></h4>
                             </div>
@@ -399,7 +405,7 @@
                             </div>
                         </div>
                         <div id="hora4" class="well time_cont2" onclick="mostrar_ocultar(4)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 17:30 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 17:30 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala4" class="sala_cont2">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Teatro B</span></h4>
                             </div>
@@ -416,9 +422,9 @@
                 <div id="content-2">
                     <div class="miclase2">
                         <h1 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h1>
-                        <h2 style="text-align: center; padding: 10px; color: #fff">Sabado 15 Junio de 2019.</h2>
+                        <h2 style="text-align: center; padding: 10px; color: #fff;margin-top:-3.5%;">Sabado 15 Junio de 2019.</h2>
                         <div id="hora_content2" class="well time_cont" onclick="mostrar_ocultar(5)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 10:00 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 10:00 am <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content2" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala 2A</span></h4>
                             </div>
@@ -430,7 +436,7 @@
                             </div>
                         </div>
                         <div id="hora_content2_2" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(6)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 12:05 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 12:05 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content2_2" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Conferencias</span></h4>
                             </div>
@@ -442,7 +448,7 @@
                             </div>
                         </div>
                         <div id="hora_content2_3" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(7)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 16:05 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 16:05 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content2_3" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Teatro A</span></h4>
                             </div>
@@ -454,7 +460,7 @@
                             </div>
                         </div>
                         <div id="hora_content2_4" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(8)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 17:25 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 17:25 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content2_4" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Charlas 2A</span></h4>
                             </div>
@@ -466,7 +472,7 @@
                             </div>
                         </div>
                         <div id="hora_content2_5" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(9)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 18:05 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 18:05 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content2_5" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala B</span></h4>
                             </div>
@@ -483,9 +489,9 @@
                 <div id="content-3">
                     <div class="miclase3">
                         <h1 style="text-align: center; padding: 10px; color: #fff">Agenda Conferencia  GasNedgia 2019</h1>
-                        <h2 style="text-align: center; padding: 10px; color: #fff">Domingo 16 Junio de 2019.</h2>
+                        <h2 style="text-align: center; padding: 10px; color: #fff;margin-top:-3.5%;">Domingo 16 Junio de 2019.</h2>
                         <div id="hora_content3" class="well time_cont" onclick="mostrar_ocultar(10)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 09:25 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 09:25 am <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content3" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Conferencias B</span></h4>
                             </div>
@@ -497,7 +503,7 @@
                             </div>
                         </div>
                         <div id="hora_content3_2" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(11)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 10:45 am <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 10:45 am <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content3_2" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Conferencias B</span></h4>
                             </div>
@@ -509,7 +515,7 @@
                             </div>
                         </div>
                         <div id="hora_content3_3" class="well time_cont" style="margin-top:.3%;" onclick="mostrar_ocultar(12)">
-                            <h2 style="padding:5px;margin-left:.5%;">Hora: 12:00 pm <span style="float:right;margin-right:5%;">↓</span></h2>
+                            <h3 style="padding:5px;margin-left:.5%;">Hora: 12:00 pm <span style="float:right;margin-right:5%;">↓</span></h3>
                             <div id="sala_content3_3" class="sala_cont">
                                 <h4 style="padding:5px;margin-left:2.5%;">Lugar: <span style="float:right;margin-right:10%;">Sala Prensa</span></h4>
                             </div>
