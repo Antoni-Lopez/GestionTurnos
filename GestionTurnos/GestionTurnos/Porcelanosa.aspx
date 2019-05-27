@@ -70,7 +70,7 @@
           .toggle input + label {padding: .75rem .25rem; flex: 0 0 50%;display: flex; justify-content: center;align-items: center;}
         }
 
-        #paso_datos{display:none;}
+        #paso_datos{display:block;}
     </style>
 
 
@@ -98,10 +98,6 @@
                     break;
 
             }
-        }
-
-        function michorra() {
-            var x = [];
         }
 
         //comprobamos checkboxes marcados y lo enviamos a la funcion de AJAX
@@ -196,17 +192,17 @@
 
         //Recordando origenes xD
         function orihuela(x) {
-
             var y = x.split("¦");
             var p = y.length;
-            for (i = 0; i <= p - 1; i++) {                
-                //alert(y[i]);                
+            for (i = 0; i <= p - 1; i++) {                                
                 document.getElementById("chk" + y[i]).checked = true;
-            }         
+            }
         }
 
 
-        
+        function mensaje_full() {
+            LanzaAviso("Lo sentimos pero esta sesión a llenado todas sus plazas y por ello no puede seleccionarla. Gracias!");
+        }
 
     </script>
 </head>
@@ -215,7 +211,7 @@
     src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID">
   </script>
     <form id="form1" runat="server">
-        <div class="container-fluid logo" onclick="comprobar_marcados()">
+        <div class="container-fluid logo" onclick="orihuela(5)">
             <img src="img/grupoporcelanosa.jpg" />
         </div>
         <div id="prueba_aspx" class="principal usuario" runat="server">
@@ -260,13 +256,6 @@
             <%--<asp:Button ID="Button_enviar" runat="server" Text="Enviar" />--%>
             <div id="Button_enviar" onclick="comprobar_marcados()">Enviar</div>
         </div>
-        <div class="row principal">
-            <div id="paypal-button-container"></div>
-
-              <script>
-                paypal.Buttons().render('#paypal-button-container');
-              </script>
-        </div>
         <asp:TextBox ID="paso_datos" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
         <%--<asp:TextBox ID="paso_datos2" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
         <asp:TextBox ID="paso_datos3" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
@@ -280,7 +269,7 @@
 
             Dades = document.getElementById("paso_datos").value + "¦" + x;
             
-            setTimeout("InformacioAJAX(5,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+            setTimeout("InformacioAJAX(7,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
             alert(Dades);
         }
 
