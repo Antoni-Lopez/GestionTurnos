@@ -239,24 +239,62 @@
                         GoTo Resposta
                     Case 7 'Siguiente proyecto PORCELANOSA.
                         Dim DS As New DataSet
-                        Dim i As Integer, j As Integer, long_dades As String, idusuario As Integer, chk As String, id_chk As String, chk2 As String
+                        Dim i As Integer, j As Integer, long_dades As String, idusuario As Integer, chk As String, id_chk As String, chk2 As String, guardar As String
 
                         VDades = CStr(Request.Form("d")).Split("¦")
                         long_dades = VDades.Length
-                        For i = 0 To long_dades
+                        guardar = ""
+                        For i = 0 To long_dades - 1
                             If i = 0 Then
-                                idusuario = VDades(0)
+                                idusuario = VDades(i)
                             Else
                                 chk = VDades(i)
                                 id_chk = chk.Replace("chk", " ")
-                                Comprobar_aforo(id_chk)
+                                If Comprobar_aforo(id_chk) Then
+                                    If i = long_dades - 1 Then
+                                        guardar += id_chk
+                                    Else
+                                        guardar += id_chk + "¦"
+                                    End If
+
+
+                                Else
+                                        GoTo Resposta 'Terminamos la ejecución porque no quedan plazas y aun asi hemos elegido un chk.
+                                End If
                             End If
                         Next
-                        'Ingresar_Chk(idusuario, id_chk)
-                        chk2 = VDades(1)
-                        For i = 2 To long_dades
-                            chk2 += VDades(i)
-                        Next
+
+                        Dim idenlace As Integer, iduser As Integer, idsesiones As String, activo As String
+                        activo = ""
+
+                        'La consulta.
+                        VectorSQL(0) = "SELECT idenlace , idusuario, idsesiones FROM enlace WHERE idusuario = '" & idusuario & "'"
+                        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+                            'Problema
+                        Else
+                            If DS.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To DS.Tables(0).Rows.Count - 1
+                                    idenlace = DS.Tables(0).Rows(i).Item("idenlace")
+                                    iduser = DS.Tables(0).Rows(i).Item("idusuario")
+                                    idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                                Next
+                            Else
+                                'No nos devuelve valores
+                            End If
+                        End If
+
+                        'El UPDATE
+                        VectorSQL(0) = "UPDATE enlace SET idsesiones = '" & guardar & "',idusuario='" & iduser & "',idenlace='" & idenlace & "' WHERE idusuario = '" & idusuario & "'"
+                        'VectorSQL(0) = "UPDATE NombreTabla SET Campo1 = Valor1, Campo2 = Valor2, Campo3 = Valor3 WHERE Campo1 = 1 AND Camp2 = '2'"
+                        If Not clsBD.BaseDades(2, VectorSQL) Then
+                            'Problema
+                            Descripcio = "KO7"
+                        Else
+                            'Correcto
+                            Descripcio = "OK7"
+                        End If
+
+
                 End Select
             End If
         Catch ex As Exception
@@ -352,7 +390,7 @@ Resposta:
                     ins = DS.Tables(0).Rows(i).Item("inscritos")
                 Next
 
-                If aforo = ins Then
+                If aforo < ins Then
                     ClientScript.RegisterStartupScript(Page.GetType(), "aforo_lleno", "LanzaAviso('Lo sentimos pero el aforo ya esta lleno.')", True)
                     Return False
                 End If

@@ -48,6 +48,10 @@
         #mycheckbox_traslados:after,#mycheckbox2_traslados:after,#mycheckbox3_traslados:after,#mycheckbox4_traslados:after,#Mycheckbox_Actividades:after,#Mycheckbox_Actividades2:after {line-height: 1.2em;content: '';display: block;width: 25px;height: 25px;border: 1px solid Black;margin-top: -8px;background-color: #8F8F8F;} /*background: #4B9DEA;*/
         #mycheckbox_traslados:checked:after,#mycheckbox2_traslados:checked:after,#mycheckbox3_traslados:checked:after,#mycheckbox4_traslados:checked:after,#Mycheckbox_Actividades:checked:after,#Mycheckbox_Actividades2:checked:after {content: '✔';text-align: center;color: #fff;background: #4B9DEA;}
 
+        /* Personalizar los checkboxs deshabilitados. */
+        .desabilitar_chk{background-color:#E3E9EC !important;color:#4B9DEA !important;}
+
+        /* Tabla de chk */
         table tr th input[type="checkbox"]:after{line-height: 1.2em;content: '';display: block;width: 25px;height: 25px;border: 1px solid Black;margin-top: -8px;background-color: #8F8F8F;}
         table tr th input[type="checkbox"]:checked:after{content: '✔';text-align: center;color: #fff;background: #4B9DEA;}
 
@@ -129,7 +133,7 @@
                     }                                     
                 }     
             }
-            Registre(chk_final);
+            //Registre(chk_final);
         }
 
         function LanzaAviso(Text) {
@@ -151,41 +155,32 @@
 
         function contar() {
             
-            var total_checkbos;
-    
+            var total_checkbos;    
             total_checkbos = $('input[type=checkbox]').map(function() {
                 return $(this).attr('id'); //todos los checbox del documento.
             }).get();
     
-            alert('TODOS CHECKBOXS: ' + total_checkbos.join('¦'));
 
             long_totalCheckbox = total_checkbos.length; //Longitud de todos los checkboxs marcados/sin marcar.
-            alert("esto es prueba= " + long_totalCheckbox); 
+          
+            
 
+            
             var checkbos_activos;
-            checkbos_activos = $('input[type=checkbox]:checked').map(function () {
-                return $(this).attr('id'); //checkbox marcados.                
+                checkbos_activos = $('input[type=checkbox]:checked').map(function () {
+                    return $(this).attr('id'); //checkbox marcados.                
             }).get();
 
-            long_checkbos_activos = checkbos_activos.length;
-
-            alert('Prueba2: ' + checkbos_activos.join('¦'));
-            alert('Prueba3-Total activos: ' + long_checkbos_activos);
-
-            for (var i = 0; i < long_checkbos_activos; i++) {
-                alert(checkbos_activos[i]); //id de los checkbox activos
-            }
-            
-            
-
             Long_checkbos_activos = checkbos_activos.length;
+
             if (Long_checkbos_activos <= 0) {
                 LanzaAviso("Lo sentimos pero no ha marcado ningún checkbox, necesita marcar alguno. Gracias!");
             }
-            else {
-                //for (var i = 0; i < long_checkbos_activos; i++) {
-                //    alert(checkbos_activos[i]);
-                //}
+            else {                
+                var pasar = checkbos_activos.join('¦');
+                var idusuario = document.getElementById("paso_datos").value;
+                alert('Prueba2: ' + pasar);
+                alert('Prueba3-IDUsuario: ' + idusuario);
             }
         }
 
@@ -211,7 +206,7 @@
     src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID">
   </script>
     <form id="form1" runat="server">
-        <div class="container-fluid logo" onclick="orihuela(5)">
+        <div class="container-fluid logo" onclick="contar()">
             <img src="img/grupoporcelanosa.jpg" />
         </div>
         <div id="prueba_aspx" class="principal usuario" runat="server">
@@ -254,34 +249,60 @@
                 </table>
             </div>
             <%--<asp:Button ID="Button_enviar" runat="server" Text="Enviar" />--%>
-            <div id="Button_enviar" onclick="comprobar_marcados()">Enviar</div>
+            <div id="Button_enviar" onclick="Registre()">Enviar</div>
         </div>
         <asp:TextBox ID="paso_datos" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
-        <%--<asp:TextBox ID="paso_datos2" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
-        <asp:TextBox ID="paso_datos3" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
+        <asp:TextBox ID="paso_datos2" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
+        <%--<asp:TextBox ID="paso_datos3" CssClass="container-fluid row verde" runat="server"></asp:TextBox>
         <asp:TextBox ID="paso_datos4" CssClass="container-fluid row verde" runat="server"></asp:TextBox>--%>
     </form>
     <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script> 
     <script>
-        function Registre(x) {
-            var Dades;
-            alert(x);
+        function Registre() {
+            var Dades, total_checkbos;    
+            total_checkbos = $('input[type=checkbox]').map(function() {
+                return $(this).attr('id'); //todos los checbox del documento.
+            }).get();
+    
 
-            Dades = document.getElementById("paso_datos").value + "¦" + x;
+            long_totalCheckbox = total_checkbos.length; //Longitud de todos los checkboxs marcados/sin marcar.
+          
             
-            setTimeout("InformacioAJAX(7,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
-            alert(Dades);
+
+            
+            var checkbos_activos;
+                checkbos_activos = $('input[type=checkbox]:checked').map(function () {
+                    return $(this).attr('id'); //checkbox marcados.                
+            }).get();
+
+            Long_checkbos_activos = checkbos_activos.length;
+
+            if (Long_checkbos_activos <= 0) {
+                LanzaAviso("Lo sentimos pero no ha marcado ningún checkbox, necesita marcar alguno. Gracias!");
+            }
+            else {                
+                var pasar = checkbos_activos.join('¦');
+                var idusuario = document.getElementById("paso_datos").value;
+                alert('Prueba2: ' + pasar);
+                //alert('Prueba3-IDUsuario: ' + idusuario);
+
+                Dades = document.getElementById("paso_datos").value + "¦" + pasar;
+                setTimeout("InformacioAJAX(7,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+            }
+            
+            
+            
         }
 
         function Registre_Tornada(Dades) {
             alert("llegamos aqui??");
             if (Dades.substr(0, 2) == "OK") {
-                if (Dades.substr(2, 1) == "1") {
-                    LanzaAviso("Hemos modificado el registro que lleva el Email: " + document.getElementById("email_delegado").value) + " en la Base de Datos con exito. Gracias ;-)";
+                if (Dades.substr(2, 1) == "7") {
+                    LanzaAviso("Hemos actualizado correctacmente sus preferencias en nuestra Base de Datos");
                 }
             }
             else {
-                if (Dades.substr(2, 1) == "0") {
+                if (Dades.substr(2, 1) == "7") {
                     LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
                 }
             }

@@ -15,29 +15,18 @@
             Else
                 If CompruebaEmail(Trim(email)) Then 'Si nos devuelve true, el email está en la BD.
 
-                    Dim iduser As Integer, Rol As Integer, inscrito As String
+                    Dim iduser As Integer, Rol As Integer, inscrito As String, n_traslados As Integer, n_Actividades As Integer
 
                     iduser = CompruebaEmail(email)
                     BuscaNameApellido(iduser)
 
+                    n_traslados = longitud_traslados(0) 'Lo ponemos a Martillo porque el rol esta dividido en 0->Traslados y 1->Actividades, como estamos en traslados, es 0 por narices ^^
+                    RellenarTraslados(iduser, n_traslados)
 
 
-                    'Ahora comprobamos si está inscrito en alguna Actividad o Traslado.
-                    'If comprueba_inscripcion(iduser) Then
-                    '    'como si lo está, declaramos la variable isncrito para saber en cual esta apuntado.
-                    '    inscrito = comprueba_inscripcion(iduser)
-                    'End If
 
-                    Rol = 0 'Lo ponemos a Martillo porque el rol esta dividido en 0->Traslados y 1->Actividades, como estamos en traslados, es 0 por narices ^^
-                    RellenarTraslados(Rol, iduser)
-
-
-                    Rol = 1 'Como ya hemos mostrado los Traslados, ahora ponemos el Rol= 1 para mostrar las Actividades.
-                    RellenarActividades(Rol)
-
-
-                    'Ahora comprobamos que sesiones tiene checked.
-                    'Buscar_Tabla_Enlace(iduser)
+                    n_Actividades = longitud_traslados(1)
+                    RellenarActividades(iduser, n_Actividades)
 
 
                 Else
@@ -133,13 +122,43 @@
                 Else
                     VArray = sesiones.Split("¦")
                 End If
+            Else
+                Return False
             End If
         End If
         Return VArray
     End Function
 
+    Private Function Boolean_inscripcion(ByRef idusuario)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As DataSet
+        Dim VectorSQL(0) As String, sesiones As String, long_idsesion As Integer, VArray() As String, x As String
+        DS = New DataSet
+
+        VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(idusuario, 100)) & "'"
+
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+            'ClientScript.RegisterStartupScript(Page.GetType(), "user_fail", "LanzaAviso('No hemos encontrado que este usuario tuviese sesiones activas en la BD.')", True)
+            Return False
+        Else
+            If DS.Tables(0).Rows.Count > 0 Then
+                For i = 0 To DS.Tables(0).Rows.Count - 1
+                    sesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                Next
+
+                If sesiones.Length = 0 Then
+                    Return False
+                Else
+                    Return True
+                End If
+            Else
+                Return False
+            End If
+        End If
+    End Function
+
     'Funcion que nos muestra los checkboxs de los Traslados.
-    Private Function RellenarTraslados(ByRef Rol, ByVal iduser)
+    Private Function RellenarTraslados(ByRef iduser, ByVal N_traslados)
 
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
@@ -147,87 +166,246 @@
         DS = New DataSet
 
         Dim fecha As String, hora As String, Descripcion As String, idsesiones As String, miprueba As String, aforo As Integer, inscritos As Integer, Varray() As String
-        Dim sesion_Chk_usuario() As String, Rol_sesion As String, long_sesiones As Integer, sesion_usuario As String, evento As Integer, plaza As String, long_traslados As String, x As Integer
+        Dim sesion_Chk_usuario() As String, Rol As String, long_sesiones As Integer, sesion_usuario As String, evento As Integer, plaza As String, long_traslados As String
+        Dim y As Integer, statuschk As Integer, checkea_array As String, sesiones As String, long_idsesion As Integer, x As Boolean
 
+        Rol = 0
 
+        'Consulta para ayar si el usuario tiene algo seleccionado o no.
+        'VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(iduser, 100)) & "'"
+
+        'If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+        '    ClientScript.RegisterStartupScript(Page.GetType(), "user_fail", "LanzaAviso('Algo ha fallado al intentar acceder a la BD.')", True)
+        '    'Return False
+        'Else
+        '    If DS.Tables(0).Rows.Count > 0 Then
+        '        For i = 0 To DS.Tables(0).Rows.Count - 1
+        '            sesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+        '        Next
+        '        If sesiones.Length = 0 Then
+        '            x = False
+        '        Else
+        '            Varray = sesiones.Split("¦")
+        '            x = True
+        '        End If
+        '    Else
+        '        x = False
+        '    End If
+        'End If
+
+        'Consulta para que nos muestre las distintas sesiones. Primero de Traslados y despues de Actividades.
+        VectorSQL(0) = "SELECT fecha_fin,hora,Descripción,idsesiones,Aforo,inscritos FROM sesiones WHERE rol='" & clsBD.Cometes(Left(Rol, 100)) & "'ORDER BY fecha_fin, hora"
+
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+        Else 'Vector de Consulta correcto.
+            If DS.Tables(0).Rows.Count > 0 Then
+                If Boolean_inscripcion(iduser) Then
+                    Varray = comprueba_inscripcion(iduser) 'comprobamos cual tiene marcado el usuario.
+                    For i = 0 To DS.Tables(0).Rows.Count - 1
+
+                        idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                        fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
+                        hora = DS.Tables(0).Rows(i).Item("hora")
+                        Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
+                        aforo = DS.Tables(0).Rows(i).Item("Aforo")
+                        inscritos = DS.Tables(0).Rows(i).Item("inscritos")
+
+                        'verificamos las opciones marcadas por el usuario.
+                        For y = 0 To Varray.Length - 1
+                            If Varray(y) = DS.Tables(0).Rows(i).Item("idsesiones") Then
+                                'mostramos chk seleccionado
+                                statuschk = 0
+                                Exit For
+                            Else
+                                If aforo > inscritos Then
+                                    statuschk = 1
+                                    'mostramos el chk habilitado
+
+                                Else
+                                    statuschk = 2
+                                    'mostramos el chk desabilitado.
+                                    'Exit For
+                                End If
+                            End If
+                        Next
+
+                        Select Case statuschk
+                            Case 0
+                                miprueba += "<tr><th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server' checked/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                            Case 1
+                                miprueba += "<tr><th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                            Case 2
+                                miprueba += "<th scope = 'row' class='desabilitar_chk' onclick='mensaje_full()'><input type='checkbox' style='cursor: not-allowed;pointer-events: none;' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td class='desabilitar_chk' onclick='mensaje_full()'>" & fecha & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & hora & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & Descripcion & "</td></tr>"
+                        End Select
+                    Next
+                Else
+                    For i = 0 To DS.Tables(0).Rows.Count - 1
+                        idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                        fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
+                        hora = DS.Tables(0).Rows(i).Item("hora")
+                        Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
+                        aforo = DS.Tables(0).Rows(i).Item("Aforo")
+                        inscritos = DS.Tables(0).Rows(i).Item("inscritos")
+                        If aforo > inscritos Then
+                            statuschk = 1
+                            'mostramos el chk habilitado
+
+                        Else
+                            statuschk = 2
+                            'mostramos el chk desabilitado.
+                            'Exit For
+                        End If
+                        Select Case statuschk
+                            Case 1
+                                miprueba += "<tr><th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                            Case 2
+                                miprueba += "<th scope = 'row' class='desabilitar_chk' onclick='mensaje_full()'><input type='checkbox' style='cursor: not-allowed;pointer-events: none;' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td class='desabilitar_chk' onclick='mensaje_full()'>" & fecha & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & hora & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & Descripcion & "</td></tr>"
+                        End Select
+                    Next
+                End If
+            Else
+                miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+            End If
+
+        End If
+        comienzo_tabla.InnerHtml = miprueba
+    End Function
+
+    'Funcion que nos muestra los checkboxs de las Actividades.
+    Private Function RellenarActividades(ByRef idusuario, ByVal N_traslados)
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As DataSet
+        Dim VectorSQL(0) As String, Rol As Integer
+        DS = New DataSet
+
+        Dim fecha As String, hora As String, Descripcion As String, VArray() As String, idsesiones As String, aforo As String, inscritos As String, statuschk As Integer, miprueba As String
+        Dim sesiones As String, long_idsesion As Integer, x As Boolean
+        Rol = 1 'Como ya hemos mostrado los Traslados, ahora ponemos el Rol= 1 para mostrar las Actividades.
+
+        'Consulta para ayar si el usuario tiene algo seleccionado o no.
+        'VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(idusuario, 100)) & "'"
+
+        'If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+        '    ClientScript.RegisterStartupScript(Page.GetType(), "user_fail", "LanzaAviso('Algo ha fallado al intentar acceder a la BD.')", True)
+        '    'Return False
+        'Else
+        '    If DS.Tables(0).Rows.Count > 0 Then
+        '        For i = 0 To DS.Tables(0).Rows.Count - 1
+        '            sesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+        '        Next
+        '        If sesiones.Length = 0 Then
+        '            x = False
+        '        Else
+        '            VArray = sesiones.Split("¦")
+        '            x = True
+        '        End If
+        '    Else
+        '        x = False
+        '    End If
+        'End If
+
+        'Consulta para que nos muestre las distintas sesiones. Actividades.
         VectorSQL(0) = "SELECT fecha_fin,hora,Descripción,idsesiones,Aforo,inscritos FROM sesiones WHERE rol='" & clsBD.Cometes(Left(Rol, 100)) & "'ORDER BY fecha_fin, hora"
 
         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
             ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
         Else
             If DS.Tables(0).Rows.Count > 0 Then
-                For i = 0 To DS.Tables(0).Rows.Count - 1
+                If Boolean_inscripcion(idusuario) Then
 
-                    fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
-                    hora = DS.Tables(0).Rows(i).Item("hora")
-                    Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
-                    idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
-                    aforo = DS.Tables(0).Rows(i).Item("Aforo")
-                    inscritos = DS.Tables(0).Rows(i).Item("inscritos")
+                    VArray = comprueba_inscripcion(idusuario) 'comprobamos cual tiene marcado el usuario.
+                    For i = 0 To DS.Tables(0).Rows.Count - 1
 
-                    plaza = aforo - inscritos
+                        idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                        fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
+                        hora = DS.Tables(0).Rows(i).Item("hora")
+                        Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
+                        aforo = DS.Tables(0).Rows(i).Item("Aforo")
+                        inscritos = DS.Tables(0).Rows(i).Item("inscritos")
 
-                    'Comprobamos si quedan plazas o no, sino quedan desabilitamos el chkbox.
-                    If plaza <= 0 Then
-                        Varray = comprueba_inscripcion(iduser) 'comprobamos cual tiene marcado el usuario.
-                        x = longitud_traslados() 'comprobamos tamaño total de traslados.
-
-                        'For z = 0 To x - 1
-                        '    If Varray(z) = 
-                        'Next
-
-                        While x <> (Varray.Length - 1)
-                            If Varray(x) = idsesiones Then
-                                miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server' checked/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                        'verificamos las opciones marcadas por el usuario.
+                        For y = 0 To VArray.Length - 1
+                            If VArray(y) = DS.Tables(0).Rows(i).Item("idsesiones") Then
+                                'mostramos chk seleccionado
+                                statuschk = 0
+                                Exit For
                             Else
-                                miprueba += "<th scope = 'row' onclick='mensaje_full()'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                                If aforo > inscritos Then
+                                    statuschk = 1
+                                    'mostramos el chk habilitado
+
+                                Else
+                                    statuschk = 2
+                                    'mostramos el chk desabilitado.
+                                    'Exit For
+                                End If
                             End If
-                            x = x + 1
-                        End While
+                        Next
 
-                    Else
-                        miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
-                    End If
+                        Select Case statuschk
+                            Case 0
+                                miprueba += "<tr><th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server' checked/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                            Case 1
+                                miprueba += "<tr><th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                            Case 2
+                                miprueba += "<th scope = 'row' class='desabilitar_chk' onclick='mensaje_full()'><input type='checkbox' style='cursor: not-allowed;pointer-events: none;' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td class='desabilitar_chk' onclick='mensaje_full()'>" & fecha & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & hora & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & Descripcion & "</td></tr>"
+                        End Select
+                    Next
+                Else
+                    For i = 0 To DS.Tables(0).Rows.Count - 1
+                        idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                        fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
+                        hora = DS.Tables(0).Rows(i).Item("hora")
+                        Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
+                        aforo = DS.Tables(0).Rows(i).Item("Aforo")
+                        inscritos = DS.Tables(0).Rows(i).Item("inscritos")
+                        If aforo > inscritos Then
+                            statuschk = 1
+                            'mostramos el chk habilitado
 
+                        Else
+                            statuschk = 2
+                            'mostramos el chk desabilitado.
+                            'Exit For
+                        End If
 
+                        Select Case statuschk
+                            Case 1
+                                miprueba += "<tr><th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+                            Case 2
+                                miprueba += "<th scope = 'row' class='desabilitar_chk' onclick='mensaje_full()'><input type='checkbox' style='cursor: not-allowed;pointer-events: none;' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td class='desabilitar_chk' onclick='mensaje_full()'>" & fecha & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & hora & "</td><td class='desabilitar_chk' onclick='mensaje_full()'>" & Descripcion & "</td></tr>"
+                        End Select
+                    Next
 
-
-
-                Next
-
+                End If
+            Else
+                miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
             End If
+
+
+
+
+
+
+
+
+
+
+
+
+            'For i = 0 To DS.Tables(0).Rows.Count - 1
+
+            '        fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
+            '        hora = DS.Tables(0).Rows(i).Item("hora")
+            '        Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
+            '        idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+
+            '        miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
+            '    Next
+            comienzo_tabla2.InnerHtml = miprueba
         End If
-        comienzo_tabla.InnerHtml = miprueba
-    End Function
-
-    'Funcion que nos muestra los checkboxs de las Actividades.
-    Private Function RellenarActividades(ByRef Rol)
-        Dim clsBD As New ClaseAccesoBD
-        Dim DS As DataSet
-        Dim VectorSQL(0) As String, name As String, ape As String
-        DS = New DataSet
-
-        Dim fecha As String, hora As String, Descripcion As String, miprueba As String, idsesiones As String
-
-        VectorSQL(0) = "SELECT fecha_fin,hora,Descripción,idsesiones FROM sesiones WHERE rol='" & clsBD.Cometes(Left(Rol, 100)) & "'ORDER BY fecha_fin, hora"
-        '"'"
-
-        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
-            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
-        Else
-            If DS.Tables(0).Rows.Count > 0 Then
-                For i = 0 To DS.Tables(0).Rows.Count - 1
-
-                    fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
-                    hora = DS.Tables(0).Rows(i).Item("hora")
-                    Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
-                    idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
-
-                    miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
-                Next
-                comienzo_tabla2.InnerHtml = miprueba
-            End If
-        End If
+        'End If
     End Function
 
     'Funcion que nos muestra
@@ -274,13 +452,13 @@
         'Return sesiones
     End Function
 
-    Private Function longitud_traslados()
+    Private Function longitud_traslados(ByRef Rol)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
-        Dim VectorSQL(0) As String, Rol As String, sesion_max As String
+        Dim VectorSQL(0) As String, sesion_max As String
         DS = New DataSet
 
-        Rol = "0"
+        'Rol = "0"
 
         VectorSQL(0) = "SELECT idsesiones FROM sesiones WHERE rol='" & clsBD.Cometes(Left(Rol, 100)) & "'"
 
