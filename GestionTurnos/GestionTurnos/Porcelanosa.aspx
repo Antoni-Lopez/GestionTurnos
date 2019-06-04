@@ -74,7 +74,7 @@
           .toggle input + label {padding: .75rem .25rem; flex: 0 0 50%;display: flex; justify-content: center;align-items: center;}
         }
 
-        #paso_datos{display:block;}
+        #paso_datos{display:none;}
     </style>
 
 
@@ -206,7 +206,7 @@
     src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID">
   </script>
     <form id="form1" runat="server">
-        <div class="container-fluid logo" onclick="contar()">
+        <div class="container-fluid logo" onclick="LanzaAviso('Holaaaaa')">
             <img src="img/grupoporcelanosa.jpg" />
         </div>
         <div id="prueba_aspx" class="principal usuario" runat="server">
@@ -257,7 +257,7 @@
         <asp:TextBox ID="paso_datos4" CssClass="container-fluid row verde" runat="server"></asp:TextBox>--%>
     </form>
     <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script> 
-    <script>
+    <script>        
         function Registre() {
             var Dades, total_checkbos;    
             total_checkbos = $('input[type=checkbox]').map(function() {
@@ -283,7 +283,7 @@
             else {                
                 var pasar = checkbos_activos.join('¦');
                 var idusuario = document.getElementById("paso_datos").value;
-                alert('Prueba2: ' + pasar);
+                //alert('Prueba2: ' + pasar);
                 //alert('Prueba3-IDUsuario: ' + idusuario);
 
                 Dades = document.getElementById("paso_datos").value + "¦" + pasar;
@@ -295,14 +295,20 @@
         }
 
         function Registre_Tornada(Dades) {
-            alert("llegamos aqui??");
+            alert(Dades);
             if (Dades.substr(0, 2) == "OK") {
                 if (Dades.substr(2, 1) == "7") {
-                    LanzaAviso("Hemos actualizado correctacmente sus preferencias en nuestra Base de Datos");
+                    LanzaAviso("Hemos actualizado correctacmente sus preferencias en nuestra Base de Datos. Gracias!");
+                }
+                else if (Dades.substr(2, 1) == "8") {
+                    LanzaAviso("Hemos ingresado su elección correctacmente en nuestra Base de Datos. Gracias!");
                 }
             }
             else {
                 if (Dades.substr(2, 1) == "7") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+                if (Dades.substr(2, 1) == "8") {
                     LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
                 }
             }

@@ -20,11 +20,11 @@
                     iduser = CompruebaEmail(email)
                     BuscaNameApellido(iduser)
 
-                    n_traslados = longitud_traslados(0) 'Lo ponemos a Martillo porque el rol esta dividido en 0->Traslados y 1->Actividades, como estamos en traslados, es 0 por narices ^^
-                    RellenarTraslados(iduser, n_traslados)
+                    'Lo ponemos a Martillo porque el rol esta dividido en 0->Traslados y 1->Actividades, como estamos en traslados, es 0 por narices ^^
+                    n_traslados = longitud_traslados(0) 'con esto averiguamos long de traslados.
+                    RellenarTraslados(iduser, n_traslados) ' aqui rellenamos los traslados.
 
-
-
+                    'Mismo proceso que en el paso anterior, pero ahora son Actividades y por ello es 1.
                     n_Actividades = longitud_traslados(1)
                     RellenarActividades(iduser, n_Actividades)
 
@@ -98,7 +98,7 @@
         Return iduser
     End Function
 
-    'Funcion que nos comprueba si el usuario esta inscrito en algo o no.
+    'Funcion que nos comprueba si el usuario tiene algún chk marcado, si lo tiene, nos devuelve los que tiene en un formato así: (1,3,8).
     Function comprueba_inscripcion(ByRef idusuario)
 
         Dim clsBD As New ClaseAccesoBD
@@ -114,43 +114,117 @@
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    sesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                    sesiones = Convert.ToString(DS.Tables(0).Rows(0).Item("idsesiones"))
                 Next
 
-                If sesiones.Length = 0 Then
+                long_idsesion = sesiones.Length
+
+                If long_idsesion <= 0 Then
                     Return False
                 Else
+                    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
                     VArray = sesiones.Split("¦")
+                    Return VArray
                 End If
+
+
+                'If Not DS.Tables(0).Rows(0).Item("idsesiones") Is Nothing AndAlso IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
+                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
+                '    VArray = sesiones.Split("¦")
+                '    Return VArray
+                'Else
+                '    Return False
+                'End If
+
+                'If (DS.Tables(0).Rows(i).Item("idsesiones") Is Nothing) AndAlso (IsDBNull(DS.Tables(0).Rows(i).Item("idsesiones").Value) = False) Then
+                '    'If DS.Tables(0).Rows(i).Item("idsesiones") Is Nothing Or IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
+                '    Return False
+                'Else
+                '    sesiones = DS.Tables(0).Rows(i).Item("idsesiones") 'Tomamos los chk marcados por el user en formato así: 1¦3¦8
+                '    VArray = sesiones.Split("¦") 'con esto pasamos el formato ah algo así: 1,3,8
+                '    Return VArray 'Devolvemos los valores.
+                'End If
+
+                'If sesiones.Length = 0 Then
+                '    Return False
+                'Else
+
+                'End If
             Else
                 Return False
             End If
         End If
-        Return VArray
     End Function
 
+    'Función que nos devuelve un true si el usuario tiene algún chk marcado o false si no tiene ninguno.
     Private Function Boolean_inscripcion(ByRef idusuario)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
-        Dim VectorSQL(0) As String, sesiones As String, long_idsesion As Integer, VArray() As String, x As String
+        Dim VectorSQL(0) As String, sesiones As String, long_idsesion As Integer, VArray() As String, x As String, p As String
         DS = New DataSet
 
         VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(idusuario, 100)) & "'"
 
-        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+        If Not clsBD.BaseDades(1, VectorSQL, DS) Then 'En este caso, no tendriamos al usuario guardado en la tabla enlace y por ello deberiamos de crearlo a la hora de guardar sus datos.
             'ClientScript.RegisterStartupScript(Page.GetType(), "user_fail", "LanzaAviso('No hemos encontrado que este usuario tuviese sesiones activas en la BD.')", True)
             Return False
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    sesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                    sesiones = Convert.ToString(DS.Tables(0).Rows(0).Item("idsesiones"))
                 Next
 
-                If sesiones.Length = 0 Then
+                long_idsesion = sesiones.Length
+
+                If long_idsesion <= 0 Then
                     Return False
                 Else
                     Return True
                 End If
+
+
+
+                'If Not DS.Tables(0).Rows(0).Item("idsesiones") Is Nothing AndAlso IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
+                '    Return True
+                'Else
+                '    Return False
+                'End If
+
+
+
+                ' Seleccionamos una fila cualquiera del objeto DataTable
+                'Dim row As DataRow = DS.Tables(0).Rows(0)
+                'If row("idsesiones") IsNot DBNull.Value Then
+                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
+                '    'VArray = sesiones.Split("¦")
+                '    Return True
+                'Else
+                '    Return False
+                'End If
+
+
+                'For i = 0 To DS.Tables(0).Rows.Count - 1
+                'p = DS.Tables(0).Rows(0).Item("idsesiones").ToString
+                'If String.IsNullOrEmpty(DS.Tables(0).Rows(0).Item("idsesiones")) AndAlso (IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones").Value) = False) Then
+                '    Return False
+                'Else
+                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
+                '    'VArray = sesiones.Split("¦")
+                '    Return True
+                'End If
+
+                'If (DS.Tables(0).Rows(0).Item("idsesiones") Is Nothing) AndAlso (IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones").Value) = False) Then
+                '    'If p.Length <= 0 AndAlso IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
+                '    Return False
+                'Else
+                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
+                '    'VArray = sesiones.Split("¦")
+                '    Return True
+                'End If
+                'Next
+                'If sesiones.Length = 0 Then
+                'Else
+                'End If
             Else
                 Return False
             End If
@@ -171,28 +245,6 @@
 
         Rol = 0
 
-        'Consulta para ayar si el usuario tiene algo seleccionado o no.
-        'VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(iduser, 100)) & "'"
-
-        'If Not clsBD.BaseDades(1, VectorSQL, DS) Then
-        '    ClientScript.RegisterStartupScript(Page.GetType(), "user_fail", "LanzaAviso('Algo ha fallado al intentar acceder a la BD.')", True)
-        '    'Return False
-        'Else
-        '    If DS.Tables(0).Rows.Count > 0 Then
-        '        For i = 0 To DS.Tables(0).Rows.Count - 1
-        '            sesiones = DS.Tables(0).Rows(i).Item("idsesiones")
-        '        Next
-        '        If sesiones.Length = 0 Then
-        '            x = False
-        '        Else
-        '            Varray = sesiones.Split("¦")
-        '            x = True
-        '        End If
-        '    Else
-        '        x = False
-        '    End If
-        'End If
-
         'Consulta para que nos muestre las distintas sesiones. Primero de Traslados y despues de Actividades.
         VectorSQL(0) = "SELECT fecha_fin,hora,Descripción,idsesiones,Aforo,inscritos FROM sesiones WHERE rol='" & clsBD.Cometes(Left(Rol, 100)) & "'ORDER BY fecha_fin, hora"
 
@@ -200,10 +252,9 @@
             ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
         Else 'Vector de Consulta correcto.
             If DS.Tables(0).Rows.Count > 0 Then
-                If Boolean_inscripcion(iduser) Then
+                If Boolean_inscripcion(iduser) Then ' Si nos devuelve true, el usuario tiene algun chk marcado previamente.
                     Varray = comprueba_inscripcion(iduser) 'comprobamos cual tiene marcado el usuario.
                     For i = 0 To DS.Tables(0).Rows.Count - 1
-
                         idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
                         fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
                         hora = DS.Tables(0).Rows(i).Item("hora")
@@ -221,7 +272,6 @@
                                 If aforo > inscritos Then
                                     statuschk = 1
                                     'mostramos el chk habilitado
-
                                 Else
                                     statuschk = 2
                                     'mostramos el chk desabilitado.
@@ -250,7 +300,6 @@
                         If aforo > inscritos Then
                             statuschk = 1
                             'mostramos el chk habilitado
-
                         Else
                             statuschk = 2
                             'mostramos el chk desabilitado.

@@ -250,50 +250,84 @@
                             Else
                                 chk = VDades(i)
                                 id_chk = chk.Replace("chk", " ")
-                                If Comprobar_aforo(id_chk) Then
+                                '1º Vamos a comprobar si tenemos aforo para poder inscribir sin problemas al usuario.
+                                If Comprobar_aforo(id_chk) Then 'Sí es true, tenemos plaza para inscribir a la people.
                                     If i = long_dades - 1 Then
-                                        guardar += id_chk
+                                        guardar += id_chk 'Como es el ultimo chk a almacenar, lo guardamos tal cual, sin el ¦
                                     Else
-                                        guardar += id_chk + "¦"
+                                        guardar += id_chk + "¦" 'Almacenamos los chk marcados para almazenarlos en la BD.
                                     End If
-
-
                                 Else
-                                        GoTo Resposta 'Terminamos la ejecución porque no quedan plazas y aun asi hemos elegido un chk.
+                                    GoTo Resposta 'Terminamos la ejecución porque no quedan plazas y aun asi hemos elegido un chk.
                                 End If
                             End If
                         Next
 
-                        Dim idenlace As Integer, iduser As Integer, idsesiones As String, activo As String
+                        Dim idenlace As Integer, iduser As Integer, idsesiones As String, activo As String, comprobar As Boolean
                         activo = ""
 
-                        'La consulta.
+                        'Consultamos sobre tabla enlace, para saber si está el user o no
                         VectorSQL(0) = "SELECT idenlace , idusuario, idsesiones FROM enlace WHERE idusuario = '" & idusuario & "'"
+
                         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
-                            'Problema
+                            'Problema.
+
+                            'El INSERT de la tabla sesiones, para almacenar los chk marcados por el usuario.
+                            'VectorSQL(0) = "INSERT INTO enlace(idusuario,idsesiones,disponible)" &
+                            '"VALUES('" & clsBD.Cometes(Left(idusuario, 100)) & "','" & clsBD.Cometes(Left(guardar, 100)) & "','" & clsBD.Cometes(Left(activo, 100)) & "')"
+
                         Else
+                            'Si esta deberiamos de hacer 2 cosas, primero, comprobar si los que tiene el user, son los que ha vuelto a enviar.
+                            'Si lo son, mostramos mensa y out, que no lo son, tenemos que quitar 1 hueco en los inscritos a los que antes tenia seleccionado y ahora no.
+                            'e incrementarle 1 sitio a los chk que a elegido ahora.
                             If DS.Tables(0).Rows.Count > 0 Then
                                 For i = 0 To DS.Tables(0).Rows.Count - 1
                                     idenlace = DS.Tables(0).Rows(i).Item("idenlace")
                                     iduser = DS.Tables(0).Rows(i).Item("idusuario")
                                     idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
                                 Next
+                                comprobar = True
                             Else
-                                'No nos devuelve valores
+                                'No nos devuelve valores, por ello, insertamos un nuevo registro en la BD, en la tabla enlace para poder relacionarlo todo.
+                                comprobar = False
                             End If
                         End If
 
-                        'El UPDATE
-                        VectorSQL(0) = "UPDATE enlace SET idsesiones = '" & guardar & "',idusuario='" & iduser & "',idenlace='" & idenlace & "' WHERE idusuario = '" & idusuario & "'"
-                        'VectorSQL(0) = "UPDATE NombreTabla SET Campo1 = Valor1, Campo2 = Valor2, Campo3 = Valor3 WHERE Campo1 = 1 AND Camp2 = '2'"
-                        If Not clsBD.BaseDades(2, VectorSQL) Then
-                            'Problema
-                            Descripcio = "KO7"
+                        'Ahora con el bucle anterior sabemos ya si tenemos el usuario y los datos guardados en la tabla enlace
+                        'por ello, si comprobar es true, actualizamos los datos, si por el contrario es false, lo insertamos como new registro.
+                        If comprobar Then 'Sí es true actualizamos, si es false, insertamos.
+                            'UPDATE tabla sesiones, para almacenar los chk marcados por el usuario.
+                            VectorSQL(0) = "UPDATE enlace SET idsesiones = '" & guardar & "',idusuario='" & iduser & "',idenlace='" & idenlace & "' WHERE idusuario = '" & idusuario & "'"
+
+                            If Not clsBD.BaseDades(2, VectorSQL) Then
+                                'Problema
+                                Descripcio = "KO7"
+                                GoTo Resposta
+                            Else
+                                'Correcto
+                                Descripcio = "OK7"
+                                GoTo Resposta
+                            End If
                         Else
-                            'Correcto
-                            Descripcio = "OK7"
+                            Dim activ As String, ultimo As Integer
+                            activ = ""
+
+                            VectorSQL(0) = "INSERT INTO enlace(idusuario,idsesiones,disponible)" &
+                            "VALUES('" & clsBD.Cometes(Left(idenlace, 100)) & "','" & clsBD.Cometes(Left(iduser, 100)) & "','" & clsBD.Cometes(Left(idsesiones, 100)) & "')"
+
+                            If Not clsBD.BaseDades(2, VectorSQL, , ultimo) Then
+                                'Problema
+                                Descripcio = "KO8"
+                                GoTo Resposta
+                            Else
+                                'La variable Ultimo tendrá el último ID autonumérico
+                                Descripcio = "OK8"
+                                GoTo Resposta
+                            End If
                         End If
 
+                    Case 8 'Prueba mia para ver funcionamiento del insert.
+                        Dim DS As New DataSet
 
                 End Select
             End If
@@ -376,28 +410,49 @@ Resposta:
     Private Function Comprobar_aforo(ByRef idsesion)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
-        Dim VectorSQL(0) As String, aforo As String, ins As String
+        Dim VectorSQL(0) As String
         DS = New DataSet
 
-        VectorSQL(0) = "SELECT Aforo,inscritos FROM sesiones WHERE idsesiones='" & clsBD.Cometes(Left(idsesion, 100)) & "'"
+        Dim aforo As String, ins As String, Rol As Integer, Descripcion As String, hora As String, evento As Integer, fecha_inicio As String, fecha_fin As String, idsesiones As Integer
+
+        VectorSQL(0) = "SELECT idsesiones,evento,fecha_inicio,fecha_fin,hora,Descripción,Aforo,Rol,inscritos FROM sesiones WHERE idsesiones='" & clsBD.Cometes(Left(idsesion, 100)) & "'"
 
         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
             ClientScript.RegisterStartupScript(Page.GetType(), "aforo_full", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
+                    idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
+                    evento = DS.Tables(0).Rows(i).Item("evento")
+                    fecha_inicio = DS.Tables(0).Rows(i).Item("fecha_inicio")
+                    fecha_fin = DS.Tables(0).Rows(i).Item("fecha_fin")
+                    hora = DS.Tables(0).Rows(i).Item("hora")
+                    Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
                     aforo = DS.Tables(0).Rows(i).Item("Aforo")
+                    Rol = DS.Tables(0).Rows(i).Item("Rol")
                     ins = DS.Tables(0).Rows(i).Item("inscritos")
                 Next
 
                 If aforo < ins Then
                     ClientScript.RegisterStartupScript(Page.GetType(), "aforo_lleno", "LanzaAviso('Lo sentimos pero el aforo ya esta lleno.')", True)
                     Return False
+                Else ' Como si queda aforo. le sumamos 1 a los inscritos y actualizamos la BD de sesiones.
+                    ins += 1
+                    VectorSQL(0) = "UPDATE sesiones SET evento = '" & evento & "',fecha_inicio='" & fecha_inicio & "',fecha_fin='" & fecha_fin & "',hora='" & hora & "',Descripción='" & Descripcion & "',aforo='" & aforo & "',Rol='" & Rol & "',inscritos='" & ins & "' WHERE idsesiones = '" & idsesiones & "'"
+
+                    If Not clsBD.BaseDades(2, VectorSQL) Then
+                        'Problema
+                        Return False
+                    Else
+                        'Correcto
+                        Return True
+                    End If
                 End If
             End If
         End If
-        Return True
+
     End Function
+
     Private Function Ingresar_Chk_enlace(ByRef idusuario, ByVal sesion)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
@@ -409,6 +464,7 @@ Resposta:
         '                "'" & numero & "','" & clsBD.Cometes(Left(Mail, 100)) & "','" & Region & "','" & Nit & "'," & NITactivat & ",'" & clsBD.Cometes(Left(Password, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
         '                "" & Alojamiento & ",'" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "')"
     End Function
+
 
     Private Function RellenarSelect(ByRef VDades)
         Dim clsBD As New ClaseAccesoBD
