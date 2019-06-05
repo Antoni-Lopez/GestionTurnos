@@ -287,7 +287,7 @@
                 //alert('Prueba3-IDUsuario: ' + idusuario);
 
                 Dades = document.getElementById("paso_datos").value + "¦" + pasar;
-                setTimeout("InformacioAJAX(7,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
+                setTimeout("InformacioAJAX(7,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 1000);
             }
             
             
@@ -295,7 +295,7 @@
         }
 
         function Registre_Tornada(Dades) {
-            alert(Dades);
+            //alert(Dades);
             if (Dades.substr(0, 2) == "OK") {
                 if (Dades.substr(2, 1) == "7") {
                     LanzaAviso("Hemos actualizado correctacmente sus preferencias en nuestra Base de Datos. Gracias!");

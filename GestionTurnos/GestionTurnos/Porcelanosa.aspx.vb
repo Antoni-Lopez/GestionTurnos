@@ -115,41 +115,18 @@
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
                     sesiones = Convert.ToString(DS.Tables(0).Rows(0).Item("idsesiones"))
+
+                    long_idsesion = sesiones.Length
+
+                    If long_idsesion <= 0 Then
+                        Return False
+                        Exit For
+                    Else
+                        sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
+                        VArray = sesiones.Split("¦")
+                        Return VArray
+                    End If
                 Next
-
-                long_idsesion = sesiones.Length
-
-                If long_idsesion <= 0 Then
-                    Return False
-                Else
-                    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
-                    VArray = sesiones.Split("¦")
-                    Return VArray
-                End If
-
-
-                'If Not DS.Tables(0).Rows(0).Item("idsesiones") Is Nothing AndAlso IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
-                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
-                '    VArray = sesiones.Split("¦")
-                '    Return VArray
-                'Else
-                '    Return False
-                'End If
-
-                'If (DS.Tables(0).Rows(i).Item("idsesiones") Is Nothing) AndAlso (IsDBNull(DS.Tables(0).Rows(i).Item("idsesiones").Value) = False) Then
-                '    'If DS.Tables(0).Rows(i).Item("idsesiones") Is Nothing Or IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
-                '    Return False
-                'Else
-                '    sesiones = DS.Tables(0).Rows(i).Item("idsesiones") 'Tomamos los chk marcados por el user en formato así: 1¦3¦8
-                '    VArray = sesiones.Split("¦") 'con esto pasamos el formato ah algo así: 1,3,8
-                '    Return VArray 'Devolvemos los valores.
-                'End If
-
-                'If sesiones.Length = 0 Then
-                '    Return False
-                'Else
-
-                'End If
             Else
                 Return False
             End If
@@ -172,59 +149,16 @@
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
                     sesiones = Convert.ToString(DS.Tables(0).Rows(0).Item("idsesiones"))
+
+                    long_idsesion = sesiones.Length
+
+                    If long_idsesion <= 0 Then
+                        Return False
+                        Exit For
+                    Else
+                        Return True
+                    End If
                 Next
-
-                long_idsesion = sesiones.Length
-
-                If long_idsesion <= 0 Then
-                    Return False
-                Else
-                    Return True
-                End If
-
-
-
-                'If Not DS.Tables(0).Rows(0).Item("idsesiones") Is Nothing AndAlso IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
-                '    Return True
-                'Else
-                '    Return False
-                'End If
-
-
-
-                ' Seleccionamos una fila cualquiera del objeto DataTable
-                'Dim row As DataRow = DS.Tables(0).Rows(0)
-                'If row("idsesiones") IsNot DBNull.Value Then
-                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
-                '    'VArray = sesiones.Split("¦")
-                '    Return True
-                'Else
-                '    Return False
-                'End If
-
-
-                'For i = 0 To DS.Tables(0).Rows.Count - 1
-                'p = DS.Tables(0).Rows(0).Item("idsesiones").ToString
-                'If String.IsNullOrEmpty(DS.Tables(0).Rows(0).Item("idsesiones")) AndAlso (IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones").Value) = False) Then
-                '    Return False
-                'Else
-                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
-                '    'VArray = sesiones.Split("¦")
-                '    Return True
-                'End If
-
-                'If (DS.Tables(0).Rows(0).Item("idsesiones") Is Nothing) AndAlso (IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones").Value) = False) Then
-                '    'If p.Length <= 0 AndAlso IsDBNull(DS.Tables(0).Rows(0).Item("idsesiones")) Then
-                '    Return False
-                'Else
-                '    sesiones = DS.Tables(0).Rows(0).Item("idsesiones")
-                '    'VArray = sesiones.Split("¦")
-                '    Return True
-                'End If
-                'Next
-                'If sesiones.Length = 0 Then
-                'Else
-                'End If
             Else
                 Return False
             End If
