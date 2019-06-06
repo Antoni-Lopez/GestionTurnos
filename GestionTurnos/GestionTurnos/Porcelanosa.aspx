@@ -74,7 +74,7 @@
           .toggle input + label {padding: .75rem .25rem; flex: 0 0 50%;display: flex; justify-content: center;align-items: center;}
         }
 
-        #paso_datos{display:none;}
+        #paso_datos,#paso_datos2{display:none;}
     </style>
 
 
