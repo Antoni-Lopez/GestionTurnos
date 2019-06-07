@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
-
     <title>Formulario PORCELANOSA</title>
     <style>        
         .verde{border: 2px solid green;}
@@ -199,12 +198,10 @@
             LanzaAviso("Lo sentimos pero esta sesión a llenado todas sus plazas y por ello no puede seleccionarla. Gracias!");
         }
 
+
     </script>
 </head>
 <body>
-    <script
-    src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID">
-  </script>
     <form id="form1" runat="server">
         <div class="container-fluid logo" onclick="LanzaAviso('Holaaaaa')">
             <img src="img/grupoporcelanosa.jpg" />

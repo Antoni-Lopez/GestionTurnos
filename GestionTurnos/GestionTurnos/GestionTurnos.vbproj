@@ -153,9 +153,11 @@
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Porcelanosa.aspx" />
     <Content Include="Printer.aspx" />
+    <Content Include="Probando_cositas.aspx" />
     <Content Include="prueba.aspx" />
     <Content Include="RecepcionAJAX.aspx" />
     <Content Include="Script\ComunicacioAJAX.js" />
+    <Content Include="Script\fondo_burbujas.js" />
     <Content Include="Script\main.js" />
     <Content Include="Script\Paypal_Prueba.js" />
     <Content Include="Servicios.aspx" />
@@ -274,6 +276,13 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="PrintHelper.vb" />
+    <Compile Include="Probando_cositas.aspx.designer.vb">
+      <DependentUpon>Probando_cositas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Probando_cositas.aspx.vb">
+      <DependentUpon>Probando_cositas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="prueba.aspx.designer.vb">
       <DependentUpon>prueba.aspx</DependentUpon>
     </Compile>

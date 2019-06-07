@@ -283,6 +283,20 @@
                                         GoTo Resposta 'Terminamos la ejecución porque no quedan plazas y aun asi hemos elegido un chk.
                                     End If
                                 Next
+
+                                'Una vez terminada comprobacion de plazas, hemos sumado 1 a la sesion que ha marcado el usuario. procedemos a guardar la seleccion del user en la tabla enlace.
+                                VectorSQL(0) = "UPDATE enlace SET idsesiones = '" & guardar & "',idusuario='" & idusuario & "',idenlace='" & idenlace & "' WHERE idusuario = '" & idusuario & "'"
+
+                                If Not clsBD.BaseDades(2, VectorSQL) Then
+                                    'Problema
+                                    Descripcio = "KO7"
+                                    GoTo Resposta
+                                Else
+                                    'Correcto
+                                    Descripcio = "OK7"
+                                    GoTo Resposta
+                                End If
+
                             Else 'User no tenia ningún chk marcado. Almacenamos los que nos ha marcado
                                 For i = 1 To long_dades - 1
                                     chk = VDades(i)
@@ -580,7 +594,7 @@ Resposta:
                 long_idsesion = sesiones_separadas.Length
 
                 'Ahora comprobamos si el usuario tenia marcado algo o no.
-                If idsesiones = 0 Then
+                If long_idsesion = 0 Then
                     'Como el usuario no tenía ninguna selección, no hace falta que restemos 1 a los inscritos.
                     Return False
                 Else
