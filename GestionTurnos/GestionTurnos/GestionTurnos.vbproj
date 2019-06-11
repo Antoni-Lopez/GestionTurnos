@@ -156,10 +156,12 @@
     <Content Include="Probando_cositas.aspx" />
     <Content Include="prueba.aspx" />
     <Content Include="RecepcionAJAX.aspx" />
+    <Content Include="Script\App.js" />
     <Content Include="Script\ComunicacioAJAX.js" />
-    <Content Include="Script\fondo_burbujas.js" />
     <Content Include="Script\main.js" />
+    <Content Include="Script\particles.js" />
     <Content Include="Script\Paypal_Prueba.js" />
+    <Content Include="Script\stats.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Css\servicios.css" />
     <Content Include="Test.aspx" />

@@ -12,145 +12,62 @@
     <asp:Literal ID="jquery_1_9_1_min_js" runat="server"></asp:Literal>
     <asp:Literal ID="bootstrap_min_js" runat="server"></asp:Literal>
     <asp:Literal ID="bootbox_min_js" runat="server"></asp:Literal>
-    <script>
-        
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-/* particlesJS('dom-id', params);
-/* @dom-id : set the html tag id [string, optional, default value : particles-js]
-/* @params: set the params [object, optional, default values : check particles.js] */
- 
-/* config dom id (optional) + config particles params */
-particlesJS('particles-js', {
-  particles: {
-    color: '#fff', // Color del vertice
-    color_random: false,
-    shape: 'circle', // "circle", "edge" or "triangle" // Establecemos cual de las 3 figuras queremos para vertice
-    opacity: {
-      opacity: 1, // Opacidad del vertice
-      anim: {
-        enable: true,
-        speed: 1.5,
-        opacity_min: 0,
-        sync: false
-      }
-    },
-    size: 4,
-    size_random: true,
-    nb: 150,
-    line_linked: {
-      enable_auto: true,
-      distance: 100,
-      color: '#fff', // Color de la arista
-      opacity: 1, // Opacidad de la arista
-      width: 1,
-      condensed_mode: {
-        enable: false,
-        rotateX: 600,
-        rotateY: 600
-      }
-    },
-    anim: {
-      enable: true,
-      speed: 1 // Velocidad a la que se mueven las aristas
-    }
-  },
-  interactivity: {
-    enable: true,
-    mouse: {
-      distance: 300
-    },
-    detect_on: 'canvas', // "canvas" or "window"
-    mode: 'grab', // "grab" of false
-    line_linked: {
-      opacity: .5
-    },
-    events: {
-      onclick: {
-        enable: true,
-        mode: 'push', // "push" or "remove"
-        nb: 4
-      },
-      onresize: {
-        enable: true,
-        mode: 'out', // "out" or "bounce"
-        density_auto: false,
-        density_area: 800 // nb_particles = particles.nb * (canvas width *  canvas height / 1000) / density_area
-      }
-    }
-  },
-  /* Retina Display Support */
-  retina_detect: true
-});
-    </script>
+
+
+    <!-- style -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Rubik&display=swap" rel="stylesheet">
+    <style>
+        body{margin:0;padding:0;box-sizing:border-box;position: relative;}
+        #particles-js{background-color: #494949;height:100vh;width:100%;z-index:0}
+
+        .logo_img{border: groove solid 1.2px;position:absolute;max-width:830px;width:100%;left: 50%;
+            top: 20%;transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);}
+        .logo_img img{margin:0;padding:0;box-sizing:border-box;margin-left: -1.7%;width:103.6%;}
+        .principal{position:absolute;max-width:700px;width:100%;border:#fff solid 2px;background-color:#e9e9e9;
+            display: flex;justify-content: center;align-items: center;left: 50%;top: 60%;transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);opacity: 0.9;height: 25vh;}
+        .header_principal{position:absolute;top:0;left:2%;border-bottom:#DA9734 solid 3.2px;width:100.5%;padding:10px;text-align:justify;font-family: 'Montserrat', sans-serif;}
+        .header_principal h2 b{margin-left: 5%;}
+
+        .login_centrar{width:100%;margin-top:5%;}
+        .label_texto{width:35%;padding:5px;}
+        .label_texto label[for=staticEmail]{padding-top:5px;}
+        .div_inputs{width:65%;padding:5px;}
+
+        .verde{border:green 2px solid;}
+        .rojo{border: red 2px solid;}
+
+        @media (max-width: 1920px) {
+          .logo_img{top: 25%;}
+          .principal{top: 70%;}
+        }
+
+    </style>
+
+    <!-- scripts -->
+    <script src="Script/particles.js"></script>
+    <%--<script src="Script/stats.js"></script>--%>
+    <script src="Script/app.js"></script>
+
 </head>
 <body id="particles-js">
     <form id="form1" runat="server">
-        <div>
-            ieeeeeee
+        <div class="container-fluid logo_img">
+            <img src="img/aotec.jpg" />
+        </div>
+        <div class="container-fluid principal">
+            <div class="row header_principal">
+                <h2><b>Login de Acceso</b></h2>
+            </div>
+            <div class="row login_centrar rojo">
+                <div class="col-xs-6 col-md-4 label_texto">
+                     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                </div>
+                <div class="col-xs-6 col-md-4 div_inputs">
+                    <input class="form-control form-control-sm" type="text" placeholder="Introduzca su Email ">
+                </div>
+            </div>
         </div>
     </form>
 </body>

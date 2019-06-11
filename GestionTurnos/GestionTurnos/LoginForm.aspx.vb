@@ -48,29 +48,6 @@
                 Next
             End If
         End If
-
-        'Dim Context As HttpContext
-        'Context = HttpContext.Current
-        'Context.Items.Add("userID", userID)
-        'Context.Items.Add("rol", Rol)
-        'Context.Items.Add("agrupacion", Agrupacion)
-        'Context.Items.Add("Apellidos", Apellidos)
-        'Context.Items.Add("Nombre", Nombre)
-        'Context.Items.Add("Numero", Numero)
-        'Context.Items.Add("Email", Email)
-        'Context.Items.Add("Region", Region)
-        'Context.Items.Add("Siglas", Siglas)
-        'Context.Items.Add("Origen", Origen)
-        'Context.Items.Add("Transpor", Transpor)
-        'Context.Items.Add("Asistes", Asistes)
-        'Context.Items.Add("Aloja", Aloja)
-        'Context.Items.Add("Aler", Aler)
-        'Context.Items.Add("Obser", Obser)
-        'Context.Items.Add("Especialidad", Especialidad)
-        'Context.Items.Add("consentimiento", Consentimiento)
-        'Context.Items.Add("Selas", Selas)
-        'Server.Transfer("Formulario.aspx")
-
         Return IDUser
     End Function
 
