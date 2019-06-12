@@ -161,6 +161,7 @@
     <Content Include="Script\main.js" />
     <Content Include="Script\particles.js" />
     <Content Include="Script\Paypal_Prueba.js" />
+    <Content Include="Script\prueba.js" />
     <Content Include="Script\stats.js" />
     <Content Include="Servicios.aspx" />
     <Content Include="Css\servicios.css" />

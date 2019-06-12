@@ -361,8 +361,38 @@
                             End If
                         End If
 
-                    Case 8 'Prueba mia para ver funcionamiento del insert.
+                    Case 8 'Prueba mia para aplicar el particles.js y el efecto loading.
                         Dim DS As New DataSet
+                        Dim email As String, email_BD As String, Pass As String, Pass_BD As String, nombre As String
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        email = VDades(0)
+                        Pass = VDades(1)
+
+                        VectorSQL(0) = "SELECT Email,Password,Nom FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "' AND Password='" & clsBD.Cometes(Left(Pass, 100)) & "'"
+
+                        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+                        Else
+                            If DS.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To DS.Tables(0).Rows.Count - 1
+                                    email_BD = DS.Tables(0).Rows(i).Item("Email")
+                                    Pass_BD = DS.Tables(0).Rows(i).Item("Password")
+                                    nombre = DS.Tables(0).Rows(i).Item("Nom")
+                                Next
+                            End If
+                        End If
+
+                        If Pass = Pass_BD And email = email_BD Then
+                            Descripcio = "OK9" + "¦" + nombre
+                            GoTo Resposta
+                        Else
+                            Descripcio = "KO9"
+                            GoTo Resposta
+                        End If
+
+
 
                 End Select
             End If
