@@ -85,20 +85,26 @@
         }
 
         function prueba() {
-            var miprueba[] = "OK9¦Jose";
-            var long_miprueba,nom;
+            var miprueba = ["OK9¦Jose"];
+            var long_miprueba,nom,nom2,nom3,nom4,nombre;
 
-            nom = miprueba[1];
-            long_miprueba = miprueba.split("¦");
-            alert(long_miprueba);
+            nom = miprueba[0];
+            nom2 = nom.length;
+            nom3 = nom.split("¦");
+            nom4 = nom3[1];
+            //long_miprueba = miprueba.split("¦");
+            //alert(long_miprueba);
             alert(nom);
+            alert(nom2);
+            alert(nom3);
+            alert(nom4);
         }
     </script>
 
 </head>
 <body id="particles-js">
     <form id="form1" runat="server">
-        <div class="container-fluid logo_img" onclick="prueba()">
+        <div class="container-fluid logo_img" onclick="Registre();">
             <img src="img/aotec.jpg" />
         </div>
         <div class="container-fluid principal">
@@ -122,7 +128,8 @@
                 </div>
             </div>
             <div class="row pos_buton">
-                <button class="boton_validate" id="miButton">Validar</button>
+                <%--<input type="button" class="boton_validate" id="miButton" onclick="Registre()" value="Validar" />--%>
+                <button class="boton_validate" id="miButton" onclick="Registre()">Validar</button>
             </div>
         </div>
     </form>
@@ -145,23 +152,18 @@
                     setTimeout("InformacioAJAX(8,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', 'RecepcionAJAX.aspx')", 2000);
                     $('#miButton').html('Validando <img src="img/ajax-loader.gif" alt="loading" /><br/>');
                 }
-
-                
-                //Dades = document.getElementById("paso_datos").value + "¦" + pasar;
-                
             }           
 
         function Registre_Tornada(Dades) {
             alert(Dades);
             var nom,Dades2;
             Dades2 = Dades.split("¦");
-            nom = Dades(1);
+            nom = Dades2[1];
             alert(nom);
 
 
             if (Dades.substr(0, 2) == "OK") {
-                if (Dades.substr(2, 1) == "9") {
-                    
+                if (Dades.substr(2, 1) == "9") {                    
                    $('#miButton').html('Validado');
                     LanzaAviso("<h4>Hemos verificado sus datos. Gracias " + nom + "!</h4>");
                 }
