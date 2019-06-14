@@ -1,0 +1,31 @@
+.ui-segment {
+    color: #fff;
+    border: 1px solid #DE9837;
+}
+
+    .ui-segment span.option.active {
+        background-color: #DE9837;
+        color: white;
+    }
+
+    .ui-segment span.option {
+        font-size: 13px;
+        padding-left: 23px;
+        padding-right: 23px;
+        height: 25px;
+        text-align: center;
+        display: inline-block;
+        line-height: 25px;
+        margin: 0px;
+        float: left;
+        cursor: pointer;
+        border-right: 1px solid #DE9837;
+    }
+
+        .ui-segment span.option:last-child {
+            border-right: none;
+        }
+
+.segment-select {
+    display: none;
+}

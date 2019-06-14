@@ -45,10 +45,13 @@
         /* LanzaAviso */
         .modal-lg{position: absolute !important;top: 50% !important;left: 50% !important;transform: translate(-50%, -50%) !important;}
 
+        .modal-lg h4 span{color:red;text-decoration:underline;}
+
         .verde{border:green 2px solid;}
         .rojo{border: red 2px solid;}
 
         #mIprueba{position: absolute;top: 104%;left: 43%;border: blue solid 2px;}
+        #input_oculto{display:none;}
 
         @media (max-width: 1920px) {
           .logo_img{top: 25%;}
@@ -66,16 +69,17 @@
     //    $('#miButton').on('click', function(){
     //        //Añadimos la imagen de carga en el contenedor
     //        $('#miButton').html('Validando <img src="img/ajax-loader.gif" alt="loading" /><br/>');
- 
-    //        $.ajax({
-    //            type: "POST",
-    //            url: "ajax.php",
-    //            success: function(data) {
-    //                //Cargamos finalmente el contenido deseado
-    //                $('#mIprueba').fadeIn(1000).html(data);
-    //            }
-    //        });
-    //        return false;
+    //        Registre();
+
+    //        //$.ajax({
+    //        //    type: "POST",
+    //        //    url: "ajax.php",
+    //        //    success: function(data) {
+    //        //        //Cargamos finalmente el contenido deseado
+    //        //        $('#mIprueba').fadeIn(1000).html(data);
+    //        //    }
+    //        //});
+    //        //return false;
     //    });              
     //    });    
 
@@ -84,30 +88,51 @@
             
         }
 
-        function prueba() {
-            var miprueba = ["OK9¦Jose"];
-            var long_miprueba,nom,nom2,nom3,nom4,nombre;
-
-            nom = miprueba[0];
-            nom2 = nom.length;
-            nom3 = nom.split("¦");
-            nom4 = nom3[1];
-            //long_miprueba = miprueba.split("¦");
-            //alert(long_miprueba);
-            alert(nom);
-            alert(nom2);
-            alert(nom3);
-            alert(nom4);
+        function loader_gif() {
+            var texto = "<h4 style='text-align:center;'>Validando <img src='img/ajax-loader2.gif' alt='loading' /><br/>"
+            LanzaAviso(texto);
+            //$('#miButton').html('Validando <img src="img/ajax-loader.gif" alt="loading" /><br/>');
+            //setTimeout($('#miButton').html('Validando <img src="img/ajax-loader.gif" alt="loading" /><br/>'), 2000);        
         }
+        function comprueba_data() {
+            email = document.getElementById("input_mail").value;
+            password = document.getElementById("input_pass").value;
+
+            long_mail = email.length;
+            long_pass = password.length;
+
+            if ((long_mail == 0) || (long_pass == 0)) {  //Comprobamos que ninguno de los inputs (tanto el de tipo mail, como el de password) esten vacios. Como son OBLIGATORIOS, no pueden star vacios.
+                LanzaAviso("<h4>Lo sentimos pero ambos campos son <span style='color:red;'>OBLIGATORIOS</span> y no puedes dejar ninguno vacio.</h4>");
+            }
+            else {
+                if (ComprobarEmail(email) == false) { //Comprobamos que el Email este en un formato correcto.
+                        LanzaAviso("<h4>Lo sentimos pero el campo email debe estar en el formato correcto: <span style='color:red;'>prueba@towerplane.com</span>.</h4>");
+                }
+                else {
+                    if (long_pass <= 3) { //comprobamos que la pass tenga una longitud mínima de 4.
+                        LanzaAviso("<h4>Lo sentimos pero el campo contraseña debe contener al menos <span style='color:red;'>4 caracteres</span>.</h4>");
+                    }
+                    else {
+                        var texto = "<h4 style='text-align:center;'>Validando <img src='img/ajax-loader2.gif' alt='loading' /><br/>"
+                        LanzaAviso(texto);
+                    }
+                }
+            }         
+        }
+
+        function ComprobarEmail(Email) {
+            //Comprobamos que el Email introducido por el usuario tenga el formato correcto. Ej: prueba@prueba.com
+            return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(Email))
+         }
     </script>
 
 </head>
 <body id="particles-js">
     <form id="form1" runat="server">
-        <div class="container-fluid logo_img" onclick="Registre();">
+        <div class="container-fluid logo_img" onclick="comprueba_data();">
             <img src="img/aotec.jpg" />
         </div>
-        <div class="container-fluid principal">
+        <div id="div_principal" class="container-fluid principal">
             <div class="row header_principal">
                 <h2><b>Login de Acceso</b></h2>
             </div>
@@ -116,7 +141,8 @@
                      <label for="staticEmail" class="col-sm-2 col-form-label">Email <span style="color:red;">*</span></label>
                 </div>
                 <div class="col-xs-6 col-md-4 div_inputs">
-                    <input id="input_mail" class="form-control form-control-sm" type="text" placeholder="Introduzca su Email " required>
+                    <%--<input id="input_mail" class="form-control form-control-sm" type="text" placeholder="Introduzca su Email " runat="server">--%>
+                    <asp:TextBox ID="input_mail" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
                 </div>
             </div>
             <div class="row login_centrar2">
@@ -124,14 +150,17 @@
                      <label for="staticPass" class="col-sm-2 col-form-label">Password <span style="color:red;">*</span></label>
                 </div>
                 <div class="col-xs-6 col-md-4 div_inputs">
-                    <input id="input_pass" class="form-control form-control-sm" type="password" placeholder="Introduzca su Contraseña " required>
+                    <%--<input id="input_pass" class="form-control form-control-sm" type="password" placeholder="Introduzca su Contraseña " runat="server">--%>
+                    <asp:TextBox ID="input_pass" CssClass="form-control form-control-sm" TextMode="Password" runat="server"></asp:TextBox>
                 </div>
             </div>
             <div class="row pos_buton">
                 <%--<input type="button" class="boton_validate" id="miButton" onclick="Registre()" value="Validar" />--%>
-                <button class="boton_validate" id="miButton" onclick="Registre()">Validar</button>
+                <%--<button class="boton_validate" id="miButton" onclick="Registre()" type="button">Validar</button>--%>
+                <asp:Button CssClass="boton_validate" ID="miButton" Text="Validar" runat="server" />
             </div>
         </div>
+        <asp:TextBox ID="input_oculto" ReadOnly="false" runat="server" CssClass="form-control  "></asp:TextBox>
     </form>
     <script type="text/javascript" src="Script/ComunicacioAJAX.js"></script>
     <script type="text/javascript">
@@ -155,17 +184,17 @@
             }           
 
         function Registre_Tornada(Dades) {
-            alert(Dades);
             var nom,Dades2;
             Dades2 = Dades.split("¦");
             nom = Dades2[1];
-            alert(nom);
 
 
             if (Dades.substr(0, 2) == "OK") {
                 if (Dades.substr(2, 1) == "9") {                    
                    $('#miButton').html('Validado');
                     LanzaAviso("<h4>Hemos verificado sus datos. Gracias " + nom + "!</h4>");
+                    //$('#div_principal').fadeIn(1000).html(data);
+                    //window.location.href = "";
                 }
             }
             else {

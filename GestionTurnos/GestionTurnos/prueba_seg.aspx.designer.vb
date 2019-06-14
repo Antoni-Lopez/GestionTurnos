@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Probando_cositas
+Partial Public Class prueba_sgemented
     
     '''<summary>
     '''Control bootstrap_min_css.
@@ -57,40 +57,4 @@ Partial Public Class Probando_cositas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
-    
-    '''<summary>
-    '''Control input_mail.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents input_mail As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control input_pass.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents input_pass As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control miButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents miButton As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control input_oculto.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents input_oculto As Global.System.Web.UI.WebControls.TextBox
 End Class
