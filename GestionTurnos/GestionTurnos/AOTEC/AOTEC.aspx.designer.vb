@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class AOTEC
+Partial Public Class Aotec
     
     '''<summary>
     '''Control bootstrap_min_css.

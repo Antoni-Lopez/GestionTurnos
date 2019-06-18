@@ -1,19 +1,14 @@
-﻿Public Class Probando_cositas
-
+﻿Public Class Login
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim clsGeneral As New ClaseGeneral
         clsGeneral.MeterFicherosBootstrap(bootstrap_min_css, , jquery_1_9_1_min_js, bootstrap_min_js, , bootbox_min_js)
         If Not IsPostBack Then
-            miButton.Attributes.Add("onclick", "comprueba_data();")
+            miButton.Attributes.Add("onclick", "return comprueba_data();")
             input_mail.Attributes.Add("Placeholder", "Introduzca su Email")
             input_pass.Attributes.Add("Placeholder", "Introduzca su Contraseña")
-
-            'soflow.Attributes.Add("onchange", "elegir_accion(2);")
         Else
-            'miButton.Attributes.Add("onclick", "loader_gif();")
-
             Dim email As String, email_BD As String, Pass As String, Pass_BD As String, nombre As String
 
             Dim clsBD As New ClaseAccesoBD
@@ -46,6 +41,7 @@
 
                 ClientScript.RegisterStartupScript(Page.GetType(), "loginOk", "LanzaAviso('<h4>Sus datos de acceso son correctos. Enseguida le re-direccionamos, Gracias <span>" & nombre & "</span> !')", True)
                 Server.Transfer("/AOTEC/Aotec.aspx?mail=" & email_BD)
+                'Response.Redirect("/AOTEC/Aotec.aspx?mail=" & email_BD & "")
             Else
                 Dim mensaje2 As String
                 mensaje2 = ""
@@ -53,5 +49,6 @@
             End If
         End If
     End Sub
+
 
 End Class

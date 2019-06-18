@@ -133,8 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Agenda.aspx" />
-    <Content Include="AOTEC\AOTEC.aspx" />
+    <Content Include="AOTEC\Aotec.aspx" />
     <Content Include="AOTEC\css\segment.css" />
+    <Content Include="AOTEC\Login.aspx" />
     <Content Include="AOTEC\script\segment.js" />
     <Content Include="Bootstrap\Css\bootstrap.min.css" />
     <Content Include="Bootstrap\JS\bootbox.min.js" />
@@ -156,7 +157,6 @@
     <Content Include="PlantillaBootstrap.aspx" />
     <Content Include="Porcelanosa.aspx" />
     <Content Include="Printer.aspx" />
-    <Content Include="Probando_cositas.aspx" />
     <Content Include="prueba_seg.aspx" />
     <Content Include="prueba.aspx" />
     <Content Include="RecepcionAJAX.aspx" />
@@ -182,11 +182,18 @@
       <DependentUpon>Agenda.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="AOTEC\AOTEC.aspx.designer.vb">
-      <DependentUpon>AOTEC.aspx</DependentUpon>
+    <Compile Include="AOTEC\Aotec.aspx.designer.vb">
+      <DependentUpon>Aotec.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AOTEC\AOTEC.aspx.vb">
-      <DependentUpon>AOTEC.aspx</DependentUpon>
+    <Compile Include="AOTEC\Aotec.aspx.vb">
+      <DependentUpon>Aotec.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AOTEC\Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AOTEC\Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Clases\ClaseAccesoBD.vb" />
@@ -290,13 +297,6 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="PrintHelper.vb" />
-    <Compile Include="Probando_cositas.aspx.designer.vb">
-      <DependentUpon>Probando_cositas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Probando_cositas.aspx.vb">
-      <DependentUpon>Probando_cositas.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="prueba_seg.aspx.designer.vb">
       <DependentUpon>prueba_seg.aspx</DependentUpon>
     </Compile>
