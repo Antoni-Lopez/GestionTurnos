@@ -43,10 +43,14 @@
 
         label[for=texto]{font-family: 'Roboto', sans-serif;padding-top:2%;font-size:16px}
 
-        .desplegar{width:100%;margin-left:0;margin-top:2%;margin-bottom:2%;font-family: 'Mali', cursive;float:left;padding-left:5% !important;font-size:20px;padding:15px;background-color:#FEC007;color:#fff;}
+        .desplegar{width:95.5%;margin-left:0;margin-top:2%;margin-bottom:2%;font-family: 'Mali', cursive;float:left;padding-left:5% !important;font-size:20px;padding:15px;background-color:#FEC007;color:#fff;border: 1.5px solid black;margin-left: 2.5%;}
         .icono_desplegar{color:#fff;float: right !important;margin-right:10%;font-weight:bold;}
 
         #show_provedores,#show_provedores2,#show_provedores3,#equipa,#equipa2,#encripta2,#encripta3,#ott3{width:100%;margin-left:0;display:none;}
+
+        /* Div Internet */
+        .autonomo{margin-left: 15%;}
+        label[for=fibra],label[for=radioenlace]{margin-top: 2%;margin-left: 15%;}
 
         /*inputs type text/number/etc...*/
         .form-control {margin-left:-42% !important; width: 142% !important;}
@@ -154,43 +158,6 @@
                 document.getElementById("movil2").style.display = 'none';
             }
         }
-
-        function company_encriptar() {
-            var estado = document.getElementById("encriptacion_si").checked;
-            var estado2 = document.getElementById("encriptacion_no").checked;
-
-            if (estado == true) {
-                document.getElementById("encripta3").style.display = 'Block';
-                document.getElementById("encriptacion_no").checked = false;
-            }
-            if (estado2 == true) {
-                document.getElementById("encripta3").style.display = 'none';
-                document.getElementById("encriptacion_si").checked = false;
-            }
-            //alert(estado);
-            //encripta3
-        }
-
-        function ott_proveedor() {
-            var comprobar = document.getElementById("OTT_si").checked;
-            var comprobar2 = document.getElementById("OTT_no").checked;
-            var comprobar3 = document.getElementById("OTT_no").checked;
-
-            if (comprobar == true) {
-                document.getElementById("ott3").style.display = 'Block';
-                document.getElementById("OTT_no").checked = false;
-            }
-            if (comprobar2 == true) {
-                document.getElementById("ott3").style.display = 'none';
-                document.getElementById("OTT_si").checked = false;
-            }
-
-
-            //alert(estado);
-            //encripta3
-        }
-
-
     </script>
 
 
@@ -300,8 +267,8 @@
                         <label for="texto">¿Sistema de encriptación propio?</label>
                     </div>
                     <div class="col-xs-6 inputs_der">
-                        <label for="encriptacion_si" class="btn btn-success">Sí <input type="checkbox" id="encriptacion_si" class="badgebox" onclick="company_encriptar()" /><span class="badge">&check;</span></label>
-                        <label for="encriptacion_no" class="btn btn-danger">No <input type="checkbox" id="encriptacion_no" class="badgebox" onclick="company_encriptar()" checked="checked" /><span class="badge">&check;</span></label>
+                        <label for="encriptacion_si" class="btn btn-success">Sí <input type="checkbox" id="encriptacion_si" class="badgebox" /><span class="badge">&check;</span></label>
+                        <label for="encriptacion_no" class="btn btn-danger">No <input type="checkbox" id="encriptacion_no" class="badgebox" checked="checked" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div id="encripta3" class="row" style="margin-left:0;width:100%;">
@@ -326,8 +293,8 @@
                         <label for="texto">¿Dispone de plataforma OTT?</label>
                     </div>
                     <div class="col-xs-6 inputs_der">
-                        <label for="OTT_si" class="btn btn-success">Sí <input type="checkbox" id="OTT_si" class="badgebox" onclick="ott_proveedor()" /><span class="badge">&check;</span></label>
-                        <label for="OTT_no" class="btn btn-danger">No <input type="checkbox" id="OTT_no" class="badgebox" onclick="ott_proveedor()" checked="checked" /><span class="badge">&check;</span></label>
+                        <label for="OTT_si" class="btn btn-success">Sí <input type="checkbox" id="OTT_si" class="badgebox" /><span class="badge">&check;</span></label>
+                        <label for="OTT_no" class="btn btn-danger">No <input type="checkbox" id="OTT_no" class="badgebox" checked="checked" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div id="ott3" class="row" style="margin-left:0;width:100%;">
@@ -348,11 +315,11 @@
                     </div>
                     <div class="col-xs-12" style="width:100%;">
                         <div class="form-groupu">
-                            <input type="checkbox" id="SGAE">
+                            <input type="checkbox" id="SGAE" />
                             <label for="SGAE">SGAE</label>
                         </div>
                         <div class="form-groupu">
-                            <input type="checkbox" id="EGEDA">
+                            <input type="checkbox" id="EGEDA" />
                             <label for="EGEDA">EGEDA</label>
                         </div>
                         <div class="form-groupu">
@@ -365,12 +332,12 @@
             </div>
                             
             <div id="internet2" class="row">
-                <div id="internet_desplegar" class="row desplegar">
+                <div id="internet_desplegar" class="row desplegar" style="margin-top:-3px;">
                     Caudal <span class="icono_desplegar"><i class="fas fa-arrow-alt-circle-down"></i></span>
                 </div>
                 <div id="internet3" class="row" style="margin-left:0;width:100%;">
                     <div class="col-xs-6 texto_izq">
-                        <label for="texto">¿Eres AS autónomo?</label>
+                        <label for="texto autonomo">¿Eres AS autónomo?</label>
                     </div>
                     <div class="col-xs-6 inputs_der">
                         <label for="autonomo_si" class="btn btn-success">Sí <input type="checkbox" id="autonomo_si" class="badgebox" /><span class="badge">&check;</span></label>
@@ -411,7 +378,7 @@
                 </div>
                 <div id="internet6" class="row" style="margin-left:0;width:100%;">
                     <div class="col-xs-6">
-                        <label for="texto" style="text-align:center;margin-top:2%;margin-left:2.5%;">¿Cuántos megas de caudal consumes aproximadamente?</label>
+                        <label for="texto" style="text-align: center;margin-top: 2%;margin-left: 5.5%;">¿Cuántos megas de caudal consumes aproximadamente?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 15px;">
                         <input type="text" class="form-control megas_mes" id="megas_mensaules" placeholder="Número Mbs." />
@@ -419,7 +386,7 @@
                 </div>
                 <div id="internet7" class="row" style="margin-left:0;width:100%;">
                     <div class="col-xs-6">
-                        <label for="texto" style="text-align:center;margin-top:2%;margin-left:19%;">¿Quién es tu Proveedor de circuito?</label>
+                        <label for="texto" style="text-align:center;margin-top:4%;margin-left:17%;">¿Quién es tu Proveedor de circuito?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 15px;">
                         <input type="text" class="form-control megas_mes" id="proveedor_megas" placeholder="Introduce el nombre de tu Proveedor." />
@@ -427,7 +394,7 @@
                 </div>
                 <div id="internet8" class="row" style="margin-left:0;width:100%;">
                     <div class="col-xs-6">
-                        <label for="texto" style="text-align:center;margin-top:2%;margin-left:19%;">Precio de su Circuito</label>
+                        <label for="texto" style="text-align:center;margin-top:5%;margin-left:18%;">Precio de su Circuito</label>
                     </div>
                     <div class="col-xs-6" style="padding: 15px;">
                         <input type="text" class="form-control megas_mes" id="precio_proveedor" placeholder="Introduce el Precio de tu Circuito." />
@@ -435,7 +402,7 @@
                 </div>
                 <div id="internet9" class="row" style="margin-left:0;width:100%;">
                     <div class="col-xs-6">
-                        <label for="texto" style="text-align:center;margin-top:2%;margin-left:19%;">¿Quién es tu proveedor de caudal?</label>
+                        <label for="texto" style="text-align:center;margin-top:4%;margin-left:17%;">¿Quién es tu proveedor de caudal?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 15px;">
                         <input type="text" class="form-control megas_mes" id="caudal_proveedor" placeholder="Introduce el Proveedor de tu Caudal." />
@@ -443,14 +410,29 @@
                 </div>
                 <div id="internet10" class="row" style="margin-left:0;width:100%;">
                     <div class="col-xs-6">
-                        <label for="texto" style="text-align:center;margin-top:2%;margin-left:19%;">Precio del caudal contratado</label>
+                        <label for="texto" style="text-align:center;margin-top:4%;margin-left:18%;">Precio del caudal contratado</label>
                     </div>
                     <div class="col-xs-6" style="padding: 15px;">
                         <input type="text" class="form-control megas_mes" id="caudal_precio" placeholder="Introduce el precio de tu Caudal." />
                     </div>
                 </div>
+                <div id="internet11" class="row" style="margin-left:0;width:100%;">
+                    <div class="col-xs-12">
+                        <h4 style="padding:10px;text-align:justify;padding-left:1.5%;">Velocidad que ofreces actualmente a tus clientes (Máx=5) .</h4><span id="anadir_more" style="float:right;padding:10px;text-align:justify;font-size:25px;">+</span>
+                    </div>  
+                    <div class="row" style="margin-left:0;width:100%;margin-top:5%;">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:10px;text-align:center;padding-left:.5%;"> Subida (Mbps) </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:1px"> 
+                             <input type="text" class="form-control inputs_especiales" id="subida_velocity" placeholder="Número Mbs." />
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:10px;text-align:center;padding-left:.5%;"> Bajada (Mbps) </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:1px;">
+                             <input type="text" class="form-control inputs_especiales" style="padding:10px !important;" id="bajada_velocity" placeholder="Número Mbs." />
+                        </div>
+                    </div>
+                </div>
 
-                <div id="internet_desplegar2" class="row desplegar">
+                <div id="Equipamiento" class="row desplegar">
                     Equipamiento <span class="icono_desplegar"><i class="fas fa-arrow-alt-circle-down"></i></span>
                 </div>
             </div>
@@ -499,11 +481,101 @@
               $('#internet8').toggle("slide");
               $('#internet9').toggle("slide");
               $('#internet10').toggle("slide");
+              $('#internet11').toggle("slide");
             });
-            $('#internet_desplegar2').click(function () {
+
+            $('#Equipamiento').click(function () {
               
             });
-        });
+
+            //Comprobamos los radio buttons y ponemos false o true dependiendo lo que haga el usuario.
+            $("#success").click(function () {
+                if ($("#success").is(':checked')) {
+                    $("#danger").attr('checked', false);                 
+                } else {
+                    $("#success").attr('checked', true);
+                }
+            });
+
+            $("#danger").click(function () {
+                if ($("#danger").is(':checked')) {
+                    $("#success").attr('checked', false);                 
+                } else {
+                    $("#danger").attr('checked', true);
+                }
+            });
+
+
+            $("#encriptacion_si").click(function () {
+                if ($("#encriptacion_si").is(':checked')) {
+                    $("#encriptacion_no").attr('checked', false);
+                    $("#encriptacion_si").attr('checked', true);
+                    $('#encripta3').toggle("slide");
+                    
+                } else {
+                    alert("Holaaa??");
+                    $("#encriptacion_si").attr('checked', false);
+                    $("#encriptacion_no").attr('checked', true);
+                    $('#encripta3').toggle("slide");
+                }
+            });
+
+            $("#encriptacion_no").click(function () {
+                if ($("#encriptacion_no").is(':checked')) {
+                    $("#encriptacion_si").attr('checked', false);
+                    $("#encriptacion_no").attr('checked', true);
+                    $('#encripta3').toggle("slide");
+                    
+                } else {
+                    $("#encriptacion_si").attr('checked', true);
+                    $("#encriptacion_no").attr('checked', false);
+                    $('#encripta3').toggle("slide");
+                }
+            });
+
+            $("#OTT_si").click(function () {
+                if ($("#OTT_si").is(':checked')) {
+                    $("#OTT_no").attr('checked', false);
+                    $("#OTT_si").attr('checked', true);
+                    $('#ott3').toggle("slide");
+                    
+                } else {
+                    $("#OTT_si").attr('checked', true);
+                    $("#OTT_no").attr('checked', false);
+                    $('#ott3').toggle("slide");
+                }
+            });
+
+            $("#OTT_no").click(function () {
+                if ($("#OTT_no").is(':checked')) {
+                    $("#OTT_si").attr('checked', false);
+                    $("#OTT_no").attr('checked', true);
+                    $('#ott3').toggle("slide");
+                    
+                } else {
+                    $("#OTT_no").attr('checked', true);
+                    $("#OTT_si").attr('checked', false);
+                    $('#ott3').toggle("slide");
+                }
+            });
+            $("#anadir_more").click(function () {
+                for (var cont = 1; i < 4; i++) {
+                    $('body').append('<div class="divBody">¡Felicidades! Has insertado un nuevo DIV en el BODY</div>');
+                    //<div class="row" style="margin-left:0;width:100%;margin-top:5%;">
+                    //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:10px;text-align:center;padding-left:.5%;"> Subida (Mbps) </div>
+                    //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:1px">
+                    //        <input type="text" class="form-control inputs_especiales" id="subida_velocity" placeholder="Número Mbs." />
+                    //    </div>
+                    //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:10px;text-align:center;padding-left:.5%;"> Bajada (Mbps) </div>
+                    //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:1px;">
+                    //        <input type="text" class="form-control inputs_especiales" style="padding:10px !important;" id="bajada_velocity" placeholder="Número Mbs." />
+                    //    </div>
+                    //</div>
+                }
+            });
+
+            
+        }); 
     </script>
 </body>
 </html>
