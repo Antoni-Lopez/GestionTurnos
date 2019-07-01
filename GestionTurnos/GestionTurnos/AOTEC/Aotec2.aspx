@@ -61,11 +61,27 @@
 
 
         /* Div Oculto*/
-        #datos_user,#submenu_tv1,#submenu_tv2,#submenu_tv3,#submenu_tv4,#submenu_tv5,#submenu_tv3_2,#submenu_tv4_2{display:none;}
+        #datos_user,#submenu_tv1,#submenu_tv2,#submenu_tv3,#submenu_tv4,#submenu_tv5,#submenu_tv3_2,#submenu_tv4_2,#submenu_interne1{display:none;}
 
         .azul{border:blue solid 2px;}
         .verde{border:green solid 2px;}
         .rojo{border:red solid 2px;}
+
+        .btn.active span.nonCheckBoxAllow {
+  display: none;
+}
+
+.btn.active span.checkBoxAllow {
+  display: inline;
+}
+
+.btn span.nonCheckBoxAllow {
+  display: inline;
+}
+
+.btn span.checkBoxAllow {
+  display: none;
+}
     </style>
     <script type="text/javascript">
         
@@ -223,85 +239,6 @@
             alert(total);
             return total;
         }
-
-        function chorra() {
-            //Horas Production.
-            var horas_produccion = document.getElementById("horas_produccion").value;
-            var total = "";
-
-            if (horas_produccion == null || horas_produccion == "") {
-                horas_produccion = 0;
-                total = total + "¦" + horas_produccion;
-            }
-            else {
-                total = horas_produccion;
-            }
-
-            //Nombre del Proveedor.
-            var name = document.getElementById("nombre_proveedor").value;
-            if (name == null || name == "") {
-                name = 0;
-                total = total + "¦" + name;
-            }
-            else {
-                total = total + "¦" + name;
-            }
-
-            //Canales Contratados.
-            var canales_contratados = document.getElementById("ncanales_contratados").value;
-            if (canales_contratados == null || canales_contratados == "") {
-                canales_contratados = 0;
-                total = total + "¦" + canales_contratados;
-            }
-            else {
-                total = total + "¦" + canales_contratados;
-            }
-
-            //Precio Paquete.
-            var precio_paquete = document.getElementById("precio_paquete").value;
-            if (precio_paquete == null || precio_paquete == "") {
-                precio_paquete = 0;
-                total = total + "¦" + precio_paquete;
-            }
-            else {
-                total = total + "¦" + precio_paquete;
-            }
-
-            //Equipo/Uso.
-            var equipo_tv2 = document.getElementById("equipo_tv2").value;
-            if (equipo_tv2 == null || equipo_tv2 == "") {
-                equipo_tv2 = 0;
-                total = total + "¦" + equipo_tv2;
-            }
-            else {
-                total = total + "¦" + equipo_tv2;
-            }
-
-            //Empresa encargada encriptar.
-            var encriptar_tv2 = document.getElementById("encriptar_tv2").value;
-            if (encriptar_tv2 == null || encriptar_tv2 == "") {
-                encriptar_tv2 = 0;
-                total = total + "¦" + encriptar_tv2;
-            }
-            else {
-                total = total + "¦" + encriptar_tv2;
-            }
-
-            //Derechos autor
-            var contrato_con = document.getElementById("SGAE").checked;
-            var contrato_con2 = document.getElementById("EGEDA").checked;
-            var contrato_con3 = document.getElementById("AGEDI").checked;
-            var contrato_con4 = document.getElementById("otros_derechos").value;
-
-            if (contrato_con4 == null || contrato_con4 == "") {
-                contrato_con4 = 0;
-            }
-            total = total + "¦" + contrato_con + "¦" + contrato_con2 + "¦" + contrato_con3 + "¦" + contrato_con4;
-            
-            
-            alert(total);
-        }
-
 
         function activar(x) {
             switch (x) {
@@ -480,7 +417,48 @@
             <div id="desplegar_caudal" class="row centrado desplegables">
                 <label for="textos_desple">Caudal</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
             </div>
-
+            <div id="submenu_interne1" class="row centrado">
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Eres AS Autonomo?</label>
+                    </div>
+                    <div class="col-xs-6" style="margin-top:10px;">
+                        <label for="Autonomo_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="Autonomo_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="Autonomo_no" class="btn btn-danger">No <input type="checkbox" id="Autonomo_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-3 verde">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-success active" style="width: 56px">
+                                <span class="checkBoxAllow fas fa-check"></span>
+                                <span class="nonCheckBoxAllow fas fa-times"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 rojo">
+                      <label for="textos">¿Recibo canal por radioenlace.?</label>
+                    </div>
+                    <div class="col-xs-3 azul">
+                      One of three columns
+                    </div>
+                    <div class="col-xs-3 verde">
+                      One of three columns
+                    </div>
+                    <%--<div class="col-6 col-md-4">
+                        <div class="form-groupu chk_contrato">
+                            <input type="checkbox" id="fibra" runat="server" />
+                            <label for="fibra" class="margen_izq">Recibo canal por Fibra Óptica</label>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label for="textos">¿Cuántos Megas?</label>    
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <input type="text" class="form-control" id="cuantos_megas" runat="server" placeholder="Introduzca el número de megas." />
+                    </div>--%>
+                </div>
+            </div>
             <div id="desplegar_equipamiento" class="row centrado desplegables">
                 <label for="textos_desple">Equipamiento</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
             </div>
@@ -608,6 +586,9 @@
             });
             $('#desplegar_autor').click(function () {
                 $('#submenu_tv5').toggle("slide");                
+            });
+            $('#desplegar_caudal').click(function () {
+                $('#submenu_interne1').toggle("slide");                
             });
 
 

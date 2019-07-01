@@ -275,6 +275,24 @@ Partial Public Class Aotec2
     Protected WithEvents interne1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''Control Autonomo_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Autonomo_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
+    '''Control Autonomo_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Autonomo_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
     '''Control tfija.
     '''</summary>
     '''<remarks>
