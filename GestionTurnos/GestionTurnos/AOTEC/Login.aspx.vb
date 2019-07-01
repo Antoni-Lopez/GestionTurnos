@@ -39,8 +39,7 @@
                 input_oculto.Text = nombre
                 mensaje = ""
 
-                ClientScript.RegisterStartupScript(Page.GetType(), "loginOk", "LanzaAviso('<h4>Sus datos de acceso son correctos. Enseguida le re-direccionamos, Gracias <span>" & nombre & "</span> !')", True)
-                Server.Transfer("/AOTEC/Aotec.aspx?mail=" & email_BD)
+                Server.Transfer("/AOTEC/Aotec2.aspx?mail=" & email_BD)
                 'Response.Redirect("/AOTEC/Aotec.aspx?mail=" & email_BD & "")
             Else
                 Dim mensaje2 As String

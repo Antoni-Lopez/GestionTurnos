@@ -134,6 +134,7 @@
   <ItemGroup>
     <Content Include="Agenda.aspx" />
     <Content Include="AOTEC\Aotec.aspx" />
+    <Content Include="AOTEC\Aotec2.aspx" />
     <Content Include="AOTEC\css\segment.css" />
     <Content Include="AOTEC\Login.aspx" />
     <Content Include="AOTEC\script\segment.js" />
@@ -187,6 +188,13 @@
     </Compile>
     <Compile Include="AOTEC\Aotec.aspx.vb">
       <DependentUpon>Aotec.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AOTEC\Aotec2.aspx.designer.vb">
+      <DependentUpon>Aotec2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AOTEC\Aotec2.aspx.vb">
+      <DependentUpon>Aotec2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="AOTEC\Login.aspx.designer.vb">

@@ -22,8 +22,8 @@
         body{margin:auto;padding:0;box-sizing:border-box;background-image: url("img/Aotec.jpg");background-size: cover;}
 
         /* Logotipo de la Organización */
-        .logo_img{border: groove solid 1.2px;max-width:830px;width:100%;margin:auto;margin-top:2.5%;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);}
-        .logo_img img{margin:0;padding:0;box-sizing:border-box;margin-left: -1.7%;width:103.6%;}
+        .logo_img{border: groove solid 1.2px;max-width:723px;width:100%;margin:auto;margin-top:2.5%;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);}
+        .logo_img img{margin:0;padding:0;box-sizing:border-box;margin-left: -15px;width: 105%;}
 
         /* Contenedor Principal */
         #div_principal{max-width:700px;width:100%;border:Black solid 2px;border-radius:5px;background-color:#e9e9e9;margin:auto;margin-top:1%;height: 25vh;}
@@ -39,7 +39,7 @@
         .label_texto label[for=staticEmail],.label_texto label[for=staticPass]{padding: 7px;width: 100%;font-family: 'Rubik', sans-serif;font-size:20px}
         .div_inputs{width:60%;padding:5px;}
 
-        .boton_validate{text-decoration: none;padding: 10px;font-weight: 600;font-size: 20px;color: #ffffff;background-color: #DB9832;border-radius: 6px;border: 2px solid #D9D9D9;max-width:150px;width:100%;display:block;margin-left:auto;margin-right:auto;margin-top:2.5%;}
+        .boton_validate{text-decoration: none;padding: 10px;font-weight: 600;font-size: 20px;color: #ffffff;background-color: #DB9832;border-radius: 6px;border: 2px solid #D9D9D9;max-width:150px;width:100%;display:block;margin-left:auto;margin-right:auto;margin-top:-.5%;}
         .boton_validate:hover{color: #DB9832;background-color: #ffffff;}
 
         /* LanzaAviso */
@@ -52,6 +52,8 @@
         @media (max-width: 1920px) {          
           #div_principal{height:35vh !important;}
         }
+
+        .verde{border:2px solid green;}
     </style>
 
     <script type="text/javascript">
@@ -122,8 +124,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid logo_img" onclick="comprueba_data();">
-            <img src="img/aotec_img.jpg" />
+        <div class="container-fluid logo_img">
+            <img src="img/logo_aotec.png" />
         </div>
         <div id="div_principal" class="container-fluid principal">
             <div class="row header_principal">

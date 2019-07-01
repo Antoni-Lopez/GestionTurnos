@@ -23,13 +23,12 @@
     
 
     <style type="text/css">
-        body {margin: 0;padding: 0;box-sizing: border-box;position: relative;background-image: url("img/Aotec.jpg");background-size: cover;}
-
+        body {margin: 0;padding: 0;box-sizing: border-box;position: relative;background: url("img/Aotec.jpg") no-repeat center center fixed ;}
 
         /* Div para el logo*/
-        .logo_aotec {height: 385px !important;max-width: 830px;width: 100%;margin: auto;margin-top:2%;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);}
+        .logo_aotec {height: 385px !important;max-width: 723px;width: 100%;margin: auto;margin-top:2%;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);}
 
-        .logo_aotec img {margin-left:-1%;width: 103%;}
+        .logo_aotec img {margin-left: -15px;width: 105%;}
 
         /* Div Principal donde dispondremos de los RadioButtons y de todo el contenido. */
         #principal {max-width: 830px;width: 100%;margin:auto;margin-top:2%;border:Black solid 2px;border-radius:5px;background-color:#e9e9e9;margin-bottom:5%;}
@@ -68,46 +67,16 @@
         .btn-success {margin-left: -10%;}
         .btn-danger {margin-left: 27% !important;}
 
-        #anadir_more{-moz-box-shadow:inset 0px 0px 23px -50px #fff6af;
-	-webkit-box-shadow:inset 0px 0px 23px -50px #fff6af;
-	box-shadow:inset 0px 0px 23px -50px #fff6af;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #fec007));
-	background:-moz-linear-gradient(top, #ffec64 5%, #fec007 100%);
-	background:-webkit-linear-gradient(top, #ffec64 5%, #fec007 100%);
-	background:-o-linear-gradient(top, #ffec64 5%, #fec007 100%);
-	background:-ms-linear-gradient(top, #ffec64 5%, #fec007 100%);
-	background:linear-gradient(to bottom, #ffec64 5%, #fec007 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#fec007',GradientType=0);
-	background-color:#ffec64;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	border-radius:10px;
-	border:2px solid #ffaa22;
-	display:inline-block;
-	cursor:pointer;
-	color:#333333;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:10px 30px;
-	text-decoration:none;
-	text-shadow:0px 0px 0px #ffee66;}
+        #anadir_more{-moz-box-shadow:inset 0px 0px 23px -50px #fff6af;-webkit-box-shadow:inset 0px 0px 23px -50px #fff6af;box-shadow:inset 0px 0px 23px -50px #fff6af;background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #fec007));
+	    background:-moz-linear-gradient(top, #ffec64 5%, #fec007 100%);background:-webkit-linear-gradient(top, #ffec64 5%, #fec007 100%);background:-o-linear-gradient(top, #ffec64 5%, #fec007 100%);background:-ms-linear-gradient(top, #ffec64 5%, #fec007 100%);
+	    background:linear-gradient(to bottom, #ffec64 5%, #fec007 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#fec007',GradientType=0);background-color:#ffec64;-moz-border-radius:10px;
+	    -webkit-border-radius:10px;border-radius:10px;border:2px solid #ffaa22;display:inline-block;cursor:pointer;color:#333333;font-family:Arial;font-size:15px;font-weight:bold;padding:10px 30px;text-decoration:none;text-shadow:0px 0px 0px #ffee66;}
 
 
-#anadir_more:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fec007), color-stop(1, #ffec64));
-	background:-moz-linear-gradient(top, #fec007 5%, #ffec64 100%);
-	background:-webkit-linear-gradient(top, #fec007 5%, #ffec64 100%);
-	background:-o-linear-gradient(top, #fec007 5%, #ffec64 100%);
-	background:-ms-linear-gradient(top, #fec007 5%, #ffec64 100%);
-	background:linear-gradient(to bottom, #fec007 5%, #ffec64 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fec007', endColorstr='#ffec64',GradientType=0);
-	background-color:#fec007;
-}
-#anadir_more:active {
-	position:relative;
-	top:1px;
-}
+        #anadir_more:hover {background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fec007), color-stop(1, #ffec64));background:-moz-linear-gradient(top, #fec007 5%, #ffec64 100%);
+	    background:-webkit-linear-gradient(top, #fec007 5%, #ffec64 100%);background:-o-linear-gradient(top, #fec007 5%, #ffec64 100%);background:-ms-linear-gradient(top, #fec007 5%, #ffec64 100%);background:linear-gradient(to bottom, #fec007 5%, #ffec64 100%);
+	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fec007', endColorstr='#ffec64',GradientType=0);background-color:#fec007;}
+        #anadir_more:active {position:relative;top:1px;}
 
 
 
@@ -169,6 +138,34 @@
         .omv6 { grid-area: 3 / 2 / 4 / 3; } 
         .omv7 { grid-area: 4 / 1 / 5 / 2; } 
         .omv8 { grid-area: 4 / 2 / 5 / 3; } 
+
+
+        /* Datos interes para negociaciones colectivas */
+        .datos_interes {max-width: 830px;width: 100%;margin:auto;margin-top:-4%;display: grid;grid-template-columns: 1fr 1fr;grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;grid-column-gap: 0px;grid-row-gap: 0px;border:Black solid 2px;border-radius:5px;background-color:#e9e9e9;margin-bottom:1%;}
+        .datos_interes1 { grid-area: 1 / 1 / 2 / 2; } 
+        .datos_interes2 { grid-area: 1 / 2 / 2 / 3; } 
+        .datos_interes3 { grid-area: 2 / 1 / 3 / 2; } 
+        .datos_interes4 { grid-area: 2 / 2 / 3 / 3; } 
+        .datos_interes5 { grid-area: 3 / 1 / 4 / 2; } 
+        .datos_interes6 { grid-area: 3 / 2 / 4 / 3; } 
+        .datos_interes7 { grid-area: 4 / 1 / 5 / 2; } 
+        .datos_interes8 { grid-area: 4 / 2 / 5 / 3; } 
+        .datos_interes9 { grid-area: 5 / 1 / 6 / 2; } 
+        .datos_interes10 { grid-area: 5 / 2 / 6 / 3; } 
+        .datos_interes11 { grid-area: 6 / 1 / 7 / 2; } 
+        .datos_interes12 { grid-area: 6 / 2 / 7 / 3; } 
+        .datos_interes13 { grid-area: 7 / 1 / 8 / 2; } 
+        .datos_interes14 { grid-area: 7 / 2 / 8 / 3; } 
+        .datos_interes15 { grid-area: 8 / 1 / 9 / 2; } 
+        .datos_interes16 { grid-area: 8 / 2 / 9 / 3; } 
+
+        .datos_interes1,.datos_interes2,.datos_interes3,.datos_interes4,.datos_interes5,.datos_interes6,.datos_interes7,.datos_interes8,.datos_interes9,.datos_interes10,.datos_interes11,.datos_interes12,.datos_interes13,.datos_interes14,.datos_interes15,.datos_interes16{padding:10px;}
+
+        /* Cuadro botones */
+        .botones{max-width: 830px;width: 100%;margin:auto;}
+        .presentar{float:left;width: 25%;font-size: 19px;margin-left: 5%;}
+        .guardar{float:right;width: 25%;font-size: 19px;margin-right: 5%;}
+
 
 
         .verde {border: green solid 2px;}
@@ -288,14 +285,38 @@
             document.getElementById('internet11').appendChild(midiv); // Lo pones en "body", si quieres ponerlo dentro de algún id en concreto usas document.getElementById('internet11').appendChild(midiv);
 
         }
+
+        function loader_gif(x) {           
+
+            switch (x) {
+                case 1:
+                    presentar_data.innerHTML = "";
+                    var texto = "<h4 style='text-align:center;'>Validando los datos <img src='img/ajax-loader.gif' alt='loading' /><br/>";
+                    $('#presentar_data').html(texto);
+                    break;
+                case 2:
+                    guardar_data.innerHTML = "";
+                    var texto = "<h4 style='text-align:center;'>Guardando los datos <img src='img/ajax-loader.gif' alt='loading' /><br/>";
+                    $('#guardar_data').html(texto);
+                    comprobar();
+                    break;
+            }
+            
+            //LanzaAviso(texto);
+            //setTimeout(LanzaAviso(texto), 3000);
+            //$('#miButton').html('Validando <img src="img/ajax-loader.gif" alt="loading" /><br/>');
+            //setTimeout($('#miButton').html('Validando <img src="img/ajax-loader.gif" alt="loading" /><br/>'), 2000);        
+        }
+
+        
     </script>
 
 
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="crear_newdiv()">
-            <img src="img/aotec_img.jpg" />
+        <div class="container-fluid logo_aotec" onclick="comprobar()">
+            <img src="img/logo_aotec.png" />
         </div>
         <div id="principal" class="container-fluid azul">
             <div class="segmented-control sc-slide sc-amber">
@@ -320,13 +341,6 @@
                     <label for="another">Otros..</label>
                 </div>
             </div>
-
-            <%--<select id="mis_servicios" class="segment-select" runat="server">
-                    <option class="prueba" value='1'>Televisión</option>
-                    <option class="prueba" value='2'>Internet</option>
-                    <option class="prueba" value='3'>Telefonía Fija</option>
-                    <option class="prueba" value='4'>Telefonía Móvil</option>
-                </select>--%>
             <div id="tv" class="row">
                 <div class="col-xs-6 texto_izq">
                     <label for="texto">¿Dispone de Canal local?</label>
@@ -384,7 +398,7 @@
                         <label for="texto">Empresa encargada de encriptar la señal</label>
                     </div>
                     <div class="col-xs-6 inputs_der">
-                        <input type="text" class="form-control" id="aaa" placeholder="Introduzca el nombre de su fabricante." />
+                        <input type="text" class="form-control" id="empresa_encargada_encriptar" placeholder="Introduzca el nombre de la empresa." />
                     </div>
                 </div>
 
@@ -868,7 +882,64 @@
             </div>
         </div>
         <input type="text" class="form-control" style="margin-left:5% !important;width:95% !important;" id="oculto" placeholder="Número Mbs." />
+        <div class="datos_interes">
+            <div class="datos_interes1">
+                <label for="texto">Número total de hogares pasados: </label>
+            </div>
+            <div class="datos_interes2">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_hogares" placeholder="Número de hogares pasados." />
+            </div>
+            <div class="datos_interes3">
+                <label for="texto">Número de abonados al servicio de TV: </label>
+            </div>
+            <div class="datos_interes4">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_abonados" placeholder="Número de abonados al servicio de TV." />
+            </div>
+            <div class="datos_interes5">
+                <label for="texto">Número de abonados a Internet: </label>
+            </div>
+            <div class="datos_interes6">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_abonados_internet" placeholder="Número de abonados a Internet." />
+            </div>
+            <div class="datos_interes7">
+                <label for="texto">Número de abonados a telefonía fija: </label>
+            </div>
+            <div class="datos_interes8">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_hogares_fija" placeholder="Número de abonados a telefonía fija." />
+            </div>
+            <div class="datos_interes9">
+                <label for="texto">Número de abonados a telefonía móvil: </label>
+            </div>
+            <div class="datos_interes10">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_hogares_movil" placeholder="Número de abonados a telefonía móvil." />
+            </div>
+            <div class="datos_interes11">
+                <label for="texto">Número de líneas totales: </label>
+            </div>
+            <div class="datos_interes12">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_lineas" placeholder="Número de líneas totales." />
+            </div>
+            <div class="datos_interes13">
+                <label for="texto">Número de trabajadores en la empresa: </label>
+            </div>
+            <div class="datos_interes14">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_trabajadores" placeholder="Número de trabajadores en la empresa." />
+            </div>
+            <div class="datos_interes15">
+                <label for="texto">Ingresos anuales de explotación: </label>
+            </div>
+            <div class="datos_interes16">
+                <input type="number" class="form-control" style="margin-left:5% !important;width:95% !important;" id="total_ingresos" placeholder="Número de ingresos anuales de explotación." />
+            </div>
+        </div>
+        <div class="row botones" style="padding:5px;margin-bottom:5%;">
+            <button id="presentar_data" type="button" class="btn btn-warning presentar" onclick="loader_gif(1);">Presentar Datos</button>
+            <button id="guardar_data" type="button" class="btn btn-warning guardar" onclick="loader_gif(2);">Guardar Datos</button>
+        </div>
+        <asp:TextBox class="form-control" style="margin-left:5% !important;width:95% !important;" id="data_user" runat="server" />
+        <asp:TextBox class="form-control" style="margin-left:5% !important;width:95% !important;" id="data_user2" runat="server" />
     </form>
+    <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
     <script type="text/javascript">
         jQuery(function ($) {
             $(".segment-select").Segment();
@@ -1224,34 +1295,137 @@
                 }
             });
 
+        });  
+
+        function comprobar() {
+            //declaramos las variables a guardar.
+            var  all_options, all_options2, all_options3, all_options4, all_options5, all_options6, all_options7, all_options8;
+            var canal_local_si, canal_local_no, encripta_propio_si, encripta_propio_no, plataforma_ott_si, plataforma_ott_no;
+            var guardar, empresa_encargada, proveedor_ott;
+
+            //Comprobamos los radiobuttons
+            canal_local_si = document.getElementById("success").checked;
+            canal_local_no = document.getElementById("danger").checked;
+            encripta_propio_si = document.getElementById("encriptacion_si").checked;
+            encripta_propio_no = document.getElementById("encriptacion_no").checked;
+            plataforma_ott_si = document.getElementById("OTT_si").checked;
+            plataforma_ott_no = document.getElementById("OTT_no").checked;
+
+            //Capturamos los valores de los inputs texts de lo que se muestra en todos los menus.
+            all_options = document.getElementById("total_hogares").value;
+            all_options2 = document.getElementById("total_abonados").value;
+            all_options3 = document.getElementById("total_abonados_internet").value;
+            all_options4 = document.getElementById("total_hogares_fija").value;
+            all_options5 = document.getElementById("total_hogares_movil").value;
+            all_options6 = document.getElementById("total_lineas").value;
+            all_options7 = document.getElementById("total_trabajadores").value;
+            all_options8 = document.getElementById("total_ingresos").value;
+
+            //capturamos los valores de TV
+            var horas_produccion, provedor_name, n_canales_contra, precio_paquete, equipo_uso, contrato_con, otros;
+            horas_produccion = document.getElementById("horas_produccion").value;
+            provedor_name = document.getElementById("name_proveedor").value;
+            n_canales_contra = document.getElementById("number_chanels").value;
+            precio_paquete = document.getElementById("price_paquet").value;
+            equipo_uso = document.getElementById("equipo_uso").value;
+            contrato_con = document.getElementById("empresa_encargada_encriptar").value;
+            otros = document.getElementById("mis_servicios").value;
 
 
-
-
-
-            //$("#anadir_more").click(function () {
+            if (canal_local_si == false && canal_local_no == false && encripta_propio_si == false && encripta_propio_no == false && plataforma_ott_si == false && plataforma_ott_no == false) {
+                LanzaAviso("<h4>Necesita marcar una opcion de si o no, por favor, compruebe que todas las opciones de si o no están seleccionadas. Gracias! ");
+                return false;
+            }
+            else {
                 
-            //    var cont = 1;
+                if (all_options == null || all_options <= 0) {
+                    all_options = 0;
+                }
+                if (all_options2 == null || all_options2 <= 0) {
+                    all_options2 = 0;
+                }
+                if (all_options3 == null || all_options3 <= 0) {
+                    all_options3 = 0;
+                }
+                if (all_options4 == null || all_options4 <= 0) {
+                    all_options4 = 0;
+                }
+                if (all_options5 == null || all_options5 <= 0) {
+                    all_options5 = 0;
+                }
+                if (all_options6 == null || all_options6 <= 0) {
+                    all_options6 = 0;
+                }
+                if (all_options7 == null || all_options7 <= 0) {
+                    all_options7 = 0;
+                }
+                if (all_options8 == null || all_options8 <= 0) {
+                    all_options8 = 0;
+                }
 
-                
+                if (encripta_propio_si == true) {
+                    empresa_encargada = document.getElementById("").value;
+                    if (empresa_encargada == null || empresa_encargada.Lenght <= 0) {
+                        empresa_encargada = 0;
+                    }
+                }
+                else {
+                    empresa_encargada = 0;
+                }
+                if (plataforma_ott_si == true) {
+                    proveedor_ott = document.getElementById("").value;
+                    if (proveedor_ott == null || proveedor_ott.Lenght <= 0) {
+                        proveedor_ott = 0;
+                    }
+                }
+                else {
+                    proveedor_ott = 0;
+                }
 
-                
-            //        //$('body').append('<div class="divBody">¡Felicidades! Has insertado un nuevo DIV en el BODY</div>');
-            //        //<div class="row" style="margin-left:0;width:100%;margin-top:5%;">
-            //        //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:10px;text-align:center;padding-left:.5%;"> Subida (Mbps) </div>
-            //        //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:1px">
-            //        //        <input type="text" class="form-control inputs_especiales" id="subida_velocity" placeholder="Número Mbs." />
-            //        //    </div>
-            //        //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:10px;text-align:center;padding-left:.5%;"> Bajada (Mbps) </div>
-            //        //    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="padding:1px;">
-            //        //        <input type="text" class="form-control inputs_especiales" style="padding:10px !important;" id="bajada_velocity" placeholder="Número Mbs." />
-            //        //    </div>
-            //        //</div>
-               
-            //});
+                guardar = canal_local_si + "¦" + canal_local_no + "¦" + encripta_propio_si + "¦" + encripta_propio_no + "¦" + empresa_encargada + "¦" + plataforma_ott_si + "¦" + plataforma_ott_no + "¦" + proveedor_ott + "¦" + all_options + "¦" + all_options2 + "¦" +
+                    all_options3 + "¦" + all_options4 + "¦" + all_options5 + "¦" + all_options6 + "¦" + all_options7 + "¦" + all_options8 + "¦" + horas_produccion + "¦" + provedor_name + "¦" + n_canales_contra + "¦" + precio_paquete + "¦" + equipo_uso + "¦" + contrato_con +
+                    "¦" + otros;
+                document.getElementById("data_user2").value = guardar;
+                Registre();
+            }
+        }
+
+        function Registre() {
+            var Dades; 
 
             
-        }); 
+             Dades = document.getElementById("data_user").value + "¦" + canal_local_si + "¦" + canal_local_no + "¦" + encripta_propio_si + "¦" + encripta_propio_no + "¦" + plataforma_ott_si +
+                "¦" + plataforma_ott_no + "¦" + document.getElementById("total_hogares").value + "¦" + document.getElementById("total_abonados").value + "¦"
+                + document.getElementById("total_abonados_internet").value + "¦" + document.getElementById("total_hogares_fija").value + "¦" + document.getElementById("total_hogares_movil").value + "¦"
+                + document.getElementById("total_lineas").value + "¦" + document.getElementById("total_trabajadores").value + "" + document.getElementById("total_ingresos").value;
+            
+            
+            setTimeout("InformacioAJAX(9,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
+        }          
+
+
+        function Registre_Tornada(Dades) {
+            //alert(Dades);
+            if (Dades.substr(0, 2) == "OK") {
+                if (Dades.substr(2, 1) == "7") {
+                    LanzaAviso("Hemos actualizado correctacmente sus preferencias en nuestra Base de Datos. Gracias!");
+                }
+                else if (Dades.substr(2, 1) == "8") {
+                    LanzaAviso("Hemos ingresado su elección correctacmente en nuestra Base de Datos. Gracias!");
+                }
+            }
+            else {
+                if (Dades.substr(2, 1) == "7") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+                if (Dades.substr(2, 1) == "8") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                }
+            }
+        }
+
+            
+        
     </script>
 </body>
 </html>

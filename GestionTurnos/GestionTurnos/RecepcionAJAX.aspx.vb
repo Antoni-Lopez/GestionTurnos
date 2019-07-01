@@ -392,8 +392,66 @@
                             GoTo Resposta
                         End If
 
+                    Case 9 ' Nuevo proyecto AOTEC
+                        Dim Ds As New DataSet
+                        Dim email As String, chk As String, long_dades As String, actualizar As String, idFeria As String, i As Integer
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+                        long_dades = VDades.Length
 
 
+
+                        email = VDades(0)
+                        idFeria = "201"
+                        actualizar = ""
+
+                        For i = 1 To 6
+                            chk = VDades(i)
+
+                            If i = 5 Then
+                                actualizar += chk
+                                GoTo Continuamos
+                            Else
+                                actualizar += chk + "¦"
+                            End If
+                        Next
+
+Continuamos:
+
+                        'Una vez echo todas las comprobaciones, guardamos mediante un UPDATE los valores marcados.
+                        VectorSQL(0) = "UPDATE eecontactes SET Procedencia = '" & actualizar & "' WHERE Email = '" & email & "'and idFira='" & idFeria & "'"
+
+                        If Not clsBD.BaseDades(2, VectorSQL) Then
+                            'Problema
+                            Descripcio = "KO9"
+                            GoTo Resposta
+                        Else
+                            'Correcto
+
+                            Dim datos_bd As String
+
+                            datos_bd = ""
+
+                            For p = 6 To UBound(VDades)
+                                If p = VDades.Length - 1 Then
+                                    datos_bd += VDades(p)
+                                Else
+                                    datos_bd += VDades(p) + "¦"
+                                End If
+                            Next
+
+                            'Procedemos a actulizar los datos mediante un UPDATE de los valores marcados por el usuario.
+                            VectorSQL(0) = "UPDATE eecontactes SET SectorInteres = '" & datos_bd & "' WHERE Email = '" & email & "'and idFira='" & idFeria & "'"
+
+                            If Not clsBD.BaseDades(2, VectorSQL) Then
+                                'Problema
+                                Descripcio = "KO9"
+                                GoTo Resposta
+                            Else 'Correcto
+                                Descripcio = "OK9"
+                                GoTo Resposta
+                            End If
+                        End If
                 End Select
             End If
         Catch ex As Exception

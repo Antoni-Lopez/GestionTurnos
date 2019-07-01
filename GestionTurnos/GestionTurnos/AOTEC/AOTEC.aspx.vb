@@ -8,6 +8,13 @@
         If Not IsPostBack Then
             'Declaramos el combotext para que nos mande a una accion con javascript.
             'mis_servicios.Attributes.Add("onchange", "ShowSelected();")
+
+            Dim mail As String
+            'Recogemos el mail del usuario que esta oculto.
+            mail = Request.QueryString("mail")
+            data_user.Text = mail
+
+
         Else
 
         End If
