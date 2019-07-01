@@ -143,6 +143,56 @@
                             ott_provedor.Value = comprobar
                             ClientScript.RegisterStartupScript(Page.GetType(), "miprueba22", "activar(2);", True)
                         End If
+                    Case 5
+                        comprobar = separar_guardado(p)
+                        If comprobar <> 0 Then
+                            horas_produccion.Value = comprobar
+                        End If
+                    Case 6
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            nombre_proveedor.Value = comprobar
+                        End If
+                    Case 7
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            ncanales_contratados.Value = comprobar
+                        End If
+                    Case 8
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            precio_paquete.Value = comprobar
+                        End If
+                    Case 9
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            equipo_tv2.Value = comprobar
+                        End If
+                    Case 10
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            encriptar_tv2.Value = comprobar
+                        End If
+                    Case 11
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            SGAE.Checked = True
+                        End If
+                    Case 12
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            EGEDA.Checked = True
+                        End If
+                    Case 13
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            AGEDI.Checked = True
+                        End If
+                    Case 14
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            otros_derechos.Value = comprobar
+                        End If
                 End Select
             Next
 

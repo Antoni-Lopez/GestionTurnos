@@ -343,7 +343,7 @@
                     <label for="textos">Número de horas de producción propias. ¿Anual?</label>                    
                 </div>
                 <div class="col-xs-6 input_style">
-                    <input type="text" class="form-control" id="horas_produccion" placeholder="Introduzca el número de horas de Producción." />
+                    <input type="text" class="form-control" id="horas_produccion" placeholder="Introduzca el número de horas de Producción." runat="server"  />
                 </div>
             </div>
             <div id="desplegar_prove" class="row centrado desplegables">
@@ -355,7 +355,7 @@
                         <label for="textos">Nombre</label>                    
                     </div>
                     <div class="col-xs-6 input_style">
-                        <input type="text" class="form-control" id="nombre_proveedor" placeholder="Introduzca el nombre de su Proovedor." />
+                        <input type="text" class="form-control" id="nombre_proveedor" runat="server" placeholder="Introduzca el nombre de su Proovedor." />
                     </div>  
                 </div>
                 <div class="row centrado">
@@ -363,7 +363,7 @@
                         <label for="textos">Número Canales Contratado</label>                    
                     </div>
                     <div class="col-xs-6 input_style">
-                        <input type="text" class="form-control" id="ncanales_contratados" placeholder="Introduzca el número de canales contratados." />
+                        <input type="text" class="form-control" id="ncanales_contratados" runat="server" placeholder="Introduzca el número de canales contratados." />
                     </div>  
                 </div>
                 <div class="row centrado">
@@ -371,7 +371,7 @@
                         <label for="textos">Precio / Paquete ( € )</label>                    
                     </div>
                     <div class="col-xs-6 input_style">
-                        <input type="text" class="form-control" id="precio_paquete" placeholder="Introduzca el precio del paquete." />
+                        <input type="text" class="form-control" id="precio_paquete" runat="server" placeholder="Introduzca el precio del paquete." />
                     </div>  
                 </div>
             </div>
@@ -384,7 +384,7 @@
                         <label for="textos">Equipo / Uso</label>                    
                     </div>
                     <div class="col-xs-6 input_style">
-                        <input type="text" class="form-control" id="equipo_tv2" placeholder="Introduzca el uso que le da a su equipo." />
+                        <input type="text" class="form-control" id="equipo_tv2" runat="server" placeholder="Introduzca el uso que le da a su equipo." />
                     </div>  
                 </div>
                 <div class="row centrado">
@@ -392,7 +392,7 @@
                         <label for="textos">Empresa encargada de Encriptar la señal</label>                    
                     </div>
                     <div class="col-xs-6 input_style">
-                        <input type="text" class="form-control" id="encriptar_tv2" placeholder="Introduzca el nombre de la empresa encargada." />
+                        <input type="text" class="form-control" id="encriptar_tv2" runat="server" placeholder="Introduzca el nombre de la empresa encargada." />
                     </div>  
                 </div>
             </div>
@@ -441,7 +441,7 @@
                         <label for="textos">Proveedor </label>
                     </div>
                     <div class="col-xs-6 input_style">
-                        <input type="text" class="form-control" id="ott_provedor" placeholder="Introduzca el nombre de su Proveedor." runat="server" />
+                        <input type="text" class="form-control" id="ott_provedor" runat="server" placeholder="Introduzca el nombre de su Proveedor." runat="server" />
                     </div>
                 </div>
             <div id="desplegar_autor" class="row centrado desplegables">
@@ -454,18 +454,18 @@
                     </div>
                     <div class="col-xs-12" style="width:100%;">
                         <div class="form-groupu chk_contrato">
-                            <input type="checkbox" id="SGAE" />
+                            <input type="checkbox" id="SGAE" runat="server"  />
                             <label for="SGAE" class="margen_izq">SGAE</label>
                         </div>
                         <div class="form-groupu chk_contrato">
-                            <input type="checkbox" id="EGEDA" />
+                            <input type="checkbox" id="EGEDA" runat="server" />
                             <label for="EGEDA" class="margen_izq">EGEDA</label>
                         </div>
                         <div class="form-groupu chk_contrato">
-                            <input type="checkbox" id="AGEDI" />
+                            <input type="checkbox" id="AGEDI" runat="server" />
                             <label for="AGEDI" class="margen_izq">AGEDI</label>
                         </div>
-                        <label for="otros_derechos" style="margin-left:5%;">Otros...</label><input type="text" class="form-control" id="otros_derechos" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca algo." />
+                        <label for="otros_derechos" style="margin-left:5%;">Otros...</label><input type="text" class="form-control" id="otros_derechos" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca algo." />
                     </div>  
                 </div>
             </div>
@@ -477,7 +477,13 @@
             </div>            
         </div>
         <div class="tv1" id="interne1" runat="server">
-            Holaaaa
+            <div id="desplegar_caudal" class="row centrado desplegables">
+                <label for="textos_desple">Caudal</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
+
+            <div id="desplegar_equipamiento" class="row centrado desplegables">
+                <label for="textos_desple">Equipamiento</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
         </div>
         <div id="tfija" class="container-fluid options_menu" runat="server">
             <div class="form-groupu">
@@ -495,7 +501,12 @@
             </div>            
         </div>
         <div class="tv1" id="tmovil1" runat="server">
-            Holaaaa
+            <div id="desplegar_OMV" class="row centrado desplegables">
+                <label for="textos_desple">Si eres OMV</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
+            <div id="desplegar_comercializas_OMV" class="row centrado desplegables">
+                <label for="textos_desple">Si comercializas el servicio de un OMV</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
         </div>
         <div id="otros" class="container-fluid options_menu" runat="server">
             <div class="form-groupu">
@@ -504,7 +515,15 @@
             </div>            
         </div>
         <div class="tv1" id="otros1" runat="server">
-            Holaaaa
+            <div id="desplegar_marketing" class="row centrado desplegables">
+                <label for="textos_desple">Marketing</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
+            <div id="desplegar_juridico" class="row centrado desplegables">
+                <label for="textos_desple">Jurídico</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
+            <div id="desplegar_ingenieria" class="row centrado desplegables">
+                <label for="textos_desple">Ingeniería</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
         </div>
         <div class="row boton_save">
             <button id="guardar_data" type="button" class="btn btn-warning guardar" onclick="loader_gif();">Guardar Datos</button>
