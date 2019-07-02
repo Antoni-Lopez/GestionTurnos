@@ -293,6 +293,105 @@ Partial Public Class Aotec2
     Protected WithEvents Autonomo_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
+    '''Control fibra_megas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fibra_megas As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control radioenlace_megas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radioenlace_megas As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control megas_caudal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents megas_caudal As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control proveedor_circuito.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents proveedor_circuito As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control precio_circuito.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents precio_circuito As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control proveedor_caudal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents proveedor_caudal As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control precio_caudal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents precio_caudal As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control subida_ofreces.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents subida_ofreces As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control bajada_ofreces.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bajada_ofreces As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control equipo_uso.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents equipo_uso As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control marca_fabricante.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents marca_fabricante As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
     '''Control tfija.
     '''</summary>
     '''<remarks>
@@ -381,4 +480,13 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents datos_user As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control datos_ocultos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents datos_ocultos As Global.System.Web.UI.WebControls.TextBox
 End Class

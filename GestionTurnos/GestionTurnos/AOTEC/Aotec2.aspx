@@ -61,27 +61,26 @@
 
 
         /* Div Oculto*/
-        #datos_user,#submenu_tv1,#submenu_tv2,#submenu_tv3,#submenu_tv4,#submenu_tv5,#submenu_tv3_2,#submenu_tv4_2,#submenu_interne1{display:none;}
+        #datos_user,#submenu_tv1,#submenu_tv2,#submenu_tv3,#submenu_tv4,#submenu_tv5,#submenu_tv3_2,#submenu_tv4_2,#submenu_interne1,#submenu_interne2,#datos_ocultos{display:none;}
 
         .azul{border:blue solid 2px;}
         .verde{border:green solid 2px;}
         .rojo{border:red solid 2px;}
 
-        .btn.active span.nonCheckBoxAllow {
-  display: none;
-}
+        .btn.active span.nonCheckBoxAllow {display: none;}
+        .btn.active span.checkBoxAllow {display: inline;}
+        .btn span.nonCheckBoxAllow {display: inline;}
+        .btn span.checkBoxAllow {display: none;}
 
-.btn.active span.checkBoxAllow {
-  display: inline;
-}
 
-.btn span.nonCheckBoxAllow {
-  display: inline;
-}
+        #fibra,#radioenlace{display:none;}
+        #fibra + label,#radioenlace + label{cursor:pointer;margin-top: 10%;font-size: 11px;text-align: center;}
+        #fibra + label:before, #radioenlace + label:before{background: #fff;height: 21px;border:1px solid #FEC007;content: " ";display: inline-block;width: 21px;vertical-align: middle;margin-right: 10px;position:relative;top:-1px;}
+        #fibra:checked + label:before,#radioenlace:checked + label:before{content: "\2713";color: #FEC007;font-size: 24px;text-align: center;line-height: 21px;}
 
-.btn span.checkBoxAllow {
-  display: none;
-}
+        .btn-orange-moon {background: #fc4a1a;background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);background: linear-gradient(to right, #f7b733, #fc4a1a);color: #fff;border: 3px solid #eee;margin-left: 34%;margin-top: 7%;}
+
+        .oculto_contador{margin-left:5%;width:90%;}
     </style>
     <script type="text/javascript">
         
@@ -240,6 +239,105 @@
             return total;
         }
 
+        function comprobar_submenu_internet() {
+            //Guardamos como true o false el checkeo del radio button de as autonomo. 
+            var auto_si, auto_no;
+            auto_si = document.getElementById("Autonomo_si").checked;
+            auto_no = document.getElementById("Autonomo_no").checked;
+
+            var total = auto_si + "¦" + auto_no;
+
+            //Ahora procedemos a guardar los 2 checkboxs y sus inputs textos.
+            var chk_fibra, chk_radioenlace, cuantos_fibra, cuantos_radioenlace, cuantos1,cuantos2;
+            chk_fibra = document.getElementById("fibra").checked;
+            chk_radioenlace = document.getElementById("radioenlace").checked;
+            cuantos_fibra = document.getElementById("fibra_megas").value;
+            cuantos_radioenlace = document.getElementById("radioenlace_megas").value;
+
+            if ((cuantos_radioenlace == null) || (cuantos_radioenlace == "")) {
+                cuantos1 = 0;
+            }
+            else {
+                cuantos1 = cuantos_fibra;
+            }
+            if ((cuantos_radioenlace == null) || (cuantos_radioenlace == "")) {
+                cuantos2 = 0;
+            }
+            else {
+                cuantos2 = cuantos_radioenlace;
+            }
+
+            total = total + "¦" + chk_fibra + "¦" + chk_radioenlace + "¦" + cuantos1 + "¦" + cuantos2;
+
+            //Procedemos a guardar los inputs.
+            var megas_caudal, proveedor_circuito, precio_circuito, proveedor_caudal, precio_caudal,pasar,pasar2,pasar3,pasar4,pasar5;
+            megas_caudal = document.getElementById("megas_caudal").value;
+            proveedor_circuito = document.getElementById("proveedor_circuito").value;
+            precio_circuito = document.getElementById("precio_circuito").value;
+            proveedor_caudal = document.getElementById("proveedor_caudal").value;
+            precio_caudal = document.getElementById("precio_caudal").value;
+
+            if ((megas_caudal == null) || (megas_caudal == "")) {
+                pasar = 0;
+            }
+            else {
+                pasar = megas_caudal;
+            }
+
+            if ((proveedor_circuito == null) || (proveedor_circuito == "")) {
+                pasar2 = 0;
+            }
+            else {
+                pasar2 = proveedor_circuito;
+            }
+
+            if ((precio_circuito == null) || (precio_circuito == "")) {
+                pasar3 = 0;
+            }
+            else {
+                pasar3 = precio_circuito;
+            }
+
+            if ((proveedor_caudal == null) || (proveedor_caudal == "")) {
+                pasar4 = 0;
+            }
+            else {
+                pasar4 = proveedor_caudal;
+            }
+
+            if ((precio_caudal == null) || (precio_caudal == "")) {
+                pasar5 = 0;
+            }
+            else {
+                pasar5 = precio_caudal;
+            }
+
+            total = total + "¦" + pasar + "¦" + pasar2 + "¦" + pasar3 + "¦" + pasar4 + "¦" + pasar5;
+
+            //Ahora vamos a capturar la velocidad que ofrece.
+            var opc, subida, subida2, subida3, subida4, subida5, bajada, bajada2, bajada3, bajada4, bajada5;
+            opc = document.getElementById("datos_ocultos").value;
+
+            if (opc == null || opc == "") {
+                alert("entramos porque opc esta vacio.");
+                subida = document.getElementById("subida_ofreces").value;
+                bajada = document.getElementById("bajada_ofreces").value; 
+            }
+            else {
+                alert("estamos en el else");
+            }
+
+            alert(prueba);
+                     
+
+                      
+
+
+
+            alert(total);
+        }
+
+
         function activar(x) {
             switch (x) {
                 case 1:                    
@@ -252,11 +350,44 @@
                     break;
             }
         }
+
+        function contador() {
+
+            if ((document.getElementById("datos_ocultos").value.Lenght <= 0) || (document.getElementById("datos_ocultos").value == null) || (document.getElementById("datos_ocultos").value == "")) {                
+                var cont = 2;   
+                crear_div(cont);
+                document.getElementById("datos_ocultos").value = cont;
+            }
+            else {
+                if (document.getElementById("datos_ocultos").value == 5) {
+                    LanzaAviso("<h4>Ha llegado al máx de 5 opciones, ya no puede añadir ninguna más. Gracias!</h4>");
+                    return false; 
+                }
+                else { 
+                    cont = document.getElementById("datos_ocultos").value;
+                    cont++;                  
+                    document.getElementById("datos_ocultos").value = cont;   
+                    crear_div(cont);
+                }
+            }
+        }
+
+        function crear_div(x) {
+            var midiv = document.createElement("div");
+		    midiv.setAttribute("id","prueba");
+            midiv.setAttribute("class", "row centrado");
+            midiv.innerHTML = "<div class='col-xs-3'> <label for='textos'>Subida (Mbps)</label></div><div class='col-xs-3' style='padding: 1%;'><input type='text' class='form-control' id='subida_ofreces"+x+"'  style='margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;' placeholder='Introduzca número Mbs.'  /></div>";
+            midiv.innerHTML += "<div class='col-xs-3'><label for='textos'>Bajada (Mbps)</label></div><div class='col-xs-3' style='padding: 1%;'>";
+            midiv.innerHTML += "<div class='col-xs-3'><input type='text' class='form-control' id='bajada_ofreces"+x+"' style='margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;' placeholder='Introduzca número Mbs.' /></div></div>";
+
+            document.getElementById('submenu_interne1').appendChild(midiv); // Lo pones en "body", si quieres ponerlo dentro de algún id en concreto usas document.getElementById('internet11').appendChild(midiv);
+        }
+
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="chorra()">
+        <div class="container-fluid logo_aotec" onclick="comprobar_submenu_internet()">
             <img src="img/logo_aotec.png" />
         </div>
         <div id="tv" class="container-fluid options_menu" runat="server">
@@ -428,39 +559,116 @@
                     </div>
                 </div>
                 <div class="row centrado">
-                    <div class="col-xs-3 verde">
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-success active" style="width: 56px">
-                                <span class="checkBoxAllow fas fa-check"></span>
-                                <span class="nonCheckBoxAllow fas fa-times"></span>
-                            </label>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <input type="checkbox" name="custom_checkbox" id="fibra" value="custom_checkbox" />
+                            <label for="fibra">¿Recibo canal por fibra óptica?</label>
                         </div>
                     </div>
-                    <div class="col-xs-3 rojo">
-                      <label for="textos">¿Recibo canal por radioenlace.?</label>
+                    <div class="col-xs-4">
+                        <label for="textos" style="font-size: 15px !important;">¿Cuántos Megas?</label> 
                     </div>
-                    <div class="col-xs-3 azul">
-                      One of three columns
+                    <div class="col-xs-4" style="padding: 6px;">
+                        <input type="text" class="form-control" id="fibra_megas" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
                     </div>
-                    <div class="col-xs-3 verde">
-                      One of three columns
-                    </div>
-                    <%--<div class="col-6 col-md-4">
-                        <div class="form-groupu chk_contrato">
-                            <input type="checkbox" id="fibra" runat="server" />
-                            <label for="fibra" class="margen_izq">Recibo canal por Fibra Óptica</label>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <input type="checkbox" name="custom_checkbox" id="radioenlace" value="custom_checkbox" />
+                            <label for="radioenlace">¿Recibo canal por radioenlace?</label>
                         </div>
                     </div>
-                    <div class="col-6 col-md-4">
-                        <label for="textos">¿Cuántos Megas?</label>    
+                    <div class="col-xs-4">
+                        <label for="textos" style="font-size: 15px !important;">¿Cuántos Megas?</label> 
                     </div>
-                    <div class="col-6 col-md-4">
-                        <input type="text" class="form-control" id="cuantos_megas" runat="server" placeholder="Introduzca el número de megas." />
-                    </div>--%>
+                    <div class="col-xs-4" style="padding: 6px;">
+                        <input type="text" class="form-control" id="radioenlace_megas" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuántos megas de caudal consumes aproximadamente?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 3%;">
+                        <input type="text" class="form-control" id="megas_caudal" runat="server" placeholder="Introduzca el número de Mbs." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Quién es tu Proveedor de circuito?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 3%;">
+                        <input type="text" class="form-control" id="proveedor_circuito" runat="server" placeholder="Introduzca su proveedor." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Precio de su Circuito</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 3%;">
+                        <input type="text" class="form-control" id="precio_circuito" runat="server" placeholder="Introduzca el Precio." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Quién es tu proveedor de caudal?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 3%;">
+                        <input type="text" class="form-control" id="proveedor_caudal" runat="server" placeholder="Introduzca su proveedor." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Precio del caudal contratado?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 3%;">
+                        <input type="text" class="form-control" id="precio_caudal" runat="server" placeholder="Introduzca el Precio." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Velocidad que ofreces actualmente a tus clientes (Máx=5) .</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <button class="col btn btn-orange-moon" type="button" onClick="contador()">Añadir más</button>
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-3">
+                        <label for="textos">Subida (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="subida_ofreces" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                    <div class="col-xs-3" onclick="prueba()">
+                        <label for="textos">Bajada (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="bajada_ofreces" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
                 </div>
             </div>
             <div id="desplegar_equipamiento" class="row centrado desplegables">
                 <label for="textos_desple">Equipamiento</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
+            <div id="submenu_interne2" class="row centrado"> 
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Equipo / Uso</label>
+                    </div>
+                <div class="col-xs-6" style="padding:2%">
+                    <input type="text" class="form-control" id="equipo_uso" runat="server" placeholder="Introduzca el uso que le da a su equipo." />
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6">
+                    <label for="textos">Marca / Fabricante</label>
+                </div>
+                <div class="col-xs-6" style="padding:2%">
+                    <input type="text" class="form-control" id="marca_fabricante" runat="server" placeholder="Introduzca la marca de su fabricante." />
+                </div>
+            </div>
             </div>
         </div>
         <div id="tfija" class="container-fluid options_menu" runat="server">
@@ -508,15 +716,17 @@
         </div>
         <div class="row">
             <asp:TextBox class="form-control" id="datos_user" runat="server" />
+            <asp:TextBox class="form-control oculto_contador" id="datos_ocultos" runat="server" />
         </div>
     </form>
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#tv').click(function () {
+            $('#tele').click(function () {
+                $('#tv1').toggle("slide");
+
                 if ($("#tele").is(':checked')) {
-                    $("#tele").attr('checked', true);
-                    $('#tv1').toggle("slide");
+                    $("#tele").attr('checked', true);                    
                 }
                 else {
                     $("#tele").attr('checked', false);
@@ -524,10 +734,10 @@
                 
                 
             });
-            $('#interne').click(function () {
+            $('#internet').click(function () {
+                $('#interne1').toggle("slide");
                 if ($("#internet").is(':checked')) {
-                    $("#internet").attr('checked', true);
-                    $('#interne1').toggle("slide");
+                    $("#internet").attr('checked', true);                    
                 }
                 else {
                     $("#internet").attr('checked', false);
@@ -535,10 +745,11 @@
                 
                 
             });
-            $('#tfija').click(function () {
+            $('#tefija').click(function () {
+                $('#tfija1').toggle("slide");
+
                 if ($("#tefija").is(':checked')) {
-                    $("#tefija").attr('checked', true);
-                    $('#tfija1').toggle("slide");
+                    $("#tefija").attr('checked', true);                    
                 }
                 else {
                     $("#tefija").attr('checked', false);
@@ -546,10 +757,11 @@
                 
                 
             });
-            $('#tmovil').click(function () {
+            $('#temovil').click(function () {
+                $('#tmovil1').toggle("slide");
+
                 if ($("#temovil").is(':checked')) {
-                    $("#temovil").attr('checked', true);
-                    $('#tmovil1').toggle("slide");
+                    $("#temovil").attr('checked', true);                    
                 }
                 else {
                     $("#temovil").attr('checked', false);
@@ -557,10 +769,10 @@
                 
                 
             });
-            $('#otros').click(function () {
+            $('#another').click(function () {
+                $('#otros1').toggle("slide"); 
                 if ($("#another").is(':checked')) {
-                    $("#another").attr('checked', true);
-                    $('#otros1').toggle("slide");                    
+                    $("#another").attr('checked', true);                                       
                 }
                 else {
                     $("#another").attr('checked', false);
@@ -589,6 +801,9 @@
             });
             $('#desplegar_caudal').click(function () {
                 $('#submenu_interne1').toggle("slide");                
+            });
+            $('#desplegar_equipamiento').click(function () {
+                $('#submenu_interne2').toggle("slide");                
             });
 
 
@@ -659,6 +874,27 @@
                 } else {
                     $("#success_encriptacion").attr('checked', true);
                     $("#danger_encriptacion").attr('checked', false);
+                }
+            });
+
+            //función para radio button de AS autónomo.
+            $("#Autonomo_si").click(function () {
+                if ($("#Autonomo_si").is(':checked')) {
+                    $("#Autonomo_no").attr('checked', false);
+                    $("#Autonomo_si").attr('checked', true);                    
+                } else {
+                    $("#Autonomo_no").attr('checked', true);
+                    $("#Autonomo_si").attr('checked', false);
+                }
+            });
+            $("#Autonomo_no").click(function () {
+                if ($("#Autonomo_no").is(':checked')) {
+                    $("#Autonomo_si").attr('checked', false);
+                    $("#Autonomo_no").attr('checked', true);    
+                    
+                } else {
+                    $("#Autonomo_si").attr('checked', true);
+                    $("#Autonomo_no").attr('checked', false);
                 }
             });
 
