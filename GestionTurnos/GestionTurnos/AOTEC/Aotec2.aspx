@@ -1102,11 +1102,73 @@
             <div id="desplegar_marketing" class="row centrado desplegables">
                 <label for="textos_desple">Marketing</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
             </div>
+            <div id="marketing" class="row centrado" style="display:none;">
+                <div class="row centrado">
+                    <div class="col-xs-6 azul">
+                        1
+                    </div>
+                    <div class="col-xs-6 rojo">
+                        1
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6 azul">
+                        2
+                    </div>
+                    <div class="col-xs-6 rojo">
+                        2
+                    </div>
+                </div>
+            </div>
             <div id="desplegar_juridico" class="row centrado desplegables">
                 <label for="textos_desple">Jurídico</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
             </div>
+            <div id="juridico" class="row centrado" style="display:none;">
+                <div class="row centrado">
+                    <div class="col-xs-6 azul">
+                        1
+                    </div>
+                    <div class="col-xs-6 rojo">
+                        1
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6 azul">
+                        2
+                    </div>
+                    <div class="col-xs-6 rojo">
+                        2
+                    </div>
+                </div>
+            </div>
             <div id="desplegar_ingenieria" class="row centrado desplegables">
                 <label for="textos_desple">Ingeniería</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
+            <div id="ingenieria" class="row centrado" style="display:none;">
+                <div class="row centrado">
+                    <div class="col-xs-6 azul">
+                        1
+                    </div>
+                    <div class="col-xs-6 rojo">
+                        1
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6 azul">
+                        2
+                    </div>
+                    <div class="col-xs-6 rojo">
+                        2
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6 azul">
+                        3
+                    </div>
+                    <div class="col-xs-6 rojo">
+                        3
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row boton_save">
@@ -1209,6 +1271,16 @@
 
             $('#desplegar_comercializas_OMV').click(function () {
                 $('#comercializas_omv').toggle("slide");                
+            });
+
+            $('#desplegar_marketing').click(function () {
+                $('#marketing').toggle("slide");                
+            });
+            $('#desplegar_juridico').click(function () {
+                $('#juridico').toggle("slide");                
+            });
+            $('#desplegar_ingenieria').click(function () {
+                $('#ingenieria').toggle("slide");                
             });
 
 
