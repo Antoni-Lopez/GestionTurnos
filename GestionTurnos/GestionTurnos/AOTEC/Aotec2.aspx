@@ -160,7 +160,6 @@
                 }
             }          
 
-            alert(total);
 
             //Guardamos los demas valores de TV.
             //primero comprobamos si están vacios y si lo están, le ponemos valor 0.
@@ -235,10 +234,10 @@
             }
             total = total + "¦" + contrato_con + "¦" + contrato_con2 + "¦" + contrato_con3 + "¦" + contrato_con4;
 
-            alert(total);
             return total;
         }
 
+        //Funcion para comprobar todo el sub-menu de Internet
         function comprobar_submenu_internet() {
             //Guardamos como true o false el checkeo del radio button de as autonomo. 
             var auto_si, auto_no;
@@ -247,6 +246,8 @@
 
             var total = auto_si + "¦" + auto_no;
 
+            
+
             //Ahora procedemos a guardar los 2 checkboxs y sus inputs textos.
             var chk_fibra, chk_radioenlace, cuantos_fibra, cuantos_radioenlace, cuantos1,cuantos2;
             chk_fibra = document.getElementById("fibra").checked;
@@ -254,7 +255,7 @@
             cuantos_fibra = document.getElementById("fibra_megas").value;
             cuantos_radioenlace = document.getElementById("radioenlace_megas").value;
 
-            if ((cuantos_radioenlace == null) || (cuantos_radioenlace == "")) {
+            if ((cuantos_fibra == null) || (cuantos_fibra == "")) {
                 cuantos1 = 0;
             }
             else {
@@ -269,6 +270,8 @@
 
             total = total + "¦" + chk_fibra + "¦" + chk_radioenlace + "¦" + cuantos1 + "¦" + cuantos2;
 
+            
+
             //Procedemos a guardar los inputs.
             var megas_caudal, proveedor_circuito, precio_circuito, proveedor_caudal, precio_caudal,pasar,pasar2,pasar3,pasar4,pasar5;
             megas_caudal = document.getElementById("megas_caudal").value;
@@ -276,6 +279,8 @@
             precio_circuito = document.getElementById("precio_circuito").value;
             proveedor_caudal = document.getElementById("proveedor_caudal").value;
             precio_caudal = document.getElementById("precio_caudal").value;
+
+
 
             if ((megas_caudal == null) || (megas_caudal == "")) {
                 pasar = 0;
@@ -314,29 +319,223 @@
 
             total = total + "¦" + pasar + "¦" + pasar2 + "¦" + pasar3 + "¦" + pasar4 + "¦" + pasar5;
 
-            //Ahora vamos a capturar la velocidad que ofrece.
-            var opc, subida, subida2, subida3, subida4, subida5, bajada, bajada2, bajada3, bajada4, bajada5;
-            opc = document.getElementById("datos_ocultos").value;
+            
 
-            if (opc == null || opc == "") {
-                alert("entramos porque opc esta vacio.");
-                subida = document.getElementById("subida_ofreces").value;
-                bajada = document.getElementById("bajada_ofreces").value; 
+            //Ahora vamos a capturar la velocidad que ofrece.
+            var subida, subida2, subida3, subida4, subida5, bajada, bajada2, bajada3, bajada4, bajada5;
+
+            //Subida y Bajada 1.
+            if (document.getElementById("subida_ofreces").value == null || document.getElementById("subida_ofreces").value == "") {
+                subida = 0;
             }
             else {
-                alert("estamos en el else");
+                subida = document.getElementById("subida_ofreces").value;
+            }
+            if (document.getElementById("bajada_ofreces").value == null || document.getElementById("bajada_ofreces").value == "") {
+                bajada = 0;
+            }
+            else {
+                bajada = document.getElementById("bajada_ofreces").value;
             }
 
-            alert(prueba);
-                     
+            //Subida y Bajada 2.                
+            if (document.getElementById("subida_ofreces2").value == null || document.getElementById("subida_ofreces2").value == "") {
+                subida2 = 0;
+            }
+            else {
+                subida2 = document.getElementById("subida_ofreces2").value;
+            }                
+            if (document.getElementById("bajada_ofreces2").value == null || document.getElementById("bajada_ofreces2").value == "") {
+                bajada2 = 0;
+            }
+            else {
+                bajada2 = document.getElementById("bajada_ofreces2").value;
+            }
 
-                      
+            //Subida y Bajada 3.
+            if (document.getElementById("subida_ofreces3").value == null || document.getElementById("subida_ofreces3").value == "") {
+                subida3 = 0;
+            }
+            else {
+                subida3 = document.getElementById("subida_ofreces3").value;
+            }
 
+            if (document.getElementById("bajada_ofreces3").value == null || document.getElementById("bajada_ofreces3").value == "") {
+                bajada3 = 0;
+            }
+            else {
+                bajada3 = document.getElementById("bajada_ofreces3").value;
+            }
 
+            //Subida y Bajada 4.
+            if (document.getElementById("subida_ofreces4").value == null || document.getElementById("subida_ofreces4").value == "") {
+                subida4 = 0;
+            }
+            else {
+                subida4 = document.getElementById("subida_ofreces4").value;
+            }
+            if (document.getElementById("bajada_ofreces4").value == null || document.getElementById("bajada_ofreces4").value == "") {
+                bajada4 = 0;
+            }
+            else {
+                bajada4 = document.getElementById("bajada_ofreces4").value;
+            }
 
-            alert(total);
+            //Subida y Bajada 5.
+            if (document.getElementById("subida_ofreces5").value == null || document.getElementById("subida_ofreces5").value == "") {
+                subida5 = 0;
+            }
+            else {
+                subida5 = document.getElementById("subida_ofreces5").value;
+            }
+            if (document.getElementById("bajada_ofreces5").value == null || document.getElementById("bajada_ofreces5").value == "") {
+                bajada5 = 0;
+            }
+            else {
+                bajada5 = document.getElementById("bajada_ofreces5").value;
+            }             
+            
+            var datos_velocidad = subida + "¦" + subida2 + "¦" + subida3 + "¦" + subida4 + "¦" + subida5;
+            var datos_velocidad = datos_velocidad + "¦" + bajada + "¦" + bajada2 + "¦" + bajada3 + "¦" + bajada4 + "¦" + bajada5;
+
+                
+                       
+
+            total = total + "¦" + datos_velocidad; 
+            
+
+            //Ahora capturamos los datos de equipamiento.
+            var equip_us = document.getElementById("equipo_uso").value;
+            var brand = document.getElementById("marca_fabricante").value;
+
+            if ((equip_us == null) || (equip_us == "")) {
+                equip_us = 0;
+            }
+
+            if ((brand == null) || (brand == "")) {
+                brand = 0;
+            }
+
+            total += "¦" + equip_us + "¦" + brand;
+
+            return total;
+            }
+
+        //Funcion para comprobar todo el sub-menu de Internet
+        function comprobar_submenu_tfija() {
+            var operador_num_propia_si, operador_num_propia_no, tarifa_plana_si, tarifa_plana_no, mantenimiento_linea_si, mantenimiento_linea_no, sist_facturacion_propio_si, sist_facturacion_propio_no;
+
+            operador_num_propia_si = document.getElementById("operador_num_propia_si").checked;
+            operador_num_propia_no = document.getElementById("operador_num_propia_no").checked;
+            tarifa_plana_si = document.getElementById("tarifa_plana_si").checked;
+            tarifa_plana_no = document.getElementById("tarifa_plana_no").checked;
+            mantenimiento_linea_si = document.getElementById("mantenimiento_linea_si").checked;
+            mantenimiento_linea_no = document.getElementById("mantenimiento_linea_no").checked;
+            sist_facturacion_propio_si = document.getElementById("facturacion_propia_si").checked;
+            sist_facturacion_propio_no = document.getElementById("facturacion_propia_no").checked;
+
+            var factu_ajena;
+
+            if (sist_facturacion_propio_no == true) {
+                factu_ajena = document.getElementById("facturacion_ajena").value;
+            }
+            else {
+                factu_ajena = 0;
+            }
+            var total = operador_num_propia_si + "¦" + operador_num_propia_no + "¦" + tarifa_plana_si + "¦" + tarifa_plana_no + "¦" + mantenimiento_linea_si + "¦" + mantenimiento_linea_no + "¦" + sist_facturacion_propio_si + "¦" + sist_facturacion_propio_no + "¦" + factu_ajena;
+
+            var empresa_suministra, min_consumo_men_fijofijo, precio_min_fijofijo, min_consumo_men_fijomovil, precio_min_fijomovil;
+
+            empresa_suministra = document.getElementById("suministra_telefonico").value;
+            min_consumo_men_fijofijo = document.getElementById("min_consumo_mensual").value;
+            precio_min_fijofijo = document.getElementById("fijo_fijo").value;
+            min_consumo_men_fijomovil = document.getElementById("fijo_movil_min").value;
+            precio_min_fijomovil = document.getElementById("precio_fijo_movil").value;
+
+            if ((empresa_suministra == null) || (empresa_suministra == "")) {
+                empresa_suministra = 0;
+            }
+
+            if ((min_consumo_men_fijofijo == null) || (min_consumo_men_fijofijo == "")) {
+                min_consumo_men_fijofijo = 0;
+            }
+
+            if ((precio_min_fijofijo == null) || (precio_min_fijofijo == "")) {
+                precio_min_fijofijo = 0;
+            }
+
+            if ((min_consumo_men_fijomovil == null) || (min_consumo_men_fijomovil == "")) {
+                min_consumo_men_fijomovil = 0;
+            }
+
+            if ((precio_min_fijomovil == null) || (precio_min_fijomovil == "")) {
+                precio_min_fijomovil = 0;
+            }
+
+            total = total + "¦" + empresa_suministra + "¦" + min_consumo_men_fijofijo + "¦" + precio_min_fijofijo + "¦" + min_consumo_men_fijomovil + "¦" + precio_min_fijomovil; 
+
+            return total;
         }
 
+        //Funcion para comprobar todo el sub-menu de Internet
+        function comprobar_submenu_tmovil() {
+
+            //Si eres OMV
+            var operador, ofreces_tarifaplana_si, ofreces_tarifaplana_no, min_movilmovil, min_movilfijo;
+            operador = document.getElementById("cual_operador").value;
+            ofreces_tarifaplana_si = document.getElementById("ofreces_tarifa_plana_si").checked;
+            ofreces_tarifaplana_no = document.getElementById("ofreces_tarifa_plana_no").checked;
+            min_movilmovil = document.getElementById("cuantos_min_men_movilmovil").value;
+            min_movilfijo = document.getElementById("cuantos_min_men_movilfijo").value;
+
+            if ((operador == null) || (operador == "")) {
+                operador = 0;
+            }
+            if ((min_movilmovil == null) || (min_movilmovil == "")) {
+                min_movilmovil = 0;
+            }
+            if ((min_movilfijo == null) || (min_movilfijo == "")) {
+                min_movilfijo = 0;
+            }
+
+
+
+            var total = operador + "¦" + ofreces_tarifaplana_si + "¦" + ofreces_tarifaplana_no + "¦" + min_movilmovil + "¦" + min_movilfijo;
+
+            //Si comercializas el servicio
+            var omv, omv_tarifaplana_si, omv_tarifaplana_no, min_facturas_omv_movilmovil, min_facturas_omv_movilfijo, consumo_datos_men, factu_men_movil, sist_fact_propio_si, sist_fact_propio_no;
+
+            omv = document.getElementById("cual_omv").value;
+            omv_tarifaplana_si = document.getElementById("ofreces_tarifa_plana_cualomv_si").checked;
+            omv_tarifaplana_no = document.getElementById("ofreces_tarifa_plana_cualomv_no").checked;
+            min_facturas_omv_movilmovil = document.getElementById("min_facturas_omv_mens_movilmovil").value;
+            min_facturas_omv_movilfijo = document.getElementById("min_facturas_omv_mens_movilfijo").value;
+            consumo_datos_men = document.getElementById("consumo_datos_mens").value;
+            factu_men_movil = document.getElementById("facturacion_mensual").value;
+            sist_fact_propio_si = document.getElementById("sist_factu_propio_si").checked;
+            sist_fact_propio_no = document.getElementById("sist_factu_propio_no").checked;
+
+
+            if ((omv == null) || (omv == "")) {
+                omv = 0;
+            }
+            if ((min_facturas_omv_movilmovil == null) || (min_facturas_omv_movilmovil == "")) {
+                min_facturas_omv_movilmovil = 0;
+            }
+            if ((min_facturas_omv_movilfijo == null) || (min_facturas_omv_movilfijo == "")) {
+                min_facturas_omv_movilfijo = 0;
+            }
+            if ((consumo_datos_men == null) || (consumo_datos_men == "")) {
+                consumo_datos_men = 0;
+            }
+            if ((factu_men_movil == null) || (factu_men_movil == "")) {
+                factu_men_movil = 0;
+            }
+
+            total = total + "¦" + omv + "¦" + omv_tarifaplana_si + "¦" + omv_tarifaplana_no + "¦" + min_facturas_omv_movilmovil + "¦" + min_facturas_omv_movilfijo + "¦" + consumo_datos_men + "¦" + factu_men_movil + "¦" + sist_fact_propio_si + "¦" + sist_fact_propio_no;
+
+            return total;
+        }
 
         function activar(x) {
             switch (x) {
@@ -351,43 +550,11 @@
             }
         }
 
-        function contador() {
-
-            if ((document.getElementById("datos_ocultos").value.Lenght <= 0) || (document.getElementById("datos_ocultos").value == null) || (document.getElementById("datos_ocultos").value == "")) {                
-                var cont = 2;   
-                crear_div(cont);
-                document.getElementById("datos_ocultos").value = cont;
-            }
-            else {
-                if (document.getElementById("datos_ocultos").value == 5) {
-                    LanzaAviso("<h4>Ha llegado al máx de 5 opciones, ya no puede añadir ninguna más. Gracias!</h4>");
-                    return false; 
-                }
-                else { 
-                    cont = document.getElementById("datos_ocultos").value;
-                    cont++;                  
-                    document.getElementById("datos_ocultos").value = cont;   
-                    crear_div(cont);
-                }
-            }
-        }
-
-        function crear_div(x) {
-            var midiv = document.createElement("div");
-		    midiv.setAttribute("id","prueba");
-            midiv.setAttribute("class", "row centrado");
-            midiv.innerHTML = "<div class='col-xs-3'> <label for='textos'>Subida (Mbps)</label></div><div class='col-xs-3' style='padding: 1%;'><input type='text' class='form-control' id='subida_ofreces"+x+"'  style='margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;' placeholder='Introduzca número Mbs.'  /></div>";
-            midiv.innerHTML += "<div class='col-xs-3'><label for='textos'>Bajada (Mbps)</label></div><div class='col-xs-3' style='padding: 1%;'>";
-            midiv.innerHTML += "<div class='col-xs-3'><input type='text' class='form-control' id='bajada_ofreces"+x+"' style='margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;' placeholder='Introduzca número Mbs.' /></div></div>";
-
-            document.getElementById('submenu_interne1').appendChild(midiv); // Lo pones en "body", si quieres ponerlo dentro de algún id en concreto usas document.getElementById('internet11').appendChild(midiv);
-        }
-
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="comprobar_submenu_internet()">
+        <div class="container-fluid logo_aotec" onclick="comprobar_submenu_tmovil()">
             <img src="img/logo_aotec.png" />
         </div>
         <div id="tv" class="container-fluid options_menu" runat="server">
@@ -561,7 +728,7 @@
                 <div class="row centrado">
                     <div class="col-xs-4">
                         <div class="form-group">
-                            <input type="checkbox" name="custom_checkbox" id="fibra" value="custom_checkbox" />
+                            <input type="checkbox" name="custom_checkbox" id="fibra" value="custom_checkbox" runat="server" />
                             <label for="fibra">¿Recibo canal por fibra óptica?</label>
                         </div>
                     </div>
@@ -575,7 +742,7 @@
                 <div class="row centrado">
                     <div class="col-xs-4">
                         <div class="form-group">
-                            <input type="checkbox" name="custom_checkbox" id="radioenlace" value="custom_checkbox" />
+                            <input type="checkbox" name="custom_checkbox" id="radioenlace" value="custom_checkbox" runat="server" />
                             <label for="radioenlace">¿Recibo canal por radioenlace?</label>
                         </div>
                     </div>
@@ -630,9 +797,6 @@
                     <div class="col-xs-6">
                         <label for="textos">Velocidad que ofreces actualmente a tus clientes (Máx=5) .</label>
                     </div>
-                    <div class="col-xs-6">
-                        <button class="col btn btn-orange-moon" type="button" onClick="contador()">Añadir más</button>
-                    </div>
                 </div>
                 <div class="row centrado">
                     <div class="col-xs-3">
@@ -646,6 +810,62 @@
                     </div>
                     <div class="col-xs-3" style="padding: 1%;">
                         <input type="text" class="form-control" id="bajada_ofreces" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-3">
+                        <label for="textos">Subida (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="subida_ofreces2" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                    <div class="col-xs-3" onclick="prueba()">
+                        <label for="textos">Bajada (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="bajada_ofreces2" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-3">
+                        <label for="textos">Subida (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="subida_ofreces3" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                    <div class="col-xs-3" onclick="prueba()">
+                        <label for="textos">Bajada (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="bajada_ofreces3" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-3">
+                        <label for="textos">Subida (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="subida_ofreces4" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                    <div class="col-xs-3" onclick="prueba()">
+                        <label for="textos">Bajada (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="bajada_ofreces4" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-3">
+                        <label for="textos">Subida (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="subida_ofreces5" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
+                    </div>
+                    <div class="col-xs-3" onclick="prueba()">
+                        <label for="textos">Bajada (Mbps)</label>
+                    </div>
+                    <div class="col-xs-3" style="padding: 1%;">
+                        <input type="text" class="form-control" id="bajada_ofreces5" runat="server" style="margin-left: 5% !important;width: 94.5% !important;margin-bottom: 2.5%;margin-top: 2%;" placeholder="Introduzca número Mbs." />
                     </div>
                 </div>
             </div>
@@ -678,7 +898,90 @@
             </div>            
         </div>
         <div class="tv1" id="tfija1" runat="server">
-            Holaaaa
+            <div class="row centrado">
+                <div class="col-xs-6">
+                    <label for="textos">¿Eres operador con numeración propia?</label>
+                </div>
+                <div class="col-xs-6" style="padding: 2.38%;margin-top: 1%;">
+                    <label for="operador_num_propia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="operador_num_propia_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="operador_num_propia_no" class="btn btn-danger">No <input type="checkbox" id="operador_num_propia_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6" style="margin-top:.5%;">
+                    <label for="textos">¿Tienes tarifa plana?</label>
+                </div>
+                <div class="col-xs-6" style="padding:2.3%;">
+                    <label for="tarifa_plana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="tarifa_plana_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="tarifa_plana_no" class="btn btn-danger">No <input type="checkbox" id="tarifa_plana_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                </div>
+            </div>
+            <div class="row centrado" style="margin-top:.9%;">
+                <div class="col-xs-6">
+                    <label for="textos">¿Tienes mantenimiento de línea?</label>
+                </div>
+                <div class="col-xs-6" style="padding:2.3%;">
+                    <label for="mantenimiento_linea_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="mantenimiento_linea_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="mantenimiento_linea_no" class="btn btn-danger">No <input type="checkbox" id="mantenimiento_linea_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6">
+                    <label for="textos">¿Tienes sistema de facturación propio?</label>
+                </div>
+                <div class="col-xs-6" style="padding: 2.3%;margin-top: 0.5%;">
+                    <label for="facturacion_propia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="facturacion_propia_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="facturacion_propia_no" class="btn btn-danger">No <input type="checkbox" id="facturacion_propia_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                </div>
+            </div>
+            <div id="sistema_factu_propio" class="row centrado" style="display:none;">
+                <div class="col-xs-6">
+                    <label for="textos">¿Que empresa ajena te lleva la facturación?</label>
+                </div>
+                <div class="col-xs-6" style="padding:4.1%;">
+                    <input type="text" class="form-control" id="facturacion_ajena" runat="server" placeholder="Quien te lleva la facturación." />
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6" style="margin-top:1%;">
+                    <label for="textos">¿Que empresa te suministra la telefonía?</label>
+                </div>
+                <div class="col-xs-6" style="padding: 10px;margin-top: 3%;">
+                    <input type="text" class="form-control" id="suministra_telefonico" runat="server" placeholder="Que empresa te proporciona el servicio." />
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6" style="margin-top:1%;">
+                    <label for="textos">¿Cuantos minutos tienes de consumo mensualmente (aprox) de fijo a fijo?</label>
+                </div>
+                <div class="col-xs-6" style="padding: 10px;margin-top: 4%;">
+                    <input type="text" class="form-control" id="min_consumo_mensual" runat="server" placeholder="¿Cuantos minutos tienes?" />
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6">
+                    <label for="textos">¿Precio del min de fijo a fijo?</label>
+                </div>
+                <div class="col-xs-6" style="padding: 10px;margin-top: .1%;">
+                    <input type="text" class="form-control" id="fijo_fijo" runat="server" placeholder="Precio del min de fijo a fijo." />
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6">
+                    <label for="textos">¿Cuantos minutos tienes de consumo mensualmente (aprox) de fijo a móvil?</label>
+                </div>
+                <div class="col-xs-6" style="padding: 10px;margin-top: 3%;">
+                    <input type="text" class="form-control" id="fijo_movil_min" runat="server" placeholder="Precio del min de fijo a fijo." />
+                </div>
+            </div>
+            <div class="row centrado">
+                <div class="col-xs-6">
+                    <label for="textos">¿Precio del min de fijo a móvil?</label>
+                </div>
+                <div class="col-xs-6" style="padding: 10px;margin-top: .1%;">
+                    <input type="text" class="form-control" id="precio_fijo_movil" runat="server" placeholder="Precio del min de fijo a fijo." />
+                </div>
+            </div>
         </div>
         <div id="tmovil" class="container-fluid options_menu" runat="server">
             <div class="form-groupu">
@@ -690,8 +993,103 @@
             <div id="desplegar_OMV" class="row centrado desplegables">
                 <label for="textos_desple">Si eres OMV</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
             </div>
+            <div id="si_eres_omv" class="row centrado" style="display:none;">
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuál es tu operador de red?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding:10px;">
+                        <input type="text" class="form-control" id="cual_operador" runat="server" placeholder="Dinos el nombre de tu Operador." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Ofreces tarifa plana?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top: .3%;">                        
+                        <label for="ofreces_tarifa_plana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="ofreces_tarifa_plana_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="ofreces_tarifa_plana_no" class="btn btn-danger">No <input type="checkbox" id="ofreces_tarifa_plana_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuántos minutos tienes de consumo mensualmente (aprox) de móvil a móvil?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:3%;">
+                        <input type="text" class="form-control" id="cuantos_min_men_movilmovil" runat="server" placeholder="Cuantos min  aprox." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuántos minutos tienes de consumo mensualmente (aprox) de móvil a fijo?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top: 4%;">
+                        <input type="text" class="form-control" id="cuantos_min_men_movilfijo" runat="server" placeholder="Dinos el nombre de tu Operador." />
+                    </div>
+                </div>
+            </div>
             <div id="desplegar_comercializas_OMV" class="row centrado desplegables">
                 <label for="textos_desple">Si comercializas el servicio de un OMV</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+            </div>
+            <div id="comercializas_omv" class="row centrado" style="display:none;">
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuál es tu OMV?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:.3%;">
+                        <input type="text" class="form-control" id="cual_omv" runat="server" placeholder="Dinos el nombre de tu Operador." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Ofrece tarifa plana?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:.3%;">
+                        <label for="ofreces_tarifa_plana_cualomv_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="ofreces_tarifa_plana_cualomv_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="ofreces_tarifa_plana_cualomv_no" class="btn btn-danger">No <input type="checkbox" id="ofreces_tarifa_plana_cualomv_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuántos minutos facturas para tu OMV mensualmente (aprox) de móvil a móvil?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:4%;">
+                        <input type="text" class="form-control" id="min_facturas_omv_mens_movilmovil" runat="server" placeholder="Dinos el nombre de tu Operador." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuántos minutos facturas para tu OMV mensualmente (aprox) de móvil a fijo?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:3%;">
+                        <input type="text" class="form-control" id="min_facturas_omv_mens_movilfijo" runat="server" placeholder="Dinos el nombre de tu Operador." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Que consumo de datos tienes mensualmente (aprox)?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:2%;">
+                        <input type="text" class="form-control" id="consumo_datos_mens" runat="server" placeholder="Dinos el nombre de tu Operador." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuál es su facturación mensual/comisiones móvil?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:2%;">
+                        <input type="text" class="form-control" id="facturacion_mensual" runat="server" placeholder="Dinos el nombre de tu Operador." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Tiene sistema de facturación propio?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:1.5%;">
+                        <label for="sist_factu_propio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="sist_factu_propio_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="sist_factu_propio_no" class="btn btn-danger">No <input type="checkbox" id="sist_factu_propio_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="otros" class="container-fluid options_menu" runat="server">
@@ -805,6 +1203,13 @@
             $('#desplegar_equipamiento').click(function () {
                 $('#submenu_interne2').toggle("slide");                
             });
+            $('#desplegar_OMV').click(function () {
+                $('#si_eres_omv').toggle("slide");                
+            });
+
+            $('#desplegar_comercializas_OMV').click(function () {
+                $('#comercializas_omv').toggle("slide");                
+            });
 
 
             //función para radio button de dispone canal
@@ -898,6 +1303,95 @@
                 }
             });
 
+            //función para radio button de operador num propia.
+            $("#operador_num_propia_si").click(function () {
+                if ($("#operador_num_propia_si").is(':checked')) {
+                    $("#operador_num_propia_no").attr('checked', false);
+                    $("#operador_num_propia_si").attr('checked', true);                    
+                } else {
+                    $("#operador_num_propia_no").attr('checked', true);
+                    $("#operador_num_propia_si").attr('checked', false);
+                }
+            });
+            $("#operador_num_propia_no").click(function () {
+                if ($("#operador_num_propia_no").is(':checked')) {
+                    $("#operador_num_propia_si").attr('checked', false);
+                    $("#operador_num_propia_no").attr('checked', true);    
+                    
+                } else {
+                    $("#operador_num_propia_si").attr('checked', true);
+                    $("#operador_num_propia_no").attr('checked', false);
+                }
+            });
+
+            //función para radio button de tarifa plana.
+            $("#tarifa_plana_si").click(function () {
+                if ($("#tarifa_plana_si").is(':checked')) {
+                    $("#tarifa_plana_no").attr('checked', false);
+                    $("#tarifa_plana_si").attr('checked', true);                    
+                } else {
+                    $("#tarifa_plana_no").attr('checked', true);
+                    $("#tarifa_plana_si").attr('checked', false);
+                }
+            });
+            $("#tarifa_plana_no").click(function () {
+                if ($("#tarifa_plana_no").is(':checked')) {
+                    $("#tarifa_plana_si").attr('checked', false);
+                    $("#tarifa_plana_no").attr('checked', true);    
+                    
+                } else {
+                    $("#tarifa_plana_si").attr('checked', true);
+                    $("#tarifa_plana_no").attr('checked', false);
+                }
+            });
+
+            //función para radio button de mantenimiento de linea.
+            $("#mantenimiento_linea_si").click(function () {
+                if ($("#mantenimiento_linea_si").is(':checked')) {
+                    $("#mantenimiento_linea_no").attr('checked', false);
+                    $("#mantenimiento_linea_si").attr('checked', true);                    
+                } else {
+                    $("#mantenimiento_linea_no").attr('checked', true);
+                    $("#mantenimiento_linea_si").attr('checked', false);
+                }
+            });
+            $("#mantenimiento_linea_no").click(function () {
+                if ($("#mantenimiento_linea_no").is(':checked')) {
+                    $("#mantenimiento_linea_si").attr('checked', false);
+                    $("#mantenimiento_linea_no").attr('checked', true);    
+                    
+                } else {
+                    $("#mantenimiento_linea_si").attr('checked', true);
+                    $("#mantenimiento_linea_no").attr('checked', false);
+                }
+            });
+
+            //función para radio button de sist. facturación propio.
+            $("#facturacion_propia_si").click(function () {
+                if ($("#facturacion_propia_si").is(':checked')) {
+                    $("#facturacion_propia_no").attr('checked', false);
+                    $("#facturacion_propia_si").attr('checked', true);   
+                    
+                    
+                } else {
+                    $("#facturacion_propia_no").attr('checked', true);
+                    $("#facturacion_propia_si").attr('checked', false);
+                }
+            });
+            $("#facturacion_propia_no").click(function () {
+                if ($("#facturacion_propia_no").is(':checked')) {
+                    $("#facturacion_propia_si").attr('checked', false);
+                    $("#facturacion_propia_no").attr('checked', true);                    
+                    $('#sistema_factu_propio').toggle("slide");
+                    
+                } else {
+                    $("#facturacion_propia_si").attr('checked', true);
+                    $("#facturacion_propia_no").attr('checked', false);
+                    $('#sistema_factu_propio').toggle("slide");
+                    
+                }
+            });
+
         });
 
         function Registre() {
@@ -947,15 +1441,18 @@
             var comprobacion_tv;
             comprobacion_tv = comprobar_submenu_tv();
 
+            var comprobacion_internet = comprobar_submenu_internet();
+            var comprobacion_tel_fija = comprobar_submenu_tfija();
+            var comprobacion_tel_movil = comprobar_submenu_tmovil();
 
-            Dades = document.getElementById("datos_user").value + "¦" + chk1 + "¦" + chk2 + "¦" + chk3 + "¦" + chk4 + "¦" + chk5 + "¦" + comprobacion_tv;
-            
+            Dades = document.getElementById("datos_user").value + "¦" + chk1 + "¦" + chk2 + "¦" + chk3 + "¦" + chk4 + "¦" + chk5 + "¦" + comprobacion_tv + "¦" + comprobacion_internet + "¦" + comprobacion_tel_fija + "¦" + comprobacion_tel_movil;
+
+            alert(Dades);
             setTimeout("InformacioAJAX(9,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
         }          
 
 
         function Registre_Tornada(Dades) {
-            //alert(Dades);
             if (Dades.substr(0, 2) == "OK") {
                 if (Dades.substr(2, 1) == "9") {
                     LanzaAviso("Hemos actualizado correctacmente sus preferencias en nuestra Base de Datos. Recuerde que tiene hasta el día 25 para terminar el cuestionario. Gracias!");

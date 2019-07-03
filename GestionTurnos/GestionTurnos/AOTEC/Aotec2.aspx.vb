@@ -193,6 +193,263 @@
                         If comprobar.Length <> 1 Then
                             otros_derechos.Value = comprobar
                         End If
+                    Case 15
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            Autonomo_si.Checked = True
+                        End If
+                    Case 16
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            Autonomo_no.Checked = True
+                        End If
+                    Case 17
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            fibra.Checked = True
+                        End If
+                    Case 18
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            radioenlace.Checked = True
+                        End If
+                    Case 19
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            fibra_megas.Value = comprobar
+                        End If
+                    Case 20
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            radioenlace_megas.Value = comprobar
+                        End If
+                    Case 21
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            megas_caudal.Value = comprobar
+                        End If
+                    Case 22
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            proveedor_circuito.Value = comprobar
+                        End If
+                    Case 23
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            precio_circuito.Value = comprobar
+                        End If
+                    Case 24
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            proveedor_caudal.Value = comprobar
+                        End If
+                    Case 25
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            precio_caudal.Value = comprobar
+                        End If
+                    Case 26
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            subida_ofreces.Value = comprobar
+                        End If
+                    Case 27
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            subida_ofreces2.Value = comprobar
+                        End If
+                    Case 28
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            subida_ofreces3.Value = comprobar
+                        End If
+                    Case 29
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            subida_ofreces4.Value = comprobar
+                        End If
+                    Case 30
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            subida_ofreces5.Value = comprobar
+                        End If
+                    Case 31
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            bajada_ofreces.Value = comprobar
+                        End If
+                    Case 32
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            bajada_ofreces2.Value = comprobar
+                        End If
+                    Case 33
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            bajada_ofreces3.Value = comprobar
+                        End If
+                    Case 34
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            bajada_ofreces4.Value = comprobar
+                        End If
+                    Case 35
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            bajada_ofreces5.Value = comprobar
+                        End If
+                    Case 36
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            equipo_uso.Value = comprobar
+                        End If
+                    Case 37
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            marca_fabricante.Value = comprobar
+                        End If
+                    Case 38
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            operador_num_propia_si.Checked = True
+                        End If
+                    Case 39
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            operador_num_propia_no.Checked = True
+                        End If
+                    Case 40
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            tarifa_plana_si.Checked = True
+                        End If
+                    Case 41
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            tarifa_plana_no.Checked = True
+                        End If
+                    Case 42
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            mantenimiento_linea_si.Checked = True
+                        End If
+                    Case 43
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            mantenimiento_linea_no.Checked = True
+                        End If
+                    Case 44
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            facturacion_propia_si.Checked = True
+                        End If
+                    Case 45
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            facturacion_propia_no.Checked = True
+                        End If
+                    Case 46
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            facturacion_ajena.Value = comprobar
+                        End If
+                    Case 47
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            suministra_telefonico.Value = comprobar
+                        End If
+                    Case 48
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            min_consumo_mensual.Value = comprobar
+                        End If
+                    Case 49
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            fijo_fijo.Value = comprobar
+                        End If
+                    Case 50
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            fijo_movil_min.Value = comprobar
+                        End If
+                    Case 51
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            precio_fijo_movil.Value = comprobar
+                        End If
+                    Case 52
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            cual_operador.Value = comprobar
+                        End If
+                    Case 53
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ofreces_tarifa_plana_si.Checked = True
+                        End If
+                    Case 54
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ofreces_tarifa_plana_no.Checked = True
+                        End If
+                    Case 55
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            cuantos_min_men_movilmovil.Value = comprobar
+                        End If
+                    Case 56
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            cuantos_min_men_movilfijo.Value = comprobar
+                        End If
+                    Case 57
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            cual_omv.Value = comprobar
+                        End If
+                    Case 58
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ofreces_tarifa_plana_cualomv_si.Checked = True
+                        End If
+                    Case 59
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ofreces_tarifa_plana_cualomv_no.Checked = True
+                        End If
+                    Case 60
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            min_facturas_omv_mens_movilmovil.Value = comprobar
+                        End If
+                    Case 61
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            min_facturas_omv_mens_movilfijo.Value = comprobar
+                        End If
+                    Case 62
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            consumo_datos_mens.Value = comprobar
+                        End If
+                    Case 63
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            facturacion_mensual.Value = comprobar
+                        End If
+                    Case 64
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            sist_factu_propio_si.Checked = True
+                        End If
+                    Case 65
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            sist_factu_propio_no.Checked = True
+                        End If
+
+
                 End Select
             Next
 
