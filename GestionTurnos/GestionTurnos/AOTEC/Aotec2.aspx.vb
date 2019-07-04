@@ -105,6 +105,8 @@
             separar_guardado = guardado.Split("¦")
 
             long_guardado = separar_guardado.Length
+            Dim comprobar2 As String
+            comprobar2 = 0
 
             For p = 0 To UBound(separar_guardado)
                 Select Case p
@@ -409,10 +411,14 @@
                             cual_omv.Value = comprobar
                         End If
                     Case 58
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            ofreces_tarifa_plana_cualomv_si.Checked = True
-                        End If
+
+                        'ofreces_tarifa_plana_cualomv_si.Checked = separar_guardado(p)
+
+
+                        'comprobar = separar_guardado(p)
+                        'If comprobar = True Then
+                        '    ofreces_tarifa_plana_cualomv_si.Checked = True
+                        'End If
                     Case 59
                         comprobar = separar_guardado(p)
                         If comprobar = True Then
@@ -448,8 +454,104 @@
                         If comprobar = True Then
                             sist_factu_propio_no.Checked = True
                         End If
+                    Case 66
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            empresa_lleva_fact.Value = comprobar
+                        End If
+                    Case 67
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            marketing_propio_si.Checked = True
+                        End If
+                    Case 68
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            marketing_propio_no.Checked = True
+                        End If
+                    Case 69
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            pres_invirte_mes.Value = comprobar
+                        End If
+                    Case 70
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            departamento_juridico_si.Checked = True
+                        End If
+                    Case 71
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            departamento_juridico_no.Checked = True
+                        End If
+                    Case 72
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> 1 Then
+                            pres_mensual_invierte.Value = comprobar
+                        End If
+                    Case 73
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            departamento_ingenieria_si.Checked = True
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba33", "activar(3);", True)
+                        End If
+                    Case 74
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            departamento_ingenieria_no.Checked = True
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba44", "activar(4);", True)
+                        End If
+                    Case 75
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            personas_forman_ingenieria.Value = comprobar
+                        End If
 
-
+                    Case 76
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            empresa_gestiona.Value = comprobar
+                        End If
+                    Case 77
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            hogares_pasados.Value = comprobar
+                        End If
+                    Case 78
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            abonados_TV.Value = comprobar
+                        End If
+                    Case 79
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            abonados_internet.Value = comprobar
+                        End If
+                    Case 80
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            abonados_tfija.Value = comprobar
+                        End If
+                    Case 81
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            abonados_tmovil.Value = comprobar
+                        End If
+                    Case 82
+                        comprobar = separar_guardado(p)
+                        If comprobar.Length <> comprobar2 Then
+                            num_lineas_totales.Value = comprobar
+                        End If
+                    Case 83
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            num_trabajadores.Value = comprobar
+                        End If
+                    Case 84
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            ingresos.Value = comprobar
+                        End If
                 End Select
             Next
 

@@ -788,6 +788,15 @@ Partial Public Class Aotec2
     Protected WithEvents sist_factu_propio_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
+    '''Control empresa_lleva_fact.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents empresa_lleva_fact As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
     '''Control otros.
     '''</summary>
     '''<remarks>
@@ -813,6 +822,168 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents otros1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control marketing_propio_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents marketing_propio_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
+    '''Control marketing_propio_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents marketing_propio_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
+    '''Control pres_invirte_mes.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pres_invirte_mes As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control departamento_juridico_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents departamento_juridico_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
+    '''Control departamento_juridico_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents departamento_juridico_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
+    '''Control pres_mensual_invierte.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pres_mensual_invierte As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control departamento_ingenieria_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents departamento_ingenieria_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
+    '''Control departamento_ingenieria_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents departamento_ingenieria_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    
+    '''<summary>
+    '''Control personas_forman_ingenieria.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents personas_forman_ingenieria As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control empresa_gestiona.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents empresa_gestiona As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control hogares_pasados.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents hogares_pasados As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control abonados_TV.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents abonados_TV As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control abonados_internet.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents abonados_internet As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control abonados_tfija.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents abonados_tfija As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control abonados_tmovil.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents abonados_tmovil As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control num_lineas_totales.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents num_lineas_totales As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control num_trabajadores.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents num_trabajadores As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control ingresos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ingresos As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control datos_user.

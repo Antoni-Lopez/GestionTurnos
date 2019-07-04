@@ -503,7 +503,7 @@
             var total = operador + "¦" + ofreces_tarifaplana_si + "¦" + ofreces_tarifaplana_no + "¦" + min_movilmovil + "¦" + min_movilfijo;
 
             //Si comercializas el servicio
-            var omv, omv_tarifaplana_si, omv_tarifaplana_no, min_facturas_omv_movilmovil, min_facturas_omv_movilfijo, consumo_datos_men, factu_men_movil, sist_fact_propio_si, sist_fact_propio_no;
+            var omv, omv_tarifaplana_si, omv_tarifaplana_no, min_facturas_omv_movilmovil, min_facturas_omv_movilfijo, consumo_datos_men, factu_men_movil, sist_fact_propio_si, sist_fact_propio_no,empresa_lleva_fact;
 
             omv = document.getElementById("cual_omv").value;
             omv_tarifaplana_si = document.getElementById("ofreces_tarifa_plana_cualomv_si").checked;
@@ -514,7 +514,7 @@
             factu_men_movil = document.getElementById("facturacion_mensual").value;
             sist_fact_propio_si = document.getElementById("sist_factu_propio_si").checked;
             sist_fact_propio_no = document.getElementById("sist_factu_propio_no").checked;
-
+            empresa_lleva_fact = document.getElementById("empresa_lleva_fact").value;
 
             if ((omv == null) || (omv == "")) {
                 omv = 0;
@@ -531,8 +531,83 @@
             if ((factu_men_movil == null) || (factu_men_movil == "")) {
                 factu_men_movil = 0;
             }
+            if ((empresa_lleva_fact == null) || (empresa_lleva_fact == "")) {
+                empresa_lleva_fact = 0;
+            }
 
-            total = total + "¦" + omv + "¦" + omv_tarifaplana_si + "¦" + omv_tarifaplana_no + "¦" + min_facturas_omv_movilmovil + "¦" + min_facturas_omv_movilfijo + "¦" + consumo_datos_men + "¦" + factu_men_movil + "¦" + sist_fact_propio_si + "¦" + sist_fact_propio_no;
+            total = total + "¦" + omv + "¦" + omv_tarifaplana_si + "¦" + omv_tarifaplana_no + "¦" + min_facturas_omv_movilmovil + "¦" + min_facturas_omv_movilfijo + "¦" + consumo_datos_men + "¦" + factu_men_movil + "¦" + sist_fact_propio_si + "¦" + sist_fact_propio_no + "¦" + empresa_lleva_fact;
+
+            return total;
+        }
+
+        //Funcion para comprobar todo el sub-menu de Internet
+        function comprobar_submenu_otros() {
+            var marketing_propio_si, marketing_propio_no, pres_mensual, juridico_propio_si, juridico_propio_no, pres_mensual_invierte, dep_ingenieria_propio_si, dep_ingenieria_propio_no, personas_forman_ingenieria, empresa_gestiona;
+            var hogares_pasados,abonados_TV,abonados_internet,abonados_tfija,abonados_tmovil,num_lineas_totales,num_trabajadores,ingresos
+
+            marketing_propio_si = document.getElementById("marketing_propio_si").checked;
+            marketing_propio_no = document.getElementById("marketing_propio_no").checked;
+            pres_mensual = document.getElementById("pres_invirte_mes").value;
+            juridico_propio_si = document.getElementById("departamento_juridico_si").checked;
+            juridico_propio_no = document.getElementById("departamento_juridico_no").checked;
+            pres_mensual_invierte = document.getElementById("pres_mensual_invierte").value;
+            dep_ingenieria_propio_si = document.getElementById("departamento_ingenieria_si").checked;
+            dep_ingenieria_propio_no = document.getElementById("departamento_ingenieria_no").checked;
+
+            personas_forman_ingenieria = document.getElementById("personas_forman_ingenieria").value;
+            empresa_gestiona = document.getElementById("empresa_gestiona").value;
+
+            hogares_pasados = document.getElementById("hogares_pasados").value;
+            abonados_TV = document.getElementById("abonados_TV").value;
+            abonados_internet = document.getElementById("abonados_internet").value;
+            abonados_tfija = document.getElementById("abonados_tfija").value;
+            abonados_tmovil = document.getElementById("abonados_tmovil").value;
+            num_lineas_totales = document.getElementById("num_lineas_totales").value;
+            num_trabajadores = document.getElementById("num_trabajadores").value;
+            ingresos = document.getElementById("ingresos").value;
+
+            if ((pres_mensual == null) || (pres_mensual == "")) {
+                pres_mensual = 0;
+            }
+
+            if ((pres_mensual_invierte == null) || (pres_mensual_invierte == "")) {
+                pres_mensual_invierte = 0;
+            }
+
+            if ((personas_forman_ingenieria == null) || (personas_forman_ingenieria == "")) {
+                personas_forman_ingenieria = 0;
+            }
+
+            if ((empresa_gestiona == null) || (empresa_gestiona == "")) {
+                empresa_gestiona = 0;
+            }
+            if ((hogares_pasados == null) || (hogares_pasados == "")) {
+                hogares_pasados = 0;
+            }
+            if ((abonados_TV == null) || (abonados_TV == "")) {
+                abonados_TV = 0;
+            }
+            if ((abonados_internet == null) || (abonados_internet == "")) {
+                abonados_internet = 0;
+            }
+            if ((abonados_tfija == null) || (abonados_tfija == "")) {
+                abonados_tfija = 0;
+            }
+            if ((abonados_tmovil == null) || (abonados_tmovil == "")) {
+                abonados_tmovil = 0;
+            }
+            if ((num_lineas_totales == null) || (num_lineas_totales == "")) {
+                num_lineas_totales = 0;
+            }
+            if ((num_trabajadores == null) || (num_trabajadores == "")) {
+                num_trabajadores = 0;
+            }
+            if ((ingresos == null) || (ingresos == "")) {
+                ingresos = 0;
+            }
+
+            var total = marketing_propio_si + "¦" + marketing_propio_no + "¦" + pres_mensual + "¦" + juridico_propio_si + "¦" + juridico_propio_no + "¦" + pres_mensual_invierte + "¦" + dep_ingenieria_propio_si + "¦" + dep_ingenieria_propio_no + "¦" + personas_forman_ingenieria + "¦" + empresa_gestiona;
+            total = total + "¦" + hogares_pasados + "¦" + abonados_TV + "¦" + abonados_internet + "¦" + abonados_tfija + "¦" + abonados_tmovil + "¦" + num_lineas_totales + "¦" + num_trabajadores + "¦" + ingresos;
 
             return total;
         }
@@ -547,6 +622,12 @@
                     $('#submenu_tv4').toggle("slide");
                     $('#submenu_tv4_2').toggle("slide");                    
                     break;
+                case 3: //abrir cuantas personas lo componen, en otros/Ingenieria.
+                    $('#personas_componen_inge').toggle("slide");
+                    break;
+                case 4: //abrir que empresa lo gestiona.
+                    $('#empresa_gestiona_ingenie').toggle("slide");
+                    break;
             }
         }
 
@@ -554,7 +635,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="comprobar_submenu_tmovil()">
+        <div class="container-fluid logo_aotec" onclick="comprobar_submenu_otros()">
             <img src="img/logo_aotec.png" />
         </div>
         <div id="tv" class="container-fluid options_menu" runat="server">
@@ -1045,8 +1126,8 @@
                         <label for="textos">¿Ofrece tarifa plana?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top:.3%;">
-                        <label for="ofreces_tarifa_plana_cualomv_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="ofreces_tarifa_plana_cualomv_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="ofreces_tarifa_plana_cualomv_no" class="btn btn-danger">No <input type="checkbox" id="ofreces_tarifa_plana_cualomv_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="ofreces_tarifa_plana_cualomv_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="ofreces_tarifa_plana_cualomv_si" class="badgebox" onclick="MiFuncion(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="ofreces_tarifa_plana_cualomv_no" class="btn btn-danger">No <input type="checkbox" id="ofreces_tarifa_plana_cualomv_no" class="badgebox" onclick="MiFuncion(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
@@ -1088,6 +1169,14 @@
                     <div class="col-xs-6" style="padding: 10px;margin-top:1.5%;">
                         <label for="sist_factu_propio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="sist_factu_propio_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
                         <label for="sist_factu_propio_no" class="btn btn-danger">No <input type="checkbox" id="sist_factu_propio_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    </div>                    
+                </div>
+                <div id="quien_telleva_fact" class="row centrado" style="display:none;">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Qué empresa ajena te lleva la facturación?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:1.5%;">
+                        <input type="text" class="form-control" id="empresa_lleva_fact" runat="server" placeholder="Que empresa te lleva la facturación." />
                     </div>
                 </div>
             </div>
@@ -1100,76 +1189,148 @@
         </div>
         <div class="tv1" id="otros1" runat="server">
             <div id="desplegar_marketing" class="row centrado desplegables">
-                <label for="textos_desple">Marketing</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+                <label for="textos_desple">Marketing</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>
             </div>
             <div id="marketing" class="row centrado" style="display:none;">
                 <div class="row centrado">
-                    <div class="col-xs-6 azul">
-                        1
+                    <div class="col-xs-6">
+                        <label for="textos">¿Dispone de departamento de marketing propio?</label>
                     </div>
-                    <div class="col-xs-6 rojo">
-                        1
+                    <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
+                        <label for="marketing_propio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="marketing_propio_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="marketing_propio_no" class="btn btn-danger">No <input type="checkbox" id="marketing_propio_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
-                    <div class="col-xs-6 azul">
-                        2
+                    <div class="col-xs-6">
+                        <label for="textos">¿Qué presupuesto mensual invierte (aprox)?</label>
                     </div>
-                    <div class="col-xs-6 rojo">
-                        2
+                    <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
+                        <input type="text" class="form-control" id="pres_invirte_mes" runat="server" placeholder="Describa cuanto presupuesto invierte al mes." />
                     </div>
                 </div>
             </div>
             <div id="desplegar_juridico" class="row centrado desplegables">
-                <label for="textos_desple">Jurídico</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+                <label for="textos_desple">Jurídico</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>
             </div>
             <div id="juridico" class="row centrado" style="display:none;">
                 <div class="row centrado">
-                    <div class="col-xs-6 azul">
-                        1
+                    <div class="col-xs-6">
+                        <label for="textos">¿Dispone de departamento de jurídico propio?</label>
                     </div>
-                    <div class="col-xs-6 rojo">
-                        1
+                    <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
+                        <label for="departamento_juridico_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="departamento_juridico_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="departamento_juridico_no" class="btn btn-danger">No <input type="checkbox" id="departamento_juridico_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
-                    <div class="col-xs-6 azul">
-                        2
+                    <div class="col-xs-6">
+                        <label for="textos">¿Qué presupuesto mensual invierte (aprox)?</label>
                     </div>
-                    <div class="col-xs-6 rojo">
-                        2
+                    <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
+                        <input type="text" class="form-control" id="pres_mensual_invierte" runat="server" placeholder="Describa cuanto presupuesto invierte al mes." />
                     </div>
                 </div>
             </div>
             <div id="desplegar_ingenieria" class="row centrado desplegables">
-                <label for="textos_desple">Ingeniería</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+                <label for="textos_desple">Ingeniería</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>
             </div>
             <div id="ingenieria" class="row centrado" style="display:none;">
                 <div class="row centrado">
-                    <div class="col-xs-6 azul">
-                        1
+                    <div class="col-xs-6">
+                        <label for="textos">¿Dispone de departamento de ingeniería propio?</label>
                     </div>
-                    <div class="col-xs-6 rojo">
-                        1
-                    </div>
-                </div>
-                <div class="row centrado">
-                    <div class="col-xs-6 azul">
-                        2
-                    </div>
-                    <div class="col-xs-6 rojo">
-                        2
+                    <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
+                        <label for="departamento_ingenieria_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="departamento_ingenieria_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="departamento_ingenieria_no" class="btn btn-danger">No <input type="checkbox" id="departamento_ingenieria_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
-                <div class="row centrado">
-                    <div class="col-xs-6 azul">
-                        3
+                <div id="personas_componen_inge" class="row centrado" style="display:none;">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Cuántas personas lo componen?</label>
                     </div>
-                    <div class="col-xs-6 rojo">
-                        3
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="personas_forman_ingenieria" runat="server" placeholder="Describa de cuantas personas dispone en Marketing." />
+                    </div>
+                </div>
+                <div id="empresa_gestiona_ingenie" class="row centrado" style="display:none;">
+                    <div class="col-xs-6">
+                        <label for="textos">¿Qué empresa se lo gestiona?</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="empresa_gestiona" runat="server" placeholder="Describa que empresa se lo gestiona." />
                     </div>
                 </div>
             </div>
+            <div id="desplegar_masopc" class="row centrado desplegables">
+                <label for="textos_desple">Más Opciones..</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>
+            </div>
+            <div id="mas_opc" class="row centrado" style="display:none;">
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Número total de hogares pasados:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="hogares_pasados" runat="server" placeholder="Número de hogares pasados." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Número de abonados al servicio de TV:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:1%;">
+                        <input type="text" class="form-control" id="abonados_TV" runat="server" placeholder="Número de abonados al servicio de TV." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Número de abonados a Internet:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="abonados_internet" runat="server" placeholder="Número de abonados al servicio de Internet." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Número de abonados a telefonía fija:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;margin-top:1%;">
+                        <input type="text" class="form-control" id="abonados_tfija" runat="server" placeholder="Número de abonados al servicio de Telefonia Fija." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Número de abonados a telefonía móvil:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="abonados_tmovil" runat="server" placeholder="Número de abonados al servicio de Telefonia móvil." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Número de líneas totales:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="num_lineas_totales" runat="server" placeholder="Número de líneas totales." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Número de trabajadores en la empresa:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="num_trabajadores" runat="server" placeholder="Número de trabajadores en la empresa." />
+                    </div>
+                </div>
+                <div class="row centrado">
+                    <div class="col-xs-6">
+                        <label for="textos">Ingresos anuales de explotación:</label>
+                    </div>
+                    <div class="col-xs-6" style="padding: 10px;">
+                        <input type="text" class="form-control" id="ingresos" runat="server" placeholder="Número de ingresos anuales." />
+                    </div>
+                </div>
+            </div> 
         </div>
         <div class="row boton_save">
             <button id="guardar_data" type="button" class="btn btn-warning guardar" onclick="loader_gif();">Guardar Datos</button>
@@ -1181,6 +1342,19 @@
     </form>
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
     <script type="text/javascript">
+
+        function MiFuncion(Valor1, Valor2) {
+            document.getElementById(Valor1 + Valor2).checked = true;
+            document.getElementById(Valor1 + (Valor2 == "si" ? "no" : "si")).checked = false;
+
+            //document.getElementById('ofreces_tarifa_plana_cualomv_no').checked = false;
+                //setTimeout("",2000)
+
+                //window.setTimeout("$('#ofreces_tarifa_plana_cualomv_si').attr('checked', true);$('#ofreces_tarifa_plana_cualomv_no').attr('checked', true)", 2000);
+
+            }
+
+
         $(document).ready(function () {
             $('#tele').click(function () {
                 $('#tv1').toggle("slide");
@@ -1282,6 +1456,9 @@
             $('#desplegar_ingenieria').click(function () {
                 $('#ingenieria').toggle("slide");                
             });
+            $('#desplegar_masopc').click(function () {
+                $('#mas_opc').toggle("slide");                
+            });
 
 
             //función para radio button de dispone canal
@@ -1336,6 +1513,7 @@
                     $("#danger_OTT").attr('checked', false);
                     $("#success_OTT").attr('checked', true);                    
                     $('#submenu_tv4_2').toggle("slide");
+
                 } else {
                     $("#danger_OTT").attr('checked', true);
                     $("#success_OTT").attr('checked', false);
@@ -1464,6 +1642,169 @@
                 }
             });
 
+            //función para radio button de tarifa plana omv.
+            $("#ofreces_tarifa_plana_si").click(function () {
+                if ($("#ofreces_tarifa_plana_si").is(':checked')) {
+                    $("#ofreces_tarifa_plana_no").attr('checked', false);
+                    $("#ofreces_tarifa_plana_si").attr('checked', true);   
+                    
+                    
+                } else {
+                    $("#ofreces_tarifa_plana_no").attr('checked', true);
+                    $("#ofreces_tarifa_plana_si").attr('checked', false);
+                }
+            });
+            $("#ofreces_tarifa_plana_no").click(function () {
+                if ($("#ofreces_tarifa_plana_no").is(':checked')) {
+                    $("#ofreces_tarifa_plana_si").attr('checked', false);
+                    $("#ofreces_tarifa_plana_no").attr('checked', true);                    
+                    
+                } else {
+                    $("#ofreces_tarifa_plana_si").attr('checked', true);
+                    $("#ofreces_tarifa_plana_no").attr('checked', false);
+                    
+                }
+            });
+
+            //función para radio button de tarifa plana comercializas omv.
+            
+            /*
+             * $("#ofreces_tarifa_plana_cualomv_si").click(function () {
+
+                
+
+                //$("#ofreces_tarifa_plana_cualomv_no").attr('checked', false);
+                window.setTimeout("$('#ofreces_tarifa_plana_cualomv_si').attr('checked', true);$('#ofreces_tarifa_plana_cualomv_no').attr('checked', true)", 2000); 
+
+                // alert($("#ofreces_tarifa_plana_cualomv_si").is(':checked'));
+                //if ($("#ofreces_tarifa_plana_cualomv_si").is(':checked')) {
+                    
+                   
+                    
+                    
+                //} else {
+                //    $("#ofreces_tarifa_plana_cualomv_no").attr('checked', true);
+                //    $("#ofreces_tarifa_plana_cualomv_si").attr('checked', false);
+
+                //}
+            });
+            */
+            $("#ofreces_tarifa_plana_cualomv_no").click(function () {
+                window.setTimeout("$('#ofreces_tarifa_plana_cualomv_no').attr('checked', true);$('#ofreces_tarifa_plana_cualomv_si').attr('checked', true)", 2000);
+
+
+                //if ($("#ofreces_tarifa_plana_cualomv_no").is(':checked')) {
+                //    $("#ofreces_tarifa_plana_cualomv_si").attr('checked', false);
+                //    $("#ofreces_tarifa_plana_cualomv_no").attr('checked', true);                    
+                    
+                //} else {
+                //    $("#ofreces_tarifa_plana_cualomv_si").attr('checked', true);
+                //    $("#ofreces_tarifa_plana_cualomv_no").attr('checked', false);
+                    
+                //}
+            });
+
+            //función para radio button de sist.facturacion propio comercializas omv.
+            $("#sist_factu_propio_si").click(function () {
+                if ($("#sist_factu_propio_si").is(':checked')) {
+                    $("#sist_factu_propio_no").attr('checked', false);
+                    $("#sist_factu_propio_si").attr('checked', true);   
+                    $('#quien_telleva_fact').hide();                    
+                } else {
+                    $("#sist_factu_propio_no").attr('checked', true);
+                    $("#sist_factu_propio_si").attr('checked', false);
+                    
+                }
+            });
+            $("#sist_factu_propio_no").click(function () {
+                if ($("#sist_factu_propio_no").is(':checked')) {
+                    $("#sist_factu_propio_si").attr('checked', false);
+                    $("#sist_factu_propio_no").attr('checked', true); 
+                    $('#quien_telleva_fact').toggle("slide");
+                    
+                } else {
+                    $("#sist_factu_propio_si").attr('checked', true);
+                    $("#sist_factu_propio_no").attr('checked', false);
+                    $('#quien_telleva_fact').hide();
+                    
+                }
+            });
+
+            //función para radio button de marketing
+            $("#marketing_propio_si").click(function () {
+                if ($("#marketing_propio_si").is(':checked')) {
+                    $("#marketing_propio_no").attr('checked', false);
+                    $("#marketing_propio_si").attr('checked', true);   
+                    
+                    
+                } else {
+                    $("#marketing_propio_no").attr('checked', true);
+                    $("#marketing_propio_si").attr('checked', false);
+                }
+            });
+            $("#marketing_propio_no").click(function () {
+                if ($("#marketing_propio_no").is(':checked')) {
+                    $("#marketing_propio_si").attr('checked', false);
+                    $("#marketing_propio_no").attr('checked', true);                    
+                    
+                } else {
+                    $("#marketing_propio_si").attr('checked', true);
+                    $("#marketing_propio_no").attr('checked', false);
+                    
+                }
+            });
+
+            //función para radio button de juridico
+            $("#departamento_juridico_si").click(function () {
+                if ($("#departamento_juridico_si").is(':checked')) {
+                    $("#departamento_juridico_no").attr('checked', false);
+                    $("#departamento_juridico_si").attr('checked', true);   
+                    
+                    
+                } else {
+                    $("#departamento_juridico_no").attr('checked', true);
+                    $("#departamento_juridico_si").attr('checked', false);
+                }
+            });
+            $("#departamento_juridico_no").click(function () {
+                if ($("#departamento_juridico_no").is(':checked')) {
+                    $("#departamento_juridico_si").attr('checked', false);
+                    $("#departamento_juridico_no").attr('checked', true);                    
+                    
+                } else {
+                    $("#departamento_juridico_si").attr('checked', true);
+                    $("#departamento_juridico_no").attr('checked', false);
+                    
+                }
+            });
+            //función para radio button de ingenieria
+            $("#departamento_ingenieria_si").click(function () {
+                if ($("#departamento_ingenieria_si").is(':checked')) {
+                    $("#departamento_ingenieria_no").attr('checked', false);
+                    $("#departamento_ingenieria_si").attr('checked', true);                       
+                    $('#personas_componen_inge').toggle("slide");
+                    $('#empresa_gestiona_ingenie').hide();
+
+                } else {
+                    $("#departamento_ingenieria_no").attr('checked', true);
+                    $("#departamento_ingenieria_si").attr('checked', false);
+                    $('#personas_componen_inge').hide();
+                }
+            });
+            $("#departamento_ingenieria_no").click(function () {
+                if ($("#departamento_ingenieria_no").is(':checked')) {
+                    $("#departamento_ingenieria_si").attr('checked', false);
+                    $("#departamento_ingenieria_no").attr('checked', true); 
+                    $('#personas_componen_inge').hide();
+                    $('#empresa_gestiona_ingenie').toggle("slide");
+                    
+                } else {
+                    $("#departamento_ingenieria_si").attr('checked', true);
+                    $("#departamento_ingenieria_no").attr('checked', false);
+                    $('#empresa_gestiona_ingenie').hide();
+                }
+            });
+
         });
 
         function Registre() {
@@ -1516,8 +1857,9 @@
             var comprobacion_internet = comprobar_submenu_internet();
             var comprobacion_tel_fija = comprobar_submenu_tfija();
             var comprobacion_tel_movil = comprobar_submenu_tmovil();
+            var comprobacion_otros = comprobar_submenu_otros();
 
-            Dades = document.getElementById("datos_user").value + "¦" + chk1 + "¦" + chk2 + "¦" + chk3 + "¦" + chk4 + "¦" + chk5 + "¦" + comprobacion_tv + "¦" + comprobacion_internet + "¦" + comprobacion_tel_fija + "¦" + comprobacion_tel_movil;
+            Dades = document.getElementById("datos_user").value + "¦" + chk1 + "¦" + chk2 + "¦" + chk3 + "¦" + chk4 + "¦" + chk5 + "¦" + comprobacion_tv + "¦" + comprobacion_internet + "¦" + comprobacion_tel_fija + "¦" + comprobacion_tel_movil + "¦" + comprobacion_otros;
 
             alert(Dades);
             setTimeout("InformacioAJAX(9,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
