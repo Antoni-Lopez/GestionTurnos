@@ -111,18 +111,18 @@
             For p = 0 To UBound(separar_guardado)
                 Select Case p
                     Case 0
-                        comprobar = separar_guardado(p)
-                        If comprobar = 1 Then
-                            success.Checked = True
-                        Else
-                            danger.Checked = True
-                        End If
+                        'comprobar = separar_guardado(p)
+                        'If comprobar = 1 Then
+                        '    success.Checked = True
+                        'Else
+                        '    danger.Checked = True
+                        'End If
                     Case 1
                         comprobar = separar_guardado(p)
                         If comprobar = 1 Then
-                            success_encriptacion.Checked = True
+                            encriptacionPropia_si.Checked = True
                         Else
-                            danger_encriptacion.Checked = True
+                            encriptacionPropia_no.Checked = True
                         End If
                     Case 2
                         comprobar = separar_guardado(p)
@@ -135,9 +135,9 @@
                     Case 3
                         comprobar = separar_guardado(p)
                         If comprobar = 1 Then
-                            success_OTT.Checked = True
+                            PlataformaOTTPropia_si.Checked = True
                         Else
-                            danger_OTT.Checked = True
+                            PlataformaOTTPropia_no.Checked = True
                         End If
                     Case 4
                         comprobar = separar_guardado(p)
@@ -176,45 +176,24 @@
                             encriptar_tv2.Value = comprobar
                         End If
                     Case 11
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            SGAE.Checked = True
-                        End If
+                        SGAE.Checked = separar_guardado(p)
                     Case 12
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            EGEDA.Checked = True
-                        End If
+                        EGEDA.Checked = separar_guardado(p)
                     Case 13
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            AGEDI.Checked = True
-                        End If
+                        AGEDI.Checked = separar_guardado(p)
                     Case 14
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
                             otros_derechos.Value = comprobar
                         End If
                     Case 15
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            Autonomo_si.Checked = True
-                        End If
+                        Autonomo_si.Checked = separar_guardado(p)
                     Case 16
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            Autonomo_no.Checked = True
-                        End If
+                        Autonomo_no.Checked = separar_guardado(p)
                     Case 17
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            fibra.Checked = True
-                        End If
+                        fibra.Checked = separar_guardado(p)
                     Case 18
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            radioenlace.Checked = True
-                        End If
+                        radioenlace.Checked = separar_guardado(p)
                     Case 19
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
@@ -311,45 +290,21 @@
                             marca_fabricante.Value = comprobar
                         End If
                     Case 38
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            operador_num_propia_si.Checked = True
-                        End If
+                        operadorNumPropia_si.Checked = separar_guardado(p)
                     Case 39
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            operador_num_propia_no.Checked = True
-                        End If
+                        operadorNumPropia_no.Checked = separar_guardado(p)
                     Case 40
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            tarifa_plana_si.Checked = True
-                        End If
+                        TarifaPplana_si.Checked = separar_guardado(p)
                     Case 41
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            tarifa_plana_no.Checked = True
-                        End If
+                        TarifaPplana_no.Checked = separar_guardado(p)
                     Case 42
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            mantenimiento_linea_si.Checked = True
-                        End If
+                        MantenimientoLinea_si.Checked = separar_guardado(p)
                     Case 43
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            mantenimiento_linea_no.Checked = True
-                        End If
+                        MantenimientoLinea_no.Checked = separar_guardado(p)
                     Case 44
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            facturacion_propia_si.Checked = True
-                        End If
+                        FacturacionPropia_si.Checked = separar_guardado(p)
                     Case 45
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            facturacion_propia_no.Checked = True
-                        End If
+                        FacturacionPropia_no.Checked = separar_guardado(p)
                     Case 46
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
@@ -386,15 +341,9 @@
                             cual_operador.Value = comprobar
                         End If
                     Case 53
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            ofreces_tarifa_plana_si.Checked = True
-                        End If
+                        OfrecesTarifaPlana_si.Checked = separar_guardado(p)
                     Case 54
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            ofreces_tarifa_plana_no.Checked = True
-                        End If
+                        OfrecesTarifaPlana_no.Checked = separar_guardado(p)
                     Case 55
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
@@ -411,19 +360,9 @@
                             cual_omv.Value = comprobar
                         End If
                     Case 58
-
-                        'ofreces_tarifa_plana_cualomv_si.Checked = separar_guardado(p)
-
-
-                        'comprobar = separar_guardado(p)
-                        'If comprobar = True Then
-                        '    ofreces_tarifa_plana_cualomv_si.Checked = True
-                        'End If
+                        OfrecesTarifaPlanaCualomv_si.Checked = separar_guardado(p)
                     Case 59
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            ofreces_tarifa_plana_cualomv_no.Checked = True
-                        End If
+                        OfrecesTarifaPlanaCualomv_no.Checked = separar_guardado(p)
                     Case 60
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
@@ -445,62 +384,38 @@
                             facturacion_mensual.Value = comprobar
                         End If
                     Case 64
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            sist_factu_propio_si.Checked = True
-                        End If
+                        SistFactuPropio_si.Checked = separar_guardado(p)
                     Case 65
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            sist_factu_propio_no.Checked = True
-                        End If
+                        SistFactuPropio_no.Checked = separar_guardado(p)
                     Case 66
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
                             empresa_lleva_fact.Value = comprobar
                         End If
                     Case 67
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            marketing_propio_si.Checked = True
-                        End If
+                        MarketingPropio_si.Checked = separar_guardado(p)
                     Case 68
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            marketing_propio_no.Checked = True
-                        End If
+                        MarketingPropio_no.Checked = separar_guardado(p)
                     Case 69
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
                             pres_invirte_mes.Value = comprobar
                         End If
                     Case 70
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            departamento_juridico_si.Checked = True
-                        End If
+                        DepartamentoJuridico_si.Checked = separar_guardado(p)
                     Case 71
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            departamento_juridico_no.Checked = True
-                        End If
+                        DepartamentoJuridico_no.Checked = separar_guardado(p)
                     Case 72
                         comprobar = separar_guardado(p)
                         If comprobar.Length <> 1 Then
                             pres_mensual_invierte.Value = comprobar
                         End If
                     Case 73
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            departamento_ingenieria_si.Checked = True
-                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba33", "activar(3);", True)
-                        End If
+                        DepartamentoIngenieria_si.Checked = separar_guardado(p)
+                        ClientScript.RegisterStartupScript(Page.GetType(), "miprueba33", "activar(3);", True)
                     Case 74
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            departamento_ingenieria_no.Checked = True
-                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba44", "activar(4);", True)
-                        End If
+                        DepartamentoIngenieria_no.Checked = separar_guardado(p)
+                        ClientScript.RegisterStartupScript(Page.GetType(), "miprueba44", "activar(4);", True)
                     Case 75
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then

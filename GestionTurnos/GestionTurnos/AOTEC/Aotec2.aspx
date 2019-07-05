@@ -61,7 +61,7 @@
 
 
         /* Div Oculto*/
-        #datos_user,#submenu_tv1,#submenu_tv2,#submenu_tv3,#submenu_tv4,#submenu_tv5,#submenu_tv3_2,#submenu_tv4_2,#submenu_interne1,#submenu_interne2,#datos_ocultos{display:none;}
+        #datos_user,#submenu_tv1,#submenu_tv2,#submenu_tv3,#submenu_tv4,#submenu_tv5,#submenu_tv3_2,#submenu_tv4_2,#submenu_interne1,#submenu_interne2,#datos_ocultos,#tv1{display:none;}
 
         .azul{border:blue solid 2px;}
         .verde{border:green solid 2px;}
@@ -84,7 +84,7 @@
     </style>
     <script type="text/javascript">
         
-
+        //Funcion para añadir animación al boton de guardado.
         function loader_gif() {
             guardar_data.innerHTML = "";
             var texto = "<h4 style='text-align:center;'>Guardando los datos <img src='img/ajax-loader.gif' alt='loading' /><br/>";
@@ -96,6 +96,10 @@
             bootbox.alert({ title: "AOTEC 2019", message: Text, size: 'large' });
 
         }
+
+
+
+
 
         //Funcion para comprobar todo el sub-menu de TV
         function comprobar_submenu_tv() {
@@ -120,8 +124,8 @@
 
             //Guardamos elección radio button de Encriptación.
             var chk_encripta_si, chk_encripta_no, chk_encripta,empresa;  
-            chk_encripta_si = document.getElementById("success_encriptacion").checked;
-            chk_encripta_no = document.getElementById("danger_encriptacion").checked;
+            chk_encripta_si = document.getElementById("encriptacionPropia_si").checked;
+            chk_encripta_no = document.getElementById("encriptacionPropia_no").checked;
 
             if (chk_encripta_si == false && chk_encripta_no == false) {
                 LanzaAviso("Lo sentimos pero en la pregunta de: ¿Dispone de Sist. de Encriptación Propia?, necesita contestar si o no. Gracias!");
@@ -141,8 +145,8 @@
 
             //Guardamos elección radio button de OTT.
             var chk_ott_si, chk_ott_no, chk_OTT, proveedor_ott;
-            chk_ott_si = document.getElementById("success_OTT").checked;
-            chk_ott_no = document.getElementById("danger_OTT").checked;
+            chk_ott_si = document.getElementById("PlataformaOTTPropia_si").checked;
+            chk_ott_no = document.getElementById("PlataformaOTTPropia_no").checked;
 
             if (chk_ott_si == false && chk_ott_no == false) {
                 LanzaAviso("Lo sentimos pero en la pregunta de: ¿Dispone de Plataforma OTT Propia?, necesita contestar si o no. Gracias!");
@@ -425,14 +429,14 @@
         function comprobar_submenu_tfija() {
             var operador_num_propia_si, operador_num_propia_no, tarifa_plana_si, tarifa_plana_no, mantenimiento_linea_si, mantenimiento_linea_no, sist_facturacion_propio_si, sist_facturacion_propio_no;
 
-            operador_num_propia_si = document.getElementById("operador_num_propia_si").checked;
-            operador_num_propia_no = document.getElementById("operador_num_propia_no").checked;
-            tarifa_plana_si = document.getElementById("tarifa_plana_si").checked;
-            tarifa_plana_no = document.getElementById("tarifa_plana_no").checked;
+            operador_num_propia_si = document.getElementById("operadorNumPropia_si").checked;
+            operador_num_propia_no = document.getElementById("operadorNumPropia_no").checked;
+            tarifa_plana_si = document.getElementById("TarifaPplana_si").checked;
+            tarifa_plana_no = document.getElementById("TarifaPplana_no").checked;
             mantenimiento_linea_si = document.getElementById("mantenimiento_linea_si").checked;
             mantenimiento_linea_no = document.getElementById("mantenimiento_linea_no").checked;
-            sist_facturacion_propio_si = document.getElementById("facturacion_propia_si").checked;
-            sist_facturacion_propio_no = document.getElementById("facturacion_propia_no").checked;
+            sist_facturacion_propio_si = document.getElementById("FacturacionPropia_si").checked;
+            sist_facturacion_propio_no = document.getElementById("FacturacionPropia_no").checked;
 
             var factu_ajena;
 
@@ -483,8 +487,8 @@
             //Si eres OMV
             var operador, ofreces_tarifaplana_si, ofreces_tarifaplana_no, min_movilmovil, min_movilfijo;
             operador = document.getElementById("cual_operador").value;
-            ofreces_tarifaplana_si = document.getElementById("ofreces_tarifa_plana_si").checked;
-            ofreces_tarifaplana_no = document.getElementById("ofreces_tarifa_plana_no").checked;
+            ofreces_tarifaplana_si = document.getElementById("OfrecesTarifaPlana_si").checked;
+            ofreces_tarifaplana_no = document.getElementById("OfrecesTarifaPlana_no").checked;
             min_movilmovil = document.getElementById("cuantos_min_men_movilmovil").value;
             min_movilfijo = document.getElementById("cuantos_min_men_movilfijo").value;
 
@@ -506,14 +510,14 @@
             var omv, omv_tarifaplana_si, omv_tarifaplana_no, min_facturas_omv_movilmovil, min_facturas_omv_movilfijo, consumo_datos_men, factu_men_movil, sist_fact_propio_si, sist_fact_propio_no,empresa_lleva_fact;
 
             omv = document.getElementById("cual_omv").value;
-            omv_tarifaplana_si = document.getElementById("ofreces_tarifa_plana_cualomv_si").checked;
-            omv_tarifaplana_no = document.getElementById("ofreces_tarifa_plana_cualomv_no").checked;
+            omv_tarifaplana_si = document.getElementById("OfrecesTarifaPlanaCualomv_si").checked;
+            omv_tarifaplana_no = document.getElementById("OfrecesTarifaPlanaCualomv_no").checked;
             min_facturas_omv_movilmovil = document.getElementById("min_facturas_omv_mens_movilmovil").value;
             min_facturas_omv_movilfijo = document.getElementById("min_facturas_omv_mens_movilfijo").value;
             consumo_datos_men = document.getElementById("consumo_datos_mens").value;
             factu_men_movil = document.getElementById("facturacion_mensual").value;
-            sist_fact_propio_si = document.getElementById("sist_factu_propio_si").checked;
-            sist_fact_propio_no = document.getElementById("sist_factu_propio_no").checked;
+            sist_fact_propio_si = document.getElementById("SistFactuPropio_si").checked;
+            sist_fact_propio_no = document.getElementById("SistFactuPropio_no").checked;
             empresa_lleva_fact = document.getElementById("empresa_lleva_fact").value;
 
             if ((omv == null) || (omv == "")) {
@@ -545,14 +549,14 @@
             var marketing_propio_si, marketing_propio_no, pres_mensual, juridico_propio_si, juridico_propio_no, pres_mensual_invierte, dep_ingenieria_propio_si, dep_ingenieria_propio_no, personas_forman_ingenieria, empresa_gestiona;
             var hogares_pasados,abonados_TV,abonados_internet,abonados_tfija,abonados_tmovil,num_lineas_totales,num_trabajadores,ingresos
 
-            marketing_propio_si = document.getElementById("marketing_propio_si").checked;
-            marketing_propio_no = document.getElementById("marketing_propio_no").checked;
+            marketing_propio_si = document.getElementById("MarketingPropio_si").checked;
+            marketing_propio_no = document.getElementById("MarketingPropio_no").checked;
             pres_mensual = document.getElementById("pres_invirte_mes").value;
-            juridico_propio_si = document.getElementById("departamento_juridico_si").checked;
-            juridico_propio_no = document.getElementById("departamento_juridico_no").checked;
+            juridico_propio_si = document.getElementById("DepartamentoJuridico_si").checked;
+            juridico_propio_no = document.getElementById("DepartamentoJuridico_no").checked;
             pres_mensual_invierte = document.getElementById("pres_mensual_invierte").value;
-            dep_ingenieria_propio_si = document.getElementById("departamento_ingenieria_si").checked;
-            dep_ingenieria_propio_no = document.getElementById("departamento_ingenieria_no").checked;
+            dep_ingenieria_propio_si = document.getElementById("DepartamentoIngenieria_si").checked;
+            dep_ingenieria_propio_no = document.getElementById("DepartamentoIngenieria_no").checked;
 
             personas_forman_ingenieria = document.getElementById("personas_forman_ingenieria").value;
             empresa_gestiona = document.getElementById("empresa_gestiona").value;
@@ -631,11 +635,71 @@
             }
         }
 
+
+
+
+
+        //funcion que le pasamos los chk para que si esta el si seleccionado, el no, no lo este, vamos nos cercioramos de que efectivamente siempre hay 1 marcado.
+        function MisRadioButtons(Valor1, Valor2) {
+            document.getElementById(Valor1 + Valor2).checked = true;
+            document.getElementById(Valor1 + (Valor2 == "si" ? "no" : "si")).checked = false;
+        }
+
+       //funcion para comprobar los inputs text en en el panel de TV
+        function comprobar_tv_text() {
+            var V_Ids = ["horas_produccion", "nombre_proveedor", "ncanales_contratados", "precio_paquete", "equipo_tv2", "encriptar_tv2", "mis_servicios", "ott_provedor", "otros_derechos"];
+            var i, comprobar, comprobar2, total,total2;
+
+            total = '';
+            for (i = 0; i < 9; i++) {
+                comprobar = document.getElementById(V_Ids[i]).value;                
+                if (i == 0) {
+                    total = comprobar;
+                }
+                else {
+                    if ((comprobar == null) || (comprobar == "")) {
+                        comprobar = 0;
+                    }
+                    total = total + "¦" + comprobar;
+                }                
+            }
+            comprobar2 = comprobar_tv_chk();
+            total2 = total + "¦" + comprobar2;
+            alert(total2);
+        }
+
+        //funcion para comprobar los inputs checkboxs en en el panel de TV
+        function comprobar_tv_chk() {
+            var chk_Ids = ["success", "danger", "encriptacionPropia_si", "encriptacionPropia_no", "PlataformaOTTPropia_si", "PlataformaOTTPropia_no", "SGAE", "EGEDA", "AGEDI"];
+            var comprobar2,j;
+            var total = '';
+            for (j = 0; j < 9; j++) {
+                comprobar2 = document.getElementById(chk_Ids[j]).checked;
+                if (j == 0) {
+                    total = comprobar2;
+                }
+                else {
+                    total = total + "¦" + comprobar2;
+                }
+                
+            }
+            return total;
+        }
+
+        //funcion para comprobar los inputs checkboxs en en el panel de Internet.
+        function comprobar_internet_chk() { }
+
+        //funcion para comprobar los inputs texts en en el panel de Internet.
+        function comprobar_internet_text() {} 
+
+        function miprueba() {
+
+        }
     </script>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="comprobar_submenu_otros()">
+    <form name="form_AOTEC" id="form1" runat="server">
+        <div class="container-fluid logo_aotec" onclick="miprueba()">
             <img src="img/logo_aotec.png" />
         </div>
         <div id="tv" class="container-fluid options_menu" runat="server">
@@ -650,8 +714,8 @@
                     <label for="textos">¿Dispone de Canal local?</label>
                 </div>
                 <div class="col-xs-6" style="margin-top:10px;">
-                    <label for="success" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="success" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                    <label for="danger" class="btn btn-danger">No <input type="checkbox" id="danger" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="success" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="success" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="danger" class="btn btn-danger">No <input type="checkbox" id="danger" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
             <div class="row centrado">
@@ -721,8 +785,8 @@
                         <label for="textos">¿Dispone de Sist. de Encriptación Propio?</label>                    
                     </div>
                     <div class="col-xs-6" style="margin-top:10px;">
-                        <label for="success_encriptacion" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="success_encriptacion" class="badgebox" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="danger_encriptacion" class="btn btn-danger">No <input type="checkbox" id="danger_encriptacion" class="badgebox" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="encriptacionPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="encriptacionPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="encriptacionPropia_no" class="btn btn-danger">No <input type="checkbox" id="encriptacionPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div id="submenu_tv3_2" class="row" style="margin-left:0;width:100%;">
@@ -747,8 +811,8 @@
                         <label for="textos">¿Dispone de Plataforma OTT propia?</label>                    
                     </div>
                     <div class="col-xs-6" style="margin-top:10px;">
-                        <label for="success_OTT" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="success_OTT" class="badgebox" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="danger_OTT" class="btn btn-danger">No <input type="checkbox" id="danger_OTT" class="badgebox" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="PlataformaOTTPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="PlataformaOTTPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="PlataformaOTTPropia_no" class="btn btn-danger">No <input type="checkbox" id="PlataformaOTTPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
             </div>
@@ -802,8 +866,8 @@
                         <label for="textos">¿Eres AS Autonomo?</label>
                     </div>
                     <div class="col-xs-6" style="margin-top:10px;">
-                        <label for="Autonomo_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="Autonomo_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="Autonomo_no" class="btn btn-danger">No <input type="checkbox" id="Autonomo_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="Autonomo_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="Autonomo_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="Autonomo_no" class="btn btn-danger">No <input type="checkbox" id="Autonomo_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
@@ -984,8 +1048,8 @@
                     <label for="textos">¿Eres operador con numeración propia?</label>
                 </div>
                 <div class="col-xs-6" style="padding: 2.38%;margin-top: 1%;">
-                    <label for="operador_num_propia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="operador_num_propia_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                    <label for="operador_num_propia_no" class="btn btn-danger">No <input type="checkbox" id="operador_num_propia_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="operadorNumPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="operadorNumPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="operadorNumPropia_no" class="btn btn-danger">No <input type="checkbox" id="operadorNumPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
             <div class="row centrado">
@@ -993,8 +1057,8 @@
                     <label for="textos">¿Tienes tarifa plana?</label>
                 </div>
                 <div class="col-xs-6" style="padding:2.3%;">
-                    <label for="tarifa_plana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="tarifa_plana_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                    <label for="tarifa_plana_no" class="btn btn-danger">No <input type="checkbox" id="tarifa_plana_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="TarifaPplana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="TarifaPplana_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="TarifaPplana_no" class="btn btn-danger">No <input type="checkbox" id="TarifaPplana_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
             <div class="row centrado" style="margin-top:.9%;">
@@ -1002,8 +1066,8 @@
                     <label for="textos">¿Tienes mantenimiento de línea?</label>
                 </div>
                 <div class="col-xs-6" style="padding:2.3%;">
-                    <label for="mantenimiento_linea_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="mantenimiento_linea_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                    <label for="mantenimiento_linea_no" class="btn btn-danger">No <input type="checkbox" id="mantenimiento_linea_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="MantenimientoLinea_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="MantenimientoLinea_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="MantenimientoLinea_no" class="btn btn-danger">No <input type="checkbox" id="MantenimientoLinea_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
             <div class="row centrado">
@@ -1011,8 +1075,8 @@
                     <label for="textos">¿Tienes sistema de facturación propio?</label>
                 </div>
                 <div class="col-xs-6" style="padding: 2.3%;margin-top: 0.5%;">
-                    <label for="facturacion_propia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="facturacion_propia_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                    <label for="facturacion_propia_no" class="btn btn-danger">No <input type="checkbox" id="facturacion_propia_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="FacturacionPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="FacturacionPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="FacturacionPropia_no" class="btn btn-danger">No <input type="checkbox" id="FacturacionPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
             <div id="sistema_factu_propio" class="row centrado" style="display:none;">
@@ -1088,8 +1152,8 @@
                         <label for="textos">¿Ofreces tarifa plana?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: .3%;">                        
-                        <label for="ofreces_tarifa_plana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="ofreces_tarifa_plana_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="ofreces_tarifa_plana_no" class="btn btn-danger">No <input type="checkbox" id="ofreces_tarifa_plana_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="OfrecesTarifaPlana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="OfrecesTarifaPlana_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="OfrecesTarifaPlana_no" class="btn btn-danger">No <input type="checkbox" id="OfrecesTarifaPlana_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
@@ -1126,8 +1190,8 @@
                         <label for="textos">¿Ofrece tarifa plana?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top:.3%;">
-                        <label for="ofreces_tarifa_plana_cualomv_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="ofreces_tarifa_plana_cualomv_si" class="badgebox" onclick="MiFuncion(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="ofreces_tarifa_plana_cualomv_no" class="btn btn-danger">No <input type="checkbox" id="ofreces_tarifa_plana_cualomv_no" class="badgebox" onclick="MiFuncion(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="OfrecesTarifaPlanaCualomv_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="OfrecesTarifaPlanaCualomv_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="OfrecesTarifaPlanaCualomv_no" class="btn btn-danger">No <input type="checkbox" id="OfrecesTarifaPlanaCualomv_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
@@ -1167,8 +1231,8 @@
                         <label for="textos">¿Tiene sistema de facturación propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top:1.5%;">
-                        <label for="sist_factu_propio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="sist_factu_propio_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="sist_factu_propio_no" class="btn btn-danger">No <input type="checkbox" id="sist_factu_propio_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="SistFactuPropio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="SistFactuPropio_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="SistFactuPropio_no" class="btn btn-danger">No <input type="checkbox" id="SistFactuPropio_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>                    
                 </div>
                 <div id="quien_telleva_fact" class="row centrado" style="display:none;">
@@ -1197,8 +1261,8 @@
                         <label for="textos">¿Dispone de departamento de marketing propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
-                        <label for="marketing_propio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="marketing_propio_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="marketing_propio_no" class="btn btn-danger">No <input type="checkbox" id="marketing_propio_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="MarketingPropio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="MarketingPropio_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="MarketingPropio_no" class="btn btn-danger">No <input type="checkbox" id="MarketingPropio_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
@@ -1219,8 +1283,8 @@
                         <label for="textos">¿Dispone de departamento de jurídico propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
-                        <label for="departamento_juridico_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="departamento_juridico_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="departamento_juridico_no" class="btn btn-danger">No <input type="checkbox" id="departamento_juridico_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="DepartamentoJuridico_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="DepartamentoJuridico_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="DepartamentoJuridico_no" class="btn btn-danger">No <input type="checkbox" id="DepartamentoJuridico_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div class="row centrado">
@@ -1241,8 +1305,8 @@
                         <label for="textos">¿Dispone de departamento de ingeniería propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
-                        <label for="departamento_ingenieria_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="departamento_ingenieria_si" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
-                        <label for="departamento_ingenieria_no" class="btn btn-danger">No <input type="checkbox" id="departamento_ingenieria_no" class="badgebox" onclick="dispo_canal()" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="DepartamentoIngenieria_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="DepartamentoIngenieria_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="DepartamentoIngenieria_no" class="btn btn-danger">No <input type="checkbox" id="DepartamentoIngenieria_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
                 <div id="personas_componen_inge" class="row centrado" style="display:none;">
@@ -1341,83 +1405,64 @@
         </div>
     </form>
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
-    <script type="text/javascript">
-
-        function MiFuncion(Valor1, Valor2) {
-            document.getElementById(Valor1 + Valor2).checked = true;
-            document.getElementById(Valor1 + (Valor2 == "si" ? "no" : "si")).checked = false;
-
-            //document.getElementById('ofreces_tarifa_plana_cualomv_no').checked = false;
-                //setTimeout("",2000)
-
-                //window.setTimeout("$('#ofreces_tarifa_plana_cualomv_si').attr('checked', true);$('#ofreces_tarifa_plana_cualomv_no').attr('checked', true)", 2000);
-
-            }
-
-
+    <script type="text/javascript">   
+        
         $(document).ready(function () {
-            $('#tele').click(function () {
-                $('#tv1').toggle("slide");
-
+            $('#tele').click(function () {            
                 if ($("#tele").is(':checked')) {
-                    $("#tele").attr('checked', true);                    
+                    $("#tele").attr('checked', true);   
+                    $('#tv1').slideDown(1500);
                 }
                 else {
                     $("#tele").attr('checked', false);
-                }
-                
-                
+                    $('#tv1').slideUp(1500);
+                }              
             });
-            $('#internet').click(function () {
-                $('#interne1').toggle("slide");
+            $('#internet').click(function () {                
                 if ($("#internet").is(':checked')) {
-                    $("#internet").attr('checked', true);                    
+                    $("#internet").attr('checked', true);    
+                    $('#interne1').toggle("slide");
                 }
                 else {
                     $("#internet").attr('checked', false);
-                }
-                
-                
+                    $('#interne1').slideUp(1500);
+                }               
             });
-            $('#tefija').click(function () {
-                $('#tfija1').toggle("slide");
-
+            $('#tefija').click(function () {                
                 if ($("#tefija").is(':checked')) {
-                    $("#tefija").attr('checked', true);                    
+                    $("#tefija").attr('checked', true);   
+                    $('#tfija1').slideDown(1500);
                 }
                 else {
                     $("#tefija").attr('checked', false);
-                }
-                
-                
+                    $('#tfija1').slideUp(1500);
+                }                
             });
-            $('#temovil').click(function () {
-                $('#tmovil1').toggle("slide");
-
+            $('#temovil').click(function () {                
                 if ($("#temovil").is(':checked')) {
-                    $("#temovil").attr('checked', true);                    
+                    $("#temovil").attr('checked', true);
+                    $('#tmovil1').toggle("slide");
                 }
                 else {
                     $("#temovil").attr('checked', false);
-                }
-                
-                
+                    $('#tmovil1').toggle("slide");
+                }                
             });
             $('#another').click(function () {
-                $('#otros1').toggle("slide"); 
                 if ($("#another").is(':checked')) {
-                    $("#another").attr('checked', true);                                       
+                    $("#another").attr('checked', true);    
+                    $('#otros1').slideDown(1500);
                 }
                 else {
                     $("#another").attr('checked', false);
-                }
-                
-                
+                    $('#otros1').slideUp(1500);
+                }                
             });
 
             //Desplegar los SubMenus.
             $('#desplegar_prove').click(function () {
-                $('#submenu_tv1').toggle("slide");                
+                $('#submenu_tv1').slideDown(1000);
+                
             });
             $('#desplegar_equipa').click(function () {
                 $('#submenu_tv2').toggle("slide");                
@@ -1484,135 +1529,27 @@
             });
 
             //función para radio button de sist. encriptación
-            $("#success_encriptacion").click(function () {
-                if ($("#success_encriptacion").is(':checked')) {
-                    $("#danger_encriptacion").attr('checked', false);
-                    $("#success_encriptacion").attr('checked', true);                    
-                    $('#submenu_tv3_2').toggle("slide");
-                } else {
-                    $("#danger_encriptacion").attr('checked', true);
-                    $("#success_encriptacion").attr('checked', false);
+            $("#encriptacionPropia_si").click(function () {
+                if ($("#encriptacionPropia_si").is(':checked')) {
                     $('#submenu_tv3_2').toggle("slide");
                 }
             });
-            $("#danger_encriptacion").click(function () {
-                if ($("#danger_encriptacion").is(':checked')) {
-                    $("#success_encriptacion").attr('checked', false);
-                    $("#danger_encriptacion").attr('checked', true);    
-                    $('#submenu_tv3_2').toggle("slide");
-                    
-                } else {
-                    $("#success_encriptacion").attr('checked', true);
-                    $("#danger_encriptacion").attr('checked', false);
+            $("#encriptacionPropia_no").click(function () {
+                if ($("#encriptacionPropia_no").is(':checked')) {   
+                    $('#submenu_tv3_2').hide("slide");                    
                 }
             });
 
             //función para radio button de sist. OTT
-            $("#success_OTT").click(function () {
-                if ($("#success_OTT").is(':checked')) {
-                    $("#danger_OTT").attr('checked', false);
-                    $("#success_OTT").attr('checked', true);                    
-                    $('#submenu_tv4_2').toggle("slide");
-
-                } else {
-                    $("#danger_OTT").attr('checked', true);
-                    $("#success_OTT").attr('checked', false);
-                    $('#submenu_tv4_2').toggle("slide");
+            $("#PlataformaOTTPropia_si").click(function () {
+                if ($("#PlataformaOTTPropia_si").is(':checked')) {                    
+                    $('#submenu_tv4_2').show("slide");
                 }
             });
-            $("#danger_OTT").click(function () {
-                if ($("#danger_OTT").is(':checked')) {
-                    $("#success_OTT").attr('checked', false);
-                    $("#danger_OTT").attr('checked', true);    
-                    $('#submenu_tv4_2').toggle("slide");
+            $("#PlataformaOTTPropia_no").click(function () {
+                if ($("#PlataformaOTTPropia_no").is(':checked')) {
+                    $('#submenu_tv4_2').hide("slide");
                     
-                } else {
-                    $("#success_encriptacion").attr('checked', true);
-                    $("#danger_encriptacion").attr('checked', false);
-                }
-            });
-
-            //función para radio button de AS autónomo.
-            $("#Autonomo_si").click(function () {
-                if ($("#Autonomo_si").is(':checked')) {
-                    $("#Autonomo_no").attr('checked', false);
-                    $("#Autonomo_si").attr('checked', true);                    
-                } else {
-                    $("#Autonomo_no").attr('checked', true);
-                    $("#Autonomo_si").attr('checked', false);
-                }
-            });
-            $("#Autonomo_no").click(function () {
-                if ($("#Autonomo_no").is(':checked')) {
-                    $("#Autonomo_si").attr('checked', false);
-                    $("#Autonomo_no").attr('checked', true);    
-                    
-                } else {
-                    $("#Autonomo_si").attr('checked', true);
-                    $("#Autonomo_no").attr('checked', false);
-                }
-            });
-
-            //función para radio button de operador num propia.
-            $("#operador_num_propia_si").click(function () {
-                if ($("#operador_num_propia_si").is(':checked')) {
-                    $("#operador_num_propia_no").attr('checked', false);
-                    $("#operador_num_propia_si").attr('checked', true);                    
-                } else {
-                    $("#operador_num_propia_no").attr('checked', true);
-                    $("#operador_num_propia_si").attr('checked', false);
-                }
-            });
-            $("#operador_num_propia_no").click(function () {
-                if ($("#operador_num_propia_no").is(':checked')) {
-                    $("#operador_num_propia_si").attr('checked', false);
-                    $("#operador_num_propia_no").attr('checked', true);    
-                    
-                } else {
-                    $("#operador_num_propia_si").attr('checked', true);
-                    $("#operador_num_propia_no").attr('checked', false);
-                }
-            });
-
-            //función para radio button de tarifa plana.
-            $("#tarifa_plana_si").click(function () {
-                if ($("#tarifa_plana_si").is(':checked')) {
-                    $("#tarifa_plana_no").attr('checked', false);
-                    $("#tarifa_plana_si").attr('checked', true);                    
-                } else {
-                    $("#tarifa_plana_no").attr('checked', true);
-                    $("#tarifa_plana_si").attr('checked', false);
-                }
-            });
-            $("#tarifa_plana_no").click(function () {
-                if ($("#tarifa_plana_no").is(':checked')) {
-                    $("#tarifa_plana_si").attr('checked', false);
-                    $("#tarifa_plana_no").attr('checked', true);    
-                    
-                } else {
-                    $("#tarifa_plana_si").attr('checked', true);
-                    $("#tarifa_plana_no").attr('checked', false);
-                }
-            });
-
-            //función para radio button de mantenimiento de linea.
-            $("#mantenimiento_linea_si").click(function () {
-                if ($("#mantenimiento_linea_si").is(':checked')) {
-                    $("#mantenimiento_linea_no").attr('checked', false);
-                    $("#mantenimiento_linea_si").attr('checked', true);                    
-                } else {
-                    $("#mantenimiento_linea_no").attr('checked', true);
-                    $("#mantenimiento_linea_si").attr('checked', false);
-                }
-            });
-            $("#mantenimiento_linea_no").click(function () {
-                if ($("#mantenimiento_linea_no").is(':checked')) {
-                    $("#mantenimiento_linea_si").attr('checked', false);
-                    $("#mantenimiento_linea_no").attr('checked', true);    
-                    
-                } else {
-                    $("#mantenimiento_linea_si").attr('checked', true);
-                    $("#mantenimiento_linea_no").attr('checked', false);
                 }
             });
 
@@ -1620,9 +1557,7 @@
             $("#facturacion_propia_si").click(function () {
                 if ($("#facturacion_propia_si").is(':checked')) {
                     $("#facturacion_propia_no").attr('checked', false);
-                    $("#facturacion_propia_si").attr('checked', true);   
-                    
-                    
+                    $("#facturacion_propia_si").attr('checked', true);                           
                 } else {
                     $("#facturacion_propia_no").attr('checked', true);
                     $("#facturacion_propia_si").attr('checked', false);
@@ -1632,176 +1567,40 @@
                 if ($("#facturacion_propia_no").is(':checked')) {
                     $("#facturacion_propia_si").attr('checked', false);
                     $("#facturacion_propia_no").attr('checked', true);                    
-                    $('#sistema_factu_propio').toggle("slide");
-                    
+                    $('#sistema_factu_propio').toggle("slide");                    
                 } else {
                     $("#facturacion_propia_si").attr('checked', true);
                     $("#facturacion_propia_no").attr('checked', false);
-                    $('#sistema_factu_propio').toggle("slide");
-                    
+                    $('#sistema_factu_propio').toggle("slide");                    
                 }
             });
 
-            //función para radio button de tarifa plana omv.
-            $("#ofreces_tarifa_plana_si").click(function () {
-                if ($("#ofreces_tarifa_plana_si").is(':checked')) {
-                    $("#ofreces_tarifa_plana_no").attr('checked', false);
-                    $("#ofreces_tarifa_plana_si").attr('checked', true);   
-                    
-                    
-                } else {
-                    $("#ofreces_tarifa_plana_no").attr('checked', true);
-                    $("#ofreces_tarifa_plana_si").attr('checked', false);
-                }
-            });
-            $("#ofreces_tarifa_plana_no").click(function () {
-                if ($("#ofreces_tarifa_plana_no").is(':checked')) {
-                    $("#ofreces_tarifa_plana_si").attr('checked', false);
-                    $("#ofreces_tarifa_plana_no").attr('checked', true);                    
-                    
-                } else {
-                    $("#ofreces_tarifa_plana_si").attr('checked', true);
-                    $("#ofreces_tarifa_plana_no").attr('checked', false);
-                    
-                }
-            });
-
-            //función para radio button de tarifa plana comercializas omv.
-            
-            /*
-             * $("#ofreces_tarifa_plana_cualomv_si").click(function () {
-
-                
-
-                //$("#ofreces_tarifa_plana_cualomv_no").attr('checked', false);
-                window.setTimeout("$('#ofreces_tarifa_plana_cualomv_si').attr('checked', true);$('#ofreces_tarifa_plana_cualomv_no').attr('checked', true)", 2000); 
-
-                // alert($("#ofreces_tarifa_plana_cualomv_si").is(':checked'));
-                //if ($("#ofreces_tarifa_plana_cualomv_si").is(':checked')) {
-                    
-                   
-                    
-                    
-                //} else {
-                //    $("#ofreces_tarifa_plana_cualomv_no").attr('checked', true);
-                //    $("#ofreces_tarifa_plana_cualomv_si").attr('checked', false);
-
-                //}
-            });
-            */
-            $("#ofreces_tarifa_plana_cualomv_no").click(function () {
-                window.setTimeout("$('#ofreces_tarifa_plana_cualomv_no').attr('checked', true);$('#ofreces_tarifa_plana_cualomv_si').attr('checked', true)", 2000);
-
-
-                //if ($("#ofreces_tarifa_plana_cualomv_no").is(':checked')) {
-                //    $("#ofreces_tarifa_plana_cualomv_si").attr('checked', false);
-                //    $("#ofreces_tarifa_plana_cualomv_no").attr('checked', true);                    
-                    
-                //} else {
-                //    $("#ofreces_tarifa_plana_cualomv_si").attr('checked', true);
-                //    $("#ofreces_tarifa_plana_cualomv_no").attr('checked', false);
-                    
-                //}
-            });
 
             //función para radio button de sist.facturacion propio comercializas omv.
-            $("#sist_factu_propio_si").click(function () {
-                if ($("#sist_factu_propio_si").is(':checked')) {
-                    $("#sist_factu_propio_no").attr('checked', false);
-                    $("#sist_factu_propio_si").attr('checked', true);   
+            $("#SistFactuPropio_si").click(function () {
+                if ($("#SistFactuPropio_si").is(':checked')) {  
                     $('#quien_telleva_fact').hide();                    
-                } else {
-                    $("#sist_factu_propio_no").attr('checked', true);
-                    $("#sist_factu_propio_si").attr('checked', false);
-                    
                 }
             });
-            $("#sist_factu_propio_no").click(function () {
-                if ($("#sist_factu_propio_no").is(':checked')) {
-                    $("#sist_factu_propio_si").attr('checked', false);
-                    $("#sist_factu_propio_no").attr('checked', true); 
-                    $('#quien_telleva_fact').toggle("slide");
-                    
-                } else {
-                    $("#sist_factu_propio_si").attr('checked', true);
-                    $("#sist_factu_propio_no").attr('checked', false);
-                    $('#quien_telleva_fact').hide();
-                    
+            $("#SistFactuPropio_no").click(function () {
+                if ($("#SistFactuPropio_no").is(':checked')) {
+                    $('#quien_telleva_fact').show("slide");                    
                 }
             });
 
-            //función para radio button de marketing
-            $("#marketing_propio_si").click(function () {
-                if ($("#marketing_propio_si").is(':checked')) {
-                    $("#marketing_propio_no").attr('checked', false);
-                    $("#marketing_propio_si").attr('checked', true);   
-                    
-                    
-                } else {
-                    $("#marketing_propio_no").attr('checked', true);
-                    $("#marketing_propio_si").attr('checked', false);
-                }
-            });
-            $("#marketing_propio_no").click(function () {
-                if ($("#marketing_propio_no").is(':checked')) {
-                    $("#marketing_propio_si").attr('checked', false);
-                    $("#marketing_propio_no").attr('checked', true);                    
-                    
-                } else {
-                    $("#marketing_propio_si").attr('checked', true);
-                    $("#marketing_propio_no").attr('checked', false);
-                    
-                }
-            });
-
-            //función para radio button de juridico
-            $("#departamento_juridico_si").click(function () {
-                if ($("#departamento_juridico_si").is(':checked')) {
-                    $("#departamento_juridico_no").attr('checked', false);
-                    $("#departamento_juridico_si").attr('checked', true);   
-                    
-                    
-                } else {
-                    $("#departamento_juridico_no").attr('checked', true);
-                    $("#departamento_juridico_si").attr('checked', false);
-                }
-            });
-            $("#departamento_juridico_no").click(function () {
-                if ($("#departamento_juridico_no").is(':checked')) {
-                    $("#departamento_juridico_si").attr('checked', false);
-                    $("#departamento_juridico_no").attr('checked', true);                    
-                    
-                } else {
-                    $("#departamento_juridico_si").attr('checked', true);
-                    $("#departamento_juridico_no").attr('checked', false);
-                    
-                }
-            });
             //función para radio button de ingenieria
-            $("#departamento_ingenieria_si").click(function () {
-                if ($("#departamento_ingenieria_si").is(':checked')) {
-                    $("#departamento_ingenieria_no").attr('checked', false);
-                    $("#departamento_ingenieria_si").attr('checked', true);                       
-                    $('#personas_componen_inge').toggle("slide");
+            $("#DepartamentoIngenieria_si").click(function () {
+                if ($("#DepartamentoIngenieria_si").is(':checked')) {                      
+                    $('#personas_componen_inge').show("slide");
                     $('#empresa_gestiona_ingenie').hide();
 
-                } else {
-                    $("#departamento_ingenieria_no").attr('checked', true);
-                    $("#departamento_ingenieria_si").attr('checked', false);
-                    $('#personas_componen_inge').hide();
                 }
             });
-            $("#departamento_ingenieria_no").click(function () {
-                if ($("#departamento_ingenieria_no").is(':checked')) {
-                    $("#departamento_ingenieria_si").attr('checked', false);
-                    $("#departamento_ingenieria_no").attr('checked', true); 
+            $("#DepartamentoIngenieria_no").click(function () {
+                if ($("#DepartamentoIngenieria_no").is(':checked')) {
                     $('#personas_componen_inge').hide();
-                    $('#empresa_gestiona_ingenie').toggle("slide");
+                    $('#empresa_gestiona_ingenie').show("slide");
                     
-                } else {
-                    $("#departamento_ingenieria_si").attr('checked', true);
-                    $("#departamento_ingenieria_no").attr('checked', false);
-                    $('#empresa_gestiona_ingenie').hide();
                 }
             });
 
@@ -1851,14 +1650,16 @@
                 chk5 = 0;
             }
 
-            var comprobacion_tv;
-            comprobacion_tv = comprobar_submenu_tv();
-
+            var comprobacion_tv = comprobar_submenu_tv();
+            alert(comprobacion_tv);
             var comprobacion_internet = comprobar_submenu_internet();
+            alert(comprobacion_internet);
             var comprobacion_tel_fija = comprobar_submenu_tfija();
+            alert(comprobacion_tel_fija);
             var comprobacion_tel_movil = comprobar_submenu_tmovil();
+            alert(comprobacion_tel_movil);
             var comprobacion_otros = comprobar_submenu_otros();
-
+            alert(comprobacion_otros);
             Dades = document.getElementById("datos_user").value + "¦" + chk1 + "¦" + chk2 + "¦" + chk3 + "¦" + chk4 + "¦" + chk5 + "¦" + comprobacion_tv + "¦" + comprobacion_internet + "¦" + comprobacion_tel_fija + "¦" + comprobacion_tel_movil + "¦" + comprobacion_otros;
 
             alert(Dades);

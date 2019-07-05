@@ -158,22 +158,22 @@ Partial Public Class Aotec2
     Protected WithEvents encriptar_tv2 As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
-    '''Control success_encriptacion.
+    '''Control encriptacionPropia_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents success_encriptacion As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents encriptacionPropia_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control danger_encriptacion.
+    '''Control encriptacionPropia_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents danger_encriptacion As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents encriptacionPropia_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control mis_servicios.
@@ -185,22 +185,22 @@ Partial Public Class Aotec2
     Protected WithEvents mis_servicios As Global.System.Web.UI.HtmlControls.HtmlSelect
     
     '''<summary>
-    '''Control success_OTT.
+    '''Control PlataformaOTTPropia_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents success_OTT As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents PlataformaOTTPropia_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control danger_OTT.
+    '''Control PlataformaOTTPropia_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents danger_OTT As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents PlataformaOTTPropia_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control ott_provedor.
@@ -509,76 +509,76 @@ Partial Public Class Aotec2
     Protected WithEvents tfija1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control operador_num_propia_si.
+    '''Control operadorNumPropia_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents operador_num_propia_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents operadorNumPropia_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control operador_num_propia_no.
+    '''Control operadorNumPropia_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents operador_num_propia_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents operadorNumPropia_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control tarifa_plana_si.
+    '''Control TarifaPplana_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tarifa_plana_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents TarifaPplana_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control tarifa_plana_no.
+    '''Control TarifaPplana_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tarifa_plana_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents TarifaPplana_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control mantenimiento_linea_si.
+    '''Control MantenimientoLinea_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents mantenimiento_linea_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents MantenimientoLinea_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control mantenimiento_linea_no.
+    '''Control MantenimientoLinea_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents mantenimiento_linea_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents MantenimientoLinea_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control facturacion_propia_si.
+    '''Control FacturacionPropia_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents facturacion_propia_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents FacturacionPropia_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control facturacion_propia_no.
+    '''Control FacturacionPropia_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents facturacion_propia_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents FacturacionPropia_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control facturacion_ajena.
@@ -671,22 +671,22 @@ Partial Public Class Aotec2
     Protected WithEvents cual_operador As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
-    '''Control ofreces_tarifa_plana_si.
+    '''Control OfrecesTarifaPlana_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ofreces_tarifa_plana_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents OfrecesTarifaPlana_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control ofreces_tarifa_plana_no.
+    '''Control OfrecesTarifaPlana_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ofreces_tarifa_plana_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents OfrecesTarifaPlana_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control cuantos_min_men_movilmovil.
@@ -716,22 +716,22 @@ Partial Public Class Aotec2
     Protected WithEvents cual_omv As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
-    '''Control ofreces_tarifa_plana_cualomv_si.
+    '''Control OfrecesTarifaPlanaCualomv_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ofreces_tarifa_plana_cualomv_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents OfrecesTarifaPlanaCualomv_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control ofreces_tarifa_plana_cualomv_no.
+    '''Control OfrecesTarifaPlanaCualomv_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ofreces_tarifa_plana_cualomv_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents OfrecesTarifaPlanaCualomv_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control min_facturas_omv_mens_movilmovil.
@@ -770,22 +770,22 @@ Partial Public Class Aotec2
     Protected WithEvents facturacion_mensual As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
-    '''Control sist_factu_propio_si.
+    '''Control SistFactuPropio_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents sist_factu_propio_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents SistFactuPropio_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control sist_factu_propio_no.
+    '''Control SistFactuPropio_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents sist_factu_propio_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents SistFactuPropio_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control empresa_lleva_fact.
@@ -824,22 +824,22 @@ Partial Public Class Aotec2
     Protected WithEvents otros1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control marketing_propio_si.
+    '''Control MarketingPropio_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents marketing_propio_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents MarketingPropio_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control marketing_propio_no.
+    '''Control MarketingPropio_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents marketing_propio_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents MarketingPropio_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control pres_invirte_mes.
@@ -851,22 +851,22 @@ Partial Public Class Aotec2
     Protected WithEvents pres_invirte_mes As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
-    '''Control departamento_juridico_si.
+    '''Control DepartamentoJuridico_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents departamento_juridico_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents DepartamentoJuridico_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control departamento_juridico_no.
+    '''Control DepartamentoJuridico_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents departamento_juridico_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents DepartamentoJuridico_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control pres_mensual_invierte.
@@ -878,22 +878,22 @@ Partial Public Class Aotec2
     Protected WithEvents pres_mensual_invierte As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
-    '''Control departamento_ingenieria_si.
+    '''Control DepartamentoIngenieria_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents departamento_ingenieria_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents DepartamentoIngenieria_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control departamento_ingenieria_no.
+    '''Control DepartamentoIngenieria_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents departamento_ingenieria_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents DepartamentoIngenieria_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control personas_forman_ingenieria.
