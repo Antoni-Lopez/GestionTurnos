@@ -84,7 +84,7 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents tv1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-    
+
     '''<summary>
     '''Control success.
     '''</summary>
@@ -93,7 +93,7 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents success As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-    
+
     '''<summary>
     '''Control danger.
     '''</summary>

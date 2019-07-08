@@ -97,525 +97,6 @@
 
         }
 
-
-
-
-
-        //Funcion para comprobar todo el sub-menu de TV
-        function comprobar_submenu_tv() {
-            //Guardamos elección radio button de canal local.
-            var chk_canal_si, chk_canal_no, chk_canal;
-            chk_canal_si = document.getElementById("success").checked;
-            chk_canal_no = document.getElementById("danger").checked;
-
-            if (chk_canal_si == false && chk_canal_no == false) {
-                LanzaAviso("Lo sentimos pero en la pregunta de: ¿Dispone de Canal local?, necesita contestar si o no. Gracias!");
-            }
-            else {
-                if (chk_canal_si == true) {
-                    chk_canal = 1; //Variable que pasaremos por AJAX.
-                    var total = chk_canal;
-                }
-                else {
-                    chk_canal = 0; //Variable que pasaremos por AJAX.
-                    var total = chk_canal;
-                }
-            }
-
-            //Guardamos elección radio button de Encriptación.
-            var chk_encripta_si, chk_encripta_no, chk_encripta,empresa;  
-            chk_encripta_si = document.getElementById("encriptacionPropia_si").checked;
-            chk_encripta_no = document.getElementById("encriptacionPropia_no").checked;
-
-            if (chk_encripta_si == false && chk_encripta_no == false) {
-                LanzaAviso("Lo sentimos pero en la pregunta de: ¿Dispone de Sist. de Encriptación Propia?, necesita contestar si o no. Gracias!");
-            }
-            else {
-                if (chk_encripta_si == true) {
-                    chk_encripta = 1;
-                    empresa = document.getElementById("mis_servicios").value;
-                    var total = total + "¦" + chk_encripta + "¦" + empresa;
-                }
-                else {
-                    chk_encripta = 0;
-                    empresa = 0;
-                    var total = total + "¦" + chk_encripta + "¦" + empresa;
-                }
-            }
-
-            //Guardamos elección radio button de OTT.
-            var chk_ott_si, chk_ott_no, chk_OTT, proveedor_ott;
-            chk_ott_si = document.getElementById("PlataformaOTTPropia_si").checked;
-            chk_ott_no = document.getElementById("PlataformaOTTPropia_no").checked;
-
-            if (chk_ott_si == false && chk_ott_no == false) {
-                LanzaAviso("Lo sentimos pero en la pregunta de: ¿Dispone de Plataforma OTT Propia?, necesita contestar si o no. Gracias!");
-            }
-            else {
-                if (chk_ott_si == true) {
-                    chk_OTT = 1;
-                    proveedor_ott = document.getElementById("ott_provedor").value;
-                    var total = total + "¦" + chk_OTT + "¦" + proveedor_ott;
-                }
-                else {
-                    chk_OTT = 0;
-                    proveedor_ott = 0;
-                    var total =  total + "¦" + chk_OTT + "¦" + proveedor_ott;
-                }
-            }          
-
-
-            //Guardamos los demas valores de TV.
-            //primero comprobamos si están vacios y si lo están, le ponemos valor 0.
-            var horas_produccion = document.getElementById("horas_produccion").value;
-
-            if (horas_produccion == null || horas_produccion == "") {
-                horas_produccion = 0;
-                total = total + "¦" + horas_produccion;
-            }
-            else {
-                total = total + "¦" + horas_produccion;
-            }
-
-            //Nombre del Proveedor.
-            var name = document.getElementById("nombre_proveedor").value;
-            if (name == null || name == "") {
-                name = 0;
-                total = total + "¦" + name;
-            }
-            else {
-                total = total + "¦" + name;
-            }
-
-            //Canales Contratados.
-            var canales_contratados = document.getElementById("ncanales_contratados").value;
-            if (canales_contratados == null || canales_contratados == "") {
-                canales_contratados = 0;
-                total = total + "¦" + canales_contratados;
-            }
-            else {
-                total = total + "¦" + canales_contratados;
-            }
-
-            //Precio Paquete.
-            var precio_paquete = document.getElementById("precio_paquete").value;
-            if (precio_paquete == null || precio_paquete == "") {
-                precio_paquete = 0;
-                total = total + "¦" + precio_paquete;
-            }
-            else {
-                total = total + "¦" + precio_paquete;
-            }
-
-            //Equipo/Uso.
-            var equipo_tv2 = document.getElementById("equipo_tv2").value;
-            if (equipo_tv2 == null || equipo_tv2 == "") {
-                equipo_tv2 = 0;
-                total = total + "¦" + equipo_tv2;
-            }
-            else {
-                total = total + "¦" + equipo_tv2;
-            }
-
-            //Empresa encargada encriptar.
-            var encriptar_tv2 = document.getElementById("encriptar_tv2").value;
-            if (encriptar_tv2 == null || encriptar_tv2 == "") {
-                encriptar_tv2 = 0;
-                total = total + "¦" + encriptar_tv2;
-            }
-            else {
-                total = total + "¦" + encriptar_tv2;
-            }
-
-            //Derechos autor
-            var contrato_con = document.getElementById("SGAE").checked;
-            var contrato_con2 = document.getElementById("EGEDA").checked;
-            var contrato_con3 = document.getElementById("AGEDI").checked;
-            var contrato_con4 = document.getElementById("otros_derechos").value;
-
-            if (contrato_con4 == null || contrato_con4 == "") {
-                contrato_con4 = 0;
-            }
-            total = total + "¦" + contrato_con + "¦" + contrato_con2 + "¦" + contrato_con3 + "¦" + contrato_con4;
-
-            return total;
-        }
-
-        //Funcion para comprobar todo el sub-menu de Internet
-        function comprobar_submenu_internet() {
-            //Guardamos como true o false el checkeo del radio button de as autonomo. 
-            var auto_si, auto_no;
-            auto_si = document.getElementById("Autonomo_si").checked;
-            auto_no = document.getElementById("Autonomo_no").checked;
-
-            var total = auto_si + "¦" + auto_no;
-
-            
-
-            //Ahora procedemos a guardar los 2 checkboxs y sus inputs textos.
-            var chk_fibra, chk_radioenlace, cuantos_fibra, cuantos_radioenlace, cuantos1,cuantos2;
-            chk_fibra = document.getElementById("fibra").checked;
-            chk_radioenlace = document.getElementById("radioenlace").checked;
-            cuantos_fibra = document.getElementById("fibra_megas").value;
-            cuantos_radioenlace = document.getElementById("radioenlace_megas").value;
-
-            if ((cuantos_fibra == null) || (cuantos_fibra == "")) {
-                cuantos1 = 0;
-            }
-            else {
-                cuantos1 = cuantos_fibra;
-            }
-            if ((cuantos_radioenlace == null) || (cuantos_radioenlace == "")) {
-                cuantos2 = 0;
-            }
-            else {
-                cuantos2 = cuantos_radioenlace;
-            }
-
-            total = total + "¦" + chk_fibra + "¦" + chk_radioenlace + "¦" + cuantos1 + "¦" + cuantos2;
-
-            
-
-            //Procedemos a guardar los inputs.
-            var megas_caudal, proveedor_circuito, precio_circuito, proveedor_caudal, precio_caudal,pasar,pasar2,pasar3,pasar4,pasar5;
-            megas_caudal = document.getElementById("megas_caudal").value;
-            proveedor_circuito = document.getElementById("proveedor_circuito").value;
-            precio_circuito = document.getElementById("precio_circuito").value;
-            proveedor_caudal = document.getElementById("proveedor_caudal").value;
-            precio_caudal = document.getElementById("precio_caudal").value;
-
-
-
-            if ((megas_caudal == null) || (megas_caudal == "")) {
-                pasar = 0;
-            }
-            else {
-                pasar = megas_caudal;
-            }
-
-            if ((proveedor_circuito == null) || (proveedor_circuito == "")) {
-                pasar2 = 0;
-            }
-            else {
-                pasar2 = proveedor_circuito;
-            }
-
-            if ((precio_circuito == null) || (precio_circuito == "")) {
-                pasar3 = 0;
-            }
-            else {
-                pasar3 = precio_circuito;
-            }
-
-            if ((proveedor_caudal == null) || (proveedor_caudal == "")) {
-                pasar4 = 0;
-            }
-            else {
-                pasar4 = proveedor_caudal;
-            }
-
-            if ((precio_caudal == null) || (precio_caudal == "")) {
-                pasar5 = 0;
-            }
-            else {
-                pasar5 = precio_caudal;
-            }
-
-            total = total + "¦" + pasar + "¦" + pasar2 + "¦" + pasar3 + "¦" + pasar4 + "¦" + pasar5;
-
-            
-
-            //Ahora vamos a capturar la velocidad que ofrece.
-            var subida, subida2, subida3, subida4, subida5, bajada, bajada2, bajada3, bajada4, bajada5;
-
-            //Subida y Bajada 1.
-            if (document.getElementById("subida_ofreces").value == null || document.getElementById("subida_ofreces").value == "") {
-                subida = 0;
-            }
-            else {
-                subida = document.getElementById("subida_ofreces").value;
-            }
-            if (document.getElementById("bajada_ofreces").value == null || document.getElementById("bajada_ofreces").value == "") {
-                bajada = 0;
-            }
-            else {
-                bajada = document.getElementById("bajada_ofreces").value;
-            }
-
-            //Subida y Bajada 2.                
-            if (document.getElementById("subida_ofreces2").value == null || document.getElementById("subida_ofreces2").value == "") {
-                subida2 = 0;
-            }
-            else {
-                subida2 = document.getElementById("subida_ofreces2").value;
-            }                
-            if (document.getElementById("bajada_ofreces2").value == null || document.getElementById("bajada_ofreces2").value == "") {
-                bajada2 = 0;
-            }
-            else {
-                bajada2 = document.getElementById("bajada_ofreces2").value;
-            }
-
-            //Subida y Bajada 3.
-            if (document.getElementById("subida_ofreces3").value == null || document.getElementById("subida_ofreces3").value == "") {
-                subida3 = 0;
-            }
-            else {
-                subida3 = document.getElementById("subida_ofreces3").value;
-            }
-
-            if (document.getElementById("bajada_ofreces3").value == null || document.getElementById("bajada_ofreces3").value == "") {
-                bajada3 = 0;
-            }
-            else {
-                bajada3 = document.getElementById("bajada_ofreces3").value;
-            }
-
-            //Subida y Bajada 4.
-            if (document.getElementById("subida_ofreces4").value == null || document.getElementById("subida_ofreces4").value == "") {
-                subida4 = 0;
-            }
-            else {
-                subida4 = document.getElementById("subida_ofreces4").value;
-            }
-            if (document.getElementById("bajada_ofreces4").value == null || document.getElementById("bajada_ofreces4").value == "") {
-                bajada4 = 0;
-            }
-            else {
-                bajada4 = document.getElementById("bajada_ofreces4").value;
-            }
-
-            //Subida y Bajada 5.
-            if (document.getElementById("subida_ofreces5").value == null || document.getElementById("subida_ofreces5").value == "") {
-                subida5 = 0;
-            }
-            else {
-                subida5 = document.getElementById("subida_ofreces5").value;
-            }
-            if (document.getElementById("bajada_ofreces5").value == null || document.getElementById("bajada_ofreces5").value == "") {
-                bajada5 = 0;
-            }
-            else {
-                bajada5 = document.getElementById("bajada_ofreces5").value;
-            }             
-            
-            var datos_velocidad = subida + "¦" + subida2 + "¦" + subida3 + "¦" + subida4 + "¦" + subida5;
-            var datos_velocidad = datos_velocidad + "¦" + bajada + "¦" + bajada2 + "¦" + bajada3 + "¦" + bajada4 + "¦" + bajada5;
-
-                
-                       
-
-            total = total + "¦" + datos_velocidad; 
-            
-
-            //Ahora capturamos los datos de equipamiento.
-            var equip_us = document.getElementById("equipo_uso").value;
-            var brand = document.getElementById("marca_fabricante").value;
-
-            if ((equip_us == null) || (equip_us == "")) {
-                equip_us = 0;
-            }
-
-            if ((brand == null) || (brand == "")) {
-                brand = 0;
-            }
-
-            total += "¦" + equip_us + "¦" + brand;
-
-            return total;
-            }
-
-        //Funcion para comprobar todo el sub-menu de Internet
-        function comprobar_submenu_tfija() {
-            var operador_num_propia_si, operador_num_propia_no, tarifa_plana_si, tarifa_plana_no, mantenimiento_linea_si, mantenimiento_linea_no, sist_facturacion_propio_si, sist_facturacion_propio_no;
-
-            operador_num_propia_si = document.getElementById("operadorNumPropia_si").checked;
-            operador_num_propia_no = document.getElementById("operadorNumPropia_no").checked;
-            tarifa_plana_si = document.getElementById("TarifaPplana_si").checked;
-            tarifa_plana_no = document.getElementById("TarifaPplana_no").checked;
-            mantenimiento_linea_si = document.getElementById("mantenimiento_linea_si").checked;
-            mantenimiento_linea_no = document.getElementById("mantenimiento_linea_no").checked;
-            sist_facturacion_propio_si = document.getElementById("FacturacionPropia_si").checked;
-            sist_facturacion_propio_no = document.getElementById("FacturacionPropia_no").checked;
-
-            var factu_ajena;
-
-            if (sist_facturacion_propio_no == true) {
-                factu_ajena = document.getElementById("facturacion_ajena").value;
-            }
-            else {
-                factu_ajena = 0;
-            }
-            var total = operador_num_propia_si + "¦" + operador_num_propia_no + "¦" + tarifa_plana_si + "¦" + tarifa_plana_no + "¦" + mantenimiento_linea_si + "¦" + mantenimiento_linea_no + "¦" + sist_facturacion_propio_si + "¦" + sist_facturacion_propio_no + "¦" + factu_ajena;
-
-            var empresa_suministra, min_consumo_men_fijofijo, precio_min_fijofijo, min_consumo_men_fijomovil, precio_min_fijomovil;
-
-            empresa_suministra = document.getElementById("suministra_telefonico").value;
-            min_consumo_men_fijofijo = document.getElementById("min_consumo_mensual").value;
-            precio_min_fijofijo = document.getElementById("fijo_fijo").value;
-            min_consumo_men_fijomovil = document.getElementById("fijo_movil_min").value;
-            precio_min_fijomovil = document.getElementById("precio_fijo_movil").value;
-
-            if ((empresa_suministra == null) || (empresa_suministra == "")) {
-                empresa_suministra = 0;
-            }
-
-            if ((min_consumo_men_fijofijo == null) || (min_consumo_men_fijofijo == "")) {
-                min_consumo_men_fijofijo = 0;
-            }
-
-            if ((precio_min_fijofijo == null) || (precio_min_fijofijo == "")) {
-                precio_min_fijofijo = 0;
-            }
-
-            if ((min_consumo_men_fijomovil == null) || (min_consumo_men_fijomovil == "")) {
-                min_consumo_men_fijomovil = 0;
-            }
-
-            if ((precio_min_fijomovil == null) || (precio_min_fijomovil == "")) {
-                precio_min_fijomovil = 0;
-            }
-
-            total = total + "¦" + empresa_suministra + "¦" + min_consumo_men_fijofijo + "¦" + precio_min_fijofijo + "¦" + min_consumo_men_fijomovil + "¦" + precio_min_fijomovil; 
-
-            return total;
-        }
-
-        //Funcion para comprobar todo el sub-menu de Internet
-        function comprobar_submenu_tmovil() {
-
-            //Si eres OMV
-            var operador, ofreces_tarifaplana_si, ofreces_tarifaplana_no, min_movilmovil, min_movilfijo;
-            operador = document.getElementById("cual_operador").value;
-            ofreces_tarifaplana_si = document.getElementById("OfrecesTarifaPlana_si").checked;
-            ofreces_tarifaplana_no = document.getElementById("OfrecesTarifaPlana_no").checked;
-            min_movilmovil = document.getElementById("cuantos_min_men_movilmovil").value;
-            min_movilfijo = document.getElementById("cuantos_min_men_movilfijo").value;
-
-            if ((operador == null) || (operador == "")) {
-                operador = 0;
-            }
-            if ((min_movilmovil == null) || (min_movilmovil == "")) {
-                min_movilmovil = 0;
-            }
-            if ((min_movilfijo == null) || (min_movilfijo == "")) {
-                min_movilfijo = 0;
-            }
-
-
-
-            var total = operador + "¦" + ofreces_tarifaplana_si + "¦" + ofreces_tarifaplana_no + "¦" + min_movilmovil + "¦" + min_movilfijo;
-
-            //Si comercializas el servicio
-            var omv, omv_tarifaplana_si, omv_tarifaplana_no, min_facturas_omv_movilmovil, min_facturas_omv_movilfijo, consumo_datos_men, factu_men_movil, sist_fact_propio_si, sist_fact_propio_no,empresa_lleva_fact;
-
-            omv = document.getElementById("cual_omv").value;
-            omv_tarifaplana_si = document.getElementById("OfrecesTarifaPlanaCualomv_si").checked;
-            omv_tarifaplana_no = document.getElementById("OfrecesTarifaPlanaCualomv_no").checked;
-            min_facturas_omv_movilmovil = document.getElementById("min_facturas_omv_mens_movilmovil").value;
-            min_facturas_omv_movilfijo = document.getElementById("min_facturas_omv_mens_movilfijo").value;
-            consumo_datos_men = document.getElementById("consumo_datos_mens").value;
-            factu_men_movil = document.getElementById("facturacion_mensual").value;
-            sist_fact_propio_si = document.getElementById("SistFactuPropio_si").checked;
-            sist_fact_propio_no = document.getElementById("SistFactuPropio_no").checked;
-            empresa_lleva_fact = document.getElementById("empresa_lleva_fact").value;
-
-            if ((omv == null) || (omv == "")) {
-                omv = 0;
-            }
-            if ((min_facturas_omv_movilmovil == null) || (min_facturas_omv_movilmovil == "")) {
-                min_facturas_omv_movilmovil = 0;
-            }
-            if ((min_facturas_omv_movilfijo == null) || (min_facturas_omv_movilfijo == "")) {
-                min_facturas_omv_movilfijo = 0;
-            }
-            if ((consumo_datos_men == null) || (consumo_datos_men == "")) {
-                consumo_datos_men = 0;
-            }
-            if ((factu_men_movil == null) || (factu_men_movil == "")) {
-                factu_men_movil = 0;
-            }
-            if ((empresa_lleva_fact == null) || (empresa_lleva_fact == "")) {
-                empresa_lleva_fact = 0;
-            }
-
-            total = total + "¦" + omv + "¦" + omv_tarifaplana_si + "¦" + omv_tarifaplana_no + "¦" + min_facturas_omv_movilmovil + "¦" + min_facturas_omv_movilfijo + "¦" + consumo_datos_men + "¦" + factu_men_movil + "¦" + sist_fact_propio_si + "¦" + sist_fact_propio_no + "¦" + empresa_lleva_fact;
-
-            return total;
-        }
-
-        //Funcion para comprobar todo el sub-menu de Internet
-        function comprobar_submenu_otros() {
-            var marketing_propio_si, marketing_propio_no, pres_mensual, juridico_propio_si, juridico_propio_no, pres_mensual_invierte, dep_ingenieria_propio_si, dep_ingenieria_propio_no, personas_forman_ingenieria, empresa_gestiona;
-            var hogares_pasados,abonados_TV,abonados_internet,abonados_tfija,abonados_tmovil,num_lineas_totales,num_trabajadores,ingresos
-
-            marketing_propio_si = document.getElementById("MarketingPropio_si").checked;
-            marketing_propio_no = document.getElementById("MarketingPropio_no").checked;
-            pres_mensual = document.getElementById("pres_invirte_mes").value;
-            juridico_propio_si = document.getElementById("DepartamentoJuridico_si").checked;
-            juridico_propio_no = document.getElementById("DepartamentoJuridico_no").checked;
-            pres_mensual_invierte = document.getElementById("pres_mensual_invierte").value;
-            dep_ingenieria_propio_si = document.getElementById("DepartamentoIngenieria_si").checked;
-            dep_ingenieria_propio_no = document.getElementById("DepartamentoIngenieria_no").checked;
-
-            personas_forman_ingenieria = document.getElementById("personas_forman_ingenieria").value;
-            empresa_gestiona = document.getElementById("empresa_gestiona").value;
-
-            hogares_pasados = document.getElementById("hogares_pasados").value;
-            abonados_TV = document.getElementById("abonados_TV").value;
-            abonados_internet = document.getElementById("abonados_internet").value;
-            abonados_tfija = document.getElementById("abonados_tfija").value;
-            abonados_tmovil = document.getElementById("abonados_tmovil").value;
-            num_lineas_totales = document.getElementById("num_lineas_totales").value;
-            num_trabajadores = document.getElementById("num_trabajadores").value;
-            ingresos = document.getElementById("ingresos").value;
-
-            if ((pres_mensual == null) || (pres_mensual == "")) {
-                pres_mensual = 0;
-            }
-
-            if ((pres_mensual_invierte == null) || (pres_mensual_invierte == "")) {
-                pres_mensual_invierte = 0;
-            }
-
-            if ((personas_forman_ingenieria == null) || (personas_forman_ingenieria == "")) {
-                personas_forman_ingenieria = 0;
-            }
-
-            if ((empresa_gestiona == null) || (empresa_gestiona == "")) {
-                empresa_gestiona = 0;
-            }
-            if ((hogares_pasados == null) || (hogares_pasados == "")) {
-                hogares_pasados = 0;
-            }
-            if ((abonados_TV == null) || (abonados_TV == "")) {
-                abonados_TV = 0;
-            }
-            if ((abonados_internet == null) || (abonados_internet == "")) {
-                abonados_internet = 0;
-            }
-            if ((abonados_tfija == null) || (abonados_tfija == "")) {
-                abonados_tfija = 0;
-            }
-            if ((abonados_tmovil == null) || (abonados_tmovil == "")) {
-                abonados_tmovil = 0;
-            }
-            if ((num_lineas_totales == null) || (num_lineas_totales == "")) {
-                num_lineas_totales = 0;
-            }
-            if ((num_trabajadores == null) || (num_trabajadores == "")) {
-                num_trabajadores = 0;
-            }
-            if ((ingresos == null) || (ingresos == "")) {
-                ingresos = 0;
-            }
-
-            var total = marketing_propio_si + "¦" + marketing_propio_no + "¦" + pres_mensual + "¦" + juridico_propio_si + "¦" + juridico_propio_no + "¦" + pres_mensual_invierte + "¦" + dep_ingenieria_propio_si + "¦" + dep_ingenieria_propio_no + "¦" + personas_forman_ingenieria + "¦" + empresa_gestiona;
-            total = total + "¦" + hogares_pasados + "¦" + abonados_TV + "¦" + abonados_internet + "¦" + abonados_tfija + "¦" + abonados_tmovil + "¦" + num_lineas_totales + "¦" + num_trabajadores + "¦" + ingresos;
-
-            return total;
-        }
-
         function activar(x) {
             switch (x) {
                 case 1:                    
@@ -635,24 +116,36 @@
             }
         }
 
-
-
-
-
-        //funcion que le pasamos los chk para que si esta el si seleccionado, el no, no lo este, vamos nos cercioramos de que efectivamente siempre hay 1 marcado.
+        //funcion que le pasamos los chk para que si esta el si seleccionado, el no, no lo este, vamos nos aseguramos de que efectivamente siempre hay 1 marcado.
         function MisRadioButtons(Valor1, Valor2) {
             document.getElementById(Valor1 + Valor2).checked = true;
             document.getElementById(Valor1 + (Valor2 == "si" ? "no" : "si")).checked = false;
         }
 
-       //funcion para comprobar los inputs text en en el panel de TV
-        function comprobar_tv_text() {
-            var V_Ids = ["horas_produccion", "nombre_proveedor", "ncanales_contratados", "precio_paquete", "equipo_tv2", "encriptar_tv2", "mis_servicios", "ott_provedor", "otros_derechos"];
+        function todos_chk() {
+            var chk = ["success", "danger", "encriptacionPropia_si", "encriptacionPropia_no", "PlataformaOTTPropia_si", "PlataformaOTTPropia_no", "SGAE", "EGEDA", "AGEDI", "Autonomo_si", "Autonomo_no", "fibra", "radioenlace", "operadorNumPropia_si", "operadorNumPropia_no", "TarifaPplana_si", "TarifaPplana_no", "MantenimientoLinea_si", "MantenimientoLinea_no", "FacturacionPropia_si", "FacturacionPropia_no", "OfrecesTarifaPlana_si", "OfrecesTarifaPlana_no", "OfrecesTarifaPlanaCualomv_si", "OfrecesTarifaPlanaCualomv_no", "SistFactuPropio_si", "SistFactuPropio_no", "MarketingPropio_si", "MarketingPropio_no", "DepartamentoJuridico_si", "DepartamentoJuridico_no", "DepartamentoIngenieria_si", "DepartamentoIngenieria_no"];
+            var i, comprobar, total;
+            total = '';
+            
+            for (i = 0; i < 33; i++) {
+                comprobar = document.getElementById(chk[i]).checked;
+                if (i == 0) {
+                    total = comprobar;
+                }
+                else {
+                    total = total + "¦" + comprobar;
+                }
+            }
+            return total;
+        }
+
+        function todos_inputs() {
+            var inputs = ["horas_produccion", "nombre_proveedor", "ncanales_contratados", "precio_paquete", "equipo_tv2", "encriptar_tv2", "mis_servicios", "ott_provedor", "otros_derechos", "fibra_megas", "radioenlace_megas", "megas_caudal", "proveedor_circuito", "precio_circuito", "proveedor_caudal", "precio_caudal", "subida_ofreces", "bajada_ofreces", "subida_ofreces2", "bajada_ofreces2", "subida_ofreces3", "bajada_ofreces3", "subida_ofreces4", "bajada_ofreces4", "subida_ofreces5", "bajada_ofreces5", "equipo_uso", "marca_fabricante", "suministra_telefonico", "min_consumo_mensual", "fijo_fijo", "fijo_movil_min", "precio_fijo_movil", "cual_operador", "cuantos_min_men_movilmovil", "cuantos_min_men_movilfijo", "cual_omv", "min_facturas_omv_mens_movilmovil", "min_facturas_omv_mens_movilfijo", "consumo_datos_mens", "facturacion_mensual", "empresa_lleva_fact", "pres_invirte_mes", "pres_mensual_invierte", "personas_forman_ingenieria", "empresa_gestiona", "hogares_pasados", "abonados_TV", "abonados_internet", "abonados_tfija", "abonados_tmovil", "num_lineas_totales", "num_trabajadores", "ingresos"];
             var i, comprobar, comprobar2, total,total2;
 
             total = '';
-            for (i = 0; i < 9; i++) {
-                comprobar = document.getElementById(V_Ids[i]).value;                
+            for (i = 0; i < 53; i++) {
+                comprobar = document.getElementById(inputs[i]).value;                
                 if (i == 0) {
                     total = comprobar;
                 }
@@ -663,43 +156,15 @@
                     total = total + "¦" + comprobar;
                 }                
             }
-            comprobar2 = comprobar_tv_chk();
+            comprobar2 = todos_chk();
             total2 = total + "¦" + comprobar2;
-            alert(total2);
-        }
-
-        //funcion para comprobar los inputs checkboxs en en el panel de TV
-        function comprobar_tv_chk() {
-            var chk_Ids = ["success", "danger", "encriptacionPropia_si", "encriptacionPropia_no", "PlataformaOTTPropia_si", "PlataformaOTTPropia_no", "SGAE", "EGEDA", "AGEDI"];
-            var comprobar2,j;
-            var total = '';
-            for (j = 0; j < 9; j++) {
-                comprobar2 = document.getElementById(chk_Ids[j]).checked;
-                if (j == 0) {
-                    total = comprobar2;
-                }
-                else {
-                    total = total + "¦" + comprobar2;
-                }
-                
-            }
-            return total;
-        }
-
-        //funcion para comprobar los inputs checkboxs en en el panel de Internet.
-        function comprobar_internet_chk() { }
-
-        //funcion para comprobar los inputs texts en en el panel de Internet.
-        function comprobar_internet_text() {} 
-
-        function miprueba() {
-
+            return total2;
         }
     </script>
 </head>
 <body>
     <form name="form_AOTEC" id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="miprueba()">
+        <div class="container-fluid logo_aotec" onclick="todos_inputs()">
             <img src="img/logo_aotec.png" />
         </div>
         <div id="tv" class="container-fluid options_menu" runat="server">
@@ -1608,64 +1073,35 @@
 
         function Registre() {
             var Dades; 
-            var chk1, chk2, chk3, chk4, chk5;
-            chk1 = document.getElementById("tele").checked;
-            chk2 = document.getElementById("internet").checked;
-            chk3 = document.getElementById("tefija").checked;
-            chk4 = document.getElementById("temovil").checked;
-            chk5 = document.getElementById("another").checked;
+            var chk = ["tele", "internet", "tefija", "temovil", "another"];
+            var i, comprobar;
+           
+            Dades = document.getElementById("datos_user").value;
+            
 
-            if (chk1 == true) {
-                chk1 = 1;
-            }
-            else {
-                chk1 = 0;
-            }
+            for (i = 0; i < 5; i++){
+                comprobar = document.getElementById(chk[i]).checked;
 
-            if (chk2 == true) {
-                chk2 = 1;
-            }
-            else {
-                chk2 = 0;
+                if (comprobar == true) {
+                    chk[i] = 1;
+                    Dades = Dades + "¦" + chk[i];
+                }
+                else {
+                    chk[i] = 0;
+                    Dades = Dades + "¦" + chk[i];
+                }
             }
 
-            if (chk3 == true) {
-                chk3 = 1;
-            }
-            else {
-                chk3 = 0;
-            }
+            var total = todos_inputs();
 
-            if (chk4 == true) {
-                chk4 = 1;
-            }
-            else {
-                chk4 = 0;
-            }
 
-            if (chk5 == true) {
-                chk5 = 1;
-            }
-            else {
-                chk5 = 0;
-            }
-
-            var comprobacion_tv = comprobar_submenu_tv();
-            alert(comprobacion_tv);
-            var comprobacion_internet = comprobar_submenu_internet();
-            alert(comprobacion_internet);
-            var comprobacion_tel_fija = comprobar_submenu_tfija();
-            alert(comprobacion_tel_fija);
-            var comprobacion_tel_movil = comprobar_submenu_tmovil();
-            alert(comprobacion_tel_movil);
-            var comprobacion_otros = comprobar_submenu_otros();
-            alert(comprobacion_otros);
-            Dades = document.getElementById("datos_user").value + "¦" + chk1 + "¦" + chk2 + "¦" + chk3 + "¦" + chk4 + "¦" + chk5 + "¦" + comprobacion_tv + "¦" + comprobacion_internet + "¦" + comprobacion_tel_fija + "¦" + comprobacion_tel_movil + "¦" + comprobacion_otros;
+            Dades = Dades + "¦" + total;
 
             alert(Dades);
             setTimeout("InformacioAJAX(9,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
         }          
 
+        //1800¦Orange¦15¦0.10¦100¦Orange¦xtra¦0¦Towerplane¦600¦0¦250¦Orange¦0.10¦Orange¦0.5¦600¦600¦300¦300¦100¦100¦50¦50¦0¦0¦160¦Dell¦Orange¦200¦0.03¦500¦0.08¦Orange¦300¦100¦Orange¦12000¦12000¦250¦150¦Vomistar¦3200¦1500¦1500¦3000¦1500¦500¦3000¦Orange¦25¦2100¦150000¦false¦true¦false¦true¦false¦true¦true¦true¦false¦true¦false¦true¦false¦false¦true¦false¦true¦true¦false¦true¦false¦true¦false¦false¦true¦false¦true¦false¦true¦false¦true¦true¦false
 
         function Registre_Tornada(Dades) {
             if (Dades.substr(0, 2) == "OK") {
