@@ -87,26 +87,68 @@
         Dim DS As DataSet
         Dim VectorSQL(0) As String
         DS = New DataSet
-        Dim guardado As String, long_guardado As String, separar_guardado() As String, comprobar As String, mivar As String
+        Dim guardado As String, long_guardado As String, separar_guardado() As String, comprobar As String, mivar As String, sep_mivar() As String, j As Integer, z As Integer
+        Dim Ano As String, mes As String, day As String, Hora As String, min As String, seg As String, AnoBD As String, mesBD As String, dayBD As String, HoraBd As String
 
-        VectorSQL(0) = "SELECT SectorInteres FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "' AND idFira='" & idferia & "'"
+        VectorSQL(0) = "SELECT SectorInteres as Datos, Data as FechaLimite FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "' AND idFira='" & idferia & "'"
         If Not clsBD.BaseDades(1, VectorSQL, DS) Then
             ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
         Else
             If DS.Tables(0).Rows.Count > 0 Then
                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                    guardado = DS.Tables(0).Rows(i).Item("SectorInteres")
+                    guardado = DS.Tables(0).Rows(i).Item("Datos")
+                    mivar = DS.Tables(0).Rows(i).Item("FechaLimite")
                 Next
             Else
                 'No tenemos ningún registro en la BD.
-
             End If
 
             separar_guardado = guardado.Split("¦")
+            sep_mivar = mivar.Split("¦")
 
             long_guardado = separar_guardado.Length
             Dim comprobar2 As String
             comprobar2 = 0
+
+            AnoBD = sep_mivar(0)
+            mesBD = sep_mivar(1)
+            dayBD = sep_mivar(2)
+            HoraBd = sep_mivar(3)
+
+
+            Ano = DateTime.Now.ToString("yyyy")
+            mes = DateTime.Now.ToString("MM")
+            day = DateTime.Now.ToString("dd")
+
+            Dim fecha As String, sep_fecha() As String, mivar2 As String, VArray2() As String
+            Hora = DateTime.Now.ToString("HH")
+
+            If Ano >= AnoBD Then
+                If mes >= mesBD Then
+                    If day >= dayBD Then
+                        If Hora >= HoraBd Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "FechasIguales", "LanzaMensaje();", True)
+                            cuadro_boton.Attributes.Add("style", "display:none;")
+                        End If
+                    End If
+                End If
+            End If
+            '+ "¦" + seg
+
+
+            '2019¦07¦12¦12¦00¦00
+
+            'sep_fecha = fecha.Split("¦")
+            'If fecha < mivar Then
+            '    ClientScript.RegisterStartupScript(Page.GetType(), "FechasIguales", "LanzaMensaje(" + 12 + ");", True)
+            '    cuadro_boton.Attributes.Add("style", "display:none;")
+
+            'End If
+
+
+
+
+
 
             'Inputs de TV.
             '1800¦Orange¦15¦0.10¦100¦Orange¦xtra¦0¦Towerplane
@@ -411,13 +453,27 @@
                     Case 55
                         danger.Checked = separar_guardado(p)
                     Case 56
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba55", "activar(5);", True)
+                        End If
                         encriptacionPropia_si.Checked = separar_guardado(p)
                     Case 57
                         encriptacionPropia_no.Checked = separar_guardado(p)
                     Case 58
-                        PlataformaOTTPropia_si.Checked = separar_guardado(p)
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba66", "activar(6);", True)
+                            PlataformaOTTPropia_si.Checked = True
+                        End If
+
                     Case 59
-                        PlataformaOTTPropia_no.Checked = separar_guardado(p)
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba77", "activar(7);", True)
+                            PlataformaOTTPropia_no.Checked = True
+                        End If
+
                     Case 60
                         SGAE.Checked = separar_guardado(p)
                     Case 61
@@ -441,13 +497,17 @@
                     Case 70
                         TarifaPplana_no.Checked = separar_guardado(p)
                     Case 71
-                        FacturacionPropia_si.Checked = separar_guardado(p)
-                    Case 72
-                        FacturacionPropia_no.Checked = separar_guardado(p)
-                    Case 73
                         MantenimientoLinea_si.Checked = separar_guardado(p)
-                    Case 74
+                        'FacturacionPropia_si.Checked = separar_guardado(p)
+                    Case 72
                         MantenimientoLinea_no.Checked = separar_guardado(p)
+                        'FacturacionPropia_no.Checked = separar_guardado(p)
+                    Case 73
+                        FacturacionPropia_si.Checked = separar_guardado(p)
+                        'MantenimientoLinea_si.Checked = separar_guardado(p)
+                    Case 74
+                        FacturacionPropia_no.Checked = separar_guardado(p)
+                        'MantenimientoLinea_no.Checked = separar_guardado(p)
                     Case 75
                         OfrecesTarifaPlana_si.Checked = separar_guardado(p)
                     Case 76
@@ -474,9 +534,6 @@
                     Case 86
                         DepartamentoIngenieria_no.Checked = separar_guardado(p)
                         ClientScript.RegisterStartupScript(Page.GetType(), "miprueba44", "activar(4);", True)
-                    Case 87
-                    Case 88
-
                 End Select
             Next
 

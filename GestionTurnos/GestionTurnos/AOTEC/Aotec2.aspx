@@ -59,9 +59,13 @@
         .boton_save{display: block; margin-left:auto;margin-right: auto;max-width: 800px;width: 100%;margin-top:.5%; color: Black;}
         .guardar{display: block; margin-left:auto;margin-right: auto;width:35%;width: 30%;font-size: 20px;margin-bottom:5%;}
 
-
+        /* Label for cuadros desplegables*/
+        label[for=tele]{margin-top:4% !important;}
         /* Div Oculto*/
         #datos_user,#submenu_tv1,#submenu_tv2,#submenu_tv3,#submenu_tv4,#submenu_tv5,#submenu_tv3_2,#submenu_tv4_2,#submenu_interne1,#submenu_interne2,#datos_ocultos,#tv1{display:none;}
+
+        /* Ventana Modal LanzaAviso*/
+        .modal-content{margin-top: 50%;}
 
         .azul{border:blue solid 2px;}
         .verde{border:green solid 2px;}
@@ -113,6 +117,15 @@
                 case 4: //abrir que empresa lo gestiona.
                     $('#empresa_gestiona_ingenie').toggle("slide");
                     break;
+                case 5: //desplegar empresa encargada de la encriptación.
+                    $('#submenu_tv3_2').toggle("slide");
+                    break;
+                case 6: //desplegar proveedor de OTT.
+                    $('#submenu_tv4_2').toggle("slide");
+                    break; 
+                case 7: //esconder proveedor de OTT.
+                    $('#submenu_tv4_2').hide("slide");
+                    break;
             }
         }
 
@@ -144,7 +157,7 @@
             var i, comprobar, comprobar2, total,total2;
 
             total = '';
-            for (i = 0; i < 53; i++) {
+            for (i = 0; i < 54; i++) {
                 comprobar = document.getElementById(inputs[i]).value;                
                 if (i == 0) {
                     total = comprobar;
@@ -160,11 +173,15 @@
             total2 = total + "¦" + comprobar2;
             return total2;
         }
+
+        function LanzaMensaje(x) {
+            LanzaAviso('<h4>Lo sentimos pero el ultimo día para rellenar el formulario erá el día: 9 de Julio a las 12 del mediodia. El formulario está ya cerrado!! Gracias!</h4>');
+        }
     </script>
 </head>
 <body>
     <form name="form_AOTEC" id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="todos_inputs()">
+        <div class="container-fluid logo_aotec" onclick="LanzaMensaje()">
             <img src="img/logo_aotec.png" />
         </div>
         <div id="tv" class="container-fluid options_menu" runat="server">
@@ -192,9 +209,17 @@
                 </div>
             </div>
             <div id="desplegar_prove" class="row centrado desplegables">
-                <label for="textos_desple">Proveedores de Canales</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>"
+                <label for="textos_desple">Proveedores de Canales</label> <span style="float:right; margin-right:10%;margin-top: 3.5%;color:#fff;"><i class="fas fa-arrow-alt-circle-down"></i></span>
             </div>
             <div id="submenu_tv1" class="row centrado">
+                <div class="row centrado">
+                    <div class="col-xs-12 verde" style="padding:10px">
+                        <select id="soflow" class="mi_selector" onchange="elegir_accion(2)" runat="server" name="selector_medicos">
+                            <option value="-1" id="anadir_nuevo">Nuevo Proveedor</option>
+                            <option selected value="0">Listado de Proveedores</option>
+                        </select>
+                    </div>  
+                </div>
                 <div class="row centrado">
                     <div class="col-xs-6">
                         <label for="textos">Nombre</label>                    
@@ -281,7 +306,7 @@
                     </div>
                 </div>
             </div>
-            <div id="submenu_tv4_2" class="row" style="margin-left:0;width:100%;">
+            <div id="submenu_tv4_2" class="row" style="margin-left:0;width:100%;display:none;">
                     <div class="col-xs-6 texto_izq">
                         <label for="textos">Proveedor </label>
                     </div>
@@ -861,7 +886,7 @@
                 </div>
             </div> 
         </div>
-        <div class="row boton_save">
+        <div class="row boton_save" id="cuadro_boton" runat="server">
             <button id="guardar_data" type="button" class="btn btn-warning guardar" onclick="loader_gif();">Guardar Datos</button>
         </div>
         <div class="row">
@@ -926,8 +951,7 @@
 
             //Desplegar los SubMenus.
             $('#desplegar_prove').click(function () {
-                $('#submenu_tv1').slideDown(1000);
-                
+                $('#submenu_tv1').toggle("slide");
             });
             $('#desplegar_equipa').click(function () {
                 $('#submenu_tv2').toggle("slide");                
@@ -937,14 +961,15 @@
             });
             $('#desplegar_ott').click(function () {
                 $('#submenu_tv4').toggle("slide"); 
-                $('#submenu_tv4_2').toggle("slide"); 
+                //$('#submenu_tv4_2').toggle("slide"); 
                 
             });
             $('#desplegar_autor').click(function () {
                 $('#submenu_tv5').toggle("slide");                
             });
             $('#desplegar_caudal').click(function () {
-                $('#submenu_interne1').toggle("slide");                
+                $('#submenu_interne1').fadeToggle(2000);                
+                //$('#submenu_interne1').toggle("slide");                
             });
             $('#desplegar_equipamiento').click(function () {
                 $('#submenu_interne2').toggle("slide");                
@@ -1106,7 +1131,7 @@
         function Registre_Tornada(Dades) {
             if (Dades.substr(0, 2) == "OK") {
                 if (Dades.substr(2, 1) == "9") {
-                    LanzaAviso("Hemos actualizado correctacmente sus preferencias en nuestra Base de Datos. Recuerde que tiene hasta el día 25 para terminar el cuestionario. Gracias!");
+                    LanzaAviso("<h4>Hemos actualizado <span style='color:#1ED760;'>correctacmente</span> sus preferencias en nuestra Base de Datos. Gracias!</h4>");
                     guardar_data.innerHTML = "";
                     var texto = "<h4 style='text-align:center;'>Datos Guardados con exito!<br/>";
                     setTimeout($('#guardar_data').html(texto), 1000);

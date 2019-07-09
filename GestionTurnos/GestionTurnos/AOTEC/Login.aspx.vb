@@ -37,7 +37,7 @@
                 Dim mensaje As String
 
                 input_oculto.Text = nombre
-                mensaje = ""
+
 
                 Server.Transfer("/AOTEC/Aotec2.aspx?mail=" & email_BD)
                 'Response.Redirect("/AOTEC/Aotec.aspx?mail=" & email_BD & "")

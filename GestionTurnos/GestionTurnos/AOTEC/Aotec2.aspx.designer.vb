@@ -84,7 +84,7 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents tv1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
+    
     '''<summary>
     '''Control success.
     '''</summary>
@@ -93,7 +93,7 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents success As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
-
+    
     '''<summary>
     '''Control danger.
     '''</summary>
@@ -111,6 +111,15 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents horas_produccion As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control soflow.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents soflow As Global.System.Web.UI.HtmlControls.HtmlSelect
     
     '''<summary>
     '''Control nombre_proveedor.
@@ -984,6 +993,15 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ingresos As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control cuadro_boton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cuadro_boton As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''Control datos_user.
