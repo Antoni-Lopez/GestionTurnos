@@ -449,14 +449,14 @@
 
                         'False¦True¦True¦False¦True¦False¦True¦False¦True¦True¦False¦True¦False¦True¦False¦True¦True¦False¦True¦False¦True¦False¦True¦False
                     Case 54
-                        success.Checked = separar_guardado(p)
+                        canalLocal_si.Checked = separar_guardado(p)
                     Case 55
-                        danger.Checked = separar_guardado(p)
+                        canalLocal_no.Checked = separar_guardado(p)
                     Case 56
-                        comprobar = separar_guardado(p)
-                        If comprobar = True Then
-                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba55", "activar(5);", True)
-                        End If
+                        'comprobar = separar_guardado(p)
+                        'If comprobar = True Then
+                        '    ClientScript.RegisterStartupScript(Page.GetType(), "miprueba55", "activar(5);", True)
+                        'End If
                         encriptacionPropia_si.Checked = separar_guardado(p)
                     Case 57
                         encriptacionPropia_no.Checked = separar_guardado(p)
@@ -498,16 +498,12 @@
                         TarifaPplana_no.Checked = separar_guardado(p)
                     Case 71
                         MantenimientoLinea_si.Checked = separar_guardado(p)
-                        'FacturacionPropia_si.Checked = separar_guardado(p)
                     Case 72
                         MantenimientoLinea_no.Checked = separar_guardado(p)
-                        'FacturacionPropia_no.Checked = separar_guardado(p)
                     Case 73
                         FacturacionPropia_si.Checked = separar_guardado(p)
-                        'MantenimientoLinea_si.Checked = separar_guardado(p)
                     Case 74
                         FacturacionPropia_no.Checked = separar_guardado(p)
-                        'MantenimientoLinea_no.Checked = separar_guardado(p)
                     Case 75
                         OfrecesTarifaPlana_si.Checked = separar_guardado(p)
                     Case 76
@@ -530,10 +526,17 @@
                         DepartamentoJuridico_no.Checked = separar_guardado(p)
                     Case 85
                         DepartamentoIngenieria_si.Checked = separar_guardado(p)
-                        ClientScript.RegisterStartupScript(Page.GetType(), "miprueba33", "activar(3);", True)
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba33", "activar(3);", True)
+                        End If
                     Case 86
                         DepartamentoIngenieria_no.Checked = separar_guardado(p)
-                        ClientScript.RegisterStartupScript(Page.GetType(), "miprueba44", "activar(4);", True)
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba44", "activar(4);", True)
+                        End If
+
                 End Select
             Next
 

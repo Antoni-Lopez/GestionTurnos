@@ -86,22 +86,22 @@ Partial Public Class Aotec2
     Protected WithEvents tv1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control success.
+    '''Control canalLocal_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents success As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents canalLocal_si As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
-    '''Control danger.
+    '''Control canalLocal_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents danger As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
+    Protected WithEvents canalLocal_no As Global.System.Web.UI.HtmlControls.HtmlInputCheckBox
     
     '''<summary>
     '''Control horas_produccion.
@@ -1020,4 +1020,13 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents datos_ocultos As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control datos_ocultos2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents datos_ocultos2 As Global.System.Web.UI.WebControls.TextBox
 End Class

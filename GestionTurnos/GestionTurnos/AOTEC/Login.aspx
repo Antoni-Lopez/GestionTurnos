@@ -19,7 +19,7 @@
     
     <style>
         /* Cuerpo del Website */
-        body{margin:auto;padding:0;box-sizing:border-box;background-image: url("img/Aotec.jpg");background-size: cover;}
+        body{margin:auto;padding:0;box-sizing:border-box;background: url("img/Aotec.jpg") no-repeat center center fixed ;}
 
         /* Logotipo de la Organización */
         .logo_img{border: groove solid 1.2px;max-width:723px;width:100%;margin:auto;margin-top:2.5%;-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);}
@@ -51,6 +51,24 @@
         /* Media Querys */
         @media (max-width: 1920px) {          
           #div_principal{height:35vh !important;}
+        }    
+        @media (max-width: 1280px) {          
+          #div_principal{height:28vh !important;margin-top:10%;}
+          .form-control-sm{height:3vh;font-size:27px;}
+          label[for=staticEmail],label[for=staticPass]{font-size:25px !important;}
+          #miButton{margin-top:3%!important;}
+        }
+        @media (max-width: 769px) {          
+          #div_principal{height:25vh !important;margin-top:10%;}
+        }
+        /*@media (max-width: 1024px) {          
+          #div_principal{height:27vh !important;margin-top:10%;}
+          /*.form-control-sm{height:3vh;font-size:27px;}
+          label[for=staticEmail],label[for=staticPass]{font-size:25px !important;}
+          #miButton{margin-top:3%!important;}}*/
+        
+        @media (max-width: 769px) {          
+          #div_principal{height:25vh !important;margin-top:10%;}
         }
 
         .verde{border:2px solid green;}

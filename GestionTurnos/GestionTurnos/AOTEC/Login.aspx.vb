@@ -19,7 +19,8 @@
             email = input_mail.Text
             Pass = input_pass.Text
 
-            VectorSQL(0) = "SELECT Email,Password,Nom FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "' AND Password='" & Pass & "'"
+            VectorSQL(0) = "SELECT * FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "'"
+            'VectorSQL(0) = "SELECT Email,Password,Nom FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "' AND Password='" & Pass & "'"
 
             If Not clsBD.BaseDades(1, VectorSQL, DS) Then
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
@@ -32,6 +33,7 @@
                     Next
                 End If
             End If
+
 
             If Pass = Pass_BD And email = email_BD Then
                 Dim mensaje As String
