@@ -1006,10 +1006,7 @@
                     LanzaAviso("Hemos ingresado su elección correctacmente en nuestra Base de Datos. Gracias!");
                 }
                 if (Dades.substr(2, 2) == "10") {
-                    //LanzaAviso("<h4>Hemos actualizado <span style='color:#1ED760;'>correctacmente</span> sus preferencias en nuestra Base de Datos. Gracias!</h4>");
-                    //alert(Dades);
                     var separar = Dades.split("¦");
-                    //alert(separar);
                     var nombre, ncanales, precio;
 
                     nombre = separar[1];
