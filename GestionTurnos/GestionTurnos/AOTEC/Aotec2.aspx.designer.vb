@@ -1020,13 +1020,4 @@ Partial Public Class Aotec2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents datos_ocultos As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''Control datos_ocultos2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents datos_ocultos2 As Global.System.Web.UI.WebControls.TextBox
 End Class

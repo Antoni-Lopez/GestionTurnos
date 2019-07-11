@@ -9,12 +9,13 @@
             'Declaramos el combotext para que nos mande a una accion con javascript.
             'mis_servicios.Attributes.Add("onchange", "ShowSelected();")
 
+
             Dim mail As String, idferia As Integer, opciones As String
             'Recogemos el mail del usuario que esta oculto.
             mail = Request.QueryString("mail")
             datos_user.Text = mail
             idferia = "201"
-
+            soflow.Attributes.Add("onchange", "mostrar_rellenar_select();")
 
             Dim clsBD As New ClaseAccesoBD
             Dim DS As DataSet
@@ -133,25 +134,7 @@
                     End If
                 End If
             End If
-            '+ "¦" + seg
 
-
-            '2019¦07¦12¦12¦00¦00
-
-            'sep_fecha = fecha.Split("¦")
-            'If fecha < mivar Then
-            '    ClientScript.RegisterStartupScript(Page.GetType(), "FechasIguales", "LanzaMensaje(" + 12 + ");", True)
-            '    cuadro_boton.Attributes.Add("style", "display:none;")
-
-            'End If
-
-
-
-
-
-
-            'Inputs de TV.
-            '1800¦Orange¦15¦0.10¦100¦Orange¦xtra¦0¦Towerplane
             For p = 0 To UBound(separar_guardado)
                 Select Case p
                     Case 0
@@ -162,387 +145,428 @@
                     Case 1
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            nombre_proveedor.Value = comprobar
+                            equipo_tv2.Value = comprobar
                         End If
                     Case 2
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            ncanales_contratados.Value = comprobar
+                            encriptar_tv2.Value = comprobar
                         End If
                     Case 3
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            precio_paquete.Value = comprobar
+                            mis_servicios.Value = comprobar
                         End If
                     Case 4
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            equipo_tv2.Value = comprobar
+                            ott_provedor.Value = comprobar
                         End If
                     Case 5
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            encriptar_tv2.Value = comprobar
+                            otros_derechos.Value = comprobar
                         End If
                     Case 6
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            mis_servicios.Value = comprobar
+                            fibra_megas.Value = comprobar
                         End If
                     Case 7
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            ott_provedor.Value = comprobar
+                            radioenlace_megas.Value = comprobar
                         End If
                     Case 8
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
-                            otros_derechos.Value = comprobar
-                        End If
-
-                        'inputs de Internet.
-                        '600¦0¦250¦Orange¦0.10¦Orange¦0.5¦600¦600¦300¦300¦100¦100¦50¦50¦0¦0¦160¦Dell
-
-                    Case 9
-                        comprobar = separar_guardado(p)
-                        If comprobar <> comprobar2 Then
-                            fibra_megas.Value = comprobar
-                        End If
-                    Case 10
-                        comprobar = separar_guardado(p)
-                        If comprobar <> comprobar2 Then
-                            radioenlace_megas.Value = comprobar
-                        End If
-                    Case 11
-                        comprobar = separar_guardado(p)
-                        If comprobar <> comprobar2 Then
                             megas_caudal.Value = comprobar
                         End If
-                    Case 12
+                    Case 9
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             proveedor_circuito.Value = comprobar
                         End If
-                    Case 13
+                    Case 10
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             precio_circuito.Value = comprobar
                         End If
-                    Case 14
+                    Case 11
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             proveedor_caudal.Value = comprobar
                         End If
-                    Case 15
+                    Case 12
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             precio_caudal.Value = comprobar
                         End If
-                    Case 16
+                    Case 13
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             subida_ofreces.Value = comprobar
                         End If
-                    Case 17
+                    Case 14
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             bajada_ofreces.Value = comprobar
                         End If
-                    Case 18
+                    Case 15
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             subida_ofreces2.Value = comprobar
                         End If
-                    Case 19
+                    Case 16
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             bajada_ofreces2.Value = comprobar
                         End If
-                    Case 20
+                    Case 17
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             subida_ofreces3.Value = comprobar
                         End If
-                    Case 21
+                    Case 18
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             bajada_ofreces3.Value = comprobar
                         End If
-                    Case 22
+                    Case 19
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             subida_ofreces4.Value = comprobar
                         End If
-                    Case 23
+                    Case 20
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             bajada_ofreces4.Value = comprobar
                         End If
-                    Case 24
+                    Case 21
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             subida_ofreces5.Value = comprobar
                         End If
-                    Case 25
+                    Case 22
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             bajada_ofreces5.Value = comprobar
                         End If
-                    Case 26
+                    Case 23
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             equipo_uso.Value = comprobar
                         End If
-                    Case 27
+                    Case 24
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             marca_fabricante.Value = comprobar
                         End If
-
-                        'Inputs Telefonia Fija.
-                        'Orange¦200¦0.03¦500¦0.08
-                        'Orange¦200¦0.03¦500¦0.08
-
-                    Case 28
+                    Case 25
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             suministra_telefonico.Value = comprobar
                         End If
-                    Case 29
+                    Case 26
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             min_consumo_mensual.Value = comprobar
                         End If
-                    Case 30
+                    Case 27
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             fijo_fijo.Value = comprobar
                         End If
-                    Case 31
+                    Case 28
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             fijo_movil_min.Value = comprobar
                         End If
-                    Case 32
+                    Case 29
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             precio_fijo_movil.Value = comprobar
                         End If
-
-                        'Inputs Telefonía Móvil
-                        'Orange¦300¦100¦Orange¦12000¦12000¦250¦150¦Vomistar
-
-                    Case 33
+                    Case 30
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             cual_operador.Value = comprobar
                         End If
-                    Case 34
+                    Case 31
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             cuantos_min_men_movilmovil.Value = comprobar
                         End If
-                    Case 35
+                    Case 32
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             cuantos_min_men_movilfijo.Value = comprobar
                         End If
-                    Case 36
+                    Case 33
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             cual_omv.Value = comprobar
                         End If
-                    Case 37
+                    Case 34
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             min_facturas_omv_mens_movilmovil.Value = comprobar
                         End If
-                    Case 38
+                    Case 35
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             min_facturas_omv_mens_movilfijo.Value = comprobar
                         End If
-                    Case 39
+                    Case 36
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             consumo_datos_mens.Value = comprobar
                         End If
-                    Case 40
+                    Case 37
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             facturacion_mensual.Value = comprobar
                         End If
-                    Case 41
+                    Case 38
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             empresa_lleva_fact.Value = comprobar
                         End If
-
-                        'Inputs OTROSS.
-                        '3200¦1500¦1500¦3000¦1500¦500¦3000¦Orange¦800¦25¦2100
-
-
-                    Case 42
+                    Case 39
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             pres_invirte_mes.Value = comprobar
                         End If
-                    Case 43
+                    Case 40
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             pres_mensual_invierte.Value = comprobar
                         End If
-                    Case 44
+                    Case 41
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             personas_forman_ingenieria.Value = comprobar
                         End If
-                    Case 45
+                    Case 42
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             empresa_gestiona.Value = comprobar
                         End If
-                    Case 46
+                    Case 43
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             hogares_pasados.Value = comprobar
                         End If
-                    Case 47
+                    Case 44
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             abonados_TV.Value = comprobar
                         End If
-                    Case 48
+                    Case 45
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             abonados_internet.Value = comprobar
                         End If
-                    Case 49
+                    Case 46
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             abonados_tfija.Value = comprobar
                         End If
-                    Case 50
+                    Case 47
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             abonados_tmovil.Value = comprobar
                         End If
-                    Case 51
+                    Case 48
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             num_lineas_totales.Value = comprobar
                         End If
-                    Case 52
+                    Case 49
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             num_trabajadores.Value = comprobar
                         End If
-                    Case 53
+                    Case 50
                         comprobar = separar_guardado(p)
                         If comprobar <> comprobar2 Then
                             ingresos.Value = comprobar
                         End If
-
-
-                        'A partir de aquí empiezan los chk. Aqui ván los de TV
-                        'True¦False¦True¦False¦False¦True¦False¦True¦True¦ 
-
-                        'False¦True¦True¦False¦True¦False¦True¦False¦True¦True¦False¦True¦False¦True¦False¦True¦True¦False¦True¦False¦True¦False¦True¦False
-                    Case 54
+                    Case 51
                         canalLocal_si.Checked = separar_guardado(p)
-                    Case 55
+                    Case 52
                         canalLocal_no.Checked = separar_guardado(p)
-                    Case 56
-                        'comprobar = separar_guardado(p)
-                        'If comprobar = True Then
-                        '    ClientScript.RegisterStartupScript(Page.GetType(), "miprueba55", "activar(5);", True)
-                        'End If
+                    Case 53
                         encriptacionPropia_si.Checked = separar_guardado(p)
-                    Case 57
+                    Case 54
                         encriptacionPropia_no.Checked = separar_guardado(p)
-                    Case 58
+                    Case 55
                         comprobar = separar_guardado(p)
                         If comprobar = True Then
                             ClientScript.RegisterStartupScript(Page.GetType(), "miprueba66", "activar(6);", True)
                             PlataformaOTTPropia_si.Checked = True
                         End If
-
-                    Case 59
+                    Case 56
                         comprobar = separar_guardado(p)
                         If comprobar = True Then
                             ClientScript.RegisterStartupScript(Page.GetType(), "miprueba77", "activar(7);", True)
                             PlataformaOTTPropia_no.Checked = True
                         End If
-
-                    Case 60
+                    Case 57
                         SGAE.Checked = separar_guardado(p)
-                    Case 61
+                    Case 58
                         EGEDA.Checked = separar_guardado(p)
-                    Case 62
+                    Case 59
                         AGEDI.Checked = separar_guardado(p)
-                    Case 63
+                    Case 60
                         Autonomo_si.Checked = separar_guardado(p)
-                    Case 64
+                    Case 61
                         Autonomo_no.Checked = separar_guardado(p)
-                    Case 65
+                    Case 62
                         fibra.Checked = separar_guardado(p)
-                    Case 66
+                    Case 63
                         radioenlace.Checked = separar_guardado(p)
-                    Case 67
+                    Case 64
                         operadorNumPropia_si.Checked = separar_guardado(p)
-                    Case 68
+                    Case 65
                         operadorNumPropia_no.Checked = separar_guardado(p)
-                    Case 69
+                    Case 66
                         TarifaPplana_si.Checked = separar_guardado(p)
-                    Case 70
+                    Case 67
                         TarifaPplana_no.Checked = separar_guardado(p)
-                    Case 71
+                    Case 68
                         MantenimientoLinea_si.Checked = separar_guardado(p)
-                    Case 72
+                    Case 69
                         MantenimientoLinea_no.Checked = separar_guardado(p)
-                    Case 73
+                    Case 70
                         FacturacionPropia_si.Checked = separar_guardado(p)
-                    Case 74
+                    Case 71
                         FacturacionPropia_no.Checked = separar_guardado(p)
-                    Case 75
+                    Case 72
                         OfrecesTarifaPlana_si.Checked = separar_guardado(p)
-                    Case 76
+                    Case 73
                         OfrecesTarifaPlana_no.Checked = separar_guardado(p)
-                    Case 77
+                    Case 74
                         OfrecesTarifaPlanaCualomv_si.Checked = separar_guardado(p)
-                    Case 78
+                    Case 75
                         OfrecesTarifaPlanaCualomv_no.Checked = separar_guardado(p)
-                    Case 79
+                    Case 76
                         SistFactuPropio_si.Checked = separar_guardado(p)
-                    Case 80
-                        SistFactuPropio_no.Checked = separar_guardado(p)
-                    Case 81
+                    Case 77
+
+                        comprobar = separar_guardado(p)
+                        If comprobar = True Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "miprueba55", "activar(8);", True)
+                            SistFactuPropio_no.Checked = separar_guardado(p)
+                        Else
+                            SistFactuPropio_no.Checked = separar_guardado(p)
+                        End If
+                    Case 78
                         MarketingPropio_si.Checked = separar_guardado(p)
-                    Case 82
+                    Case 79
                         MarketingPropio_no.Checked = separar_guardado(p)
-                    Case 83
+                    Case 80
                         DepartamentoJuridico_si.Checked = separar_guardado(p)
-                    Case 84
+                    Case 81
                         DepartamentoJuridico_no.Checked = separar_guardado(p)
-                    Case 85
+                    Case 82
                         DepartamentoIngenieria_si.Checked = separar_guardado(p)
                         comprobar = separar_guardado(p)
                         If comprobar = True Then
                             ClientScript.RegisterStartupScript(Page.GetType(), "miprueba33", "activar(3);", True)
                         End If
-                    Case 86
+                    Case 83
                         DepartamentoIngenieria_no.Checked = separar_guardado(p)
                         comprobar = separar_guardado(p)
                         If comprobar = True Then
                             ClientScript.RegisterStartupScript(Page.GetType(), "miprueba44", "activar(4);", True)
                         End If
-
+                    Case 84
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 87
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 90
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 93
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 96
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 99
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 102
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 105
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 108
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 111
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
+                    Case 114
+                        comprobar = separar_guardado(p)
+                        If comprobar <> comprobar2 Then
+                            soflow.Items.Add(New ListItem(comprobar, comprobar))  'Añadimos otra opcion.
+                        End If
                 End Select
             Next
 
+            Dim sep_guardado() As String, checkear As String
+            DS.Reset()
 
+            VectorSQL(0) = "SELECT WebPersonal as Datos FROM eecontactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "' AND idFira='" & idferia & "'"
+            If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+            Else
+                If DS.Tables(0).Rows.Count > 0 Then
+                    For i = 0 To DS.Tables(0).Rows.Count - 1
+                        guardado = DS.Tables(0).Rows(i).Item("Datos")
+                    Next
+                Else
+                    'No tenemos ningún registro en la BD.
+                End If
 
+                'Movistar¦125¦0.08¦Lemovial¦12¦0.03
 
+                sep_guardado = guardado.Split("¦")
+                For z = 0 To UBound(sep_guardado)
+                    checkear = sep_guardado(z)
+                    If IsNumeric(checkear) Then
+
+                    Else
+                        soflow.Items.Add(New ListItem(checkear, checkear))  'Añadimos otra opcion.
+                    End If
+
+                Next
+            End If
         End If
     End Function
 

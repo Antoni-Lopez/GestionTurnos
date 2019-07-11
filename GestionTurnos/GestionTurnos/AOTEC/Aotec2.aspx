@@ -24,7 +24,7 @@
         .logo_aotec img {width: 103%;height: 302px;}
 
         /* Chk menus */
-        .options_menu{display: block; margin-left:auto;margin-right: auto;max-width: 800px;width: 100%;margin-top:.5%;background-color: #FEC007; color: #fff;font-family: 'Mali', cursive;}
+        .options_menu{display: block; margin-left:auto;margin-right: auto;max-width: 800px;width: 100%;margin-top:.5%;background-color: #FEC007; color: #fff;font-family: 'Mali', cursive;height: 6.5vh;}
 
         /* Chk customized*/
         /* Hiding the checkbox, but allowing it to be focused */
@@ -37,7 +37,7 @@
         .form-groupu label {position: relative;cursor: pointer;}
         .form-groupu label:before {content:'';-webkit-appearance: none;background-color: transparent;border: 2px solid Black;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);padding: 12px;display: inline-block;position: relative;vertical-align: text-top;cursor: pointer;margin-right: 5px;}
         .form-groupu input:checked + label:after {content: '';display: block;position: absolute;top: 6px;left: 8px;width: 11px;height: 14px;border: solid #fff;border-width: 0 2px 2px 0;transform: rotate(45deg);}
-        .margen_izq{margin-top:5%;}
+        .margen_izq{margin-top:3.5%;}
 
         /* Centrar los divs ,textos e inputs */
         .centrado{margin-left:0;width:100%;}
@@ -63,14 +63,27 @@
         .down{-ms-transform: rotate(180deg);-moz-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);}
         
         /* Label for cuadros desplegables*/
-        label[for=tele]{margin-top:4% !important;}
+        label[for=tele]{margin-top:3.5% !important;}
                 
+        /* Select */
+        .box{/*position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);*/display:block;margin-left:auto;margin-right:auto;margin-top:1%;}
+        .box select{background-color: #0563af;color: white;padding: 12px;width: 250px;border: none;font-size: 20px;box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);-webkit-appearance: button;appearance: button;outline: none;display:block;margin-left:auto;margin-right:auto;margin-top:1%;}
+
+        /*.box::before{content: "\f13a";font-family: FontAwesome;position: absolute;top: 0;right: 0;width: 20%;height: 100%;text-align: center;font-size: 28px;line-height: 45px;color: rgba(255, 255, 255, 0.5);background-color: rgba(255, 255, 255, 0.1);pointer-events: none;}*/
+        .box:hover::before{color: rgba(255, 255, 255, 0.6);background-color: rgba(255, 255, 255, 0.2);}
+        .box select option{padding:30px;}
+
+
         /* Div Oculto*/
         #datos_user, #submenu_tv1, #submenu_tv2, #submenu_tv3, #submenu_tv4, #submenu_tv5, #submenu_tv3_2, #submenu_tv4_2, #submenu_interne1, #submenu_interne2, #datos_ocultos, #tv1 , #personas_componen_inge, #empresa_gestiona_ingenie{display:none;} 
 
         /* Ventana Modal LanzaAviso*/
         .modal-content{margin-top: 50%;}
 
+        /*  Boton insertar new proveedor. */
+        #new_proveedor{display:block;margin-left:auto;margin-right:auto;margin-top:.5%;margin-bottom:2%;}
+
+        /* Boton insertar*/
         .btn.active span.nonCheckBoxAllow {display: none;}
         .btn.active span.checkBoxAllow {display: inline;}
         .btn span.nonCheckBoxAllow {display: inline;}
@@ -124,6 +137,9 @@
                 case 7: //esconder proveedor de OTT.
                     $('#submenu_tv4_2').hide("slide");
                     break;
+                case 8:
+                    $("#quien_telleva_fact").show(1500);
+                    break;
             }
         }
 
@@ -153,6 +169,13 @@
                 $("#empresa_gestiona_ingenie").show(1500);
                 $("#personas_componen_inge").hide(1500);
             }
+            if (prueba == "SistFactuPropio_no") {
+                $("#quien_telleva_fact").show(1500);
+            }
+            if (prueba == "SistFactuPropio_si") {
+                $("#quien_telleva_fact").hide(1500);
+            }
+            
         }
 
         //funcion para capturar todos los checkboxs y radio buttons.
@@ -175,11 +198,11 @@
 
         //funcion para capturar todos los campos inputs de introducir datos, ya sea, texto, number,etc.
         function todos_inputs() {
-            var inputs = ["horas_produccion", "nombre_proveedor", "ncanales_contratados", "precio_paquete", "equipo_tv2", "encriptar_tv2", "mis_servicios", "ott_provedor", "otros_derechos", "fibra_megas", "radioenlace_megas", "megas_caudal", "proveedor_circuito", "precio_circuito", "proveedor_caudal", "precio_caudal", "subida_ofreces", "bajada_ofreces", "subida_ofreces2", "bajada_ofreces2", "subida_ofreces3", "bajada_ofreces3", "subida_ofreces4", "bajada_ofreces4", "subida_ofreces5", "bajada_ofreces5", "equipo_uso", "marca_fabricante", "suministra_telefonico", "min_consumo_mensual", "fijo_fijo", "fijo_movil_min", "precio_fijo_movil", "cual_operador", "cuantos_min_men_movilmovil", "cuantos_min_men_movilfijo", "cual_omv", "min_facturas_omv_mens_movilmovil", "min_facturas_omv_mens_movilfijo", "consumo_datos_mens", "facturacion_mensual", "empresa_lleva_fact", "pres_invirte_mes", "pres_mensual_invierte", "personas_forman_ingenieria", "empresa_gestiona", "hogares_pasados", "abonados_TV", "abonados_internet", "abonados_tfija", "abonados_tmovil", "num_lineas_totales", "num_trabajadores", "ingresos"];
+            var inputs = ["horas_produccion", "equipo_tv2", "encriptar_tv2", "mis_servicios", "ott_provedor", "otros_derechos", "fibra_megas", "radioenlace_megas", "megas_caudal", "proveedor_circuito", "precio_circuito", "proveedor_caudal", "precio_caudal", "subida_ofreces", "bajada_ofreces", "subida_ofreces2", "bajada_ofreces2", "subida_ofreces3", "bajada_ofreces3", "subida_ofreces4", "bajada_ofreces4", "subida_ofreces5", "bajada_ofreces5", "equipo_uso", "marca_fabricante", "suministra_telefonico", "min_consumo_mensual", "fijo_fijo", "fijo_movil_min", "precio_fijo_movil", "cual_operador", "cuantos_min_men_movilmovil", "cuantos_min_men_movilfijo", "cual_omv", "min_facturas_omv_mens_movilmovil", "min_facturas_omv_mens_movilfijo", "consumo_datos_mens", "facturacion_mensual", "empresa_lleva_fact", "pres_invirte_mes", "pres_mensual_invierte", "personas_forman_ingenieria", "empresa_gestiona", "hogares_pasados", "abonados_TV", "abonados_internet", "abonados_tfija", "abonados_tmovil", "num_lineas_totales", "num_trabajadores", "ingresos"];
             var i, comprobar, comprobar2, total,total2;
 
             total = '';
-            for (i = 0; i < 54; i++) {
+            for (i = 0; i < 51; i++) {
                 comprobar = document.getElementById(inputs[i]).value;                
                 if (i == 0) {
                     total = comprobar;
@@ -225,7 +248,7 @@
 </head>
 <body>
     <form name="form_AOTEC" id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="LanzaMensaje()">
+        <div class="container-fluid logo_aotec" onclick="miprueba()">
             <img src="img/logo_aotec.png" />
         </div>
         <div id="tv" class="container-fluid options_menu" onclick="desplegar(this.id,'#tele','#tv1')" runat="server">
@@ -257,10 +280,10 @@
             </div>
             <div id="submenu_tv1" class="row centrado">
                 <div class="row centrado">
-                    <div class="col-xs-12 verde" style="padding:10px">
+                    <div class="col-xs-12 box" style="padding:10px">
                         <select id="soflow" class="mi_selector" onchange="elegir_accion(2)" runat="server" name="selector_medicos">
-                            <option value="-1" id="anadir_nuevo">Nuevo Proveedor</option>
-                            <option selected value="0">Listado de Proveedores</option>
+                            <option value="-1" id="anadir_nuevo">Añadir Proveedor</option>
+                            <option selected value="0">-----------------------------------</option>
                         </select>
                     </div>  
                 </div>
@@ -287,6 +310,9 @@
                     <div class="col-xs-6 input_style">
                         <input type="text" class="form-control" id="precio_paquete" runat="server" placeholder="Introduzca el precio del paquete." />
                     </div>  
+                </div>
+                <div id="buton_proveedor" class="row centrado" style="display:none;">
+                    <button type="button" id="new_proveedor" class="btn btn-warning" onclick="addProveedor()">Añadir nuevo proveedor</button>
                 </div>
             </div>
             <div id="desplegar_equipa" class="row centrado desplegables" onclick="desplegar_subs('.flechas2','#submenu_tv2')">
@@ -936,22 +962,20 @@
         <div class="row">
             <asp:TextBox class="form-control" id="datos_user" runat="server" />
             <asp:TextBox class="form-control oculto_contador" id="datos_ocultos" runat="server" />
-            <asp:TextBox class="form-control oculto_contador" id="datos_ocultos2" runat="server" />
         </div>
     </form>
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
     <script type="text/javascript">   
         function Registre() {
             var Dades; 
+            alert("aqui entramos");
             var chk = ["tele", "internet", "tefija", "temovil", "another"];
             var i, comprobar;
            
-            Dades = document.getElementById("datos_user").value;
-            
+            Dades = document.getElementById("datos_user").value;            
 
             for (i = 0; i < 5; i++){
                 comprobar = document.getElementById(chk[i]).checked;
-
                 if (comprobar == true) {
                     chk[i] = 1;
                     Dades = Dades + "¦" + chk[i];
@@ -960,14 +984,13 @@
                     chk[i] = 0;
                     Dades = Dades + "¦" + chk[i];
                 }
+                alert("aqui también entramos");
             }
-
             var total = todos_inputs();
 
-
             Dades = Dades + "¦" + total;
-
             alert(Dades);
+            LanzaAviso("<h4>Recuerda que para añadir Proveedores necesitas insertarlos 1 a 1 dentro de la sección de Televisión-Proveedores. Gracias por su respuesta! (-;</h4>");
             setTimeout("InformacioAJAX(9,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
         }          
 
@@ -982,6 +1005,29 @@
                 else if (Dades.substr(2, 1) == "8") {
                     LanzaAviso("Hemos ingresado su elección correctacmente en nuestra Base de Datos. Gracias!");
                 }
+                if (Dades.substr(2, 2) == "10") {
+                    //LanzaAviso("<h4>Hemos actualizado <span style='color:#1ED760;'>correctacmente</span> sus preferencias en nuestra Base de Datos. Gracias!</h4>");
+                    //alert(Dades);
+                    var separar = Dades.split("¦");
+                    //alert(separar);
+                    var nombre, ncanales, precio;
+
+                    nombre = separar[1];
+                    ncanales = separar[2];
+                    precio = separar[3];
+                    document.getElementById("nombre_proveedor").value = nombre;
+                    document.getElementById("ncanales_contratados").value = ncanales;
+                    document.getElementById("precio_paquete").value = precio;
+                }
+                if (Dades.substr(2, 2) == "11") {
+
+                    var separar = Dades.split("¦");
+                    var nombre;
+
+                    nombre = separar[1];
+                    document.getElementById("buton_proveedor").style.display = "none";
+                    $("#soflow").append("<option value="+nombre+" selected='selected'>"+nombre+"</option>");
+                }
             }
             else {
                 if (Dades.substr(2, 1) == "9") {
@@ -993,6 +1039,54 @@
                 if (Dades.substr(2, 1) == "8") {
                     LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
                 }
+            }
+        }
+
+        //funcion que nos creamos para cuando pulsemos el select que nos mande la información por AJAX
+        function mostrar_rellenar_select() {
+            var Dades, datos;
+
+            Dades = document.getElementById("datos_user").value;
+            datos = document.getElementById("soflow").value;
+
+            if (datos == "-1") {
+                document.getElementById("nombre_proveedor").value = "";
+                document.getElementById("ncanales_contratados").value = "";
+                document.getElementById("precio_paquete").value = "";
+                document.getElementById("buton_proveedor").style.display = "block";              
+            }
+            else if (datos == "0") {
+                document.getElementById("nombre_proveedor").value = "";
+                document.getElementById("ncanales_contratados").value = "";
+                document.getElementById("precio_paquete").value = "";
+                document.getElementById("buton_proveedor").style.display = "none";
+            }
+            else {
+                var datos = document.getElementById("soflow").value;
+                document.getElementById("buton_proveedor").style.display = "none";
+                Dades = Dades + "¦" + datos;
+                //alert("Entramos!"+datos);
+                setTimeout("InformacioAJAX(10,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 500);
+            }
+        }
+
+        //funcion para añadir un nuevo proveedor
+        function addProveedor() {
+            var name, number, price, Dades, Datos;
+
+            Dades = document.getElementById("datos_user").value;
+            name = document.getElementById("nombre_proveedor").value;
+            number = document.getElementById("ncanales_contratados").value;
+            price = document.getElementById("precio_paquete").value;
+
+            if ((name == null || name == "") || (number == null || number == "") || (price == null || price == "")) {
+                LanzaAviso("<h4>Lo siento, pero para poder añadir un Proveedor nuevo, todos los campos son obligatorios.</h4>")
+            }
+            else {
+                
+                Dades = Dades + "¦" + name + "¦" + number + "¦" + price;
+                alert("entramos y enviamos esto x Dades: "+Dades);
+                setTimeout("InformacioAJAX(11,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 500);
             }
         }
     </script>

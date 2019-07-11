@@ -452,6 +452,95 @@ Continuamos:
                                 GoTo Resposta
                             End If
                         End If
+
+                    Case 10 'Rellenar los inputs con los datos de la BD al seleccionar cualquier proveedor.
+                        Dim Ds As New DataSet, email As String, datos As String, datos_bd As String, long_datosbd As String
+                        Dim mostrar As String, idferia As Integer, i As Integer, MiVector() As String
+                        Dim canales As String, precio As String
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        email = VDades(0)
+                        datos = VDades(1)
+                        idferia = "201"
+
+                        VectorSQL(0) = "SELECT WebPersonal FROM eecontactes  WHERE Email = '" & email & "'and idFira='" & idferia & "'"
+
+                        If Not clsBD.BaseDades(1, VectorSQL, Ds) Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+                        Else
+                            If Ds.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To Ds.Tables(0).Rows.Count - 1
+                                    datos_bd = Ds.Tables(0).Rows(i).Item("WebPersonal")
+                                Next
+                            End If
+                        End If
+
+                        MiVector = datos_bd.Split("¦")
+                        long_datosbd = MiVector.Length
+
+                        For i = 0 To UBound(MiVector)
+                            long_datosbd = MiVector(i)
+                            If long_datosbd = datos Then
+
+                                Descripcio = "OK10"
+                                canales = MiVector(i + 1)
+                                precio = MiVector(i + 2)
+                                Descripcio = Descripcio + "¦" + long_datosbd + "¦" + canales + "¦" + precio
+
+                                GoTo Resposta
+                            End If
+                            i += "2"
+                        Next
+
+                    Case 11 'Guardar nuevo proveedor.
+                        Dim Ds As New DataSet, email As String, idferia As String, nombre As String, numero As String, precio As String, datos_BD As String, MiArray() As String, mi_comprobar As String
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+                        idferia = "201"
+
+                        email = VDades(0)
+                        nombre = VDades(1)
+                        numero = VDades(2)
+                        precio = VDades(3)
+
+                        VectorSQL(0) = "SELECT WebPersonal FROM eecontactes  WHERE Email = '" & email & "'and idFira='" & idferia & "'"
+                        If Not clsBD.BaseDades(1, VectorSQL, Ds) Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+                        Else
+                            If Ds.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To Ds.Tables(0).Rows.Count - 1
+                                    datos_BD = Ds.Tables(0).Rows(i).Item("WebPersonal")
+                                Next
+                            End If
+                        End If
+
+                        MiArray = datos_BD.Split("¦")
+
+                        mi_comprobar = MiArray(0)
+                        If mi_comprobar = "0" Then
+                            datos_BD = nombre + "¦" + numero + "¦" + precio
+                        Else
+                            datos_BD += "¦" + nombre + "¦" + numero + "¦" + precio
+                        End If
+
+
+
+
+                        Ds.Reset()
+
+                        'Una vez echo todas las comprobaciones, guardamos mediante un UPDATE los valores marcados.
+                        VectorSQL(0) = "UPDATE eecontactes SET WebPersonal = '" & datos_BD & "' WHERE Email = '" & email & "'and idFira='" & idferia & "'"
+
+                        If Not clsBD.BaseDades(2, VectorSQL) Then
+                            'Problema
+                            Descripcio = "KO11" + "¦" + nombre
+                            GoTo Resposta
+                        Else
+                            'Correcto
+                            Descripcio = "OK11" + "¦" + nombre
+                            GoTo Resposta
+                        End If
                 End Select
             End If
         Catch ex As Exception
