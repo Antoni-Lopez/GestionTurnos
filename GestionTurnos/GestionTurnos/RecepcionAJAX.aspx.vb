@@ -440,8 +440,20 @@ Continuamos:
                                 End If
                             Next
 
-                            'Procedemos a actulizar los datos mediante un UPDATE de los valores marcados por el usuario.
-                            VectorSQL(0) = "UPDATE eecontactes SET SectorInteres = '" & datos_bd & "' WHERE Email = '" & email & "'and idFira='" & idFeria & "'"
+                            Dim volumen_total As String, limite As String
+
+                            volumen_total = datos_bd.Length
+                            limite = 400
+
+
+                            If volumen_total > limite Then
+                                ClientScript.RegisterStartupScript(Page.GetType(), "excedemos_consulta", "LanzaAviso('Error la consulta SQL superá los 1500 caracteres y no se puede guardar en la BD.')", True)
+                                Descripcio = "KO9"
+                                GoTo Resposta
+                            Else
+                                'Procedemos a actulizar los datos mediante un UPDATE de los valores marcados por el usuario.
+                                VectorSQL(0) = "UPDATE eecontactes SET SectorInteres = '" & datos_bd & "' WHERE Email = '" & email & "'and idFira='" & idFeria & "'"
+                            End If
 
                             If Not clsBD.BaseDades(2, VectorSQL) Then
                                 'Problema

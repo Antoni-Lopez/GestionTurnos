@@ -53,45 +53,33 @@
           #div_principal{height:35vh !important;}
         }    
         @media (max-width: 1280px) {          
-          #div_principal{height:28vh !important;margin-top:10%;}
-          .form-control-sm{height:3vh;font-size:27px;}
+          #div_principal{height:40vh !important;margin-top:1.5%;margin-bottom:2.5%;}
+          .form-control-sm{height:6vh;font-size:27px;}
           label[for=staticEmail],label[for=staticPass]{font-size:25px !important;}
-          #miButton{margin-top:3%!important;}
+          #miButton{margin-top:0.5%!important;}
+        }
+        @media (max-width: 1024px) {          
+          #miButton{margin-top:-1%!important;}
         }
         @media (max-width: 769px) {          
-          #div_principal{height:25vh !important;margin-top:10%;}
+          #div_principal{height:35vh !important;margin-top:10%;}
+          #miButton{margin-top:1%!important;}
+          .form-control-sm{height:4vh;font-size:25px;}
         }
-        /*@media (max-width: 1024px) {          
-          #div_principal{height:27vh !important;margin-top:10%;}
-          /*.form-control-sm{height:3vh;font-size:27px;}
-          label[for=staticEmail],label[for=staticPass]{font-size:25px !important;}
-          #miButton{margin-top:3%!important;}}*/
-        
-        @media (max-width: 769px) {          
-          #div_principal{height:25vh !important;margin-top:10%;}
+        @media (max-width: 600px){
+            #div_principal{height:40vh !important;margin-top:5%;}
+        }
+        @media (max-width: 320px){
+            #div_principal{height:68vh !important;margin-top:5%;}
+        }
+        @media (max-width: 240px){
+            #div_principal{height:150vh !important;margin-top:5%;}
         }
 
         .verde{border:2px solid green;}
     </style>
 
-    <script type="text/javascript">
-        //$(document).ready(function() {    
-        //    $('#miButton').on('click', function(){
-        //        //Añadimos la imagen de carga en el contenedor
-        //        $('#miButton').html('Validando <img src="img/ajax-loader.gif" alt="loading" /><br/>');
-        //        Registre();
-
-        //        //$.ajax({
-        //        //    type: "POST",
-        //        //    url: "ajax.php",
-        //        //    success: function(data) {
-        //        //        //Cargamos finalmente el contenido deseado
-        //        //        $('#mIprueba').fadeIn(1000).html(data);
-        //        //    }
-        //        //});
-        //        //return false;
-        //    });              
-        //    });    
+    <script type="text/javascript"> 
 
         function LanzaAviso(Text) {
             bootbox.alert({ title: "AOTEC 2019", message: Text, size: 'large' });

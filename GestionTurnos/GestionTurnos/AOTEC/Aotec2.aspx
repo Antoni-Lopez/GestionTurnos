@@ -96,6 +96,24 @@
 
         .btn-orange-moon {background: #fc4a1a;background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);background: linear-gradient(to right, #f7b733, #fc4a1a);color: #fff;border: 3px solid #eee;margin-left: 34%;margin-top: 7%;}
         .oculto_contador{margin-left:5%;width:90%;}
+
+        /* Media querys diseño Responsive. */
+        @media (max-width: 1280px){
+            .options_menu{height:10vh !important;margin-top:1%;}
+        }
+        @media (max-width: 769px){
+            .options_menu{height:7.2vh !important;}
+        }
+        @media (max-width: 601px){
+            .options_menu{height:9.2vh !important;}
+        }
+        @media (max-width: 321px){
+            .options_menu{height:12.2vh !important;}
+        }
+        @media (max-width: 241px){
+            .options_menu{height:28.2vh !important;}
+        }
+
     </style>
     <script type="text/javascript">
         
@@ -226,34 +244,54 @@
 
         //funcion que nos creamos para desplegar/plegar los menus.
         function desplegar(menu, submenu, mostrar) {
-            menu = "#" + menu;
-            $(menu).click(function () {
-                if ($(submenu).is(':checked')) {
-                    $(submenu).attr('checked', true);   
-                    $(mostrar).slideDown(1500);
-                }
-                else {
-                    $(submenu).attr('checked', false);
-                    $(mostrar).slideUp(1500);
-                }
-            });
+            var estado = $(mostrar).css('display');
+            if ((estado == "none") || (estado == null) || (estado == "")) {
+                document.getElementById(submenu).checked = true;
+                $(mostrar).slideDown(1500);
+            }
+            else {
+                document.getElementById(submenu).checked = false;
+                $(mostrar).slideUp(1500);
+            }
         }
 
         //funcion para desplegar los sub-menus
         function desplegar_subs(arrow, desplegado) {
-            $(arrow).toggleClass("down");
-            $(desplegado).toggle("slide");            
+            var estado = $(desplegado).css('display');            
+            if ((estado == "none")||(estado == null) || (estado == "")) {
+                $(desplegado).slideDown(1500);
+                $(arrow).toggleClass("down");
+            }
+            else if (estado == "block") {
+                $(desplegado).slideUp(1500);        
+                $(arrow).toggleClass("down");
+            }
+        }
+
+        function michorra(x,y) {
+            var estado_chk = document.getElementById(x).checked;
+            if (estado_chk == false) {
+                alert("entramos if");
+                document.getElementById(x).checked = true;
+                $(y).slideDown(1500);
+            }
+            else {
+                alert("entramos else");
+                document.getElementById(x).checked = false;
+                $(y).slideUp(1500);
+            }
+            alert(estado_chk);
         }
     </script>
 </head>
 <body>
     <form name="form_AOTEC" id="form1" runat="server">
-        <div class="container-fluid logo_aotec" onclick="miprueba()">
+        <div class="container-fluid logo_aotec" onclick="michorra('tele','#tv1')">
             <img src="img/logo_aotec.png" />
         </div>
-        <div id="tv" class="container-fluid options_menu" onclick="desplegar(this.id,'#tele','#tv1')" runat="server">
+        <div id="tv" class="container-fluid options_menu" onclick="desplegar(this.id,'tele','#tv1')" runat="server">
             <div class="form-groupu">
-                <input type="checkbox" id="tele" runat="server" />
+                <input type="checkbox" id="tele" onclick="michorra('tele','#tv1')" runat="server" />
                 <label for="tele" class="margen_izq">Televisión</label>
             </div>            
         </div>
@@ -263,7 +301,7 @@
                     <label for="textos">¿Dispone de Canal local?</label>
                 </div>
                 <div class="col-xs-6" style="margin-top:10px;">
-                    <label for="canalLocal_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="canalLocal_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="canalLocal_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="canalLocal_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     <label for="canalLocal_no" class="btn btn-danger">No <input type="checkbox" id="canalLocal_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
@@ -345,7 +383,7 @@
                         <label for="textos">¿Dispone de Sist. de Encriptación Propio?</label>                    
                     </div>
                     <div class="col-xs-6" style="margin-top:10px;">
-                        <label for="encriptacionPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="encriptacionPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="encriptacionPropia_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="encriptacionPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="encriptacionPropia_no" class="btn btn-danger">No <input type="checkbox" id="encriptacionPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
@@ -371,7 +409,7 @@
                         <label for="textos">¿Dispone de Plataforma OTT propia?</label>                    
                     </div>
                     <div class="col-xs-6" style="margin-top:10px;">
-                        <label for="PlataformaOTTPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="PlataformaOTTPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="PlataformaOTTPropia_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="PlataformaOTTPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="PlataformaOTTPropia_no" class="btn btn-danger">No <input type="checkbox" id="PlataformaOTTPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>  
                 </div>
@@ -410,7 +448,7 @@
                 </div>
             </div>
         </div>
-        <div id="interne" class="container-fluid options_menu" onclick="desplegar(this.id,'#internet','#interne1')" runat="server">
+        <div id="interne" class="container-fluid options_menu" onclick="desplegar(this.id,'internet','#interne1')" runat="server">
             <div class="form-groupu">
                 <input type="checkbox" id="internet"  runat="server" />
                 <label for="internet" class="margen_izq">Internet</label>
@@ -426,7 +464,7 @@
                         <label for="textos">¿Eres AS Autonomo?</label>
                     </div>
                     <div class="col-xs-6" style="margin-top:10px;">
-                        <label for="Autonomo_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="Autonomo_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="Autonomo_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="Autonomo_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="Autonomo_no" class="btn btn-danger">No <input type="checkbox" id="Autonomo_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
@@ -596,7 +634,7 @@
             </div>
             </div>
         </div>
-        <div id="tfija" class="container-fluid options_menu" onclick="desplegar(this.id,'#tefija','#tfija1')" runat="server">
+        <div id="tfija" class="container-fluid options_menu" onclick="desplegar(this.id,'tefija','#tfija1')" runat="server">
             <div class="form-groupu">
                 <input type="checkbox" id="tefija" runat="server" />
                 <label for="tefija" class="margen_izq">Telefonia Fija</label>
@@ -608,7 +646,7 @@
                     <label for="textos">¿Eres operador con numeración propia?</label>
                 </div>
                 <div class="col-xs-6" style="padding: 2.38%;margin-top: 1%;">
-                    <label for="operadorNumPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="operadorNumPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="operadorNumPropia_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="operadorNumPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     <label for="operadorNumPropia_no" class="btn btn-danger">No <input type="checkbox" id="operadorNumPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
@@ -617,7 +655,7 @@
                     <label for="textos">¿Tienes tarifa plana?</label>
                 </div>
                 <div class="col-xs-6" style="padding:2.3%;">
-                    <label for="TarifaPplana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="TarifaPplana_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="TarifaPplana_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="TarifaPplana_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     <label for="TarifaPplana_no" class="btn btn-danger">No <input type="checkbox" id="TarifaPplana_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
@@ -626,7 +664,7 @@
                     <label for="textos">¿Tienes mantenimiento de línea?</label>
                 </div>
                 <div class="col-xs-6" style="padding:2.3%;">
-                    <label for="MantenimientoLinea_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="MantenimientoLinea_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="MantenimientoLinea_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="MantenimientoLinea_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     <label for="MantenimientoLinea_no" class="btn btn-danger">No <input type="checkbox" id="MantenimientoLinea_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
@@ -635,7 +673,7 @@
                     <label for="textos">¿Tienes sistema de facturación propio?</label>
                 </div>
                 <div class="col-xs-6" style="padding: 2.3%;margin-top: 0.5%;">
-                    <label for="FacturacionPropia_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="FacturacionPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                    <label for="FacturacionPropia_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="FacturacionPropia_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     <label for="FacturacionPropia_no" class="btn btn-danger">No <input type="checkbox" id="FacturacionPropia_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                 </div>
             </div>
@@ -688,7 +726,7 @@
                 </div>
             </div>
         </div>
-        <div id="tmovil" class="container-fluid options_menu" onclick="desplegar(this.id,'#temovil','#tmovil1')" runat="server">
+        <div id="tmovil" class="container-fluid options_menu" onclick="desplegar(this.id,'temovil','#tmovil1')" runat="server">
             <div class="form-groupu">
                 <input type="checkbox" id="temovil" runat="server"  />
                 <label for="temovil" class="margen_izq">Telefonia Móvil</label>
@@ -712,7 +750,7 @@
                         <label for="textos">¿Ofreces tarifa plana?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: .3%;">                        
-                        <label for="OfrecesTarifaPlana_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="OfrecesTarifaPlana_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="OfrecesTarifaPlana_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="OfrecesTarifaPlana_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="OfrecesTarifaPlana_no" class="btn btn-danger">No <input type="checkbox" id="OfrecesTarifaPlana_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
@@ -750,7 +788,7 @@
                         <label for="textos">¿Ofrece tarifa plana?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top:.3%;">
-                        <label for="OfrecesTarifaPlanaCualomv_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="OfrecesTarifaPlanaCualomv_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="OfrecesTarifaPlanaCualomv_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="OfrecesTarifaPlanaCualomv_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="OfrecesTarifaPlanaCualomv_no" class="btn btn-danger">No <input type="checkbox" id="OfrecesTarifaPlanaCualomv_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
@@ -791,7 +829,7 @@
                         <label for="textos">¿Tiene sistema de facturación propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top:1.5%;">
-                        <label for="SistFactuPropio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="SistFactuPropio_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="SistFactuPropio_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="SistFactuPropio_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="SistFactuPropio_no" class="btn btn-danger">No <input type="checkbox" id="SistFactuPropio_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>                    
                 </div>
@@ -805,7 +843,7 @@
                 </div>
             </div>
         </div>
-        <div id="otros" class="container-fluid options_menu" onclick="desplegar(this.id,'#another','#otros1')" runat="server">
+        <div id="otros" class="container-fluid options_menu" onclick="desplegar(this.id,'another','#otros1')" runat="server">
             <div class="form-groupu">
                 <input type="checkbox" id="another" runat="server" />
                 <label for="another" class="margen_izq">Otros..</label>
@@ -821,7 +859,7 @@
                         <label for="textos">¿Dispone de departamento de marketing propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
-                        <label for="MarketingPropio_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="MarketingPropio_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="MarketingPropio_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="MarketingPropio_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="MarketingPropio_no" class="btn btn-danger">No <input type="checkbox" id="MarketingPropio_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
@@ -843,7 +881,7 @@
                         <label for="textos">¿Dispone de departamento de jurídico propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
-                        <label for="DepartamentoJuridico_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="DepartamentoJuridico_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="DepartamentoJuridico_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="DepartamentoJuridico_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="DepartamentoJuridico_no" class="btn btn-danger">No <input type="checkbox" id="DepartamentoJuridico_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div>
                 </div>
@@ -865,7 +903,7 @@
                         <label for="textos">¿Dispone de departamento de ingeniería propio?</label>
                     </div>
                     <div class="col-xs-6" style="padding: 10px;margin-top: 2%;">
-                        <label for="DepartamentoIngenieria_si" class="btn btn-success" style="margin-right: 47%;">Sí <input type="checkbox" id="DepartamentoIngenieria_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
+                        <label for="DepartamentoIngenieria_si" class="btn btn-success" style="margin-right: 46%;margin-left: 1.2%;">Sí <input type="checkbox" id="DepartamentoIngenieria_si" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                         <label for="DepartamentoIngenieria_no" class="btn btn-danger">No <input type="checkbox" id="DepartamentoIngenieria_no" class="badgebox" onclick="MisRadioButtons(this.id.substr(0,this.id.lastIndexOf('_')+1),this.id.substr(this.id.lastIndexOf('_')+1))" runat="server" /><span class="badge">&check;</span></label>
                     </div> 
                 </div>
@@ -968,7 +1006,7 @@
     <script type="text/javascript">   
         function Registre() {
             var Dades; 
-            alert("aqui entramos");
+           
             var chk = ["tele", "internet", "tefija", "temovil", "another"];
             var i, comprobar;
            
@@ -984,12 +1022,12 @@
                     chk[i] = 0;
                     Dades = Dades + "¦" + chk[i];
                 }
-                alert("aqui también entramos");
+               
             }
             var total = todos_inputs();
 
             Dades = Dades + "¦" + total;
-            alert(Dades);
+            
             LanzaAviso("<h4>Recuerda que para añadir Proveedores necesitas insertarlos 1 a 1 dentro de la sección de Televisión-Proveedores. Gracias por su respuesta! (-;</h4>");
             setTimeout("InformacioAJAX(9,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
         }          
@@ -1086,6 +1124,6 @@
                 setTimeout("InformacioAJAX(11,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 500);
             }
         }
-    </script>
+            </script>
 </body>
 </html>

@@ -105,6 +105,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Femsa\css\" />
+    <Folder Include="Femsa\img\" />
+    <Folder Include="Femsa\script\" />
     <Folder Include="fonts\" />
     <Folder Include="img\" />
   </ItemGroup>
@@ -147,6 +150,7 @@
     <Content Include="Css\formulario.css" />
     <Content Include="Css\intranet.css" />
     <Content Include="Css\loginform.css" />
+    <Content Include="Femsa\Plantilla - Mailing.aspx" />
     <Content Include="Formulario.aspx" />
     <Content Include="Formulario2.aspx" />
     <Content Include="Intranet.aspx" />
@@ -207,6 +211,13 @@
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
     <Compile Include="Clases\ClaseGeneral.vb" />
+    <Compile Include="Femsa\Plantilla - Mailing.aspx.designer.vb">
+      <DependentUpon>Plantilla - Mailing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Femsa\Plantilla - Mailing.aspx.vb">
+      <DependentUpon>Plantilla - Mailing.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Formulario.aspx.designer.vb">
       <DependentUpon>Formulario.aspx</DependentUpon>
     </Compile>
