@@ -553,6 +553,69 @@ Continuamos:
                             Descripcio = "OK11" + "¦" + nombre
                             GoTo Resposta
                         End If
+
+                    Case 12 'Envio de Mail de Femsa.
+                        'Datos necesarios para el envio de mails.
+                        Dim send_mail As New ClaseEmail
+                        Dim destinatario As String, Cabecera As String, Cuerpo As String, From As String
+                        Dim ServidorSMTP As String, UsuariSMTP As String, PasswordSMTP As String
+                        Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String, nombre As String, Ape1 As String, Rol As Integer, Agrupacion As Integer
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        Rol = 1 ' Lo ponemos a martillo porque queremos que nos busque los datos de los medicos solo.
+                        Agrupacion = VDades(1)
+                        nombre = VDades(2)
+                        Ape1 = VDades(3)
+                        destinatario = VDades(4)
+
+                        Dim DS As New DataSet
+
+                        'La consulta.
+                        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, Email, idOrigen FROM EEContactes WHERE idContacte='" & Rol & "'AND idOrigen ='" & Agrupacion & "'ORDER BY Auto"
+
+                        Cabecera = "Probando Mails de Novonordisk"
+                        Cuerpo = "<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><head runat='server'><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+                                <title></title><asp:literal id='bootstrap_min_css' runat='server'></asp:literal><asp:literal id='jquery_1_9_1_min_js' runat='server'></asp:literal>
+                                <asp:literal id='bootstrap_min_js' runat='server'></asp:literal><asp:literal id='bootbox_min_js' runat='server'></asp:literal><style>
+                                body{margin: 0;padding: 0;box-sizing:border-box;}.padd{padding:10px;}.principal{max-width:650px;width:100%;border: 2px solid black;height: auto;margin-top: 2%;background-color: #efefef;}
+                                .img_logo img{width: 100%;}.contenido{margin-top:2.5%!important;margin:auto;max-width:500px;width:100%;margin-bottom: 2.5% !important;}/* Style para la Tabla*/
+                                table{text-align:center;}.header_tabla{background-color: #20032F !important;color:#fff !important;text-align:center;}tr:nth-child(odd) {background-color:#F0174C !important;color: #fff;}
+                                tr:nth-child(even) {background-color: #f2f2f2   !important;}/* Media Querys para diseño Responsive.*/@media (max-width: 660px) {
+                                .principal{max-width: 450px; width: 100%;}}</style></head><body><div class='container-fluid principal verde'>
+                                <div class='row img_logo'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/img/banner_novonordisk.jpg'/></div>
+                                <div class='row contenido padd'><h3>Bienvenido " & nombre & " " & Ape1 & " </h3><p> A continuación vamos a detallarle los datos de los medicos<br />
+                                que usted tiene a su cargo:</p><table class='table table-responsive table-striped'><thead><tr class='header_tabla'><th class='header_tabla'>Nombre</th>
+                                <th class='header_tabla'>Apellidos</th><th class='header_tabla'>Email</th></tr></thead><tbody>"
+
+                        If clsBD.BaseDades(1, VectorSQL, DS) Then
+                            If DS.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To DS.Tables(0).Rows.Count - 1
+                                    'Nombre_medic = DS.Tables(0).Rows(i).Item("Nom")
+                                    'Apellidos_medics = DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ")
+                                    'Mail_medic = DS.Tables(0).Rows(i).Item("Email")
+                                    Cuerpo += "<tr><td>" & DS.Tables(0).Rows(i).Item("Nom") & "</td><td>" & DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & "</td><td>" & DS.Tables(0).Rows(i).Item("Email") & "</td></tr>"
+                                Next
+                            End If
+                        End If
+
+                        Cuerpo += "</tbody></table></div></div></body></html>"
+
+                        From = "administrator@novonordisk.com"
+                        ServidorSMTP = "smtp.towerplane.com"
+                        UsuariSMTP = "jsmateo@towerplane.com"
+                        PasswordSMTP = "yjiumnvpgD"
+                        Puerto = "25"
+                        FitxerAdjunt = ""
+
+                        envio = send_mail.EnviarEmail_System_Web_Mail_BO(destinatario, From, Cabecera, Cuerpo, , ServidorSMTP,, UsuariSMTP, PasswordSMTP,,,,,)
+                        If envio Then
+                            Descripcio = "KO6"
+                        Else
+                            Descripcio = "OK6"
+                        End If
+                        GoTo Resposta
+
                 End Select
             End If
         Catch ex As Exception

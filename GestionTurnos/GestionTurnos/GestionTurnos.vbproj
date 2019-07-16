@@ -150,6 +150,7 @@
     <Content Include="Css\formulario.css" />
     <Content Include="Css\intranet.css" />
     <Content Include="Css\loginform.css" />
+    <Content Include="Femsa\Login.aspx" />
     <Content Include="Femsa\Plantilla - Mailing.aspx" />
     <Content Include="Formulario.aspx" />
     <Content Include="Formulario2.aspx" />
@@ -211,6 +212,13 @@
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
     <Compile Include="Clases\ClaseGeneral.vb" />
+    <Compile Include="Femsa\Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Femsa\Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Femsa\Plantilla - Mailing.aspx.designer.vb">
       <DependentUpon>Plantilla - Mailing.aspx</DependentUpon>
     </Compile>
