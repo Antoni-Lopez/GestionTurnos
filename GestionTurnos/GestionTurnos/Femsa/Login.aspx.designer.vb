@@ -74,7 +74,7 @@ Partial Public Class Login1
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Input_Password As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_Password As Global.System.Web.UI.HtmlControls.HtmlInputPassword
     
     '''<summary>
     '''Control identificacion.
@@ -93,4 +93,13 @@ Partial Public Class Login1
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents oculto As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control oculto2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents oculto2 As Global.System.Web.UI.HtmlControls.HtmlInputText
 End Class

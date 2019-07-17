@@ -34,17 +34,25 @@
         .recuadro{margin-top:2%;}
         .cuadros{background-color:#EFEFEF;padding:15px;}
 
-        .mi_input{height:28px !important;font-size:13px;margin-top:-2%;}
+        .mi_input{height:22px !important;font-size:13px;margin-top:-2%; margin-left:-3%;}
 
         .centrado {margin-left: 0;width: 100%;}
-        label[for=texto]{    margin-top: 2%;}
-        label[for=texto] span{color:red;font-weight:bold;margin-left:5%;}
+        label[for=texto]{padding-left: 15%;font-size: 20px;}
+        label[for=texto] span{color:red;font-weight:bold;}
+
+        /* Tabla email y Pass */
+        .mi_tabla{display:table;height:100px;padding:10px;}
+        .mi_tabla tbody tr{vertical-align: middle;}
+        .mi_tabla tbody tr td{width:50%;background-color:#EFEFEF;}
+
 
         /* Boton envio de datos */
         .btn-Espa {background-color: #7C0027;border-color: #c6c6c6;color:#FFFFFF;display:block;margin-left:auto;margin-right:auto;}
         .btn-Espa:hover,.btn-Espa:focus,.btn-Espa:active,.btn-Espa.active {background-color:#FFFFFF;border-color: #202020;color:#7C0027;}
         .btn-Espa.disabled:hover,.btn-Espa.disabled:focus,.btn-Espa.disabled:active,.btn-Espa.disabled.active,.btn-Espa[disabled]:hover,.btn-Espa[disabled]:focus,.btn-Espa[disabled]:active,.btn-Espa[disabled].active,fieldset[disabled] .btn-Espa:hover,fieldset[disabled] .btn-Espa:focus,fieldset[disabled] .btn-Espa:active,fieldset[disabled] .btn-Espa.active {background-color: #EEEEEE;border-color: #e1e1e1;color:#FFFFFF;}
 
+        /* Ventana Modal LanzaAviso */
+        .modal-open .modal{display: flex;justify-content: center;align-items: center;}
 
         .verde{border:1px solid green;}
         .azul{border:1px solid blue;}
@@ -81,21 +89,16 @@
         function cambiar_idioma(x) {
             switch (x) {
                 case 1:
-                    //document.getElementById("espanish").style.display = "Block";
-                    //document.getElementById("inglish").style.display = "none";
                     document.getElementById("oculto").value = "es";
                     document.getElementById("espanol").checked = true;
                     document.getElementById("identificacion").innerHTML = "IDENTIFICACIÓN";
                     document.getElementById("Vali").innerHTML = "Validación";
                     break;
                 case 2:
-                    //document.getElementById("inglish").style.display = "Block";
-                    //document.getElementById("espanish").style.display = "none";
                     document.getElementById("english").checked = true;
                     document.getElementById("oculto").value = "en";
                     document.getElementById("identificacion").innerHTML = "IDENTIFICATION";
-                    document.getElementById("Vali").innerHTML = "Validation";
-                    
+                    document.getElementById("Vali").innerHTML = "Validation";                    
                     break;
             }
         }
@@ -117,27 +120,70 @@
             
         }
 
-        //funcion para mostrar el password a los usuarios que ya esten registrados.
-        function showPass(x) {
+
+        function mensajes(x) {
             switch (x) {
                 case 1:
                     LanzaAviso("<p>Hemos detectado que ya estas registrado en nuestra BD.<br/>Por ello, por favor introduzca la contraseña que le enviemos al email. Gracias!</p>");
+                    document.getElementById("oculto2").value = 1;     
+                    document.getElementById("show_password").style.display = "table-row";
                     cambiar_idioma(1);
                     break;
                 case 2:
                     LanzaAviso("<p>We have detected that you are already registered in our DataBase.<br/>So, please enter the password that we send to your email. Thank you!</p>");
+                    document.getElementById("oculto2").value = 1;
+                    document.getElementById("show_password").style.display = "table-row";
                     cambiar_idioma(2);
                     break;
+                case 3:
+                    LanzaAviso("<p>Lo sentimos pero dicho email no está en nuestra Base de Datos.<br/>Por favor introduzca un email valido. Gracias!</p>");
+                    break;
+                case 4:
+                    LanzaAviso("<p>We are sorry but this email is not in our Database. <br/> Please enter a valid email. Thank you!</p>");
+                    cambiar_idioma(2);
+                    break;
+                case 5:
+                    LanzaAviso("<p>Lo sentimos pero el campo contraseña es obligatorio y no puede estar vacio.<br/>Por favor introduzca una contraseña valido. Gracias!</p>");
+                    document.getElementById("show_password").style.display = "table-row";
+                    break;
+                case 6:
+                    LanzaAviso("<p>We are sorry but the password field is mandatory and can not be empty. <br/> Please enter a valid password. Thank you!</p>");
+                    document.getElementById("show_password").style.display = "table-row";
+                    cambiar_idioma(2);
+                    break;
+                case 7:
+                    LanzaAviso("<p>Lo sentimos pero dicha contraseña no está en nuestra Base de Datos.<br/>Por favor introduzca una contraseña valida. Gracias!</p>");
+                    document.getElementById("show_password").style.display = "table-row";
+                    break;
+                case 8:
+                    LanzaAviso("<p>We are sorry but this password is not in our Database. <br/> Please enter a valid password. Thank you!</p>");
+                    document.getElementById("show_password").style.display = "table-row";
+                    cambiar_idioma(2);
+                    break;
+                case 9:
+                    LanzaAviso("<p>Lo sentimos pero el campo Email es obligatorio y no puede estar vacio.<br/>Por favor introduzca un Email valido. Gracias!</p>");
+                    break;
+                case 10:
+                    LanzaAviso("<p>Sorry, the Email field is mandatory and can not be empty. <br/> Please enter a valid Email. Thank you!</p>");
+                    cambiar_idioma(2);
+                    break;
+            }            
+        }
+
+        function michorra() {
+            var x = 1;
+            if (x == 1) {
+                alert("Entramossssss");
             }
-            
-            document.getElementById("mostrar_pass").style.display = "block";
-            document.getElementById("show_password").style.display = "block";
+            else {
+                alert("No entramos ;-(");
+            }
         }
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid img_banner" onclick="inicio()">
+        <div class="container-fluid img_banner" onclick="michorra()">
             <img src="img/banner.jpg" />
         </div>
         <div class="row misegment">
@@ -156,76 +202,29 @@
             <div id="Vali" class="row centrado cabecera">
                 Validación
             </div>
-            <div class="row centrado recuadro">
-                <div class="col-xs-6 cuadros" style="margin-left:1px;width:49%;">
-                    <label for="texto">Email<span>*</span></label>
-                </div>
-                <div class="col-xs-6 cuadros" style="width:50.6%;padding-bottom: 6%;">
-                    <input type="text" class="form-control mi_input" id="Input_Email" runat="server"  />
-                </div>                
-            </div>
-            <div id="mostrar_pass" class="row centrado recuadro" style="margin-top:-1%;display:none;">
-                <div class="col-xs-6 cuadros" style="margin-left:1px;width:49%;padding-bottom:4.5%;">
-                    <label for="texto">Password<span>*</span></label>
-                </div>
-                <div class="col-xs-6 cuadros" style="width:50.6%;">
-                    <input type="text" class="form-control mi_input" id="Input_Password" placeholder="Introduzca su Contraseña." runat="server"  />
-                </div>                
+            <div class="row centrado">
+                <table class="mi_tabla">
+                    <tbody>
+                        <tr>
+                            <td><label for="texto">Email <span>*</span></label></td>
+                            <td><input type="text" class="form-control mi_input" id="Input_Email" runat="server"  /></td>
+                        </tr>
+                        <tr id="show_password" style="display:none;">
+                            <td><label for="texto">Password <span>*</span></label></td>
+                            <td><input type="password" class="form-control mi_input" id="Input_Password" value="" runat="server"  /></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="row centrado cuadros" style="margin-left:1px;width:99.5%;">
                     <button id="identificacion" type="submit" class="btn-Espa" onclick="loading_gif(1)" runat="server">IDENTIFICACIÓN</button>
             </div>
         </div>
-<%--        <div id="espanish">
-            <div class="row centrado cabecera">
-                Validación
-            </div>
-            <div class="row centrado recuadro">
-                <div class="col-xs-6 cuadros" style="margin-left:1px;width:49%;">
-                    <label for="texto">Email<span>*</span></label>
-                </div>
-                <div class="col-xs-6 cuadros" style="width:50.6%;">
-                    <input type="text" class="form-control mi_input" id="Input_Email" placeholder="Introduzca su Email." runat="server"  />
-                </div>                
-            </div>
-            <div id="mostrar_pass" class="row centrado recuadro" style="margin-top:-1%;display:none;">
-                <div class="col-xs-6 cuadros" style="margin-left:1px;width:49%;padding-bottom:4.5%;">
-                    <label for="texto">Password<span>*</span></label>
-                </div>
-                <div class="col-xs-6 cuadros" style="width:50.6%;">
-                    <input type="text" class="form-control mi_input" id="Input_Password" placeholder="Introduzca su Contraseña." runat="server"  />
-                </div>                
-            </div>
-            <div class="row centrado cuadros" style="margin-left:1px;width:99.5%;">
-                    <button id="identificacion" type="submit" class="btn-Espa" onclick="loading_gif(1)" runat="server">IDENTIFICACIÓN</button>
-            </div>
-        </div>
-        <div id="inglish">
-            <div class="row centrado cabecera">
-                Validation
-            </div>
-            <div class="row centrado recuadro">
-                <div class="col-xs-6 cuadros" style="margin-left:1px;width:49%;">
-                    <label for="texto">Email<span>*</span></label>
-                </div>
-                <div class="col-xs-6 cuadros" style="width:50.6%;">
-                    <input type="text" class="form-control mi_input" id="Text1" placeholder="Enter your Email." runat="server"  />
-                </div>                
-            </div>
-            <div id="show_password" class="row centrado recuadro" style="margin-top:-1%;display:none;">
-                <div class="col-xs-6 cuadros" style="margin-left:1px;width:49%;padding-bottom:4.5%;">
-                    <label for="texto">Password<span>*</span></label>
-                </div>
-                <div class="col-xs-6 cuadros" style="width:50.6%;">
-                    <input type="text" class="form-control mi_input" id="Text2" placeholder="Your Password." runat="server"  />
-                </div>                
-            </div>
-            <div class="row centrado cuadros" style="margin-left:1px;width:99.5%;">
-                    <button id="identification" type="submit" class="btn-Espa" onclick="loading_gif(2)" runat="server">IDENTIFICATION</button>
-            </div>
-        </div>--%>
         <div class="row centrado">
-            <input type="text" class="form-control mi_input" style="display:none;"  id="oculto" runat="server"  />
+            <input type="text" class="form-control mi_input" style="display:none;"  id="oculto" runat="server"  />            
+        </div>
+        <div class="row centrado">
+            <input type="text" class="form-control centrado mi_input" style="margin-top:10%" value="0"  id="oculto2" runat="server"  />           
         </div>
     </form>    
 </body>
