@@ -149,10 +149,12 @@
     <Content Include="Css\intranet.css" />
     <Content Include="Css\loginform.css" />
     <Content Include="Femsa\css\jquery.datetimepicker.min.css" />
+    <Content Include="Femsa\css\slick.css" />
     <Content Include="Femsa\Index.aspx" />
     <Content Include="Femsa\Login.aspx" />
     <Content Include="Femsa\Plantilla - Mailing.aspx" />
     <Content Include="Femsa\script\jquery.datetimepicker.full.min.js" />
+    <Content Include="Femsa\script\slick.min.js" />
     <Content Include="Formulario.aspx" />
     <Content Include="Formulario2.aspx" />
     <Content Include="Intranet.aspx" />

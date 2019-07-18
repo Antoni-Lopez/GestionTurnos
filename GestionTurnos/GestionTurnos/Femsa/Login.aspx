@@ -104,19 +104,33 @@
         }
 
         //Funcion para añadir animación al boton de guardado.
-        function loading_gif(x) {
-            switch (x) {
-                case 1:
-                    identificacion.innerHTML = "";
-                    var texto = "Comprobando los datos! <img src='img/ajax-loader.gif' alt='loading' />";
-                    $('#identificacion').html(texto);
-                    break;
-                case 2:
-                    identification.innerHTML = "";
-                    var texto = "Cheking your data! <img src='img/ajax-loader.gif' alt='loading' />";
-                    $('#identification').html(texto);
-                    break;
+        function loading_gif() {
+            var x = document.getElementById("oculto").value;
+
+            if (x == "es") {
+                identificacion.innerHTML = "";
+                var texto = "Comprobando los datos! <img src='img/ajax-loader.gif' alt='loading' />";
+                $('#identificacion').html(texto);
             }
+            else {
+                identificacion.innerHTML = "";
+                var texto = "Cheking your data! <img src='img/ajax-loader.gif' alt='loading' />";
+                $('#identificacion').html(texto);
+            }
+
+
+            //switch (x) {
+            //    case 1:
+            //        identificacion.innerHTML = "";
+            //        var texto = "Comprobando los datos! <img src='img/ajax-loader.gif' alt='loading' />";
+            //        $('#identificacion').html(texto);
+            //        break;
+            //    case 2:
+            //        identification.innerHTML = "";
+            //        var texto = "Cheking your data! <img src='img/ajax-loader.gif' alt='loading' />";
+            //        $('#identification').html(texto);
+            //        break;
+            //}
             
         }
 
@@ -217,14 +231,14 @@
                 </table>
             </div>
             <div class="row centrado cuadros" style="margin-left:1px;width:99.5%;">
-                    <button id="identificacion" type="submit" class="btn-Espa" onclick="loading_gif(1)" runat="server">IDENTIFICACIÓN</button>
+                    <button id="identificacion" type="submit" class="btn-Espa" onclick="loading_gif()" runat="server">IDENTIFICACIÓN</button>
             </div>
         </div>
         <div class="row centrado">
             <input type="text" class="form-control mi_input" style="display:none;"  id="oculto" runat="server"  />            
         </div>
         <div class="row centrado">
-            <input type="text" class="form-control centrado mi_input" style="margin-top:10%" value="0"  id="oculto2" runat="server"  />           
+            <input type="text" class="form-control centrado mi_input" style="margin-top:10%;display:none;" value="0"  id="oculto2" runat="server"  />           
         </div>
     </form>    
 </body>
