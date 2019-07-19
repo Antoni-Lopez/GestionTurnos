@@ -45,6 +45,24 @@
             'Response.Redirect("login.aspx")
         Else
             Dim name_comp As String, email As String
+            Dim nombre As String, ape As String, apellidos() As String, full_name2 As String, pass As String, datos_personales As String, datos_personales2() As String, vuelo_monte As String, vuelito_monte() As String
+            Dim vuelo_regreso As String, vuelito_regreso() As String
+
+            VectorSQL(0) = "SELECT Nom,Cognoms, Password, NickTwitter, NickFacebook FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "'AND idFira ='" & idferia & "'"
+
+            If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+            Else
+                If DS.Tables(0).Rows.Count > 0 Then
+                    For i = 0 To DS.Tables(0).Rows.Count - 1
+                        nombre = DS.Tables(0).Rows(i).Item("Nom")
+                        ape = DS.Tables(0).Rows(i).Item("Cognoms")
+                        pass = DS.Tables(0).Rows(i).Item("Password")
+                        datos_personales = DS.Tables(0).Rows(i).Item("NickTwitter")
+                        vuelo_monte = DS.Tables(0).Rows(i).Item("NickFacebook")
+                    Next
+                End If
+            End If
 
             If idioma = "en" Then
                 'Primero vaciamos los textos que ya hubiesen.
@@ -74,6 +92,11 @@
                 warning_hotel2.InnerText = ""
                 Fecha_chekin.InnerText = ""
                 Fecha_chekout.InnerText = ""
+                prefer.InnerText = ""
+                radio_pollo.InnerText = ""
+                radio_pescado.InnerText = ""
+                confe.InnerText = ""
+                radio_si.InnerText = ""
 
 
 
@@ -106,31 +129,114 @@
                 warning_hotel2.InnerHtml = "· The hotel reservation will be made by Karina Flores, please indicate the number of nights required. <br />· Lodging expenses will be settled by the participant upon check-out"
                 Fecha_chekin.InnerHtml = "Check-in Date"
                 Fecha_chekout.InnerHtml = "Check-out Date"
+                prefer.InnerHtml = "Dinner preference August 28."
+                radio_pollo.InnerHtml = "<input type='radio' name='optradio' id='Pollo' runat='server' />Chicken"
+                radio_pescado.InnerHtml = "<input type='radio' name='optradio' id='Pescado' runat='server' />Fish"
+                confe.InnerHtml = "There will be a conference in English, please confirm if you require hearing aids for the translation in Spanish."
+                radio_si.InnerHtml = "<input type='radio' name='optradio' id='radio_sisi' runat='server' />Yes"
 
-                Dim nombre As String, ape As String, apellidos() As String, full_name2 As String, pass As String
 
-                VectorSQL(0) = "SELECT Nom,Cognoms, Password FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "'AND idFira ='" & idferia & "'"
 
-                If Not clsBD.BaseDades(1, VectorSQL, DS) Then
-                    ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
-                Else
-                    If DS.Tables(0).Rows.Count > 0 Then
-                        For i = 0 To DS.Tables(0).Rows.Count - 1
-                            nombre = DS.Tables(0).Rows(i).Item("Nom")
-                            ape = DS.Tables(0).Rows(i).Item("Cognoms")
-                            pass = DS.Tables(0).Rows(i).Item("Password")
-                        Next
-                    End If
-                End If
 
-                apellidos = ape.Split("¦")
-                ape = apellidos(0)
-                ape += "" + apellidos(1)
-
-                Input_Nombre.Value = nombre + " " + ape
-                Input_Email.Value = mail
-                Input_Password2.Value = pass
             End If
+
+            apellidos = ape.Split("¦")
+            ape = apellidos(0) + " "
+            ape += apellidos(1)
+
+            Input_Nombre.Value = nombre + " " + ape
+            Input_Email.Value = mail
+            Input_Password2.Value = pass
+
+            datos_personales2 = datos_personales.Split("¦")
+            vuelito_monte = vuelo_monte.Split("¦")
+
+            For i = 0 To 6
+                Select Case i
+                    Case 0
+                        Input_Puesto.Value = datos_personales2(i)
+                    Case 1
+                        Input_Negocio.Value = datos_personales2(i)
+                    Case 2
+                        Input_direccion.Value = datos_personales2(i)
+                    Case 3
+                        Input_city.Value = datos_personales2(i)
+                    Case 4
+                        Input_country.Value = datos_personales2(i)
+                    Case 5
+                        Input_movil.Value = datos_personales2(i)
+                    Case 6
+                        Input_oficina.Value = datos_personales2(i)
+                End Select
+            Next
+
+            For i = 0 To 9
+                Select Case i
+                    Case 0
+                        If vuelito_monte(i) Is Nothing Then
+                            datetimepicker1.Value = ""
+                        Else
+                            datetimepicker1.Value = vuelito_monte(i)
+                        End If
+                    Case 1
+                        If vuelito_monte(i) Is Nothing Then
+                            datetimepicker2.Value = ""
+                        Else
+                            datetimepicker2.Value = vuelito_monte(i)
+                        End If
+                    Case 2
+                        If vuelito_monte(i) Is Nothing Then
+                            Input_NumeroVuelo.Value = ""
+                        Else
+                            Input_NumeroVuelo.Value = vuelito_monte(i)
+                        End If
+                    Case 3
+                        If vuelito_monte(i) Is Nothing Then
+                            Input_aerolinea.Value = ""
+                        Else
+                            Input_aerolinea.Value = vuelito_monte(i)
+                        End If
+                    Case 4
+                        If vuelito_monte(i) Is "0" Then
+                            datetimepicker3.Value = ""
+                        Else
+                            datetimepicker3.Value = vuelito_monte(i)
+                        End If
+                    Case 5
+                        If vuelito_monte(i) Is "0" Then
+                            datetimepicker4.Value = ""
+                        Else
+                            datetimepicker4.Value = vuelito_monte(i)
+                        End If
+                    Case 6
+                        If vuelito_monte(i) Is "0" Then
+                            Num_Vuelito.Value = ""
+                        Else
+                            Num_Vuelito.Value = vuelito_monte(i)
+                        End If
+                    Case 7
+                        If vuelito_monte(i) Is "0" Then
+                            aerolinea02.Value = ""
+                        Else
+                            aerolinea02.Value = vuelito_monte(i)
+                        End If
+                    Case 8
+                        If vuelito_monte(i) Is "0" Then
+                            datetimepicker5.Value = ""
+                        Else
+                            datetimepicker5.Value = vuelito_monte(i)
+                        End If
+                    Case 9
+                        If vuelito_monte(i) Is "0" Then
+                            datetimepicker6.Value = ""
+                        Else
+                            datetimepicker6.Value = vuelito_monte(i)
+                        End If
+                End Select
+            Next
+
+
+
         End If
 
 

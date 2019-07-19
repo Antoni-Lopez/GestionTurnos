@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="css/fileinput.min.css" />
     <link rel="stylesheet" type="text/css" href="fileinput-rtl.min.css" />
-    <link rel="stylesheet" type="text/css" href="slick.css" />
+    <link rel="stylesheet" type="text/css" href="jquery.bxslider.css" />
 
     <style type="text/css">
 
@@ -29,21 +29,21 @@
 
         /* Cuadro Principal(Name/Email) */
         #principal{max-width:400px;display:block; margin-left:auto;margin-right:auto;margin-top:2%;background-color:#DCDCDC;border-radius:4.5px;border:#707070 solid 0.5px;}
-        .inputs_no_rellenar{height:25px;border-radius:0 !important; border:#851724 solid 1.5px;pointer-events:none;cursor: not-allowed !important;width:116.7%;background-color:#A8A8A8;color:#fff;}
-        label[for=texto]{margin-top:2.5%;font-size:12px;float:right;}
+        .inputs_no_rellenar{height:34px;border-radius:0 !important; border:#851724 solid 1.5px;pointer-events:none;cursor: not-allowed !important;width:116.7%;background-color:#A8A8A8;color:#fff;}
+        label[for=texto]{margin-top:2.5%;font-size:15px;float:right;}
 
         /* Pass para la App */
         #pass_app{max-width:400px;display:block; margin-left:auto;margin-right:auto;margin-top:.5%;}
         .header{background-color:black;color:#fff;}
         .cuerpo{background-color:#DCDCDC;margin-top:.4%;border:#707070 solid 0.5px;}
         .cuadro_info{margin-left:5%;width:90%;background-color:#FFCC00;font-size:10px;padding:5px;margin-top:1%;margin-bottom:1.5%;border:#333300 solid 0.5px;}
-        .cuadro_info p{margin-top:2%;}
+        .cuadro_info p{margin-top:2%;font-size:10px;}
         .cuadro_info span{font-weight:Bold;}
 
         /* Datos Personales */
         #personal_data{max-width:500px;display:block; margin-left:auto;margin-right:auto;margin-top:1%;}
-        .inputs_personaldata{margin-left:0;width:100%;border:#851724 solid 1.5px;border-radius:0;height:25px}
-        label[for=textosss]{padding-top: 3%;margin-left: 1%;}
+        .inputs_personaldata{margin-left:0;width:100%;border:#851724 solid 1.5px;border-radius:0;height:34px}
+        label[for=textosss]{padding-top: 3%;margin-left: 1%;font-size:15px;}
         label[for=textosss] span{color:red;}
 
         /* Vuelo Monterrey */
@@ -56,21 +56,26 @@
         #archivo{max-width:500px;display:block; margin-left:auto;margin-right:auto;margin-top:1%;}
         .file-input-new{width: 75%;display: block;margin-left: auto;margin-right: auto;margin-top: 1.5%;margin-bottom: 1.5%;}
         .krajee-default.file-preview-frame{margin-left:27%;}
+        #itinerario_warning{font-size:16px;}
+        #itinerario_warning i{margin-right:.5%;}
+
         /* Hospedaje */
         #Hospedaje{max-width:500px;display:block; margin-left:auto;margin-right:auto;margin-top:1%;}
-
-
-
+        #warning_hotel{font-size: 13.5px;margin-top: -1%;}
+        #warning_hotel2{font-size: 13px;margin-top: -.5%;}
+        .bx-has-pager{display:none;}
 
 
 
         /* Preferencias */
         #preferencia{max-width:500px;display:block; margin-left:auto;margin-right:auto;margin-top:1%;}
+        label[for=ultimo_texto]{padding:5px;margin-left:2.5%;}
+        .radio-inline{margin-left: 35%;}
+
 
         /* Boton envio de datos */
-        .btn-Espa {background-color: #7C0027;border-color: #c6c6c6;color:#FFFFFF;display:block;margin-left:auto;margin-right:auto;}
-        .btn-Espa:hover,.btn-Espa:focus,.btn-Espa:active,.btn-Espa.active {background-color:#FFFFFF;border-color: #202020;color:#7C0027;}
-        .btn-Espa.disabled:hover,.btn-Espa.disabled:focus,.btn-Espa.disabled:active,.btn-Espa.disabled.active,.btn-Espa[disabled]:hover,.btn-Espa[disabled]:focus,.btn-Espa[disabled]:active,.btn-Espa[disabled].active,fieldset[disabled] .btn-Espa:hover,fieldset[disabled] .btn-Espa:focus,fieldset[disabled] .btn-Espa:active,fieldset[disabled] .btn-Espa.active {background-color: #EEEEEE;border-color: #e1e1e1;color:#FFFFFF;}
+        #identificacion {box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8);font-family: Arial;font-size: 15px;font-weight: bold;background-color: #AAAAAA;color: #FFFFFF;border-radius: 8px;display:block;margin-left:auto;margin-right:auto;}
+        #identificacion:hover{background-color:#7F0328;}
 
 
         /* Ventana Modal LanzaAviso */
@@ -91,6 +96,16 @@
         .azul{border:1px solid blue;}
         .amarillo{border:1px solid yellow;}
         .rojo{border:1px solid red;}
+        
+        /* Media querys diseño Responsive. */
+        @media (max-width: 320px){
+            .col-xs-6{width:100% !important;}
+            label[for=texto]{float:left;margin-left:2%;}
+            .inputs_no_rellenar{width:100%;}
+            .cuadro_info {height:auto;}
+            #warning_hotel{font-size: 13px;margin-top: -18%;}
+            #warning_hotel2{font-size: 13px;margin-top: -18%;}
+        }
     </style>
 
     <script type="text/javascript">
@@ -110,258 +125,165 @@
                     break;
             }
         }
+
+        function adivina(x) {
+            var MiArray = ["#datetimepicker1", "#datetimepicker2", "#datetimepicker3", "#datetimepicker4", "#datetimepicker5", "#datetimepicker6"];
+            switch (x) {
+                case 1:
+                    $(MiArray[0]).datetimepicker({
+                        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
+                        startDate: '2019/08/26',
+                        endDate: '2019/08/30',
+                        minDate: '2019/08/26',
+                        maxDate: '2019/08/30',//false,
+                        minView: 2,
+                        autoclose: 1,
+                        forceParse: 0,
+                        format: 'd/m/Y',
+                        monthStart: 8,
+                        monthEnd: 8,
+                        timepicker: false,
+                        todayButton: false,
+                        prevButton: false,
+                        nextButton: false,
+                        defaultSelect: false,
+                        scrollMonth: false,
+                        scrollTime: false,
+                        scrollInput: false,
+                        arrows: false,
+                    });
+                    break;
+                case 2:
+                    $(MiArray[1]).datetimepicker({
+                        datepicker:false,
+                        format:'H:i'
+                    });
+                    break;
+                case 3:
+                    $(MiArray[2]).datetimepicker({
+                        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
+                        startDate: '2019/08/29',
+                        endDate: '2019/08/30',
+                        minDate: '2019/08/29',
+                        maxDate: '2019/08/31',//false,
+                        minView: 2,
+                        autoclose: 1,
+                        forceParse: 0,
+                        format: 'd/m/Y',
+                        timepicker: false,
+                        monthStart: 8,
+                        monthEnd: 8,
+                        timepicker: false,
+                        todayButton: false,
+                        prevButton: false,
+                        nextButton: false,
+                        defaultSelect: false,
+                        scrollMonth: false,
+                        scrollTime: false,
+                        scrollInput: false,
+                        arrows: false,
+                    });
+                    break;
+                case 4:
+                    $(MiArray[3]).datetimepicker({
+                        datepicker:false,
+                        format:'H:i'
+                    });
+                    break;
+                case 5:
+                    $(MiArray[4]).datetimepicker({
+                        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
+                        startDate: '2019/08/26',
+                        endDate: '2019/08/30',
+                        minDate: '2019/08/26',
+                        maxDate: '2019/08/30',//false,
+                        minView: 2,
+                        autoclose: 1,
+                        forceParse: 0,
+                        format: 'd/m/Y',
+                        timepicker: false,
+                        monthStart: 8,
+                        monthEnd: 8,
+                        timepicker: false,
+                        todayButton: false,
+                        prevButton: false,
+                        nextButton: false,
+                        defaultSelect: false,
+                        scrollMonth: false,
+                        scrollTime: false,
+                        scrollInput: false,
+                        arrows: false,
+                    });
+                    break;
+                case 6:
+                    $(MiArray[5]).datetimepicker({
+                        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
+                        startDate: '2019/08/29',
+                        endDate: '2019/08/31',
+                        minDate: '2019/08/29',
+                        maxDate: '2019/08/31',//false,
+                        minView: 2,
+                        autoclose: 1,
+                        forceParse: 0,
+                        format: 'd/m/Y',
+                        timepicker: false,
+                        monthStart: 8,
+                        monthEnd: 8,
+                        timepicker: false,
+                        todayButton: false,
+                        prevButton: false,
+                        nextButton: false,
+                        defaultSelect: false,
+                        scrollMonth: false,
+                        scrollTime: false,
+                        scrollInput: false,
+                        arrows: false,
+                    });
+                    break;
+            }
+        }
+
         $(document).ready(function () {
-
-            $('#datetimepicker1').datetimepicker({
-                language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
-                startDate: '2019/08/26',
-                endDate: '2019/08/30',
-                minDate: '2019/08/26',
-                maxDate: '2019/08/30',//false,
-                minView: 2,
-                autoclose: 1,
-                forceParse: 0,
-                format: 'd/m/Y',
-                timepicker: false,
-                monthStart: 8,
-                monthEnd: 8,
-                timepicker: false,
-                todayButton: false,
-                prevButton: false,
-                nextButton: false,
-                defaultSelect: false,
-                scrollMonth: false,
-                scrollTime: false,
-                scrollInput: false,
-                arrows: false,
-            });
-
-            $('#datetimepicker2').datetimepicker({
-                timepicker: false,
-                todayButton: false,
-                prevButton: false,
-                nextButton: false,
-                defaultSelect: false,
-                scrollMonth: false,
-                scrollTime: false,
-                scrollInput: false,
-                arrows: false,
-                minDate: '2019/08/26',
-                maxDate: '2019/08/30',//false,
-                timepicker: true,
-                datepicker: false,
-            });
-
-            $('#datetimepicker3').datetimepicker({
-                language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
-                startDate: '2019/08/26',
-                endDate: '2019/08/30',
-                minDate: '2019/08/26',
-                maxDate: '2019/08/30',//false,
-                minView: 2,
-                autoclose: 1,
-                forceParse: 0,
-                format: 'd/m/Y',
-                timepicker: false,
-                monthStart: 8,
-                monthEnd: 8,
-                timepicker: false,
-                todayButton: false,
-                prevButton: false,
-                nextButton: false,
-                defaultSelect: false,
-                scrollMonth: false,
-                scrollTime: false,
-                scrollInput: false,
-                arrows: false,
-            });
-
-            $('#datetimepicker4').datetimepicker({
-                timepicker: false,
-                todayButton: false,
-                prevButton: false,
-                nextButton: false,
-                defaultSelect: false,
-                scrollMonth: false,
-                scrollTime: false,
-                scrollInput: false,
-                arrows: false,
-                minDate: '2019/08/26',
-                maxDate: '2019/08/30',//false,
-                timepicker: true,
-                datepicker: false,
-            });
-
-
-            $('#datetimepicker5').datetimepicker({
-                language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
-                startDate: '2019/08/26',
-                endDate: '2019/08/30',
-                minDate: '2019/08/26',
-                maxDate: '2019/08/30',//false,
-                minView: 2,
-                autoclose: 1,
-                forceParse: 0,
-                format: 'd/m/Y',
-                timepicker: false,
-                monthStart: 8,
-                monthEnd: 8,
-                timepicker: false,
-                todayButton: false,
-                prevButton: false,
-                nextButton: false,
-                defaultSelect: false,
-                scrollMonth: false,
-                scrollTime: false,
-                scrollInput: false,
-                arrows: false,
-            });
-
-            $('#datetimepicker6').datetimepicker({
-                language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
-                startDate: '2019/08/26',
-                endDate: '2019/08/30',
-                minDate: '2019/08/26',
-                maxDate: '2019/08/30',//false,
-                minView: 2,
-                autoclose: 1,
-                forceParse: 0,
-                format: 'd/m/Y',
-                timepicker: false,
-                monthStart: 8,
-                monthEnd: 8,
-                timepicker: false,
-                todayButton: false,
-                prevButton: false,
-                nextButton: false,
-                defaultSelect: false,
-                scrollMonth: false,
-                scrollTime: false,
-                scrollInput: false,
-                arrows: false,
-            });
-            
-//            $('#datetimepicker1').datetimepicker({
-//                ownerDocument: document,
-//                contentWindow: window,
-//                value: '',
-//                rtl: false,
-//                format: 'd/m/Y ', /*Y/m/d H:i*/
-//                formatTime: 'H:i',
-//                formatDate: 'd/m/Y', /*Y/m/d*/
-//                startDate:  false, // new Date(), '1986/12/08', '-1970/01/05','-1970/01/05',
-//                step: 60,
-//                monthChangeSpinner: true,
-//                closeOnDateSelect: false,
-//                closeOnTimeSelect: true,
-//                closeOnWithoutClick: true,
-//                closeOnInputClick: true,
-//                openOnFocus: true,
-//                timepicker: true,
-//                datepicker: true,
-//                weeks: false,
-//                defaultTime: false, // use formatTime format (ex. '10:00' for formatTime: 'H:i')
-//                defaultDate: '2019/08/26', //false, // use formatDate format (ex new Date() or '1986/12/08' or '-1970/01/05' or '-1970/01/05')
-//                minDate: false,
-//                maxDate: '2019/08/30',//false,
-//                minTime: false,
-//                maxTime: false,
-//                minDateTime: false,
-//                maxDateTime: false,
-//                allowTimes: [],
-//                opened: false,
-//                initTime: true,
-//                inline: false,
-//                theme: '',
-//                touchMovedThreshold: 5,
-//                onSelectDate: function () {},
-//                onSelectTime: function () {},
-//                onChangeMonth: function () {},
-//                onGetWeekOfYear: function () {},
-//                onChangeYear: function () {},
-//                onChangeDateTime: function () {},
-//                onShow: function () {},
-//                onClose: function () {},
-//                onGenerate: function () {},
-//                withoutCopyright: true,
-//                inverseButton: false,
-//                hours12: false,
-//                next: 'xdsoft_next',
-//                prev : 'xdsoft_prev',
-//                dayOfWeekStart: 0,
-//                parentID: 'body',
-//                timeHeightInTimePicker: 25,
-//                //timepicker<a href="https://www.jqueryscript.net/tags.php?/Scroll/">Scroll</a>bar: true,
-//                todayButton: true,
-//                prevButton: true,
-//                nextButton: true,
-//                defaultSelect: true,
-//                scrollMonth: true,
-//                scrollTime: true,
-//                scrollInput: true,
-//                lazyInit: false,
-//                mask: false,
-//                validateOnBlur: true,
-//                allowBlank: true,
-//                yearStart: 1950,
-//                yearEnd: 2050,
-//                monthStart: 0,
-//                monthEnd: 11,
-//                style: '',
-//                id: '',
-//                fixed: false,
-//                roundTime: 'round', // ceil, floor
-//                className: '',
-//                weekends: [],
-//                highlightedDates: [],
-//                highlightedPeriods: [],
-//                allowDates : [],
-//                allowDateRe : null,
-//                disabledDates : [],
-//                disabledWeekDays: [],
-//                yearOffset: 0,
-//                beforeShowDay: null,
-//                enterLikeTab: true,
-//                showApplyButton: false
-//});
-
-
-
-
-
-
-
-
-
-
             $("#upload_file").fileinput({
                 rtl: true,
                 dropZoneEnabled: false,
                 allowedFileExtensions: ["pdf"]
             });
-            $('#fade').slick({
-              dots: false,
-              infinite: true,
-              speed: 500,
-              fade: true,
-              cssEase: 'ease',
-              autoplay: true,
-              autoplaySpeed: 1500,
-              arrows: false,
-              pauseOnHover: true,
+
+            $('#slider').bxSlider({
+              auto: true,
+              autoControls: true,
+              stopAutoOnClick: true,
+              pager: true,
+              slideWidth: 600
             });
-
-
+            $('#bxslider').bxSlider({
+                auto: true,
+                autoControls: false,
+                stopAutoOnClick: true,
+                mode: 'fade',
+                captions: false,
+                slideWidth: 610
+            });
         });
 
-        function prueba() {
-            var path= "img/hotel1.jpg"; //-->Editar la ruta
-    
-            var img=document.createElement('img'); 
-            img.setAttribute("src",path);    
-            document.getElementById("content").appendChild(img);
-            LanzaAviso(img);
+        //Funcion para añadir animación al boton de guardado.
+        function loading_gif() {
+            var x = document.getElementById("oculto2").value;
+            if (x == "1") {
+                identificacion.innerHTML = "";
+                var texto = "Comprobando los datos! <img src='img/ajax-loader.gif' alt='loading' />";
+                $('#identificacion').html(texto);
+                Registre();
+            }
+            else {
+                identificacion.innerHTML = "";
+                var texto = "Cheking your data! <img src='img/ajax-loader.gif' alt='loading' />";
+                $('#identificacion').html(texto);
+                Registre();
+            }
         }
+
     </script>
 </head>
 <body>
@@ -389,7 +311,7 @@
         </div>
         <div id="pass_app">
             <div class="row centrado header">
-                <p style="margin-top: 2%;margin-left:2%;" id="pass_for_app" runat="server">Password para la App</p>
+                <p style="margin-top: 2%;margin-left:2%;font-size: 20px;" id="pass_for_app" runat="server">Password para la App</p>
             </div>
             <div class="row centrado cuerpo" onclick="mensajes(2)">
                 <div class="row centrado">
@@ -409,88 +331,88 @@
         </div>
         <div id="personal_data">
             <div class="row centrado header">
-                <p style="margin-top: 2%;margin-left:2%;" id="personal_data2" runat="server">Datos Personales</p>
+                <p style="margin-top: 2%;margin-left:2%;font-size: 20px;" id="personal_data2" runat="server">Datos Personales</p>
             </div>
             <div class="row centrado cuerpo" style="margin-top:1%;margin-bottom:2%;padding:5px;">
                 <div class="col-xs-6">
                     <label for="textosss" id="puesto" runat="server">Puesto <span>*</span></label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text1" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_Puesto" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="unit_negocio" runat="server">Unidad de negocio <span>*</span></label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text10" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_Negocio" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="adreees" runat="server">Dirección <span>*</span></label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text11" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_direccion" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="city" runat="server">Ciudad <span>*</span></label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text120" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_city" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="country" runat="server">País <span>*</span></label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text111" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_country" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="mobil" runat="server">Teléfono celular <span>*</span></label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text1201" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_movil" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="phone" runat="server">Teléfono oficina <span>*</span></label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text12011" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_oficina" runat="server"  />
                 </div>
             </div>
         </div>
         <div id="vuelo_monte">
             <div class="row centrado header">
-                <p style="margin-top: 2%;margin-left:2%;" id="monterrey_fly" runat="server">Vuelo a Monterrey</p>
+                <p style="margin-top: 2%;margin-left:2%;font-size: 20px;" id="monterrey_fly" runat="server">Vuelo a Monterrey</p>
             </div>
             <div class="row centrado cuerpo" style="margin-top:1%;margin-bottom:2%;padding:5px;">
                 <div class="col-xs-6">
                     <label for="textosss" id="day_arrive" runat="server">Día de Llegada </label>
-                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker1" step="1" min="2019-06-26" max="2019-06-30" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker1" onclick="adivina(1)" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="time_arrive" runat="server">Hora de Llegada</label>
-                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker2" step="1" min="2019-06-26" max="2019-06-30" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker2" onclick="adivina(2)" runat="server"  /> 
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="number_fly" runat="server">Nº. Vuelo </label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text4" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_NumeroVuelo" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="aerolinea" runat="server">Aerolinea</label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text5" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Input_aerolinea" runat="server"  />
                 </div>
             </div>
         </div>
         <div id="vuelo_regreso">
             <div class="row centrado header">
-                <p style="margin-top: 2%;margin-left:2%;" id="p_vuelo_regreso" runat="server">Vuelo Regreso</p>
+                <p style="margin-top: 2%;margin-left:2%;font-size: 20px;" id="p_vuelo_regreso" runat="server">Vuelo Regreso</p>
             </div>
             <div class="row centrado cuerpo" style="margin-top:1%;margin-bottom:2%;padding:5px;">
                 <div class="col-xs-6">
                     <label for="textosss" id="day_exit" runat="server">Día de Salida </label>
-                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker3" step="1" min="2019-06-26" max="2019-06-30" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker3" onclick="adivina(3)" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="time_exit" runat="server">Hora de Salida</label>
-                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker4" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="datetimepicker4" onclick="adivina(4)" runat="server"  /> 
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="number_fly_back" runat="server">Nº. Vuelo </label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text7" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="Num_Vuelito" runat="server"  />
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="aerolinea2" runat="server">Aerolinea</label>
-                    <input type="text" class="form-control inputs_personaldata" id="Text8" runat="server"  />
+                    <input type="text" class="form-control inputs_personaldata" id="aerolinea02" runat="server"  />
                 </div>
             </div>
         </div>
         <div id="archivo">
             <div class="row centrado header">
-                <p style="margin-top: 2%;margin-left:2%;" id="itinerario" runat="server">Adjuntar itinerario</p>
+                <p style="margin-top: 2%;margin-left:2%;font-size: 20px;" id="itinerario" runat="server">Adjuntar itinerario</p>
             </div>
             <div class="row centrado cuerpo">
                 <div class="row centrado">
@@ -508,7 +430,7 @@
         </div>
         <div id="Hospedaje">
             <div class="row centrado header">
-                <p style="margin-top: 2%;margin-left:2%;" id="hotel" runat="server">Hospedaje/Hotel </p>
+                <p style="margin-top: 2%;margin-left:2%;font-size: 20px;" id="hotel" runat="server">Hospedaje/Hotel </p>
             </div>
             <div class="row centrado cuerpo">
                 <div class="row centrado">
@@ -526,11 +448,11 @@
                     </div>
                 </div>
                 <div class="row" style="margin-left:5%;width:90%;box-shadow: 0px 0px 25px rgba(0, 0, 0, 1);margin-top:1%;margin-bottom:1%;">
-                    <div id="fade">
-                        <img src="img/hotel1.jpg" onclick="prueba()" />                      
-                        <img src="img/hotel2.jpg" />
-                        <img src="img/hotel3.jpg" />
-                        <img src="img/hotel4.jpg" />
+                    <div id="bxslider">
+                        <img src="img/hotel1.jpg" title="Hotel Quinta Real Monterrey" onclick="prueba()" />                      
+                        <img src="img/hotel2.jpg" title="Hotel Quinta Real Monterrey" />
+                        <img src="img/hotel3.jpg" title="Hotel Quinta Real Monterrey" />
+                        <img src="img/hotel4.jpg" title="Hotel Quinta Real Monterrey" />
                     </div>
                 </div>
                 <div class="row centrado">
@@ -549,25 +471,58 @@
                 <div class="row centrado" style="margin-bottom:1%;">
                     <div class="col-xs-6">
                         <label for="textosss" id="Fecha_chekin" runat="server">Fecha Check-in </label>
-                        <input type="text" class="form-control inputs_personaldata" id="datetimepicker5" step="1" min="2019-06-26" max="2019-06-30" runat="server"  />
+                        <input type="text" class="form-control inputs_personaldata" id="datetimepicker5" onclick="adivina(5)" runat="server"  />
                     </div>
                     <div class="col-xs-6">
                         <label for="textosss" id="Fecha_chekout" runat="server">Fecha Check-out </label>
-                        <input type="text" class="form-control inputs_personaldata" id="datetimepicker6" step="1" min="2019-06-26" max="2019-06-30" runat="server"  />
+                        <input type="text" class="form-control inputs_personaldata" id="datetimepicker6" onclick="adivina(6)" runat="server"  />
                     </div>
                 </div>
             </div>
         </div>
         <div id="preferencia">
             <div class="row centrado cuerpo">
-                Hola
+                <div class="row centrado">
+                    <label for="ultimo_texto" id="prefer" runat="server">Preferencia cena 28 de Agosto.</label>
+                </div>   
+                <div class="row centrado radios" style="border-bottom:#fff solid 1.5px;">
+                    <label class="radio-inline" id="radio_pollo" runat="server">
+                      <input type="radio" name="optradio" id="Pollo" runat="server" />Pollo
+                    </label>
+                    <label class="radio-inline" id="radio_pescado" runat="server">
+                      <input type="radio" name="optradio" id="Pescado" runat="server"/>Pescado
+                    </label>
+                </div>
+                <div class="row centrado">
+                    <label for="ultimo_texto" id="futbol" runat="server">Juego de futbol soccer Rayados vs Pumas y Cena (29 de agosto).</label>
+                </div>   
+                <div class="row centrado radios" style="border-bottom:#fff solid 1.5px;">
+                    <label class="radio-inline" id="radio_asisto_si" runat="server">
+                      <input type="radio" name="optradio" id="asiste_radio_si" runat="server" />Sí asisto
+                    </label>
+                    <label class="radio-inline" id="radio_asisto_no" runat="server">
+                      <input type="radio" name="optradio" id="asiste_radio_no" runat="server"/>No asisto
+                    </label>
+                </div>  
+                <div class="row centrado">
+                    <label for="ultimo_texto" id="confe" runat="server">Habrá una conferencia en Inglés, por favor confirma si requieres audífonos para la traducción en español.</label> 
+                </div>
+                <div class="row centrado radios">
+                    <label class="radio-inline" id="radio_si" runat="server">
+                      <input type="radio" name="optradio" id="radio_sisi" runat="server" />SÍ
+                    </label>
+                    <label class="radio-inline" id="radio_no" runat="server">
+                      <input type="radio" name="optradio" id="radio_nono" runat="server" />NO
+                    </label>
+                </div>
             </div>
+            
         </div>
-        <div class="row centrado rojo" style="margin-top:1.5%;margin-bottom:1.5%;">
-            <button id="identificacion" type="submit" class="btn-Espa" onclick="loading_gif()" runat="server">REGISTRO</button>
+        <div class="row centrado" style="margin-top:.5%;margin-bottom:1.5%;">
+            <button id="identificacion" type="button" class="btn-Espa" onclick="loading_gif()" runat="server">REGISTRO</button>
         </div>
-        <div class="row centrado rojo" >
-            <input type="text" class="" id="oculto2" runat="server"/>
+        <div class="row centrado" >
+            <input type="text" class="" id="oculto2" style="display:none;" runat="server"/>
         </div>
     </form>
     <div id="mensaje_es" class="no_email" style="display:none;" runat="server">
@@ -579,7 +534,81 @@
     <script src="script/jquery.datetimepicker.full.min.js"></script>
     <script src="script/jquery.datetimepicker.min.js"></script>
     <script src="script/fileinput.min.js"></script>
-    <script src="script/slick.min.js"></script>
-    
+    <script src="script/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
+    <script type="text/javascript">   
+        function Registre() {
+            var Dades; 
+
+            var email, comprobar;
+            email = document.getElementById("Input_Email").value;
+
+            //Datos personales
+            var puesto = document.getElementById("Input_Puesto").value;
+            var negocio = document.getElementById("Input_Negocio").value;
+            var direccion = document.getElementById("Input_direccion").value;
+            var city = document.getElementById("Input_city").value;
+            var country = document.getElementById("Input_country").value;
+            var movil = document.getElementById("Input_movil").value;
+            var oficina = document.getElementById("Input_oficina").value;
+
+            //Vuelo Monterrey
+            var h_salida = document.getElementById("datetimepicker1").value;
+            var h_llegada = document.getElementById("datetimepicker2").value;
+            var nVuelo = document.getElementById("Input_NumeroVuelo").value;
+            var aerolinea = document.getElementById("Input_aerolinea").value;
+
+            //Vuelo Regreso
+            var _h_salida2 = document.getElementById("datetimepicker3").value;
+            var h_llegada2 = document.getElementById("datetimepicker4").value;
+            var nVuelo2 = document.getElementById("Num_Vuelito").value;
+            var aerolinea2 = document.getElementById("aerolinea02").value;
+
+            //Hospedaje/Hotel
+            var h_salida3 = document.getElementById("datetimepicker5").value;
+            var h_llegada3 = document.getElementById("datetimepicker6").value;
+            
+
+            if ((puesto == "") || (puesto == null) || (negocio == "") || (negocio == null) || (direccion == "") || (direccion == null) || (city == "") || (city == null) || (country == "") || (country == null) || (movil == "") || (movil == null) || (oficina == "") || (oficina == null)) {
+
+                var x = document.getElementById("oculto2").value;
+                if (x == "1") {
+                    LanzaAviso("<p>Los campos de Datos Personales son obligatorios y no pueden estar vacios. <br />Por favor asegurese que todos los campos estan rellenos.");
+                    identificacion.innerHTML = "";
+                    var texto = "REGISTRO";
+                    $('#identificacion').html(texto);
+                }
+                else {
+                    LanzaAviso("<p>The Personal Data fields are obligatory and can not be empty. <br /> Please make sure all fields are filled.");
+                    identificacion.innerHTML = "";
+                    var texto = "REGISTER";
+                    $('#identificacion').html(texto);
+                }                
+            }
+
+            Dades = email + "¦" + puesto + "¦" + negocio + "¦" + direccion + "¦" + city + "¦" + country + "¦" + movil + "¦" + oficina + "¦" + h_salida + "¦" + h_llegada + "¦" + nVuelo + "¦" + aerolinea + "¦" + _h_salida2 + "¦" + h_llegada2 + "¦" + nVuelo2 + "¦" + aerolinea2 + "¦" + h_salida3 + "¦"+ h_llegada3;       
+
+            setTimeout("InformacioAJAX(13,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
+        }          
+
+        function Registre_Tornada(Dades) {
+            if (Dades.substr(0, 2) == "OK") {
+                if (Dades.substr(2, 2) == "13") {
+                    LanzaAviso("<h4>Hemos actualizado <span style='color:#1ED760;'>correctacmente</span> sus preferencias en nuestra Base de Datos. Gracias!</h4>");
+                    identificacion.innerHTML = "";
+                    var texto = "<h4 style='text-align:center;'>Registro OK!<br/>";
+                    setTimeout($('#identificacion').html(texto), 1000);
+                }
+            }
+            else {
+                if (Dades.substr(2, 2) == "13") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                    guardar_data.innerHTML = "";
+                    var texto = "<h4 style='text-align:center;'>ERROR al Guardar Datos!<br/>";
+                    $('#guardar_data').html(texto);
+                }
+            }
+        }
+       </script>
 </body>
 </html>

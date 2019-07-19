@@ -616,6 +616,93 @@ Continuamos:
                         End If
                         GoTo Resposta
 
+                    Case 13 'Guardar datos en Bd FEMSA
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        Dim puesto As String, negocio As String, direccion As String, city As String, country As String, movil As String, oficina As String, email As String, idferia As String
+                        Dim h_salida As String, h_llegada As String, nVuelo As String, aerolinea As String, total2 As String
+                        Dim h_salida2 As String, h_llegada2 As String, nVuelo2 As String, aerolinea2 As String
+                        Dim h_salid3 As String, h_llegada3 As String
+
+                        For i = 0 To 17
+                            Select Case i
+                                Case 0
+                                    email = VDades(i)
+                                Case 1
+                                    puesto = VDades(i)
+                                Case 2
+                                    negocio = VDades(i)
+                                Case 3
+                                    direccion = VDades(i)
+                                Case 4
+                                    city = VDades(i)
+                                Case 5
+                                    country = VDades(i)
+                                Case 6
+                                    movil = VDades(i)
+                                Case 7
+                                    oficina = VDades(i)
+                                Case 8
+                                    h_salida = VDades(i)
+                                Case 9
+                                    h_llegada = VDades(i)
+                                Case 10
+                                    nVuelo = VDades(i)
+                                Case 11
+                                    aerolinea = VDades(i)
+                                Case 12
+                                    h_salida2 = VDades(i)
+                                Case 13
+                                    h_llegada2 = VDades(i)
+                                Case 14
+                                    nVuelo2 = VDades(i)
+                                Case 15
+                                    aerolinea2 = VDades(i)
+                                Case 16
+                                    h_salid3 = VDades(i)
+                                Case 17
+                                    h_llegada3 = VDades(i)
+
+                            End Select
+                        Next
+
+                        Dim total As String
+
+                        total = puesto + "¦" + negocio + "¦" + direccion + "¦" + city + "¦" + country + "¦" + movil + "¦" + oficina
+                        total2 = h_salida + "¦" + h_llegada + "¦" + nVuelo + "¦" + aerolinea + "¦" + h_salida2 + "¦" + h_llegada2 + "¦" + nVuelo2 + "¦" + aerolinea2 + "¦" + h_salid3 + "¦" + h_llegada3
+                        Dim Ds As New DataSet
+
+                        idferia = "202"
+
+                        'Una vez echo todas las comprobaciones, guardamos mediante un UPDATE los valores marcados.
+                        VectorSQL(0) = "UPDATE eecontactes SET NickTwitter = '" & total & "' WHERE Email = '" & email & "'and idFira='" & idferia & "'"
+
+                        If Not clsBD.BaseDades(2, VectorSQL) Then
+                            'Problema
+                            Descripcio = "KO13"
+                            GoTo Resposta
+                        Else
+                            'Correcto
+                            'Descripcio = "OK13"
+                            'GoTo Resposta
+                        End If
+
+                        Ds.Reset()
+
+                        VectorSQL(0) = "UPDATE eecontactes SET NickFacebook = '" & total2 & "' WHERE Email = '" & email & "'and idFira='" & idferia & "'"
+
+                        If Not clsBD.BaseDades(2, VectorSQL) Then
+                            'Problema
+                            Descripcio = "KO13"
+                            GoTo Resposta
+                        Else
+                            'Correcto
+                            Descripcio = "OK13"
+                            GoTo Resposta
+                        End If
+
+
                 End Select
             End If
         Catch ex As Exception

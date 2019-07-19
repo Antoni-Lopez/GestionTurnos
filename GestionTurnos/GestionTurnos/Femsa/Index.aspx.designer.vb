@@ -149,13 +149,13 @@ Partial Public Class Index
     Protected WithEvents puesto As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text1.
+    '''Control Input_Puesto.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text1 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_Puesto As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control unit_negocio.
@@ -167,13 +167,13 @@ Partial Public Class Index
     Protected WithEvents unit_negocio As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text10.
+    '''Control Input_Negocio.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text10 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_Negocio As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control adreees.
@@ -185,13 +185,13 @@ Partial Public Class Index
     Protected WithEvents adreees As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text11.
+    '''Control Input_direccion.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text11 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_direccion As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control city.
@@ -203,13 +203,13 @@ Partial Public Class Index
     Protected WithEvents city As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text120.
+    '''Control Input_city.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text120 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_city As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control country.
@@ -221,13 +221,13 @@ Partial Public Class Index
     Protected WithEvents country As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text111.
+    '''Control Input_country.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text111 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_country As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control mobil.
@@ -239,13 +239,13 @@ Partial Public Class Index
     Protected WithEvents mobil As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text1201.
+    '''Control Input_movil.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text1201 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_movil As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control phone.
@@ -257,13 +257,13 @@ Partial Public Class Index
     Protected WithEvents phone As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text12011.
+    '''Control Input_oficina.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text12011 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_oficina As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control monterrey_fly.
@@ -320,13 +320,13 @@ Partial Public Class Index
     Protected WithEvents number_fly As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text4.
+    '''Control Input_NumeroVuelo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text4 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_NumeroVuelo As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control aerolinea.
@@ -338,13 +338,13 @@ Partial Public Class Index
     Protected WithEvents aerolinea As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text5.
+    '''Control Input_aerolinea.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text5 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Input_aerolinea As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control p_vuelo_regreso.
@@ -401,13 +401,13 @@ Partial Public Class Index
     Protected WithEvents number_fly_back As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text7.
+    '''Control Num_Vuelito.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text7 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents Num_Vuelito As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control aerolinea2.
@@ -419,13 +419,13 @@ Partial Public Class Index
     Protected WithEvents aerolinea2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control Text8.
+    '''Control aerolinea02.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Text8 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    Protected WithEvents aerolinea02 As Global.System.Web.UI.HtmlControls.HtmlInputText
     
     '''<summary>
     '''Control itinerario.
@@ -507,6 +507,141 @@ Partial Public Class Index
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents datetimepicker6 As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control prefer.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents prefer As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control radio_pollo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_pollo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control Pollo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Pollo As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
+    '''Control radio_pescado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_pescado As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control Pescado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Pescado As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
+    '''Control futbol.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents futbol As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control radio_asisto_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_asisto_si As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control asiste_radio_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents asiste_radio_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
+    '''Control radio_asisto_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_asisto_no As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control asiste_radio_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents asiste_radio_no As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
+    '''Control confe.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confe As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control radio_si.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_si As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control radio_sisi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_sisi As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
+    '''Control radio_no.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_no As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control radio_nono.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_nono As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
     '''Control identificacion.
