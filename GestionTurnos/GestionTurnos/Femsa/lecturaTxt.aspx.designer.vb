@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Plantilla___Mailing
+Partial Public Class lecturaTxt
     
     '''<summary>
     '''Control bootstrap_min_css.
@@ -50,20 +50,11 @@ Partial Public Class Plantilla___Mailing
     Protected WithEvents bootbox_min_js As Global.System.Web.UI.WebControls.Literal
     
     '''<summary>
-    '''Control form1.
+    '''Control insertar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
-    
-    '''<summary>
-    '''Control enviarmail.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents enviarmail As Global.System.Web.UI.HtmlControls.HtmlButton
+    Protected WithEvents insertar As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 End Class

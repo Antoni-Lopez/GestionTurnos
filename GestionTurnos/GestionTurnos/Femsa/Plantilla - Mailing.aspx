@@ -29,6 +29,10 @@
         .cabecera{font-size:16px;padding:10px;margin-top:5%;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;text-align:center;}
         .cabecera span{color:#892132;font-size:13px;font-weight:bold;text-decoration:underline;}
 
+        /* Centrar QR */
+        .centrar_qr{display:block;margin-left:auto;margin-right:auto;max-width:150px;width:100%; max-height:150px;}
+        .centrar_qr img{box-shadow:0px 0px 0px rgba(0, 0, 0, 0);width:100%;}
+        /*.row {margin-right: -15px;margin-left: -15px;}*/
 
         .cuadro {height: 300px;}
         .verde {border: green solid 2px;}
@@ -66,11 +70,61 @@
                     </div>
                     <div class="row" style="margin-top:-15%;">
                         <p>-Password: 1111</p>
-                    </div>
-                    
+                    </div>                    
+                </div>
+                <div class="row centrar_qr">
+                    <img src="img/qr/jose.png" />
                 </div>
             </div>
         </div>
+        <div class="row centrar_qr">
+            <button type="button" id="enviarmail" runat="server" onclick="Registre">Enviar Email</button>
+        </div>
     </form>
+    <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
+    <script type="text/javascript">   
+        function Registre() {
+            var Dades; 
+
+            var email, idferia,nombre,apellido;
+            email = "jsmateo@towerplane.com";
+            idferia = "202";   
+            nombre = "Jose";
+            Apellido = "Sánchez Mateo";
+
+
+            enviarmail.innerHTML = "";
+            var texto = "<img src='img/ajax-loader.gif' alt='loading' /> Enviando Email";
+            $('#enviarmail').html(texto);
+
+            Dades = email + "¦" + idferia + "¦" + nombre + "¦" + Apellido;       
+
+            setTimeout("InformacioAJAX(12,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
+        }          
+
+        function Registre_Tornada(Dades) {
+            if (Dades.substr(0, 2) == "OK") {
+                if (Dades.substr(2, 2) == "12") {
+                    LanzaAviso("<h4>Hemos actualizado <span style='color:#1ED760;'>correctacmente</span> sus preferencias en nuestra Base de Datos. Gracias!</h4>");
+                    enviarmail.innerHTML = "";
+                    var texto = "<h4 style='text-align:center;'>Email enviado!<br/>";
+                    setTimeout($('#enviarmail').html(texto), 1000);
+                }
+            }
+            else {
+                if (Dades.substr(2, 2) == "12") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                    enviarmail.innerHTML = "";
+                    var texto = "<h4 style='text-align:center;'>ERROR al Enviar el Email!<br/>";
+                    $('#enviarmail').html(texto);
+                }
+            }
+        }
+
+        function LanzaAviso(Text) {
+            bootbox.alert({ title: "ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA", message: Text, size: 'large' });
+
+        }
+       </script>
 </body>
 </html>

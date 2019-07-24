@@ -189,7 +189,7 @@
                         Agrupacion = VDades(1)
                         nombre = VDades(2)
                         Ape1 = VDades(3)
-                        destinatario = VDades(4)
+                        destinatario = "jsmateo@towerplane.com" 'VDades(4)
 
                         Dim DS As New DataSet
 
@@ -226,7 +226,7 @@
                         From = "administrator@novonordisk.com"
                         ServidorSMTP = "smtp.towerplane.com"
                         UsuariSMTP = "jsmateo@towerplane.com"
-                        PasswordSMTP = "yjiumnvpgD"
+                        PasswordSMTP = "Rp8qHKdTxc" '"yjiumnvpgD"
                         Puerto = "25"
                         FitxerAdjunt = ""
 
@@ -559,60 +559,78 @@ Continuamos:
                         Dim send_mail As New ClaseEmail
                         Dim destinatario As String, Cabecera As String, Cuerpo As String, From As String
                         Dim ServidorSMTP As String, UsuariSMTP As String, PasswordSMTP As String
-                        Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String, nombre As String, Ape1 As String, Rol As Integer, Agrupacion As Integer
+                        Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String
+                        Dim nombre As String, Apellido As String, idFeria As Integer, pass As String, name_qr As String
 
                         VDades = CStr(Request.Form("d")).Split("¦")
 
-                        Rol = 1 ' Lo ponemos a martillo porque queremos que nos busque los datos de los medicos solo.
-                        Agrupacion = VDades(1)
+                        ' Ponemos los datos a martillo.
+                        destinatario = "jsmateo@towerplane.com" ' esto es el mail de la persona que se lo vamos a enviar.
+                        idFeria = VDades(1)
                         nombre = VDades(2)
-                        Ape1 = VDades(3)
-                        destinatario = VDades(4)
+                        Apellido = VDades(3)
+
 
                         Dim DS As New DataSet
 
                         'La consulta.
-                        VectorSQL(0) = "SELECT Auto , Nom, Cognoms, Email, idOrigen FROM EEContactes WHERE idContacte='" & Rol & "'AND idOrigen ='" & Agrupacion & "'ORDER BY Auto"
-
-                        Cabecera = "Probando Mails de Novonordisk"
-                        Cuerpo = "<!DOCTYPE html><html xmlns='http://www.w3.org/1999/xhtml'><head runat='server'><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-                                <title></title><asp:literal id='bootstrap_min_css' runat='server'></asp:literal><asp:literal id='jquery_1_9_1_min_js' runat='server'></asp:literal>
-                                <asp:literal id='bootstrap_min_js' runat='server'></asp:literal><asp:literal id='bootbox_min_js' runat='server'></asp:literal><style>
-                                body{margin: 0;padding: 0;box-sizing:border-box;}.padd{padding:10px;}.principal{max-width:650px;width:100%;border: 2px solid black;height: auto;margin-top: 2%;background-color: #efefef;}
-                                .img_logo img{width: 100%;}.contenido{margin-top:2.5%!important;margin:auto;max-width:500px;width:100%;margin-bottom: 2.5% !important;}/* Style para la Tabla*/
-                                table{text-align:center;}.header_tabla{background-color: #20032F !important;color:#fff !important;text-align:center;}tr:nth-child(odd) {background-color:#F0174C !important;color: #fff;}
-                                tr:nth-child(even) {background-color: #f2f2f2   !important;}/* Media Querys para diseño Responsive.*/@media (max-width: 660px) {
-                                .principal{max-width: 450px; width: 100%;}}</style></head><body><div class='container-fluid principal verde'>
-                                <div class='row img_logo'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/img/banner_novonordisk.jpg'/></div>
-                                <div class='row contenido padd'><h3>Bienvenido " & nombre & " " & Ape1 & " </h3><p> A continuación vamos a detallarle los datos de los medicos<br />
-                                que usted tiene a su cargo:</p><table class='table table-responsive table-striped'><thead><tr class='header_tabla'><th class='header_tabla'>Nombre</th>
-                                <th class='header_tabla'>Apellidos</th><th class='header_tabla'>Email</th></tr></thead><tbody>"
+                        VectorSQL(0) = "SELECT Procedencia , Password FROM EEContactes WHERE idContacte='" & destinatario & "'AND idFira ='" & idFeria & "'"
 
                         If clsBD.BaseDades(1, VectorSQL, DS) Then
                             If DS.Tables(0).Rows.Count > 0 Then
                                 For i = 0 To DS.Tables(0).Rows.Count - 1
-                                    'Nombre_medic = DS.Tables(0).Rows(i).Item("Nom")
-                                    'Apellidos_medics = DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ")
-                                    'Mail_medic = DS.Tables(0).Rows(i).Item("Email")
-                                    Cuerpo += "<tr><td>" & DS.Tables(0).Rows(i).Item("Nom") & "</td><td>" & DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & "</td><td>" & DS.Tables(0).Rows(i).Item("Email") & "</td></tr>"
+                                    pass = DS.Tables(0).Rows(i).Item("Password")
+                                    name_qr = DS.Tables(0).Rows(i).Item("Procedencia")
                                 Next
                             End If
                         End If
 
-                        Cuerpo += "</tbody></table></div></div></body></html>"
+                        Cabecera = "Prueba"
+                        'Cabecera = "ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA"
 
-                        From = "administrator@novonordisk.com"
+                        Cuerpo = "<!DOCTYPE html PUBLIC ' -// W3C // DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns='http://www.w3.org/1999/xhtml'><head><meta http-equiv='Content-Type' content='text/html; charset=windows-1252'>
+                                  <style>body {background: #eeeeee;font-weight: normal;font-family: 'Open Sans', Arial, Helvetica, sans-serif;line-height: 20px;}.Taula1 {background-color: #ffffff;border-collapse: collapse;}.Link1, .Link2, .Link3, .Link4 {
+                                  color: #d95900;font-weight: bold;font-size: 11px;text-decoration: none;}.Link1:hover, .Link2:hover, .Link3, .Link4:hover {color: #333;text-decoration: none;}
+                                  .Link2 {font-size: 18px;font-weight: 400;line-height: 24px;}.Link3 {font-size: 10px;}.Link4 {font-size: 12px;}.Estil1 {color: #685c4f;font-size: 16px;}.Estil2 {color: #666;font-size: 12px;}
+                                  .Estil3 {color: #685c4f;font-size: 12px;}.TipusTD1, .TipusTD2, .TipusTD3 {padding-left: 10px;padding-right: 10px;text-align: left;vertical-align: top;}
+                                  .datos_user {max-width: 250px;width: 100%;display: block;margin-left: auto;margin-right: auto;padding: 10px;text-align: center;height: 75px;margin-bottom: 2%;background-color: #FFD8D8;margin-top: 1.5%;height: auto;}
+                                  .qr {display: block;margin-left: auto;margin-right: auto;max-width: 150px;width: 100%;max-height: 150px;}.textos{text-align: justify;font-size: 15px;width: 95%;display: block;margin-left: auto;margin-right: auto;padding: 10px;text-align: justify; font-size: 16px;}.espacio_indor{padding-bottom: 10px; padding-top: 10px;padding-left: 10px;padding-right: 10px;}
+                                  .TipusTD2 {vertical-align: middle;height: 40px;max-width: 200px;width: 100%;display: block;margin-left: auto;margin-right: auto;background-color: #7C0027;color: #fff;padding: 10px;}.cuadro_app{display: block;margin-left: auto;margin-right: auto;background-color: #7C0027;color: #fff;padding: 10px;}.TipusTD3 {font-size: 10px;line-height: 14px;}
+                                  </style></head><body><div style='margin-left:0;width:100%;background-color:#fff;text-align:center;padding:5px;'><p>Si no visualiza correctamente el Email por favor pulse <a href='towerplane.com'>aquí</a></p>
+                                  </div><!-- Encabezado REFRESH --><table width='100%' ><tr><td align='center' valign='top'><table class='Taula1' width='600'><tbody><tr><td><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/test1.jpg' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='600' border='0'>
+                                  </td></tr><tr><td><table><tr><td><img src=file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/test2.jpg' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='300'  border='0' style='margin-top: -5%;margin-left: .4%;' />
+                                  </td><td><a href='http://raa.femsa.com/'><img src=file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/test3.jpg' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='300'  border='0' style='margin-top: -10%;margin-left: -2.2%;' /></a>
+                                  </td></tr></table></td></tr><tr><td><img src=file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/test4.jpg' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='600' border='0' style='display:Block !important;margin-top:-2%;'/>
+                                  </td></tr>
+
+</tr><tr><td style='border-bottom: 0 px solid #685c4f;'><table width='100%'>
+                                  <tbody><tr><td style='margin-top:25px;'><h4 style='margin-top: 10%; text-align: center; font-size: 17px; margin-bottom: 5%;'>Bienvenido a la Reunión Anual de: <strong><u>ASUNTOS JURÍDICOS Y REGULATORIOS</u></strong></h4>
+                                  </td></tr></tbody></table></td></tr><tr><td><table width='100%'><tbody><tr><td class='TipusTD1' style='padding-top: 5px;'><p style='text-align: justify;font-size: 15px;width: 95%;display: block;margin-left: auto;margin-right: auto;padding: 10px;text-align: justify; font-size: 16px'>Muchas gracias por su confirmación de asistencia. La información de su registro se ha realizado correctamente para la Reunión Anual de ASUNTOS JURÍDICOS Y REGULATORIOS 2019.</p>
+                                  <p style='text-align: justify;font-size: 15px;width: 95%;display: block;margin-left: auto;margin-right: auto;padding: 10px;text-align: justify; font-size: 16px;margin-bottom:25px;'>Puede descargarse la App haciendo click desde su smartphone en el siguiente link, o tecleando la dirección web en el navegador de su teléfono móvil (Valido para IOS & Android).</p>
+                                  </td></tr><table width='100%'><tr><td style='width:30%'>&nbsp;</td><td><a href='http:raa.femsa.com/app.htm' style='padding: 10px 25px;text-decoration: none; text-align:center;background-color: #7C0027;color: #fff;'>http:raa.femsa.com/app.htm</a>
+                                  </td><td style='width:30%'> &nbsp;</td></tr></table><tr><td class='TipusTD1'><p class='textos' style='margin-top:25px;margin-bottom:25px;'>Una vez descargada, debe identificarse usando las mismas claves que utilizó para el registro, así como también se desea modificar su registro.</p>
+                                  </td></tr><tr><table width='100%'><tr><td style='width:30%'>&nbsp;</td><td style='padding-bottom: 5px; padding-top: 7px;padding: 10px;margin-bottom: 2%;background-color: #FFD8D8;margin-top: 1.5%;height: auto;'>
+                                  <p style='text-align: justify; font-size: 13.8px;'>-User: <a href='mailto:" & destinatario & "'>" & destinatario & "</a></p><p style='text-align: justify; font-size: 15px;'>-Password: <span style='font-weight: bold;'>" & pass & "</span></p></td><td style='width:30%'> &nbsp;</td></tr>
+                                  <tr><td style='width:30%'>&nbsp;</td><td align='center'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/qr/" & name_qr & "' title='" & name_qr & "' style='box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); width: 150px;' />
+                                  <p>" & name_qr & "</p></td><td style='width:30%'> &nbsp;</td></tr></table></tr></tbody></table></td></tr></tbody></table></body></html>"
+
+                        '<tr class='TipusTD3 qr'><td align='center'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/qr/" & name_qr & "' style='box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); width: 150px;display: block;margin-left: auto;margin-right: auto' />
+                        '</td></tr>
+                        '<td align='center' style='margin-bottom:25px;'; padding: 0px;'>
+                        ' <img src ='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/banner.jpg' alt='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='600' height='250' border='0'></a></td>
+
+                        From = "administrador@towerplane.com"
                         ServidorSMTP = "smtp.towerplane.com"
                         UsuariSMTP = "jsmateo@towerplane.com"
-                        PasswordSMTP = "yjiumnvpgD"
+                        PasswordSMTP = "Rp8qHKdTxc" '"yjiumnvpgD"
                         Puerto = "25"
                         FitxerAdjunt = ""
 
                         envio = send_mail.EnviarEmail_System_Web_Mail_BO(destinatario, From, Cabecera, Cuerpo, , ServidorSMTP,, UsuariSMTP, PasswordSMTP,,,,,)
                         If envio Then
-                            Descripcio = "KO6"
+                            Descripcio = "OK12"
                         Else
-                            Descripcio = "OK6"
+                            Descripcio = "KO12"
                         End If
                         GoTo Resposta
 
@@ -702,6 +720,65 @@ Continuamos:
                             GoTo Resposta
                         End If
 
+                    Case 14
+                        'Datos necesarios para el envio de mails.
+                        Dim send_mail As New ClaseEmail
+                        Dim destinatario As String, Cabecera As String, Cuerpo As String, From As String
+                        Dim ServidorSMTP As String, UsuariSMTP As String, PasswordSMTP As String
+                        Dim Puerto As Integer, envio As Boolean, FitxerAdjunt As String
+                        Dim nombre As String, Apellido As String, idFeria As Integer, pass As String, name_qr As String
+
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        ' Ponemos los datos a martillo.
+                        destinatario = "jsmateo@towerplane.com" ' esto es el mail de la persona que se lo vamos a enviar.
+                        idFeria = VDades(1)
+                        nombre = VDades(2)
+                        Apellido = VDades(3)
+
+
+                        Dim DS As New DataSet
+
+                        'La consulta.
+                        VectorSQL(0) = "SELECT Procedencia , Password FROM EEContactes WHERE idContacte='" & destinatario & "'AND idFira ='" & idFeria & "'"
+
+                        If clsBD.BaseDades(1, VectorSQL, DS) Then
+                            If DS.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To DS.Tables(0).Rows.Count - 1
+                                    pass = DS.Tables(0).Rows(i).Item("Password")
+                                    name_qr = DS.Tables(0).Rows(i).Item("Procedencia")
+                                Next
+                            End If
+                        End If
+
+                        Cabecera = "Prueba"
+                        'Cabecera = "ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA"
+
+                        Cuerpo = "<!DOCTYPE html PUBLIC ' -// W3C // DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns='http://www.w3.org/1999/xhtml'><head><meta http-equiv='Content-Type' content='text/html; charset=windows-1252'>
+                                  <title>Pruebas</title></head><body><style>body {background: #eeeeee;font-weight: normal;font-family: 'Open Sans', Arial, Helvetica, sans-serif;line-height: 20px;}.tabla1 {background-color: #ffffff;border-collapse: collapse;}.tabla3 {margin:-1.95% 0 0 0;}</style>
+                                  <form id='form1'><div style='margin-left: 0; width: 100%; background-color: #fff; text-align: center; padding: 10px;'><p>Si no visualiza correctamente el Email por favor pulse <a href='www.towerplane.com'>aquí</a></p>
+                                  </div><!-- Encabezado --><table width='100%'><tr><td align='center' valign='top'><table class='tabla1' width='600px'><tr><td><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/femsa1.png' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='610' border='0'>
+                                  </td></tr><tr><td><table style='margin-top:-1.9%;'><tr><td><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/femsa2.png' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='305' border='0' />
+                                  </td><td><a href='www.towerplane.com' style='margin-left:-2%'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/femsa3.png' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='305' height='65.44px' border='0' /></a>
+                                  </td></tr></table></td></tr><tr><td><div class='tabla3'><img src='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/femsa4.png' title='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='607.5' border='0'></div>
+                                  </td></tr></table></td></tr></table></form></body></html>"
+
+                        ' <img src ='file:///D:/sancheado/GestionTurnos/GestionTurnos/GestionTurnos/GestionTurnos/Femsa/img/banner.jpg' alt='ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA' width='600' height='250' border='0'></a></td>
+
+                        From = "administrador@towerplane.com"
+                        ServidorSMTP = "smtp.towerplane.com"
+                        UsuariSMTP = "jsmateo@towerplane.com"
+                        PasswordSMTP = "Rp8qHKdTxc"
+                        Puerto = "25"
+                        FitxerAdjunt = ""
+
+                        envio = send_mail.EnviarEmail_System_Web_Mail_BO(destinatario, From, Cabecera, Cuerpo, , ServidorSMTP,, UsuariSMTP, PasswordSMTP,,,,,)
+                        If envio Then
+                            Descripcio = "OK14"
+                        Else
+                            Descripcio = "KO14"
+                        End If
+                        GoTo Resposta
 
                 End Select
             End If

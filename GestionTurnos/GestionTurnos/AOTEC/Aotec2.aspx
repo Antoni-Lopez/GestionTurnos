@@ -166,7 +166,6 @@
             document.getElementById(Valor1 + Valor2).checked = true;
             document.getElementById(Valor1 + (Valor2 == "si" ? "no" : "si")).checked = false;
             var prueba = Valor1 + Valor2;
-            //alert(prueba);
             if (prueba == "encriptacionPropia_si") {
                 $("#submenu_tv3_2").show(1500);
             }

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
 
     <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" type="text/css" href="css/fileinput.min.css" />
     <link rel="stylesheet" type="text/css" href="fileinput-rtl.min.css" />
     <link rel="stylesheet" type="text/css" href="jquery.bxslider.css" />
@@ -190,56 +191,56 @@
                         format:'H:i'
                     });
                     break;
-                case 5:
-                    $(MiArray[4]).datetimepicker({
-                        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
-                        startDate: '2019/08/26',
-                        endDate: '2019/08/30',
-                        minDate: '2019/08/26',
-                        maxDate: '2019/08/30',//false,
-                        minView: 2,
-                        autoclose: 1,
-                        forceParse: 0,
-                        format: 'd/m/Y',
-                        timepicker: false,
-                        monthStart: 8,
-                        monthEnd: 8,
-                        timepicker: false,
-                        todayButton: false,
-                        prevButton: false,
-                        nextButton: false,
-                        defaultSelect: false,
-                        scrollMonth: false,
-                        scrollTime: false,
-                        scrollInput: false,
-                        arrows: false,
-                    });
-                    break;
-                case 6:
-                    $(MiArray[5]).datetimepicker({
-                        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
-                        startDate: '2019/08/29',
-                        endDate: '2019/08/31',
-                        minDate: '2019/08/29',
-                        maxDate: '2019/08/31',//false,
-                        minView: 2,
-                        autoclose: 1,
-                        forceParse: 0,
-                        format: 'd/m/Y',
-                        timepicker: false,
-                        monthStart: 8,
-                        monthEnd: 8,
-                        timepicker: false,
-                        todayButton: false,
-                        prevButton: false,
-                        nextButton: false,
-                        defaultSelect: false,
-                        scrollMonth: false,
-                        scrollTime: false,
-                        scrollInput: false,
-                        arrows: false,
-                    });
-                    break;
+                //case 5:
+                //    $(MiArray[4]).datetimepicker({
+                //        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
+                //        startDate: '2019/08/26',
+                //        endDate: '2019/08/30',
+                //        minDate: '2019/08/26',
+                //        maxDate: '2019/08/30',//false,
+                //        minView: 2,
+                //        autoclose: 1,
+                //        forceParse: 0,
+                //        format: 'd/m/Y',
+                //        timepicker: false,
+                //        monthStart: 8,
+                //        monthEnd: 8,
+                //        timepicker: false,
+                //        todayButton: false,
+                //        prevButton: false,
+                //        nextButton: false,
+                //        defaultSelect: false,
+                //        scrollMonth: false,
+                //        scrollTime: false,
+                //        scrollInput: false,
+                //        arrows: false,
+                //    });
+                //    break;
+                //case 6:
+                //    $(MiArray[5]).datetimepicker({
+                //        language: ('es'),//(document.getElementById('oculto').value == '2' ? 'en' : 'es'),
+                //        startDate: '2019/08/29',
+                //        endDate: '2019/08/31',
+                //        minDate: '2019/08/29',
+                //        maxDate: '2019/08/31',//false,
+                //        minView: 2,
+                //        autoclose: 1,
+                //        forceParse: 0,
+                //        format: 'd/m/Y',
+                //        timepicker: false,
+                //        monthStart: 8,
+                //        monthEnd: 8,
+                //        timepicker: false,
+                //        todayButton: false,
+                //        prevButton: false,
+                //        nextButton: false,
+                //        defaultSelect: false,
+                //        scrollMonth: false,
+                //        scrollTime: false,
+                //        scrollInput: false,
+                //        arrows: false,
+                //    });
+                //    break;
             }
         }
 
@@ -264,6 +265,16 @@
                 mode: 'fade',
                 captions: false,
                 slideWidth: 610
+            });
+
+            $('#datetimepicker5').datetimepicker({                
+                timepicker: false,
+                language: 'es',
+                minDate: '2019/08/29',
+                maxDate: '2019/08/31',
+                startDate: '2019/08/29',
+                endDate: '2019/08/31',
+                format: 'd/m/Y',
             });
         });
 
@@ -533,6 +544,8 @@
     </div>
     <script src="script/jquery.datetimepicker.full.min.js"></script>
     <script src="script/jquery.datetimepicker.min.js"></script>
+    <script src="script/bootstrap-datetimepicker.min"></script>
+    <script src="script/es.min"></script>
     <script src="script/fileinput.min.js"></script>
     <script src="script/jquery.bxslider.js"></script>
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
