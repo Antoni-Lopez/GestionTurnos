@@ -365,27 +365,6 @@
             Else
                 miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
             End If
-
-
-
-
-
-
-
-
-
-
-
-
-            'For i = 0 To DS.Tables(0).Rows.Count - 1
-
-            '        fecha = DS.Tables(0).Rows(i).Item("fecha_fin")
-            '        hora = DS.Tables(0).Rows(i).Item("hora")
-            '        Descripcion = DS.Tables(0).Rows(i).Item("Descripción")
-            '        idsesiones = DS.Tables(0).Rows(i).Item("idsesiones")
-
-            '        miprueba += "<th scope = 'row'><input type='checkbox' id='chk" & idsesiones & "' name='omg' runat='server'/></th><td>" & fecha & "</td><td>" & hora & "</td><td>" & Descripcion & "</td></tr>"
-            '    Next
             comienzo_tabla2.InnerHtml = miprueba
         End If
         'End If

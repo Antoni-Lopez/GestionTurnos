@@ -1,6 +1,8 @@
-Nombre;Apellidos;Email;Registro;idFeria
-Joaquin;Frenandez ¦ Galvez;jfgalvez@towerplane.com;false;202
-Antoni;Lopez;alopez@towerplane.com;false;202
-Juan Carlos;Sánchez ¦ Ferrándiz;jcsanchez@towerplane.com;false;202
-Ignacio;García ¦ Sánchez;ignacio@gmail.com;false;202
-Primoti;Sánchez ¦ Ferrándiz;primoti@gmail.com;false;202
+ï»¿Joaquin;FernandezÂ¦Galvez;jfgalvez@towerplane.com;false;211;en
+Antoni;Lopez;;false;211;es
+Juan Carlos;SÃ¡nchezÂ¦FerrÃ¡ndiz;jcsanchez@towerplane.com;false;211;en
+Jose;SanchezÂ¦Mateo;jsmateo@towerplane.com;false;211;es
+
+
+
+

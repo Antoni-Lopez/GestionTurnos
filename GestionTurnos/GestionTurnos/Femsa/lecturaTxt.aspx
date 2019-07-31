@@ -20,49 +20,46 @@
             background-color: #eeeeee;
         }
 
-        .principal {
-            display: block;
-            margin: 1.5% auto 1.5% auto;
-            max-width: 700px;
-            background-color: #fff;
-            color: brown;
-        }
+        #insertar {display: block;margin: 25% auto 1.5% auto;max-width: 700px;background-color: #fff;padding:10px;}
+        #insertar p{font-size:20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color:#B20016;}
+        #insertar p span{font-weight:bold;font-size:22.5px;}
     </style>
+    <script type="text/javascript">
+        function LanzaAviso(Text) {
+            bootbox.alert({ title: "AOTEC 2019", message: Text, size: 'large' });
+
+        }
+    </script>
 </head>
 <body>
     <div id="insertar" runat="server" style="max-width:800px;display:block;margin-left:auto;margin-right:auto;background-color:#fff;color:black;">
 
     </div>
 
-    <button type="button" id="insert_bd" style="display:block;margin-left:auto;margin-right:auto;">Insertar en BD</button>
-        <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script>
+    <button type="button" id="insert_bd" style="display:block;margin-left:auto;margin-right:auto;" onclick="Registre()">Enviar Emails</button>
+    <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script>
     <script type="text/javascript"> 
         function Registre() {
             var Dades;
+            var idferia = "210";
+            insert_bd.innerHTML = "<img src='img/ajax-loader.gif' alt='loading' /> Enviando Email";
 
-            var email, idferia, nombre, apellido;
-            email = "jsmateo@towerplane.com";
-            idferia = "202";
-            nombre = "Jose";
-            Apellido = "Sánchez Mateo";
-
-
-            Send_Mail.innerHTML = "<img src='img/ajax-loader.gif' alt='loading' /> Enviando Email";
-
-            Dades = email + "¦" + idferia + "¦" + nombre + "¦" + Apellido;
-
-            setTimeout("InformacioAJAX(14,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
+            Dades = idferia;
+            setTimeout("InformacioAJAX(12,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
         }
 
         function Registre_Tornada(Dades) {
             if (Dades.substr(0, 2) == "OK") {
-                if (Dades.substr(2, 2) == "14") {
-                    Send_Mail.innerHTML = "<h4 style='text-align:center;'>Email enviado!<br/>";
+                if (Dades.substr(2, 2) == "12") {
+                    insert_bd.innerHTML = "<h4 style='text-align:center;'>Email enviado!<br/>";
                 }
             }
             else {
-                if (Dades.substr(2, 2) == "14") {
-                    Send_Mail.innerHTML = "<h4 style='text-align:center;'>ERROR al Enviar el Email!<br/>";
+                if (Dades.substr(2, 2) == "12") {
+                    insert_bd.innerHTML = "<h4 style='text-align:center;'>ERROR al Enviar el Email!<br/>";
+                }
+                if (Dades.substr(2, 2) == "13") {
+                    insert_bd.innerHTML = "<h4 style='text-align:center;'>Y estaba enviado!<br/>";
                 }
             }
         }

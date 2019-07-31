@@ -5,63 +5,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Pruebas</title>
+    <title>Reserve la fecha, EDM - Seminario Institucional 10 de Octubre</title>
 </head>
 <body>
     <style>
     body {
-        background: #eeeeee;
+        background: #fff;
         font-weight: normal;
         font-family: 'Open Sans', Arial, Helvetica, sans-serif;
         line-height: 20px;
     }
-
-    .tabla1 {
-        background-color: #ffffff;
-        border-collapse: collapse;
-    }
-    .tabla3 {margin:-1.9% 0 0 .4%;}
 </style>
-    <form id="form1" runat="server">
-        <div style="margin-left: 0; width: 100%; background-color: #fff; text-align: center; padding: 10px;">
-            <p>Si no visualiza correctamente el Email por favor pulse <a href="#"></a></p>
-        </div>
+    <form id="form1" runat="server">        
         <!-- Encabezado REFRESH -->
         <table width="100%">
             <tr>
                 <td align="center" valign="top">
-                    <table class="tabla1" width="600px">
+                    <img src="img/RESERVEDM.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="600" align="center"  style=" padding:10px;text-align:justify;color:#00ccff;font-size:12px;">
+                        <div style="margin-left: 0; width: 100%; background-color: #fff; text-align: center; padding: 10px;">
+                            <p>Si no visualiza correctamente el Email por favor  <a href="http://towerplane.com/" style="color:#808080;"> pulse aquí</a></p>
+                        </div>
                         <tr>
                             <td>
-                                <img src="img/femsa1.png" alt="ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA" width="610" border="0">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <table style="margin-top:-1.9%;">
-                                    <tr>
-                                        <td>
-                                            <img src="img/femsa2.png" alt="ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA" width="305" border="0" />
-                                        </td>
-                                        <td>
-                                            <a href="towerplane.com" style="margin-left:-2%"><img src="img/femsa3.png" alt="ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA" width="305" height="65.44px" border="0" /></a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-
-                                <div class="tabla3">
-                                    <img src="img/femsa4.png" alt="ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA" width="607.5" border="0">
-                                </div>                                     
+                                <div style="color:#0080ff;line-height:15px;">
+                                    Este mensaje es privado y confidencial y solamente para su destinatario. Si usted ha recibido este mensaje por error, no debe revelar, copiar, distribuir o usarlo en ningún sentido. Le rogamos lo comunique al remitente y borre dicho mensaje y cualquier documento adjunto que pudiera contener. No hay renuncia a la confidencialidad ni a ningún privilegio por causa de transmisión errónea o mal funcionamiento. Los correos electrónicos no son seguros, no garantizan la confidencialidad ni la correcta recepción de los mismos, dado que pueden ser interceptados, manipulados, destruidos, llegar con demora, incompletos, o con virus. La empresa no se hace responsable de las alteraciones que pudieran hacerse al mensaje una vez enviado.
+                                    Le informamos de que sus datos serán tratados bajo la responsabilidad de <span style="font-weight:bold;">RPA EVENTS S.L.</span> para el envío de comunicaciones propias de la relación contractual existente y se conservarán mientras que exista un mutuo interés para ello. Si no desea seguir recibiendo comunicaciones a través de esta vía o si desea retirar su consentimiento, ejercitar sus derechos de acceso, rectificación, portabilidad, supresión, limitación u oposición o presentar una reclamación ante la Autoridad de control (agpd.es) si considera que el tratamiento no se ajusta a la normativa vigente, puede hacerlo enviando una solicitud por escrito a <span style="font-weight:bold;">RPA EVENTS S.L. Calle de Claudio Coello, 41, 28001 Madrid</span> o a través de correo electrónico <span style="font-weight:bold;">rpa@rpacomunicacion.com</span>, junto con prueba válida en derecho, como fotocopia del D.N.I. e indicando en el asunto <span style="font-weight:bold;">'PROTECCIÓN DE DATOS'.</span>
+                                </div>
                             </td>
                         </tr>
                     </table>
-                    </td>
-                </tr>
-        </table>
+                </td>
+            </tr>
+        </table>        
         <button type="button" id="Send_Mail" style="display: block; margin-left: auto; margin-right: auto;" onclick="Registre()">Enviar Email</button>
     </form>
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script>
@@ -71,14 +51,11 @@
 
             var email, idferia, nombre, apellido;
             email = "jsmateo@towerplane.com";
-            idferia = "202";
-            nombre = "Jose";
-            Apellido = "Sánchez Mateo";
-
+            idferia = "211";
 
             Send_Mail.innerHTML = "<img src='img/ajax-loader.gif' alt='loading' /> Enviando Email";
 
-            Dades = email + "¦" + idferia + "¦" + nombre + "¦" + Apellido;
+            Dades = idferia;
 
             setTimeout("InformacioAJAX(14,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
         }

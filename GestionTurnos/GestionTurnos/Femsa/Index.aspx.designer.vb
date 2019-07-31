@@ -113,6 +113,15 @@ Partial Public Class Index
     Protected WithEvents pass_for_app As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''Control password_blocked.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents password_blocked As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''Control Input_Password2.
     '''</summary>
     '''<remarks>
@@ -554,6 +563,24 @@ Partial Public Class Index
     Protected WithEvents Pescado As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
+    '''Control radio_noasiste.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents radio_noasiste As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control no_asiste.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents no_asiste As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
+    
+    '''<summary>
     '''Control futbol.
     '''</summary>
     '''<remarks>
@@ -563,13 +590,13 @@ Partial Public Class Index
     Protected WithEvents futbol As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control radio_asisto_si.
+    '''Control futbol_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents radio_asisto_si As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents futbol_si As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''Control asiste_radio_si.
@@ -581,13 +608,13 @@ Partial Public Class Index
     Protected WithEvents asiste_radio_si As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control radio_asisto_no.
+    '''Control futbol_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents radio_asisto_no As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents futbol_no As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''Control asiste_radio_no.
@@ -608,13 +635,13 @@ Partial Public Class Index
     Protected WithEvents confe As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''Control radio_si.
+    '''Control conferencia_si.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents radio_si As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents conferencia_si As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''Control radio_sisi.
@@ -626,13 +653,13 @@ Partial Public Class Index
     Protected WithEvents radio_sisi As Global.System.Web.UI.HtmlControls.HtmlInputRadioButton
     
     '''<summary>
-    '''Control radio_no.
+    '''Control conferencia_no.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents radio_no As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents conferencia_no As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''Control radio_nono.

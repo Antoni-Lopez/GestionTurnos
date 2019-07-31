@@ -14,7 +14,7 @@
         mail = Request.QueryString("Email")
         registrado = Request.QueryString("registrado")
         idioma = Request.QueryString("idioma")
-        idferia = "202"
+        idferia = "210"
 
         If idioma = "" Or idioma = Nothing Then
             oculto = 1
@@ -46,9 +46,9 @@
         Else
             Dim name_comp As String, email As String
             Dim nombre As String, ape As String, apellidos() As String, full_name2 As String, pass As String, datos_personales As String, datos_personales2() As String, vuelo_monte As String, vuelito_monte() As String
-            Dim vuelo_regreso As String, vuelito_regreso() As String
+            Dim vuelo_regreso As String, vuelito_regreso() As String, radiobuttons As String, radios() As String
 
-            VectorSQL(0) = "SELECT Nom,Cognoms, Password, NickTwitter, NickFacebook FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "'AND idFira ='" & idferia & "'"
+            VectorSQL(0) = "SELECT Nom,Cognoms, Password, NickTwitter, NickFacebook, NIT FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "'AND idFira ='" & idferia & "'"
 
             If Not clsBD.BaseDades(1, VectorSQL, DS) Then
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
@@ -60,6 +60,7 @@
                         pass = DS.Tables(0).Rows(i).Item("Password")
                         datos_personales = DS.Tables(0).Rows(i).Item("NickTwitter")
                         vuelo_monte = DS.Tables(0).Rows(i).Item("NickFacebook")
+                        radiobuttons = DS.Tables(0).Rows(i).Item("NIT")
                     Next
                 End If
             End If
@@ -88,15 +89,13 @@
                 number_fly_back.InnerText = ""
                 aerolinea2.InnerText = ""
                 itinerario.InnerText = ""
+                itinerario_warning.InnerText = ""
                 hotel.InnerText = ""
                 warning_hotel2.InnerText = ""
                 Fecha_chekin.InnerText = ""
                 Fecha_chekout.InnerText = ""
                 prefer.InnerText = ""
-                radio_pollo.InnerText = ""
-                radio_pescado.InnerText = ""
                 confe.InnerText = ""
-                radio_si.InnerText = ""
 
 
 
@@ -125,19 +124,33 @@
                 number_fly_back.InnerHtml = "Nº Fly"
                 aerolinea2.InnerHtml = "Airline"
                 itinerario.InnerHtml = "Itinerary"
+                itinerario_warning.InnerHtml = "<i class='fas fa-exclamation-circle'></i> <span> Note :  </span> The file will be saved when you register.</p>"
                 hotel.InnerHtml = "Hosting / Hotel"
                 warning_hotel2.InnerHtml = "· The hotel reservation will be made by Karina Flores, please indicate the number of nights required. <br />· Lodging expenses will be settled by the participant upon check-out"
                 Fecha_chekin.InnerHtml = "Check-in Date"
                 Fecha_chekout.InnerHtml = "Check-out Date"
                 prefer.InnerHtml = "Dinner preference August 28."
-                radio_pollo.InnerHtml = "<input type='radio' name='optradio' id='Pollo' runat='server' />Chicken"
-                radio_pescado.InnerHtml = "<input type='radio' name='optradio' id='Pescado' runat='server' />Fish"
+                futbol.InnerHtml = "Soccer game Rayados vs Pumas and dinner (August 29)."
                 confe.InnerHtml = "There will be a conference in English, please confirm if you require hearing aids for the translation in Spanish."
-                radio_si.InnerHtml = "<input type='radio' name='optradio' id='radio_sisi' runat='server' />Yes"
+                radio_pollo.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='radios' value='' id='Pollo' /><span class='outside'><span class='inside'></span></span>Chicken"
+                radio_pescado.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='radios' value='' id='Pescado' /><span class='outside'><span class='inside'></span></span>Meat"
+                radio_noasiste.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='radios' value='' id='no_asiste' /><span class='outside'><span class='inside'></span></span>I will not attend"
+                futbol_si.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='radio_futbol' value='' id='asiste_radio_si'><span class='outside'><span class='inside'></span></span>I will attend"
+                futbol_no.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='radios_futbol' value='' id='asiste_radio_no'><span class='outside'><span class='inside'></span></span>I will not attend"
+                conferencia_si.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='confe_radios' value='' id='radio_sisi'><span class='outside'><span class='inside'></span></span>Yes"
 
 
 
+                'ponemos el input oculto a valor 2.
+                oculto2.Value = "2"
 
+                principal.Attributes.Add("onclick", "mensajes(3);")
+                password_blocked.Attributes.Add("onclick", "mensajes(4);")
+
+            Else
+                oculto2.Value = "1"
+                principal.Attributes.Add("onclick", "mensajes(1);")
+                password_blocked.Attributes.Add("onclick", "mensajes(2);")
             End If
 
             apellidos = ape.Split("¦")
@@ -150,6 +163,7 @@
 
             datos_personales2 = datos_personales.Split("¦")
             vuelito_monte = vuelo_monte.Split("¦")
+            radios = radiobuttons.Split("¦")
 
             For i = 0 To 6
                 Select Case i
@@ -235,7 +249,52 @@
                 End Select
             Next
 
-
+            For m = 0 To 6
+                Select Case m
+                    Case 0
+                        If radios(m).Length <> 1 Then
+                            If radios(m) = "true" Then
+                                Pollo.Checked = True
+                            End If
+                        End If
+                    Case 1
+                        If radios(m).Length <> 1 Then
+                            If radios(m) = "true" Then
+                                Pescado.Checked = True
+                            End If
+                        End If
+                    Case 2
+                        If radios(m).Length <> 1 Then
+                            If radios(m) = "true" Then
+                                no_asiste.Checked = True
+                            End If
+                        End If
+                    Case 3
+                        If radios(m).Length <> 1 Then
+                            If radios(m) = "true" Then
+                                asiste_radio_si.Checked = True
+                            End If
+                        End If
+                    Case 4
+                        If radios(m).Length <> 1 Then
+                            If radios(m) = "true" Then
+                                asiste_radio_no.Checked = True
+                            End If
+                        End If
+                    Case 5
+                        If radios(m).Length <> 1 Then
+                            If radios(m) = "true" Then
+                                radio_sisi.Checked = True
+                            End If
+                        End If
+                    Case 6
+                        If radios(m).Length <> 1 Then
+                            If radios(m) = "true" Then
+                                radio_nono.Checked = True
+                            End If
+                        End If
+                End Select
+            Next
 
         End If
 

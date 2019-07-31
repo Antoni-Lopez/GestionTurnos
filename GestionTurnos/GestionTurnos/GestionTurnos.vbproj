@@ -149,16 +149,18 @@
     <Content Include="Css\intranet.css" />
     <Content Include="Css\loginform.css" />
     <Content Include="Femsa\css\bootstrap-datetimepicker.min.css" />
-    <Content Include="Femsa\css\jquery.datetimepicker.min.css" />
-    <Content Include="Femsa\ImportCsvSql.aspx" />
+    <Content Include="Femsa\Importación_MailingRPA.aspx" />
     <Content Include="Femsa\Index.aspx" />
+    <Content Include="Femsa\IndexIntranet.aspx" />
     <Content Include="Femsa\lecturaTxt.aspx" />
     <Content Include="Femsa\Login.aspx" />
+    <Content Include="Femsa\LoginIntranet.aspx" />
     <Content Include="Femsa\Plantilla - Mailing.aspx" />
     <Content Include="Femsa\Plantilla2.aspx" />
     <Content Include="Femsa\Plantilla3.aspx" />
-    <Content Include="Femsa\script\bootstrap-datetimepicker.min.js" />
-    <Content Include="Femsa\script\jquery.datetimepicker.full.min.js" />
+    <Content Include="Femsa\script\bootstrap-datetimepicker.es.js" />
+    <Content Include="Femsa\script\bootstrap-datetimepicker.js" />
+    <Content Include="Femsa\subirfiles.aspx" />
     <Content Include="Formulario.aspx" />
     <Content Include="Formulario2.aspx" />
     <Content Include="Intranet.aspx" />
@@ -220,11 +222,11 @@
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
     <Compile Include="Clases\ClaseGeneral.vb" />
-    <Compile Include="Femsa\ImportCsvSql.aspx.designer.vb">
-      <DependentUpon>ImportCsvSql.aspx</DependentUpon>
+    <Compile Include="Femsa\Importación_MailingRPA.aspx.designer.vb">
+      <DependentUpon>Importación_MailingRPA.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Femsa\ImportCsvSql.aspx.vb">
-      <DependentUpon>ImportCsvSql.aspx</DependentUpon>
+    <Compile Include="Femsa\Importación_MailingRPA.aspx.vb">
+      <DependentUpon>Importación_MailingRPA.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Femsa\Index.aspx.designer.vb">
@@ -232,6 +234,13 @@
     </Compile>
     <Compile Include="Femsa\Index.aspx.vb">
       <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Femsa\IndexIntranet.aspx.designer.vb">
+      <DependentUpon>IndexIntranet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Femsa\IndexIntranet.aspx.vb">
+      <DependentUpon>IndexIntranet.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Femsa\lecturaTxt.aspx.designer.vb">
@@ -246,6 +255,13 @@
     </Compile>
     <Compile Include="Femsa\Login.aspx.vb">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Femsa\LoginIntranet.aspx.designer.vb">
+      <DependentUpon>LoginIntranet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Femsa\LoginIntranet.aspx.vb">
+      <DependentUpon>LoginIntranet.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Femsa\Plantilla - Mailing.aspx.designer.vb">
@@ -267,6 +283,13 @@
     </Compile>
     <Compile Include="Femsa\Plantilla3.aspx.vb">
       <DependentUpon>Plantilla3.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Femsa\subirfiles.aspx.designer.vb">
+      <DependentUpon>subirfiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Femsa\subirfiles.aspx.vb">
+      <DependentUpon>subirfiles.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Formulario.aspx.designer.vb">
