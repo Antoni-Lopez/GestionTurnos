@@ -239,7 +239,8 @@
         }
         addLoadEvent(ocultar_datos_delegado);
 
-
+        
+        
         //funcion para pre-formatear los textos que cojemos de las cajas. Nos aseguramos que no tenemos espacios en blanco ní a izq. ní a derecha.
         if (typeof String.prototype.trim !== 'function') {
             String.prototype.trim = function() {

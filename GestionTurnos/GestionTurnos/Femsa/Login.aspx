@@ -183,16 +183,6 @@
                     break;
             }            
         }
-
-        function michorra() {
-            var x = 1;
-            if (x == 1) {
-                alert("Entramossssss");
-            }
-            else {
-                alert("No entramos ;-(");
-            }
-        }
     </script>
 </head>
 <body>

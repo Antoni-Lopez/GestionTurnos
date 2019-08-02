@@ -59,11 +59,20 @@ Partial Public Class LoginIntranet
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
     
     '''<summary>
-    '''Control list_eventos.
+    '''Control input_mail.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents list_eventos As Global.System.Web.UI.HtmlControls.HtmlSelect
+    Protected WithEvents input_mail As Global.System.Web.UI.HtmlControls.HtmlInputText
+    
+    '''<summary>
+    '''Control input_password.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents input_password As Global.System.Web.UI.HtmlControls.HtmlInputPassword
 End Class

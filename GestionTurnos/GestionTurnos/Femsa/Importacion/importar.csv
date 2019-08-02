@@ -1,8 +1,10 @@
-﻿Joaquin;Fernandez¦Galvez;jfgalvez@towerplane.com;false;211;en
-Antoni;Lopez;;false;211;es
-Juan Carlos;Sánchez¦Ferrándiz;jcsanchez@towerplane.com;false;211;en
-Jose;Sanchez¦Mateo;jsmateo@towerplane.com;false;211;es
-
+﻿Joaquin;Fernandez¦Galvez;jfgalvez@towerplane.com;false;211;en;false;1234
+Antoni;Lopez;;false;211;es;false;1234
+Juan Carlos;Sánchez¦Ferrándiz;jcsanchez@towerplane.com;false;211;en;false;1234
+Jose;Sanchez¦Mateo;jsmateo@towerplane.com;false;211;es;false;1234
+Esteban;Tobar¦Cuenca;Sanchez069@gmail.com;false;211;en;true;1234
+Ignacio;García¦Sánchez;xanse069@gmail.com;false;211;es;true;1234
+Administrador;organización¦evento;admin@femsa.com;false;211;es;false;1234
 
 
 

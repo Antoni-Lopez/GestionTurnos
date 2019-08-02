@@ -913,7 +913,57 @@ Continuamos:
                                 Next
                             End If
                         End If
+                    Case 15 'Intranet de Femsa
 
+                        VDades = CStr(Request.Form("d")).Split("¦")
+
+                        Dim idferia As String, id_ramdon As String, nombre As String, email As String, pass As String, datos() As String, mydata As String
+
+                        idferia = VDades(0)
+                        id_ramdon = VDades(1)
+
+                        Dim DS As New DataSet
+
+                        'La consulta.
+                        VectorSQL(0) = "SELECT Nom, Email, Password, NickTwitter FROM EEContactes WHERE SectorInteres ='" & id_ramdon & "'"
+
+                        If Not clsBD.BaseDades(1, VectorSQL, DS) Then
+                            ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+                        Else
+                            Dim total As String
+
+                            If DS.Tables(0).Rows.Count > 0 Then
+                                For i = 0 To DS.Tables(0).Rows.Count - 1
+                                    nombre = DS.Tables(0).Rows(i).Item("Nom")
+                                    email = DS.Tables(0).Rows(i).Item("Email")
+                                    pass = DS.Tables(0).Rows(i).Item("Password")
+                                    mydata = DS.Tables(0).Rows(i).Item("NickTwitter")
+                                Next
+                                If mydata.Length <= 1 Then
+                                    total = nombre + "¦" + email + "¦" + pass
+                                    Descripcio = "OK15" + "¦" + total
+                                    GoTo Resposta
+                                Else
+                                    datos = mydata.Split("¦")
+                                    'Analista, Desarrollador¦Informatica¦Carlota Pasaron¦Alicante¦España¦649682140¦966741427
+                                    Dim cargo As String, empresa As String, dire As String, city As String, country As String, mobil As String, fijo As String
+                                    cargo = datos(0)
+                                    empresa = datos(1)
+                                    dire = datos(2)
+                                    city = datos(3)
+                                    country = datos(4)
+                                    mobil = datos(5)
+                                    fijo = datos(6)
+
+                                    total = nombre + "¦" + email + "¦" + pass + "¦" + cargo + "¦" + empresa + "¦" + dire + "¦" + city + "¦" + country + "¦" + mobil + "¦" + fijo
+                                    Descripcio = "OK15" + "¦" + total
+                                    GoTo Resposta
+                                End If
+                            Else
+                                Descripcio = "KO15"
+                                GoTo Resposta
+                            End If
+                        End If
                         GoTo Resposta
                 End Select
             End If

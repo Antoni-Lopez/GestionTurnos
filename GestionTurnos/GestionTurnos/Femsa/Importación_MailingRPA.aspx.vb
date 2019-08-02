@@ -35,7 +35,7 @@ Public Class Importación_MailingRPA
         region = "0"
         nit = "0"
         nitactivat = "0"
-        Password = "0"
+        'Password = "0"
         especialidad = "0"
         alojamiento = "0"
         origen = "0"
@@ -57,19 +57,30 @@ Public Class Importación_MailingRPA
             DS = New DataSet
             Dim Ultimo As Integer = 0
 
-            Dim name_BD As String, apellidos_BD As String, registrado_BD As String, idioma As String
+            Dim name_BD As String, apellidos_BD As String, registrado_BD As String, idioma As String, registrado As String
             Dim error_churro As Boolean
             error_churro = False
 
             churro = prueba(i).Split(";")
 
-            For z = 0 To 5
+            For z = 0 To 7
                 If (churro(z) Is "") Then
                     'ClientScript.RegisterStartupScript(Page.GetType(), "error_linea_empty", "LanzaAviso('Error! hay algún campo vacio.')", True)
-                    div.InnerHtml += "<p id='error" & z & "' style='margin: 1.5% auto 1.5% auto;padding:10px;color:#B20016;'>Ha ocurrido un error, faltán datos en la:  Fila: (<span>'" & i + 1 & "'</span>) y en la columna: (<span>'" & z + 1 & "'</span>)</p>"
+                    div.InnerHtml += "<p id='error" & z & "' style='margin: 1.5% auto 1.5% auto;padding:10px;color:#B20016;'>Ha ocurrido un error y no hemos podido importar la Fila: (<span>'" & i + 1 & "'</span>) porque faltan datos en la columna: (<span>'" & z + 1 & "'</span>)</p>"
                     error_churro = True
                 End If
             Next
+
+            Dim N1 As String, myRamdon As String
+            Dim randomN As New Random
+            Dim alphabet As String = "abcdefghijklmnopqrstuvwxyz"
+
+            myRamdon = ""
+
+            While (myRamdon.Length < 6)
+                N1 = randomN.Next(0, 9)
+                myRamdon += N1 + alphabet.Substring(N1, 1)
+            End While
 
             If error_churro = False Then
                 name_imp = churro(0)
@@ -78,6 +89,8 @@ Public Class Importación_MailingRPA
                 registro_imp = churro(3)
                 idferia = churro(4)
                 idioma = churro(5)
+                registrado = churro(6)
+                Password = churro(7)
 
 
                 'Jose;Sanchez¦Mateo;jsmateo@towerplane.com;210;False;es
@@ -95,7 +108,7 @@ Public Class Importación_MailingRPA
                         DS.Reset()
 
                         'Procedemos a actualizar los datos guardados del usuario.
-                        VectorSQL(0) = "UPDATE eecontactes SET Nom = '" & clsBD.Cometes(Left(name_imp, 100)) & "',Cognoms='" & clsBD.Cometes(Left(ape_imp, 100)) & "',Carrec='" & registro_imp & "',Password='" & pass_imp & "',Procedencia='" & nameQr_imp & "',WebPersonal='" & idioma & "' WHERE Email = '" & clsBD.Cometes(Left(mail_imp, 100)) & "' And idFira ='" & idferia & "'"
+                        VectorSQL(0) = "UPDATE eecontactes SET Nom = '" & clsBD.Cometes(Left(name_imp, 100)) & "',Cognoms='" & clsBD.Cometes(Left(ape_imp, 100)) & "',Carrec='" & registro_imp & "',Password='" & Password & "',SectorInteres='" & myRamdon & "',WebPersonal='" & idioma & "' WHERE Email = '" & clsBD.Cometes(Left(mail_imp, 100)) & "' And idFira ='" & idferia & "'"
 
                         If Not clsBD.BaseDades(2, VectorSQL) Then
                             'Problema
@@ -110,7 +123,7 @@ Public Class Importación_MailingRPA
 
                         VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) " &
                                                     "VALUES(" & idferia & "," & Rol & "," & agrupacion & "," & transporte & "," & asiste & ",'" & clsBD.Cometes(Left(name_imp, 100)) & "','" & clsBD.Cometes(Left(ape_imp, 100)) & "'," &
-                                                    "'" & numero & "','" & clsBD.Cometes(Left(mail_imp, 100)) & "','" & registro_imp & "','" & nit & "'," & nitactivat & ",'" & clsBD.Cometes(Left(pass_imp, 100)) & "','" & clsBD.Cometes(Left(especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
+                                                    "'" & numero & "','" & clsBD.Cometes(Left(mail_imp, 100)) & "','" & registro_imp & "','" & registrado & "'," & nitactivat & ",'" & clsBD.Cometes(Left(Password, 100)) & "','" & clsBD.Cometes(Left(especialidad, 100)) & "','" & clsBD.Cometes(Left(myRamdon, 100)) & "','" & Consentimiento & "'," &
                                                     "" & alojamiento & ",'" & nameQr_imp & "','" & clsBD.Cometes(Left(alergia, 100)) & "','" & clsBD.Cometes(Left(idioma, 100)) & "')"
 
                         If Not clsBD.BaseDades(2, VectorSQL, , Ultimo) Then

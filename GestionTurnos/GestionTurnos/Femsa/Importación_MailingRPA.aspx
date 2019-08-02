@@ -54,13 +54,16 @@
                 bootbox.alert({ title: "AOTEC 2019", message: Text, size: 'large' });
 
             }
+            function enviar() {
+                window.open('loginintranet.aspx','_self');
+            }
         </script>
         </head>
         <body>
             <div id="insertar" runat="server" style="max-width: 800px; display: block; margin-left: auto; margin-right: auto; background-color: #fff; color: black;">
             </div>
 
-            <button type="button" id="insert_bd" style="display: block; margin-left: auto; margin-right: auto;" onclick="Registre()">Enviar Emails</button>
+            <button type="button" id="insert_bd" style="display: block; margin-left: auto; margin-right: auto;" onclick="enviar()">Acceder Intranet</button>
     </form>
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script>
     <script type="text/javascript"> 
