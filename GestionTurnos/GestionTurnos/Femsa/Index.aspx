@@ -126,6 +126,13 @@
         }
     </style>
 
+    <script src="script/bootstrap-datetimepicker.js"></script>
+    <script src="../bootstrap/locales/bootstrap-datetimepicker.es.js"></script>    
+    <script src="script/"></script>
+    <script src="script/es.min"></script>
+    <script src="script/fileinput.min.js"></script>
+    <script src="script/jquery.bxslider.js"></script>
+
     <script type="text/javascript">
 
         function LanzaAviso(Text) {
@@ -165,7 +172,7 @@
             });
             $('#bxslider').bxSlider({
                 auto: true,
-                autoControls: false,
+                autoControls: true,
                 stopAutoOnClick: true,
                 mode: 'fade',
                 captions: false,
@@ -544,12 +551,7 @@
     <div id="mensaje_en" class="no_email" style="display:none;" runat="server">
         <p>You are trying to access <span> without any Email </span>, so we can not show you anything. Please go back to the Login.aspx page and enter your Email again. Thank you!!</p>            
     </div>
-    <script src="script/bootstrap-datetimepicker.es.js"></script>
-    <script src="script/bootstrap-datetimepicker.js"></script>
-    <script src="script/"></script>
-    <script src="script/es.min"></script>
-    <script src="script/fileinput.min.js"></script>
-    <script src="script/jquery.bxslider.js"></script>
+    
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
     <script type="text/javascript">   
         function Registre() {

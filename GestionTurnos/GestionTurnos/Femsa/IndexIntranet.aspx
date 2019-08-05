@@ -34,7 +34,7 @@
         #inscritos{width:95%; display:block;margin-left:auto;margin-right:auto;}
 
         /* Select Idioma */
-        .idioma{background-color:#009999;border:black solid .5px;}
+        .idioma{background-color:#009999;border:black solid .5px;margin-left: -1%;margin-top: 2%;}
 
         /* 2 selects finales */
         #Select1,#Select2{width:30%;margin:5px;}
@@ -43,9 +43,10 @@
 
         /* Todos los labels */
         label[for=listados]{margin-left:2%}
-        label[for=datos_personales]{margin-left: 2.5%;margin-top: 10%;padding: 10px;font-size:13px;}
+        label[for=datos_personales]{margin-left: 2.5%;margin-top: 10%;padding: 10px;font-size:10px;}
         label[for=fichero] {margin-left: 20%;margin-top:1.5%;}
         label[for=alojamiento]{font-size:9px;margin-left:7%;}
+        label[for=personal_data]{margin-left:1%;margin-top:1%;margin-bottom: -1%;}
 
         /* inputs */
         .mi_input{height:15px;padding:10px;font-size:11px;width:95%;}
@@ -111,7 +112,7 @@
                                                 <label for="datos_personales" >Nombre<span>*</span></label>
                                             </td>
                                             <td style="width:18.75%">
-                                                <input type="text" class="form-control mi_input2" id="Input_name" value="" placeholder="Introduzca su Nombre" runat="server"  />
+                                                <input type="text" class="form-control mi_input2" id="Input_name" style="width:94%;margin-left:0;" value="" placeholder="Introduzca su Nombre" runat="server"  />
                                             </td>
                                             <td style="width:6.25%">
                                                 <label for="datos_personales" >Dirección</label>
@@ -127,7 +128,7 @@
                                                 <label for="datos_personales">Email<span>*</span></label>
                                             </td>
                                             <td style="width:18.75%">
-                                                <input type="text" class="form-control mi_input" id="Input_mail" style="width:94%" value="" placeholder="Introduzca su Email" runat="server"  />
+                                                <input type="text" class="form-control mi_input" id="Input_mail" style="width:89%;margin-left:5%;" value="" placeholder="Introduzca su Email" runat="server"  />
                                             </td>
                                             <td style="width:6.25%">
                                                 <label for="datos_personales">Ciudad</label>
@@ -159,7 +160,7 @@
                                                 <label for="datos_personales">Cargo</label>
                                             </td>
                                             <td style="width:18.75%">
-                                                <input type="text" class="form-control mi_input" style="margin-left:.2%;width:92.5%" id="Input_cargo" value="" placeholder="Introduzca su Cargo." runat="server"  />
+                                                <input type="text" class="form-control mi_input" style="margin-left:6.2%;width:89.1%" id="Input_cargo" value="" placeholder="Introduzca su Cargo." runat="server"  />
                                             </td>
                                             <td style="width:6.25%">
                                                 <label for="datos_personales" style="font-size:11px;margin-left:-2px;">Tlf. oficina</label>
@@ -175,7 +176,7 @@
                                                 <label for="datos_personales">Empresa</label>
                                             </td>
                                             <td style="width:18.75%">
-                                                <input type="text" class="form-control mi_input2" id="Input_company" style="margin-left:-10%;width:99%" value="" placeholder="Introduzca su Empresa." runat="server"  />
+                                                <input type="text" class="form-control mi_input2" id="Input_company" style="margin-left:-2%;width:90%" value="" placeholder="Introduzca su Empresa." runat="server"  />
                                             </td>
                                             <td style="width:6.25%">
                                                 <label for="datos_personales" style="margin-left:-8px;">Celular</label>
@@ -189,12 +190,12 @@
                                 <table width="100%">
                                     <tr>
                                         <td>     
-                                            <label for="datos_personales" style="margin-top: 0%;margin-left: -2%;">Itinerario(PDF)</label>
+                                            <label for="personal_data">Itinerario(PDF)</label>
                                             <div class="row" style="margin-left:0;width:100%;margin-top:-3%;padding:5px">                                             
                                                 <div class="col-xs-8 idioma"  style="padding:5px;font-size:12px;">
                                                     <label for="fichero">Fichero: </label>
                                                 </div>
-                                                <div class="col-xs-4" style="padding:7px">
+                                                <div class="col-xs-4" style="padding:7px;margin-top: 2%;">
                                                     <label for="idioma" id="change_idioma" runat="server">Idioma: </label>
                                                     <select id="idioma_select" style="float:right;margin-top:.5%;" runat="server">
                                                         <option value="1">Español</option>
@@ -207,8 +208,8 @@
                                 <table width="100%">
                                     <tr>
                                         <td>
-                                            <label for="datos_personales" style="margin-top: 0%;margin-left: -2%;">Alojamiento hotel</label>
-                                            <div class="col-xs-12 idioma" style="margin-left:0;width:100%;margin-top:-3%;padding:5px;margin-bottom:1%;">
+                                            <label for="personal_data">Alojamiento hotel</label>
+                                            <div class="col-xs-12 idioma" style="margin-left:0;width:100%;margin-top:0%;padding:5px;margin-bottom:1%;">
                                                 <div class="col-xs-3" style="padding:5px;">
                                                     <label for="alojamiento">Fecha Check-in</label>
                                                 </div>
@@ -245,13 +246,13 @@
                             <td style="width:50%;margin-left:0;vertical-align:top;">
                                 <div class="col-xs-12" style="width: 110%">
                                     <div class="col-xs-6">
-                                        <label for="personal_data" style="margin-left:-13%;padding:1px;">Preinscritos: </label><span id="numero_insc" style="padding:5px;font-weight:bold" runat="server"></span>
+                                        <label for="personal_data" style="margin-left:-10%;padding:1px;margin-top: 2%;">Preinscritos: </label><span id="numero_insc" style="padding:5px;font-weight:bold" runat="server"></span>
                                     </div>
                                     <div class="col-xs-6">
                                         <label for="personal_data" style="padding:1px;margin-left:40%">Registrados: </label><span id="numero_insc2" style="margin-left:2%;padding:5px;font-weight:bold" runat="server"></span>
                                     </div>                             
                                 </div>
-                                <div class="col-xs-12 select_listado" style="margin-left:2%;width:100%;border:.5px solid black;margin-top:-1.2%">
+                                <div class="col-xs-12 select_listado" style="margin-left:2%;width:100%;border:.5px solid black;margin-top:-.2%">
                                     <select id="inscritos" runat="server">
                                         <option value="1">AÑADIR INSCRITOS...</option>
                                     </select>
@@ -259,8 +260,8 @@
                                 <table width="100%">
                                     <tr>
                                         <td>
-                                            <label for="personal_data" style="margin-left:1%;padding:1px;">Vuelo a Monterrey</label>
-                                            <div class="col-xs-12 select_listado" style="margin-left:2%;width:100%;border:.5px solid black;margin-top:-1.8%">
+                                            <label for="personal_data" style="margin-left:2.2%">Vuelo a Monterrey</label>
+                                            <div class="col-xs-12 select_listado" style="margin-left:2%;width:100%;border:.5px solid black;margin-top: -.2%;">
                                                 <div class="row" style="margin-left:0;width:100%;">
                                                     <div class="col-xs-3">
                                                         <label for="personal_data" style="font-size:10px;padding:5px;">Hora Llegada</label>                                                        
@@ -292,13 +293,13 @@
                                 <table width="100%">
                                     <tr>
                                         <td>
-                                            <label for="personal_data" style="margin-left:1%;padding:1px;">Vuelo regreso</label>
-                                            <div class="col-xs-12 select_listado" style="margin-left:2%;width:100%;border:.5px solid black;margin-top:-1.8%">
+                                            <label for="personal_data" style="margin-left:2.5%;">Vuelo regreso</label>
+                                            <div class="col-xs-12 select_listado" style="margin-left:2%;width:100%;border:.5px solid black;margin-top: -.2%;">
                                                 <div class="row" style="margin-left:0;width:100%;">
                                                     <div class="col-xs-3">
                                                         <label for="personal_data" style="font-size:10px;padding:5px;">Hora Llegada</label>                                                        
                                                     </div>
-                                                    <div class="col-xs-3" style="padding:5px;">
+                                                    <div class="col-xs-3" style="padding:5px;margin-top: -.2%;">
                                                         <input type="text" class="form-control mi_input" id="Text1" style="margin-left:.5%;padding:8px;width:100%;font-size:9px;" value="" placeholder="Introduzca la hora de LLegada." runat="server"  />
                                                     </div>
                                                     <div class="col-xs-6">

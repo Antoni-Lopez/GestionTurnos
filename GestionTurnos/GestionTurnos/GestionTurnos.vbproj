@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Femsa\img\" />
+    <Folder Include="Femsa\pdf\" />
     <Folder Include="fonts\" />
     <Folder Include="img\" />
   </ItemGroup>
@@ -152,6 +153,7 @@
     <Content Include="Femsa\Importación_MailingRPA.aspx" />
     <Content Include="Femsa\Index.aspx" />
     <Content Include="Femsa\IndexIntranet.aspx" />
+    <Content Include="Femsa\indexIntranet2.aspx" />
     <Content Include="Femsa\lecturaTxt.aspx" />
     <Content Include="Femsa\Login.aspx" />
     <Content Include="Femsa\LoginIntranet.aspx" />
@@ -222,6 +224,9 @@
     <Compile Include="Clases\ClaseAccesoBD.vb" />
     <Compile Include="Clases\ClaseEmail.vb" />
     <Compile Include="Clases\ClaseGeneral.vb" />
+    <Compile Include="Femsa\FEFitxer.ashx.vb">
+      <DependentUpon>FEFitxer.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Femsa\Importación_MailingRPA.aspx.designer.vb">
       <DependentUpon>Importación_MailingRPA.aspx</DependentUpon>
     </Compile>
@@ -241,6 +246,13 @@
     </Compile>
     <Compile Include="Femsa\IndexIntranet.aspx.vb">
       <DependentUpon>IndexIntranet.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Femsa\indexIntranet2.aspx.designer.vb">
+      <DependentUpon>indexIntranet2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Femsa\indexIntranet2.aspx.vb">
+      <DependentUpon>indexIntranet2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Femsa\lecturaTxt.aspx.designer.vb">
@@ -436,6 +448,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libman.json" />
+    <Content Include="Femsa\FEFitxer.ashx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
