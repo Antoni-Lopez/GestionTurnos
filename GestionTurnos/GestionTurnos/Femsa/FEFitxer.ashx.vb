@@ -22,7 +22,7 @@ Public Class FEFitxer
                     VDades = files.Keys(0).Split("¦")
                     IDFira = VDades(0)
                     Parametre = VDades(1)
-                    If IDFira = "211" Then
+                    If IDFira = "210" Then
                         NomFitxer = Parametre & Data & "_" & file.FileName
                         fname = context.Server.MapPath("~/Femsa/pdf/" & NomFitxer)
                         file.SaveAs(fname)

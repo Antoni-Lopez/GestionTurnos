@@ -157,11 +157,6 @@
         }
 
         $(document).ready(function () {
-            $("#upload_file").fileinput({
-                rtl: true,
-                dropZoneEnabled: false,
-                allowedFileExtensions: ["pdf"]
-            });
 
             $('#slider').bxSlider({
               auto: true,
@@ -186,7 +181,7 @@
             endDate: new Date(2019, 7, 30),
             minView: 2,
             autoclose: 1,
-            format: 'dd/mm/yyyy',
+            format: 'dd MM yyyy',
             });
 
             $('#datetimepicker20').datetimepicker({
@@ -208,7 +203,7 @@
             endDate: new Date(2019, 7, 31),
             minView: 2,
             autoclose: 1,
-            format: 'dd/mm/yyyy',
+            format: 'dd MM yyyy',
             });
 
             $('#datetimepicker40').datetimepicker({
@@ -231,7 +226,7 @@
             endDate: new Date(2019, 7, 30),
             minView: 2,
             autoclose: 1,
-            format: 'dd/mm/yyyy',
+            format: 'dd MM yyyy',
             });
 
             $('#datetimepicker60').datetimepicker({
@@ -240,9 +235,58 @@
             endDate: new Date(2019, 7, 30),
             minView: 2,
             autoclose: 1,
-            format: 'dd/mm/yyyy',
+            format: 'dd MM yyyy',
+            });
+
+            $("#uploadBtn").change(function (evt) {
+                var fileUpload = $("#uploadBtn").get(0);
+                var files = fileUpload.files;
+                var data = new FormData();
+                if (files.length == 0) return false
+                for (var i = 0; i < files.length; i++) {
+                    if (!MiraExtensio('uploadBtn', ['.pdf'])) {
+                        if (document.getElementById('oculto2').value == "2") LanzaAviso("Please, select a PDF file.");
+                        else LanzaAviso("Por favor, selecciona un documento PDF.");
+                        return false
+                    }
+                    data.append("210¦" + document.getElementById('oculto5').value, files[i]);
+                }
+                var options = {};
+                options.url = "FEFitxer.ashx";
+                options.type = "POST";
+                options.data = data;
+                options.contentType = false;
+                options.processData = false;
+                document.getElementById('btnCerca').innerHTML = "&nbsp;<span class='glyphicon glyphicon-refresh glyphicon-refresh-animate' style='font-size: 18px; top: 3px'></span>&nbsp;";
+                options.success = function(result) { FitxerPujat(result); };
+                options.error = function(err) { }; //alert(err.statusText);
+                $.ajax(options);
+                evt.preventDefault();
             });
         });
+        function FitxerPujat(Dades) {
+            document.getElementById('btnCerca').innerHTML = "&nbsp;Buscar&nbsp;";
+            if (Dades.substr(0, 2) == 'OK') {
+                Dades = Dades.substr(2);
+                document.getElementById('oculto6').value = Dades;
+                Dades = Dades.substr(21);
+                if (document.getElementById('oculto2').value == "2") document.getElementById('lbPujat').innerHTML = "<b>PDF file:</b> <a target='_blank' href='../femsa/pdf/" + document.getElementById('oculto5').value + "'>" + Dades + "</a>";
+                else document.getElementById('lbPujat').innerHTML = "<b>Fichero PDF:</b> <a target='_blank' href='../femsa/pdf/" + document.getElementById('oculto5').value + "'>" + Dades + "</a>";
+            }
+            else {
+                if (document.getElementById('oculto2').value == "2") LanzaAviso("Some problems were found when uploading the PDF document.");
+                else LanzaAviso("Se han encontrado problemas subiendo el fichero PDF al servidor.");
+            }
+        }
+        function MiraExtensio(inputID, exts) {
+            var fileName = document.getElementById(inputID).value.toLowerCase();
+            return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
+        }
+
+
+
+
+            
 
         //Funcion para añadir animación al boton de guardado.
         function loading_gif() {
@@ -260,13 +304,18 @@
                 Registre();
             }
         }
-
+        
+        
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="container-fluid img_banner" onclick="">
             <img src="img/banner.jpg" />
+        </div>
+        <div id="texto_principio" style="display:block;margin:1.5% auto 1.5% auto;max-width:550px;text-align:justify;font-size:15px;" runat="server">
+            <p>Bienvenido a la <span style="font-weight:bold;">Reunión Anual de Asuntos Jurídicos y Regulatorios 2019</span> que se llevará a cabo los días <span style="font-weight:bold;">28, 29 y 30 de agosto</span>, en el <span style="font-weight:bold;">hotel Quinta Real</span>, ubicado en Av. Diego Rivera 500, Valle Oriente, 66260 San Pedro Garza García, N.L.</p> 
+            <p>No olvides el usuario y la contraseña que darás de alta, ya que serán los mismos para tu acceso a la app.</p>
         </div>
         <div id="principal" runat="server">
             <div class="row centrado">
@@ -350,7 +399,7 @@
                     <label for="textosss" id="day_arrive" runat="server">Día de Llegada </label>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker10'>
-                            <input type='text' class="form-control inputs_personaldata" id="datetimepicker1" runat="server" />
+                            <input type='text' class="form-control inputs_personaldata" id="datetimepicker1" data-link-field="oculto4" onclick="poner_fecha_ok()" runat="server" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -393,7 +442,6 @@
                             </span>
                         </div>
                     </div>
-                    <%--<input type="text" class="form-control inputs_personaldata" id="datetimepicker3" runat="server"  />--%>
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="time_exit" runat="server">Hora de Salida</label>
@@ -405,7 +453,6 @@
                             </span>
                         </div>
                     </div>
-                    <%--<input type="text" class="form-control inputs_personaldata" id="datetimepicker4" runat="server"  /> --%>
                 </div>
                 <div class="col-xs-6">
                     <label for="textosss" id="number_fly_back" runat="server">Nº. Vuelo </label>
@@ -428,11 +475,11 @@
                         <input name="uploadBtn" type="file" id="uploadBtn" class="upload" />
                         <span id="btnCerca" class="uploadBtn" style="min-width: 76px; text-align: center;margin-top:1.5%;">&nbsp;Buscar&nbsp;</span>
                     </label>
-                    <label id="lbPujat" class="control-label" style="padding-left: 20px;padding-bottom: 8px; font-weight: normal;margin-top:2.5%;"><b>Fichero PDF:</b> <a target='_blank' href='#'>Documento1.pdf</a></label>
+                    <label id="lbPujat" class="control-label" style="padding-left: 20px;padding-bottom: 8px; font-weight: normal;margin-top:2.5%;"><b>Fichero PDF: </b></label>
                 </div>
                 <div class="row centrado">
                     <div class="cuadro_info">
-                        <p class="vertical" id="itinerario_warning" runat="server"><i class="fas fa-exclamation-circle"></i><span>Nota: </span> El archivo se guardará cuando realice la inscripción.</p>
+                        <p class="vertical" id="itinerario_warning" runat="server"><i class="fas fa-info-circle"></i><span> Nota: </span> El archivo se guardará cuando realice la inscripción.</p>
                     </div>
                 </div>
             </div>            
@@ -552,6 +599,15 @@
         <p>You are trying to access <span> without any Email </span>, so we can not show you anything. Please go back to the Login.aspx page and enter your Email again. Thank you!!</p>            
     </div>
     
+    <div class="row" style="max-width:650px;display:block;margin:1% auto 1% auto;"
+    <input type='text' class="form-control inputs_personaldata" id="oculto3" runat="server" />
+    <input type='text' class="form-control inputs_personaldata" id="oculto4" runat="server" />
+    <input type='text' class="form-control inputs_personaldata" id="oculto5" runat="server" />
+    <input type='text' class="form-control inputs_personaldata" id="oculto6" runat="server" />
+    <input type='text' class="form-control inputs_personaldata" id="oculto7" runat="server" />
+    <input type='text' class="form-control inputs_personaldata" id="oculto8" runat="server" />
+    <input type='text' class="form-control inputs_personaldata" id="oculto9" runat="server" />
+
     <script type="text/javascript" src="../Script/ComunicacioAJAX.js"></script> 
     <script type="text/javascript">   
         function Registre() {
@@ -559,6 +615,12 @@
 
             var email, comprobar;
             email = document.getElementById("Input_Email").value;
+            var MiArrayIds = ["datetimepicker1", "datetimepicker3", "datetimepicker5", "datetimepicker6"];
+            var MiArraysend = ["h_salida","_h_salida2","h_salida3","h_llegada3"]; 
+
+
+            //Idioma
+            var x = document.getElementById("oculto2").value;
 
             //Datos personales
             var puesto = document.getElementById("Input_Puesto").value;
@@ -570,20 +632,20 @@
             var oficina = document.getElementById("Input_oficina").value;
 
             //Vuelo Monterrey
-            var h_salida = document.getElementById("datetimepicker1").value;
+            //var h_salida = document.getElementById("datetimepicker1").value;
             var h_llegada = document.getElementById("datetimepicker2").value;
             var nVuelo = document.getElementById("Input_NumeroVuelo").value;
             var aerolinea = document.getElementById("Input_aerolinea").value;
 
             //Vuelo Regreso
-            var _h_salida2 = document.getElementById("datetimepicker3").value;
+            //var _h_salida2 = document.getElementById("datetimepicker3").value;
             var h_llegada2 = document.getElementById("datetimepicker4").value;
             var nVuelo2 = document.getElementById("Num_Vuelito").value;
             var aerolinea2 = document.getElementById("aerolinea02").value;
 
             //Hospedaje/Hotel
-            var h_salida3 = document.getElementById("datetimepicker5").value;
-            var h_llegada3 = document.getElementById("datetimepicker6").value;
+            //var h_salida3 = document.getElementById("datetimepicker5").value;
+            //var h_llegada3 = document.getElementById("datetimepicker6").value;
 
             //Radio Buttons finales.
             var preferencia = document.getElementById("Pollo").checked;
@@ -594,11 +656,59 @@
             var conferencia = document.getElementById("radio_sisi").checked;
             var conferencia2 = document.getElementById("radio_nono").checked;
 
-            var x = document.getElementById("oculto2").value;
+            //Datepicker.
+            var separar_date, separar_day, separar_ano;
+            for (i = 0; i <= 3; i++) {
+
+                MiArraysend[i] = document.getElementById(MiArrayIds[i]).value;
+                separar_day = MiArraysend[i].slice(0, 2);
+                separar_date = MiArraysend[i].slice(3, 6);
+                separar_ano = MiArraysend[i].slice(10, 14);
+
+                if (x == "1") {
+
+                    if (separar_date == "Ene") {separar_date = "01";}
+                    if (separar_date == "Feb") {separar_date = "02";}
+                    if (separar_date == "Mar") {separar_date = "03";}
+                    if (separar_date == "Abr") {separar_date = "04";}
+                    if (separar_date == "May") {separar_date = "05";}
+                    if (separar_date == "Jun") {separar_date = "06";}
+                    if (separar_date == "Jul") {separar_date = "07";}
+                    if (separar_date == "Ago") {separar_date = "08";}
+                    if (separar_date == "Sep") {separar_date = "09";}
+                    if (separar_date == "Oct") {separar_date = "10";}
+                    if (separar_date == "Nov") {separar_date = "11";}
+                    if (separar_date == "Dic") { separar_date = "12"; }
+
+                    var fecha;
+                    fecha = separar_day + "/" + separar_date + "/" + separar_ano;
+                }
+                else {
+                    if (separar_date == "Jan") {separar_date = "01";}
+                    if (separar_date == "Feb") {separar_date = "02";}
+                    if (separar_date == "Mar") {separar_date = "03";}
+                    if (separar_date == "Apr") {separar_date = "04";}
+                    if (separar_date == "May") {separar_date = "05";}
+                    if (separar_date == "Jun") {separar_date = "06";}
+                    if (separar_date == "Jul") {separar_date = "07";}
+                    if (separar_date == "Aug") {separar_date = "08";}
+                    if (separar_date == "Sep") {separar_date = "09";}
+                    if (separar_date == "Oct") {separar_date = "10";}
+                    if (separar_date == "Nov") {separar_date = "11";}
+                    if (separar_date == "Dec") { separar_date = "12"; }
+
+                    var fecha = separar_day + "/" + separar_date + "/" + separar_ano;
+                }
+                if (i == "0") { var h_salida = fecha;}
+                if (i == "1") { var _h_salida2 = fecha;}
+                if (i == "2") { var h_salida3 = fecha;}
+                if (i == "3") { var h_llegada3 = fecha;}
+
+
+            }
+            
 
             if ((puesto == "") || (puesto == null) || (negocio == "") || (negocio == null) || (direccion == "") || (direccion == null) || (city == "") || (city == null) || (country == "") || (country == null) || (movil == "") || (movil == null) || (oficina == "") || (oficina == null)) {
-
-                var x = document.getElementById("oculto2").value;
                 if (x == "1") {
                     LanzaAviso("<p>Los campos de Datos Personales son obligatorios y no pueden estar vacios. <br />Por favor asegurese que todos los campos estan rellenos.");
                     identificacion.innerHTML = "";

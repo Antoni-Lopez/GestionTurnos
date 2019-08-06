@@ -29,7 +29,8 @@
             End If
         End If
 
-        If mail = "" Or mail = Nothing Then 'Email vacio.
+
+        If mail = "" Or mail = Nothing Then 'Email o id vacios.
             If idioma = "" Or idioma = Nothing Then
                 form1.Attributes.Add(“style”, ” display:none;”)
                 mensaje_es.Attributes.Add(“style”, ” display:Block;”)
@@ -46,9 +47,9 @@
         Else
             Dim name_comp As String, email As String
             Dim nombre As String, ape As String, apellidos() As String, full_name2 As String, pass As String, datos_personales As String, datos_personales2() As String, vuelo_monte As String, vuelito_monte() As String
-            Dim vuelo_regreso As String, vuelito_regreso() As String, radiobuttons As String, radios() As String
+            Dim vuelo_regreso As String, vuelito_regreso() As String, radiobuttons As String, radios() As String, ramdon_code As String
 
-            VectorSQL(0) = "SELECT Nom,Cognoms, Password, NickTwitter, NickFacebook, NIT FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "'AND idFira ='" & idferia & "'"
+            VectorSQL(0) = "SELECT Nom,Cognoms, Password, NickTwitter, NickFacebook, NIT, SectorInteres FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "'AND idFira ='" & idferia & "'"
 
             If Not clsBD.BaseDades(1, VectorSQL, DS) Then
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
@@ -61,6 +62,7 @@
                         datos_personales = DS.Tables(0).Rows(i).Item("NickTwitter")
                         vuelo_monte = DS.Tables(0).Rows(i).Item("NickFacebook")
                         radiobuttons = DS.Tables(0).Rows(i).Item("NIT")
+                        ramdon_code = DS.Tables(0).Rows(i).Item("SectorInteres")
                     Next
                 End If
             End If
@@ -96,6 +98,7 @@
                 Fecha_chekout.InnerText = ""
                 prefer.InnerText = ""
                 confe.InnerText = ""
+                texto_principio.InnerText = ""
 
 
 
@@ -124,7 +127,7 @@
                 number_fly_back.InnerHtml = "Nº Fly"
                 aerolinea2.InnerHtml = "Airline"
                 itinerario.InnerHtml = "Itinerary"
-                itinerario_warning.InnerHtml = "<i class='fas fa-exclamation-circle'></i> <span> Note :  </span> The file will be saved when you register.</p>"
+                itinerario_warning.InnerHtml = "<i class='fas fa-info-circle'></i><span> Note :  </span> The file will be saved when you register.</p>"
                 hotel.InnerHtml = "Hosting / Hotel"
                 warning_hotel2.InnerHtml = "· The hotel reservation will be made by Karina Flores, please indicate the number of nights required. <br />· Lodging expenses will be settled by the participant upon check-out"
                 Fecha_chekin.InnerHtml = "Check-in Date"
@@ -138,6 +141,9 @@
                 futbol_si.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='radio_futbol' value='' id='asiste_radio_si'><span class='outside'><span class='inside'></span></span>I will attend"
                 futbol_no.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='radios_futbol' value='' id='asiste_radio_no'><span class='outside'><span class='inside'></span></span>I will not attend"
                 conferencia_si.InnerHtml = "<input type='radio' class='radio-inline inputs_nuevos' name='confe_radios' value='' id='radio_sisi'><span class='outside'><span class='inside'></span></span>Yes"
+                texto_principio.InnerHtml = "<p>Welcome to the <span style='font-weight:bold;'>Annual Meeting of Legal and Regulatory Affairs FEMSA</span> which we will hold days <span style='font-weight:bold;'>28, 29 and 30 of August</span> at the <span style='font-weight:bold;'>hotel Quinta Real</span>, located in Av. Diego Rivera 500, Valle Oriente, 66260 San Pedro Garza García, N.L.</p>
+                                             <p>Don't forget the <span style='font-weight:bold;'>username and password you used when registering</span> at hand as they will be required to access the app.</p>"
+
 
 
 
@@ -153,6 +159,10 @@
                 password_blocked.Attributes.Add("onclick", "mensajes(2);")
             End If
 
+            'Ponemos el codigo ramdon en la caja oculta4
+            oculto5.Value = ramdon_code
+
+
             apellidos = ape.Split("¦")
             ape = apellidos(0) + " "
             ape += apellidos(1)
@@ -164,6 +174,35 @@
             datos_personales2 = datos_personales.Split("¦")
             vuelito_monte = vuelo_monte.Split("¦")
             radios = radiobuttons.Split("¦")
+
+            Dim dia As String, mes As String, ano As String, fecha As String, fechita() As String
+
+            fecha = vuelito_monte(0)
+            fechita = fecha.Split("/")
+            dia = fechita(0)
+            mes = fechita(1)
+            ano = fechita(2)
+
+            Dim dia2 As String, mes2 As String, ano2 As String, fecha2 As String, fechita2() As String
+            fecha2 = vuelito_monte(4)
+            fechita2 = fecha2.Split("/")
+            dia2 = fechita2(0)
+            mes2 = fechita2(1)
+            ano2 = fechita2(2)
+
+            Dim dia3 As String, mes3 As String, ano3 As String, fecha3 As String, fechita3() As String
+            fecha3 = vuelito_monte(8)
+            fechita3 = fecha3.Split("/")
+            dia3 = fechita3(0)
+            mes3 = fechita3(1)
+            ano3 = fechita3(2)
+
+            Dim dia4 As String, mes4 As String, ano4 As String, fecha4 As String, fechita4() As String
+            fecha4 = vuelito_monte(9)
+            fechita4 = fecha4.Split("/")
+            dia4 = fechita4(0)
+            mes4 = fechita4(1)
+            ano4 = fechita4(2)
 
             For i = 0 To 6
                 Select Case i
@@ -190,7 +229,7 @@
                         If vuelito_monte(i) Is Nothing Then
                             datetimepicker1.Value = ""
                         Else
-                            datetimepicker1.Value = vuelito_monte(i)
+                            poner_fecha_ok(dia, mes, ano, datetimepicker1, idioma)
                         End If
                     Case 1
                         If vuelito_monte(i) Is Nothing Then
@@ -214,7 +253,7 @@
                         If vuelito_monte(i) Is "0" Then
                             datetimepicker3.Value = ""
                         Else
-                            datetimepicker3.Value = vuelito_monte(i)
+                            poner_fecha_ok(dia2, mes2, ano2, datetimepicker3, idioma)
                         End If
                     Case 5
                         If vuelito_monte(i) Is "0" Then
@@ -238,13 +277,13 @@
                         If vuelito_monte(i) Is "0" Then
                             datetimepicker5.Value = ""
                         Else
-                            datetimepicker5.Value = vuelito_monte(i)
+                            poner_fecha_ok(dia3, mes3, ano3, datetimepicker5, idioma)
                         End If
                     Case 9
                         If vuelito_monte(i) Is "0" Then
                             datetimepicker6.Value = ""
                         Else
-                            datetimepicker6.Value = vuelito_monte(i)
+                            poner_fecha_ok(dia4, mes4, ano4, datetimepicker6, idioma)
                         End If
                 End Select
             Next
@@ -301,5 +340,87 @@
 
 
     End Sub
+
+    Private Function poner_fecha_ok(ByRef dia, ByRef mes, ByVal ano, ByVal id, ByVal idioma)
+
+        Dim fecha_total As String
+
+        If idioma = "es" Then
+            If mes = "01" Then
+                mes = "Enero"
+            End If
+            If mes = "02" Then
+                mes = "Febrero"
+            End If
+            If mes = "03" Then
+                mes = "Marzo"
+            End If
+            If mes = "04" Then
+                mes = "Abril"
+            End If
+            If mes = "05" Then
+                mes = "Mayo"
+            End If
+            If mes = "06" Then
+                mes = "Junio"
+            End If
+            If mes = "07" Then
+                mes = "Julio"
+            End If
+            If mes = "08" Then
+                mes = "Agosto"
+            End If
+            If mes = "09" Then
+                mes = "Septiembre"
+            End If
+            If mes = "10" Then
+                mes = "Octubre"
+            End If
+            If mes = "11" Then
+                mes = "Noviembre"
+            End If
+            If mes = "12" Then
+                mes = "Diciembre"
+            End If
+        Else
+            If mes = "01" Then
+                mes = "January"
+            End If
+            If mes = "02" Then
+                mes = "February"
+            End If
+            If mes = "03" Then
+                mes = "March"
+            End If
+            If mes = "04" Then
+                mes = "April"
+            End If
+            If mes = "05" Then
+                mes = "May"
+            End If
+            If mes = "06" Then
+                mes = "June"
+            End If
+            If mes = "07" Then
+                mes = "July"
+            End If
+            If mes = "08" Then
+                mes = "August"
+            End If
+            If mes = "09" Then
+                mes = "September"
+            End If
+            If mes = "10" Then
+                mes = "October"
+            End If
+            If mes = "11" Then
+                mes = "November"
+            End If
+            If mes = "12" Then
+                mes = "December"
+            End If
+        End If
+        id.value = dia + " " + mes + " " + ano
+    End Function
 
 End Class

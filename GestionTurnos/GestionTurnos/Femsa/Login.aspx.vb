@@ -13,7 +13,7 @@
         If Not IsPostBack Then
 
         Else
-            Dim email As String, email_bd As String, idferia As String, registrado As String, idioma As String, Password As String, Password_DB As String, Pass_visible As String
+            Dim email As String, email_bd As String, idferia As String, registrado As String, idioma As String, Password As String, Password_DB As String, Pass_visible As String, ramdom_code As String
 
             email = Input_Email.Value
             idioma = oculto.Value
@@ -22,7 +22,7 @@
             Pass_visible = oculto2.Value
 
             DS.Reset()
-            VectorSQL(0) = "SELECT Email,Carrec As registrado,Password FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "'AND idFira ='" & idferia & "'"
+            VectorSQL(0) = "SELECT Email,Carrec As registrado,Password,SectorInteres FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "'AND idFira ='" & idferia & "'"
 
             If Not clsBD.BaseDades(1, VectorSQL, DS) Then
                 ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
@@ -32,6 +32,7 @@
                         email_bd = DS.Tables(0).Rows(i).Item("Email")
                         registrado = DS.Tables(0).Rows(i).Item("registrado")
                         Password_DB = DS.Tables(0).Rows(i).Item("Password")
+                        ramdom_code = DS.Tables(0).Rows(i).Item("SectorInteres")
                     Next
                 End If
             End If
@@ -50,6 +51,7 @@
                         If Pass_visible <> 0 Then 'Campo contraseña esta visible
                             If Password = Password_DB Then 'Pass del input y de la Db coinciden.
                                 Server.Transfer("index.aspx?Email=" & email & "&registrado=" & registrado & "&idioma=" & idioma)
+                                'Response.Redirect("index.aspx?id='" & ramdom_code & "&registrado=" & registrado & "&idioma=" & idioma)
                             Else
                                 If Password = "" Or Password = Nothing Then 'Campo contraseña vacio.
                                     If idioma = "es" Then
