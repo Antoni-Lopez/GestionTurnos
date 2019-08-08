@@ -269,9 +269,10 @@
             if (Dades.substr(0, 2) == 'OK') {
                 Dades = Dades.substr(2);
                 document.getElementById('oculto6').value = Dades;
+                var mostrar = Dades;
                 Dades = Dades.substr(21);
-                if (document.getElementById('oculto2').value == "2") document.getElementById('lbPujat').innerHTML = "<b>PDF file:</b> <a target='_blank' href='../femsa/pdf/" + document.getElementById('oculto5').value + "'>" + Dades + "</a>";
-                else document.getElementById('lbPujat').innerHTML = "<b>Fichero PDF:</b> <a target='_blank' href='../femsa/pdf/" + document.getElementById('oculto5').value + "'>" + Dades + "</a>";
+                if (document.getElementById('oculto2').value == "2") document.getElementById('lbPujat').innerHTML = "<b>PDF file:</b> <a target='_blank' href='../femsa/pdf/" + mostrar + "'>" + Dades + "</a>";
+                else document.getElementById('lbPujat').innerHTML = "<b>Fichero PDF:</b> <a id='documento_link' value='pepito' target='_blank' href='../femsa/pdf/" + mostrar + "'>" + Dades + "</a>";
             }
             else {
                 if (document.getElementById('oculto2').value == "2") LanzaAviso("Some problems were found when uploading the PDF document.");
@@ -281,7 +282,8 @@
         function MiraExtensio(inputID, exts) {
             var fileName = document.getElementById(inputID).value.toLowerCase();
             return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
-        }
+        }
+
 
 
 
@@ -305,17 +307,22 @@
             }
         }
         
-        
+
+        function prueba() {
+            var miprueba = document.getElementById("documento_link").value;
+            alert(miprueba);
+        }
+
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid img_banner" onclick="">
+        <div class="container-fluid img_banner" onclick="prueba()">
             <img src="img/banner.jpg" />
         </div>
         <div id="texto_principio" style="display:block;margin:1.5% auto 1.5% auto;max-width:550px;text-align:justify;font-size:15px;" runat="server">
             <p>Bienvenido a la <span style="font-weight:bold;">Reunión Anual de Asuntos Jurídicos y Regulatorios 2019</span> que se llevará a cabo los días <span style="font-weight:bold;">28, 29 y 30 de agosto</span>, en el <span style="font-weight:bold;">hotel Quinta Real</span>, ubicado en Av. Diego Rivera 500, Valle Oriente, 66260 San Pedro Garza García, N.L.</p> 
-            <p>No olvides el usuario y la contraseña que darás de alta, ya que serán los mismos para tu acceso a la app.</p>
+            <p>No olvides <span style="font-weight:bold;">el usuario y la contraseña que darás de alta</span>, ya que serán los mismos <span style="font-weight:bold;">para tu acceso a la app.</span></p>
         </div>
         <div id="principal" runat="server">
             <div class="row centrado">
@@ -475,7 +482,7 @@
                         <input name="uploadBtn" type="file" id="uploadBtn" class="upload" />
                         <span id="btnCerca" class="uploadBtn" style="min-width: 76px; text-align: center;margin-top:1.5%;">&nbsp;Buscar&nbsp;</span>
                     </label>
-                    <label id="lbPujat" class="control-label" style="padding-left: 20px;padding-bottom: 8px; font-weight: normal;margin-top:2.5%;"><b>Fichero PDF: </b></label>
+                    <label id="lbPujat" class="control-label" style="padding-left: 20px;padding-bottom: 8px; font-weight: normal;margin-top:2.5%;" runat="server"><b>Fichero PDF: </b></label>
                 </div>
                 <div class="row centrado">
                     <div class="cuadro_info">
@@ -632,20 +639,14 @@
             var oficina = document.getElementById("Input_oficina").value;
 
             //Vuelo Monterrey
-            //var h_salida = document.getElementById("datetimepicker1").value;
             var h_llegada = document.getElementById("datetimepicker2").value;
             var nVuelo = document.getElementById("Input_NumeroVuelo").value;
             var aerolinea = document.getElementById("Input_aerolinea").value;
 
             //Vuelo Regreso
-            //var _h_salida2 = document.getElementById("datetimepicker3").value;
             var h_llegada2 = document.getElementById("datetimepicker4").value;
             var nVuelo2 = document.getElementById("Num_Vuelito").value;
             var aerolinea2 = document.getElementById("aerolinea02").value;
-
-            //Hospedaje/Hotel
-            //var h_salida3 = document.getElementById("datetimepicker5").value;
-            //var h_llegada3 = document.getElementById("datetimepicker6").value;
 
             //Radio Buttons finales.
             var preferencia = document.getElementById("Pollo").checked;
@@ -655,6 +656,18 @@
             var futbol2 = document.getElementById("asiste_radio_no").checked;
             var conferencia = document.getElementById("radio_sisi").checked;
             var conferencia2 = document.getElementById("radio_nono").checked;
+
+            //Adjuntar Fichero.
+            var documento = document.getElementById("oculto6").value;
+            var enviar;
+
+            if ((documento.length == "0") || (documento == null) || (documento == "")) {
+                enviar = "0";
+            }
+            else{                
+                enviar = documento;
+                alert(enviar);
+            }
 
             //Datepicker.
             var separar_date, separar_day, separar_ano;
@@ -752,7 +765,7 @@
 
              
 
-            Dades = email + "¦" + puesto + "¦" + negocio + "¦" + direccion + "¦" + city + "¦" + country + "¦" + movil + "¦" + oficina + "¦" + h_salida + "¦" + h_llegada + "¦" + nVuelo + "¦" + aerolinea + "¦" + _h_salida2 + "¦" + h_llegada2 + "¦" + nVuelo2 + "¦" + aerolinea2 + "¦" + h_salida3 + "¦"+ h_llegada3 + "¦" + preferencia + "¦" + preferencia2 + "¦" + preferencia3 + "¦" + futbol + "¦" + futbol2 + "¦" + conferencia + "¦" + conferencia2;          
+            Dades = email + "¦" + puesto + "¦" + negocio + "¦" + direccion + "¦" + city + "¦" + country + "¦" + movil + "¦" + oficina + "¦" + h_salida + "¦" + h_llegada + "¦" + nVuelo + "¦" + aerolinea + "¦" + _h_salida2 + "¦" + h_llegada2 + "¦" + nVuelo2 + "¦" + aerolinea2 + "¦" + h_salida3 + "¦"+ h_llegada3 + "¦" + preferencia + "¦" + preferencia2 + "¦" + preferencia3 + "¦" + futbol + "¦" + futbol2 + "¦" + conferencia + "¦" + conferencia2 + "¦" + enviar;          
 
             setTimeout("InformacioAJAX(13,\"" + Dades.replace(/"/g, "'").replace(/\n/g, "\\n") + "\", 'Registre_Tornada', '../RecepcionAJAX.aspx')", 1000);
         }          
@@ -769,6 +782,12 @@
             else {
                 if (Dades.substr(2, 2) == "13") {
                     LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos. Vuelva a repetir el proceso por favor!");
+                    guardar_data.innerHTML = "";
+                    var texto = "<h4 style='text-align:center;'>ERROR al Guardar Datos!<br/>";
+                    $('#guardar_data').html(texto);
+                }
+                if (Dades.substr(2, 2) == "23") {
+                    LanzaAviso("Ha ocurrido un error actualizando sus datos en la Base de Datos de la App. Vuelva a repetir el proceso por favor!");
                     guardar_data.innerHTML = "";
                     var texto = "<h4 style='text-align:center;'>ERROR al Guardar Datos!<br/>";
                     $('#guardar_data').html(texto);

@@ -121,7 +121,7 @@
             mes = DateTime.Now.ToString("MM")
             day = DateTime.Now.ToString("dd")
 
-            Dim fecha As String, sep_fecha() As String, mivar2 As String, VArray2() As String
+            Dim fecha As String, sep_fecha() As String, mivar2 As String
             Hora = DateTime.Now.ToString("HH")
 
             If Ano >= AnoBD Then

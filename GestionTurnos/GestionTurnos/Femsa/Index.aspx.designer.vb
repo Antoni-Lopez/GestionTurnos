@@ -455,6 +455,15 @@ Partial Public Class Index
     Protected WithEvents itinerario As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''Control lbPujat.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbPujat As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''Control itinerario_warning.
     '''</summary>
     '''<remarks>

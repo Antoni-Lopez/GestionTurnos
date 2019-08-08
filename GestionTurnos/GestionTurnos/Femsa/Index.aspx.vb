@@ -47,7 +47,7 @@
         Else
             Dim name_comp As String, email As String
             Dim nombre As String, ape As String, apellidos() As String, full_name2 As String, pass As String, datos_personales As String, datos_personales2() As String, vuelo_monte As String, vuelito_monte() As String
-            Dim vuelo_regreso As String, vuelito_regreso() As String, radiobuttons As String, radios() As String, ramdon_code As String
+            Dim radiobuttons As String, radios() As String, ramdon_code As String
 
             VectorSQL(0) = "SELECT Nom,Cognoms, Password, NickTwitter, NickFacebook, NIT, SectorInteres FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(mail, 100)) & "'AND idFira ='" & idferia & "'"
 
@@ -204,7 +204,7 @@
             mes4 = fechita4(1)
             ano4 = fechita4(2)
 
-            For i = 0 To 6
+            For i = 0 To 7
                 Select Case i
                     Case 0
                         Input_Puesto.Value = datos_personales2(i)
@@ -220,6 +220,16 @@
                         Input_movil.Value = datos_personales2(i)
                     Case 6
                         Input_oficina.Value = datos_personales2(i)
+                    Case 7
+                        If datos_personales2(i) <> "0" Then
+                            Dim mostrar_bien As String = Mid(datos_personales2(i), 22)
+                            If idioma = "en" Then
+                                lbPujat.InnerHtml = "<b>PDF File:</b> <a target='_blank' href='../femsa/pdf/" + datos_personales2(i) + "'>" + mostrar_bien + "</a>"
+                            Else
+                                lbPujat.InnerHtml = "<b>Fichero PDF:</b> <a target='_blank' href='../femsa/pdf/" + datos_personales2(i) + "'>" + mostrar_bien + "</a>"
+                            End If
+
+                        End If
                 End Select
             Next
 

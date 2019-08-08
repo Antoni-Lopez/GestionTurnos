@@ -157,6 +157,7 @@
     <Content Include="Femsa\lecturaTxt.aspx" />
     <Content Include="Femsa\Login.aspx" />
     <Content Include="Femsa\LoginIntranet.aspx" />
+    <Content Include="Femsa\loginIntranet2.aspx" />
     <Content Include="Femsa\Plantilla - Mailing.aspx" />
     <Content Include="Femsa\Plantilla2.aspx" />
     <Content Include="Femsa\Plantilla3.aspx" />
@@ -274,6 +275,13 @@
     </Compile>
     <Compile Include="Femsa\LoginIntranet.aspx.vb">
       <DependentUpon>LoginIntranet.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Femsa\loginIntranet2.aspx.designer.vb">
+      <DependentUpon>loginIntranet2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Femsa\loginIntranet2.aspx.vb">
+      <DependentUpon>loginIntranet2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Femsa\Plantilla - Mailing.aspx.designer.vb">

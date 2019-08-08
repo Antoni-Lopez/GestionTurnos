@@ -692,9 +692,9 @@ Continuamos:
                         Dim h_salida As String, h_llegada As String, nVuelo As String, aerolinea As String
                         Dim h_salida2 As String, h_llegada2 As String, nVuelo2 As String, aerolinea2 As String
                         Dim h_salid3 As String, h_llegada3 As String
-                        Dim preferencia As String, preferencia2 As String, preferencia3 As String, futbol As String, futbol2 As String, confe As String, confe2 As String
+                        Dim preferencia As String, preferencia2 As String, preferencia3 As String, futbol As String, futbol2 As String, confe As String, confe2 As String, documento As String
 
-                        For i = 0 To 24
+                        For i = 0 To 25
                             Select Case i
                                 Case 0
                                     email = VDades(i)
@@ -746,13 +746,15 @@ Continuamos:
                                     confe = VDades(i)
                                 Case 24
                                     confe2 = VDades(i)
+                                Case 25
+                                    documento = VDades(i)
 
                             End Select
                         Next
 
                         Dim total As String, total2 As String, total3 As String
 
-                        total = puesto + "¦" + negocio + "¦" + direccion + "¦" + city + "¦" + country + "¦" + movil + "¦" + oficina
+                        total = puesto + "¦" + negocio + "¦" + direccion + "¦" + city + "¦" + country + "¦" + movil + "¦" + oficina + "¦" + documento
                         total2 = h_salida + "¦" + h_llegada + "¦" + nVuelo + "¦" + aerolinea + "¦" + h_salida2 + "¦" + h_llegada2 + "¦" + nVuelo2 + "¦" + aerolinea2 + "¦" + h_salid3 + "¦" + h_llegada3
                         total3 = preferencia + "¦" + preferencia2 + "¦" + preferencia3 + "¦" + futbol + "¦" + futbol2 + "¦" + confe + "¦" + confe2
                         Dim Ds As New DataSet
@@ -796,8 +798,33 @@ Continuamos:
                             GoTo Resposta
                         Else
                             'Correcto
-                            Descripcio = "OK13"
-                            GoTo Resposta
+
+                            'Para simular la alta en la App, primero debemos de realizar un select para obtener ciertos datos.
+                            Dim name As String, apellidos As String, password As String, qr_code As String
+                            Ds.Reset()
+                            VectorSQL(0) = "SELECT Nom,Cognoms, Password, Procedencia FROM EEContactes WHERE Email='" & clsBD.Cometes(Left(email, 100)) & "'AND idFira ='" & idferia & "'"
+
+                            If Not clsBD.BaseDades(1, VectorSQL, Ds) Then
+                                ClientScript.RegisterStartupScript(Page.GetType(), "id", "LanzaAviso('Error al buscar datos de email en la BD.')", True)
+                            Else
+                                If Ds.Tables(0).Rows.Count > 0 Then
+                                    For i = 0 To Ds.Tables(0).Rows.Count - 1
+                                        name = Ds.Tables(0).Rows(i).Item("Nom")
+                                        apellidos = Ds.Tables(0).Rows(i).Item("Cognoms")
+                                        password = Ds.Tables(0).Rows(i).Item("Password")
+                                        qr_code = Ds.Tables(0).Rows(i).Item("Procedencia")
+                                    Next
+                                End If
+                            End If
+                            'simulamos la alta en la App
+                            If Alta_App(name, apellidos, email, password, qr_code, idferia) Then
+                                Descripcio = "OK13"
+                                GoTo Resposta
+                            Else
+                                Descripcio = "KO23"
+                                GoTo Resposta
+                            End If
+
                         End If
 
                     Case 14
@@ -1205,7 +1232,7 @@ Resposta:
         Dim VectorSQL(0) As String
         Dim DS As New DataSet
         Dim UserID As String, Rol As Integer, Agrupa As Integer, Descripcio1 As String, Descripcio2 As String, Descripcio3 As String, Descripcio4 As String, Descripcio5 As String
-        Dim Descripcio As String, VDatos As String
+        Dim Descripcio As String
 
 
         Rol = 1 ' Lo ponemos a "martillo" porque vamos a mostrar todos los medicos asociados a un delegado, por ello, el rol que buscamos es solo de medicos ó =1
@@ -1236,4 +1263,39 @@ Resposta:
         Return Descripcio
     End Function
 
+
+    'Alta simulada en App
+    Private Function Alta_App(ByRef nombre, ByRef apellidos, ByRef email, ByVal password, ByVal qr_code, ByVal idferia)
+
+        Dim clsBD As New ClaseAccesoBD
+        Dim DS As DataSet
+        Dim VectorSQL(0) As String, aforo As String, ins As String
+        DS = New DataSet
+
+        Dim Rol As String, agrupacion As String, transporte As String, asiste As String, numero As String, region As String, nit As String, nitactivat As Integer, especialidad As String, nselas As String, consentimiento As String
+        Dim alojamiento As String, origen As String, alergia As String, observaciones As String
+
+        VectorSQL(0) = "INSERT INTO eecontactes (idFira, idContacte, idOrigen, idTipusContacte, idAlta, Nom, Cognoms, Mobil, Email, Carrec, Nit, NITactivat, Password, Blog, SectorInteres, Data, NickTwitter, Procedencia, NickFacebook, WebPersonal) " &
+                        "VALUES(" & idferia & "," & Rol & "," & agrupacion & "," & transporte & "," & asiste & ",'" & clsBD.Cometes(Left(nombre, 100)) & "','" & clsBD.Cometes(Left(apellidos, 100)) & "'," &
+                        "'" & numero & "','" & clsBD.Cometes(Left(email, 100)) & "','" & Region & "','" & Nit & "'," & NITactivat & ",'" & clsBD.Cometes(Left(password, 100)) & "','" & clsBD.Cometes(Left(Especialidad, 100)) & "','" & clsBD.Cometes(Left(NSelas, 100)) & "','" & Consentimiento & "'," &
+                        "" & Alojamiento & ",'" & clsBD.Cometes(Left(Origen, 100)) & "','" & clsBD.Cometes(Left(Alergia, 100)) & "','" & clsBD.Cometes(Left(Observaciones, 100)) & "')"
+
+        Dim N1 As String, myRamdon As String
+        Dim randomN As New Random, estado As String
+
+        myRamdon = ""
+
+        While (myRamdon.Length < 2)
+            N1 = randomN.Next(0, 9)
+            myRamdon += N1
+        End While
+
+        If myRamdon > 4 Then
+            estado = "true"
+        Else
+            estado = "false"
+        End If
+
+        Return estado
+    End Function
 End Class

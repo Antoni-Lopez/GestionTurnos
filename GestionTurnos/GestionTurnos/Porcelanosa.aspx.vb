@@ -103,7 +103,7 @@
 
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
-        Dim VectorSQL(0) As String, sesiones As String, long_idsesion As Integer, VArray() As String, x As String
+        Dim VectorSQL(0) As String, sesiones As String, long_idsesion As Integer, VArray() As String
         DS = New DataSet
 
         VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(idusuario, 100)) & "'"
@@ -137,7 +137,7 @@
     Private Function Boolean_inscripcion(ByRef idusuario)
         Dim clsBD As New ClaseAccesoBD
         Dim DS As DataSet
-        Dim VectorSQL(0) As String, sesiones As String, long_idsesion As Integer, VArray() As String, x As String, p As String
+        Dim VectorSQL(0) As String, sesiones As String, long_idsesion As Integer, VArray() As String, p As String
         DS = New DataSet
 
         VectorSQL(0) = "SELECT idsesiones FROM enlace WHERE idusuario='" & clsBD.Cometes(Left(idusuario, 100)) & "'"
@@ -175,7 +175,7 @@
 
         Dim fecha As String, hora As String, Descripcion As String, idsesiones As String, miprueba As String, aforo As Integer, inscritos As Integer, Varray() As String
         Dim sesion_Chk_usuario() As String, Rol As String, long_sesiones As Integer, sesion_usuario As String, evento As Integer, plaza As String, long_traslados As String
-        Dim y As Integer, statuschk As Integer, checkea_array As String, sesiones As String, long_idsesion As Integer, x As Boolean
+        Dim y As Integer, statuschk As Integer, checkea_array As String, sesiones As String, long_idsesion As Integer
 
         Rol = 0
 
@@ -263,7 +263,7 @@
         DS = New DataSet
 
         Dim fecha As String, hora As String, Descripcion As String, VArray() As String, idsesiones As String, aforo As String, inscritos As String, statuschk As Integer, miprueba As String
-        Dim sesiones As String, long_idsesion As Integer, x As Boolean
+        Dim sesiones As String, long_idsesion As Integer
         Rol = 1 'Como ya hemos mostrado los Traslados, ahora ponemos el Rol= 1 para mostrar las Actividades.
 
         'Consulta para ayar si el usuario tiene algo seleccionado o no.

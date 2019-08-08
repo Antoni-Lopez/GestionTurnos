@@ -156,8 +156,6 @@
                 </div>
             </div>
             <div class="row pos_buton">
-                <%--<input type="button" class="boton_validate" id="miButton" onclick="Registre()" value="Validar" />--%>
-                <%--<button class="boton_validate" id="miButton" onclick="Registre()" type="button" runat="server">Validar</button>--%>
                 <asp:Button CssClass="boton_validate" ID="miButton" Text="Validar" runat="server" />
             </div>
         </div>
