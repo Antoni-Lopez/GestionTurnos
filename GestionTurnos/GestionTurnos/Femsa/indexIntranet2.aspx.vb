@@ -50,12 +50,12 @@
                         If DS.Tables(0).Rows.Count > 0 Then
                             For i = 0 To DS.Tables(0).Rows.Count - 1
                                 idramdon = DS.Tables(0).Rows(i).Item("SectorInteres")
-                                'nombre = DS.Tables(0).Rows(i).Item("Nom")
-                                'apellidos = DS.Tables(0).Rows(i).Item("Cognoms")
+                                nombre = DS.Tables(0).Rows(i).Item("Nom")
+                                apellidos = DS.Tables(0).Rows(i).Item("Cognoms")
                                 If i = 0 Then
-                                    'inscritos.Items.Add(New ListItem("AÑADIR INSCRITO ...", "1"))
+                                    inscritos.Items.Add(New ListItem("AÑADIR INSCRITO ...", "1"))
                                 Else
-                                    'inscritos.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), idramdon))
+                                    inscritos.Items.Add(New ListItem(DS.Tables(0).Rows(i).Item("Cognoms").Replace("¦", " ") & ", " & DS.Tables(0).Rows(i).Item("Nom"), idramdon))
                                 End If
                             Next
 

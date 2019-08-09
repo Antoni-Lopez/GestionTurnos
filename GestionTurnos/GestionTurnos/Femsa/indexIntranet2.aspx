@@ -21,7 +21,7 @@
         .cuadro_uno img{max-width:160px;width:100%;height:57px;margin: .5% 0 0 0;}
 
         /* Cuadro principal 2*/
-        .segundo_cuadro{background-color:#fff;color:Black;border:black solid .5px;height:500px;margin-bottom:.5%;}
+        .segundo_cuadro{background-color:#fff;color:Black;border:black solid .5px;height:540px;margin-bottom:.5%;}
         .nav-header{margin-left: 4.5%;text-decoration: underline;}
 
         /* Cuadro principal 2*/
@@ -29,22 +29,29 @@
 
 
         /* Cuadro inscritos */
-        .inscritos{background-color: #009999;padding: 10px;margin-left: 1.5%;width: 50%;border:black solid .5px;margin-bottom:0.5%;}
+        .inscritos{background-color: #c3d5d5;padding: 10px;margin-left: 1.5%;width: 50%;border:black solid .5px;margin-bottom:0.5%;}
 
         /* Cuadro data personal */
-        .data_personale{background-color: #009999;padding: 10px;border:black solid .5px;margin-bottom:0.5%;margin-left:-15px}
+        .data_personale{background-color: #c3d5d5;padding: 10px;border:black solid .5px;margin-bottom:0.5%;margin-left:-15px}
 
         /*Cuadro Vuelo Regreso */
         .comeback{padding: 10px;margin-bottom:0.5%;margin-left:-15px;width:50%;margin-top:-10.5%}
-        .comeback2{padding: 10px;background-color: #009999;border:black solid .5px;margin-left: -10px;margin-top:-1.5%}
+        .comeback2{padding: 10px;background-color: #c3d5d5;border:black solid .5px;margin-left: -10px;margin-top:-1.5%}
         
         /* Cuadro Itinerario */
-        .itinerary{background-color: #009999;padding: 10px;border:black solid .5px;margin-bottom:0.5%;margin-left:.5px;width:49%;}
+        .itinerary{background-color: #c3d5d5;padding: 10px;border:black solid .5px;margin-bottom:0.5%;margin-left:.5px;width:49.9%;}
 
         /* Cuadro Hotel */
-        .hotel{background-color: #009999;padding: 10px;border:black solid .5px;margin-bottom:0.5%;}
+        .hotel{background-color: #c3d5d5;padding: 10px;border:black solid .5px;margin-bottom:0.5%;margin-top: -6%;}
+        .hotelito{margin-left: -1.5%;font-size: 15px;}
+        .checkin,.checkout{width:28%;Padding:10px;}
+        .div_cheout{width:22%;Padding:10px;}
+
+        /* Cuadro generar informes */
+        .informes{background-color:#d9d9d9;padding: 10px;border:black solid .5px;margin-bottom:0.5%;}
+
         /* Dropdown List*/
-        .eventos{background-color:#009999;padding:10px;margin-left:0;}
+        .eventos{background-color:#c3d5d5;padding:10px;margin-left:0;}
         .select_inscritos{width:90%;display:block;margin-left:auto;margin-right:auto;}
 
         /* labels */
@@ -59,19 +66,23 @@
         .personaldata_texts span{color:red;font-weight:bold;}
         .vuelos{margin-left: -0.5%;}
         .vuelos2{margin-left: -4.5%;}
+        .fechas{font-size:12px;}
     
-    
-        .para_labels{width:20%;margin-top:1.5%}
-        .para_labels2{width:30%;margin-top:1.5%}
+        .para_labels{width:20%;margin-top:1.5%;margin-left:-1.5%}
+        .para_labels2{width:30%;margin-top:1.5%;margin-left:-1.5%}
         .mis_inputs{width: 136%;margin-left: -15px;padding: 5px;line-height: 0;height: 21px;}
+        .mis_inputs2{width: 140%;margin-left: -21px;padding: 5px;line-height: 0;height: 21px;}
 
         /* Select Listado */
         .select_listado{font-size: 12px;padding: 5px;width: 70%;}
         /* Select Idioma */
         .select_idioma{display:block;margin:0 auto 0 auto;}
+        /* Select Cena y Audifonos */
+        #audifonosss,#cenas{width: 90%;display: block;margin-left: auto;margin-right: auto;}
 
         /* Boton */
-        .mybutton{float:right;margin-right:5%;}
+        .mybutton{border-radius: 1px;float:right;margin-right:5%;margin-top: 2.5%;background-color:#009999;color:#fff;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8);font-family: Arial;font-size: 15px;font-weight: bold;}
+        .mybutton:hover{background-color:#fff;color:#009999;}
 
         .centrado{margin-left:-15px;}
         
@@ -287,15 +298,63 @@
                                 <asp:Button ID="myboton" CssClass="mybutton" Text="Dar de Alta" runat="server" />
                             </div>
                         </div>
-                        <div class="col-xs-12 verde">
+                        <div class="col-xs-12" style="margin-top: -8%;">
                             <asp:Label ID="Alojamiento_Hotel" CssClass="hotelito" runat="server">Alojamiento/Hotel: </asp:Label>
                         </div>
-                        <div class="col-xs-12 verde">
+                        <div class="col-xs-12">
                             <div class="col-xs-6 hotel" style="margin-left:-15px;width:50%;">
-                                Hola
+                                <div class="row" style="margin-left:0;width:100%">
+                                    <div class="col-xs-3 checkin">
+                                        <asp:Label ID="fecha_in" CssClass="personaldata_texts3 fechas" runat="server">Fecha Check-in: </asp:Label>
+                                    </div>
+                                    <div class="col-xs-3 div_cheout">
+                                        <asp:TextBox ID="input_fechain" CssClass="form-control mis_inputs2" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xs-3 checkout">
+                                        <asp:Label ID="fecha_out" CssClass="personaldata_texts3 fechas" runat="server">Fecha Check-out: </asp:Label>
+                                    </div>
+                                    <div class="col-xs-3 div_cheout">
+                                        <asp:TextBox ID="input_fechaout" CssClass="form-control mis_inputs2" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-xs-6 azul" style="margin-left:15px;width:50%;">
-                                Adioss
+                            <div class="col-xs-6" style="margin-left:15px;width:50%;">
+                                <div class="row">
+                                    <asp:Label ID="informesss" CssClass="personaldata_texts3 fechas" runat="server">Informe inscritos </asp:Label>
+                                </div>
+                                <div class="row informes">
+                                    <div class="col-xs-6" style="margin-top: 2%;">
+                                        <asp:TextBox ID="generar_informe" CssClass="form-control mis_inputs2" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <asp:Button ID="informe_generate" CssClass="mybutton" Text="Enviar" runat="server" />
+                                    </div>
+                                    <div class="col-xs-12" style="margin-left:-15px;">
+                                        <asp:Label ID="texto_informe" CssClass="personaldata_texts3 fechas" runat="server">Si es más de uno, separar por punto y coma. </asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6" style="margin-left:-15px;width:50%;margin-top: -4.5%;">
+                                <div class="col-xs-6" style="margin-left:-15px;width:50%;">
+                                    <div class="col-xs-6">
+                                        <asp:Label ID="dinners" CssClass="" runat="server">Cena(28): </asp:Label>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <asp:DropDownList ID="cenas" CssClass="select_idioma" runat="server">
+                                            <asp:ListItem>--------</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="margin-left:15px;width:50%;">
+                                    <div class="col-xs-6">
+                                        <asp:Label ID="audifons" CssClass="" runat="server">Audifonos: </asp:Label>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <asp:DropDownList ID="audifonosss" CssClass="select_idioma" runat="server">
+                                            <asp:ListItem>--------</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

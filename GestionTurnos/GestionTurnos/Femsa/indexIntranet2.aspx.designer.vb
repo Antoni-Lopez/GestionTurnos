@@ -491,6 +491,114 @@ Partial Public Class indexIntranet2
     Protected WithEvents Alojamiento_Hotel As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''Control fecha_in.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fecha_in As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control input_fechain.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents input_fechain As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control fecha_out.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents fecha_out As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control input_fechaout.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents input_fechaout As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control informesss.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents informesss As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control generar_informe.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents generar_informe As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control informe_generate.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents informe_generate As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control texto_informe.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents texto_informe As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control dinners.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents dinners As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control cenas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cenas As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control audifons.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents audifons As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control audifonosss.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents audifonosss As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control login_how.
     '''</summary>
     '''<remarks>

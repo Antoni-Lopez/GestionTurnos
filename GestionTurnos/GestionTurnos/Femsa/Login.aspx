@@ -16,43 +16,84 @@
 
     <style type="text/css">
 
+        .segmented-control.sc-fade input[type=radio]:checked + label[for=espanol]{transition-duration: 18s;
+    /*-animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;*/
+}
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+} 
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
+}
+
         /* banner cabecera */
-        .img_banner{max-width:600px;display:block; margin-left:auto;margin-right:auto;box-shadow: 0px 0px 25px rgba(0, 0, 0, 1);margin-top:1.5%}
-        .img_banner img{max-width:600px;width:102.7%;}
+        .img_banner{max-width:900px;display:block; margin-left:auto;margin-right:auto;margin-top:1.5%}
+        .img_banner img{max-width:900px;width:102.7%;box-shadow: 0px 0px 25px rgba(0, 0, 0, 1);}
 
         /* confi de segment */
-        .misegment{max-width:500px;width:100%;display:block; margin-left:auto;margin-right:auto;margin-top:2%;}
+        .misegment{max-width:650px;width:100%;display:block; margin-left:auto;margin-right:auto;margin-top:1%;}
 
         /* cuadros ingles/español */
         #espanish{display:block; margin-left:auto;margin-right:auto;max-width:350px;width:100%;margin-top:2.5%;border:#333 solid 1px;}        
         #inglish{display:none; margin-left:auto;margin-right:auto;max-width:350px;width:100%;margin-top:2.5%;border:#333 solid 1px;}
 
-        .cont_principal{display:block; margin-left:auto;margin-right:auto;max-width:350px;width:100%;margin-top:2.5%;border:#333 solid 1px;}
+        .cont_principal{display:block; margin-left:auto;margin-right:auto;max-width:550px;width:100%;margin-top:1.5%;border:#333 solid 1px;}
         
-        .cabecera{text-align:justify;background-color:#202020; color:#fff;padding:10px;}
+        .cabecera{text-align:justify;background-color:#202020; color:#fff;padding:10px;font-size: 18px;}
 
         .recuadro{margin-top:2%;}
         .cuadros{background-color:#EFEFEF;padding:15px;}
 
-        .mi_input{height:22px !important;font-size:13px;margin-top:-2%; margin-left:-3%;}
+        .mi_input{height: 22px !important;font-size:13px;margin-top:-2%; margin-left:-23%;width:109%;}
 
         .centrado {margin-left: 0;width: 100%;}
-        label[for=texto]{padding-left: 15%;font-size: 20px;}
+
+        label[for=texto] {font-size: 20px;float: right;margin-right: 35%;}
+
+        /*label[for=texto]{padding-left: 15%;font-size: 20px;}*/
         label[for=texto] span{color:red;font-weight:bold;}
 
         /* Tabla email y Pass */
-        .mi_tabla{display:table;height:100px;padding:10px;}
+        .mi_tabla{display:table;height:100px;padding:10px;WIDTH: 100%;}
         .mi_tabla tbody tr{vertical-align: middle;}
         .mi_tabla tbody tr td{width:50%;background-color:#EFEFEF;}
 
 
         /* Boton envio de datos */
-        .btn-Espa {background-color: #7C0027;border-color: #c6c6c6;color:#FFFFFF;display:block;margin-left:auto;margin-right:auto;}
+        .btn-Espa {background-color: #7C0027;border-color: #c6c6c6;color:#FFFFFF;display:block;margin-left:auto;margin-right:auto;padding:10PX;}
         .btn-Espa:hover,.btn-Espa:focus,.btn-Espa:active,.btn-Espa.active {background-color:#FFFFFF;border-color: #202020;color:#7C0027;}
         .btn-Espa.disabled:hover,.btn-Espa.disabled:focus,.btn-Espa.disabled:active,.btn-Espa.disabled.active,.btn-Espa[disabled]:hover,.btn-Espa[disabled]:focus,.btn-Espa[disabled]:active,.btn-Espa[disabled].active,fieldset[disabled] .btn-Espa:hover,fieldset[disabled] .btn-Espa:focus,fieldset[disabled] .btn-Espa:active,fieldset[disabled] .btn-Espa.active {background-color: #EEEEEE;border-color: #e1e1e1;color:#FFFFFF;}
 
         /* Ventana Modal LanzaAviso */
         .modal-open .modal{display: flex;justify-content: center;align-items: center;}
+        .modal-header {background-color:#7C0027;color:#FFF;border-top-left-radius:4px;border-top-right-radius:4px;}
+
+        .segmented-control.sc-fade input[type=radio]:checked + label[for=espanol] span:before {content:'✓' !important;margin-left: .5%;}
+        .segmented-control.sc-fade input[type=radio]:checked + label[for=english] span:before {content:'✓' !important;margin-left: .5%;}
+        
+        @media (max-width: 700px){
+            .img_banner{max-width:650px;}
+            .img_banner img{max-width:650px;width:102.7%;}
+            .misegment{max-width:450px;}
+            .cont_principal{max-width:450px;}
+        }
+        @media (max-width: 450px){
+            .img_banner{max-width:340px;}
+            .img_banner img{max-width:360px;}
+            .misegment{max-width:315px;margin-top:2%;}
+            .cont_principal{max-width:290px;}
+            label[for=texto] {font-size: 14px;}
+            .mi_input{font-size:12px;width:111%;margin-left:-25%;}
+        }
 
         .verde{border:1px solid green;}
         .azul{border:1px solid blue;}
@@ -83,7 +124,7 @@
         }
 
         function LanzaAviso(Text) {
-            bootbox.alert({ title: "ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA", message: Text, size: 'large' });
+            bootbox.alert({ title: "ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA", message: Text, className: 'rubberBand animated' });
 
         }
         function cambiar_idioma(x) {
@@ -188,17 +229,17 @@
 <body>
     <form id="form1" runat="server">
         <div class="container-fluid img_banner" onclick="michorra()">
-            <img src="img/banner.jpg" />
+            <img src="img/banner2.jpg" />
         </div>
         <div class="row misegment">
             <div class="segmented-control sc-fade">
                 <div class="segmented-control-btn">
                   <input type="radio" id="espanol" name="frameworkJs" value="react" checked="checked" onclick="cambiar_idioma(1)"/>
-                  <label for="espanol">Español</label>
+                  <label for="espanol">Español&nbsp;&nbsp<span></span></label>
                 </div>
                 <div class="segmented-control-btn">
                   <input type="radio" id="english" name="frameworkJs" value="angular" onclick="cambiar_idioma(2)"/>
-                  <label for="english">English</label>
+                  <label for="english">English&nbsp;&nbsp<span></span></label>
                 </div>
             </div>
         </div>

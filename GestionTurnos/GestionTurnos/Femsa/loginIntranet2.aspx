@@ -21,8 +21,8 @@
         .login{display:block;max-width:600px;margin:5% auto 2.5% auto;border:.5px solid black;padding:10px;background-color:#eee;color:#891625}
 
         /* Label Email*/
-        .campos{margin-top:8%;}
-        #email{width:20%;margin: 0 0.5% 0 4%;font-size:20px;}
+        .campos{margin-top:8%;margin-left: -10px;width: 103%;}
+        #email{width:20%;margin: 0 0.5% 0 4%;font-size:20px;margin-left: 1.9%;}
         #password{width:20%;margin: 0 0.5% 0 1.5%;font-size:20px;}
         #email span, #password span{color: red;margin-left: 1%;vertical-align: sub;}
 
@@ -50,7 +50,7 @@
     <script type="text/javascript">
 
         function LanzaAviso(Text) {
-            bootbox.alert({ title: "INTRANET - ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA", message: Text, size: 'large' });
+            bootbox.alert({ title: "INTRANET - ASUNTOS JURÍDICOS Y REGULATORIOS 2019 - FEMSA", message: Text, size: 'medium' });
         }
 
         function mensajes(x) {
